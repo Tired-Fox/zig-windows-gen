@@ -42,7 +42,7 @@ pub const FactoryCache = struct {
             }
 
             // Otherwise, we load the factory the usual way.
-            const factory = try load_factory(I, runtime_name);
+            const factory = try loadFactory(I, runtime_name);
 
             // If the factory is agile, we can safely cache it.
             const unknown: *IUnknown = @ptrCast(@alignCast(factory));
@@ -59,7 +59,7 @@ pub const FactoryCache = struct {
     }
 };
 
-fn load_factory(I: type, runtime_name: [:0]const u16) FactoryError!*anyopaque {
+fn loadFactory(I: type, runtime_name: [:0]const u16) FactoryError!*anyopaque {
     const interface_iid: *const Guid = &I.IID;
 
     var factory: *anyopaque = undefined;
@@ -148,7 +148,7 @@ fn getActivationFactory(
     library: [*:0]const u16,
     name: *const ?HSTRING,
 ) ?*anyopaque {
-    const function = delay_load(DllGetActivationFactory, library, DllGetActivationFactoryName.ptr) orelse return null;
+    const function = delayLoad(DllGetActivationFactory, library, DllGetActivationFactoryName.ptr) orelse return null;
     var abi: *anyopaque = undefined;
     const result = function(@ptrCast(@alignCast(name)), &abi);
     if (result == S_OK) {
@@ -157,7 +157,7 @@ fn getActivationFactory(
     return null;
 }
 
-fn delay_load(T: type, library: [*:0]const u16, function: [*:0]const u8) ?T {
+fn delayLoad(T: type, library: [*:0]const u16, function: [*:0]const u8) ?T {
     const lib = win32.system.library_loader.LoadLibraryExW(
         library,
         null,
