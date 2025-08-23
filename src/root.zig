@@ -52,81 +52,85 @@ pub fn GetRestrictedErrorInfo() ?*win32.system.win_rt.IRestrictedErrorInfo {
 pub const IUnknown = extern union {
     vtable: *const VTable,
 
-    pub usingnamespace Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
 
     pub const GUID: []const u8 = "00000000-0000-0000-c000-000000000046";
     pub const IID: Guid = Guid.initString(GUID);
 
     pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: **anyopaque) callconv(.C) HRESULT,
-        AddRef: *const fn(self: *anyopaque) callconv(.C) u32,
-        Release: *const fn(self: *anyopaque,) callconv(.C) u32,
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: **anyopaque) callconv(.c) HRESULT,
+        AddRef: *const fn(self: *anyopaque) callconv(.c) u32,
+        Release: *const fn(self: *anyopaque,) callconv(.c) u32,
     };
-
-    pub fn Mixins(M: type) type {
-        return struct {
-            pub fn queryInterface(self: *M, T: type) !*T {
-                var result: *anyopaque = undefined;
-                if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                    return error.NoInterface;
-                }
-                return @ptrCast(@alignCast(result));
-            }
-            pub fn addRef(self: *M) u32 {
-                return self.vtable.AddRef(@ptrCast(self));
-            }
-            pub fn release(self: *M) u32 {
-                return self.vtable.Release(@ptrCast(self));
-            }
-        };
-    }
 };
 
 pub const IInspectable = extern union {
     vtable: *const VTable,
 
-    pub usingnamespace Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "af86e2e0-b12d-4c6a-9c5a-d7aa65101e90";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = "cinterface(IInspectable)";
 
-    pub const VTable = Implements(.{ IUnknown.VTable }, struct {
-        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(@import("std").os.windows.WINAPI) HRESULT,
-        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(@import("std").os.windows.WINAPI) HRESULT,
+    pub const VTable = Implements(IUnknown.VTable, struct {
+        GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.c) HRESULT,
+        GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.c) HRESULT,
+        GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.c) HRESULT,
     });
-
-    pub fn Mixins(M: type) type {
-        return struct {
-            pub usingnamespace IUnknown.Mixins(M);
-
-            pub fn getIids(self: *M) ![]const Guid {
-                var count: u32 = 0;
-                var iids: [*]Guid = undefined;
-                if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
-                    return error.OutOfMemory;
-                }
-                return iids[0..@as(usize, @intCast(count))];
-            }
-
-            pub fn getRuntimeClassName(self: *M) ![]const u16 {
-                var name: HSTRING = undefined;
-                const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
-                if (code == S_OK) {
-                    return WindowsGetString(name).?;
-                } else if (code == E_OUTOFMEMORY) {
-                    return error.OutOfMemory;
-                } else {
-                    return error.IllegalMethodCall;
-                }
-            }
-
-            pub fn getTrustLevel(self: *M) TrustLevel {
-                var trust: TrustLevel = undefined;
-                _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
-                return trust;
-            }
-        };
-    }
 };

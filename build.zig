@@ -53,9 +53,11 @@ pub fn addExample(
 ) void {
     const exe = b.addExecutable(.{
         .name = example.name,
-        .root_source_file = b.path(example.path),
-        .target = target,
-        .optimize = optimize,
+        .root_module = b.createModule(.{
+            .root_source_file = b.path(example.path),
+            .target = target,
+            .optimize = optimize,
+        })
     });
 
     exe.linkLibC();

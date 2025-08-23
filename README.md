@@ -1,5 +1,7 @@
 # README
 
+This is currently available for Zig `v0.14`. The library is compatable with Zig `v0.15` with the change of converting `callconv(.C)` to `callconv(.c)`. Currently waiting for `zigwin32` before upgrading to `v0.15`.
+
 **Reference**
 
 - https://docs.rs/crate/windows-core/latest/source/

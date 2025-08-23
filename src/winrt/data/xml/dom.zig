@@ -16,20 +16,64 @@ const IIterable = winrt.foundation.collections.IIterable;
 const IIterator = winrt.foundation.collections.IIterator;
 
 const IInspectable = winrt.IInspectable;
+const TrustLevel = winrt.TrustLevel;
+const WindowsGetString = winrt.WindowsGetString;
 const Signature = core.Signature;
 
+const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
 const S_OK = winrt.S_OK;
 
 pub const IXmlDocument = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "f7f3a506-1e87-42d6-bcfb-b8c809fa5494";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update the params to be the correct type
         Doctype: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
         Implementation: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
@@ -54,25 +98,107 @@ pub const IXmlDocument = extern struct {
 pub const IXmlDocumentFragment = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "e2ea6a96-0c21-44a5-8bc9-9e4a262708ec";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {});
+    pub const VTable = Implements(IInspectable.VTable, struct {});
 };
 
 pub const IXmlDocumentIO = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "6cd0e74e-ee65-4489-9ebf-ca43e87ba637";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         LoadXml: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
         LoadXmlWithSettings: *const fn(*anyopaque, HSTRING, *anyopaque) callconv(.C) HRESULT,
         SaveToFileAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
@@ -82,13 +208,54 @@ pub const IXmlDocumentIO = extern struct {
 pub const IXmlDocumentIO2 = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "5d034661-7bd8-4ad5-9ebf-81e6347263b1";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         LoadXmlFromBuffer: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
         LoadXmlFromBufferWithSettings: *const fn(*anyopaque, *anyopaque, *anyopaque) callconv(.C) HRESULT,
     });
@@ -97,13 +264,54 @@ pub const IXmlDocumentIO2 = extern struct {
 pub const IXmlDocumentStatics = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "5543d254-d757-4b79-9539-232b18f50bf1";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         LoadFromUriAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
         LoadFromUriWithSettingsAsync: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
         LoadFromFileAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
@@ -114,13 +322,54 @@ pub const IXmlDocumentStatics = extern struct {
 pub const IXmlDocumentType = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "f7342425-9781-4964-8e94-9b1c6dfc9bc7";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         Name: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
         Entities: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
         Notations: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
@@ -146,7 +395,48 @@ pub const NodeType = enum(i32) {
 pub const IXmlNodeSelector = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn selectNodes(self: *@This(), pattern: [:0]const u16) !*XmlNodeList {
         const pattern_hstring: ?HSTRING = try winrt.WindowsCreateString(pattern);
@@ -170,7 +460,7 @@ pub const IXmlNodeSelector = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
         SelectSingleNode: *const fn(*anyopaque, HSTRING, *?*IXmlNode) callconv(.C) HRESULT,
         SelectNodes: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.C) HRESULT,
@@ -182,7 +472,48 @@ pub const IXmlNodeSelector = extern struct {
 pub const IXmlNodeSerializer = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn getXml(self: *@This()) []const u16 {
         var document: HSTRING = undefined;
@@ -207,7 +538,7 @@ pub const IXmlNodeSerializer = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
         GetXml: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
         InnerText: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
@@ -220,7 +551,48 @@ pub const IXmlNodeSerializer = extern struct {
 pub const IXmlNode = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn cloneNode(self: *@This(), deep: bool) *IXmlNode {
         var result: *IXmlNode = undefined;
@@ -267,7 +639,7 @@ pub const IXmlNode = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
         NodeValue: *const fn(*anyopaque, *?HSTRING) callconv(.C) HRESULT,
         SetNodeValue: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
@@ -298,13 +670,54 @@ pub const IXmlNode = extern struct {
 pub const IXmlNodeList = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "8c60ad77-83a4-4ec1-9c54-7ba429e13da6";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         Length: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
         Item: *const fn(*anyopaque, u32, *?*IXmlNode) callconv(.C) HRESULT,
     });
@@ -313,13 +726,54 @@ pub const IXmlNodeList = extern struct {
 pub const IXmlAttribute = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "ac144aa4-b4f1-4db6-b206-8a22c308db0a";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be correct types
         Name: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
         Specified: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
@@ -331,13 +785,54 @@ pub const IXmlAttribute = extern struct {
 pub const IXmlElement = extern struct {
     vtable: *const VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub const GUID: []const u8 = "2dfb8a1f-6b10-4ef8-9f83-efcce8faec37";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be correct types
         TagName: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
         GetAttribute: *const fn(*anyopaque, HSTRING, *HSTRING) callconv(.C) HRESULT,
@@ -359,7 +854,48 @@ pub const IXmlElement = extern struct {
 pub const XmlNodeList = extern struct {
     vtable: *const IXmlNodeList.VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn size(self: *@This()) !u32 {
         const this = try self.queryInterface(IVectorView(IXmlNode));
@@ -406,7 +942,48 @@ pub const XmlNodeList = extern struct {
 pub const XmlAttribute = extern struct {
     vtable: *const IXmlAttribute.VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var result: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &result);
+        if (code == S_OK) {
+            return WindowsGetString(result).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn name(self: *@This()) HSTRING {
         var result: HSTRING = undefined;
@@ -438,7 +1015,48 @@ pub const XmlAttribute = extern struct {
 pub const XmlElement = extern struct {
     vtable: *const IXmlElement.VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn tagName(self: *@This()) []const u16 {
         var result: HSTRING = undefined;
@@ -551,7 +1169,48 @@ pub const XmlElement = extern struct {
 pub const IXmlCharacterData = extern struct {
     vtable: *VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn data(self: *@This()) []const u16 {
         var result: HSTRING = undefined;
@@ -614,7 +1273,7 @@ pub const IXmlCharacterData = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         Data: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
         SetData: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
         Length: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
@@ -629,7 +1288,48 @@ pub const IXmlCharacterData = extern struct {
 pub const IXmlText = extern struct {
     vtable: *VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn splitText(self: *@This(), at: u32) void {
         var result: *XmlText = undefined;
@@ -646,7 +1346,7 @@ pub const IXmlText = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(.{ IInspectable.VTable }, struct {
+    pub const VTable = Implements(IInspectable.VTable, struct {
         SplitText: *const fn(*anyopaque, u32, **XmlText) callconv(.C) HRESULT,
     });
 };
@@ -654,7 +1354,48 @@ pub const IXmlText = extern struct {
 pub const XmlText = extern struct {
     vtable: *IXmlText.VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn data(self: *@This()) []const u16 {
         const this: *IXmlCharacterData = try self.queryInterface(IXmlCharacterData);
@@ -713,7 +1454,48 @@ pub const XmlText = extern struct {
 pub const XmlDocument = extern struct {
     vtable: *IXmlDocument.VTable,
 
-    pub usingnamespace IInspectable.Mixins(@This());
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn init() FactoryError!*@This() {
         const factory: *IGenericFactory = try @This().Factory.call(

@@ -23,7 +23,7 @@ const Color = winrt.ui.Color;
 
 var brush: ?win32.graphics.gdi.HGDIOBJ = undefined;
 
-fn onColorChange(state: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.C) void {
+fn onColorChange(state: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.c) void {
     const hwnd: HWND = @ptrCast(@alignCast(state.?));
 
     const lightTheme = isLight(settings.getColorValue(.foreground) catch return);

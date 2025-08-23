@@ -8,7 +8,7 @@ const IInspectable = winrt.IInspectable;
 
 var wait = std.atomic.Value(bool).init(true);
 
-fn onSystemThemeChange(_: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.C) void {
+fn onSystemThemeChange(_: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.c) void {
     const fg = settings.getColorValue(.foreground) catch return;
     if (fg.b > 0) {
         std.debug.print("\x1b[40;38;2;{d};{d};{d}m DARK \x1b[0m\n", .{ fg.r, fg.g, fg.b });

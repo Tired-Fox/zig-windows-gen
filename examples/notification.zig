@@ -90,8 +90,21 @@ pub fn main() !void {
     //     \\<toast>
     //     \\    <visual>
     //     \\        <binding template="ToastGeneric">
-    //     \\          <text id="0" hint-style="title">Zig Windows Runtime</text>
-    //     \\          <text id="1">No Powershell needed!</text>
+    //     \\          <image
+    //     \\            id="0"
+    //     \\            src="..."
+    //     \\            alt="Banner"
+    //     \\            placement="hero"
+    //     \\          />
+    //     \\          <text id="1" hint-style="title">Zig Windows Runtime</text>
+    //     \\          <text id="2">No Powershell needed!</text>
+    //     \\          <image
+    //     \\            id="3"
+    //     \\            src="..."
+    //     \\            alt="Logo"
+    //     \\            placement="appLogoOverride"
+    //     \\            hint-crop="circle"
+    //     \\          />
     //     \\        </binding>
     //     \\    </visual>
     //     \\</toast>
@@ -107,7 +120,9 @@ pub fn main() !void {
     const notification = try ToastNotification.createToastNotification(xml_document);
     defer _ = notification.release();
 
-    const POWERSHELL: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral("{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe");
+    const POWERSHELL: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(
+        "{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe",
+    );
 
     var notifier = try ToastNotificationManager.createToastNotifierWithId(POWERSHELL);
     defer _ = notifier.release();

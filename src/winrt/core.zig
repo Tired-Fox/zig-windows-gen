@@ -24,21 +24,16 @@ pub fn guid_string(g: *const Guid, buf: []u8) std.fmt.BufPrintError![]u8 {
     );
 }
 
-pub fn Implements(comptime interfaces: anytype, T: type) type {
+pub fn Implements(I: type, T: type) type {
     const target = @typeInfo(T).@"struct".fields;
-    var count: usize = target.len;
-    inline for(interfaces) |interface| {
-        count +|= @typeInfo(interface).@"struct".fields.len;
-    }
+    const impl = @typeInfo(I).@"struct".fields;
 
-    var merged_fields: [count]std.builtin.Type.StructField = undefined;
+    var merged_fields: [target.len + impl.len]std.builtin.Type.StructField = undefined;
     var idx: usize = 0;
 
-    inline for(interfaces) |interface| {
-        inline for (@typeInfo(interface).@"struct".fields) |field| {
-            merged_fields[idx] = field;
-            idx += 1;
-        }
+    inline for (impl) |field| {
+        merged_fields[idx] = field;
+        idx += 1;
     }
 
     inline for (target) |field| {
