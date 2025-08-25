@@ -5,10 +5,39 @@ const winrt = @import("winrt");
 const XmlDocument = winrt.data.xml.dom.XmlDocument;
 const XmlElement = winrt.data.xml.dom.XmlElement;
 const IXmlNode = winrt.data.xml.dom.IXmlNode;
+const IInspectable = winrt.IInspectable;
 const ToastNotificationManager = winrt.ui.notifications.ToastNotificationManager;
 const ToastNotification = winrt.ui.notifications.ToastNotification;
 
+const ToastDismissedEventArgs = winrt.ui.notifications.ToastDismissedEventArgs;
+const ToastActivatedEventArgs = winrt.ui.notifications.ToastActivatedEventArgs;
+const ToastFailedEventArgs = winrt.ui.notifications.ToastFailedEventArgs;
+
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
+
+fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) callconv(.C) void {
+    _ = sender;
+    std.debug.print("{any}\n", .{ args.reason() });
+    wait.store(false, .release);
+}
+
+fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) callconv(.C) void {
+    _ = sender;
+
+    const event_args: *ToastActivatedEventArgs = @ptrCast(@alignCast(args));
+
+    const arguments = std.unicode.utf16LeToUtf8Alloc(std.heap.smp_allocator, event_args.arguments()) catch return;
+    defer std.heap.smp_allocator.free(arguments);
+
+    std.debug.print("Activated: {s}\n", .{ arguments });
+    wait.store(false, .release);
+}
+
+fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) callconv(.C) void {
+    _ = sender;
+    std.debug.print("[0x{X}] Toast Failure", .{ args.error_code() });
+    wait.store(false, .release);
+}
 
 fn relative_file_uri(allocator: std.mem.Allocator, path: []const u8) ![:0]const u16 {
     const file_path = try std.fs.cwd().realpathAlloc(allocator, path);
@@ -20,7 +49,12 @@ fn relative_file_uri(allocator: std.mem.Allocator, path: []const u8) ![:0]const 
     return try std.unicode.utf8ToUtf16LeAllocZ(allocator, uriUtf8);
 }
 
+var wait = std.atomic.Value(bool).init(true);
+
 pub fn main() !void {
+    @setEvalBranchQuota(10_000);
+    const POWERSHELL: [:0]const u16 = L("{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe");
+
     const xml_document = try XmlDocument.init();
     defer xml_document.deinit();
 
@@ -84,6 +118,18 @@ pub fn main() !void {
     try heroElement.setAttribute(L("placement"), L("appLogoOverride"));
     try heroElement.setAttribute(L("hint-crop"), L("circle"));
 
+    const actionsElement = try xml_document.createElement(L("actions"));
+    defer _ = actionsElement.release();
+    _ = try toastElement.appendChild(@ptrCast(actionsElement));
+
+    const buttonElement = try xml_document.createElement(L("action"));
+    defer _ = buttonElement.release();
+    _ = try actionsElement.appendChild(@ptrCast(buttonElement));
+
+    try buttonElement.setAttribute(L("content"), L("Click Me"));
+    try buttonElement.setAttribute(L("arguments"), L("click:click-me"));
+    try buttonElement.setAttribute(L("activationType"), L("background"));
+
     // Above is the same as just parsing the xml
     //
     // const xml: [:0]const u16 = L(
@@ -120,12 +166,26 @@ pub fn main() !void {
     const notification = try ToastNotification.createToastNotification(xml_document);
     defer _ = notification.release();
 
-    const POWERSHELL: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(
-        "{1AC14E77-02E7-4E5D-B744-2EB1AE5198B7}\\WindowsPowerShell\\v1.0\\powershell.exe",
-    );
+    var dhandler = ToastNotification.DismissedTypedEventHandler.init(dismissNotification);
+    const dhandle = try notification.onDismissed(&dhandler);
+
+    var ahandler = ToastNotification.ActivatedTypedEventHandler.init(activatedNotification);
+    const ahandle = try notification.onActivated(&ahandler);
+
+    var fhandler = ToastNotification.FailedTypedEventHandler.init(failedNotification);
+    const fhandle = try notification.onFailed(&fhandler);
 
     var notifier = try ToastNotificationManager.createToastNotifierWithId(POWERSHELL);
     defer _ = notifier.release();
 
     try notifier.show(notification);
+
+    while (wait.load(.acquire)) {
+        std.time.sleep(std.time.ns_per_s * 1);
+    }
+
+    std.debug.print("END\n", .{});
+    _ = notification.removeOnDismissed(dhandle);
+    _ = notification.removeOnActivated(ahandle);
+    _ = notification.removeOnFailed(fhandle);
 }
