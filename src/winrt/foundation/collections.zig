@@ -28,6 +28,7 @@ pub const CollectionChange = enum(i32) {
 };
 
 pub fn IMapChangedEventArgs(K: type) type {
+    const KEY = if (core.isInterface(K)) *K else K;
     return extern struct {
         vtable: *const VTable,
 
@@ -37,8 +38,8 @@ pub fn IMapChangedEventArgs(K: type) type {
             return result;
         }
 
-        pub fn key(self: *@This()) *K {
-            var result: *K = undefined;
+        pub fn key(self: *@This()) KEY {
+            var result: KEY = undefined;
             _ = self.vtable.Key(@ptrCast(self), &result);
             return result;
         }
@@ -52,7 +53,7 @@ pub fn IMapChangedEventArgs(K: type) type {
 
         pub const VTable = Implements(IInspectable.VTable, struct {
             CollectionChange: *const fn(*anyopaque, *CollectionChange) callconv(.C) HRESULT,
-            Key: *const fn(*anyopaque, **K) callconv(.C) HRESULT,
+            Key: *const fn(*anyopaque, *KEY) callconv(.C) HRESULT,
         });
     };
 }
@@ -93,6 +94,10 @@ pub const IMapChangedEventHandler = extern struct {
 /// This method handles delegating the invoked callback for a
 /// given typed event.
 pub fn MapChangedEventHandler(K: type, V: type) type {
+    const KEY = if (core.isInterface(K)) *K else K;
+    const VALUE = if (core.isInterface(V)) *V else V;
+
+
     const signature: []const u8 = Signature.pinterface("179517f3-94ee-41f8-bddc-768a895544f3", &.{ K.SIGNATURE, Signature.cinterface(V) });
     const iid = Signature.guid(signature);
 
@@ -110,10 +115,10 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
 
         vtable: *const IMapChangedEventHandler.VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: *K, args: *V) callconv(.C) void,
+        cb: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.C) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: *K, args: *V) callconv(.C) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.C) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -121,7 +126,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: *K, args: *V) callconv(.C) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.C) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -232,12 +237,14 @@ pub fn IIterable(I: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            First: *const fn(*anyopaque, **I) callconv(.C) HRESULT,
+            First: *const fn(*anyopaque, **IIterator(I)) callconv(.C) HRESULT,
         });
     };
 }
 
 pub fn IIterator(I: type) type {
+    const TYPE = if (core.isInterface(I)) *I else I;
+
     return extern struct {
         vtable: *const VTable,
 
@@ -284,8 +291,8 @@ pub fn IIterator(I: type) type {
             return trust;
         }
 
-        pub fn current(self: *@This()) !*I {
-            var result: *I = undefined;
+        pub fn current(self: *@This()) !TYPE {
+            var result: TYPE = undefined;
             if (self.vtable.Current(@ptrCast(self), &result) != S_OK) {
                 return error.NoCurrentItem;
             }
@@ -319,7 +326,7 @@ pub fn IIterator(I: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Current: *const fn(*anyopaque, **I) callconv(.C) HRESULT,
+            Current: *const fn(*anyopaque, *TYPE) callconv(.C) HRESULT,
             HasCurrent: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
             MoveNext: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
             GetMany: *const fn(*anyopaque, u32, *[*]I, *u32) callconv(.C) HRESULT,
@@ -328,6 +335,8 @@ pub fn IIterator(I: type) type {
 }
 
 pub fn IVectorView(I: type) type {
+    const TYPE = if (core.isInterface(I)) *I else I;
+
     return extern struct {
         vtable: *const VTable,
 
@@ -374,8 +383,8 @@ pub fn IVectorView(I: type) type {
             return trust;
         }
 
-        pub fn getAt(self: *@This(), idx: u32) !*I {
-            var result: *I = undefined;
+        pub fn getAt(self: *@This(), idx: u32) !TYPE {
+            var result: TYPE = undefined;
             if (self.vtable.GetAt(@ptrCast(self), idx, &result) != S_OK) {
                 return error.OutOfBounds;
             }
@@ -388,7 +397,7 @@ pub fn IVectorView(I: type) type {
             return result;
         }
 
-        pub fn indexOf(self: *@This(), item: *I) ?u32 {
+        pub fn indexOf(self: *@This(), item: TYPE) ?u32 {
             var result: u32 = 0;
             var found: bool = false;
             _ = self.vtable.IndexOf(@ptrCast(self), item, &result, &found);
@@ -412,15 +421,18 @@ pub fn IVectorView(I: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            GetAt: *const fn(*anyopaque, u32, **I) callconv(.C) HRESULT,
+            GetAt: *const fn(*anyopaque, u32, *TYPE) callconv(.C) HRESULT,
             Size: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-            IndexOf: *const fn(*anyopaque, *I, *u32, *bool) callconv(.C) HRESULT,
+            IndexOf: *const fn(*anyopaque, TYPE, *u32, *bool) callconv(.C) HRESULT,
             GetMany: *const fn(*anyopaque, u32, u32, *[*]I, *u32) callconv(.C) HRESULT,
         });
     };
 }
 
 pub fn IKeyValuePair(K: type, V: type) type {
+    const KEY = if (core.isInterface(K)) *K else K;
+    const VALUE = if (core.isInterface(V)) *V else V;
+
     return extern struct {
         vtable: *const VTable,
 
@@ -467,14 +479,14 @@ pub fn IKeyValuePair(K: type, V: type) type {
             return trust;
         }
 
-        pub fn key(self: *@This()) *K {
-            var result: *K = undefined;
+        pub fn key(self: *@This()) KEY {
+            var result: KEY = undefined;
             _ = self.vtable.Key(@ptrCast(self), &result);
             return result;
         }
 
-        pub fn value(self: *@This()) *V {
-            var result: *V = undefined;
+        pub fn value(self: *@This()) VALUE {
+            var result: VALUE = undefined;
             _ = self.vtable.Value(@ptrCast(self), &result);
             return result;
         }
@@ -487,13 +499,16 @@ pub fn IKeyValuePair(K: type, V: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Key: *const fn(*anyopaque, **K) callconv(.C) HRESULT,
-            Value: *const fn(*anyopaque, **V) callconv(.C) HRESULT,
+            Key: *const fn(*anyopaque, *KEY) callconv(.C) HRESULT,
+            Value: *const fn(*anyopaque, *VALUE) callconv(.C) HRESULT,
         });
     };
 }
 
 pub fn IMap(K: type, V: type) type {
+    const KEY = if (core.isInterface(K)) *K else K;
+    const VALUE = if (core.isInterface(V)) *V else V;
+
     return extern struct {
         vtable: *const VTable,
 
@@ -554,7 +569,7 @@ pub fn IMap(K: type, V: type) type {
             return result;
         }
 
-        pub fn hasKey(self: *@This(), key: *K) bool {
+        pub fn hasKey(self: *@This(), key: KEY) bool {
             var result: bool = false;
             _ = self.vtable.HasKey(@ptrCast(self), key, &result);
             return result;
@@ -566,13 +581,13 @@ pub fn IMap(K: type, V: type) type {
             return result;
         }
 
-        pub fn insert(self: *@This(), key: *K, value: *V) bool {
+        pub fn insert(self: *@This(), key: KEY, value: VALUE) bool {
             var result: bool = false;
             _ = self.vtable.Insert(@ptrCast(self), key, value, &result);
             return result;
         }
 
-        pub fn remove(self: *@This(), key: *K) void {
+        pub fn remove(self: *@This(), key: KEY) void {
             _ = self.vtable.Remove(@ptrCast(self), key);
         }
 
@@ -588,18 +603,21 @@ pub fn IMap(K: type, V: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Lookup: *const fn(*anyopaque, *K, **V) callconv(.C) HRESULT,
+            Lookup: *const fn(*anyopaque, KEY, *VALUE) callconv(.C) HRESULT,
             Size: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-            HasKey: *const fn(*anyopaque, *K, *bool) callconv(.C) HRESULT,
+            HasKey: *const fn(*anyopaque, KEY, *bool) callconv(.C) HRESULT,
             GetView: *const fn(*anyopaque, **IMapView(K, V)) callconv(.C) HRESULT,
-            Insert: *const fn(*anyopaque, *K, *V, *bool) callconv(.C) HRESULT,
-            Remove: *const fn(*anyopaque, *K) callconv(.C) HRESULT,
+            Insert: *const fn(*anyopaque, KEY, VALUE, *bool) callconv(.C) HRESULT,
+            Remove: *const fn(*anyopaque, KEY) callconv(.C) HRESULT,
             Clear: *const fn(*anyopaque) callconv(.C) HRESULT,
         });
     };
 }
 
 pub fn IMapView(K: type, V: type) type {
+    const KEY = if (core.isInterface(K)) *K else K;
+    const VALUE = if (core.isInterface(V)) *V else V;
+
     return extern struct {
         vtable: *const VTable,
 
@@ -646,8 +664,8 @@ pub fn IMapView(K: type, V: type) type {
             return trust;
         }
 
-        pub fn lookup(self: *@This(), key: *K) !*V {
-            var result: *V = undefined;
+        pub fn lookup(self: *@This(), key: KEY) !VALUE {
+            var result: VALUE = undefined;
             if (self.vtable.Lookup(@ptrCast(self), key, &result) != S_OK) {
                 return error.Bounds;
             }
@@ -660,7 +678,7 @@ pub fn IMapView(K: type, V: type) type {
             return result;
         }
 
-        pub fn hasKey(self: *@This(), key: *K) bool {
+        pub fn hasKey(self: *@This(), key: KEY) bool {
             var result: bool = false;
             _ = self.vtable.HasKey(@ptrCast(self), key, &result);
             return result;
@@ -682,9 +700,9 @@ pub fn IMapView(K: type, V: type) type {
 
         pub const VTable = Implements(IInspectable.VTable, struct {
             // TODO: Update params to be the correct type
-            Lookup: *const fn(*anyopaque, *K, **V) callconv(.C) HRESULT,
+            Lookup: *const fn(*anyopaque, KEY, *VALUE) callconv(.C) HRESULT,
             Size: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-            HasKey: *const fn(*anyopaque, *K, *bool) callconv(.C) HRESULT,
+            HasKey: *const fn(*anyopaque, KEY, *bool) callconv(.C) HRESULT,
             Split: *const fn(*anyopaque, **IMapView(K,V), **IMapView(K,V)) callconv(.C) HRESULT,
         });
     };
@@ -873,7 +891,7 @@ pub const ValueSet = extern struct {
 
     pub fn lookup(self: *@This(), key: HSTRING) !*IInspectable {
         const this: *IMap(HSTRING, IInspectable) = try self.queryInterface(IMap(HSTRING, IInspectable));
-        return this.lookup(self, &key);
+        return this.lookup(self, key);
     }
 
     pub fn size(self: *@This()) bool {
@@ -883,17 +901,17 @@ pub const ValueSet = extern struct {
 
     pub fn hasKey(self: *@This(), key: HSTRING) !bool {
         const this: *IMap(HSTRING, IInspectable) = try self.queryInterface(IMap(HSTRING, IInspectable));
-        return this.hasKey(self, &key);
+        return this.hasKey(self, key);
     }
 
     pub fn insert(self: *@This(), key: HSTRING, value: *IInspectable) !bool {
         const this: *IMap(HSTRING, IInspectable) = try self.queryInterface(IMap(HSTRING, IInspectable));
-        return this.insert(self, &key, value);
+        return this.insert(self, key, value);
     }
 
     pub fn remove(self: *@This(), key: HSTRING) !void {
         const this: *IMap(HSTRING, IInspectable) = try self.queryInterface(IMap(HSTRING, IInspectable));
-        this.remove(self, &key);
+        this.remove(self, key);
     }
 
     pub fn getView(self: *@This()) !*IMapView(HSTRING,IInspectable) {
@@ -922,8 +940,4 @@ pub const ValueSet = extern struct {
     pub const GUID: []const u8 = IPropertySet.GUID;
     pub const IID: Guid = IPropertySet.IID;
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, &.{ IPropertySet.SIGNATURE });
-
-    pub const VTable = Implements(IInspectable.VTable, struct {
-        // TODO: Update params to be the correct type
-    });
 };

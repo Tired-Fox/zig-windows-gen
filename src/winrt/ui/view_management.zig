@@ -482,6 +482,7 @@ pub const UISettings = extern struct {
         return @ptrCast(@alignCast(try factory.ActivateInstance(IUISettings)));
     }
 
+    /// Call `release` and discard the returned remaining ref count
     pub fn deinit(self: *@This()) void {
         _ = self.release();
     }

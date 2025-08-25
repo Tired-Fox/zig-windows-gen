@@ -1160,6 +1160,11 @@ pub const XmlElement = extern struct {
         return this.setInnerText(text);
     }
 
+    /// Call `release` and discard the returned remaining ref count
+    pub fn deinit(self: *@This()) void {
+        _ = self.release();
+    }
+
     pub const IID: Guid = IXmlElement.IID;
     pub const TYPE_NAME: []const u8 = "Windows.Data.Xml.Dom.XmlElement";
     pub const RUNTIME_NAME: []const u8 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
@@ -1442,6 +1447,11 @@ pub const XmlText = extern struct {
         return this.splitText(at);
     }
 
+    /// Call `release` and discard the returned remaining ref count
+    pub fn deinit(self: *@This()) void {
+        _ = self.release();
+    }
+
     pub const TYPE_NAME: []const u8 = "Windows.Data.Xml.Dom.XmlText";
     pub const SIGNATURE: []const u8 = std.fmt.comptimePrint("rc({s};{s})", .{ TYPE_NAME, IXmlText.SIGNATURE });
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
@@ -1506,6 +1516,7 @@ pub const XmlDocument = extern struct {
         return @ptrCast(@alignCast(try factory.ActivateInstance(IXmlDocument)));
     }
 
+    /// Call `release` and discard the returned remaining ref count
     pub fn deinit(self: *@This()) void {
         _ = self.release();
     }

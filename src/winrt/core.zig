@@ -50,3 +50,7 @@ pub fn Implements(I: type, T: type) type {
         }
     });
 }
+
+pub fn isInterface(T: type) bool {
+    return @typeInfo(T) == .@"struct" and @hasField(T, "vtable");
+}

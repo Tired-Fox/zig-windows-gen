@@ -5,7 +5,12 @@ pub const winrt = @import("../../root.zig");
 
 const ITypedEventHandler = winrt.foundation.ITypedEventHandler;
 const TypedEventHandler = winrt.foundation.TypedEventHandler;
+const IReference = winrt.foundation.IReference;
+const DateTime = winrt.foundation.DateTime;
 const ValueSet = winrt.foundation.collections.ValueSet;
+const IIterable = winrt.foundation.collections.IIterable;
+const IMap = winrt.foundation.collections.IMap;
+const IKeyValuePair = winrt.foundation.collections.IKeyValuePair;
 const XmlDocument = winrt.data.xml.dom.XmlDocument;
 
 pub const IInspectable = winrt.IInspectable;
@@ -46,7 +51,7 @@ pub const ToastTemplateType = enum(i32) {
     text_04 = 7,
 };
 
-pub const NotificationUpdateResult = enum (i32) {
+pub const NotificationUpdateResult = enum(i32) {
     succeeded = 0,
     failed = 1,
     notification_not_found = 2,
@@ -80,7 +85,7 @@ pub const IToastDismissedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Reason: *const fn(*anyopaque, *ToastDismissalReason) callconv(.C) HRESULT,
+        Reason: *const fn (*anyopaque, *ToastDismissalReason) callconv(.C) HRESULT,
     });
 };
 
@@ -101,7 +106,7 @@ pub const IToastActivatedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Arguments: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        Arguments: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
     });
 };
 
@@ -122,7 +127,7 @@ pub const IToastActivatedEventArgs2 = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-         UserInput: *const fn(*anyopaque, **ValueSet) callconv(.C) HRESULT,
+        UserInput: *const fn (*anyopaque, **ValueSet) callconv(.C) HRESULT,
     });
 };
 
@@ -190,7 +195,7 @@ pub const ToastActivatedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastActivatedEventArgs.SIGNATURE);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-         UserInput: *const fn(*anyopaque, **ValueSet) callconv(.C) HRESULT,
+        UserInput: *const fn (*anyopaque, **ValueSet) callconv(.C) HRESULT,
     });
 };
 
@@ -202,13 +207,13 @@ pub const IToastFailedEventArgs = extern struct {
         _ = self.vtable.ErrorCode(@ptrCast(self), &result);
         return result;
     }
-    
+
     pub const GUID: []const u8 = "35176862-cfd4-44f8-ad64-f500fd896c3b";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        ErrorCode: *const fn(*anyopaque, *HRESULT) callconv(.C) HRESULT,
+        ErrorCode: *const fn (*anyopaque, *HRESULT) callconv(.C) HRESULT,
     });
 };
 
@@ -240,6 +245,80 @@ pub const ToastFailedEventArgs = extern struct {
     pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastFailedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastFailedEventArgs.SIGNATURE);
+};
+
+pub const INotificationData = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn values(self: *@This()) *IMap(HSTRING, HSTRING) {
+        var result: *IMap(HSTRING, HSTRING) = undefined;
+        _ = self.vtable.Values(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn sequenceNumber(self: *@This()) u32 {
+        var result: u32 = 0;
+        _ = self.vtable.SequenceNumber(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setSequenceNumber(self: *@This(), value: u32) void {
+        _ = self.vtable.SetSequenceNumber(@ptrCast(self), value);
+    }
+
+    pub const GUID: []const u8 = "9ffd2312-9d6a-4aaf-b6ac-ff17f0c1f280";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        // TODO: Update these params to be the correct types
+        Values: *const fn (*anyopaque, **IMap(HSTRING, HSTRING)) callconv(.C) HRESULT,
+        SequenceNumber: *const fn (*anyopaque, *u32) callconv(.C) HRESULT,
+        SetSequenceNumber: *const fn (*anyopaque, u32) callconv(.C) HRESULT,
+    });
 };
 
 pub const IToastNotification = extern struct {
@@ -330,16 +409,15 @@ pub const IToastNotification = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        // TODO: Update these params to be the correct types
-        Content: *const fn(*anyopaque, **XmlDocument) callconv(.C) HRESULT,
-        SetExpirationTime: *const fn(*anyopaque, ?*anyopaque) callconv(.C) HRESULT,
-        ExpirationTime: *const fn(*anyopaque, *?*anyopaque) callconv(.C) HRESULT,
-        Dismissed: *const fn(*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
-        RemoveDismissed: *const fn(*anyopaque, i64) callconv(.C) HRESULT,
-        Activated: *const fn(*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
-        RemoveActivated: *const fn(*anyopaque, i64) callconv(.C) HRESULT,
-        Failed: *const fn(*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
-        RemoveFailed: *const fn(*anyopaque, i64) callconv(.C) HRESULT,
+        Content: *const fn (*anyopaque, **XmlDocument) callconv(.C) HRESULT,
+        SetExpirationTime: *const fn (*anyopaque, *IReference(DateTime)) callconv(.C) HRESULT,
+        ExpirationTime: *const fn (*anyopaque, **IReference(DateTime)) callconv(.C) HRESULT,
+        Dismissed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
+        RemoveDismissed: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
+        Activated: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
+        RemoveActivated: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
+        Failed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
+        RemoveFailed: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
     });
 };
 
@@ -395,12 +473,12 @@ pub const IToastNotification2 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        SetTag: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        Tag: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetGroup: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        Group: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetSuppressPopup: *const fn(*anyopaque, bool) callconv(.C) HRESULT,
-        SuppressPopup: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
+        SetTag: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        Tag: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        SetGroup: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        Group: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        SetSuppressPopup: *const fn (*anyopaque, bool) callconv(.C) HRESULT,
+        SuppressPopup: *const fn (*anyopaque, *bool) callconv(.C) HRESULT,
     });
 };
 
@@ -456,10 +534,10 @@ pub const IToastNotification3 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        NotificationMirroring: *const fn(*anyopaque, *NotificationMirroring) callconv(.C) HRESULT,
-        SetNotificationMirroring: *const fn(*anyopaque, NotificationMirroring) callconv(.C) HRESULT,
-        RemoteId: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetRemoteId: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        NotificationMirroring: *const fn (*anyopaque, *NotificationMirroring) callconv(.C) HRESULT,
+        SetNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.C) HRESULT,
+        RemoteId: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        SetRemoteId: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
     });
 };
 
@@ -509,16 +587,36 @@ pub const IToastNotification4 = extern struct {
         return trust;
     }
 
+    pub fn data(self: *@This()) *NotificationData {
+        var result: *NotificationData = undefined;
+        _ = self.vtable.Data(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setData(self: *@This(), value: *NotificationData) void {
+        _ = self.vtable.SetData(@ptrCast(self), value);
+    }
+
+    pub fn priority(self: *@This()) ToastNotificationPriority {
+        var result: ToastNotificationPriority = undefined;
+        _ = self.vtable.Priority(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setPriority(self: *@This(), value: ToastNotificationPriority) void {
+        _ = self.vtable.SetPriority(@ptrCast(self), value);
+    }
+
     pub const GUID: []const u8 = "15154935-28ea-4727-88e9-c58680e2d118";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        Data: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetData: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        Priority: *const fn(*anyopaque, *ToastNotificationPriority) callconv(.C) HRESULT,
-        SetPriority: *const fn(*anyopaque, ToastNotificationPriority) callconv(.C) HRESULT,
+        Data: *const fn (*anyopaque, **NotificationData) callconv(.C) HRESULT,
+        SetData: *const fn (*anyopaque, *NotificationData) callconv(.C) HRESULT,
+        Priority: *const fn (*anyopaque, *ToastNotificationPriority) callconv(.C) HRESULT,
+        SetPriority: *const fn (*anyopaque, ToastNotificationPriority) callconv(.C) HRESULT,
     });
 };
 
@@ -574,8 +672,84 @@ pub const IToastNotification6 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        ExpiresOnReboot: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
-        SetExpiresOnReboot: *const fn(*anyopaque, bool) callconv(.C) HRESULT,
+        ExpiresOnReboot: *const fn (*anyopaque, *bool) callconv(.C) HRESULT,
+        SetExpiresOnReboot: *const fn (*anyopaque, bool) callconv(.C) HRESULT,
+    });
+};
+
+pub const INotificationDataFactory = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn createNotificationDataWithValuesAndSequenceNumber(
+        self: *@This(),
+        initialvalues: *IIterable(IKeyValuePair(HSTRING, HSTRING)),
+        sequencenumber: u32,
+    ) !*NotificationData {
+        var result: *NotificationData = undefined;
+        if (self.vtable.CreateNotificationDataWithValuesAndSequenceNumber(initialvalues, sequencenumber, &result) != S_OK) {
+            return error.NotificationData;
+        }
+        return result;
+    }
+
+    pub fn createNotificationDataWithValues(self: *@This(), initialvalues: IIterable(IKeyValuePair(HSTRING, HSTRING))) !*NotificationData {
+        var result: *NotificationData = undefined;
+        if (self.vtable.CreateNotificationDataWithValues(initialvalues, &result) != S_OK) {
+            return error.NotificationData;
+        }
+        return result;
+    }
+
+    pub const GUID: []const u8 = "23c1e33a-1c10-46fb-8040-dec384621cf8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        CreateNotificationDataWithValuesAndSequenceNumber: *const fn (*anyopaque, *anyopaque, u32, **anyopaque) callconv(.C) HRESULT,
+        CreateNotificationDataWithValues: *const fn (*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
     });
 };
 
@@ -629,9 +803,7 @@ pub const IToastNotificationFactory = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(IInspectable.VTable, struct {
-        CreateToastNotification: *const fn(*anyopaque, *const XmlDocument, **ToastNotification) callconv(.C) HRESULT
-    });
+    pub const VTable = Implements(IInspectable.VTable, struct { CreateToastNotification: *const fn (*anyopaque, *const XmlDocument, **ToastNotification) callconv(.C) HRESULT });
 };
 
 pub const IToastNotificationManagerStatics = extern struct {
@@ -685,9 +857,9 @@ pub const IToastNotificationManagerStatics = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        CreateToastNotifier: *const fn(*anyopaque, **ToastNotifier) callconv(.C) HRESULT,
-        CreateToastNotifierWithId: *const fn(*anyopaque, HSTRING, **ToastNotifier) callconv(.C) HRESULT,
-        GetTemplateContent: *const fn(*anyopaque, ToastTemplateType, **XmlDocument) callconv(.C) HRESULT,
+        CreateToastNotifier: *const fn (*anyopaque, **ToastNotifier) callconv(.C) HRESULT,
+        CreateToastNotifierWithId: *const fn (*anyopaque, HSTRING, **ToastNotifier) callconv(.C) HRESULT,
+        GetTemplateContent: *const fn (*anyopaque, ToastTemplateType, **XmlDocument) callconv(.C) HRESULT,
     });
 };
 
@@ -743,7 +915,7 @@ pub const IToastNotificationManagerStatics2 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        History: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        History: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
     });
 };
 
@@ -799,8 +971,8 @@ pub const IToastNotificationManagerStatics4 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        GetForUser: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        ConfigureNotificationMirroring: *const fn(*anyopaque, NotificationMirroring) callconv(.C) HRESULT,
+        GetForUser: *const fn (*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+        ConfigureNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.C) HRESULT,
     });
 };
 
@@ -856,7 +1028,7 @@ pub const IToastNotificationManagerStatics5 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        GetDefault: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        GetDefault: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
     });
 };
 
@@ -912,12 +1084,12 @@ pub const IToastNotifier = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        Show: *const fn(*anyopaque, *ToastNotification) callconv(.C) HRESULT,
-        Hide: *const fn(*anyopaque, *ToastNotification) callconv(.C) HRESULT,
-        Setting: *const fn(*anyopaque, *NotificationSetting) callconv(.C) HRESULT,
-        AddToSchedule: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        RemoveFromSchedule: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        GetScheduledToastNotifications: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        Show: *const fn (*anyopaque, *ToastNotification) callconv(.C) HRESULT,
+        Hide: *const fn (*anyopaque, *ToastNotification) callconv(.C) HRESULT,
+        Setting: *const fn (*anyopaque, *NotificationSetting) callconv(.C) HRESULT,
+        AddToSchedule: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        RemoveFromSchedule: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        GetScheduledToastNotifications: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
     });
 };
 
@@ -973,8 +1145,8 @@ pub const IToastNotifier2 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        UpdateWithTagAndGroup: *const fn(*anyopaque, *anyopaque, *anyopaque, *anyopaque, *NotificationUpdateResult) callconv(.C) HRESULT,
-        UpdateWithTag: *const fn(*anyopaque, *anyopaque, *anyopaque, *NotificationUpdateResult) callconv(.C) HRESULT,
+        UpdateWithTagAndGroup: *const fn (*anyopaque, *anyopaque, *anyopaque, *anyopaque, *NotificationUpdateResult) callconv(.C) HRESULT,
+        UpdateWithTag: *const fn (*anyopaque, *anyopaque, *anyopaque, *NotificationUpdateResult) callconv(.C) HRESULT,
     });
 };
 
@@ -1030,8 +1202,8 @@ pub const IToastNotifier3 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        ScheduledToastNotificationShowing: *const fn(*anyopaque, *anyopaque, *i64) callconv(.C) HRESULT,
-        RemoveScheduledToastNotificationShowing: *const fn(*anyopaque, i64) callconv(.C) HRESULT,
+        ScheduledToastNotificationShowing: *const fn (*anyopaque, *anyopaque, *i64) callconv(.C) HRESULT,
+        RemoveScheduledToastNotificationShowing: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
     });
 };
 
@@ -1101,6 +1273,11 @@ pub const ToastNotifier = extern struct {
         return result;
     }
 
+    /// Call `release` and discard the returned remaining ref count
+    pub fn deinit(self: *@This()) void {
+        _ = self.release();
+    }
+
     const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastNotifier";
     const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
     const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastNotifier.SIGNATURE);
@@ -1114,7 +1291,7 @@ pub const ToastNotificationManager = extern struct {
         );
 
         var notifier: *ToastNotifier = undefined;
-        if (factory.vtable.CreateToastNotifier(@ptrCast(factory), &notifier) < S_OK ) {
+        if (factory.vtable.CreateToastNotifier(@ptrCast(factory), &notifier) < S_OK) {
             return error.Notifier;
         }
 
@@ -1131,7 +1308,7 @@ pub const ToastNotificationManager = extern struct {
         defer winrt.WindowsDeleteString(id_hstring);
 
         var notifier: *ToastNotifier = undefined;
-        if (factory.vtable.CreateToastNotifierWithId(@ptrCast(factory), id_hstring.?, &notifier) < S_OK ) {
+        if (factory.vtable.CreateToastNotifierWithId(@ptrCast(factory), id_hstring.?, &notifier) < S_OK) {
             return error.Notifier;
         }
 
@@ -1145,7 +1322,7 @@ pub const ToastNotificationManager = extern struct {
         );
 
         var document: *XmlDocument = undefined;
-        if (factory.vtable.GetTemplateContent(@ptrCast(factory), template, &document) < S_OK ) {
+        if (factory.vtable.GetTemplateContent(@ptrCast(factory), template, &document) < S_OK) {
             return error.TemplateContent;
         }
 
@@ -1204,6 +1381,7 @@ pub const ToastNotification = extern struct {
         return trust;
     }
 
+    /// Call `release` and discard the returned remaining ref count
     pub fn deinit(self: *@This()) void {
         _ = self.release();
     }
@@ -1253,6 +1431,42 @@ pub const ToastNotification = extern struct {
         return this.removeOnFailed(handle);
     }
 
+    pub fn content(self: *@This()) *XmlDocument {
+        var result: *XmlDocument = undefined;
+        _ = self.vtable.Content(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn expirationTime(self: *@This()) *IReference(DateTime) {
+        var result: *IReference(DateTime) = undefined;
+        _ = self.vtable.ExpirationTime(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setExpirationTime(self: *@This(), et: *IReference(DateTime)) void {
+        _ = self.vtable.SetExpirationTime(@ptrCast(self), et);
+    }
+
+    pub fn data(self: *@This()) !*NotificationData {
+        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+        return this.data();
+    }
+
+    pub fn setData(self: *@This(), value: *NotificationData) !void {
+        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+        return this.setData(value);
+    }
+
+    pub fn priority(self: *@This()) !ToastNotificationPriority {
+        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+        return this.priority();
+    }
+
+    pub fn setPriority(self: *@This(), value: ToastNotificationPriority) !void {
+        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+        return this.setPriority(value);
+    }
+
     pub const DismissedTypedEventHandler = TypedEventHandler(ToastNotification, ToastDismissedEventArgs);
     pub const ActivatedTypedEventHandler = TypedEventHandler(ToastNotification, IInspectable);
     pub const FailedTypedEventHandler = TypedEventHandler(ToastNotification, ToastFailedEventArgs);
@@ -1262,4 +1476,109 @@ pub const ToastNotification = extern struct {
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
     var Factory: FactoryCache = .{};
+};
+
+pub const NotificationData = extern struct {
+    vtable: *INotificationData.VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn values(self: *@This()) *IMap(HSTRING, HSTRING) {
+        const this: *INotificationData = @ptrCast(@alignCast(self));
+        return this.values();
+    }
+
+    pub fn sequenceNumber(self: *@This()) u32 {
+        const this: *INotificationData = @ptrCast(@alignCast(self));
+        return this.sequenceNumber();
+    }
+
+    pub fn setSequenceNumber(self: *@This(), value: u32) void {
+        const this: *INotificationData = @ptrCast(@alignCast(self));
+        return this.setSequenceNumber(value);
+    }
+
+    pub fn init() !*@This() {
+        const factory: *IGenericFactory = try @This().GenericFactory.call(IGenericFactory, RUNTIME_NAME);
+        return factory.ActivateInstance(@This());
+    }
+
+    /// Call `release` and discard the returned remaining ref count
+    pub fn deinit(self: *@This()) void {
+        _ = self.release();
+    }
+
+    pub fn createNotificationDataWithValuesAndSequenceNumber(
+        initialvalues: IIterable(IKeyValuePair(HSTRING, HSTRING)),
+        sequencenumber: u32,
+    ) !*NotificationData {
+        const factory: *INotificationDataFactory = try @This().NotificationDataFactory.call(
+            INotificationDataFactory,
+            RUNTIME_NAME,
+        );
+        return factory.createNotificationDataWithValuesAndSequenceNumber(initialvalues, sequencenumber);
+    }
+
+    pub fn createNotificationDataWithValues(initialvalues: IIterable(IKeyValuePair(HSTRING, HSTRING))) !*NotificationData {
+        const factory: *INotificationDataFactory = try @This().NotificationDataFactory.call(
+            INotificationDataFactory,
+            RUNTIME_NAME,
+        );
+        return factory.createNotificationDataWithValues(initialvalues);
+    }
+
+    pub const DismissedTypedEventHandler = TypedEventHandler(ToastNotification, ToastDismissedEventArgs);
+    pub const ActivatedTypedEventHandler = TypedEventHandler(ToastNotification, IInspectable);
+    pub const FailedTypedEventHandler = TypedEventHandler(ToastNotification, ToastFailedEventArgs);
+
+    pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.NotificationData";
+    pub const SIGNATURE: []const u8 = std.fmt.comptimePrint("rc({s};{s})", .{ TYPE_NAME, INotificationData.SIGNATURE });
+    pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = INotificationData.GUID;
+    pub const IID: Guid = INotificationData.IID;
+
+    var GenericFactory: FactoryCache = .{};
+    var NotificationDataFactory: FactoryCache = .{};
 };

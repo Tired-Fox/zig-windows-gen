@@ -11,6 +11,7 @@ const Example = struct {
 const examples = [_]Example {
     .{ .name = "reactive_theme", .path = "examples/reactive_theme.zig",  },
     .{ .name = "notification", .path = "examples/notification.zig",  },
+    .{ .name = "notif_builder", .path = "examples/notif_builder.zig",  },
     .{ .name = "uisettings", .path = "examples/uisettings.zig",  },
 };
 
