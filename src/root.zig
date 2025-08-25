@@ -15,6 +15,7 @@ pub const core = @import("winrt/core.zig");
 
 pub const TrustLevel = @import("win32").system.win_rt.TrustLevel;
 pub const HSTRING = win32.system.win_rt.HSTRING;
+pub const IID_IAgileObject = win32.system.com.IID_IAgileObject;
 
 const Implements = core.Implements;
 const Guid = win32.zig.Guid;
@@ -53,7 +54,7 @@ pub fn GetRestrictedErrorInfo() ?*win32.system.win_rt.IRestrictedErrorInfo {
     return null;
 }
 
-pub const IUnknown = extern union {
+pub const IUnknown = extern struct {
     vtable: *const VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {
@@ -82,7 +83,7 @@ pub const IUnknown = extern union {
     };
 };
 
-pub const IInspectable = extern union {
+pub const IInspectable = extern struct {
     vtable: *const VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {

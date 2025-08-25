@@ -26,7 +26,7 @@ pub fn main() !void {
 
     std.debug.print("Current System Foreground Color: {any}\n", .{ ui_settings.getColorValue(.foreground) });
 
-    var handler = TypedEventHandler(UISettings, IInspectable).init(onSystemThemeChange);
+    var handler = UISettings.ColorTypedEventHandler.init(onSystemThemeChange);
     const handle = try ui_settings.colorValuesChanged(&handler);
 
     // Wait for color change to be detected

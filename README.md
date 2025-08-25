@@ -1,15 +1,60 @@
 # README
 
-This is currently available for Zig `v0.14`. The library is compatable with Zig `v0.15` with the change of converting `callconv(.C)` to `callconv(.c)`. Currently waiting for `zigwin32` before upgrading to `v0.15`.
+Currently supports Zig `v0.15.1`.
+
+**Implemented**
+
+- [-] Windows
+    - [-] UI
+        - [-] ViewManagement
+            - [x] UISettings
+        - [ ] Notification
+            - [-] ToastNotificationManager
+            - [-] ToastNotification
+            - [x] ToastNotifier
+            - [x] NotificationData
+            - [x] ScheduledToastNotification
+    - [-] Data
+        - [-] Xml
+            - [-] Dom
+                - [-] XmlDocument
+                - [-] XmlElement
+                - [-] XmlText
+                - [-] IXmlNode
+    - [ ] Media
+        - [ ] Audio
+
+**Generation**
+
+Currently all of the APIs are implemented by hand as I am only implementing the APIs I need for my personal projects.
+
+> [!WARNING]
+> There could be some missed errors as it is difficult to maintian the abi by hand.
+
+I plan to write a code generator that focuses on WinRT. This should cover all areas except win32 where zigwin32 will fill that gap. Any types
+that are also defined in zigwin32 will be ignored in favor of the format of the code generated. Once I have a stable format for how I want the code to look
+I will create projects for generating the metadata and generating the bindings.
 
 **Reference**
 
-- https://docs.rs/crate/windows-core/latest/source/
++ windows-rs: Reference abi structure and IIDs
+    - https://docs.rs/crate/windows-core/latest/source/
     - https://docs.rs/crate/windows-core/latest/source/src/imp/factory_cache.rs
-    - https://docs.rs/crate/windows/latest/source/src/Windows/UI/ViewManagement/mod.rs
     - https://docs.rs/crate/windows-collections/latest/source/src/bindings.rs
 
-+ Notifications
-    + https://github.com/iKineticate/win-toast-notify
++ UISettings (Windows.UI.ViewManagement)
+    https://learn.microsoft.com/en-us/uwp/api/windows.ui.viewmanagement.uisettings?view=winrt-26100
+
++ TypedEventHandler (Windows.Foundation)
+    - https://learn.microsoft.com/en-us/uwp/api/windows.foundation.typedeventhandler-2?view=winrt-26100
+
++ Notifications (Windows.UI.Notifications + Windows.Data.Xml.Dom)
     + https://learn.microsoft.com/en-us/uwp/schemas/tiles/toastschema/schema-root
-    + https://learn.microsoft.com/en-us/previous-versions/windows/apps/hh761494(v=win.10)
+    + https://learn.microsoft.com/en-us/dotnet/api/system.xml.xmldocument?view=net-9.0
+    + https://learn.microsoft.com/en-us/uwp/api/windows.data.xml.dom.xmlelement?view=winrt-26100
+    + https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications.toastnotification?view=winrt-26100
+    + https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications.toastnotifier?view=winrt-26100
+
++ Audio (Windows.Media.Audio)
+    + https://learn.microsoft.com/en-us/windows/win32/coreaudio/wasapi
+    + https://learn.microsoft.com/en-us/windows/uwp/audio-video-camera/audio-graphs

@@ -7,16 +7,22 @@ const ITypedEventHandler = winrt.foundation.ITypedEventHandler;
 const TypedEventHandler = winrt.foundation.TypedEventHandler;
 const IReference = winrt.foundation.IReference;
 const DateTime = winrt.foundation.DateTime;
+const TimeSpan = winrt.foundation.TimeSpan;
 const ValueSet = winrt.foundation.collections.ValueSet;
 const IIterable = winrt.foundation.collections.IIterable;
 const IMap = winrt.foundation.collections.IMap;
 const IKeyValuePair = winrt.foundation.collections.IKeyValuePair;
+const IVectorView = winrt.foundation.collections.IVectorView;
 const XmlDocument = winrt.data.xml.dom.XmlDocument;
+const wiredGuid = winrt.foundation.wiredGuid;
 
 pub const IInspectable = winrt.IInspectable;
+pub const IUnknown = winrt.IUnknown;
+pub const IID_IAgileObject = winrt.IID_IAgileObject;
 pub const TrustLevel = winrt.TrustLevel;
 pub const WindowsGetString = winrt.WindowsGetString;
 pub const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
+pub const E_NOINTERFACE = winrt.E_NOINTERFACE;
 
 pub const Guid = win32.zig.Guid;
 pub const HRESULT = win32.foundation.HRESULT;
@@ -74,6 +80,49 @@ pub const ToastDismissalReason = enum(i32) {
 pub const IToastDismissedEventArgs = extern struct {
     vtable: *const VTable,
 
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
     pub fn reason(self: *@This()) ToastDismissalReason {
         var result: ToastDismissalReason = undefined;
         _ = self.vtable.Reason(@ptrCast(self), &result);
@@ -85,12 +134,55 @@ pub const IToastDismissedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Reason: *const fn (*anyopaque, *ToastDismissalReason) callconv(.C) HRESULT,
+        Reason: *const fn (*anyopaque, *ToastDismissalReason) callconv(.c) HRESULT,
     });
 };
 
 pub const IToastActivatedEventArgs = extern struct {
     vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn arguments(self: *@This()) []const u16 {
         var result: HSTRING = undefined;
@@ -106,12 +198,55 @@ pub const IToastActivatedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Arguments: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        Arguments: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
 pub const IToastActivatedEventArgs2 = extern struct {
     vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn user_input(self: *@This()) *ValueSet {
         var result: *ValueSet = undefined;
@@ -127,7 +262,87 @@ pub const IToastActivatedEventArgs2 = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        UserInput: *const fn (*anyopaque, **ValueSet) callconv(.C) HRESULT,
+        UserInput: *const fn (*anyopaque, **ValueSet) callconv(.c) HRESULT,
+    });
+};
+
+pub const IScheduledToastNotificationShowingEventArgs = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn cancel(self: *@This()) bool {
+        var result: bool = false;
+        _ = self.vtable.Cancel(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setCancel(self: *@This(), state: bool) void {
+        _ = self.vtable.SetCancel(@ptrCast(self), state);
+    }
+
+    pub fn scheduledToastNotification(self: *@This()) *ScheduledToastNotification {
+        var result: *ScheduledToastNotification = undefined;
+        _ = self.vtable.ScheduledToastNotification(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn getDeferral(self: *@This()) *Deferral {
+        var result: *Deferral = undefined;
+        _ = self.vtable.GetDeferral(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub const GUID: []const u8 = "6173f6b4-412a-5e2c-a6ed-a0209aef9a09";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        Cancel: *const fn (*anyopaque, *bool) callconv(.c) HRESULT,
+        SetCancel: *const fn (*anyopaque, bool) callconv(.c) HRESULT,
+        ScheduledToastNotification: *const fn (*anyopaque, **ScheduledToastNotification) callconv(.c) HRESULT,
+        GetDeferral: *const fn (*anyopaque, **Deferral) callconv(.c) HRESULT,
     });
 };
 
@@ -183,7 +398,7 @@ pub const ToastActivatedEventArgs = extern struct {
     }
 
     pub fn user_input(self: *@This()) *ValueSet {
-        const this: *IToastActivatedEventArgs2 = try self.queryInterface(IToastActivatedEventArgs2);
+        const this: *IToastActivatedEventArgs2 = self.queryInterface(IToastActivatedEventArgs2) catch unreachable;
         return this.user_input();
     }
 
@@ -193,14 +408,53 @@ pub const ToastActivatedEventArgs = extern struct {
     pub const GUID: []const u8 = IToastActivatedEventArgs.GUID;
     pub const IID: Guid = IToastActivatedEventArgs.IID;
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastActivatedEventArgs.SIGNATURE);
-
-    pub const VTable = Implements(IInspectable.VTable, struct {
-        UserInput: *const fn (*anyopaque, **ValueSet) callconv(.C) HRESULT,
-    });
 };
 
 pub const IToastFailedEventArgs = extern struct {
     vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn error_code(self: *@This()) HRESULT {
         var result: HRESULT = 0;
@@ -213,12 +467,55 @@ pub const IToastFailedEventArgs = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        ErrorCode: *const fn (*anyopaque, *HRESULT) callconv(.C) HRESULT,
+        ErrorCode: *const fn (*anyopaque, *HRESULT) callconv(.c) HRESULT,
     });
 };
 
 pub const ToastDismissedEventArgs = extern struct {
     vtable: *const IToastDismissedEventArgs.VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
 
     pub fn reason(self: *@This()) ToastDismissalReason {
         const this: *IToastDismissedEventArgs = @ptrCast(@alignCast(self));
@@ -235,6 +532,49 @@ pub const ToastDismissedEventArgs = extern struct {
 pub const ToastFailedEventArgs = extern struct {
     vtable: *const IToastFailedEventArgs.VTable,
 
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
     pub fn error_code(self: *@This()) HRESULT {
         const this: *IToastFailedEventArgs = @ptrCast(@alignCast(self));
         return this.error_code();
@@ -245,6 +585,1007 @@ pub const ToastFailedEventArgs = extern struct {
     pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastFailedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastFailedEventArgs.SIGNATURE);
+};
+
+pub const ScheduledToastNotificationShowingEventArgs = extern struct {
+    vtable: *const IScheduledToastNotificationShowingEventArgs.VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn cancel(self: *@This()) bool {
+        const this: *IScheduledToastNotificationShowingEventArgs = @ptrCast(@alignCast(self));
+        return this.cancel();
+    }
+
+    pub fn setCancel(self: *@This(), state: bool) void {
+        const this: *IScheduledToastNotificationShowingEventArgs = @ptrCast(@alignCast(self));
+        return this.setCancel(state);
+    }
+
+    pub fn scheduledToastNotification(self: *@This()) *ScheduledToastNotification {
+        const this: *IScheduledToastNotificationShowingEventArgs = @ptrCast(@alignCast(self));
+        return this.scheduledToastNotification();
+    }
+
+    pub fn getDeferral(self: *@This()) *Deferral {
+        const this: *IScheduledToastNotificationShowingEventArgs = @ptrCast(@alignCast(self));
+        return this.getDeferral();
+    }
+
+    pub const GUID: []const u8 = IScheduledToastNotificationShowingEventArgs.GUID;
+    pub const IID: Guid = IScheduledToastNotificationShowingEventArgs.IID;
+    pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ScheduledToastNotificationShowingEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
+    pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IScheduledToastNotificationShowingEventArgs.SIGNATURE);
+};
+
+pub const IScheduledToastNotification = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn content(self: *@This()) *XmlDocument {
+        var result: *XmlDocument = undefined;
+        _ = self.vtable.Content(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn deliveryTime(self: *@This()) DateTime {
+        var result: DateTime = undefined;
+        _ = self.vtable.DeliveryTime(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn snoozeInterval(self: *@This()) TimeSpan {
+        var result: TimeSpan = undefined;
+        _ = self.vtable.SnoozeInterval(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn maximumSnoozeCount(self: *@This()) u32 {
+        var result: u32 = 0;
+        _ = self.vtable.MaximumSnoozeCount(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn id(self: *@This()) []const u16 {
+        var result: HSTRING = 0;
+        _ = self.vtable.Id(@ptrCast(self), &result);
+        return winrt.WindowsGetString(result).?;
+    }
+
+    pub fn setId(self: *@This(), value: [:0]const u16) !void {
+        const h_id = try winrt.WindowsCreateString(value);
+        defer winrt.WindowsDeleteString(h_id);
+        _ = self.vtable.Id(@ptrCast(self), h_id.?);
+    }
+
+    pub const GUID: []const u8 = "79f577f8-0de7-48cd-9740-9b370490c838";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        Content: *const fn (*anyopaque, **XmlDocument) callconv(.c) HRESULT,
+        DeliveryTime: *const fn (*anyopaque, *DateTime) callconv(.c) HRESULT,
+        SnoozeInterval: *const fn (*anyopaque, *TimeSpan) callconv(.c) HRESULT,
+        MaximumSnoozeCount: *const fn (*anyopaque, *u32) callconv(.c) HRESULT,
+        SetId: *const fn (*anyopaque, HSTRING) callconv(.c) HRESULT,
+        Id: *const fn (*anyopaque, *HSTRING) callconv(.c) HRESULT,
+    });
+};
+
+pub const IScheduledToastNotification2 = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn tag(self: *@This()) []const u16 {
+        var result: HSTRING = undefined;
+        _ = self.vtable.Tag(@ptrCast(self), &result);
+        return winrt.WindowsGetString(result).?;
+    }
+
+    pub fn setTag(self: *@This(), value: [:0]const u16) !void {
+        const h_tag = try winrt.WindowsCreateString(value);
+        defer winrt.WindowsDeleteString(h_tag);
+        _ = self.vtable.SetTag(@ptrCast(self), h_tag.?);
+    }
+
+    pub fn group(self: *@This()) []const u16 {
+        var result: HSTRING = undefined;
+        _ = self.vtable.Group(@ptrCast(self), &result);
+        return winrt.WindowsGetString(result).?;
+    }
+
+    pub fn setGroup(self: *@This(), value: [:0]const u16) !void {
+        const h_group = try winrt.WindowsCreateString(value);
+        defer winrt.WindowsDeleteString(h_group);
+        _ = self.vtable.SetGroup(@ptrCast(self), h_group.?);
+    }
+
+    pub fn suppressPopup(self: *@This()) bool {
+        var result: bool = false;
+        _ = self.vtable.SuppressPopup(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setSuppressPopup(self: *@This(), state: bool) void {
+        _ = self.vtable.SetSuppressPopup(@ptrCast(self), state);
+    }
+
+    pub const GUID: []const u8 = "a66ea09c-31b4-43b0-b5dd-7a40e85363b1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        // TODO: Update params to be the correct type
+        SetTag: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
+        Tag: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetGroup: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
+        Group: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetSuppressPopup: *const fn (*anyopaque, bool) callconv(.c) HRESULT,
+        SuppressPopup: *const fn (*anyopaque, *bool) callconv(.c) HRESULT,
+    });
+};
+
+pub const IScheduledToastNotification3 = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn notificationMirroring(self: *@This()) NotificationMirroring {
+        var result: NotificationMirroring = undefined;
+        _ = self.vtable.NotificationMirroring(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setNotificationMirroring(self: *@This(), mirroring: NotificationMirroring) void {
+        _ = self.vtable.SetNotificationMirroring(@ptrCast(self), mirroring);
+    }
+
+    pub fn remoteId(self: *@This()) []const u16 {
+        var result: HSTRING = undefined;
+        _ = self.vtable.RemoteId(@ptrCast(self), &result);
+        return winrt.WindowsGetString(result).?;
+    }
+
+    pub fn setRemoteId(self: *@This(), value: [:0]const u16) !void {
+        const h_id: ?HSTRING = try winrt.WindowsCreateString(value);
+        defer winrt.WindowsDeleteString(h_id);
+        _ = self.vtable.SetRemoteId(@ptrCast(self), h_id.?);
+    }
+
+    pub const GUID: []const u8 = "98429e8b-bd32-4a3b-9d15-22aea49462a1";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        // TODO: Update params to be the correct type
+        NotificationMirroring: *const fn (*anyopaque, *NotificationMirroring) callconv(.c) HRESULT,
+        SetNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.c) HRESULT,
+        RemoteId: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetRemoteId: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
+    });
+};
+
+pub const IScheduledToastNotification4 = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn expirationTime(self: *@This()) *IReference(DateTime) {
+        var result: *IReference(DateTime) = undefined;
+        _ = self.vtable.ExpirationTime(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub fn setExpirationTime(self: *@This(), value: *IReference(DateTime)) void {
+        _ = self.vtable.SetExpirationTime(@ptrCast(self), value);
+    }
+
+    pub const GUID: []const u8 = "1d4761fd-bdef-4e4a-96be-0101369b58d2";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        // TODO: Update params to be the correct type
+        ExpirationTime: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetExpirationTime: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
+    });
+};
+
+pub const IScheduledToastNotificationFactory = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn createScheduledToastNotification(
+        self: *@This(),
+        document: *XmlDocument,
+        delivery_time: DateTime,
+    ) !*ScheduledToastNotification {
+        var result: *ScheduledToastNotification = undefined;
+        if (self.vtable.CreateScheduledToastNotification(@ptrCast(self), document, delivery_time, &result) != S_OK) {
+            return error.ScheduleNotification;
+        }
+        return result;
+    }
+
+    pub fn createScheduledToastNotificationRecurring(
+        self: *@This(),
+        document: *XmlDocument,
+        delivery_time: DateTime,
+        snooze_interval: TimeSpan,
+        maximum_snooze_count: u32,
+    ) !*ScheduledToastNotification {
+        var result: *ScheduledToastNotification = undefined;
+        if (self.vtable.CreateScheduledToastNotificationRecurring(
+            @ptrCast(self),
+            document,
+            delivery_time,
+            snooze_interval,
+            maximum_snooze_count,
+            &result,
+        ) != S_OK) {
+            return error.ScheduleNotification;
+        }
+        return result;
+    }
+
+    pub const GUID: []const u8 = "e7bed191-0bb9-4189-8394-31761b476fd7";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        CreateScheduledToastNotification: *const fn (*anyopaque, *XmlDocument, DateTime, **ScheduledToastNotification) callconv(.c) HRESULT,
+        CreateScheduledToastNotificationRecurring: *const fn (*anyopaque, *XmlDocument, DateTime, TimeSpan, u32, **ScheduledToastNotification) callconv(.c) HRESULT,
+    });
+};
+
+pub const ScheduledToastNotification = extern struct {
+    vtable: *const IScheduledToastNotification.VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn content(self: *@This()) *XmlDocument {
+        const this: *IScheduledToastNotification = @ptrCast(@alignCast(self));
+        return this.content();
+    }
+
+    pub fn deliveryTime(self: *@This()) DateTime {
+        const this: *IScheduledToastNotification = @ptrCast(@alignCast(self));
+        return this.deliveryTime();
+    }
+
+    pub fn snoozeInterval(self: *@This()) TimeSpan {
+        const this: *IScheduledToastNotification = @ptrCast(@alignCast(self));
+        return this.snoozeInterval();
+    }
+
+    pub fn maximumSnoozeCount(self: *@This()) u32 {
+        const this: *IScheduledToastNotification = @ptrCast(@alignCast(self));
+        return this.maximumSnoozeCount();
+    }
+
+    pub fn id(self: *@This()) []const u16 {
+        const this: *IScheduledToastNotification = @ptrCast(@alignCast(self));
+        return this.id();
+    }
+
+    pub fn setId(self: *@This(), value: [:0]const u16) !void {
+        const this: *IScheduledToastNotification = @ptrCast(@alignCast(self));
+        return this.setId(value);
+    }
+
+    pub fn tag(self: *@This()) []const u16 {
+        const this: *IScheduledToastNotification2 = self.queryInterface(IScheduledToastNotification2) catch unreachable;
+        return this.tag();
+    }
+
+    pub fn setTag(self: *@This(), value: [:0]const u16) !void {
+        const this: *IScheduledToastNotification2 = self.queryInterface(IScheduledToastNotification2) catch unreachable;
+        return this.setTag(value);
+    }
+
+    pub fn group(self: *@This()) []const u16 {
+        const this: *IScheduledToastNotification2 = self.queryInterface(IScheduledToastNotification2) catch unreachable;
+        return this.group();
+    }
+
+    pub fn setGroup(self: *@This(), value: [:0]const u16) !void {
+        const this: *IScheduledToastNotification2 = self.queryInterface(IScheduledToastNotification2) catch unreachable;
+        return this.setGroup(value);
+    }
+
+    pub fn suppressPopup(self: *@This()) bool {
+        const this: *IScheduledToastNotification2 = self.queryInterface(IScheduledToastNotification2) catch unreachable;
+        return this.suppressPopup();
+    }
+
+    pub fn setSuppressPopup(self: *@This(), state: bool) void {
+        const this: *IScheduledToastNotification2 = self.queryInterface(IScheduledToastNotification2) catch unreachable;
+        return this.setSuppressPopup(state);
+    }
+
+    pub fn notificationMirroring(self: *@This()) NotificationMirroring {
+        const this: *IScheduledToastNotification3 = self.queryInterface(IScheduledToastNotification3) catch unreachable;
+        return this.notificationMirroring();
+    }
+
+    pub fn setNotificationMirroring(self: *@This(), mirroring: NotificationMirroring) void {
+        const this: *IScheduledToastNotification3 = self.queryInterface(IScheduledToastNotification3) catch unreachable;
+        return this.setNotificationMirroring(mirroring);
+    }
+
+    pub fn remoteId(self: *@This()) []const u16 {
+        const this: *IScheduledToastNotification3 = self.queryInterface(IScheduledToastNotification3) catch unreachable;
+        return this.remoteId();
+    }
+
+    pub fn setRemoteId(self: *@This(), value: [:0]const u16) void {
+        const this: *IScheduledToastNotification3 = self.queryInterface(IScheduledToastNotification3) catch unreachable;
+        return this.setRemoteId(value);
+    }
+
+    pub fn expirationTime(self: *@This()) *IReference(DateTime) {
+        const this: *IScheduledToastNotification4 = self.queryInterface(IScheduledToastNotification4) catch unreachable;
+        return this.expirationTime();
+    }
+
+    pub fn setExpirationTime(self: *@This(), value: *IReference(DateTime)) void {
+        const this: *IScheduledToastNotification4 = self.queryInterface(IScheduledToastNotification4) catch unreachable;
+        return this.setExpirationTime(value);
+    }
+
+    const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ScheduledToastNotification";
+    const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = IScheduledToastNotification.GUID;
+    pub const IID: Guid = IScheduledToastNotification.IID;
+    pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IScheduledToastNotification.SIGNATURE);
+};
+
+pub const IClosable = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn close(self: *@This()) void {
+        _ = self.vtable.Close(@ptrCast(self));
+    }
+
+    pub const TYPE_NAME: []const u8 = "Windows.Foundation.IClosable";
+    pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = "30d5a829-7fa4-4026-83bb-d75bae4ea99e";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        // TODO: Update params to be the correct type
+        Close: *const fn(*anyopaque) callconv(.c) HRESULT,
+    });
+};
+
+pub const IDeferral = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn complete(self: *@This()) void {
+        _ = self.vtable.Complete(@ptrCast(self));
+    }
+
+    pub const GUID: []const u8 = "d6269732-3b7f-46a7-b40b-4fdca2a2c693";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        // TODO: Update params to be the correct type
+        Complete: *const fn(*anyopaque) callconv(.c) HRESULT,
+    });
+};
+
+pub const IDeferralFactory = extern struct {
+    vtable: *const VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn create(
+        self: *@This(),
+        handler: *DeferralCompletedHandler,
+    ) !*Deferral {
+        var result: *Deferral = undefined;
+        if (self.vtable.Create(@ptrCast(self), @ptrCast(handler), &result) != S_OK) {
+            return error.CreateDeferral;
+        }
+        return result;
+    }
+
+    pub const GUID: []const u8 = "65a1ecc5-3fb5-4832-8ca9-f061b281d13a";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        Create: *const fn(*anyopaque, *DeferralCompletedHandler, **Deferral) callconv(.c) HRESULT,
+    });
+};
+
+/// Represents a method that handles deferrel completed events
+///
+/// This method handles delegating the invoked callback for a
+/// given typed event.
+pub const DeferralCompletedHandler = extern struct {
+    const GUID: []const u8 = "ed32a372-f3c8-4faa-9cfb-470148da3888";
+    const IID: Guid = Guid.initString(GUID);
+    const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTABLE: VTable = .{
+        .QueryInterface = queryInterface,
+        .AddRef = addRef,
+        .Release = release,
+        .Invoke = invoke,
+    };
+
+    vtable: *const VTable,
+    refs: std.atomic.Value(u32),
+    cb: *const fn (context: ?*anyopaque) callconv(.c) void,
+    context: ?*anyopaque = null,
+
+    pub fn init(callback: *const fn (context: ?*anyopaque) callconv(.c) void) @This() {
+        return .{
+            .vtable = &VTABLE,
+            .refs = std.atomic.Value(u32).init(1),
+            .cb = callback,
+        };
+    }
+
+    pub fn initWithState(callback: *const fn (context: ?*anyopaque) callconv(.c) void, context: anytype) @This() {
+        return .{
+            .vtable = &VTABLE,
+            .refs = std.atomic.Value(u32).init(1),
+            .cb = callback,
+            .context = @ptrCast(context),
+        };
+    }
+
+    fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
+        const me: *@This() = @ptrCast(@alignCast(self));
+        // TODO: Handle IMarshal
+        if (std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IID).Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IUnknown.IID).Bytes) or
+            std.mem.eql(u8, &riid.Bytes, &wiredGuid(IID_IAgileObject).Bytes))
+        {
+            out.* = @as(?*anyopaque, @ptrCast(me));
+            _ = addRef(self);
+            return S_OK;
+        }
+        out.* = null;
+        return @bitCast(E_NOINTERFACE);
+    }
+
+    fn addRef(self: *anyopaque) callconv(.c) u32 {
+        const me: *@This() = @ptrCast(@alignCast(self));
+        return me.refs.fetchAdd(1, .monotonic) + 1;
+    }
+
+    fn release(self: *anyopaque) callconv(.c) u32 {
+        const me: *@This() = @ptrCast(@alignCast(self));
+        const left = me.refs.fetchSub(1, .acq_rel) - 1;
+        return left;
+    }
+
+    // Invoke()
+    //
+    // This will always return `S_OK` because event callbacks shouldn't fail
+    fn invoke(self: *@This()) callconv(.c) HRESULT {
+        const this: *@This() = @ptrCast(@alignCast(self));
+        this.cb(this.context);
+        return S_OK;
+    }
+
+    pub const VTable = extern struct {
+        QueryInterface: *const fn (
+            self: *anyopaque,
+            riid: *const Guid,
+            ppvObject: *?*anyopaque,
+        ) callconv(.c) HRESULT,
+        AddRef: *const fn (
+            self: *anyopaque,
+        ) callconv(.c) u32,
+        Release: *const fn (
+            self: *anyopaque,
+        ) callconv(.c) u32,
+
+        // Invoke method for the delegate
+        Invoke: *const fn (
+            self: *DeferralCompletedHandler,
+        ) callconv(.c) HRESULT,
+    };
+};
+
+pub const Deferral = extern struct {
+    vtable: *const IDeferral.VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn close(self: *@This()) void {
+        const this: *IClosable = self.queryInterface(IClosable) catch unreachable;
+        this.close();
+    }
+
+    pub fn complete(self: *@This()) !void {
+        const this: *IDeferral = @ptrCast(self);
+        this.complete();
+    }
+
+    pub fn create(handler: *DeferralCompletedHandler) !Deferral {
+        const factory: *IDeferralFactory = @This().Factory.call(
+            IDeferralFactory,
+            RUNTIME_NAME
+        );
+        return try factory.create(handler);
+    }
+
+    const TYPE_NAME: []const u8 = "Windows.UI.Notifications.Deferral";
+    const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = IDeferral.GUID;
+    pub const IID: Guid = IDeferral.IID;
+    pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IDeferral.SIGNATURE);
+
+    var Factory: FactoryCache = .{};
 };
 
 pub const INotificationData = extern struct {
@@ -314,10 +1655,9 @@ pub const INotificationData = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        // TODO: Update these params to be the correct types
-        Values: *const fn (*anyopaque, **IMap(HSTRING, HSTRING)) callconv(.C) HRESULT,
-        SequenceNumber: *const fn (*anyopaque, *u32) callconv(.C) HRESULT,
-        SetSequenceNumber: *const fn (*anyopaque, u32) callconv(.C) HRESULT,
+        Values: *const fn (*anyopaque, **IMap(HSTRING, HSTRING)) callconv(.c) HRESULT,
+        SequenceNumber: *const fn (*anyopaque, *u32) callconv(.c) HRESULT,
+        SetSequenceNumber: *const fn (*anyopaque, u32) callconv(.c) HRESULT,
     });
 };
 
@@ -409,15 +1749,15 @@ pub const IToastNotification = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Content: *const fn (*anyopaque, **XmlDocument) callconv(.C) HRESULT,
-        SetExpirationTime: *const fn (*anyopaque, *IReference(DateTime)) callconv(.C) HRESULT,
-        ExpirationTime: *const fn (*anyopaque, **IReference(DateTime)) callconv(.C) HRESULT,
-        Dismissed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
-        RemoveDismissed: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
-        Activated: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
-        RemoveActivated: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
-        Failed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.C) HRESULT,
-        RemoveFailed: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
+        Content: *const fn (*anyopaque, **XmlDocument) callconv(.c) HRESULT,
+        SetExpirationTime: *const fn (*anyopaque, *IReference(DateTime)) callconv(.c) HRESULT,
+        ExpirationTime: *const fn (*anyopaque, **IReference(DateTime)) callconv(.c) HRESULT,
+        Dismissed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        RemoveDismissed: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
+        Activated: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        RemoveActivated: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
+        Failed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        RemoveFailed: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
     });
 };
 
@@ -473,12 +1813,12 @@ pub const IToastNotification2 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        SetTag: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        Tag: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetGroup: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        Group: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetSuppressPopup: *const fn (*anyopaque, bool) callconv(.C) HRESULT,
-        SuppressPopup: *const fn (*anyopaque, *bool) callconv(.C) HRESULT,
+        SetTag: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
+        Tag: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetGroup: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
+        Group: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetSuppressPopup: *const fn (*anyopaque, bool) callconv(.c) HRESULT,
+        SuppressPopup: *const fn (*anyopaque, *bool) callconv(.c) HRESULT,
     });
 };
 
@@ -534,10 +1874,10 @@ pub const IToastNotification3 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        NotificationMirroring: *const fn (*anyopaque, *NotificationMirroring) callconv(.C) HRESULT,
-        SetNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.C) HRESULT,
-        RemoteId: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SetRemoteId: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        NotificationMirroring: *const fn (*anyopaque, *NotificationMirroring) callconv(.c) HRESULT,
+        SetNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.c) HRESULT,
+        RemoteId: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SetRemoteId: *const fn (*anyopaque, *anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -613,10 +1953,10 @@ pub const IToastNotification4 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        Data: *const fn (*anyopaque, **NotificationData) callconv(.C) HRESULT,
-        SetData: *const fn (*anyopaque, *NotificationData) callconv(.C) HRESULT,
-        Priority: *const fn (*anyopaque, *ToastNotificationPriority) callconv(.C) HRESULT,
-        SetPriority: *const fn (*anyopaque, ToastNotificationPriority) callconv(.C) HRESULT,
+        Data: *const fn (*anyopaque, **NotificationData) callconv(.c) HRESULT,
+        SetData: *const fn (*anyopaque, *NotificationData) callconv(.c) HRESULT,
+        Priority: *const fn (*anyopaque, *ToastNotificationPriority) callconv(.c) HRESULT,
+        SetPriority: *const fn (*anyopaque, ToastNotificationPriority) callconv(.c) HRESULT,
     });
 };
 
@@ -672,8 +2012,8 @@ pub const IToastNotification6 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update these params to be the correct types
-        ExpiresOnReboot: *const fn (*anyopaque, *bool) callconv(.C) HRESULT,
-        SetExpiresOnReboot: *const fn (*anyopaque, bool) callconv(.C) HRESULT,
+        ExpiresOnReboot: *const fn (*anyopaque, *bool) callconv(.c) HRESULT,
+        SetExpiresOnReboot: *const fn (*anyopaque, bool) callconv(.c) HRESULT,
     });
 };
 
@@ -748,8 +2088,8 @@ pub const INotificationDataFactory = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        CreateNotificationDataWithValuesAndSequenceNumber: *const fn (*anyopaque, *anyopaque, u32, **anyopaque) callconv(.C) HRESULT,
-        CreateNotificationDataWithValues: *const fn (*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+        CreateNotificationDataWithValuesAndSequenceNumber: *const fn (*anyopaque, *anyopaque, u32, **anyopaque) callconv(.c) HRESULT,
+        CreateNotificationDataWithValues: *const fn (*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -803,7 +2143,7 @@ pub const IToastNotificationFactory = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
-    pub const VTable = Implements(IInspectable.VTable, struct { CreateToastNotification: *const fn (*anyopaque, *const XmlDocument, **ToastNotification) callconv(.C) HRESULT });
+    pub const VTable = Implements(IInspectable.VTable, struct { CreateToastNotification: *const fn (*anyopaque, *const XmlDocument, **ToastNotification) callconv(.c) HRESULT });
 };
 
 pub const IToastNotificationManagerStatics = extern struct {
@@ -857,9 +2197,9 @@ pub const IToastNotificationManagerStatics = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        CreateToastNotifier: *const fn (*anyopaque, **ToastNotifier) callconv(.C) HRESULT,
-        CreateToastNotifierWithId: *const fn (*anyopaque, HSTRING, **ToastNotifier) callconv(.C) HRESULT,
-        GetTemplateContent: *const fn (*anyopaque, ToastTemplateType, **XmlDocument) callconv(.C) HRESULT,
+        CreateToastNotifier: *const fn (*anyopaque, **ToastNotifier) callconv(.c) HRESULT,
+        CreateToastNotifierWithId: *const fn (*anyopaque, HSTRING, **ToastNotifier) callconv(.c) HRESULT,
+        GetTemplateContent: *const fn (*anyopaque, ToastTemplateType, **XmlDocument) callconv(.c) HRESULT,
     });
 };
 
@@ -915,7 +2255,7 @@ pub const IToastNotificationManagerStatics2 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        History: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        History: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -971,8 +2311,8 @@ pub const IToastNotificationManagerStatics4 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        GetForUser: *const fn (*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        ConfigureNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.C) HRESULT,
+        GetForUser: *const fn (*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        ConfigureNotificationMirroring: *const fn (*anyopaque, NotificationMirroring) callconv(.c) HRESULT,
     });
 };
 
@@ -1028,7 +2368,7 @@ pub const IToastNotificationManagerStatics5 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        GetDefault: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        GetDefault: *const fn (*anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -1084,12 +2424,12 @@ pub const IToastNotifier = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        Show: *const fn (*anyopaque, *ToastNotification) callconv(.C) HRESULT,
-        Hide: *const fn (*anyopaque, *ToastNotification) callconv(.C) HRESULT,
-        Setting: *const fn (*anyopaque, *NotificationSetting) callconv(.C) HRESULT,
-        AddToSchedule: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        RemoveFromSchedule: *const fn (*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        GetScheduledToastNotifications: *const fn (*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        Show: *const fn (*anyopaque, *ToastNotification) callconv(.c) HRESULT,
+        Hide: *const fn (*anyopaque, *ToastNotification) callconv(.c) HRESULT,
+        Setting: *const fn (*anyopaque, *NotificationSetting) callconv(.c) HRESULT,
+        AddToSchedule: *const fn (*anyopaque, *ScheduledToastNotification) callconv(.c) HRESULT,
+        RemoveFromSchedule: *const fn (*anyopaque, *ScheduledToastNotification) callconv(.c) HRESULT,
+        GetScheduledToastNotifications: *const fn (*anyopaque, **IVectorView(ScheduledToastNotification)) callconv(.c) HRESULT,
     });
 };
 
@@ -1139,14 +2479,35 @@ pub const IToastNotifier2 = extern struct {
         return trust;
     }
 
+    pub fn updateWithTagAndGroup(self: *@This(), data: *NotificationData, tag: [:0]const u16, group: [:0]const u16) !NotificationUpdateResult {
+        const h_tag: ?HSTRING = try winrt.WindowsCreateString(tag);
+        defer winrt.WindowsDeleteString(h_tag);
+
+        const h_group: ?HSTRING = try winrt.WindowsCreateString(group);
+        defer winrt.WindowsDeleteString(h_group);
+
+        var result: NotificationUpdateResult = undefined;
+        _ = self.vtable.UpdateWithTagAndGroup(@ptrCast(self), data, h_tag.?, h_group.?, &result);
+        return result;
+    }
+
+    pub fn updateWithTag(self: *@This(), data: *NotificationData, tag: [:0]const u16) !NotificationUpdateResult {
+        const h_tag: ?HSTRING = try winrt.WindowsCreateString(tag);
+        defer winrt.WindowsDeleteString(h_tag);
+
+        var result: NotificationUpdateResult = undefined;
+        _ = self.vtable.UpdateWithTag(@ptrCast(self), data, h_tag.?, &result);
+        return result;
+    }
+
     pub const GUID: []const u8 = "354389c6-7c01-4bd5-9c20-604340cd2b74";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        UpdateWithTagAndGroup: *const fn (*anyopaque, *anyopaque, *anyopaque, *anyopaque, *NotificationUpdateResult) callconv(.C) HRESULT,
-        UpdateWithTag: *const fn (*anyopaque, *anyopaque, *anyopaque, *NotificationUpdateResult) callconv(.C) HRESULT,
+        UpdateWithTagAndGroup: *const fn (*anyopaque, *NotificationData, HSTRING, HSTRING, *NotificationUpdateResult) callconv(.c) HRESULT,
+        UpdateWithTag: *const fn (*anyopaque, *NotificationData, HSTRING, *NotificationUpdateResult) callconv(.c) HRESULT,
     });
 };
 
@@ -1196,14 +2557,26 @@ pub const IToastNotifier3 = extern struct {
         return trust;
     }
 
+    pub fn scheduledToastNotificationShowing(self: *@This(), handler: *TypedEventHandler(ToastNotifier, ScheduledToastNotificationShowingEventArgs)) !i64 {
+        var result: i64 = 0;
+        if (self.vtable.ScheduledToastNotificationShowing(@ptrCast(self), @ptrCast(handler), &result) != S_OK) {
+            return error.BindHookFailure;
+        }
+        return result;
+    }
+
+    pub fn removeScheduledToastNotificationShowing(self: *@This(), handle: i64) void {
+        _ = self.vtable.RemoveScheduledToastNotificationShowing(@ptrCast(self), handle);
+    }
+
     pub const GUID: []const u8 = "ae75a04a-3b0c-51ad-b7e8-b08ab6052549";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        ScheduledToastNotificationShowing: *const fn (*anyopaque, *anyopaque, *i64) callconv(.C) HRESULT,
-        RemoveScheduledToastNotificationShowing: *const fn (*anyopaque, i64) callconv(.C) HRESULT,
+        ScheduledToastNotificationShowing: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        RemoveScheduledToastNotificationShowing: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
     });
 };
 
@@ -1273,10 +2646,56 @@ pub const ToastNotifier = extern struct {
         return result;
     }
 
+    pub fn updateWithTagAndGroup(self: *@This(), data: *NotificationData, tag: [:0]const u16, group: [:0]const u16) !NotificationUpdateResult {
+        const this: *IToastNotifier2 = self.queryInterface(IToastNotifier2) catch unreachable;
+        return this.updateWithTagAndGroup(data, tag, group);
+    }
+
+    pub fn updateWithTag(self: *@This(), data: *NotificationData, tag: [:0]const u16) !NotificationUpdateResult {
+        const this: *IToastNotifier2 = self.queryInterface(IToastNotifier2) catch unreachable;
+        return this.updateWithTag(data, tag);
+    }
+
     /// Call `release` and discard the returned remaining ref count
     pub fn deinit(self: *@This()) void {
         _ = self.release();
     }
+
+    pub fn addToSchedule(self: *@This(), tile: *ScheduledToastNotification) !void {
+        const this: *IToastNotifier = @ptrCast(self);
+        if (this.vtable.AddToSchedule(@ptrCast(this), tile) != S_OK) {
+            return error.ScheduleNotification;
+        }
+    }
+
+    pub fn removeFromSchedule(self: *@This(), tile: *ScheduledToastNotification) !void {
+        const this: *IToastNotifier = @ptrCast(self);
+        if (this.vtable.RemoveToSchedule(@ptrCast(this), tile) != S_OK) {
+            return error.UnscheduleNotification;
+        }
+    }
+
+    pub fn getScheduledToastNotifications(self: *@This()) !*IVectorView(ScheduledToastNotification) {
+        const this: *IToastNotifier = @ptrCast(self);
+
+        var result: *IVectorView(ScheduledToastNotification) = undefined;
+        if (this.vtable.GetScheduledToastNotifications(@ptrCast(this), &result) != S_OK) {
+            return error.GetScheduledNotifications;
+        }
+        return result;
+    }
+
+    pub fn scheduledToastNotificationShowing(self: *@This(), handler: *ScheduledTypedEventHandler) !i64 {
+        const this: *IToastNotifier3 = self.queryInterface(IToastNotifier3) catch unreachable;
+        return this.scheduledToastNotificationShowing(handler);
+    }
+
+    pub fn removeScheduledToastNotificationShowing(self: *@This(), handle: i64) !void {
+        const this: *IToastNotifier3 = self.queryInterface(IToastNotifier3) catch unreachable;
+        return this.removeScheduledToastNotificationShowing(handle);
+    }
+
+    pub const ScheduledTypedEventHandler = TypedEventHandler(ToastNotifier, ScheduledToastNotificationShowingEventArgs);
 
     const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastNotifier";
     const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
@@ -1447,23 +2866,23 @@ pub const ToastNotification = extern struct {
         _ = self.vtable.SetExpirationTime(@ptrCast(self), et);
     }
 
-    pub fn data(self: *@This()) !*NotificationData {
-        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+    pub fn data(self: *@This()) *NotificationData {
+        const this: *IToastNotification4 = self.queryInterface(IToastNotification4) catch unreachable;
         return this.data();
     }
 
-    pub fn setData(self: *@This(), value: *NotificationData) !void {
-        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+    pub fn setData(self: *@This(), value: *NotificationData) void {
+        const this: *IToastNotification4 = self.queryInterface(IToastNotification4) catch unreachable;
         return this.setData(value);
     }
 
-    pub fn priority(self: *@This()) !ToastNotificationPriority {
-        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+    pub fn priority(self: *@This()) ToastNotificationPriority {
+        const this: *IToastNotification4 = self.queryInterface(IToastNotification4) catch unreachable;
         return this.priority();
     }
 
     pub fn setPriority(self: *@This(), value: ToastNotificationPriority) !void {
-        const this: *IToastNotification4 = try self.queryInterface(IToastNotification4);
+        const this: *IToastNotification4 = self.queryInterface(IToastNotification4) catch unreachable;
         return this.setPriority(value);
     }
 

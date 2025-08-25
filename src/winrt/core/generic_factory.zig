@@ -71,7 +71,7 @@ pub const IGenericFactory = extern struct {
 
     pub const IID: Guid = Guid.initString("00000035-0000-0000-c000-000000000046");
     pub const VTable = Implements(IInspectable.VTable, struct {
-        ActivateInstance: *const fn (*IGenericFactory, **anyopaque) callconv(.C) HRESULT
+        ActivateInstance: *const fn (*IGenericFactory, **anyopaque) callconv(.c) HRESULT
     });
 };
 

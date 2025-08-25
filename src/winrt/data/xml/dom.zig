@@ -75,23 +75,23 @@ pub const IXmlDocument = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update the params to be the correct type
-        Doctype: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        Implementation: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        DocumentElement: *const fn(*anyopaque, *?*XmlElement) callconv(.C) HRESULT,
-        CreateElement: *const fn(*anyopaque, HSTRING, **XmlElement) callconv(.C) HRESULT,
-        CreateDocumentFragment: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        CreateTextNode: *const fn(*anyopaque, HSTRING, **XmlText) callconv(.C) HRESULT,
-        CreateComment: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        CreateProcessingInstruction: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        CreateAttribute: *const fn(*anyopaque, HSTRING, **XmlAttribute) callconv(.C) HRESULT,
-        CreateEntityReference: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        GetElementsByTagName: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.C) HRESULT,
-        CreateCDataSection: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        DocumentUri: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        CreateAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        CreateElementNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        GetElementById: *const fn(*anyopaque, HSTRING, *?*XmlElement) callconv(.C) HRESULT,
-        ImportNode: *const fn(*anyopaque, *anyopaque, bool, **anyopaque) callconv(.C) HRESULT,
+        Doctype: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        Implementation: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        DocumentElement: *const fn(*anyopaque, *?*XmlElement) callconv(.c) HRESULT,
+        CreateElement: *const fn(*anyopaque, HSTRING, **XmlElement) callconv(.c) HRESULT,
+        CreateDocumentFragment: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        CreateTextNode: *const fn(*anyopaque, HSTRING, **XmlText) callconv(.c) HRESULT,
+        CreateComment: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        CreateProcessingInstruction: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        CreateAttribute: *const fn(*anyopaque, HSTRING, **XmlAttribute) callconv(.c) HRESULT,
+        CreateEntityReference: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        GetElementsByTagName: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.c) HRESULT,
+        CreateCDataSection: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        DocumentUri: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        CreateAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        CreateElementNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        GetElementById: *const fn(*anyopaque, HSTRING, *?*XmlElement) callconv(.c) HRESULT,
+        ImportNode: *const fn(*anyopaque, *anyopaque, bool, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -199,9 +199,9 @@ pub const IXmlDocumentIO = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        LoadXml: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
-        LoadXmlWithSettings: *const fn(*anyopaque, HSTRING, *anyopaque) callconv(.C) HRESULT,
-        SaveToFileAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+        LoadXml: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
+        LoadXmlWithSettings: *const fn(*anyopaque, HSTRING, *anyopaque) callconv(.c) HRESULT,
+        SaveToFileAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -256,8 +256,8 @@ pub const IXmlDocumentIO2 = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        LoadXmlFromBuffer: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
-        LoadXmlFromBufferWithSettings: *const fn(*anyopaque, *anyopaque, *anyopaque) callconv(.C) HRESULT,
+        LoadXmlFromBuffer: *const fn(*anyopaque, *anyopaque) callconv(.c) HRESULT,
+        LoadXmlFromBufferWithSettings: *const fn(*anyopaque, *anyopaque, *anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -312,10 +312,10 @@ pub const IXmlDocumentStatics = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        LoadFromUriAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        LoadFromUriWithSettingsAsync: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        LoadFromFileAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        LoadFromFileWithSettingsAsync: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+        LoadFromUriAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        LoadFromUriWithSettingsAsync: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        LoadFromFileAsync: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        LoadFromFileWithSettingsAsync: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -370,9 +370,9 @@ pub const IXmlDocumentType = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Name: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        Entities: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        Notations: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
+        Name: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        Entities: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        Notations: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -462,10 +462,10 @@ pub const IXmlNodeSelector = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        SelectSingleNode: *const fn(*anyopaque, HSTRING, *?*IXmlNode) callconv(.C) HRESULT,
-        SelectNodes: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.C) HRESULT,
-        SelectSingleNodeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        SelectNodesNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+        SelectSingleNode: *const fn(*anyopaque, HSTRING, *?*IXmlNode) callconv(.c) HRESULT,
+        SelectNodes: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.c) HRESULT,
+        SelectSingleNodeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        SelectNodesNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -540,9 +540,9 @@ pub const IXmlNodeSerializer = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        GetXml: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
-        InnerText: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
-        SetInnerText: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
+        GetXml: *const fn(*anyopaque, *HSTRING) callconv(.c) HRESULT,
+        InnerText: *const fn(*anyopaque, *HSTRING) callconv(.c) HRESULT,
+        SetInnerText: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
     });
 };
 
@@ -641,29 +641,29 @@ pub const IXmlNode = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        NodeValue: *const fn(*anyopaque, *?HSTRING) callconv(.C) HRESULT,
-        SetNodeValue: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
-        NodeType: *const fn(*anyopaque, *NodeType) callconv(.C) HRESULT,
-        NodeName: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        ParentNode: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        ChildNodes: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        FirstChild: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        LastChild: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        PreviousSibling: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        NextSibling: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        Attributes: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        HasChildNodes: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
-        OwnerDocument: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        InsertBefore: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        ReplaceChild: *const fn(*anyopaque, *IXmlNode, *IXmlNode, *?*IXmlNode) callconv(.C) HRESULT,
-        RemoveChild: *const fn(*anyopaque, *IXmlNode, *?*IXmlNode) callconv(.C) HRESULT,
-        AppendChild: *const fn(*anyopaque, *IXmlNode, *?*IXmlNode) callconv(.C) HRESULT,
-        CloneNode: *const fn(*anyopaque, bool, **IXmlNode) callconv(.C) HRESULT,
-        NamespaceUri: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        LocalName: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        Prefix: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
-        Normalize: *const fn(*anyopaque) callconv(.C) HRESULT,
-        SetPrefix: *const fn(*anyopaque, *anyopaque) callconv(.C) HRESULT,
+        NodeValue: *const fn(*anyopaque, *?HSTRING) callconv(.c) HRESULT,
+        SetNodeValue: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
+        NodeType: *const fn(*anyopaque, *NodeType) callconv(.c) HRESULT,
+        NodeName: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        ParentNode: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        ChildNodes: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        FirstChild: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        LastChild: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        PreviousSibling: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        NextSibling: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        Attributes: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        HasChildNodes: *const fn(*anyopaque, *bool) callconv(.c) HRESULT,
+        OwnerDocument: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        InsertBefore: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        ReplaceChild: *const fn(*anyopaque, *IXmlNode, *IXmlNode, *?*IXmlNode) callconv(.c) HRESULT,
+        RemoveChild: *const fn(*anyopaque, *IXmlNode, *?*IXmlNode) callconv(.c) HRESULT,
+        AppendChild: *const fn(*anyopaque, *IXmlNode, *?*IXmlNode) callconv(.c) HRESULT,
+        CloneNode: *const fn(*anyopaque, bool, **IXmlNode) callconv(.c) HRESULT,
+        NamespaceUri: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        LocalName: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        Prefix: *const fn(*anyopaque, **anyopaque) callconv(.c) HRESULT,
+        Normalize: *const fn(*anyopaque) callconv(.c) HRESULT,
+        SetPrefix: *const fn(*anyopaque, *anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -718,8 +718,8 @@ pub const IXmlNodeList = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Length: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-        Item: *const fn(*anyopaque, u32, *?*IXmlNode) callconv(.C) HRESULT,
+        Length: *const fn(*anyopaque, *u32) callconv(.c) HRESULT,
+        Item: *const fn(*anyopaque, u32, *?*IXmlNode) callconv(.c) HRESULT,
     });
 };
 
@@ -775,10 +775,10 @@ pub const IXmlAttribute = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be correct types
-        Name: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
-        Specified: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
-        Value: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
-        SetValue: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
+        Name: *const fn(*anyopaque, *HSTRING) callconv(.c) HRESULT,
+        Specified: *const fn(*anyopaque, *bool) callconv(.c) HRESULT,
+        Value: *const fn(*anyopaque, *HSTRING) callconv(.c) HRESULT,
+        SetValue: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
     });
 };
 
@@ -834,20 +834,20 @@ pub const IXmlElement = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be correct types
-        TagName: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
-        GetAttribute: *const fn(*anyopaque, HSTRING, *HSTRING) callconv(.C) HRESULT,
-        SetAttribute: *const fn(*anyopaque, HSTRING, HSTRING) callconv(.C) HRESULT,
-        RemoveAttribute: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
-        GetAttributeNode: *const fn(*anyopaque, HSTRING, **XmlAttribute) callconv(.C) HRESULT,
-        SetAttributeNode: *const fn(*anyopaque, *IXmlNode, *?*IXmlNode) callconv(.C) HRESULT,
-        RemoveAttributeNode: *const fn(*anyopaque, *XmlAttribute, *?*XmlAttribute) callconv(.C) HRESULT,
-        GetElementsByTagName: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.C) HRESULT,
+        TagName: *const fn(*anyopaque, *HSTRING) callconv(.c) HRESULT,
+        GetAttribute: *const fn(*anyopaque, HSTRING, *HSTRING) callconv(.c) HRESULT,
+        SetAttribute: *const fn(*anyopaque, HSTRING, HSTRING) callconv(.c) HRESULT,
+        RemoveAttribute: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
+        GetAttributeNode: *const fn(*anyopaque, HSTRING, **XmlAttribute) callconv(.c) HRESULT,
+        SetAttributeNode: *const fn(*anyopaque, *IXmlNode, *?*IXmlNode) callconv(.c) HRESULT,
+        RemoveAttributeNode: *const fn(*anyopaque, *XmlAttribute, *?*XmlAttribute) callconv(.c) HRESULT,
+        GetElementsByTagName: *const fn(*anyopaque, HSTRING, **XmlNodeList) callconv(.c) HRESULT,
 
-        SetAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, *anyopaque) callconv(.C) HRESULT,
-        GetAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        RemoveAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque) callconv(.C) HRESULT,
-        SetAttributeNodeNS: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
-        GetAttributeNodeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+        SetAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, *anyopaque) callconv(.c) HRESULT,
+        GetAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        RemoveAttributeNS: *const fn(*anyopaque, *anyopaque, *anyopaque) callconv(.c) HRESULT,
+        SetAttributeNodeNS: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
+        GetAttributeNodeNS: *const fn(*anyopaque, *anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -1279,14 +1279,14 @@ pub const IXmlCharacterData = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Data: *const fn(*anyopaque, *HSTRING) callconv(.C) HRESULT,
-        SetData: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
-        Length: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-        SubstringData: *const fn(*anyopaque, u32, u32, *HSTRING) callconv(.C) HRESULT,
-        AppendData: *const fn(*anyopaque, HSTRING) callconv(.C) HRESULT,
-        InsertData: *const fn(*anyopaque, u32, HSTRING) callconv(.C) HRESULT,
-        DeleteData: *const fn(*anyopaque, u32, u32) callconv(.C) HRESULT,
-        ReplaceData: *const fn(*anyopaque, u32, u32, HSTRING) callconv(.C) HRESULT,
+        Data: *const fn(*anyopaque, *HSTRING) callconv(.c) HRESULT,
+        SetData: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
+        Length: *const fn(*anyopaque, *u32) callconv(.c) HRESULT,
+        SubstringData: *const fn(*anyopaque, u32, u32, *HSTRING) callconv(.c) HRESULT,
+        AppendData: *const fn(*anyopaque, HSTRING) callconv(.c) HRESULT,
+        InsertData: *const fn(*anyopaque, u32, HSTRING) callconv(.c) HRESULT,
+        DeleteData: *const fn(*anyopaque, u32, u32) callconv(.c) HRESULT,
+        ReplaceData: *const fn(*anyopaque, u32, u32, HSTRING) callconv(.c) HRESULT,
     });
 };
 
@@ -1352,7 +1352,7 @@ pub const IXmlText = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        SplitText: *const fn(*anyopaque, u32, **XmlText) callconv(.C) HRESULT,
+        SplitText: *const fn(*anyopaque, u32, **XmlText) callconv(.c) HRESULT,
     });
 };
 
@@ -1571,7 +1571,7 @@ pub const XmlDocument = extern struct {
         return result;
     }
 
-    // GetElementsByTagName: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.C) HRESULT,
+    // GetElementsByTagName: *const fn(*anyopaque, *anyopaque, **anyopaque) callconv(.c) HRESULT,
     pub fn getElementsByTagName(self: *@This(), tag: [:0]const u16) !*XmlNodeList {
         const tag_hstring: ?HSTRING = try winrt.WindowsCreateString(tag);
         defer winrt.WindowsDeleteString(tag_hstring);

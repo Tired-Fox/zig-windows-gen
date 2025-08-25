@@ -16,13 +16,13 @@ const ToastFailedEventArgs = winrt.ui.notifications.ToastFailedEventArgs;
 
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
 
-fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) callconv(.C) void {
+fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) callconv(.c) void {
     _ = sender;
     std.debug.print("{any}\n", .{ args.reason() });
     wait.store(false, .release);
 }
 
-fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) callconv(.C) void {
+fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) callconv(.c) void {
     _ = sender;
 
     const event_args: *ToastActivatedEventArgs = @ptrCast(@alignCast(args));
@@ -34,7 +34,7 @@ fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IIns
     wait.store(false, .release);
 }
 
-fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) callconv(.C) void {
+fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) callconv(.c) void {
     _ = sender;
     std.debug.print("[0x{X}] Toast Failure", .{ args.error_code() });
     wait.store(false, .release);
@@ -186,7 +186,7 @@ pub fn main() !void {
 
     var data = try NotificationData.init();
     defer data.deinit();
-    try notification.setData(data);
+    notification.setData(data);
 
     {
         const h_key = try winrt.WindowsCreateString(L("NotificationTitle"));
@@ -213,7 +213,7 @@ pub fn main() !void {
     try notifier.show(notification);
 
     while (wait.load(.acquire)) {
-        std.time.sleep(std.time.ns_per_s * 1);
+        std.Thread.sleep(std.time.ns_per_ms * 500);
     }
 
     std.debug.print("END\n", .{});

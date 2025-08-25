@@ -6,6 +6,7 @@ const winrt = @import("../root.zig");
 const Guid = win32.zig.Guid;
 const HRESULT = win32.foundation.HRESULT;
 const Signature = core.Signature;
+const isInterface = core.isInterface;
 
 const TrustLevel = winrt.TrustLevel;
 const HSTRING = winrt.HSTRING;
@@ -40,6 +41,18 @@ pub fn wiredGuid(iid: *const Guid) Guid {
     };
 }
 
+pub const DateTime = extern struct {
+    UniversalTime: i64,
+
+    pub const SIGNATURE: []const u8 = "struct(Windows.Foundation.DateTime;i8)";
+};
+
+pub const TimeSpan = extern struct {
+    Duration: i64,
+
+    pub const SIGNATURE: []const u8 = "struct(Windows.Foundation.TimeSpan;i8)";
+};
+
 // The type erased interface for a TypedEventHandler
 //
 // The first part of the memory layout is the same as `TypedEventHandler(I, R)`
@@ -54,20 +67,20 @@ pub const ITypedEventHandler = extern struct {
             self: *anyopaque,
             riid: *const Guid,
             ppvObject: *?*anyopaque,
-        ) callconv(.C) HRESULT,
+        ) callconv(.c) HRESULT,
         AddRef: *const fn (
             self: *anyopaque,
-        ) callconv(.C) u32,
+        ) callconv(.c) u32,
         Release: *const fn (
             self: *anyopaque,
-        ) callconv(.C) u32,
+        ) callconv(.c) u32,
 
         // Invoke method for the delegate
         Invoke: *const fn (
             self: *ITypedEventHandler,
             sender: *anyopaque,
             args: *anyopaque,
-        ) callconv(.C) HRESULT,
+        ) callconv(.c) HRESULT,
     };
 };
 
@@ -96,10 +109,10 @@ pub fn TypedEventHandler(S: type, A: type) type {
 
         vtable: *const ITypedEventHandler.VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.C) void,
+        cb: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.C) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -107,7 +120,7 @@ pub fn TypedEventHandler(S: type, A: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.C) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -116,7 +129,7 @@ pub fn TypedEventHandler(S: type, A: type) type {
             };
         }
 
-        fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.C) HRESULT {
+        fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
             const me: *@This() = @ptrCast(@alignCast(self));
             // TODO: Handle IMarshal
             if (std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IID).Bytes) or
@@ -131,12 +144,12 @@ pub fn TypedEventHandler(S: type, A: type) type {
             return @bitCast(E_NOINTERFACE);
         }
 
-        fn addRef(self: *anyopaque) callconv(.C) u32 {
+        fn addRef(self: *anyopaque) callconv(.c) u32 {
             const me: *@This() = @ptrCast(@alignCast(self));
             return me.refs.fetchAdd(1, .monotonic) + 1;
         }
 
-        fn release(self: *anyopaque) callconv(.C) u32 {
+        fn release(self: *anyopaque) callconv(.c) u32 {
             const me: *@This() = @ptrCast(@alignCast(self));
             const left = me.refs.fetchSub(1, .acq_rel) - 1;
             return left;
@@ -145,7 +158,7 @@ pub fn TypedEventHandler(S: type, A: type) type {
         // Invoke(sender, args) - Convert sender to `I` and pass it to the stored callback
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *ITypedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.C) HRESULT {
+        fn invoke(self: *ITypedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.c) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
             // TODO: Allow user to store a pointer to some state in this delegate so it can be
             //       passed to the callback
@@ -155,13 +168,8 @@ pub fn TypedEventHandler(S: type, A: type) type {
     };
 }
 
-pub const DateTime = extern struct {
-    UniversalTime: i64,
-
-    pub const SIGNATURE: []const u8 = "struct(Windows.Foundation.DateTime;i8)";
-};
-
 pub fn IReference(T: type) type {
+    const TYPE = if (isInterface(T)) *T else T;
     return extern struct {
         vtable: *const VTable,
 
@@ -208,8 +216,8 @@ pub fn IReference(T: type) type {
             return trust;
         }
 
-        pub fn value(self: *@This()) *T {
-            var result: *T = undefined;
+        pub fn value(self: *@This()) TYPE {
+            var result: TYPE = undefined;
             _ = self.vtable.Value(@ptrCast(self), &result);
             return result;
         }
@@ -222,7 +230,7 @@ pub fn IReference(T: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Value: *const fn(*anyopaque, **T) callconv(.C) HRESULT,
+            Value: *const fn(*anyopaque, *TYPE) callconv(.c) HRESULT,
         });
     };
 }

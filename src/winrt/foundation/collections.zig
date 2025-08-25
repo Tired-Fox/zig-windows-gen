@@ -52,8 +52,8 @@ pub fn IMapChangedEventArgs(K: type) type {
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            CollectionChange: *const fn(*anyopaque, *CollectionChange) callconv(.C) HRESULT,
-            Key: *const fn(*anyopaque, *KEY) callconv(.C) HRESULT,
+            CollectionChange: *const fn(*anyopaque, *CollectionChange) callconv(.c) HRESULT,
+            Key: *const fn(*anyopaque, *KEY) callconv(.c) HRESULT,
         });
     };
 }
@@ -72,20 +72,20 @@ pub const IMapChangedEventHandler = extern struct {
             self: *anyopaque,
             riid: *const Guid,
             ppvObject: *?*anyopaque,
-        ) callconv(.C) HRESULT,
+        ) callconv(.c) HRESULT,
         AddRef: *const fn (
             self: *anyopaque,
-        ) callconv(.C) u32,
+        ) callconv(.c) u32,
         Release: *const fn (
             self: *anyopaque,
-        ) callconv(.C) u32,
+        ) callconv(.c) u32,
 
         // Invoke method for the delegate
         Invoke: *const fn (
             self: *IMapChangedEventHandler,
             sender: *anyopaque,
             args: *anyopaque,
-        ) callconv(.C) HRESULT,
+        ) callconv(.c) HRESULT,
     };
 };
 
@@ -115,10 +115,10 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
 
         vtable: *const IMapChangedEventHandler.VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.C) void,
+        cb: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.C) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -126,7 +126,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.C) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -135,7 +135,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             };
         }
 
-        fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.C) HRESULT {
+        fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
             const me: *@This() = @ptrCast(@alignCast(self));
             // TODO: Handle IMarshal
             if (std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IID).Bytes) or
@@ -150,12 +150,12 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             return @bitCast(E_NOINTERFACE);
         }
 
-        fn addRef(self: *anyopaque) callconv(.C) u32 {
+        fn addRef(self: *anyopaque) callconv(.c) u32 {
             const me: *@This() = @ptrCast(@alignCast(self));
             return me.refs.fetchAdd(1, .monotonic) + 1;
         }
 
-        fn release(self: *anyopaque) callconv(.C) u32 {
+        fn release(self: *anyopaque) callconv(.c) u32 {
             const me: *@This() = @ptrCast(@alignCast(self));
             const left = me.refs.fetchSub(1, .acq_rel) - 1;
             return left;
@@ -164,7 +164,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
         // Invoke(sender, args) - Convert sender to `I` and pass it to the stored callback
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *IMapChangedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.C) HRESULT {
+        fn invoke(self: *IMapChangedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.c) HRESULT {
             const this: *@This() = @ptrCast(@alignCast(self));
             // TODO: Allow user to store a pointer to some state in this delegate so it can be
             //       passed to the callback
@@ -237,7 +237,7 @@ pub fn IIterable(I: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            First: *const fn(*anyopaque, **IIterator(I)) callconv(.C) HRESULT,
+            First: *const fn(*anyopaque, **IIterator(I)) callconv(.c) HRESULT,
         });
     };
 }
@@ -326,10 +326,10 @@ pub fn IIterator(I: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Current: *const fn(*anyopaque, *TYPE) callconv(.C) HRESULT,
-            HasCurrent: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
-            MoveNext: *const fn(*anyopaque, *bool) callconv(.C) HRESULT,
-            GetMany: *const fn(*anyopaque, u32, *[*]I, *u32) callconv(.C) HRESULT,
+            Current: *const fn(*anyopaque, *TYPE) callconv(.c) HRESULT,
+            HasCurrent: *const fn(*anyopaque, *bool) callconv(.c) HRESULT,
+            MoveNext: *const fn(*anyopaque, *bool) callconv(.c) HRESULT,
+            GetMany: *const fn(*anyopaque, u32, *[*]I, *u32) callconv(.c) HRESULT,
         });
     };
 }
@@ -421,10 +421,10 @@ pub fn IVectorView(I: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            GetAt: *const fn(*anyopaque, u32, *TYPE) callconv(.C) HRESULT,
-            Size: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-            IndexOf: *const fn(*anyopaque, TYPE, *u32, *bool) callconv(.C) HRESULT,
-            GetMany: *const fn(*anyopaque, u32, u32, *[*]I, *u32) callconv(.C) HRESULT,
+            GetAt: *const fn(*anyopaque, u32, *TYPE) callconv(.c) HRESULT,
+            Size: *const fn(*anyopaque, *u32) callconv(.c) HRESULT,
+            IndexOf: *const fn(*anyopaque, TYPE, *u32, *bool) callconv(.c) HRESULT,
+            GetMany: *const fn(*anyopaque, u32, u32, *[*]I, *u32) callconv(.c) HRESULT,
         });
     };
 }
@@ -499,8 +499,8 @@ pub fn IKeyValuePair(K: type, V: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Key: *const fn(*anyopaque, *KEY) callconv(.C) HRESULT,
-            Value: *const fn(*anyopaque, *VALUE) callconv(.C) HRESULT,
+            Key: *const fn(*anyopaque, *KEY) callconv(.c) HRESULT,
+            Value: *const fn(*anyopaque, *VALUE) callconv(.c) HRESULT,
         });
     };
 }
@@ -603,13 +603,13 @@ pub fn IMap(K: type, V: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Lookup: *const fn(*anyopaque, KEY, *VALUE) callconv(.C) HRESULT,
-            Size: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-            HasKey: *const fn(*anyopaque, KEY, *bool) callconv(.C) HRESULT,
-            GetView: *const fn(*anyopaque, **IMapView(K, V)) callconv(.C) HRESULT,
-            Insert: *const fn(*anyopaque, KEY, VALUE, *bool) callconv(.C) HRESULT,
-            Remove: *const fn(*anyopaque, KEY) callconv(.C) HRESULT,
-            Clear: *const fn(*anyopaque) callconv(.C) HRESULT,
+            Lookup: *const fn(*anyopaque, KEY, *VALUE) callconv(.c) HRESULT,
+            Size: *const fn(*anyopaque, *u32) callconv(.c) HRESULT,
+            HasKey: *const fn(*anyopaque, KEY, *bool) callconv(.c) HRESULT,
+            GetView: *const fn(*anyopaque, **IMapView(K, V)) callconv(.c) HRESULT,
+            Insert: *const fn(*anyopaque, KEY, VALUE, *bool) callconv(.c) HRESULT,
+            Remove: *const fn(*anyopaque, KEY) callconv(.c) HRESULT,
+            Clear: *const fn(*anyopaque) callconv(.c) HRESULT,
         });
     };
 }
@@ -700,10 +700,10 @@ pub fn IMapView(K: type, V: type) type {
 
         pub const VTable = Implements(IInspectable.VTable, struct {
             // TODO: Update params to be the correct type
-            Lookup: *const fn(*anyopaque, KEY, *VALUE) callconv(.C) HRESULT,
-            Size: *const fn(*anyopaque, *u32) callconv(.C) HRESULT,
-            HasKey: *const fn(*anyopaque, KEY, *bool) callconv(.C) HRESULT,
-            Split: *const fn(*anyopaque, **IMapView(K,V), **IMapView(K,V)) callconv(.C) HRESULT,
+            Lookup: *const fn(*anyopaque, KEY, *VALUE) callconv(.c) HRESULT,
+            Size: *const fn(*anyopaque, *u32) callconv(.c) HRESULT,
+            HasKey: *const fn(*anyopaque, KEY, *bool) callconv(.c) HRESULT,
+            Split: *const fn(*anyopaque, **IMapView(K,V), **IMapView(K,V)) callconv(.c) HRESULT,
         });
     };
 }
@@ -776,8 +776,8 @@ pub fn IObservableMap(K: type, V: type) type {
 
         pub const VTable = Implements(IInspectable.VTable, struct {
             // TODO: Update params to be the correct type
-            MapChanged: *const fn(*anyopaque, *anyopaque, *i64) callconv(.C) HRESULT,
-            RemoveMapChanged: *const fn(*anyopaque, i64) callconv(.C) HRESULT,
+            MapChanged: *const fn(*anyopaque, *anyopaque, *i64) callconv(.c) HRESULT,
+            RemoveMapChanged: *const fn(*anyopaque, i64) callconv(.c) HRESULT,
         });
     };
 }
