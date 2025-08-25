@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <MetadataVersion>10.0.26100.4948</MetadataVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Reflection.Metadata" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts"
+                      Version="$(MetadataVersion)"
+                      GeneratePathProperty="true"
+                      PrivateAssets="all"
+                      ExcludeAssets="compile;runtime;build;native;contentfiles;analyzers;buildtransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="$(PkgMicrosoft_Windows_SDK_Contracts)\ref\netstandard2.0\**\*.winmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>winmd\%(RecursiveDir)%(Filename)%(Extension)</TargetPath>
+    </Content>
+  </ItemGroup>
+</Project>
