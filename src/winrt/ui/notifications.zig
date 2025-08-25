@@ -4,6 +4,8 @@ pub const win32 = @import("win32");
 pub const winrt = @import("../../root.zig");
 
 const ITypedEventHandler = winrt.foundation.ITypedEventHandler;
+const TypedEventHandler = winrt.foundation.TypedEventHandler;
+const ValueSet = winrt.foundation.collections.ValueSet;
 const XmlDocument = winrt.data.xml.dom.XmlDocument;
 
 pub const IInspectable = winrt.IInspectable;
@@ -58,6 +60,188 @@ pub const NotificationSetting = enum(i32) {
     disabled_by_manifest = 4,
 };
 
+pub const ToastDismissalReason = enum(i32) {
+    user_canceled = 0,
+    application_hidden = 1,
+    timed_out = 2,
+};
+
+pub const IToastDismissedEventArgs = extern struct {
+    vtable: *const VTable,
+
+    pub fn reason(self: *@This()) ToastDismissalReason {
+        var result: ToastDismissalReason = undefined;
+        _ = self.vtable.Reason(@ptrCast(self), &result);
+        return result;
+    }
+
+    pub const GUID: []const u8 = "3f89d935-d9cb-4538-a0f0-ffe7659938f8";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        Reason: *const fn(*anyopaque, *ToastDismissalReason) callconv(.C) HRESULT,
+    });
+};
+
+pub const IToastActivatedEventArgs = extern struct {
+    vtable: *const VTable,
+
+    pub fn arguments(self: *@This()) []const u16 {
+        var result: HSTRING = undefined;
+        _ = self.vtable.Arguments(@ptrCast(self), &result);
+        return winrt.WindowsGetString(result).?;
+    }
+
+    const TYPE_NAME: []const u8 = "Windows.UI.Notifications.IToastActivatedEventArgs";
+    const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = "e3bf92f3-c197-436f-8265-0625824f8dac";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        Arguments: *const fn(*anyopaque, **anyopaque) callconv(.C) HRESULT,
+    });
+};
+
+pub const IToastActivatedEventArgs2 = extern struct {
+    vtable: *const VTable,
+
+    pub fn user_input(self: *@This()) *ValueSet {
+        var result: *ValueSet = undefined;
+        _ = self.vtable.UserInput(@ptrCast(self), &result);
+        return result;
+    }
+
+    const TYPE_NAME: []const u8 = "Windows.UI.Notifications.IToastActivatedEventArgs2";
+    const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = "ab7da512-cc61-568e-81be-304ac31038fa";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+         UserInput: *const fn(*anyopaque, **ValueSet) callconv(.C) HRESULT,
+    });
+};
+
+pub const ToastActivatedEventArgs = extern struct {
+    vtable: *const IToastActivatedEventArgs.VTable,
+
+    pub fn queryInterface(self: *@This(), T: type) !*T {
+        var result: *anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
+            return error.NoInterface;
+        }
+        return @ptrCast(@alignCast(result));
+    }
+
+    pub fn addRef(self: *@This()) u32 {
+        return self.vtable.AddRef(@ptrCast(self));
+    }
+
+    pub fn release(self: *@This()) u32 {
+        return self.vtable.Release(@ptrCast(self));
+    }
+
+    pub fn getIids(self: *@This()) ![]const Guid {
+        var count: u32 = 0;
+        var iids: [*]Guid = undefined;
+        if (self.vtable.GetIids(@ptrCast(self), &count, &iids) != S_OK) {
+            return error.OutOfMemory;
+        }
+        return iids[0..@as(usize, @intCast(count))];
+    }
+
+    pub fn getRuntimeClassName(self: *@This()) ![]const u16 {
+        var name: HSTRING = undefined;
+        const code = self.vtable.GetRuntimeClassName(@ptrCast(self), &name);
+        if (code == S_OK) {
+            return WindowsGetString(name).?;
+        } else if (code == E_OUTOFMEMORY) {
+            return error.OutOfMemory;
+        } else {
+            return error.IllegalMethodCall;
+        }
+    }
+
+    pub fn getTrustLevel(self: *@This()) TrustLevel {
+        var trust: TrustLevel = undefined;
+        _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
+        return trust;
+    }
+
+    pub fn arguments(self: *@This()) []const u16 {
+        const this: *IToastActivatedEventArgs = @ptrCast(@alignCast(self));
+        return this.arguments();
+    }
+
+    pub fn user_input(self: *@This()) *ValueSet {
+        const this: *IToastActivatedEventArgs2 = try self.queryInterface(IToastActivatedEventArgs2);
+        return this.user_input();
+    }
+
+    const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastActivatedEventArgs";
+    const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
+
+    pub const GUID: []const u8 = IToastActivatedEventArgs.GUID;
+    pub const IID: Guid = IToastActivatedEventArgs.IID;
+    pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastActivatedEventArgs.SIGNATURE);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+         UserInput: *const fn(*anyopaque, **ValueSet) callconv(.C) HRESULT,
+    });
+};
+
+pub const IToastFailedEventArgs = extern struct {
+    vtable: *const VTable,
+
+    pub fn error_code(self: *@This()) HRESULT {
+        var result: HRESULT = 0;
+        _ = self.vtable.ErrorCode(@ptrCast(self), &result);
+        return result;
+    }
+    
+    pub const GUID: []const u8 = "35176862-cfd4-44f8-ad64-f500fd896c3b";
+    pub const IID: Guid = Guid.initString(GUID);
+    pub const SIGNATURE: []const u8 = Signature.interface(GUID);
+
+    pub const VTable = Implements(IInspectable.VTable, struct {
+        ErrorCode: *const fn(*anyopaque, *HRESULT) callconv(.C) HRESULT,
+    });
+};
+
+pub const ToastDismissedEventArgs = extern struct {
+    vtable: *const IToastDismissedEventArgs.VTable,
+
+    pub fn reason(self: *@This()) ToastDismissalReason {
+        const this: *IToastDismissedEventArgs = @ptrCast(@alignCast(self));
+        return this.reason();
+    }
+
+    pub const GUID: []const u8 = IToastDismissedEventArgs.GUID;
+    pub const IID: Guid = IToastDismissedEventArgs.IID;
+    pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastDismissedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
+    pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastDismissedEventArgs.SIGNATURE);
+};
+
+pub const ToastFailedEventArgs = extern struct {
+    vtable: *const IToastFailedEventArgs.VTable,
+
+    pub fn error_code(self: *@This()) HRESULT {
+        const this: *IToastFailedEventArgs = @ptrCast(@alignCast(self));
+        return this.error_code();
+    }
+
+    pub const GUID: []const u8 = IToastFailedEventArgs.GUID;
+    pub const IID: Guid = IToastFailedEventArgs.IID;
+    pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastFailedEventArgs";
+    pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral();
+    pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IToastFailedEventArgs.SIGNATURE);
+};
+
 pub const IToastNotification = extern struct {
     vtable: *const VTable,
 
@@ -102,6 +286,43 @@ pub const IToastNotification = extern struct {
         var trust: TrustLevel = undefined;
         _ = self.vtable.GetTrustLevel(@ptrCast(self), &trust);
         return trust;
+    }
+
+    // ToastDismissedEventArgs
+    pub fn onDismissed(self: *@This(), handler: *TypedEventHandler(ToastNotification, ToastDismissedEventArgs)) !i64 {
+        var handle: i64 = 0;
+        if (self.vtable.Dismissed(@ptrCast(self), @ptrCast(handler), &handle) != S_OK) {
+            return error.BindHookFailure;
+        }
+        return handle;
+    }
+
+    pub fn removeOnDismissed(self: *@This(), handle: i64) void {
+        _ = self.vtable.RemoveDismissed(@ptrCast(self), handle);
+    }
+
+    pub fn onActivated(self: *@This(), handler: *TypedEventHandler(ToastNotification, IInspectable)) !i64 {
+        var handle: i64 = 0;
+        if (self.vtable.Activated(@ptrCast(self), @ptrCast(handler), &handle) != S_OK) {
+            return error.BindHookFailure;
+        }
+        return handle;
+    }
+
+    pub fn removeOnActivated(self: *@This(), handle: i64) void {
+        _ = self.vtable.RemoveActivated(@ptrCast(self), handle);
+    }
+
+    pub fn onFailed(self: *@This(), handler: *TypedEventHandler(ToastNotification, ToastFailedEventArgs)) !i64 {
+        var handle: i64 = 0;
+        if (self.vtable.Failed(@ptrCast(self), @ptrCast(handler), &handle) != S_OK) {
+            return error.BindHookFailure;
+        }
+        return handle;
+    }
+
+    pub fn removeOnFailed(self: *@This(), handle: i64) void {
+        _ = self.vtable.RemoveFailed(@ptrCast(self), handle);
     }
 
     pub const GUID: []const u8 = "997e2675-059e-4e60-8b06-1760917c8b80";
@@ -1000,6 +1221,41 @@ pub const ToastNotification = extern struct {
 
         return result;
     }
+
+    // ToastDismissedEventArgs
+    pub fn onDismissed(self: *@This(), handler: *TypedEventHandler(ToastNotification, ToastDismissedEventArgs)) !i64 {
+        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        return this.onDismissed(handler);
+    }
+
+    pub fn removeOnDismissed(self: *@This(), handle: i64) void {
+        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        return this.removeOnDismissed(handle);
+    }
+
+    pub fn onActivated(self: *@This(), handler: *TypedEventHandler(ToastNotification, IInspectable)) !i64 {
+        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        return this.onActivated(handler);
+    }
+
+    pub fn removeOnActivated(self: *@This(), handle: i64) void {
+        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        return this.removeOnActivated(handle);
+    }
+
+    pub fn onFailed(self: *@This(), handler: *TypedEventHandler(ToastNotification, ToastFailedEventArgs)) !i64 {
+        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        return this.onFailed(handler);
+    }
+
+    pub fn removeOnFailed(self: *@This(), handle: i64) void {
+        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        return this.removeOnFailed(handle);
+    }
+
+    pub const DismissedTypedEventHandler = TypedEventHandler(ToastNotification, ToastDismissedEventArgs);
+    pub const ActivatedTypedEventHandler = TypedEventHandler(ToastNotification, IInspectable);
+    pub const FailedTypedEventHandler = TypedEventHandler(ToastNotification, ToastFailedEventArgs);
 
     pub const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastNotification";
     pub const SIGNATURE: []const u8 = std.fmt.comptimePrint("rc({s};{s})", .{ TYPE_NAME, IToastNotification.SIGNATURE });

@@ -20,6 +20,10 @@ const Implements = core.Implements;
 const Guid = win32.zig.Guid;
 const HRESULT = win32.foundation.HRESULT;
 
+pub extern "shell32" fn SetCurrentProcessExplicitAppUserModelID(
+  appId: [*:0]const u16 
+) callconv(.C) HRESULT;
+
 pub fn WindowsCreateString(string: [:0]const u16) !?HSTRING {
     var result: ?HSTRING = undefined;
     if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != S_OK) {
