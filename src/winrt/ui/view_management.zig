@@ -11,7 +11,6 @@ const HSTRING = win32.system.win_rt.HSTRING;
 const Implements = core.Implements;
 const IGenericFactory = core.IGenericFactory;
 const IInspectable = winrt.IInspectable;
-const ITypedEventHandler = winrt.foundation.ITypedEventHandler;
 const TrustLevel = win32.system.win_rt.TrustLevel;
 const TypedEventHandler = winrt.foundation.TypedEventHandler;
 const Signature = core.Signature;
@@ -285,7 +284,7 @@ pub const IUISettings2 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         TextScaleFactor: *const fn (*const anyopaque, *f64) callconv(.c) HRESULT,
-        TextScaleFactorChanged: *const fn (*const anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        TextScaleFactorChanged: *const fn (*const anyopaque, *TypedEventHandler(UISettings, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveTextScaleFactorChanged: *const fn (*const anyopaque, i64) callconv(.c) HRESULT,
     });
 };
@@ -362,7 +361,7 @@ pub const IUISettings3 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         GetColorValue: *const fn (*const anyopaque, UIColorType, *Color) callconv(.c) HRESULT,
-        ColorValuesChanged: *const fn (*const anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        ColorValuesChanged: *const fn (*const anyopaque, *TypedEventHandler(UISettings, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveColorValuesChanged: *const fn (*const anyopaque, i64) callconv(.c) HRESULT,
     });
 };
@@ -439,7 +438,7 @@ pub const IUISettings4 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         AdvancedEffectsEnabled: *const fn (*const anyopaque, *bool) callconv(.c) HRESULT,
-        AdvancedEffectsEnabledChanged: *const fn (*const anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        AdvancedEffectsEnabledChanged: *const fn (*const anyopaque, *TypedEventHandler(UISettings, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveAdvancedEffectsEnabledChanged: *const fn (*const anyopaque, i64) callconv(.c) HRESULT,
     });
 };
@@ -516,7 +515,7 @@ pub const IUISettings5 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         AutoHideScrollBars: *const fn (*const anyopaque, *bool) callconv(.c) HRESULT,
-        AutoHideScrollBarsChanged: *const fn (*const anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        AutoHideScrollBarsChanged: *const fn (*const anyopaque, *TypedEventHandler(UISettings, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveAutoHideScrollBarsChanged: *const fn (*const anyopaque, i64) callconv(.c) HRESULT,
     });
 };
@@ -600,9 +599,9 @@ pub const IUISettings6 = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        AnimationsEnabledChanged: *const fn (*const anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        AnimationsEnabledChanged: *const fn (*const anyopaque, *TypedEventHandler(UISettings, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveAnimationsEnabledChanged: *const fn (*const anyopaque, i64) callconv(.c) HRESULT,
-        MessageDurationChanged: *const fn (*const anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        MessageDurationChanged: *const fn (*const anyopaque, *TypedEventHandler(UISettings, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveMessageDurationChanged: *const fn (*const anyopaque, i64) callconv(.c) HRESULT,
     });
 };

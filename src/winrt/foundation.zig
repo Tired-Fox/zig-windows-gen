@@ -6,6 +6,7 @@ const winrt = @import("../root.zig");
 const Guid = win32.zig.Guid;
 const HRESULT = win32.foundation.HRESULT;
 const Signature = core.Signature;
+const Generic = core.Generic;
 const isInterface = core.isInterface;
 
 const TrustLevel = winrt.TrustLevel;
@@ -53,46 +54,15 @@ pub const TimeSpan = extern struct {
     pub const SIGNATURE: []const u8 = "struct(Windows.Foundation.TimeSpan;i8)";
 };
 
-// The type erased interface for a TypedEventHandler
-//
-// The first part of the memory layout is the same as `TypedEventHandler(I, R)`
-// so it functions as expected when the pointers are cast between the two types
-// when crossing the boundry between zig and windows.
-pub const ITypedEventHandler = extern struct {
-    // COM vtable layout
-    vtable: *const VTable,
-
-    pub const VTable = extern struct {
-        QueryInterface: *const fn (
-            self: *anyopaque,
-            riid: *const Guid,
-            ppvObject: *?*anyopaque,
-        ) callconv(.c) HRESULT,
-        AddRef: *const fn (
-            self: *anyopaque,
-        ) callconv(.c) u32,
-        Release: *const fn (
-            self: *anyopaque,
-        ) callconv(.c) u32,
-
-        // Invoke method for the delegate
-        Invoke: *const fn (
-            self: *ITypedEventHandler,
-            sender: *anyopaque,
-            args: *anyopaque,
-        ) callconv(.c) HRESULT,
-    };
-};
-
-/// Represents a method that handles general events
+// Represents a method that handles general events
 ///
 /// This method handles delegating the invoked callback for a
 /// given typed event.
-pub fn TypedEventHandler(S: type, A: type) type {
-    const SENDER = if (core.isInterface(S)) *S else S;
-    const ARGS = if (core.isInterface(A)) *A else A;
+pub fn TypedEventHandler(T0: type, T1: type) type {
+    const TSender = Generic(T0);
+    const TArgs = Generic(T1);
 
-    const signature: []const u8 = Signature.pinterface("9de1c534-6ae1-11e0-84e1-18a905bcc53f", &.{ S.SIGNATURE, Signature.cinterface(A) });
+    const signature: []const u8 = Signature.pinterface("9de1c534-6ae1-11e0-84e1-18a905bcc53f", &.{ Signature.get(T0), Signature.get(T1) });
     const iid = Signature.guid(signature);
 
     return extern struct {
@@ -100,19 +70,19 @@ pub fn TypedEventHandler(S: type, A: type) type {
         const IID = iid;
         const GUID = Signature.guid_string(iid);
 
-        pub const VTABLE = ITypedEventHandler.VTable{
+        pub const VTABLE = VTable{
             .QueryInterface = queryInterface,
             .AddRef = addRef,
             .Release = release,
             .Invoke = invoke,
         };
 
-        vtable: *const ITypedEventHandler.VTable,
+        vtable: *const VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.c) void,
+        cb: *const fn (context: ?*anyopaque, sender: TSender.IN, args: TArgs.IN) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.c) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: TSender.IN, args: TArgs.IN) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -120,7 +90,7 @@ pub fn TypedEventHandler(S: type, A: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: SENDER, args: ARGS) callconv(.c) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: TSender.IN, args: TArgs.IN) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -155,16 +125,34 @@ pub fn TypedEventHandler(S: type, A: type) type {
             return left;
         }
 
-        // Invoke(sender, args) - Convert sender to `I` and pass it to the stored callback
+        // Invoke(sender, args)
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *ITypedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.c) HRESULT {
-            const this: *@This() = @ptrCast(@alignCast(self));
-            // TODO: Allow user to store a pointer to some state in this delegate so it can be
-            //       passed to the callback
-            this.cb(this.context, @ptrCast(@alignCast(sender)), @ptrCast(@alignCast(args)));
+        fn invoke(self: *@This(), sender: TSender.IN, args: TArgs.IN) callconv(.c) HRESULT {
+            self.cb(self.context, sender, args);
             return S_OK;
         }
+
+        pub const VTable = extern struct {
+            QueryInterface: *const fn (
+                self: *anyopaque,
+                riid: *const Guid,
+                ppvObject: *?*anyopaque,
+            ) callconv(.c) HRESULT,
+            AddRef: *const fn (
+                self: *anyopaque,
+            ) callconv(.c) u32,
+            Release: *const fn (
+                self: *anyopaque,
+            ) callconv(.c) u32,
+
+            // Invoke method for the delegate
+            Invoke: *const fn (
+                self: *TypedEventHandler(T0, T1),
+                sender: TSender.IN,
+                args: TArgs.IN,
+            ) callconv(.c) HRESULT,
+        };
     };
 }
 
@@ -225,7 +213,7 @@ pub fn IReference(T: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.IReference";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("61c17706-2d65-11e0-9ae8-d48564015472", &.{ .SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("61c17706-2d65-11e0-9ae8-d48564015472", &.{ Signature.get(T) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 

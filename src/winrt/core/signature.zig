@@ -1,8 +1,28 @@
 const std = @import("std");
+const winrt = @import("../../root.zig");
 
 const Guid = @import("win32").zig.Guid;
 
 pub const Signature = struct {
+    pub fn get(T: type) []const u8 {
+        if (@hasDecl(T, "SIGNATURE")) return @field(T, "SIGNATURE");
+        if (T == winrt.HSTRING) return "string";
+        if (T == winrt.IInspectable) return "cinterface(IInspectable)";
+        if (T == bool) return "b1";
+
+        switch (@typeInfo(T)) {
+            .int => |info| {
+                const bytes = @min(@ceil(@as(f32, @floatFromInt(info.bits)) / 8.0), 8.0);
+                if (info.signedness == .unsigned)
+                    return std.fmt.comptimePrint("u{d}", .{ @as(u32, @intFromFloat(bytes)) })
+                else
+                    return std.fmt.comptimePrint("i{d}", .{ @as(u32, @intFromFloat(bytes)) });
+            },
+            .float => return if (T == f64) "f8" else "f4",
+            else => @compileError("unsupported type '" ++ @typeName(T) ++ "' does not have a WinRT signature")
+        }
+    }
+
     pub fn class(comptime runtime_name: []const u8, comptime default_interface_signature: []const u8) []const u8 {
         return std.fmt.comptimePrint("rc({s};{s})", .{ runtime_name, default_interface_signature });
     }

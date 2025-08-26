@@ -4,6 +4,7 @@ pub const IGenericFactory = @import("core/generic_factory.zig").IGenericFactory;
 pub const FactoryCache = @import("core/factory_cache.zig").FactoryCache;
 pub const FactoryError = @import("core/factory_cache.zig").FactoryError;
 pub const Signature = @import("core/signature.zig").Signature;
+pub const Generic = @import("core/generic.zig").Generic;
 
 const Guid = @import("win32").zig.Guid;
 

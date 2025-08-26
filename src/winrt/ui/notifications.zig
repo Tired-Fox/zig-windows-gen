@@ -3,7 +3,6 @@ pub const std = @import("std");
 pub const win32 = @import("win32");
 pub const winrt = @import("../../root.zig");
 
-const ITypedEventHandler = winrt.foundation.ITypedEventHandler;
 const TypedEventHandler = winrt.foundation.TypedEventHandler;
 const IReference = winrt.foundation.IReference;
 const DateTime = winrt.foundation.DateTime;
@@ -1291,7 +1290,7 @@ pub const IClosable = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        Close: *const fn(*anyopaque) callconv(.c) HRESULT,
+        Close: *const fn (*anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -1351,7 +1350,7 @@ pub const IDeferral = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        Complete: *const fn(*anyopaque) callconv(.c) HRESULT,
+        Complete: *const fn (*anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -1417,12 +1416,12 @@ pub const IDeferralFactory = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Create: *const fn(*anyopaque, *DeferralCompletedHandler, **Deferral) callconv(.c) HRESULT,
+        Create: *const fn (*anyopaque, *DeferralCompletedHandler, **Deferral) callconv(.c) HRESULT,
     });
 };
 
 /// Represents a method that handles deferrel completed events
-///
+//
 /// This method handles delegating the invoked callback for a
 /// given typed event.
 pub const DeferralCompletedHandler = extern struct {
@@ -1571,10 +1570,7 @@ pub const Deferral = extern struct {
     }
 
     pub fn create(handler: *DeferralCompletedHandler) !Deferral {
-        const factory: *IDeferralFactory = @This().Factory.call(
-            IDeferralFactory,
-            RUNTIME_NAME
-        );
+        const factory: *IDeferralFactory = @This().Factory.call(IDeferralFactory, RUNTIME_NAME);
         return try factory.create(handler);
     }
 
@@ -1752,11 +1748,11 @@ pub const IToastNotification = extern struct {
         Content: *const fn (*anyopaque, **XmlDocument) callconv(.c) HRESULT,
         SetExpirationTime: *const fn (*anyopaque, *IReference(DateTime)) callconv(.c) HRESULT,
         ExpirationTime: *const fn (*anyopaque, **IReference(DateTime)) callconv(.c) HRESULT,
-        Dismissed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        Dismissed: *const fn (*anyopaque, *TypedEventHandler(ToastNotification, ToastDismissedEventArgs), *i64) callconv(.c) HRESULT,
         RemoveDismissed: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
-        Activated: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        Activated: *const fn (*anyopaque, *TypedEventHandler(ToastNotification, IInspectable), *i64) callconv(.c) HRESULT,
         RemoveActivated: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
-        Failed: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        Failed: *const fn (*anyopaque, *TypedEventHandler(ToastNotification, ToastFailedEventArgs), *i64) callconv(.c) HRESULT,
         RemoveFailed: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
     });
 };
@@ -2575,7 +2571,11 @@ pub const IToastNotifier3 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        ScheduledToastNotificationShowing: *const fn (*anyopaque, *ITypedEventHandler, *i64) callconv(.c) HRESULT,
+        ScheduledToastNotificationShowing: *const fn (
+            *anyopaque,
+            *TypedEventHandler(ToastNotification, ScheduledToastNotificationShowingEventArgs),
+            *i64,
+        ) callconv(.c) HRESULT,
         RemoveScheduledToastNotificationShowing: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
     });
 };

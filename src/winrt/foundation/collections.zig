@@ -13,6 +13,7 @@ const Implements = core.Implements;
 const IID_IAgileObject = win32.system.com.IID_IAgileObject;
 
 const Signature = core.Signature;
+const Generic = core.Generic;
 const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
 const E_NOINTERFACE = winrt.E_NOINTERFACE;
 const TrustLevel = winrt.TrustLevel;
@@ -28,7 +29,8 @@ pub const CollectionChange = enum(i32) {
 };
 
 pub fn IMapChangedEventArgs(K: type) type {
-    const KEY = if (core.isInterface(K)) *K else K;
+    const KEY = Generic(K);
+
     return extern struct {
         vtable: *const VTable,
 
@@ -44,7 +46,7 @@ pub fn IMapChangedEventArgs(K: type) type {
             return result;
         }
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("9939f4df-050a-4c0f-aa60-77075f9c4777", &.{ K.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("9939f4df-050a-4c0f-aa60-77075f9c4777", &.{ Signature.get(K) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -58,47 +60,12 @@ pub fn IMapChangedEventArgs(K: type) type {
     };
 }
 
-// The type erased interface for a MapChangedEventHandler
-//
-// The first part of the memory layout is the same as `MapChangedEventHandler(K,V)`
-// so it functions as expected when the pointers are cast between the two types
-// when crossing the boundry between zig and windows.
-pub const IMapChangedEventHandler = extern struct {
-    // COM vtable layout
-    vtable: *const VTable,
-
-    pub const VTable = extern struct {
-        QueryInterface: *const fn (
-            self: *anyopaque,
-            riid: *const Guid,
-            ppvObject: *?*anyopaque,
-        ) callconv(.c) HRESULT,
-        AddRef: *const fn (
-            self: *anyopaque,
-        ) callconv(.c) u32,
-        Release: *const fn (
-            self: *anyopaque,
-        ) callconv(.c) u32,
-
-        // Invoke method for the delegate
-        Invoke: *const fn (
-            self: *IMapChangedEventHandler,
-            sender: *anyopaque,
-            args: *anyopaque,
-        ) callconv(.c) HRESULT,
-    };
-};
-
-/// Represents a method that handles general events
+/// Represents a method that handles map changed events
 ///
 /// This method handles delegating the invoked callback for a
-/// given typed event.
+/// given event.
 pub fn MapChangedEventHandler(K: type, V: type) type {
-    const KEY = if (core.isInterface(K)) *K else K;
-    const VALUE = if (core.isInterface(V)) *V else V;
-
-
-    const signature: []const u8 = Signature.pinterface("179517f3-94ee-41f8-bddc-768a895544f3", &.{ K.SIGNATURE, Signature.cinterface(V) });
+    const signature: []const u8 = Signature.pinterface("179517f3-94ee-41f8-bddc-768a895544f3", &.{ Signature.get(K), Signature.get(V) });
     const iid = Signature.guid(signature);
 
     return extern struct {
@@ -106,19 +73,19 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
         const IID = iid;
         const GUID = Signature.guid_string(iid);
 
-        pub const VTABLE = IMapChangedEventHandler.VTable{
+        pub const VTABLE = VTable{
             .QueryInterface = queryInterface,
             .AddRef = addRef,
             .Release = release,
             .Invoke = invoke,
         };
 
-        vtable: *const IMapChangedEventHandler.VTable,
+        vtable: *const VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void,
+        cb: *const fn (context: ?*anyopaque, sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -126,7 +93,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -161,16 +128,34 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             return left;
         }
 
-        // Invoke(sender, args) - Convert sender to `I` and pass it to the stored callback
+        // Invoke(sender, args)
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *IMapChangedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.c) HRESULT {
-            const this: *@This() = @ptrCast(@alignCast(self));
-            // TODO: Allow user to store a pointer to some state in this delegate so it can be
-            //       passed to the callback
-            this.cb(this.context, @ptrCast(@alignCast(sender)), @ptrCast(@alignCast(args)));
+        fn invoke(self: *@This(), sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) HRESULT {
+            self.cb(self.context, sender, args);
             return S_OK;
         }
+
+        pub const VTable = extern struct {
+            QueryInterface: *const fn (
+                self: *anyopaque,
+                riid: *const Guid,
+                ppvObject: *?*anyopaque,
+            ) callconv(.c) HRESULT,
+            AddRef: *const fn (
+                self: *anyopaque,
+            ) callconv(.c) u32,
+            Release: *const fn (
+                self: *anyopaque,
+            ) callconv(.c) u32,
+
+            // Invoke method for the delegate
+            Invoke: *const fn (
+                self: *MapChangedEventHandler(K, V),
+                sender: *IObservableMap(K, V),
+                args: *IMapChangedEventArgs(K),
+            ) callconv(.c) HRESULT,
+        };
     };
 }
 
@@ -232,7 +217,7 @@ pub fn IIterable(I: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IIterable";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("faa585ea-6214-4217-afda-7f46de5869b3", &.{ I.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("faa585ea-6214-4217-afda-7f46de5869b3", &.{ Signature.get(I) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -321,7 +306,7 @@ pub fn IIterator(I: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IIterator";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("6a79e863-4300-459a-9966-cbb660963ee1", &.{ I.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("6a79e863-4300-459a-9966-cbb660963ee1", &.{ Signature.get(I) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -416,7 +401,7 @@ pub fn IVectorView(I: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IVectorView";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("bbe1fa4c-b0e3-4583-baef-1f1b2e483e56", &.{ I.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("bbe1fa4c-b0e3-4583-baef-1f1b2e483e56", &.{ Signature.get(I) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -494,7 +479,7 @@ pub fn IKeyValuePair(K: type, V: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IKeyValuePair";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("02b51929-c1c4-4a7e-8940-0312b5c18500", &.{ K.SIGNATURE, V.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("02b51929-c1c4-4a7e-8940-0312b5c18500", &.{ Signature.get(K), Signature.get(V) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -555,8 +540,8 @@ pub fn IMap(K: type, V: type) type {
             return trust;
         }
 
-        pub fn lookup(self: *@This(), key: *K) !*V {
-            var result: *V = undefined;
+        pub fn lookup(self: *@This(), key: KEY) !VALUE {
+            var result: VALUE = undefined;
             if (self.vtable.Lookup(@ptrCast(self), key, &result) != S_OK) {
                 return error.Bounds;
             }
@@ -598,7 +583,7 @@ pub fn IMap(K: type, V: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IMap";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("3c2925fe-8519-45c1-aa79-197b6718c1c1", &.{ K.SIGNATURE, V.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("3c2925fe-8519-45c1-aa79-197b6718c1c1", &.{ Signature.get(K), Signature.get(V) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -615,8 +600,8 @@ pub fn IMap(K: type, V: type) type {
 }
 
 pub fn IMapView(K: type, V: type) type {
-    const KEY = if (core.isInterface(K)) *K else K;
-    const VALUE = if (core.isInterface(V)) *V else V;
+    const KEY = Generic(K);
+    const VALUE = Generic(V);
 
     return extern struct {
         vtable: *const VTable,
@@ -694,7 +679,7 @@ pub fn IMapView(K: type, V: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IMapView";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("e480ce40-a338-4ada-adcf-272272e48cb9", &.{ K.SIGNATURE, V.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("e480ce40-a338-4ada-adcf-272272e48cb9", &.{ Signature.get(K), Signature.get(V) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
@@ -770,13 +755,12 @@ pub fn IObservableMap(K: type, V: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.Collections.IObservableMap";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("65df2bf5-bf39-41b5-aebc-5a9d865e472b", &.{ K.SIGNATURE, V.SIGNATURE });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("65df2bf5-bf39-41b5-aebc-5a9d865e472b", &.{ Signature.get(K), Signature.get(V) });
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            // TODO: Update params to be the correct type
-            MapChanged: *const fn(*anyopaque, *anyopaque, *i64) callconv(.c) HRESULT,
+            MapChanged: *const fn(*anyopaque, *MapChangedEventHandler(K, V), *i64) callconv(.c) HRESULT,
             RemoveMapChanged: *const fn(*anyopaque, i64) callconv(.c) HRESULT,
         });
     };

@@ -60,9 +60,6 @@ public static class MetadataHelpers
 	    return new Guid(guidBytes);
 	}
 
-    /// <summary>
-    /// Resolves the name of a custom attribute from its constructor handle.
-    /// </summary>
     private static string? GetAttributeName(EntityHandle ctorHandle, MetadataReader reader)
     {
         switch (ctorHandle.Kind)
@@ -83,5 +80,41 @@ public static class MetadataHelpers
         }
 
         return null;
+    }
+
+    /// <summary>
+    /// Resolves the name of a custom attribute from its constructor handle.
+    /// </summary>
+    public static string GetAttributeTypeName(MetadataReader r, EntityHandle ctor)
+    {
+        // Handles ctor as MemberReference or MethodDefinition
+        if (ctor.Kind == HandleKind.MemberReference)
+        {
+            var mr = r.GetMemberReference((MemberReferenceHandle)ctor);
+            var parent = mr.Parent;
+            if (parent.Kind == HandleKind.TypeReference)
+            {
+                var tr = r.GetTypeReference((TypeReferenceHandle)parent);
+                var ns = r.GetString(tr.Namespace);
+                var name = r.GetString(tr.Name);
+                return string.IsNullOrEmpty(ns) ? name : ns + "." + name;
+            }
+            if (parent.Kind == HandleKind.TypeDefinition)
+            {
+                var td = r.GetTypeDefinition((TypeDefinitionHandle)parent);
+                var ns = r.GetString(td.Namespace);
+                var name = r.GetString(td.Name);
+                return string.IsNullOrEmpty(ns) ? name : ns + "." + name;
+            }
+        }
+        else if (ctor.Kind == HandleKind.MethodDefinition)
+        {
+            var md = r.GetMethodDefinition((MethodDefinitionHandle)ctor);
+            var td = r.GetTypeDefinition(md.GetDeclaringType());
+            var ns = r.GetString(td.Namespace);
+            var name = r.GetString(td.Name);
+            return string.IsNullOrEmpty(ns) ? name : ns + "." + name;
+        }
+        return "<unknown>";
     }
 }
