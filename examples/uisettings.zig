@@ -9,7 +9,7 @@ const IInspectable = winrt.IInspectable;
 var wait = std.atomic.Value(bool).init(true);
 
 fn onSystemThemeChange(_: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.c) void {
-    const fg = settings.getColorValue(.foreground) catch return;
+    const fg = settings.getColorValue(.foreground);
     if (fg.b > 0) {
         std.debug.print("\x1b[40;38;2;{d};{d};{d}m DARK \x1b[0m\n", .{ fg.r, fg.g, fg.b });
     } else {
@@ -32,7 +32,7 @@ pub fn main() !void {
     // Wait for color change to be detected
     std.debug.print("Waiting for system color change...\n", .{});
     while (wait.load(.acquire)) {
-        std.time.sleep(std.time.ns_per_s * 1);
+        std.Thread.sleep(std.time.ns_per_s * 1);
     }
 
     try ui_settings.removeColorValuesChanged(handle);

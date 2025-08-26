@@ -58,3 +58,8 @@ I will create projects for generating the metadata and generating the bindings.
 + Audio (Windows.Media.Audio)
     + https://learn.microsoft.com/en-us/windows/win32/coreaudio/wasapi
     + https://learn.microsoft.com/en-us/windows/uwp/audio-video-camera/audio-graphs
+
+**Notes**
+
+- Classes should implement the base `IInspectable` vtable with the perk of being able to pointer cast to the default interface. All other interface impls must use queryInterface to get the correct pointer.
+    + This is also necissary if the default interface uses the parent classes type in it's vtable signature. If the class implements it's default interface vtable instead everything will work but zig will throw a `struct depends on itself` error at compile time. Instead just use IInspectable.VTable and cast to the default interface for all methods on that interface.

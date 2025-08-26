@@ -26,7 +26,7 @@ var brush: ?win32.graphics.gdi.HGDIOBJ = undefined;
 fn onColorChange(state: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.c) void {
     const hwnd: HWND = @ptrCast(@alignCast(state.?));
 
-    const lightTheme = isLight(settings.getColorValue(.foreground) catch return);
+    const lightTheme = isLight(settings.getColorValue(.foreground));
     std.debug.print("[LIGHT] {any}\n", .{lightTheme});
     if (brush) |hbrush| _ = win32.graphics.gdi.DeleteObject(hbrush);
     brush = win32.graphics.gdi.GetStockObject(if (lightTheme) win32.graphics.gdi.LTGRAY_BRUSH else win32.graphics.gdi.BLACK_BRUSH);
@@ -94,7 +94,7 @@ pub fn main() !void {
         return;
     };
 
-    const lightTheme = isLight(try uisettings.getColorValue(.foreground));
+    const lightTheme = isLight(uisettings.getColorValue(.foreground));
     std.debug.print("[LIGHT] {any}\n", .{lightTheme});
     brush = win32.graphics.gdi.GetStockObject(if (lightTheme) win32.graphics.gdi.LTGRAY_BRUSH else win32.graphics.gdi.BLACK_BRUSH);
     defer {
@@ -126,7 +126,7 @@ fn wndProc(
     uMsg: u32,
     wparam: foundation.WPARAM,
     lparam: foundation.LPARAM,
-) callconv(std.os.windows.WINAPI) foundation.LRESULT {
+) callconv(.winapi) foundation.LRESULT {
     switch (uMsg) {
         windows_and_messaging.WM_DESTROY => {
             windows_and_messaging.PostQuitMessage(0);

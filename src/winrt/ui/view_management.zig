@@ -607,7 +607,7 @@ pub const IUISettings6 = extern struct {
 };
 
 pub const UISettings = extern struct {
-    vtable: *const IUISettings.VTable,
+    vtable: *const IInspectable.VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
@@ -746,17 +746,17 @@ pub const UISettings = extern struct {
     }
 
     pub fn getColorValue(self: *@This(), color_type: UIColorType) Color {
-        const this: *IUISettings3 = self.queryInterface(self, IUISettings3) catch unreachable;
+        const this: *IUISettings3 = self.queryInterface(IUISettings3) catch unreachable;
         return this.getColorValue(color_type);
     }
 
     pub fn colorValuesChanged(self: *@This(), handler: *TypedEventHandler(UISettings, IInspectable)) !i64 {
-        const this: *IUISettings3 = self.queryInterface(self, IUISettings3) catch unreachable;
+        const this: *IUISettings3 = self.queryInterface(IUISettings3) catch unreachable;
         return this.colorValuesChanged(handler);
     }
 
     pub fn removeColorValuesChanged(self: *@This(), handle: i64) !void {
-        const this: *IUISettings3 = self.queryInterface(self, IUISettings3) catch unreachable;
+        const this: *IUISettings3 = self.queryInterface(IUISettings3) catch unreachable;
         try this.removeColorValuesChanged(handle);
     }
 

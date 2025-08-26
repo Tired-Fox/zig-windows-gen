@@ -29,8 +29,7 @@ pub const CollectionChange = enum(i32) {
 };
 
 pub fn IMapChangedEventArgs(K: type) type {
-    const KEY = Generic(K);
-
+    const KEY = if (core.isInterface(K)) *K else K;
     return extern struct {
         vtable: *const VTable,
 
@@ -60,11 +59,45 @@ pub fn IMapChangedEventArgs(K: type) type {
     };
 }
 
-/// Represents a method that handles map changed events
+// The type erased interface for a MapChangedEventHandler
+//
+// The first part of the memory layout is the same as `MapChangedEventHandler(K,V)`
+// so it functions as expected when the pointers are cast between the two types
+// when crossing the boundry between zig and windows.
+pub const IMapChangedEventHandler = extern struct {
+    // COM vtable layout
+    vtable: *const VTable,
+
+    pub const VTable = extern struct {
+        QueryInterface: *const fn (
+            self: *anyopaque,
+            riid: *const Guid,
+            ppvObject: *?*anyopaque,
+        ) callconv(.c) HRESULT,
+        AddRef: *const fn (
+            self: *anyopaque,
+        ) callconv(.c) u32,
+        Release: *const fn (
+            self: *anyopaque,
+        ) callconv(.c) u32,
+
+        // Invoke method for the delegate
+        Invoke: *const fn (
+            self: *IMapChangedEventHandler,
+            sender: *anyopaque,
+            args: *anyopaque,
+        ) callconv(.c) HRESULT,
+    };
+};
+
+/// Represents a method that handles general events
 ///
 /// This method handles delegating the invoked callback for a
-/// given event.
+/// given typed event.
 pub fn MapChangedEventHandler(K: type, V: type) type {
+    const KEY = Generic(K);
+    const VALUE = Generic(V);
+
     const signature: []const u8 = Signature.pinterface("179517f3-94ee-41f8-bddc-768a895544f3", &.{ Signature.get(K), Signature.get(V) });
     const iid = Signature.guid(signature);
 
@@ -73,19 +106,19 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
         const IID = iid;
         const GUID = Signature.guid_string(iid);
 
-        pub const VTABLE = VTable{
+        pub const VTABLE = IMapChangedEventHandler.VTable{
             .QueryInterface = queryInterface,
             .AddRef = addRef,
             .Release = release,
             .Invoke = invoke,
         };
 
-        vtable: *const VTable,
+        vtable: *const IMapChangedEventHandler.VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) void,
+        cb: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -93,7 +126,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -128,34 +161,16 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             return left;
         }
 
-        // Invoke(sender, args)
+        // Invoke(sender, args) - Convert sender to `I` and pass it to the stored callback
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *@This(), sender: *IObservableMap(K, V), args: *IMapChangedEventArgs(K)) callconv(.c) HRESULT {
-            self.cb(self.context, sender, args);
+        fn invoke(self: *IMapChangedEventHandler, sender: *anyopaque, args: *anyopaque) callconv(.c) HRESULT {
+            const this: *@This() = @ptrCast(@alignCast(self));
+            // TODO: Allow user to store a pointer to some state in this delegate so it can be
+            //       passed to the callback
+            this.cb(this.context, @ptrCast(@alignCast(sender)), @ptrCast(@alignCast(args)));
             return S_OK;
         }
-
-        pub const VTable = extern struct {
-            QueryInterface: *const fn (
-                self: *anyopaque,
-                riid: *const Guid,
-                ppvObject: *?*anyopaque,
-            ) callconv(.c) HRESULT,
-            AddRef: *const fn (
-                self: *anyopaque,
-            ) callconv(.c) u32,
-            Release: *const fn (
-                self: *anyopaque,
-            ) callconv(.c) u32,
-
-            // Invoke method for the delegate
-            Invoke: *const fn (
-                self: *MapChangedEventHandler(K, V),
-                sender: *IObservableMap(K, V),
-                args: *IMapChangedEventArgs(K),
-            ) callconv(.c) HRESULT,
-        };
     };
 }
 
@@ -600,8 +615,8 @@ pub fn IMap(K: type, V: type) type {
 }
 
 pub fn IMapView(K: type, V: type) type {
-    const KEY = Generic(K);
-    const VALUE = Generic(V);
+    const KEY = if (core.isInterface(K)) *K else K;
+    const VALUE = if (core.isInterface(V)) *V else V;
 
     return extern struct {
         vtable: *const VTable,
@@ -760,7 +775,8 @@ pub fn IObservableMap(K: type, V: type) type {
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            MapChanged: *const fn(*anyopaque, *MapChangedEventHandler(K, V), *i64) callconv(.c) HRESULT,
+            // TODO: Update params to be the correct type
+            MapChanged: *const fn(*anyopaque, *IMapChangedEventHandler, *i64) callconv(.c) HRESULT,
             RemoveMapChanged: *const fn(*anyopaque, i64) callconv(.c) HRESULT,
         });
     };

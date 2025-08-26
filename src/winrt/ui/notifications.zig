@@ -1290,7 +1290,7 @@ pub const IClosable = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        Close: *const fn (*anyopaque) callconv(.c) HRESULT,
+        Close: *const fn(*anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -1350,7 +1350,7 @@ pub const IDeferral = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: Update params to be the correct type
-        Complete: *const fn (*anyopaque) callconv(.c) HRESULT,
+        Complete: *const fn(*anyopaque) callconv(.c) HRESULT,
     });
 };
 
@@ -1416,7 +1416,7 @@ pub const IDeferralFactory = extern struct {
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
 
     pub const VTable = Implements(IInspectable.VTable, struct {
-        Create: *const fn (*anyopaque, *DeferralCompletedHandler, **Deferral) callconv(.c) HRESULT,
+        Create: *const fn(*anyopaque, *DeferralCompletedHandler, **Deferral) callconv(.c) HRESULT,
     });
 };
 
@@ -1570,7 +1570,10 @@ pub const Deferral = extern struct {
     }
 
     pub fn create(handler: *DeferralCompletedHandler) !Deferral {
-        const factory: *IDeferralFactory = @This().Factory.call(IDeferralFactory, RUNTIME_NAME);
+        const factory: *IDeferralFactory = @This().Factory.call(
+            IDeferralFactory,
+            RUNTIME_NAME
+        );
         return try factory.create(handler);
     }
 
@@ -2571,11 +2574,7 @@ pub const IToastNotifier3 = extern struct {
 
     pub const VTable = Implements(IInspectable.VTable, struct {
         // TODO: update the params to be the correct type
-        ScheduledToastNotificationShowing: *const fn (
-            *anyopaque,
-            *TypedEventHandler(ToastNotification, ScheduledToastNotificationShowingEventArgs),
-            *i64,
-        ) callconv(.c) HRESULT,
+        ScheduledToastNotificationShowing: *const fn (*anyopaque, *TypedEventHandler(ToastNotifier, ScheduledToastNotificationShowingEventArgs), *i64) callconv(.c) HRESULT,
         RemoveScheduledToastNotificationShowing: *const fn (*anyopaque, i64) callconv(.c) HRESULT,
     });
 };
@@ -2755,7 +2754,7 @@ pub const ToastNotificationManager = extern struct {
 };
 
 pub const ToastNotification = extern struct {
-    vtable: *IToastNotification.VTable,
+    vtable: *IInspectable.VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
@@ -2821,33 +2820,33 @@ pub const ToastNotification = extern struct {
 
     // ToastDismissedEventArgs
     pub fn onDismissed(self: *@This(), handler: *TypedEventHandler(ToastNotification, ToastDismissedEventArgs)) !i64 {
-        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        const this: *IToastNotification = @ptrCast(self);
         return this.onDismissed(handler);
     }
 
     pub fn removeOnDismissed(self: *@This(), handle: i64) void {
-        const this: *IToastNotification = @ptrCast(@alignCast(self));
-        return this.removeOnDismissed(handle);
+        const this: *IToastNotification = @ptrCast(self);
+        this.removeOnDismissed(handle);
     }
 
     pub fn onActivated(self: *@This(), handler: *TypedEventHandler(ToastNotification, IInspectable)) !i64 {
-        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        const this: *IToastNotification = @ptrCast(self);
         return this.onActivated(handler);
     }
 
     pub fn removeOnActivated(self: *@This(), handle: i64) void {
-        const this: *IToastNotification = @ptrCast(@alignCast(self));
-        return this.removeOnActivated(handle);
+        const this: *IToastNotification = @ptrCast(self);
+        this.removeOnActivated(handle);
     }
 
     pub fn onFailed(self: *@This(), handler: *TypedEventHandler(ToastNotification, ToastFailedEventArgs)) !i64 {
-        const this: *IToastNotification = @ptrCast(@alignCast(self));
+        const this: *IToastNotification = @ptrCast(self);
         return this.onFailed(handler);
     }
 
     pub fn removeOnFailed(self: *@This(), handle: i64) void {
-        const this: *IToastNotification = @ptrCast(@alignCast(self));
-        return this.removeOnFailed(handle);
+        const this: *IToastNotification = @ptrCast(self);
+        this.removeOnFailed(handle);
     }
 
     pub fn content(self: *@This()) *XmlDocument {

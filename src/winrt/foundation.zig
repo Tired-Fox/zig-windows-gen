@@ -54,7 +54,18 @@ pub const TimeSpan = extern struct {
     pub const SIGNATURE: []const u8 = "struct(Windows.Foundation.TimeSpan;i8)";
 };
 
-// Represents a method that handles general events
+// The type erased interface for a TypedEventHandler
+//
+// The first part of the memory layout is the same as `TypedEventHandler(I, R)`
+// so it functions as expected when the pointers are cast between the two types
+// when crossing the boundry between zig and windows.
+// pub const ITypedEventHandler = extern struct {
+//     // COM vtable layout
+//     vtable: *const VTable,
+//
+// };
+
+/// Represents a method that handles general events
 ///
 /// This method handles delegating the invoked callback for a
 /// given typed event.
@@ -79,10 +90,10 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
 
         vtable: *const VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: TSender.IN, args: TArgs.IN) callconv(.c) void,
+        cb: *const fn (context: ?*anyopaque, sender: TSender, args: TArgs) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: TSender.IN, args: TArgs.IN) callconv(.c) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: TSender, args: TArgs) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -90,7 +101,7 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: TSender.IN, args: TArgs.IN) callconv(.c) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: TSender, args: TArgs) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -128,7 +139,7 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
         // Invoke(sender, args)
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *@This(), sender: TSender.IN, args: TArgs.IN) callconv(.c) HRESULT {
+        fn invoke(self: *@This(), sender: TSender, args: TArgs) callconv(.c) HRESULT {
             self.cb(self.context, sender, args);
             return S_OK;
         }
@@ -149,8 +160,8 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
             // Invoke method for the delegate
             Invoke: *const fn (
                 self: *TypedEventHandler(T0, T1),
-                sender: TSender.IN,
-                args: TArgs.IN,
+                sender: TSender,
+                args: TArgs,
             ) callconv(.c) HRESULT,
         };
     };
