@@ -6,6 +6,7 @@ const winrt = @import("../root.zig");
 const Guid = win32.zig.Guid;
 const HRESULT = win32.foundation.HRESULT;
 const Signature = core.Signature;
+const wiredGuidEql = core.wiredGuidEql;
 const Generic = core.Generic;
 const isInterface = core.isInterface;
 
@@ -17,30 +18,12 @@ const Implements = core.Implements;
 const IUnknown = winrt.IUnknown;
 const IInspectable = winrt.IInspectable;
 const IID_IAgileObject = win32.system.com.IID_IAgileObject;
+const IID_IMarshal = win32.system.com.IID_IMarshal;
 const S_OK = winrt.S_OK;
 const E_NOINTERFACE = winrt.E_NOINTERFACE;
 const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
 
 pub const collections = @import("foundation/collections.zig");
-
-/// GUID values must be wire order when matching with GUID passed in from windows
-///
-/// This means the first 4 + 2 + 2 bytes are big endian and the rest are little endian.
-/// + First 4 are reversed for the first value
-/// + Next 2 bytes are reversed for the second value
-/// + Next 2 bytes are reversed for the third value
-/// + Remaining 8 bytes are kept as is for the fourth value
-pub fn wiredGuid(iid: *const Guid) Guid {
-    const bytes = iid.Bytes;
-    return .{
-        .Bytes = [16]u8{
-            bytes[3],  bytes[2],  bytes[1],  bytes[0],
-            bytes[5],  bytes[4],  bytes[7],  bytes[6],
-            bytes[8],  bytes[9],  bytes[10], bytes[11],
-            bytes[12], bytes[13], bytes[14], bytes[15],
-        },
-    };
-}
 
 pub const DateTime = extern struct {
     UniversalTime: i64,
@@ -113,9 +96,9 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
         fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
             const me: *@This() = @ptrCast(@alignCast(self));
             // TODO: Handle IMarshal
-            if (std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IID).Bytes) or
-                std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IUnknown.IID).Bytes) or
-                std.mem.eql(u8, &riid.Bytes, &wiredGuid(IID_IAgileObject).Bytes))
+            if (wiredGuidEql(riid, &IID) or
+                wiredGuidEql(riid, &IUnknown.IID) or
+                wiredGuidEql(riid, IID_IAgileObject))
             {
                 out.* = @as(?*anyopaque, @ptrCast(me));
                 _ = addRef(self);

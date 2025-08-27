@@ -18,7 +18,7 @@ const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
 const E_NOINTERFACE = winrt.E_NOINTERFACE;
 const TrustLevel = winrt.TrustLevel;
 const WindowsGetString = winrt.WindowsGetString;
-const wiredGuid = winrt.foundation.wiredGuid;
+const wiredGuidEql = core.wiredGuidEql;
 const S_OK = winrt.S_OK;
 
 pub const CollectionChange = enum(i32) {
@@ -138,9 +138,9 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
         fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
             const me: *@This() = @ptrCast(@alignCast(self));
             // TODO: Handle IMarshal
-            if (std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IID).Bytes) or
-                std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IUnknown.IID).Bytes) or
-                std.mem.eql(u8, &riid.Bytes, &wiredGuid(IID_IAgileObject).Bytes))
+            if (wiredGuidEql(riid, &IID) or
+                wiredGuidEql(riid, &IUnknown.IID) or
+                wiredGuidEql(riid, IID_IAgileObject))
             {
                 out.* = @as(?*anyopaque, @ptrCast(me));
                 _ = addRef(self);

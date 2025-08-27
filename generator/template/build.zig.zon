@@ -1,0 +1,19 @@
+.{
+    .name = .windows,
+    .version = "0.0.0",
+    .fingerprint = 0x97601f83d4fbbcd5, // Changing this has security and trust implications.
+    .minimum_zig_version = "0.15.1",
+    .dependencies = .{
+        .zigwin32 = .{
+            .url = "git+https://github.com/marlersoft/zigwin32#9d399c0895de4746c1fcab366841e2ab031b0429",
+            .hash = "zigwin32-25.0.28-preview-AAAAANd_5APbcon3QqoYfLKnJ13fiBGJSGq9YrVZsfI-",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        // "LICENSE",
+        // "README.md",
+    },
+}
