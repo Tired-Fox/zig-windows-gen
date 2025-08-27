@@ -1,20 +1,17 @@
 const std = @import("std");
 
-const NAME: []const u8 = "winrt";
+const ModuleMap = std.meta.Tuple(&.{ []const u8, *std.Build.Module });
 
-const ModuleMap = std.meta.Tuple(&[_]type{ []const u8, *std.Build.Module });
 const Example = struct {
     name: []const u8,
     path: []const u8,
 };
 
 const examples = [_]Example {
-    .{ .name = "reactive_theme", .path = "examples/reactive_theme.zig",  },
-    .{ .name = "notification", .path = "examples/notification.zig",  },
-    .{ .name = "notif_builder", .path = "examples/notif_builder.zig",  },
     .{ .name = "uisettings", .path = "examples/uisettings.zig",  },
-    .{ .name = "guid", .path = "examples/guid.zig",  },
 };
+
+pub const MODULE_NAME = "windows";
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
@@ -22,7 +19,7 @@ pub fn build(b: *std.Build) void {
 
     const zigwin32 = b.dependency("zigwin32", .{});
 
-    const module = b.addModule(NAME, .{
+    const module = b.addModule(MODULE_NAME, .{
         .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
@@ -30,18 +27,9 @@ pub fn build(b: *std.Build) void {
 
     module.addImport("win32", zigwin32.module("win32"));
 
-    const lib_unit_tests = b.addTest(.{
-        .root_module = module,
-    });
-    const run_lib_unit_tests = b.addRunArtifact(lib_unit_tests);
-
-    const test_step = b.step("test", "Run unit tests");
-    test_step.dependOn(&run_lib_unit_tests.step);
-
     inline for (examples) |example| {
         addExample(b, target, optimize, example, &[_]ModuleMap{
-            .{ NAME, module },
-            .{ "win32", zigwin32.module("win32") }
+            .{ MODULE_NAME, module },
         });
     }
 }
@@ -62,18 +50,16 @@ pub fn addExample(
         })
     });
 
-    exe.linkLibC();
-
     for (modules) |module| {
         exe.root_module.addImport(module[0], module[1]);
     }
 
-    const ecmd = b.addRunArtifact(exe);
-    ecmd.step.dependOn(b.getInstallStep());
+    const ecra = b.addRunArtifact(exe);
+    ecra.step.dependOn(b.getInstallStep());
     if (b.args) |args| {
-        ecmd.addArgs(args);
+        ecra.addArgs(args);
     }
 
     const estep = b.step("example-" ++ example.name, "Run example-" ++ example.name);
-    estep.dependOn(&ecmd.step);
+    estep.dependOn(&ecra.step);
 }

@@ -1,7 +1,7 @@
-// This file currently fetches the latest metadata json files from Tired-Fox/winrt-json releases
-
 const std = @import("std");
 const generator = @import("generator");
+const Json = generator.Json;
+const metadata = generator.metadata;
 
 const Tag = struct {
     name: []const u8,
@@ -50,7 +50,7 @@ const Config = struct {
             path,
             std.math.maxInt(usize),
             null,
-            1,
+            .@"1",
             0
         ) catch |err| switch (err) {
             error.FileNotFound => return .{ },
@@ -68,10 +68,14 @@ const Config = struct {
         });
     }
 
-    pub fn write(self: *@This(), path: []const u8) !void {
+    pub fn write(self: @This(), path: []const u8) !void {
         var file = try std.fs.cwd().createFile(path, .{ .truncate = true });
         defer file.close();
-        try std.zon.stringify.serialize(self, .{}, file.writer());
+
+        var buffer: [8 * 1024]u8 = undefined;
+        var file_writer = file.writer(&buffer);
+        try std.zon.stringify.serialize(self, .{}, &file_writer.interface);
+        try file_writer.interface.flush();
     }
 
     pub fn deinit(self: @This(), allocator: std.mem.Allocator) void {
@@ -79,72 +83,42 @@ const Config = struct {
     }
 };
 
-fn Json(T: type) type {
-    return struct {
-        arena: *std.heap.ArenaAllocator,
-        data: []const u8,
-        value: T,
+fn fetch(allocator: std.mem.Allocator, client: *std.http.Client, url: []const u8, R: type) !Json(R) {
+    var response_body: std.Io.Writer.Allocating = .init(allocator);
+    defer response_body.deinit();
 
-        pub fn init(slice: []const u8, value: std.json.Parsed(T)) @This() {
-            return .{
-                .arena = value.arena,
-                .value = value.value,
-                .data = slice,
-            };
-        }
-
-        pub fn deinit(self: @This()) void {
-            const allocator = self.arena.child_allocator;
-            self.arena.deinit();
-            allocator.free(self.data);
-            allocator.destroy(self.arena);
-        }
-    };
-}
-
-fn fetch(allocator: std.mem.Allocator, client: *std.http.Client, uri: []const u8, R: type) !Json(R) {
-    var header_buf: [16 * 1024]u8 = undefined;
-
-    const url = try std.Uri.parse(uri);
-
-    var req = try client.open(.GET, url, .{
-        .server_header_buffer = &header_buf,
-        .headers = .{
-            .content_type = .{
-                .override = "application/json"
-            }
-        }
+    const res = try client.fetch(.{
+        .method = .GET,
+        .location = .{ .url = url },
+        .response_writer = &response_body.writer,
     });
-    defer req.deinit();
 
-    try req.send();
-    try req.wait();
+    if (res.status != .ok) {
+        return error.FetchFailed;
+    }
 
-    const result_body = try req.reader().readAllAlloc(allocator, std.math.maxInt(usize));
+    const body = try response_body.toOwnedSlice();
+    errdefer allocator.free(body);
 
-    // This is where its failing:
-    const result = try std.json.parseFromSlice(R, allocator, result_body, .{ .ignore_unknown_fields = true });
-    return Json(R).init(result_body, result);
+    const result = try std.json.parseFromSlice(R, allocator, body, .{ .ignore_unknown_fields = true });
+    return Json(R).init(body, result);
 }
 
-fn download(client: *std.http.Client, uri: []const u8, out: []const u8) !void {
-    var header_buf: [8 * 1024]u8 = undefined;
-
-    const url = try std.Uri.parse(uri);
-    var req = try client.open(.GET, url, .{ .server_header_buffer = &header_buf });
-    defer req.deinit();
-
-    try req.send();
-    try req.wait();
-
+fn download(client: *std.http.Client, url: []const u8, out: []const u8) !void {
     var file = try std.fs.cwd().createFile(out, .{ .truncate = true });
     defer file.close();
 
-    var buf: [2048]u8 = undefined;
-    while (true) {
-        const n = try req.read(&buf);
-        if (n == 0) break;
-        try file.writeAll(buf[0..n]);
+    var buffer: [1024]u8 = undefined;
+    var file_writer = file.writer(&buffer);
+
+    const res = try client.fetch(.{
+        .method = .GET,
+        .location = .{ .url = url },
+        .response_writer = &file_writer.interface,
+    });
+
+    if (res.status != .ok) {
+        return error.DownloadFailed;
     }
 }
 
@@ -166,8 +140,10 @@ fn unzip(source: []const u8, options: UnzipOptions) !void {
     const zip_file = try std.fs.cwd().openFile(source, .{});
     defer zip_file.close();
 
-    const zip_stream = zip_file.seekableStream();
-    try std.zip.extract(outdir, zip_stream, .{});
+    //           v This is needed otherwise there will be an integer overflow
+    var buffer: [std.compress.flate.max_window_len]u8 = undefined;
+    var zf_reader = zip_file.reader(&buffer);
+    try std.zip.extract(outdir, &zf_reader, .{});
 }
 
 fn downloadMetadata(allocator: std.mem.Allocator) !void {
@@ -181,7 +157,7 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
     defer tags.deinit();
 
     if (tags.value.len == 0) {
-        std.debug.print("\x1b[31m🗙\x1b[39m No winrt-json release found", .{});
+        print("\x1b[31m🗙\x1b[39m No winrt-json release found", .{});
         return error.NoTags;
     }
 
@@ -206,30 +182,51 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
         const name = asset.name;
         if (name.len >= 8 and std.mem.eql(u8, name[0..8], "Metadata")) {
             if (std.mem.eql(u8, latest.name, config.current) and std.mem.eql(u8, asset.digest, config.digest)) {
-                std.debug.print("🎉 Metadata is up to date\n", .{});
+                print("🎉 Metadata is up to date\n", .{});
                 return;
             }
-            std.debug.print("[Release] {s}\n", .{ release.value.name });
+            print("[Release] {s}\n", .{ release.value.name });
 
             try download(&client, asset.browser_download_url, "Metadata.zip");
             config.current = latest.name;
             config.digest = asset.digest;
             try config.write("meta.zig.zon");
-            std.debug.print("  \x1b[36m⤓\x1b[39m Downloaded winrt-zig {s} to Metadata.zip\n", .{asset.name});
+            print("  \x1b[36m⤓\x1b[39m Downloaded winrt-zig {s} to Metadata.zip\n", .{asset.name});
 
             try unzip("Metadata.zip", .{ .out = "metadata", .clean = true });
-            std.debug.print("  \x1b[33m↦\x1b[39m Unziped Metadata.zip to metadata/\n", .{});
+            print("  \x1b[33m↦\x1b[39m Unziped Metadata.zip to metadata/\n", .{});
 
             try std.fs.cwd().deleteTree("Metadata.zip");
-            std.debug.print("  \x1b[31m⌦\x1b[39m Deleted Metadata.zip\n", .{});
+            print("  \x1b[31m⌫\x1b[39m Deleted Metadata.zip\n", .{});
 
-            std.debug.print("🎉 Metadata updated\n", .{});
+            print("🎉 Metadata updated\n", .{});
 
             break;
         }
     } else {
-        std.debug.print("\x1b[31m🗙\x1b[39m No release archive found for {s}\n", .{latest.name});
+        print("\x1b[31m🗙\x1b[39m No release archive found for {s}\n", .{latest.name});
         return error.NoArchive;
+    }
+}
+
+fn print(comptime fmt: []const u8, args: anytype) void {
+    if (@import("builtin").os.tag == .windows) {
+        const out = std.fmt.allocPrint(std.heap.smp_allocator, fmt, args) catch unreachable;
+        defer std.heap.smp_allocator.free(out);
+
+        const utf16Out = std.unicode.utf8ToUtf16LeAlloc(std.heap.smp_allocator, out) catch unreachable;
+        defer std.heap.smp_allocator.free(utf16Out);
+
+        const h = std.os.windows.GetStdHandle(std.os.windows.STD_OUTPUT_HANDLE) catch unreachable;
+
+        var written: u32 = 0;
+        _ = std.os.windows.kernel32.WriteConsoleW(h, utf16Out.ptr, @intCast(utf16Out.len), &written, null);
+    } else {
+        var buffer: [1024]u8 = undefined;
+        var stdout = std.fs.File.stdout();
+        var stdout_writer = stdout.writer(&buffer);
+        stdout_writer.interface.print(fmt, args) catch unreachable;
+        stdout_writer.interface.flush() catch unreachable;
     }
 }
 
@@ -239,6 +236,31 @@ pub fn main() !void {
     const allocator = gpa.allocator();
 
     try downloadMetadata(allocator);
+
+    const metaDir = try std.fs.cwd().openDir("metadata", .{});
+    const namespace = try metadata.parse(allocator, &metaDir, "Windows.UI.ViewManagement.json");
+    defer namespace.deinit();
+
+    std.debug.print("{s}:\n", .{ namespace.namespace });
+    for (namespace.types) |*ty| {
+        if (std.mem.eql(u8, ty.Name, "IUISettings")) {
+            if (ty.Kind == .Interface) {
+                var buffer: [1024]u8 = undefined;
+                var stdout = std.fs.File.stdout();
+                var stdout_writer = stdout.writer(&buffer);
+
+                var requirements = metadata.Requirements.init(allocator);
+
+                try metadata.interface.serialize(allocator, &requirements, ty, &stdout_writer.interface);
+                stdout_writer.interface.flush() catch unreachable;
+            } else {
+                std.debug.print("{f}\n", .{ ty });
+            }
+            break;
+        }
+    }
+    std.debug.print("  Types: {d}\n", .{ namespace.types.len });
+
     // TODO: Iterate the namespace json files
     //     TODO: Generate file structure that represents namespace
     //     TODO: Iterate typedefs in namespace

@@ -13,7 +13,6 @@ const IMap = winrt.foundation.collections.IMap;
 const IKeyValuePair = winrt.foundation.collections.IKeyValuePair;
 const IVectorView = winrt.foundation.collections.IVectorView;
 const XmlDocument = winrt.data.xml.dom.XmlDocument;
-const wiredGuid = winrt.foundation.wiredGuid;
 
 pub const IInspectable = winrt.IInspectable;
 pub const IUnknown = winrt.IUnknown;
@@ -26,12 +25,13 @@ pub const E_NOINTERFACE = winrt.E_NOINTERFACE;
 pub const Guid = win32.zig.Guid;
 pub const HRESULT = win32.foundation.HRESULT;
 pub const HSTRING = win32.system.win_rt.HSTRING;
-pub const Signature = core.Signature;
 
 pub const FactoryCache = core.FactoryCache;
 pub const FactoryError = core.FactoryError;
 pub const Implements = core.Implements;
 pub const IGenericFactory = core.IGenericFactory;
+pub const Signature = core.Signature;
+const wiredGuidEql = core.wiredGuidEql;
 
 pub const S_OK = winrt.S_OK;
 
@@ -1461,9 +1461,9 @@ pub const DeferralCompletedHandler = extern struct {
     fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
         const me: *@This() = @ptrCast(@alignCast(self));
         // TODO: Handle IMarshal
-        if (std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IID).Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &wiredGuid(&IUnknown.IID).Bytes) or
-            std.mem.eql(u8, &riid.Bytes, &wiredGuid(IID_IAgileObject).Bytes))
+        if (wiredGuidEql(riid, &IID) or
+            wiredGuidEql(riid, &IUnknown.IID) or
+            wiredGuidEql(riid, IID_IAgileObject))
         {
             out.* = @as(?*anyopaque, @ptrCast(me));
             _ = addRef(self);
