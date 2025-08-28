@@ -237,6 +237,14 @@ pub fn main() !void {
 
     try downloadMetadata(allocator);
 
+
+    // TODO: Iterate all namespaces and collect types and their kind within namespace scopes
+    var definitions = metadata.Definitions.init(allocator);
+    defer definitions.deinit();
+    // for (namespace.types) |*ty| {
+    //
+    // }
+
     const metaDir = try std.fs.cwd().openDir("metadata", .{});
     const namespace = try metadata.parse(allocator, &metaDir, "Windows.UI.ViewManagement.json");
     defer namespace.deinit();
@@ -251,7 +259,7 @@ pub fn main() !void {
 
                 var requirements = metadata.Requirements.init(allocator);
 
-                try metadata.interface.serialize(allocator, &requirements, ty, &stdout_writer.interface);
+                try metadata.interface.serialize(allocator, &requirements, &definitions, ty, &stdout_writer.interface);
                 stdout_writer.interface.flush() catch unreachable;
             } else {
                 std.debug.print("{f}\n", .{ ty });

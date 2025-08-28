@@ -1,4 +1,5 @@
 const std = @import("std");
+const ty = @import("./type.zig");
 
 const metadata = @import("../metadata.zig");
 const TypeDef = metadata.TypeDef;
@@ -14,10 +15,9 @@ pub fn replaceAll(allocator: std.mem.Allocator, input_str: []const u8, pattern: 
     return output_buffer;
 }
 
-pub fn serialize(allocator: std.mem.Allocator, requirements: *metadata.Requirements, typedef: *const TypeDef, writer: *std.io.Writer) !void {
+pub fn serialize(allocator: std.mem.Allocator, requirements: *metadata.Requirements, definitions: *const metadata.Definitions, typedef: *const TypeDef, writer: *std.io.Writer) !void {
     // At this piont the kind should have already been determined;
     std.debug.assert(typedef.Kind == .Interface);
-    _ = requirements;
 
     try writer.print("pub const {s} = extern struct {{\n", .{ typedef.Name });
     try writer.writeAll("    vtable: *const VTable,\n");
@@ -33,14 +33,15 @@ pub fn serialize(allocator: std.mem.Allocator, requirements: *metadata.Requireme
             try writer.print("    pub fn {s}(self: *@This()", .{ mname });
             if (method.Parameters) |parameters| {
                 for (parameters) |param| {
-                    // TODO: Convert type to a param type, includes logic for [IN] and [OUT] attributes
-                    try writer.print(", {s}: {s}", .{ param.Name, param.Type.Name });
+                    if (try ty.winToZig(requirements, definitions, &param.Type)) |t| {
+                        try writer.print(", {s}: {f}", .{ param.Name, t });
+                    }
                 }
             }
 
-            const hasReturn = !std.mem.eql(u8, method.ReturnType.Name, "Void");
-            if (hasReturn) {
-                try writer.print(", _r: *{s}", .{ method.ReturnType.Name });
+            const return_type = try ty.winToZig(requirements, definitions, &method.ReturnType);
+            if (return_type) |rt| {
+                try writer.print(", _r: *{f}", .{ rt });
             }
 
             try writer.writeAll(") HRESULT {\n");
@@ -50,7 +51,7 @@ pub fn serialize(allocator: std.mem.Allocator, requirements: *metadata.Requireme
                     try writer.print(", {s}", .{ param.Name });
                 }
             }
-            if (hasReturn) {
+            if (return_type != null) {
                     try writer.writeAll(", _r");
             }
             try writer.writeAll(");\n");
@@ -88,13 +89,14 @@ pub fn serialize(allocator: std.mem.Allocator, requirements: *metadata.Requireme
             try writer.print("        {s}: *const fn(self: *anyopaque", .{ method.Name });
             if (method.Parameters) |parameters| {
                 for (parameters) |param| {
-                    // TODO: Convert type to a param type, includes logic for [IN] and [OUT] attributes
-                    try writer.print(", {s}: {s}", .{ param.Name, param.Type.Name });
+                    if (try ty.winToZig(requirements, definitions, &param.Type)) |t| {
+                        try writer.print(", {s}: {f}", .{ param.Name, t });
+                    }
                 }
             }
 
-            if (!std.mem.eql(u8, method.ReturnType.Name, "Void")) {
-                try writer.print(", _r: *{s}", .{ method.ReturnType.Name });
+            if (try ty.winToZig(requirements, definitions, &method.ReturnType)) |rt| {
+                try writer.print(", _r: *{f}", .{ rt });
             }
             try writer.writeAll(") callconv(.winapi) HRESULT\n");
         }

@@ -137,16 +137,26 @@ pub const Field = struct {
     }
 };
 
-pub const Type = enum {
+pub const Kind = enum {
     Native,
-    Array,
     Generic,
-    Reference,
-    FunctionPointer,
+    Function,
+    Delegate,
+    Class,
+    Struct,
+    Interface,
+    Enum
+};
+
+pub const Type = enum {
+    Array,
+    Pointer,
+    Ref,
 };
 
 pub const TypeReference = struct {
-    Kind: ?Type = null,
+    Kind: ?Kind = null,
+    Type: ?Type = null,
     Namespace: ?[]const u8 = null,
     Name: []const u8,
     GenericArguments: ?[]const TypeReference = null,
@@ -216,6 +226,44 @@ pub const Requirements = struct {
     pub fn add(self: *@This(), name: []const u8, namespace: []const u8) !void {
         if (self.items.contains(name)) return;
         _ = try self.items.put(self.allocator, name, namespace);
+    }
+};
+
+pub const Definitions = struct {
+    allocator: std.mem.Allocator,
+    items: std.StringHashMapUnmanaged(std.StringHashMapUnmanaged(Kind)),
+
+    pub fn init(allocator: std.mem.Allocator) @This() {
+        return .{
+            .allocator = allocator,
+            .items = .empty
+        };
+    }
+
+    pub fn deinit(self: *@This()) void {
+        var it = self.items.valueIterator();
+        while (it.next()) |ns| {
+            ns.deinit(self.allocator);
+        }
+        self.items.deinit(self.allocator);
+    }
+
+    pub fn get(self: *const @This(), namespace: []const u8, name: []const u8) ?Kind {
+        if (self.items.getPtr(namespace)) |ns| {
+            return ns.get(name);
+        }
+        return null;
+    }
+
+    pub fn add(self: *@This(), namespace: []const u8, name: []const u8, kind: Kind) !void {
+        const ns = try self.items.getOrPut(self.allocator, namespace);
+        if (ns.found_existing) {
+            try ns.value_ptr.put(self.allocator, name, kind);
+        } else {
+            var table: std.StringHashMapUnmanaged(Kind) = .empty;
+            try table.put(self.allocator, name, kind);
+            ns.value_ptr.* = table;
+        }
     }
 };
 
