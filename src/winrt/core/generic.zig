@@ -2,10 +2,6 @@
 /// used with T [IN] and *T [OUT]
 ///
 /// based on rules of pass by value and pass by ref/pointer
-pub fn Generic(T: type) type {
-    return if (isInterface(T)) *T else T;
-}
-
-fn isInterface(T: type) bool {
-    return @typeInfo(T) == .@"struct" and @hasField(T, "vtable");
+pub fn generic(T: type) type {
+    return if (@import("../core.zig").passByRef(T)) *T else T;
 }

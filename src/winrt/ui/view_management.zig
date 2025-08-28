@@ -9,7 +9,7 @@ const Guid = win32.zig.Guid;
 const HRESULT = win32.foundation.HRESULT;
 const HSTRING = win32.system.win_rt.HSTRING;
 const Implements = core.Implements;
-const IGenericFactory = core.IGenericFactory;
+const IActivationFactory = core.IActivationFactory;
 const IInspectable = winrt.IInspectable;
 const TrustLevel = win32.system.win_rt.TrustLevel;
 const TypedEventHandler = winrt.foundation.TypedEventHandler;
@@ -73,7 +73,7 @@ pub const IUISettings = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -218,7 +218,7 @@ pub const IUISettings2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -295,7 +295,7 @@ pub const IUISettings3 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -372,7 +372,7 @@ pub const IUISettings4 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -449,7 +449,7 @@ pub const IUISettings5 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -526,7 +526,7 @@ pub const IUISettings6 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -610,9 +610,9 @@ pub const UISettings = extern struct {
     vtable: *const IInspectable.VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {
-        var result: *anyopaque = undefined;
-        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+        var result: ?*anyopaque = undefined;
+        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK or result == null) {
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -653,11 +653,8 @@ pub const UISettings = extern struct {
     }
 
     pub fn init() anyerror!*@This() {
-        const factory: *IGenericFactory = try @This().Factory.call(
-            IGenericFactory,
-            @This().RUNTIME_NAME,
-        );
-        return @ptrCast(@alignCast(try factory.ActivateInstance(IUISettings)));
+        const factory = try @This().IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try factory.ActivateInstance()));
     }
 
     /// Call `release` and discard the returned remaining ref count
@@ -816,5 +813,5 @@ pub const UISettings = extern struct {
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IUISettings.SIGNATURE);
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-    var Factory: FactoryCache = .{};
+    var IActivationFactoryCache: FactoryCache(IActivationFactory,RUNTIME_NAME) = .{};
 };

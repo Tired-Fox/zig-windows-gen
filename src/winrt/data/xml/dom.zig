@@ -10,7 +10,7 @@ const HSTRING = win32.system.win_rt.HSTRING;
 const FactoryCache = core.FactoryCache;
 const FactoryError = core.FactoryError;
 const Implements = core.Implements;
-const IGenericFactory = core.IGenericFactory;
+const IActivationFactory = core.IActivationFactory;
 const IVectorView = winrt.foundation.collections.IVectorView;
 const IIterable = winrt.foundation.collections.IIterable;
 const IIterator = winrt.foundation.collections.IIterator;
@@ -29,7 +29,7 @@ pub const IXmlDocument = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -101,7 +101,7 @@ pub const IXmlDocumentFragment = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -154,7 +154,7 @@ pub const IXmlDocumentIO = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -211,7 +211,7 @@ pub const IXmlDocumentIO2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -267,7 +267,7 @@ pub const IXmlDocumentStatics = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -325,7 +325,7 @@ pub const IXmlDocumentType = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -398,7 +398,7 @@ pub const IXmlNodeSelector = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -475,7 +475,7 @@ pub const IXmlNodeSerializer = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -554,7 +554,7 @@ pub const IXmlNode = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -673,7 +673,7 @@ pub const IXmlNodeList = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -729,7 +729,7 @@ pub const IXmlAttribute = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -788,7 +788,7 @@ pub const IXmlElement = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -857,7 +857,7 @@ pub const XmlNodeList = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -945,7 +945,7 @@ pub const XmlAttribute = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1018,7 +1018,7 @@ pub const XmlElement = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1177,7 +1177,7 @@ pub const IXmlCharacterData = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1296,7 +1296,7 @@ pub const IXmlText = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1362,7 +1362,7 @@ pub const XmlText = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1467,7 +1467,7 @@ pub const XmlDocument = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1508,12 +1508,8 @@ pub const XmlDocument = extern struct {
     }
 
     pub fn init() FactoryError!*@This() {
-        const factory: *IGenericFactory = try @This().Factory.call(
-            IGenericFactory,
-            @This().RUNTIME_NAME,
-        );
-
-        return @ptrCast(@alignCast(try factory.ActivateInstance(IXmlDocument)));
+        const factory = try @This().IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try factory.ActivateInstance()));
     }
 
     /// Call `release` and discard the returned remaining ref count
@@ -1609,5 +1605,5 @@ pub const XmlDocument = extern struct {
     pub const SIGNATURE: []const u8 = std.fmt.comptimePrint("rc({s};{s})", .{ TYPE_NAME, IXmlDocument.SIGNATURE });
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-    var Factory: FactoryCache = .{};
+    var IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
 };

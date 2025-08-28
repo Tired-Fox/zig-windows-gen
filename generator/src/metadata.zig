@@ -4,6 +4,24 @@ const root = @import("./root.zig");
 const Json = root.Json;
 
 pub const interface = @import("metadata/interface.zig");
+pub const class = @import("metadata/class.zig");
+
+pub const Kind = enum {
+    Native,
+    Generic,
+    Function,
+    Delegate,
+    Class,
+    Struct,
+    Interface,
+    Enum
+};
+
+pub const Type = enum {
+    Array,
+    Pointer,
+    Ref,
+};
 
 pub const Interface = struct {
     Name: []const u8,
@@ -33,17 +51,21 @@ pub const FactoryInfo = struct {
     }
 };
 
-pub const TypeKind = enum {
-    Class,
-    Interface,
-    Struct,
-    Enum,
-    Delegate,
-    Type,
+pub const TypeSignature = struct {
+    Kind: Kind, // Class|Interface|struct|Enum|Delegate|Type
+    Namespace: []const u8,
+    Name: []const u8,
+    Methods: ?[]const @This().Method = null,
+
+    pub const Method = struct {
+        Name: []const u8,
+        Parameters: ?[]const Parameter = null,
+        ReturnType: TypeReference,
+    };
 };
 
 pub const TypeDef = struct {
-    Kind: TypeKind, // Class|Interface|struct|Enum|Delegate|Type
+    Kind: Kind, // Class|Interface|struct|Enum|Delegate|Type
     Namespace: []const u8,
     Name: []const u8,
     Guid: ?[]const u8 = null,
@@ -137,23 +159,6 @@ pub const Field = struct {
     }
 };
 
-pub const Kind = enum {
-    Native,
-    Generic,
-    Function,
-    Delegate,
-    Class,
-    Struct,
-    Interface,
-    Enum
-};
-
-pub const Type = enum {
-    Array,
-    Pointer,
-    Ref,
-};
-
 pub const TypeReference = struct {
     Kind: ?Kind = null,
     Type: ?Type = null,
@@ -208,6 +213,31 @@ pub fn parse(allocator: std.mem.Allocator, base: *const std.fs.Dir, path: []cons
     };
 }
 
+pub const Signature = struct {
+    arena: std.heap.ArenaAllocator,
+    data: []const u8,
+    namespace: []const u8,
+    types: []const TypeSignature,
+
+    pub fn deinit(self: @This()) void {
+        self.arena.deinit();
+    }
+};
+
+pub fn parseSignature(allocator: std.mem.Allocator, base: *const std.fs.Dir, path: []const u8) !Signature {
+    var arena = std.heap.ArenaAllocator.init(allocator);
+
+    const data = try base.readFileAlloc(arena.allocator(), path, std.math.maxInt(usize));
+    const types = try std.json.parseFromSliceLeaky([]const TypeSignature, arena.allocator(), data, .{ .ignore_unknown_fields = true });
+
+    return .{
+        .arena = arena,
+        .data = data,
+        .types = types,
+        .namespace = path[0..path.len - 5],
+    };
+}
+
 pub const Requirements = struct {
     allocator: std.mem.Allocator,
     items: std.StringHashMapUnmanaged([]const u8),
@@ -219,51 +249,104 @@ pub const Requirements = struct {
         };
     }
 
-    pub fn deinit(self: @This()) void {
+    pub fn deinit(self: *@This()) void {
         self.items.deinit(self.allocator);
     }
 
-    pub fn add(self: *@This(), name: []const u8, namespace: []const u8) !void {
+    pub fn add(self: *@This(), namespace: []const u8, name: []const u8) !void {
         if (self.items.contains(name)) return;
         _ = try self.items.put(self.allocator, name, namespace);
     }
+
+    pub fn addIInspectable(self: *@This()) !void {
+        try self.add("Windows.Foundation", "IInspectable");
+    }
+
+    pub fn addHSTRING(self: *@This()) !void {
+        try self.add("Windows", "HSTRING");
+    }
+
+    pub fn addCore(self: *@This()) !void {
+        try self.add("Windows", "core");
+    }
+
+    pub fn addObjectDependencies(self: *@This()) !void {
+        try self.add("Windows", "core");
+        try self.add("Windows", "Guid");
+        try self.add("Windows", "HSTRING");
+        try self.add("Windows", "TrustLevel");
+        try self.add("Windows", "HRESULT");
+    }
+};
+
+pub const Definition = struct {
+    kind: Kind,
+    methods: ?[]const TypeSignature.Method,
 };
 
 pub const Definitions = struct {
-    allocator: std.mem.Allocator,
-    items: std.StringHashMapUnmanaged(std.StringHashMapUnmanaged(Kind)),
+    arena: std.heap.ArenaAllocator,
+    items: std.StringHashMapUnmanaged(std.StringHashMapUnmanaged(Definition)),
 
-    pub fn init(allocator: std.mem.Allocator) @This() {
+    pub fn init(a: std.mem.Allocator) @This() {
         return .{
-            .allocator = allocator,
+            .arena = std.heap.ArenaAllocator.init(a),
             .items = .empty
         };
     }
 
     pub fn deinit(self: *@This()) void {
-        var it = self.items.valueIterator();
-        while (it.next()) |ns| {
-            ns.deinit(self.allocator);
-        }
-        self.items.deinit(self.allocator);
+        self.arena.deinit();
     }
 
-    pub fn get(self: *const @This(), namespace: []const u8, name: []const u8) ?Kind {
+    pub fn allocator(self: *@This()) std.mem.Allocator {
+        return self.arena.allocator();
+    }
+
+    pub fn get(self: *const @This(), namespace: []const u8, name: []const u8) ?Definition {
         if (self.items.getPtr(namespace)) |ns| {
             return ns.get(name);
         }
         return null;
     }
 
-    pub fn add(self: *@This(), namespace: []const u8, name: []const u8, kind: Kind) !void {
-        const ns = try self.items.getOrPut(self.allocator, namespace);
+    pub fn getKind(self: *const @This(), namespace: []const u8, name: []const u8) ?Kind {
+        if (self.items.getPtr(namespace)) |ns| {
+            if (ns.get(name)) |d| return d.kind;
+        }
+        return null;
+    }
+
+    pub fn getMethods(self: *const @This(), namespace: []const u8, name: []const u8) ?[]const TypeSignature.Method {
+        if (self.items.getPtr(namespace)) |ns| {
+            if (ns.get(name)) |d| return d.methods;
+        }
+        return null;
+    }
+
+    pub fn add(self: *@This(), namespace: []const u8, name: []const u8, kind: Kind, methods: ?[]const TypeSignature.Method) !void {
+        const allo = self.allocator();
+        const ns = try self.items.getOrPut(allo, namespace);
+
         if (ns.found_existing) {
-            try ns.value_ptr.put(self.allocator, name, kind);
+            try ns.value_ptr.put(allo, name, .{
+                .kind = kind,
+                .methods = methods,
+            });
         } else {
-            var table: std.StringHashMapUnmanaged(Kind) = .empty;
-            try table.put(self.allocator, name, kind);
+            var table: std.StringHashMapUnmanaged(Definition) = .empty;
+
+            try table.put(allo, name, .{
+                .kind = kind,
+                .methods = methods
+            });
+
             ns.value_ptr.* = table;
         }
     }
 };
 
+pub const Context = struct {
+    requirements: Requirements,
+    definitions: *const Definitions,
+};

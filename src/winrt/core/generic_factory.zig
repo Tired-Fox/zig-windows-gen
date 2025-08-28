@@ -15,13 +15,13 @@ pub const FactoryCache = @import("factory_cache.zig").FactoryCache;
 
 pub const S_OK = winrt.S_OK;
 
-pub const IGenericFactory = extern struct {
+pub const IActivationFactory = extern struct {
     vtable: *const VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -61,17 +61,17 @@ pub const IGenericFactory = extern struct {
         return trust;
     }
 
-    pub fn ActivateInstance(self: *IGenericFactory, R: type) error { NoInterface }!*R {
-        var inspectable: *IInspectable = undefined;
-        const code = @as(u32, @bitCast(self.vtable.ActivateInstance(self, @ptrCast(@alignCast(&inspectable)))));
-        if (code < S_OK) return error.NoInterface;
-
-        return try inspectable.queryInterface(R);
+    pub fn ActivateInstance(self: *IActivationFactory) error{ E_NOINTERFACE }!*anyopaque {
+        var instance: *anyopaque = undefined;
+        if (self.vtable.ActivateInstance(self, @ptrCast(@alignCast(&instance))) != 0) {
+            return error.E_NOINTERFACE;
+        }
+        return instance;
     }
 
     pub const IID: Guid = Guid.initString("00000035-0000-0000-c000-000000000046");
     pub const VTable = Implements(IInspectable.VTable, struct {
-        ActivateInstance: *const fn (*IGenericFactory, **anyopaque) callconv(.c) HRESULT
+        ActivateInstance: *const fn (*IActivationFactory, **IInspectable) callconv(.c) HRESULT
     });
 };
 

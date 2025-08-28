@@ -13,7 +13,7 @@ const Implements = core.Implements;
 const IID_IAgileObject = win32.system.com.IID_IAgileObject;
 
 const Signature = core.Signature;
-const Generic = core.Generic;
+const generic = core.generic;
 const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
 const E_NOINTERFACE = winrt.E_NOINTERFACE;
 const TrustLevel = winrt.TrustLevel;
@@ -95,9 +95,6 @@ pub const IMapChangedEventHandler = extern struct {
 /// This method handles delegating the invoked callback for a
 /// given typed event.
 pub fn MapChangedEventHandler(K: type, V: type) type {
-    const KEY = Generic(K);
-    const VALUE = Generic(V);
-
     const signature: []const u8 = Signature.pinterface("179517f3-94ee-41f8-bddc-768a895544f3", &.{ Signature.get(K), Signature.get(V) });
     const iid = Signature.guid(signature);
 
@@ -115,10 +112,10 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
 
         vtable: *const IMapChangedEventHandler.VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void,
+        cb: *const fn (context: ?*anyopaque, sender: generic(K), args: generic(V)) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: generic(K), args: generic(V)) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -126,7 +123,7 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: KEY, args: VALUE) callconv(.c) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: generic(K), args: generic(V)) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -181,7 +178,7 @@ pub fn IIterable(I: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -251,7 +248,7 @@ pub fn IIterator(I: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -343,7 +340,7 @@ pub fn IVectorView(I: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -439,7 +436,7 @@ pub fn IKeyValuePair(K: type, V: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -515,7 +512,7 @@ pub fn IMap(K: type, V: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -624,7 +621,7 @@ pub fn IMapView(K: type, V: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -715,7 +712,7 @@ pub fn IObservableMap(K: type, V: type) type {
         pub fn queryInterface(self: *@This(), T: type) !*T {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }
@@ -788,7 +785,7 @@ pub const IPropertySet = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -844,7 +841,7 @@ pub const ValueSet = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }

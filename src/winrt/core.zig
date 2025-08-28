@@ -1,11 +1,11 @@
 const std = @import("std");
 const builtin = @import("builtin");
 
-pub const IGenericFactory = @import("core/generic_factory.zig").IGenericFactory;
+pub const IActivationFactory = @import("core/generic_factory.zig").IActivationFactory;
 pub const FactoryCache = @import("core/factory_cache.zig").FactoryCache;
 pub const FactoryError = @import("core/factory_cache.zig").FactoryError;
 pub const Signature = @import("core/signature.zig").Signature;
-pub const Generic = @import("core/generic.zig").Generic;
+pub const generic = @import("core/generic.zig").generic;
 
 const Guid = @import("win32").zig.Guid;
 

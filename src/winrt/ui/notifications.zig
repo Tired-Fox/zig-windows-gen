@@ -29,7 +29,7 @@ pub const HSTRING = win32.system.win_rt.HSTRING;
 pub const FactoryCache = core.FactoryCache;
 pub const FactoryError = core.FactoryError;
 pub const Implements = core.Implements;
-pub const IGenericFactory = core.IGenericFactory;
+pub const IActivationFactory = core.IActivationFactory;
 pub const Signature = core.Signature;
 const wiredGuidEql = core.wiredGuidEql;
 
@@ -82,7 +82,7 @@ pub const IToastDismissedEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -143,7 +143,7 @@ pub const IToastActivatedEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -207,7 +207,7 @@ pub const IToastActivatedEventArgs2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -271,7 +271,7 @@ pub const IScheduledToastNotificationShowingEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -351,7 +351,7 @@ pub const ToastActivatedEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -415,7 +415,7 @@ pub const IToastFailedEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -476,7 +476,7 @@ pub const ToastDismissedEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -534,7 +534,7 @@ pub const ToastFailedEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -592,7 +592,7 @@ pub const ScheduledToastNotificationShowingEventArgs = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -665,7 +665,7 @@ pub const IScheduledToastNotification = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -761,7 +761,7 @@ pub const IScheduledToastNotification2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -856,7 +856,7 @@ pub const IScheduledToastNotification3 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -937,7 +937,7 @@ pub const IScheduledToastNotification4 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1004,7 +1004,7 @@ pub const IScheduledToastNotificationFactory = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1093,7 +1093,7 @@ pub const ScheduledToastNotification = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1237,7 +1237,7 @@ pub const IClosable = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1300,7 +1300,7 @@ pub const IDeferral = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1360,7 +1360,7 @@ pub const IDeferralFactory = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1519,7 +1519,7 @@ pub const Deferral = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1570,10 +1570,7 @@ pub const Deferral = extern struct {
     }
 
     pub fn create(handler: *DeferralCompletedHandler) !Deferral {
-        const factory: *IDeferralFactory = @This().Factory.call(
-            IDeferralFactory,
-            RUNTIME_NAME
-        );
+        const factory = @This().IDeferralFactoryCache.get();
         return try factory.create(handler);
     }
 
@@ -1584,7 +1581,7 @@ pub const Deferral = extern struct {
     pub const IID: Guid = IDeferral.IID;
     pub const SIGNATURE: []const u8 = Signature.class(TYPE_NAME, IDeferral.SIGNATURE);
 
-    var Factory: FactoryCache = .{};
+    var IDeferralFactoryCache: FactoryCache(IDeferralFactory, RUNTIME_NAME) = .{};
 };
 
 pub const INotificationData = extern struct {
@@ -1593,7 +1590,7 @@ pub const INotificationData = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1666,7 +1663,7 @@ pub const IToastNotification = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1766,7 +1763,7 @@ pub const IToastNotification2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1827,7 +1824,7 @@ pub const IToastNotification3 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1886,7 +1883,7 @@ pub const IToastNotification4 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -1965,7 +1962,7 @@ pub const IToastNotification6 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2022,7 +2019,7 @@ pub const INotificationDataFactory = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2098,7 +2095,7 @@ pub const IToastNotificationFactory = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2151,7 +2148,7 @@ pub const IToastNotificationManagerStatics = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2191,6 +2188,10 @@ pub const IToastNotificationManagerStatics = extern struct {
         return trust;
     }
 
+    pub fn GetTemplateContent(self: *@This(), template: ToastTemplateType, document: **XmlDocument) HRESULT {
+        return self.vtable.GetTemplateContent(@ptrCast(self), template, document);
+    }
+
     pub const GUID: []const u8 = "50ac103f-d235-4598-bbef-98fe4d1a3ad4";
     pub const IID: Guid = Guid.initString(GUID);
     pub const SIGNATURE: []const u8 = Signature.interface(GUID);
@@ -2208,7 +2209,7 @@ pub const IToastNotificationManagerStatics2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2264,7 +2265,7 @@ pub const IToastNotificationManagerStatics4 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2321,7 +2322,7 @@ pub const IToastNotificationManagerStatics5 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2377,7 +2378,7 @@ pub const IToastNotifier = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2438,7 +2439,7 @@ pub const IToastNotifier2 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2516,7 +2517,7 @@ pub const IToastNotifier3 = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2585,7 +2586,7 @@ pub const ToastNotifier = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2703,10 +2704,7 @@ pub const ToastNotifier = extern struct {
 
 pub const ToastNotificationManager = extern struct {
     pub fn createToastNotifier() !*ToastNotifier {
-        const factory: *IToastNotificationManagerStatics = try @This().Factory.call(
-            IToastNotificationManagerStatics,
-            @This().RUNTIME_NAME,
-        );
+        const factory = try @This().IToastNotificationManagerStaticsCache.get();
 
         var notifier: *ToastNotifier = undefined;
         if (factory.vtable.CreateToastNotifier(@ptrCast(factory), &notifier) < S_OK) {
@@ -2717,10 +2715,7 @@ pub const ToastNotificationManager = extern struct {
     }
 
     pub fn createToastNotifierWithId(id: [:0]const u16) !*ToastNotifier {
-        const factory: *IToastNotificationManagerStatics = try @This().Factory.call(
-            IToastNotificationManagerStatics,
-            @This().RUNTIME_NAME,
-        );
+        const factory = try @This().IToastNotificationManagerStaticsCache.get();
 
         const id_hstring: ?HSTRING = try winrt.WindowsCreateString(id);
         defer winrt.WindowsDeleteString(id_hstring);
@@ -2734,13 +2729,10 @@ pub const ToastNotificationManager = extern struct {
     }
 
     pub fn getTemplateContent(template: ToastTemplateType) !*XmlDocument {
-        const factory: *IToastNotificationManagerStatics = try @This().Factory.call(
-            IToastNotificationManagerStatics,
-            @This().RUNTIME_NAME,
-        );
+        const factory = try @This().IToastNotificationManagerStaticsCache.get();
 
         var document: *XmlDocument = undefined;
-        if (factory.vtable.GetTemplateContent(@ptrCast(factory), template, &document) < S_OK) {
+        if (factory.GetTemplateContent(template, &document) != S_OK) {
             return error.TemplateContent;
         }
 
@@ -2750,7 +2742,7 @@ pub const ToastNotificationManager = extern struct {
     const TYPE_NAME: []const u8 = "Windows.UI.Notifications.ToastNotificationManager";
     const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-    var Factory: FactoryCache = .{};
+    var IToastNotificationManagerStaticsCache: FactoryCache(IToastNotificationManagerStatics, RUNTIME_NAME) = .{};
 };
 
 pub const ToastNotification = extern struct {
@@ -2759,7 +2751,7 @@ pub const ToastNotification = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2805,10 +2797,7 @@ pub const ToastNotification = extern struct {
     }
 
     pub fn createToastNotification(xml: *XmlDocument) !*@This() {
-        const factory: *IToastNotificationFactory = try @This().Factory.call(
-            IToastNotificationFactory,
-            @This().RUNTIME_NAME,
-        );
+        const factory = try @This().IToastNotificationFactoryCache.get();
 
         var result: *@This() = undefined;
         if (factory.vtable.CreateToastNotification(@ptrCast(factory), xml, &result) < S_OK) {
@@ -2893,7 +2882,7 @@ pub const ToastNotification = extern struct {
     pub const SIGNATURE: []const u8 = std.fmt.comptimePrint("rc({s};{s})", .{ TYPE_NAME, IToastNotification.SIGNATURE });
     pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-    var Factory: FactoryCache = .{};
+    var IToastNotificationFactoryCache: FactoryCache(IToastNotificationFactory, RUNTIME_NAME) = .{};
 };
 
 pub const NotificationData = extern struct {
@@ -2902,7 +2891,7 @@ pub const NotificationData = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -2958,8 +2947,8 @@ pub const NotificationData = extern struct {
     }
 
     pub fn init() !*@This() {
-        const factory: *IGenericFactory = try @This().GenericFactory.call(IGenericFactory, RUNTIME_NAME);
-        return factory.ActivateInstance(@This());
+        const factory = try @This().IActivationFactoryCache.get();
+        return @ptrCast(@alignCast(try factory.ActivateInstance()));
     }
 
     /// Call `release` and discard the returned remaining ref count
@@ -2971,18 +2960,12 @@ pub const NotificationData = extern struct {
         initialvalues: IIterable(IKeyValuePair(HSTRING, HSTRING)),
         sequencenumber: u32,
     ) !*NotificationData {
-        const factory: *INotificationDataFactory = try @This().NotificationDataFactory.call(
-            INotificationDataFactory,
-            RUNTIME_NAME,
-        );
+        const factory = try @This().INotificationDataFactoryCache.get();
         return factory.createNotificationDataWithValuesAndSequenceNumber(initialvalues, sequencenumber);
     }
 
     pub fn createNotificationDataWithValues(initialvalues: IIterable(IKeyValuePair(HSTRING, HSTRING))) !*NotificationData {
-        const factory: *INotificationDataFactory = try @This().NotificationDataFactory.call(
-            INotificationDataFactory,
-            RUNTIME_NAME,
-        );
+        const factory = try @This().INotificationDataFactoryCache.get();
         return factory.createNotificationDataWithValues(initialvalues);
     }
 
@@ -2997,6 +2980,6 @@ pub const NotificationData = extern struct {
     pub const GUID: []const u8 = INotificationData.GUID;
     pub const IID: Guid = INotificationData.IID;
 
-    var GenericFactory: FactoryCache = .{};
-    var NotificationDataFactory: FactoryCache = .{};
+    var IActivationFactoryCache: FactoryCache(IActivationFactory, RUNTIME_NAME) = .{};
+    var INotificationDataFactoryCache: FactoryCache(INotificationDataFactory, RUNTIME_NAME) = .{};
 };

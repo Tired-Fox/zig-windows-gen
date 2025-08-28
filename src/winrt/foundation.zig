@@ -7,7 +7,7 @@ const Guid = win32.zig.Guid;
 const HRESULT = win32.foundation.HRESULT;
 const Signature = core.Signature;
 const wiredGuidEql = core.wiredGuidEql;
-const Generic = core.Generic;
+const generic = core.generic;
 const isInterface = core.isInterface;
 
 const TrustLevel = winrt.TrustLevel;
@@ -52,11 +52,8 @@ pub const TimeSpan = extern struct {
 ///
 /// This method handles delegating the invoked callback for a
 /// given typed event.
-pub fn TypedEventHandler(T0: type, T1: type) type {
-    const TSender = Generic(T0);
-    const TArgs = Generic(T1);
-
-    const signature: []const u8 = Signature.pinterface("9de1c534-6ae1-11e0-84e1-18a905bcc53f", &.{ Signature.get(T0), Signature.get(T1) });
+pub fn TypedEventHandler(TSender: type, TArgs: type) type {
+    const signature: []const u8 = Signature.pinterface("9de1c534-6ae1-11e0-84e1-18a905bcc53f", &.{ Signature.get(TSender), Signature.get(TArgs) });
     const iid = Signature.guid(signature);
 
     return extern struct {
@@ -73,10 +70,10 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
 
         vtable: *const VTable,
         refs: std.atomic.Value(u32),
-        cb: *const fn (context: ?*anyopaque, sender: TSender, args: TArgs) callconv(.c) void,
+        cb: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: TSender, args: TArgs) callconv(.c) void) @This() {
+        pub fn init(callback: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -84,7 +81,7 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
             };
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: TSender, args: TArgs) callconv(.c) void, context: anytype) @This() {
+        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void, context: anytype) @This() {
             return .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
@@ -122,7 +119,7 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
         // Invoke(sender, args)
         //
         // This will always return `S_OK` because event callbacks shouldn't fail
-        fn invoke(self: *@This(), sender: TSender, args: TArgs) callconv(.c) HRESULT {
+        fn invoke(self: *@This(), sender: generic(TSender), args: generic(TArgs)) callconv(.c) HRESULT {
             self.cb(self.context, sender, args);
             return S_OK;
         }
@@ -142,9 +139,9 @@ pub fn TypedEventHandler(T0: type, T1: type) type {
 
             // Invoke method for the delegate
             Invoke: *const fn (
-                self: *TypedEventHandler(T0, T1),
-                sender: TSender,
-                args: TArgs,
+                self: *TypedEventHandler(TSender, TArgs),
+                sender: generic(TSender),
+                args: generic(TArgs),
             ) callconv(.c) HRESULT,
         };
     };
@@ -158,7 +155,7 @@ pub fn IReference(T: type) type {
         pub fn queryInterface(self: *@This(), I: type) !*I {
             var result: *anyopaque = undefined;
             if (self.vtable.QueryInterface(@ptrCast(self), &I.IID, &result) != S_OK) {
-                return error.NoInterface;
+                return error.E_NOINTERFACE;
             }
             return @ptrCast(@alignCast(result));
         }

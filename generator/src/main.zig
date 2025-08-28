@@ -230,44 +230,104 @@ fn print(comptime fmt: []const u8, args: anytype) void {
     }
 }
 
+fn generateHresultEnum(allocator: std.mem.Allocator) !void {
+    // TODO: Convert the parsing of the winerror.h file to zig
+    print("Generating HRESULT enum type", .{});
+    if (true) {
+        const data = try std.fs.cwd().readFileAlloc(allocator, "hresult.json", std.math.maxInt(usize));
+        defer allocator.free(data);
+
+        const result = try std.json.parseFromSlice([]const std.meta.Tuple(&.{ []const u8, []const u8 }), allocator, data, .{});
+        defer result.deinit();
+
+        var file = try std.fs.cwd().createFile("hresult.zig", .{ .truncate = true });
+        defer file.close();
+
+        var buffer: [4 * 1024]u8 = undefined;
+        var writer = file.writer(&buffer);
+
+        try writer.interface.writeAll("pub error Hresult {\n");
+        for (result.value) |hresult| {
+            try writer.interface.print("    {s},\n", .{ hresult[0] });
+        }
+        try writer.interface.writeAll("};\n");
+
+        try writer.interface.writeAll("pub fn hresultToError(hresult: i32) struct { err: HResult } {\n");
+        try writer.interface.writeAll("    return .{ .err = switch(hresult) {\n");
+        for (result.value) |hresult| {
+            try writer.interface.print("        {s} => Hresult.{s},\n", .{ hresult[1], hresult[0] });
+        }
+        try writer.interface.writeAll("        else => error.Unknown\n");
+        try writer.interface.writeAll("    }};\n");
+        try writer.interface.writeAll("};");
+
+        try writer.interface.flush();
+    }
+}
+
 pub fn main() !void {
     var gpa = std.heap.ArenaAllocator.init(std.heap.page_allocator);
     defer gpa.deinit();
     const allocator = gpa.allocator();
 
     try downloadMetadata(allocator);
+    try generateHresultEnum(allocator);
 
+    const metaDir = try std.fs.cwd().openDir("metadata", .{ .iterate = true });
 
     // TODO: Iterate all namespaces and collect types and their kind within namespace scopes
     var definitions = metadata.Definitions.init(allocator);
     defer definitions.deinit();
-    // for (namespace.types) |*ty| {
-    //
-    // }
+    // Populate basic type information for lookup while generating the structs
+    {
+        var it = metaDir.iterate();
+        while (try it.next()) |ns| {
+            if (ns.kind == .file) {
+                const namespace = try metadata.parseSignature(definitions.allocator(), &metaDir, ns.name);
+                for (namespace.types) |*ty| {
+                    try definitions.add(ty.Namespace, ty.Name, ty.Kind, ty.Methods);
+                }
+            }
+        }
+    }
 
-    const metaDir = try std.fs.cwd().openDir("metadata", .{});
     const namespace = try metadata.parse(allocator, &metaDir, "Windows.UI.ViewManagement.json");
     defer namespace.deinit();
 
     std.debug.print("{s}:\n", .{ namespace.namespace });
+
+    var ctx = metadata.Context {
+        .requirements = metadata.Requirements.init(allocator),
+        .definitions = &definitions,
+    };
+    defer ctx.requirements.deinit();
+
     for (namespace.types) |*ty| {
-        if (std.mem.eql(u8, ty.Name, "IUISettings")) {
-            if (ty.Kind == .Interface) {
-                var buffer: [1024]u8 = undefined;
-                var stdout = std.fs.File.stdout();
-                var stdout_writer = stdout.writer(&buffer);
-
-                var requirements = metadata.Requirements.init(allocator);
-
-                try metadata.interface.serialize(allocator, &requirements, &definitions, ty, &stdout_writer.interface);
-                stdout_writer.interface.flush() catch unreachable;
-            } else {
-                std.debug.print("{f}\n", .{ ty });
+        if (std.mem.eql(u8, ty.Name, "UISettings")) {
+            var buffer: [1024]u8 = undefined;
+            var stdout = std.fs.File.stdout();
+            var stdout_writer = stdout.writer(&buffer);
+            switch (ty.Kind) {
+                .Interface => try metadata.interface.serialize(allocator, &ctx, ty, &stdout_writer.interface),
+                .Class => try metadata.class.serialize(allocator, &ctx, ty, &stdout_writer.interface),
+                else => try stdout_writer.interface.print("{f}\n", .{ ty })
             }
+            stdout_writer.interface.flush() catch unreachable;
             break;
         }
     }
     std.debug.print("  Types: {d}\n", .{ namespace.types.len });
+
+    var it = ctx.requirements.items.iterator();
+    while (it.next()) |requirement| {
+        if (std.mem.eql(u8, requirement.value_ptr.*, namespace.namespace)) {
+            continue;
+        }
+
+        const relative = try relativeNamespace(allocator, namespace.namespace, requirement.value_ptr.*);
+        defer allocator.free(relative);
+        std.debug.print("const {s} = @import(\"{s}\").{s}\n", .{ requirement.key_ptr.*, relative, requirement.key_ptr.* });
+    }
 
     // TODO: Iterate the namespace json files
     //     TODO: Generate file structure that represents namespace
@@ -275,4 +335,61 @@ pub fn main() !void {
     //     TODO: Generate structs based on typedef
     //     TODO: Reference <core> api for reusabel helpers
     //     TODO: Collect needed imports and append to bottom
+}
+
+// Windows.UI.ViewManagement
+// Windows
+fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const u8) ![]const u8 {
+    var back: usize = 0;
+
+    var f_it = std.mem.splitSequence(u8, from, ".");
+    var t_it = std.mem.splitSequence(u8, to, ".");
+
+    var previous: []const u8 = "root";
+
+    while (true) {
+        if (f_it.peek() == null) break;
+        if (t_it.peek() == null) {
+            while (f_it.next()) |_| back += 1;
+            back -|= 1;
+            break;
+        }
+
+        if (!std.mem.eql(u8, f_it.peek().?, t_it.peek().?)) {
+            while (f_it.next()) |_| back += 1;
+            back -|= 1;
+            break;
+        }
+
+        previous = f_it.next().?;
+        _ = t_it.next();
+    }
+
+    var buffer: std.io.Writer.Allocating = .init(allocator);
+    const writer = &buffer.writer;
+
+    if (back >= 1) {
+        try writer.writeAll("..");
+        for (1..back) |_| {
+            try writer.writeAll("/..");
+        }
+    } else {
+        try writer.writeAll(".");
+    }
+
+    if (t_it.peek() == null) {
+        if (std.mem.eql(u8, previous, "Windows")) {
+            try writer.writeAll("/root");
+        } else {
+            try writer.print("/{s}", .{ previous });
+        }
+    } else {
+        while (t_it.next()) |p| {
+            try writer.print("/{s}", .{ p });
+        }
+    }
+
+    try writer.writeAll(".zig");
+
+    return try buffer.toOwnedSlice();
 }

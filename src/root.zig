@@ -28,7 +28,7 @@ pub extern "shell32" fn SetCurrentProcessExplicitAppUserModelID(
 pub fn WindowsCreateString(string: [:0]const u16) !?HSTRING {
     var result: ?HSTRING = undefined;
     if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != S_OK) {
-        return error.OutOfMemory;
+        return error.E_OUTOFMEMORY;
     }
     return result;
 }
@@ -60,7 +60,7 @@ pub const IUnknown = extern struct {
     pub fn queryInterface(self: *@This(), T: type) !*T {
         var result: *anyopaque = undefined;
         if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
+            return error.E_NOINTERFACE;
         }
         return @ptrCast(@alignCast(result));
     }
@@ -77,7 +77,7 @@ pub const IUnknown = extern struct {
     pub const IID: Guid = Guid.initString(GUID);
 
     pub const VTable = extern struct {
-        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: **anyopaque) callconv(.c) HRESULT,
+        QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.c) HRESULT,
         AddRef: *const fn(self: *anyopaque) callconv(.c) u32,
         Release: *const fn(self: *anyopaque,) callconv(.c) u32,
     };
@@ -86,12 +86,8 @@ pub const IUnknown = extern struct {
 pub const IInspectable = extern struct {
     vtable: *const VTable,
 
-    pub fn queryInterface(self: *@This(), T: type) !*T {
-        var result: *anyopaque = undefined;
-        if (self.vtable.QueryInterface(@ptrCast(self), &T.IID, &result) != S_OK) {
-            return error.NoInterface;
-        }
-        return @ptrCast(@alignCast(result));
+    pub fn QueryInterface(self: *@This(), iid: *const Guid, interface: *?*anyopaque) HRESULT {
+        return self.vtable.QueryInterface(@ptrCast(self), iid, interface);
     }
 
     pub fn addRef(self: *@This()) u32 {

@@ -6,6 +6,7 @@ const Guid = @import("win32").zig.Guid;
 pub const Signature = struct {
     pub fn get(T: type) []const u8 {
         if (@hasDecl(T, "SIGNATURE")) return @field(T, "SIGNATURE");
+        if (T == Guid) return "guid";
         if (T == winrt.HSTRING) return "string";
         if (T == winrt.IInspectable) return "cinterface(IInspectable)";
         if (T == bool) return "b1";

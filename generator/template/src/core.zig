@@ -1,7 +1,7 @@
 const std = @import("std");
 const win32 = @import("win32");
 
-pub const IGenericFactory = @import("core/generic_factory.zig").IGenericFactory;
+pub const IActivationFactory = @import("core/generic_factory.zig").IActivationFactory;
 pub const FactoryCache = @import("core/factory_cache.zig").FactoryCache;
 pub const FactoryError = @import("core/factory_cache.zig").FactoryError;
 pub const Signature = @import("core/signature.zig").Signature;

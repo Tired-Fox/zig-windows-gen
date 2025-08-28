@@ -15,7 +15,7 @@ pub const FactoryCache = @import("factory_cache.zig").FactoryCache;
 
 pub const S_OK = winrt.S_OK;
 
-pub const IGenericFactory = extern struct {
+pub const IActivationFactory = extern struct {
     vtable: *const VTable,
 
     pub fn queryInterface(self: *@This(), T: type) !*T {
@@ -61,7 +61,7 @@ pub const IGenericFactory = extern struct {
         return trust;
     }
 
-    pub fn ActivateInstance(self: *IGenericFactory, R: type) error { NoInterface }!*R {
+    pub fn ActivateInstance(self: *IActivationFactory, R: type) error { NoInterface }!*R {
         var inspectable: *IInspectable = undefined;
         const code = @as(u32, @bitCast(self.vtable.ActivateInstance(self, @ptrCast(@alignCast(&inspectable)))));
         if (code < S_OK) return error.NoInterface;
@@ -71,7 +71,7 @@ pub const IGenericFactory = extern struct {
 
     pub const IID: Guid = Guid.initString("00000035-0000-0000-c000-000000000046");
     pub const VTable = Implements(IInspectable.VTable, struct {
-        ActivateInstance: *const fn (*IGenericFactory, **anyopaque) callconv(.c) HRESULT
+        ActivateInstance: *const fn (*IActivationFactory, **anyopaque) callconv(.c) HRESULT
     });
 };
 
