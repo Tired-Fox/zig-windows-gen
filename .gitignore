@@ -3,4 +3,5 @@
 **/obj/
 **/bin/
 **/output/
-**/metadata/
+generator/metadata/
+generator/meta.zig.zon/
