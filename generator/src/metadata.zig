@@ -180,7 +180,7 @@ pub const TypeReference = struct {
 
 pub const EnumValue = struct {
     Name: []const u8,
-    Value: u32,
+    Value: i32,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
         try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
@@ -206,7 +206,10 @@ pub fn parse(allocator: std.mem.Allocator, base: *const std.fs.Dir, path: []cons
     var arena = std.heap.ArenaAllocator.init(allocator);
 
     const data = try base.readFileAlloc(arena.allocator(), path, std.math.maxInt(usize));
-    const types = try std.json.parseFromSliceLeaky([]const TypeDef, arena.allocator(), data, .{ .ignore_unknown_fields = true });
+    const types = std.json.parseFromSliceLeaky([]const TypeDef, arena.allocator(), data, .{ .ignore_unknown_fields = true }) catch |err| {
+        std.debug.print("[error in {s}]\n", .{ path });
+        return err;
+    };
 
     return .{
         .arena = arena,
@@ -279,12 +282,14 @@ pub const Requirements = struct {
         try self.add("Windows", "HSTRING");
         try self.add("Windows", "TrustLevel");
         try self.add("Windows", "HRESULT");
+        try self.add("Windows.Foundation", "IInspectable");
     }
 
     pub fn addDelegateDependencies(self: *@This()) !void {
         try self.add("Windows", "core");
         try self.add("Windows", "Guid");
         try self.add("Windows", "HSTRING");
+        try self.add("Windows", "TrustLevel");
         try self.add("Windows", "IAgileObject");
         try self.add("Windows", "IUnknown");
         try self.add("Windows", "HRESULT");
@@ -363,13 +368,72 @@ pub const Context = struct {
     definitions: *const Definitions,
 };
 
-/// Helper that replaces all of a pattern with the replacement allocating
-/// and returning the result of the replacement.
-///
-/// The caller is responsible for freeing returned allocated memory
-pub fn replaceAll(allocator: std.mem.Allocator, input_str: []const u8, pattern: []const u8, replacement: []const u8) ![]u8 {
-    const output_size = std.mem.replacementSize(u8, input_str, pattern, replacement);
-    const output_buffer = try allocator.alloc(u8, output_size);
-    _ = std.mem.replace(u8, input_str, pattern, replacement, output_buffer);
-    return output_buffer;
+// Caller must free the hashmap and the values inside the hashmap
+pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const TypeSignature.Method) ![]const []const u8 {
+    var buckets: std.StringHashMapUnmanaged(std.ArrayListUnmanaged(usize)) = undefined;
+    defer {
+        var it = buckets.valueIterator();
+        while (it.next()) |n| {
+            n.deinit(allocator);
+        }
+        buckets.deinit(allocator);
+    }
+
+    for (methods, 0..) |*method, i| {
+        if (buckets.getPtr(method.Name)) |bucket| {
+            try bucket.append(allocator, i);
+        } else {
+            var n: std.ArrayListUnmanaged(usize) = .empty;
+            try n.append(allocator, i);
+            try buckets.put(allocator, method.Name, n);
+        }
+    }
+
+    var map: [][]const u8 = try allocator.alloc([]const u8, methods.len);
+
+    var it = buckets.iterator();
+    while (it.next()) |entry| {
+        const items = entry.value_ptr.items;
+        if (items.len == 1) {
+            const e = items[0];
+            map[e] = try allocator.dupe(u8, methods[e].Name);
+            continue;
+        }
+
+        var base: usize = 0;
+        for (1..items.len) |i| {
+            const bp = if (methods[items[base]].Parameters) |p| p.len else 0;
+            const ip = if (methods[items[i]].Parameters) |p| p.len else 0;
+
+            if (ip < bp) base = i;
+        }
+
+        map[items[base]] = try allocator.dupe(u8, methods[items[base]].Name);
+        const baseMethod = methods[items[base]];
+        for (0..items.len) |i| {
+            if (i == base) continue;
+            const method = methods[items[i]];
+            if (method.Parameters) |parameters| {
+                if (baseMethod.Parameters == null or baseMethod.Parameters.?.len < parameters.len) {
+                    const start = if (baseMethod.Parameters) |p| p.len else 0;
+
+                    var buffer: std.io.Writer.Allocating = .init(allocator);
+                    const writer = &buffer.writer;
+                    try writer.writeAll(method.Name);
+
+                    for (parameters[start..]) |param| {
+                        try writer.print("With{c}{s}", .{ std.ascii.toUpper(param.Name[0]), param.Name[1..] });
+                    }
+
+                    map[items[i]] = try buffer.toOwnedSlice();
+                } else {
+                    return error.ComplexMethodHash;
+                }
+            } else {
+                return error.ComplexMethodHash;
+            }
+        }
+    }
+
+    return map;
 }

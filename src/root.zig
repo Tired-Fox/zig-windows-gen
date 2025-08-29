@@ -13,13 +13,13 @@ pub const ui = @import("winrt/ui.zig");
 pub const data = @import("winrt/data.zig");
 pub const core = @import("winrt/core.zig");
 
-pub const TrustLevel = @import("win32").system.win_rt.TrustLevel;
 pub const HSTRING = win32.system.win_rt.HSTRING;
+pub const TrustLevel = @import("win32").system.win_rt.TrustLevel;
 pub const IID_IAgileObject = win32.system.com.IID_IAgileObject;
 
+pub const Guid = win32.zig.Guid;
+pub const HRESULT = win32.foundation.HRESULT;
 const Implements = core.Implements;
-const Guid = win32.zig.Guid;
-const HRESULT = win32.foundation.HRESULT;
 
 pub extern "shell32" fn SetCurrentProcessExplicitAppUserModelID(
   appId: [*:0]const u16 

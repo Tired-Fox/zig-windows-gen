@@ -2,6 +2,7 @@ const std = @import("std");
 const ty = @import("./type.zig");
 
 const metadata = @import("../metadata.zig");
+const replaceAll = @import("../root.zig").replaceAll;
 const TypeDef = metadata.TypeDef;
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
@@ -13,9 +14,9 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     if (typedef.GenericParameters) |gp| {
         offset = "        ";
         try writer.print("pub fn {s}(", .{ typedef.Name });
-        try writer.writeAll(gp[0]);
+        try writer.print("{s}: type", .{ gp[0] });
         for (1..gp.len) |i| {
-            try writer.print(", {s}", .{ gp[i] });
+            try writer.print(", {s}: type", .{ gp[i] });
         }
         try writer.writeAll(") type {\n    return extern struct {\n");
     } else {
@@ -46,7 +47,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
     try writer.print("{s}/// This creates a heap allocated instance that only frees/destroys when all\n", .{ offset });
     try writer.print("{s}/// references are released including any references Windows makes.\n", .{ offset });
-    try writer.print("{s}pub fn init(\n{s}    self: *anyopaque,\n{s}    cb: *const fn(?*anyopaque,", .{ offset, offset, offset });
+    try writer.print("{s}pub fn init(\n{s}    cb: *const fn(?*anyopaque", .{ offset, offset });
     if (invoke.Parameters) |parameters| {
         for (parameters) |param| {
             if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
@@ -55,8 +56,8 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             }
         }
     }
-    try writer.print("\n{s},) callconv(.winapi) void) !*@This() {{\n", .{ offset });
-    try writer.print("{s}    const _r = try @import(\"std\").heap.page_allocator.create(@This());\n", .{ offset });
+    try writer.print(") callconv(.winapi) void,\n{s}) !*@This() {{\n", .{ offset });
+    try writer.print("{s}    const _r = try @import(\"std\").heap.c_allocator.create(@This());\n", .{ offset });
     try writer.print("{s}    _r.* = .{{\n", .{ offset });
     try writer.print("{s}        .vtable = &VTABLE,\n", .{ offset });
     try writer.print("{s}        ._cb = cb,\n", .{ offset });
@@ -67,7 +68,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
     try writer.print("{s}/// This creates a heap allocated instance that only frees/destroys when all\n", .{ offset });
     try writer.print("{s}/// references are released including any references Windows makes.\n", .{ offset });
-    try writer.print("{s}pub fn initWithState(\n{s}    self: *anyopaque,\n{s}    cb: *const fn(?*anyopaque,", .{ offset, offset, offset });
+    try writer.print("{s}pub fn initWithState(\n{s}    cb: *const fn(?*anyopaque", .{ offset, offset });
     if (invoke.Parameters) |parameters| {
         for (parameters) |param| {
             if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
@@ -76,8 +77,8 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             }
         }
     }
-    try writer.print(",\n{s}    context: anytype,\n{s}) callconv(.winapi) void) !*@This() {{\n", .{ offset, offset });
-    try writer.print("{s}    const _r = try @import(\"std\").heap.page_allocator.create(@This());\n", .{ offset });
+    try writer.print(") callconv(.winapi) void,\n{s}    context: anytype,\n{s}) !*@This() {{\n", .{ offset, offset });
+    try writer.print("{s}    const _r = try @import(\"std\").heap.c_allocator.create(@This());\n", .{ offset });
     try writer.print("{s}    _r.* = .{{\n", .{ offset });
     try writer.print("{s}        .vtable = &VTABLE,\n", .{ offset });
     try writer.print("{s}        ._cb = cb,\n", .{ offset });
@@ -107,7 +108,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}        return 0;\n", .{ offset });
     try writer.print("{s}    }}\n", .{ offset });
     try writer.print("{s}    out.* = null;\n", .{ offset });
-    try writer.print("{s}    return 0x80004002; // E_NOINTERFACE\n", .{ offset });
+    try writer.print("{s}    return -2147467262; // E_NOINTERFACE\n", .{ offset });
     try writer.print("{s}}}\n", .{ offset });
     try writer.print("{s}fn AddRef(self: *anyopaque) callconv(.c) u32 {{\n", .{ offset });
     try writer.print("{s}    const this: *@This() = @ptrCast(@alignCast(self));\n", .{ offset });
@@ -116,11 +117,11 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}fn Release(self: *anyopaque) callconv(.c) u32 {{\n", .{ offset });
     try writer.print("{s}    const this: *@This() = @ptrCast(@alignCast(self));\n", .{ offset });
     try writer.print("{s}    const left = this._refs.fetchSub(1, .acq_rel) - 1;\n", .{ offset });
-    try writer.print("{s}    if (left == 0) @import(\"std\").heap.page_allocator.destroy(this);\n", .{ offset });
+    try writer.print("{s}    if (left == 0) @import(\"std\").heap.c_allocator.destroy(this);\n", .{ offset });
     try writer.print("{s}    return left;\n", .{ offset });
     try writer.print("{s}}}\n", .{ offset });
 
-    const mname = try metadata.replaceAll(allocator, invoke.Name, "_", "");
+    const mname = try replaceAll(allocator, invoke.Name, "_", "");
     defer allocator.free(mname);
 
     try writer.print("{s}pub fn {s}(self: *anyopaque", .{ offset, mname });
@@ -136,7 +137,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.writeAll(") callconv(.winapi) HRESULT {\n");
 
     try writer.print("{s}    const this: *@This() = @ptrCast(@alignCast(self));\n", .{ offset });
-    try writer.print("{s}    this.cb(this._context", .{ offset });
+    try writer.print("{s}    this._cb(this._context", .{ offset });
     if (invoke.Parameters) |parameters| {
         for (parameters) |param| {
             try writer.print(", {s}", .{ param.Name });
@@ -148,21 +149,21 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}}}\n", .{ offset });
 
     try writer.print("{s}pub const NAME: []const u8 = \"{s}.{s}\";\n", .{ offset, typedef.Namespace, typedef.Name });
-    try writer.print("{s}pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeLiteral(TYPE_NAME);\n", .{ offset });
+    try writer.print("{s}pub const RUNTIME_NAME: [:0]const u16 = @import(\"std\").unicode.utf8ToUtf16LeStringLiteral(NAME);\n", .{ offset });
 
     if (typedef.Guid) |guid| {
         if (typedef.GenericParameters) |gp| {
-            try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID, &.{{", .{ offset });
+            try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(\"{s}\", &.{{", .{ offset, guid });
             try writer.print("core.Signature.get({s})", .{ gp[0] });
             for (1..gp.len) |i| {
                 try writer.print(",core.Signature.get({s})", .{ gp[i] });
             }
             try writer.writeAll("});\n");
-            try writer.print("{s}pub const IID: Guid = core.Signature.guid(GUID);\n", .{ offset });
+            try writer.print("{s}pub const IID: Guid = core.Signature.guid(SIGNATURE);\n", .{ offset });
             try writer.print("{s}pub const GUID: []const u8 = &core.guidToString(IID);\n", .{ offset });
         } else {
             try writer.print("{s}pub const GUID: []const u8 = \"{s}\";\n", .{ offset, guid });
-            try writer.print("{s}pub const IID: Guid = Guid.iniString(GUID);\n", .{ offset });
+            try writer.print("{s}pub const IID: Guid = Guid.initString(GUID);\n", .{ offset });
             try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);\n", .{ offset });
         }
     }
@@ -190,11 +191,11 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
     try writer.print("{s}}};\n", .{ offset });
 
-    try writer.print("{s}pub const VTABLE = Vtable {{\n", .{ offset });
-    try writer.print("{s}    QueryInterface = QueryInterface,\n", .{ offset });
-    try writer.print("{s}    AddRef = AddRef,\n", .{ offset });
-    try writer.print("{s}    Release = Release,\n", .{ offset });
-    try writer.print("{s}    Invoke = Invoke,\n", .{ offset });
+    try writer.print("{s}pub const VTABLE = VTable {{\n", .{ offset });
+    try writer.print("{s}    .QueryInterface = QueryInterface,\n", .{ offset });
+    try writer.print("{s}    .AddRef = AddRef,\n", .{ offset });
+    try writer.print("{s}    .Release = Release,\n", .{ offset });
+    try writer.print("{s}    .Invoke = Invoke,\n", .{ offset });
     try writer.print("{s}}};\n", .{ offset });
 
     if (typedef.GenericParameters != null) {

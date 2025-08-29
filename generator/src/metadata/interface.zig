@@ -2,6 +2,7 @@ const std = @import("std");
 const ty = @import("./type.zig");
 
 const metadata = @import("../metadata.zig");
+const replaceAll = @import("../root.zig").replaceAll;
 const TypeDef = metadata.TypeDef;
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
@@ -13,9 +14,9 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     if (typedef.GenericParameters) |gp| {
         offset = "        ";
         try writer.print("pub fn {s}(", .{ typedef.Name });
-        try writer.writeAll(gp[0]);
+        try writer.print("{s}: type", .{ gp[0] });
         for (1..gp.len) |i| {
-            try writer.print(", {s}", .{ gp[i] });
+            try writer.print(", {s}: type", .{ gp[i] });
         }
         try writer.writeAll(") type {\n    return extern struct {\n");
     } else {
@@ -29,7 +30,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             if (method.Static) continue;
             if (std.mem.eql(u8, method.Name, ".ctor")) continue;
 
-            const mname = try metadata.replaceAll(allocator, method.Name, "_", "");
+            const mname = try replaceAll(allocator, method.Name, "_", "");
             defer allocator.free(mname);
 
             try writer.print("{s}pub fn {s}(self: *@This()", .{ offset, mname });
@@ -71,22 +72,22 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     }
 
     try writer.print("{s}pub const NAME: []const u8 = \"{s}.{s}\";\n", .{ offset, typedef.Namespace, typedef.Name });
-    try writer.print("{s}pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeLiteral(TYPE_NAME);\n", .{ offset });
+    try writer.print("{s}pub const RUNTIME_NAME: [:0]const u16 = @import(\"std\").unicode.utf8ToUtf16LeStringLiteral(NAME);\n", .{ offset });
 
     if (typedef.Guid) |guid| {
         if (typedef.GenericParameters) |gp| {
-            try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID, &.{{", .{ offset });
+            try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(\"{s}\", &.{{", .{ offset, guid });
             try writer.print("core.Signature.get({s})", .{ gp[0] });
             for (1..gp.len) |i| {
                 try writer.print(",core.Signature.get({s})", .{ gp[i] });
             }
             try writer.writeAll("});\n");
-            try writer.print("{s}pub const IID: Guid = core.Signature.guid(GUID);\n", .{ offset });
+            try writer.print("{s}pub const IID: Guid = core.Signature.guid(SIGNATURE);\n", .{ offset });
             try writer.print("{s}pub const GUID: []const u8 = &core.guidToString(IID);\n", .{ offset });
         } else {
             try writer.print("{s}pub const GUID: []const u8 = \"{s}\";\n", .{ offset, guid });
-            try writer.print("{s}pub const IID: Guid = Guid.iniString(GUID);\n", .{ offset });
-            try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);\n", .{ offset });
+            try writer.print("{s}pub const IID: Guid = Guid.initString(GUID);\n", .{ offset });
+            try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.interface(GUID);\n", .{ offset });
         }
     }
 
@@ -119,7 +120,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                 defer rt.deinit(allocator);
                 try writer.print(", _r: *{f}", .{ rt.asParam() });
             }
-            try writer.writeAll(") callconv(.winapi) HRESULT\n");
+            try writer.writeAll(") callconv(.winapi) HRESULT,\n");
         }
     }
 

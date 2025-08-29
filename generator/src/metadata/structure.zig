@@ -8,12 +8,16 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     // At this piont the kind should have already been determined;
     std.debug.assert(typedef.Kind == .Struct);
 
-    try writer.print("pub const {s} = extern struct {{\n", .{ typedef.Name });
-    for (typedef.Fields.?) |field| {
-        if (try ty.winToZig(allocator, ctx, &field.Type)) |t| {
-            defer t.deinit(allocator);
-            try writer.print("    {s}: {f},\n", .{ field.Name, t.asParam() });
+    if (typedef.Fields) |fields| {
+        try writer.print("pub const {s} = extern struct {{\n", .{ typedef.Name });
+        for (fields) |field| {
+            if (try ty.winToZig(allocator, ctx, &field.Type)) |t| {
+                defer t.deinit(allocator);
+                try writer.print("    {s}: {f},\n", .{ field.Name, t.asParam() });
+            }
         }
+        try writer.writeAll("};\n");
+    } else {
+        std.debug.print("\x1b[31m[SKIPPING STRUCTURE WITH NO FIELDS] {s}.{s}\x1b[39m\n", .{ typedef.Namespace, typedef.Name });
     }
-    try writer.writeAll("};\n");
 }

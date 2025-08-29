@@ -1,6 +1,6 @@
 const std = @import("std");
-const winrt = @import("winrt");
-const win32 = @import("win32");
+const windows = @import("windows");
+const win32 = windows.win32;
 
 const foundation = win32.foundation;
 const windows_and_messaging = win32.ui.windows_and_messaging;
@@ -8,25 +8,23 @@ const windows_and_messaging = win32.ui.windows_and_messaging;
 const CreateWindow = win32.ui.windows_and_messaging.CreateWindowExA;
 const GetModuleHandle = win32.system.library_loader.GetModuleHandleA;
 const RegisterClass = win32.ui.windows_and_messaging.RegisterClassA;
-
 const ShowWindow = win32.ui.windows_and_messaging.ShowWindow;
-
 const WNDCLASS = win32.ui.windows_and_messaging.WNDCLASSA;
 const WINDOW_STYLE = win32.ui.windows_and_messaging.WINDOW_STYLE;
 const WNDCLASS_STYLES = win32.ui.windows_and_messaging.WNDCLASS_STYLES;
 const HWND = win32.foundation.HWND;
-const IInspectable = winrt.IInspectable;
 
-const UISettings = winrt.ui.view_management.UISettings;
-const TypedEventHandler = winrt.foundation.TypedEventHandler;
-const Color = winrt.ui.Color;
+const IInspectable = windows.Foundation.IInspectable;
+const UISettings = windows.UI.ViewManagement.UISettings;
+const TypedEventHandler = windows.Foundation.TypedEventHandler;
+const Color = windows.UI.Color;
 
 var brush: ?win32.graphics.gdi.HGDIOBJ = undefined;
 
 fn onColorChange(state: ?*anyopaque, settings: *UISettings, _: *IInspectable) callconv(.c) void {
     const hwnd: HWND = @ptrCast(@alignCast(state.?));
 
-    const lightTheme = isLight(settings.getColorValue(.foreground));
+    const lightTheme = isLight(settings.GetColorValue(.Foreground) catch return);
     std.debug.print("[LIGHT] {any}\n", .{lightTheme});
     if (brush) |hbrush| _ = win32.graphics.gdi.DeleteObject(hbrush);
     brush = win32.graphics.gdi.GetStockObject(if (lightTheme) win32.graphics.gdi.LTGRAY_BRUSH else win32.graphics.gdi.BLACK_BRUSH);
@@ -46,15 +44,15 @@ fn onColorChange(state: ?*anyopaque, settings: *UISettings, _: *IInspectable) ca
 }
 
 fn isLight(clr: Color) bool {
-    return ((5 * @as(u32, @intCast(clr.g))) + (2 * @as(u32, @intCast(clr.r))) + @as(u32, @intCast(clr.b))) <= (8 * 128);
+    return ((5 * @as(u32, @intCast(clr.G))) + (2 * @as(u32, @intCast(clr.R))) + @as(u32, @intCast(clr.B))) <= (8 * 128);
 }
 
 pub fn main() !void {
     const uisettings = try UISettings.init();
     defer uisettings.deinit();
 
-    const class: [:0]align(1) const u8 = "winrt-example-reactive-theme";
-    const title: [:0]const u8 = "Winrt Reactive Theme";
+    const class: [:0]align(1) const u8 = "windows-example-reactive-theme";
+    const title: [:0]const u8 = "Windows Reactive Theme";
 
     const instance = GetModuleHandle(null);
     const wnd_class = WNDCLASS{
@@ -94,7 +92,7 @@ pub fn main() !void {
         return;
     };
 
-    const lightTheme = isLight(uisettings.getColorValue(.foreground));
+    const lightTheme = if (uisettings.GetColorValue(.Foreground)) |c| isLight(c) else |_| false;
     std.debug.print("[LIGHT] {any}\n", .{lightTheme});
     brush = win32.graphics.gdi.GetStockObject(if (lightTheme) win32.graphics.gdi.LTGRAY_BRUSH else win32.graphics.gdi.BLACK_BRUSH);
     defer {
@@ -112,7 +110,7 @@ pub fn main() !void {
     var handler = try TypedEventHandler(UISettings, IInspectable).initWithState(onColorChange, handle);
     defer handler.deinit();
 
-    const hid = try uisettings.colorValuesChanged(handler);
+    const hid = try uisettings.addColorValuesChanged(handler);
 
     var message: windows_and_messaging.MSG = undefined;
     while (windows_and_messaging.GetMessageA(&message, null, 0, 0) == win32.zig.TRUE) {

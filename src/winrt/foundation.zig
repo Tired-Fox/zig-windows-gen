@@ -53,13 +53,10 @@ pub const TimeSpan = extern struct {
 /// This method handles delegating the invoked callback for a
 /// given typed event.
 pub fn TypedEventHandler(TSender: type, TArgs: type) type {
-    const signature: []const u8 = Signature.pinterface("9de1c534-6ae1-11e0-84e1-18a905bcc53f", &.{ Signature.get(TSender), Signature.get(TArgs) });
-    const iid = Signature.guid(signature);
-
     return extern struct {
-        const SIGNATURE = signature;
-        const IID = iid;
-        const GUID = Signature.guid_string(iid);
+        const SIGNATURE = Signature.pinterface("9de1c534-6ae1-11e0-84e1-18a905bcc53f", &.{ Signature.get(TSender), Signature.get(TArgs) });
+        const IID = Signature.guid(SIGNATURE);
+        const GUID = &core.guidToString(&IID);
 
         pub const VTABLE = VTable{
             .QueryInterface = queryInterface,
@@ -73,21 +70,34 @@ pub fn TypedEventHandler(TSender: type, TArgs: type) type {
         cb: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void,
         context: ?*anyopaque = null,
 
-        pub fn init(callback: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void) @This() {
-            return .{
+        pub fn init(
+            callback: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void,
+        ) !*@This() {
+            const _r = try std.heap.c_allocator.create(@This());
+            _r.* = .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
                 .cb = callback,
             };
+            return _r;
         }
 
-        pub fn initWithState(callback: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void, context: anytype) @This() {
-            return .{
+        pub fn initWithState(
+            callback: *const fn (context: ?*anyopaque, sender: generic(TSender), args: generic(TArgs)) callconv(.c) void,
+            context: anytype,
+        ) !*@This() {
+            const _r = try std.heap.c_allocator.create(@This());
+            _r.* = .{
                 .vtable = &VTABLE,
                 .refs = std.atomic.Value(u32).init(1),
                 .cb = callback,
                 .context = @ptrCast(context),
             };
+            return _r;
+        }
+
+        pub fn deinit(self: *@This()) void {
+            _ = release(@ptrCast(self));
         }
 
         fn queryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {
@@ -111,8 +121,9 @@ pub fn TypedEventHandler(TSender: type, TArgs: type) type {
         }
 
         fn release(self: *anyopaque) callconv(.c) u32 {
-            const me: *@This() = @ptrCast(@alignCast(self));
-            const left = me.refs.fetchSub(1, .acq_rel) - 1;
+            const this: *@This() = @ptrCast(@alignCast(self));
+            const left = this.refs.fetchSub(1, .acq_rel) - 1;
+            if (left == 0) std.heap.c_allocator.destroy(this);
             return left;
         }
 
@@ -204,12 +215,12 @@ pub fn IReference(T: type) type {
         pub const TYPE_NAME: []const u8 = "Windows.Foundation.IReference";
         pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeStringLiteral(TYPE_NAME);
 
-        pub const SIGNATURE: []const u8 = Signature.pinterface("61c17706-2d65-11e0-9ae8-d48564015472", &.{ Signature.get(T) });
+        pub const SIGNATURE: []const u8 = Signature.pinterface("61c17706-2d65-11e0-9ae8-d48564015472", &.{Signature.get(T)});
         pub const IID: Guid = Signature.guid(SIGNATURE);
         pub const GUID: []const u8 = Signature.guid_string(IID);
 
         pub const VTable = Implements(IInspectable.VTable, struct {
-            Value: *const fn(*anyopaque, *TYPE) callconv(.c) HRESULT,
+            Value: *const fn (*anyopaque, *TYPE) callconv(.c) HRESULT,
         });
     };
 }
