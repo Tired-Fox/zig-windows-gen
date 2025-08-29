@@ -81,15 +81,6 @@ pub const Signature = struct {
     }
 
     pub fn guid_string(comptime iid: Guid) []const u8 {
-        const bytes = iid.Bytes;
-        return std.fmt.comptimePrint(
-            "{x:0>2}{x:0>2}{x:0>2}{x:0>2}-{x:0>2}{x:0>2}-{x:0>2}{x:0>2}-{x:0>2}{x:0>2}-{x:0>2}{x:0>2}{x:0>2}{x:0>2}{x:0>2}{x:0>2}",
-            .{
-                bytes[0],  bytes[1],  bytes[2],  bytes[3],
-                bytes[4],  bytes[5],  bytes[6],  bytes[7],
-                bytes[8],  bytes[9],  bytes[10], bytes[11],
-                bytes[12], bytes[13], bytes[14], bytes[15],
-            },
-        );
+        return &@import("../core.zig").guidToString(&iid);
     }
 };

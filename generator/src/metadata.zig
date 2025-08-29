@@ -7,6 +7,7 @@ pub const interface = @import("metadata/interface.zig");
 pub const class = @import("metadata/class.zig");
 pub const enumeration = @import("metadata/enumeration.zig");
 pub const structure = @import("metadata/structure.zig");
+pub const delegate = @import("metadata/delegate.zig");
 
 pub const Kind = enum {
     Native,
@@ -277,6 +278,15 @@ pub const Requirements = struct {
         try self.add("Windows", "Guid");
         try self.add("Windows", "HSTRING");
         try self.add("Windows", "TrustLevel");
+        try self.add("Windows", "HRESULT");
+    }
+
+    pub fn addDelegateDependencies(self: *@This()) !void {
+        try self.add("Windows", "core");
+        try self.add("Windows", "Guid");
+        try self.add("Windows", "HSTRING");
+        try self.add("Windows", "IAgileObject");
+        try self.add("Windows", "IUnknown");
         try self.add("Windows", "HRESULT");
     }
 };

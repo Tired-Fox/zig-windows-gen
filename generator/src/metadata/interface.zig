@@ -27,6 +27,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     if (typedef.Methods) |methods| {
         for (methods) |method| {
             if (method.Static) continue;
+            if (std.mem.eql(u8, method.Name, ".ctor")) continue;
 
             const mname = try metadata.replaceAll(allocator, method.Name, "_", "");
             defer allocator.free(mname);
@@ -47,7 +48,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             if (return_type) |rt| {
                 try writer.print(") core.HResult!{f} {{\n", .{ rt.asParam() });
             } else {
-                try writer.writeAll(") core.HResult!void {{\n");
+                try writer.writeAll(") core.HResult!void {\n");
             }
 
             if (return_type) |rt| {
@@ -73,9 +74,6 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}pub const RUNTIME_NAME: [:0]const u16 = std.unicode.utf8ToUtf16LeLiteral(TYPE_NAME);\n", .{ offset });
 
     if (typedef.Guid) |guid| {
-        try writer.print("{s}pub const GUID: []const u8 = \"{s}\";\n", .{ offset, guid });
-        try writer.print("{s}pub const IID: Guid = Guid.iniString(GUID);\n", .{ offset });
-
         if (typedef.GenericParameters) |gp| {
             try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID, &.{{", .{ offset });
             try writer.print("core.Signature.get({s})", .{ gp[0] });
@@ -83,7 +81,11 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                 try writer.print(",core.Signature.get({s})", .{ gp[i] });
             }
             try writer.writeAll("});\n");
+            try writer.print("{s}pub const IID: Guid = core.Signature.guid(GUID);\n", .{ offset });
+            try writer.print("{s}pub const GUID: []const u8 = &core.guidToString(IID);\n", .{ offset });
         } else {
+            try writer.print("{s}pub const GUID: []const u8 = \"{s}\";\n", .{ offset, guid });
+            try writer.print("{s}pub const IID: Guid = Guid.iniString(GUID);\n", .{ offset });
             try writer.print("{s}pub const SIGNATURE: []const u8 = core.Signature.pinterface(GUID);\n", .{ offset });
         }
     }
@@ -101,6 +103,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             // Ignore static methods as they cannot be used
             // with how the bindings are set up
             if (method.Static) continue;
+            if (std.mem.eql(u8, method.Name, ".ctor")) continue;
 
             try writer.print("{s}    {s}: *const fn(self: *anyopaque", .{ offset, method.Name });
             if (method.Parameters) |parameters| {

@@ -303,7 +303,7 @@ pub fn main() !void {
     defer ctx.requirements.deinit();
 
     for (namespace.types) |*ty| {
-        if (std.mem.eql(u8, ty.Name, "Rect")) {
+        if (std.mem.eql(u8, ty.Name, "TypedEventHandler")) {
             var buffer: [1024]u8 = undefined;
             var stdout = std.fs.File.stdout();
             var stdout_writer = stdout.writer(&buffer);
@@ -312,6 +312,7 @@ pub fn main() !void {
                 .Class => try metadata.class.serialize(allocator, &ctx, ty, &stdout_writer.interface),
                 .Enum => try metadata.enumeration.serialize(ty, &stdout_writer.interface),
                 .Struct => try metadata.structure.serialize(allocator, &ctx, ty, &stdout_writer.interface),
+                .Delegate => try metadata.delegate.serialize(allocator, &ctx, ty, &stdout_writer.interface),
                 // TODO: Delegate regular and generic
                 else => try stdout_writer.interface.print("{f}\n", .{ ty })
             }
