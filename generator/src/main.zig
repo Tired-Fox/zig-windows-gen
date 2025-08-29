@@ -291,7 +291,7 @@ pub fn main() !void {
         }
     }
 
-    const namespace = try metadata.parse(allocator, &metaDir, "Windows.UI.ViewManagement.json");
+    const namespace = try metadata.parse(allocator, &metaDir, "Windows.Foundation.json");
     defer namespace.deinit();
 
     std.debug.print("{s}:\n", .{ namespace.namespace });
@@ -303,20 +303,22 @@ pub fn main() !void {
     defer ctx.requirements.deinit();
 
     for (namespace.types) |*ty| {
-        if (std.mem.eql(u8, ty.Name, "UISettings")) {
+        if (std.mem.eql(u8, ty.Name, "Rect")) {
             var buffer: [1024]u8 = undefined;
             var stdout = std.fs.File.stdout();
             var stdout_writer = stdout.writer(&buffer);
             switch (ty.Kind) {
                 .Interface => try metadata.interface.serialize(allocator, &ctx, ty, &stdout_writer.interface),
                 .Class => try metadata.class.serialize(allocator, &ctx, ty, &stdout_writer.interface),
+                .Enum => try metadata.enumeration.serialize(ty, &stdout_writer.interface),
+                .Struct => try metadata.structure.serialize(allocator, &ctx, ty, &stdout_writer.interface),
+                // TODO: Delegate regular and generic
                 else => try stdout_writer.interface.print("{f}\n", .{ ty })
             }
             stdout_writer.interface.flush() catch unreachable;
             break;
         }
     }
-    std.debug.print("  Types: {d}\n", .{ namespace.types.len });
 
     var it = ctx.requirements.items.iterator();
     while (it.next()) |requirement| {

@@ -4,17 +4,6 @@ const ty = @import("./type.zig");
 const metadata = @import("../metadata.zig");
 const TypeDef = metadata.TypeDef;
 
-/// Helper that replaces all of a pattern with the replacement allocating
-/// and returning the result of the replacement.
-///
-/// The caller is responsible for freeing returned allocated memory
-pub fn replaceAll(allocator: std.mem.Allocator, input_str: []const u8, pattern: []const u8, replacement: []const u8) ![]u8 {
-    const output_size = std.mem.replacementSize(u8, input_str, pattern, replacement);
-    const output_buffer = try allocator.alloc(u8, output_size);
-    _ = std.mem.replace(u8, input_str, pattern, replacement, output_buffer);
-    return output_buffer;
-}
-
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
     // At this piont the kind should have already been determined;
     std.debug.assert(typedef.Kind == .Interface);
@@ -39,7 +28,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         for (methods) |method| {
             if (method.Static) continue;
 
-            const mname = try replaceAll(allocator, method.Name, "_", "");
+            const mname = try metadata.replaceAll(allocator, method.Name, "_", "");
             defer allocator.free(mname);
 
             try writer.print("{s}pub fn {s}(self: *@This()", .{ offset, mname });
