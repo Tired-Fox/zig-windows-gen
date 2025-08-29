@@ -31,9 +31,9 @@ pub const ApiInformation = extern struct {
         const factory = @This().IApiInformationStaticsCache.get();
         return try factory.IsMethodPresent(typeName, methodName);
     }
-    pub fn IsMethodPresentWithMethodNameWithInputParameterCount(typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
+    pub fn IsMethodPresentWithInputParameterCount(typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
         const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsMethodPresentWithMethodNameWithInputParameterCount(typeName, methodName, inputParameterCount);
+        return try factory.IsMethodPresentWithInputParameterCount(typeName, methodName, inputParameterCount);
     }
     pub fn IsEventPresent(typeName: HSTRING, eventName: HSTRING) core.HResult!bool {
         const factory = @This().IApiInformationStaticsCache.get();
@@ -59,9 +59,9 @@ pub const ApiInformation = extern struct {
         const factory = @This().IApiInformationStaticsCache.get();
         return try factory.IsApiContractPresent(contractName, majorVersion);
     }
-    pub fn IsApiContractPresentWithMajorVersionWithMinorVersion(contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
+    pub fn IsApiContractPresentWithMinorVersion(contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
         const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsApiContractPresentWithMajorVersionWithMinorVersion(contractName, majorVersion, minorVersion);
+        return try factory.IsApiContractPresentWithMinorVersion(contractName, majorVersion, minorVersion);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Metadata.ApiInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

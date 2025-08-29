@@ -55,35 +55,35 @@ pub const AgentResources = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFileSystemRead() core.HResult!HSTRING {
+    pub fn get_FileSystemRead() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getFileSystemRead();
     }
-    pub fn getFileSystemWrite() core.HResult!HSTRING {
+    pub fn get_FileSystemWrite() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getFileSystemWrite();
     }
-    pub fn getFileSystemDelete() core.HResult!HSTRING {
+    pub fn get_FileSystemDelete() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getFileSystemDelete();
     }
-    pub fn getFileSystemCreate() core.HResult!HSTRING {
+    pub fn get_FileSystemCreate() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getFileSystemCreate();
     }
-    pub fn getHttpGet() core.HResult!HSTRING {
+    pub fn get_HttpGet() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getHttpGet();
     }
-    pub fn getHttpPost() core.HResult!HSTRING {
+    pub fn get_HttpPost() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getHttpPost();
     }
-    pub fn getHttpPut() core.HResult!HSTRING {
+    pub fn get_HttpPut() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getHttpPut();
     }
-    pub fn getHttpDelete() core.HResult!HSTRING {
+    pub fn get_HttpDelete() core.HResult!HSTRING {
         const factory = @This().IAgentResourcesStaticsCache.get();
         return try factory.getHttpDelete();
     }

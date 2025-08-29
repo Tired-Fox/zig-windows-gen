@@ -2259,11 +2259,11 @@ pub const NetworkInformation = extern struct {
         const factory = @This().INetworkInformationStaticsCache.get();
         return try factory.GetSortedEndpointPairs(destinationList, sortOptions);
     }
-    pub fn addNetworkStatusChanged(networkStatusHandler: *NetworkStatusChangedEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_NetworkStatusChanged(networkStatusHandler: *NetworkStatusChangedEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().INetworkInformationStaticsCache.get();
         return try factory.addNetworkStatusChanged(networkStatusHandler);
     }
-    pub fn removeNetworkStatusChanged(eventCookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_NetworkStatusChanged(eventCookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().INetworkInformationStaticsCache.get();
         return try factory.removeNetworkStatusChanged(eventCookie);
     }

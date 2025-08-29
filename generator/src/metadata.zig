@@ -419,7 +419,7 @@ pub fn generateMethodNameMapSig(allocator: std.mem.Allocator, methods: []const T
                 const bpc = if (base.Parameters) |p| p.len else 0;
                 const cpc = if (method.Parameters) |p| p.len else 0;
                 if (cpc > bpc) {
-                    for (method.Parameters.?[cpc-|bpc..]) |param| {
+                    for (method.Parameters.?[bpc..]) |param| {
                         const name = noreserved(param.Name);
                         try writer.print("With{c}{s}", .{ std.ascii.toUpper(name[0]), name[1..] });
                     }

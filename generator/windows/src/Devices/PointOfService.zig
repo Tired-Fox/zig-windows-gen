@@ -71,7 +71,7 @@ pub const BarcodeScanner = extern struct {
         const factory = @This().IBarcodeScannerStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         const factory = @This().IBarcodeScannerStatics2Cache.get();
         return try factory.GetDeviceSelector(connectionTypes);
     }
@@ -219,375 +219,375 @@ pub const BarcodeSymbologies = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUnknown() core.HResult!u32 {
+    pub fn get_Unknown() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUnknown();
     }
-    pub fn getEan8() core.HResult!u32 {
+    pub fn get_Ean8() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan8();
     }
-    pub fn getEan8Add2() core.HResult!u32 {
+    pub fn get_Ean8Add2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan8Add2();
     }
-    pub fn getEan8Add5() core.HResult!u32 {
+    pub fn get_Ean8Add5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan8Add5();
     }
-    pub fn getEanv() core.HResult!u32 {
+    pub fn get_Eanv() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEanv();
     }
-    pub fn getEanvAdd2() core.HResult!u32 {
+    pub fn get_EanvAdd2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEanvAdd2();
     }
-    pub fn getEanvAdd5() core.HResult!u32 {
+    pub fn get_EanvAdd5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEanvAdd5();
     }
-    pub fn getEan13() core.HResult!u32 {
+    pub fn get_Ean13() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan13();
     }
-    pub fn getEan13Add2() core.HResult!u32 {
+    pub fn get_Ean13Add2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan13Add2();
     }
-    pub fn getEan13Add5() core.HResult!u32 {
+    pub fn get_Ean13Add5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan13Add5();
     }
-    pub fn getIsbn() core.HResult!u32 {
+    pub fn get_Isbn() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIsbn();
     }
-    pub fn getIsbnAdd5() core.HResult!u32 {
+    pub fn get_IsbnAdd5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIsbnAdd5();
     }
-    pub fn getIsmn() core.HResult!u32 {
+    pub fn get_Ismn() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIsmn();
     }
-    pub fn getIsmnAdd2() core.HResult!u32 {
+    pub fn get_IsmnAdd2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIsmnAdd2();
     }
-    pub fn getIsmnAdd5() core.HResult!u32 {
+    pub fn get_IsmnAdd5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIsmnAdd5();
     }
-    pub fn getIssn() core.HResult!u32 {
+    pub fn get_Issn() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIssn();
     }
-    pub fn getIssnAdd2() core.HResult!u32 {
+    pub fn get_IssnAdd2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIssnAdd2();
     }
-    pub fn getIssnAdd5() core.HResult!u32 {
+    pub fn get_IssnAdd5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIssnAdd5();
     }
-    pub fn getEan99() core.HResult!u32 {
+    pub fn get_Ean99() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan99();
     }
-    pub fn getEan99Add2() core.HResult!u32 {
+    pub fn get_Ean99Add2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan99Add2();
     }
-    pub fn getEan99Add5() core.HResult!u32 {
+    pub fn get_Ean99Add5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getEan99Add5();
     }
-    pub fn getUpca() core.HResult!u32 {
+    pub fn get_Upca() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpca();
     }
-    pub fn getUpcaAdd2() core.HResult!u32 {
+    pub fn get_UpcaAdd2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpcaAdd2();
     }
-    pub fn getUpcaAdd5() core.HResult!u32 {
+    pub fn get_UpcaAdd5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpcaAdd5();
     }
-    pub fn getUpce() core.HResult!u32 {
+    pub fn get_Upce() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpce();
     }
-    pub fn getUpceAdd2() core.HResult!u32 {
+    pub fn get_UpceAdd2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpceAdd2();
     }
-    pub fn getUpceAdd5() core.HResult!u32 {
+    pub fn get_UpceAdd5() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpceAdd5();
     }
-    pub fn getUpcCoupon() core.HResult!u32 {
+    pub fn get_UpcCoupon() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUpcCoupon();
     }
-    pub fn getTfStd() core.HResult!u32 {
+    pub fn get_TfStd() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTfStd();
     }
-    pub fn getTfDis() core.HResult!u32 {
+    pub fn get_TfDis() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTfDis();
     }
-    pub fn getTfInt() core.HResult!u32 {
+    pub fn get_TfInt() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTfInt();
     }
-    pub fn getTfInd() core.HResult!u32 {
+    pub fn get_TfInd() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTfInd();
     }
-    pub fn getTfMat() core.HResult!u32 {
+    pub fn get_TfMat() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTfMat();
     }
-    pub fn getTfIata() core.HResult!u32 {
+    pub fn get_TfIata() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTfIata();
     }
-    pub fn getGs1DatabarType1() core.HResult!u32 {
+    pub fn get_Gs1DatabarType1() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getGs1DatabarType1();
     }
-    pub fn getGs1DatabarType2() core.HResult!u32 {
+    pub fn get_Gs1DatabarType2() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getGs1DatabarType2();
     }
-    pub fn getGs1DatabarType3() core.HResult!u32 {
+    pub fn get_Gs1DatabarType3() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getGs1DatabarType3();
     }
-    pub fn getCode39() core.HResult!u32 {
+    pub fn get_Code39() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode39();
     }
-    pub fn getCode39Ex() core.HResult!u32 {
+    pub fn get_Code39Ex() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode39Ex();
     }
-    pub fn getTrioptic39() core.HResult!u32 {
+    pub fn get_Trioptic39() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTrioptic39();
     }
-    pub fn getCode32() core.HResult!u32 {
+    pub fn get_Code32() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode32();
     }
-    pub fn getPzn() core.HResult!u32 {
+    pub fn get_Pzn() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getPzn();
     }
-    pub fn getCode93() core.HResult!u32 {
+    pub fn get_Code93() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode93();
     }
-    pub fn getCode93Ex() core.HResult!u32 {
+    pub fn get_Code93Ex() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode93Ex();
     }
-    pub fn getCode128() core.HResult!u32 {
+    pub fn get_Code128() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode128();
     }
-    pub fn getGs1128() core.HResult!u32 {
+    pub fn get_Gs1128() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getGs1128();
     }
-    pub fn getGs1128Coupon() core.HResult!u32 {
+    pub fn get_Gs1128Coupon() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getGs1128Coupon();
     }
-    pub fn getUccEan128() core.HResult!u32 {
+    pub fn get_UccEan128() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUccEan128();
     }
-    pub fn getSisac() core.HResult!u32 {
+    pub fn get_Sisac() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getSisac();
     }
-    pub fn getIsbt() core.HResult!u32 {
+    pub fn get_Isbt() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getIsbt();
     }
-    pub fn getCodabar() core.HResult!u32 {
+    pub fn get_Codabar() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCodabar();
     }
-    pub fn getCode11() core.HResult!u32 {
+    pub fn get_Code11() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode11();
     }
-    pub fn getMsi() core.HResult!u32 {
+    pub fn get_Msi() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getMsi();
     }
-    pub fn getPlessey() core.HResult!u32 {
+    pub fn get_Plessey() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getPlessey();
     }
-    pub fn getTelepen() core.HResult!u32 {
+    pub fn get_Telepen() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTelepen();
     }
-    pub fn getCode16k() core.HResult!u32 {
+    pub fn get_Code16k() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode16k();
     }
-    pub fn getCodablockA() core.HResult!u32 {
+    pub fn get_CodablockA() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCodablockA();
     }
-    pub fn getCodablockF() core.HResult!u32 {
+    pub fn get_CodablockF() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCodablockF();
     }
-    pub fn getCodablock128() core.HResult!u32 {
+    pub fn get_Codablock128() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCodablock128();
     }
-    pub fn getCode49() core.HResult!u32 {
+    pub fn get_Code49() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCode49();
     }
-    pub fn getAztec() core.HResult!u32 {
+    pub fn get_Aztec() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getAztec();
     }
-    pub fn getDataCode() core.HResult!u32 {
+    pub fn get_DataCode() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getDataCode();
     }
-    pub fn getDataMatrix() core.HResult!u32 {
+    pub fn get_DataMatrix() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getDataMatrix();
     }
-    pub fn getHanXin() core.HResult!u32 {
+    pub fn get_HanXin() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getHanXin();
     }
-    pub fn getMaxicode() core.HResult!u32 {
+    pub fn get_Maxicode() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getMaxicode();
     }
-    pub fn getMicroPdf417() core.HResult!u32 {
+    pub fn get_MicroPdf417() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getMicroPdf417();
     }
-    pub fn getMicroQr() core.HResult!u32 {
+    pub fn get_MicroQr() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getMicroQr();
     }
-    pub fn getPdf417() core.HResult!u32 {
+    pub fn get_Pdf417() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getPdf417();
     }
-    pub fn getQr() core.HResult!u32 {
+    pub fn get_Qr() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getQr();
     }
-    pub fn getMsTag() core.HResult!u32 {
+    pub fn get_MsTag() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getMsTag();
     }
-    pub fn getCcab() core.HResult!u32 {
+    pub fn get_Ccab() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCcab();
     }
-    pub fn getCcc() core.HResult!u32 {
+    pub fn get_Ccc() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCcc();
     }
-    pub fn getTlc39() core.HResult!u32 {
+    pub fn get_Tlc39() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getTlc39();
     }
-    pub fn getAusPost() core.HResult!u32 {
+    pub fn get_AusPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getAusPost();
     }
-    pub fn getCanPost() core.HResult!u32 {
+    pub fn get_CanPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getCanPost();
     }
-    pub fn getChinaPost() core.HResult!u32 {
+    pub fn get_ChinaPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getChinaPost();
     }
-    pub fn getDutchKix() core.HResult!u32 {
+    pub fn get_DutchKix() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getDutchKix();
     }
-    pub fn getInfoMail() core.HResult!u32 {
+    pub fn get_InfoMail() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getInfoMail();
     }
-    pub fn getItalianPost25() core.HResult!u32 {
+    pub fn get_ItalianPost25() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getItalianPost25();
     }
-    pub fn getItalianPost39() core.HResult!u32 {
+    pub fn get_ItalianPost39() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getItalianPost39();
     }
-    pub fn getJapanPost() core.HResult!u32 {
+    pub fn get_JapanPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getJapanPost();
     }
-    pub fn getKoreanPost() core.HResult!u32 {
+    pub fn get_KoreanPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getKoreanPost();
     }
-    pub fn getSwedenPost() core.HResult!u32 {
+    pub fn get_SwedenPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getSwedenPost();
     }
-    pub fn getUkPost() core.HResult!u32 {
+    pub fn get_UkPost() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUkPost();
     }
-    pub fn getUsIntelligent() core.HResult!u32 {
+    pub fn get_UsIntelligent() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUsIntelligent();
     }
-    pub fn getUsIntelligentPkg() core.HResult!u32 {
+    pub fn get_UsIntelligentPkg() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUsIntelligentPkg();
     }
-    pub fn getUsPlanet() core.HResult!u32 {
+    pub fn get_UsPlanet() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUsPlanet();
     }
-    pub fn getUsPostNet() core.HResult!u32 {
+    pub fn get_UsPostNet() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUsPostNet();
     }
-    pub fn getUs4StateFics() core.HResult!u32 {
+    pub fn get_Us4StateFics() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getUs4StateFics();
     }
-    pub fn getOcrA() core.HResult!u32 {
+    pub fn get_OcrA() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getOcrA();
     }
-    pub fn getOcrB() core.HResult!u32 {
+    pub fn get_OcrB() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getOcrB();
     }
-    pub fn getMicr() core.HResult!u32 {
+    pub fn get_Micr() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getMicr();
     }
-    pub fn getExtendedBase() core.HResult!u32 {
+    pub fn get_ExtendedBase() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.getExtendedBase();
     }
@@ -595,7 +595,7 @@ pub const BarcodeSymbologies = extern struct {
         const factory = @This().IBarcodeSymbologiesStaticsCache.get();
         return try factory.GetName(scanDataType);
     }
-    pub fn getGs1DWCode() core.HResult!u32 {
+    pub fn get_Gs1DWCode() core.HResult!u32 {
         const factory = @This().IBarcodeSymbologiesStatics2Cache.get();
         return try factory.getGs1DWCode();
     }
@@ -732,7 +732,7 @@ pub const CashDrawer = extern struct {
         const factory = @This().ICashDrawerStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         const factory = @This().ICashDrawerStatics2Cache.get();
         return try factory.GetDeviceSelector(connectionTypes);
     }
@@ -1478,9 +1478,9 @@ pub const ClaimedLineDisplay = extern struct {
         const factory = @This().IClaimedLineDisplayStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         const factory = @This().IClaimedLineDisplayStaticsCache.get();
-        return try factory.GetDeviceSelector(connectionTypes);
+        return try factory.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedLineDisplay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8483,7 +8483,7 @@ pub const LineDisplay = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getStatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
+    pub fn get_StatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
         const factory = @This().ILineDisplayStatics2Cache.get();
         return try factory.getStatisticsCategorySelector();
     }
@@ -8499,9 +8499,9 @@ pub const LineDisplay = extern struct {
         const factory = @This().ILineDisplayStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         const factory = @This().ILineDisplayStaticsCache.get();
-        return try factory.GetDeviceSelector(connectionTypes);
+        return try factory.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.LineDisplay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9066,7 +9066,7 @@ pub const MagneticStripeReader = extern struct {
         const factory = @This().IMagneticStripeReaderStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         const factory = @This().IMagneticStripeReaderStatics2Cache.get();
         return try factory.GetDeviceSelector(connectionTypes);
     }
@@ -9272,19 +9272,19 @@ pub const MagneticStripeReaderCardTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUnknown() core.HResult!u32 {
+    pub fn get_Unknown() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
         return try factory.getUnknown();
     }
-    pub fn getBank() core.HResult!u32 {
+    pub fn get_Bank() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
         return try factory.getBank();
     }
-    pub fn getAamva() core.HResult!u32 {
+    pub fn get_Aamva() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
         return try factory.getAamva();
     }
-    pub fn getExtendedBase() core.HResult!u32 {
+    pub fn get_ExtendedBase() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
         return try factory.getExtendedBase();
     }
@@ -9297,15 +9297,15 @@ pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getNone() core.HResult!u32 {
+    pub fn get_None() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
         return try factory.getNone();
     }
-    pub fn getTripleDesDukpt() core.HResult!u32 {
+    pub fn get_TripleDesDukpt() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
         return try factory.getTripleDesDukpt();
     }
-    pub fn getExtendedBase() core.HResult!u32 {
+    pub fn get_ExtendedBase() core.HResult!u32 {
         const factory = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
         return try factory.getExtendedBase();
     }
@@ -9530,7 +9530,7 @@ pub const PosPrinter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         const factory = @This().IPosPrinterStatics2Cache.get();
         return try factory.GetDeviceSelector(connectionTypes);
     }
@@ -9624,15 +9624,15 @@ pub const PosPrinterCharacterSetIds = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUtf16LE() core.HResult!u32 {
+    pub fn get_Utf16LE() core.HResult!u32 {
         const factory = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
         return try factory.getUtf16LE();
     }
-    pub fn getAscii() core.HResult!u32 {
+    pub fn get_Ascii() core.HResult!u32 {
         const factory = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
         return try factory.getAscii();
     }
-    pub fn getAnsi() core.HResult!u32 {
+    pub fn get_Ansi() core.HResult!u32 {
         const factory = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
         return try factory.getAnsi();
     }

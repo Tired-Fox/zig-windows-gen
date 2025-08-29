@@ -529,17 +529,17 @@ pub const FileRandomAccessStream = extern struct {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
         return try factory.OpenTransactedWriteAsync(filePath);
     }
-    pub fn OpenTransactedWriteAsyncWithOpenDisposition(filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
+    pub fn OpenTransactedWriteAsyncWithOpenOptionsWithOpenDisposition(filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
-        return try factory.OpenTransactedWriteAsyncWithOpenDisposition(filePath, openOptions, openDisposition);
+        return try factory.OpenTransactedWriteAsyncWithOpenOptionsWithOpenDisposition(filePath, openOptions, openDisposition);
     }
     pub fn OpenForUserAsync(user: *User, filePath: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
         return try factory.OpenForUserAsync(user, filePath, accessMode);
     }
-    pub fn OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition(user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenForUserAsyncWithSharingOptionsWithOpenDisposition(user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
-        return try factory.OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition(user, filePath, accessMode, sharingOptions, openDisposition);
+        return try factory.OpenForUserAsyncWithSharingOptionsWithOpenDisposition(user, filePath, accessMode, sharingOptions, openDisposition);
     }
     pub fn OpenTransactedWriteForUserAsync(user: *User, filePath: HSTRING) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
@@ -1589,9 +1589,9 @@ pub const RandomAccessStream = extern struct {
         const factory = @This().IRandomAccessStreamStaticsCache.get();
         return try factory.CopyAsync(source, destination);
     }
-    pub fn CopyAsyncWithDestinationWithBytesToCopy(source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
+    pub fn CopyAsyncWithBytesToCopy(source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         const factory = @This().IRandomAccessStreamStaticsCache.get();
-        return try factory.CopyAsyncWithDestinationWithBytesToCopy(source, destination, bytesToCopy);
+        return try factory.CopyAsyncWithBytesToCopy(source, destination, bytesToCopy);
     }
     pub fn CopyAndCloseAsync(source: *IInputStream, destination: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         const factory = @This().IRandomAccessStreamStaticsCache.get();

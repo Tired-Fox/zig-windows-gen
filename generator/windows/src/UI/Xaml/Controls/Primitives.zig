@@ -43,23 +43,23 @@ pub const ButtonBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getClickModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClickModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IButtonBaseStaticsCache.get();
         return try factory.getClickModeProperty();
     }
-    pub fn getIsPointerOverProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsPointerOverProperty() core.HResult!*DependencyProperty {
         const factory = @This().IButtonBaseStaticsCache.get();
         return try factory.getIsPointerOverProperty();
     }
-    pub fn getIsPressedProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsPressedProperty() core.HResult!*DependencyProperty {
         const factory = @This().IButtonBaseStaticsCache.get();
         return try factory.getIsPressedProperty();
     }
-    pub fn getCommandProperty() core.HResult!*DependencyProperty {
+    pub fn get_CommandProperty() core.HResult!*DependencyProperty {
         const factory = @This().IButtonBaseStaticsCache.get();
         return try factory.getCommandProperty();
     }
-    pub fn getCommandParameterProperty() core.HResult!*DependencyProperty {
+    pub fn get_CommandParameterProperty() core.HResult!*DependencyProperty {
         const factory = @This().IButtonBaseStaticsCache.get();
         return try factory.getCommandParameterProperty();
     }
@@ -126,11 +126,11 @@ pub const ToggleButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsCheckedProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsCheckedProperty() core.HResult!*DependencyProperty {
         const factory = @This().IToggleButtonStaticsCache.get();
         return try factory.getIsCheckedProperty();
     }
-    pub fn getIsThreeStateProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsThreeStateProperty() core.HResult!*DependencyProperty {
         const factory = @This().IToggleButtonStaticsCache.get();
         return try factory.getIsThreeStateProperty();
     }
@@ -199,23 +199,23 @@ pub const Selector = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedIndexProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISelectorStaticsCache.get();
         return try factory.getSelectedIndexProperty();
     }
-    pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedItemProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISelectorStaticsCache.get();
         return try factory.getSelectedItemProperty();
     }
-    pub fn getSelectedValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISelectorStaticsCache.get();
         return try factory.getSelectedValueProperty();
     }
-    pub fn getSelectedValuePathProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedValuePathProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISelectorStaticsCache.get();
         return try factory.getSelectedValuePathProperty();
     }
-    pub fn getIsSynchronizedWithCurrentItemProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsSynchronizedWithCurrentItemProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISelectorStaticsCache.get();
         return try factory.getIsSynchronizedWithCurrentItemProperty();
     }
@@ -244,7 +244,7 @@ pub const SelectorItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsSelectedProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsSelectedProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISelectorItemStaticsCache.get();
         return try factory.getIsSelectedProperty();
     }
@@ -475,31 +475,31 @@ pub const FlyoutBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getOverlayInputPassThroughElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_OverlayInputPassThroughElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics3Cache.get();
         return try factory.getOverlayInputPassThroughElementProperty();
     }
-    pub fn getAllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
+    pub fn get_AllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics2Cache.get();
         return try factory.getAllowFocusOnInteractionProperty();
     }
-    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics2Cache.get();
         return try factory.getLightDismissOverlayModeProperty();
     }
-    pub fn getAllowFocusWhenDisabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_AllowFocusWhenDisabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics2Cache.get();
         return try factory.getAllowFocusWhenDisabledProperty();
     }
-    pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ElementSoundModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics2Cache.get();
         return try factory.getElementSoundModeProperty();
     }
-    pub fn getPlacementProperty() core.HResult!*DependencyProperty {
+    pub fn get_PlacementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStaticsCache.get();
         return try factory.getPlacementProperty();
     }
-    pub fn getAttachedFlyoutProperty() core.HResult!*DependencyProperty {
+    pub fn get_AttachedFlyoutProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStaticsCache.get();
         return try factory.getAttachedFlyoutProperty();
     }
@@ -515,27 +515,27 @@ pub const FlyoutBase = extern struct {
         const factory = @This().IFlyoutBaseStaticsCache.get();
         return try factory.ShowAttachedFlyout(flyoutOwner);
     }
-    pub fn getShouldConstrainToRootBoundsProperty() core.HResult!*DependencyProperty {
+    pub fn get_ShouldConstrainToRootBoundsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics6Cache.get();
         return try factory.getShouldConstrainToRootBoundsProperty();
     }
-    pub fn getTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics5Cache.get();
         return try factory.getTargetProperty();
     }
-    pub fn getShowModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ShowModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics5Cache.get();
         return try factory.getShowModeProperty();
     }
-    pub fn getInputDevicePrefersPrimaryCommandsProperty() core.HResult!*DependencyProperty {
+    pub fn get_InputDevicePrefersPrimaryCommandsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics5Cache.get();
         return try factory.getInputDevicePrefersPrimaryCommandsProperty();
     }
-    pub fn getAreOpenCloseAnimationsEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_AreOpenCloseAnimationsEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics5Cache.get();
         return try factory.getAreOpenCloseAnimationsEnabledProperty();
     }
-    pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsOpenProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFlyoutBaseStatics5Cache.get();
         return try factory.getIsOpenProperty();
     }
@@ -572,7 +572,7 @@ pub const PickerFlyoutBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getTitleProperty() core.HResult!*DependencyProperty {
+    pub fn get_TitleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPickerFlyoutBaseStaticsCache.get();
         return try factory.getTitleProperty();
     }
@@ -1007,23 +1007,23 @@ pub const RangeBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMinimumProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinimumProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRangeBaseStaticsCache.get();
         return try factory.getMinimumProperty();
     }
-    pub fn getMaximumProperty() core.HResult!*DependencyProperty {
+    pub fn get_MaximumProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRangeBaseStaticsCache.get();
         return try factory.getMaximumProperty();
     }
-    pub fn getSmallChangeProperty() core.HResult!*DependencyProperty {
+    pub fn get_SmallChangeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRangeBaseStaticsCache.get();
         return try factory.getSmallChangeProperty();
     }
-    pub fn getLargeChangeProperty() core.HResult!*DependencyProperty {
+    pub fn get_LargeChangeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRangeBaseStaticsCache.get();
         return try factory.getLargeChangeProperty();
     }
-    pub fn getValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRangeBaseStaticsCache.get();
         return try factory.getValueProperty();
     }
@@ -1052,7 +1052,7 @@ pub const ColorPickerSlider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColorChannelProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorChannelProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorPickerSliderStaticsCache.get();
         return try factory.getColorChannelProperty();
     }
@@ -1161,43 +1161,43 @@ pub const ColorSpectrum = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getColorProperty();
     }
-    pub fn getHsvColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_HsvColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getHsvColorProperty();
     }
-    pub fn getMinHueProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinHueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getMinHueProperty();
     }
-    pub fn getMaxHueProperty() core.HResult!*DependencyProperty {
+    pub fn get_MaxHueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getMaxHueProperty();
     }
-    pub fn getMinSaturationProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinSaturationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getMinSaturationProperty();
     }
-    pub fn getMaxSaturationProperty() core.HResult!*DependencyProperty {
+    pub fn get_MaxSaturationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getMaxSaturationProperty();
     }
-    pub fn getMinValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getMinValueProperty();
     }
-    pub fn getMaxValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_MaxValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getMaxValueProperty();
     }
-    pub fn getShapeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ShapeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getShapeProperty();
     }
-    pub fn getComponentsProperty() core.HResult!*DependencyProperty {
+    pub fn get_ComponentsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorSpectrumStaticsCache.get();
         return try factory.getComponentsProperty();
     }
@@ -2055,91 +2055,91 @@ pub const GridViewItemPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getSelectionCheckMarkVisualEnabledProperty();
     }
-    pub fn getCheckHintBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckHintBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getCheckHintBrushProperty();
     }
-    pub fn getCheckSelectingBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckSelectingBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getCheckSelectingBrushProperty();
     }
-    pub fn getCheckBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getCheckBrushProperty();
     }
-    pub fn getDragBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_DragBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getDragBackgroundProperty();
     }
-    pub fn getDragForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_DragForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getDragForegroundProperty();
     }
-    pub fn getFocusBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getFocusBorderBrushProperty();
     }
-    pub fn getPlaceholderBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_PlaceholderBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getPlaceholderBackgroundProperty();
     }
-    pub fn getPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerOverBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getPointerOverBackgroundProperty();
     }
-    pub fn getSelectedBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getSelectedBackgroundProperty();
     }
-    pub fn getSelectedForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getSelectedForegroundProperty();
     }
-    pub fn getSelectedPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getSelectedPointerOverBackgroundProperty();
     }
-    pub fn getSelectedPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getSelectedPointerOverBorderBrushProperty();
     }
-    pub fn getSelectedBorderThicknessProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedBorderThicknessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getSelectedBorderThicknessProperty();
     }
-    pub fn getDisabledOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_DisabledOpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getDisabledOpacityProperty();
     }
-    pub fn getDragOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_DragOpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getDragOpacityProperty();
     }
-    pub fn getReorderHintOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ReorderHintOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getReorderHintOffsetProperty();
     }
-    pub fn getGridViewItemPresenterHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_GridViewItemPresenterHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getGridViewItemPresenterHorizontalContentAlignmentProperty();
     }
-    pub fn getGridViewItemPresenterVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_GridViewItemPresenterVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getGridViewItemPresenterVerticalContentAlignmentProperty();
     }
-    pub fn getGridViewItemPresenterPaddingProperty() core.HResult!*DependencyProperty {
+    pub fn get_GridViewItemPresenterPaddingProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getGridViewItemPresenterPaddingProperty();
     }
-    pub fn getPointerOverBackgroundMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerOverBackgroundMarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getPointerOverBackgroundMarginProperty();
     }
-    pub fn getContentMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentMarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGridViewItemPresenterStaticsCache.get();
         return try factory.getContentMarginProperty();
     }
@@ -9033,11 +9033,11 @@ pub const JumpListItemBackgroundConverter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJumpListItemBackgroundConverter.IID)));
     }
-    pub fn getEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IJumpListItemBackgroundConverterStaticsCache.get();
         return try factory.getEnabledProperty();
     }
-    pub fn getDisabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_DisabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IJumpListItemBackgroundConverterStaticsCache.get();
         return try factory.getDisabledProperty();
     }
@@ -9086,11 +9086,11 @@ pub const JumpListItemForegroundConverter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJumpListItemForegroundConverter.IID)));
     }
-    pub fn getEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IJumpListItemForegroundConverterStaticsCache.get();
         return try factory.getEnabledProperty();
     }
-    pub fn getDisabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_DisabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IJumpListItemForegroundConverterStaticsCache.get();
         return try factory.getDisabledProperty();
     }
@@ -9752,239 +9752,239 @@ pub const ListViewItemPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionCheckMarkVisualEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getSelectionCheckMarkVisualEnabledProperty();
     }
-    pub fn getCheckHintBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckHintBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getCheckHintBrushProperty();
     }
-    pub fn getCheckSelectingBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckSelectingBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getCheckSelectingBrushProperty();
     }
-    pub fn getCheckBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getCheckBrushProperty();
     }
-    pub fn getDragBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_DragBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getDragBackgroundProperty();
     }
-    pub fn getDragForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_DragForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getDragForegroundProperty();
     }
-    pub fn getFocusBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getFocusBorderBrushProperty();
     }
-    pub fn getPlaceholderBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_PlaceholderBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getPlaceholderBackgroundProperty();
     }
-    pub fn getPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerOverBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getPointerOverBackgroundProperty();
     }
-    pub fn getSelectedBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getSelectedBackgroundProperty();
     }
-    pub fn getSelectedForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getSelectedForegroundProperty();
     }
-    pub fn getSelectedPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedPointerOverBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getSelectedPointerOverBackgroundProperty();
     }
-    pub fn getSelectedPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getSelectedPointerOverBorderBrushProperty();
     }
-    pub fn getSelectedBorderThicknessProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedBorderThicknessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getSelectedBorderThicknessProperty();
     }
-    pub fn getDisabledOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_DisabledOpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getDisabledOpacityProperty();
     }
-    pub fn getDragOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_DragOpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getDragOpacityProperty();
     }
-    pub fn getReorderHintOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ReorderHintOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getReorderHintOffsetProperty();
     }
-    pub fn getListViewItemPresenterHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_ListViewItemPresenterHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getListViewItemPresenterHorizontalContentAlignmentProperty();
     }
-    pub fn getListViewItemPresenterVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_ListViewItemPresenterVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getListViewItemPresenterVerticalContentAlignmentProperty();
     }
-    pub fn getListViewItemPresenterPaddingProperty() core.HResult!*DependencyProperty {
+    pub fn get_ListViewItemPresenterPaddingProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getListViewItemPresenterPaddingProperty();
     }
-    pub fn getPointerOverBackgroundMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerOverBackgroundMarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getPointerOverBackgroundMarginProperty();
     }
-    pub fn getContentMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentMarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStaticsCache.get();
         return try factory.getContentMarginProperty();
     }
-    pub fn getSelectedPressedBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedPressedBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics2Cache.get();
         return try factory.getSelectedPressedBackgroundProperty();
     }
-    pub fn getPressedBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_PressedBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics2Cache.get();
         return try factory.getPressedBackgroundProperty();
     }
-    pub fn getCheckBoxBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics2Cache.get();
         return try factory.getCheckBoxBrushProperty();
     }
-    pub fn getFocusSecondaryBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusSecondaryBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics2Cache.get();
         return try factory.getFocusSecondaryBorderBrushProperty();
     }
-    pub fn getCheckModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics2Cache.get();
         return try factory.getCheckModeProperty();
     }
-    pub fn getPointerOverForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerOverForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics2Cache.get();
         return try factory.getPointerOverForegroundProperty();
     }
-    pub fn getSelectedDisabledBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedDisabledBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectedDisabledBackgroundProperty();
     }
-    pub fn getCheckPressedBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckPressedBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckPressedBrushProperty();
     }
-    pub fn getCheckDisabledBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckDisabledBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckDisabledBrushProperty();
     }
-    pub fn getCheckBoxPointerOverBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxPointerOverBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxPointerOverBrushProperty();
     }
-    pub fn getCheckBoxPressedBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxPressedBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxPressedBrushProperty();
     }
-    pub fn getCheckBoxDisabledBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxDisabledBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxDisabledBrushProperty();
     }
-    pub fn getCheckBoxSelectedBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxSelectedBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxSelectedBrushProperty();
     }
-    pub fn getCheckBoxSelectedPointerOverBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxSelectedPointerOverBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxSelectedPointerOverBrushProperty();
     }
-    pub fn getCheckBoxSelectedPressedBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxSelectedPressedBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxSelectedPressedBrushProperty();
     }
-    pub fn getCheckBoxSelectedDisabledBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxSelectedDisabledBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxSelectedDisabledBrushProperty();
     }
-    pub fn getCheckBoxBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxBorderBrushProperty();
     }
-    pub fn getCheckBoxPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxPointerOverBorderBrushProperty();
     }
-    pub fn getCheckBoxPressedBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxPressedBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxPressedBorderBrushProperty();
     }
-    pub fn getCheckBoxDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxDisabledBorderBrushProperty();
     }
-    pub fn getCheckBoxCornerRadiusProperty() core.HResult!*DependencyProperty {
+    pub fn get_CheckBoxCornerRadiusProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getCheckBoxCornerRadiusProperty();
     }
-    pub fn getSelectionIndicatorCornerRadiusProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorCornerRadiusProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorCornerRadiusProperty();
     }
-    pub fn getSelectionIndicatorVisualEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorVisualEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorVisualEnabledProperty();
     }
-    pub fn getSelectionIndicatorModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorModeProperty();
     }
-    pub fn getSelectionIndicatorBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorBrushProperty();
     }
-    pub fn getSelectionIndicatorPointerOverBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorPointerOverBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorPointerOverBrushProperty();
     }
-    pub fn getSelectionIndicatorPressedBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorPressedBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorPressedBrushProperty();
     }
-    pub fn getSelectionIndicatorDisabledBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectionIndicatorDisabledBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectionIndicatorDisabledBrushProperty();
     }
-    pub fn getSelectedBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectedBorderBrushProperty();
     }
-    pub fn getSelectedPressedBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedPressedBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectedPressedBorderBrushProperty();
     }
-    pub fn getSelectedDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectedDisabledBorderBrushProperty();
     }
-    pub fn getSelectedInnerBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedInnerBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getSelectedInnerBorderBrushProperty();
     }
-    pub fn getPointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerOverBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics4Cache.get();
         return try factory.getPointerOverBorderBrushProperty();
     }
-    pub fn getRevealBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_RevealBackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics3Cache.get();
         return try factory.getRevealBackgroundProperty();
     }
-    pub fn getRevealBorderBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_RevealBorderBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics3Cache.get();
         return try factory.getRevealBorderBrushProperty();
     }
-    pub fn getRevealBorderThicknessProperty() core.HResult!*DependencyProperty {
+    pub fn get_RevealBorderThicknessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics3Cache.get();
         return try factory.getRevealBorderThicknessProperty();
     }
-    pub fn getRevealBackgroundShowsAboveContentProperty() core.HResult!*DependencyProperty {
+    pub fn get_RevealBackgroundShowsAboveContentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IListViewItemPresenterStatics3Cache.get();
         return try factory.getRevealBackgroundShowsAboveContentProperty();
     }
@@ -10092,31 +10092,31 @@ pub const LoopingSelector = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getShouldLoopProperty() core.HResult!*DependencyProperty {
+    pub fn get_ShouldLoopProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getShouldLoopProperty();
     }
-    pub fn getItemsProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getItemsProperty();
     }
-    pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedIndexProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getSelectedIndexProperty();
     }
-    pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
+    pub fn get_SelectedItemProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getSelectedItemProperty();
     }
-    pub fn getItemWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getItemWidthProperty();
     }
-    pub fn getItemHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getItemHeightProperty();
     }
-    pub fn getItemTemplateProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemTemplateProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILoopingSelectorStaticsCache.get();
         return try factory.getItemTemplateProperty();
     }
@@ -10228,7 +10228,7 @@ pub const NavigationViewItemPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIconProperty() core.HResult!*DependencyProperty {
+    pub fn get_IconProperty() core.HResult!*DependencyProperty {
         const factory = @This().INavigationViewItemPresenterStaticsCache.get();
         return try factory.getIconProperty();
     }
@@ -10666,43 +10666,43 @@ pub const Popup = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopup.IID)));
     }
-    pub fn getPlacementTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_PlacementTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStatics4Cache.get();
         return try factory.getPlacementTargetProperty();
     }
-    pub fn getDesiredPlacementProperty() core.HResult!*DependencyProperty {
+    pub fn get_DesiredPlacementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStatics4Cache.get();
         return try factory.getDesiredPlacementProperty();
     }
-    pub fn getShouldConstrainToRootBoundsProperty() core.HResult!*DependencyProperty {
+    pub fn get_ShouldConstrainToRootBoundsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStatics3Cache.get();
         return try factory.getShouldConstrainToRootBoundsProperty();
     }
-    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStatics2Cache.get();
         return try factory.getLightDismissOverlayModeProperty();
     }
-    pub fn getChildProperty() core.HResult!*DependencyProperty {
+    pub fn get_ChildProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStaticsCache.get();
         return try factory.getChildProperty();
     }
-    pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsOpenProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStaticsCache.get();
         return try factory.getIsOpenProperty();
     }
-    pub fn getHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_HorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStaticsCache.get();
         return try factory.getHorizontalOffsetProperty();
     }
-    pub fn getVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_VerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStaticsCache.get();
         return try factory.getVerticalOffsetProperty();
     }
-    pub fn getChildTransitionsProperty() core.HResult!*DependencyProperty {
+    pub fn get_ChildTransitionsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStaticsCache.get();
         return try factory.getChildTransitionsProperty();
     }
-    pub fn getIsLightDismissEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsLightDismissEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupStaticsCache.get();
         return try factory.getIsLightDismissEnabledProperty();
     }
@@ -10916,11 +10916,11 @@ pub const RepeatButton = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRepeatButton.IID)));
     }
-    pub fn getDelayProperty() core.HResult!*DependencyProperty {
+    pub fn get_DelayProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRepeatButtonStaticsCache.get();
         return try factory.getDelayProperty();
     }
-    pub fn getIntervalProperty() core.HResult!*DependencyProperty {
+    pub fn get_IntervalProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRepeatButtonStaticsCache.get();
         return try factory.getIntervalProperty();
     }
@@ -10973,15 +10973,15 @@ pub const ScrollBar = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScrollBar.IID)));
     }
-    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScrollBarStaticsCache.get();
         return try factory.getOrientationProperty();
     }
-    pub fn getViewportSizeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ViewportSizeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScrollBarStaticsCache.get();
         return try factory.getViewportSizeProperty();
     }
-    pub fn getIndicatorModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_IndicatorModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScrollBarStaticsCache.get();
         return try factory.getIndicatorModeProperty();
     }
@@ -11234,7 +11234,7 @@ pub const Thumb = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IThumb.IID)));
     }
-    pub fn getIsDraggingProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsDraggingProperty() core.HResult!*DependencyProperty {
         const factory = @This().IThumbStaticsCache.get();
         return try factory.getIsDraggingProperty();
     }
@@ -11263,7 +11263,7 @@ pub const TickBar = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITickBar.IID)));
     }
-    pub fn getFillProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITickBarStaticsCache.get();
         return try factory.getFillProperty();
     }

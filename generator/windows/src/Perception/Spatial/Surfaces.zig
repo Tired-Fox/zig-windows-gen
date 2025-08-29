@@ -468,15 +468,15 @@ pub const SpatialSurfaceMeshOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpatialSurfaceMeshOptions.IID)));
     }
-    pub fn getSupportedVertexPositionFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
+    pub fn get_SupportedVertexPositionFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
         const factory = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
         return try factory.getSupportedVertexPositionFormats();
     }
-    pub fn getSupportedTriangleIndexFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
+    pub fn get_SupportedTriangleIndexFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
         const factory = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
         return try factory.getSupportedTriangleIndexFormats();
     }
-    pub fn getSupportedVertexNormalFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
+    pub fn get_SupportedVertexNormalFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
         const factory = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
         return try factory.getSupportedVertexNormalFormats();
     }

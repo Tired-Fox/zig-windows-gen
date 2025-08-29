@@ -1475,11 +1475,11 @@ pub const KnownSmartCardAppletIds = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPaymentSystemEnvironment() core.HResult!*IBuffer {
+    pub fn get_PaymentSystemEnvironment() core.HResult!*IBuffer {
         const factory = @This().IKnownSmartCardAppletIdsCache.get();
         return try factory.getPaymentSystemEnvironment();
     }
-    pub fn getProximityPaymentSystemEnvironment() core.HResult!*IBuffer {
+    pub fn get_ProximityPaymentSystemEnvironment() core.HResult!*IBuffer {
         const factory = @This().IKnownSmartCardAppletIdsCache.get();
         return try factory.getProximityPaymentSystemEnvironment();
     }
@@ -1582,7 +1582,7 @@ pub const SmartCardAppletIdGroup = extern struct {
         const factory = @This().ISmartCardAppletIdGroupFactoryCache.get();
         return try factory.Create(displayName, appletIds, emulationCategory, emulationType);
     }
-    pub fn getMaxAppletIds() core.HResult!u16 {
+    pub fn get_MaxAppletIds() core.HResult!u16 {
         const factory = @This().ISmartCardAppletIdGroupStaticsCache.get();
         return try factory.getMaxAppletIds();
     }
@@ -2310,7 +2310,7 @@ pub const SmartCardEmulator = extern struct {
         const factory = @This().ISmartCardEmulatorStatics2Cache.get();
         return try factory.UnregisterAppletIdGroupAsync(registration);
     }
-    pub fn getMaxAppletIdGroupRegistrations() core.HResult!u16 {
+    pub fn get_MaxAppletIdGroupRegistrations() core.HResult!u16 {
         const factory = @This().ISmartCardEmulatorStatics2Cache.get();
         return try factory.getMaxAppletIdGroupRegistrations();
     }
@@ -3508,9 +3508,9 @@ pub const SmartCardProvisioning = extern struct {
         const factory = @This().ISmartCardProvisioningStatics2Cache.get();
         return try factory.RequestAttestedVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
     }
-    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithAdministrativeKeyWithPinPolicyWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const factory = @This().ISmartCardProvisioningStatics2Cache.get();
-        return try factory.RequestAttestedVirtualSmartCardCreationAsyncWithAdministrativeKeyWithPinPolicyWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
+        return try factory.RequestAttestedVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
     }
     pub fn FromSmartCardAsync(card: *SmartCard) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const factory = @This().ISmartCardProvisioningStaticsCache.get();
@@ -3520,9 +3520,9 @@ pub const SmartCardProvisioning = extern struct {
         const factory = @This().ISmartCardProvisioningStaticsCache.get();
         return try factory.RequestVirtualSmartCardCreationAsync(friendlyName, administrativeKey, pinPolicy);
     }
-    pub fn RequestVirtualSmartCardCreationAsyncWithAdministrativeKeyWithPinPolicyWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
+    pub fn RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName: HSTRING, administrativeKey: *IBuffer, pinPolicy: *SmartCardPinPolicy, cardId: *Guid) core.HResult!*IAsyncOperation(SmartCardProvisioning) {
         const factory = @This().ISmartCardProvisioningStaticsCache.get();
-        return try factory.RequestVirtualSmartCardCreationAsyncWithAdministrativeKeyWithPinPolicyWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
+        return try factory.RequestVirtualSmartCardCreationAsyncWithCardId(friendlyName, administrativeKey, pinPolicy, cardId);
     }
     pub fn RequestVirtualSmartCardDeletionAsync(card: *SmartCard) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().ISmartCardProvisioningStaticsCache.get();
@@ -3581,9 +3581,9 @@ pub const SmartCardReader = extern struct {
         const factory = @This().ISmartCardReaderStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(kind: SmartCardReaderKind) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithKind(kind: SmartCardReaderKind) core.HResult!HSTRING {
         const factory = @This().ISmartCardReaderStaticsCache.get();
-        return try factory.GetDeviceSelector(kind);
+        return try factory.GetDeviceSelectorWithKind(kind);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SmartCardReader) {
         const factory = @This().ISmartCardReaderStaticsCache.get();

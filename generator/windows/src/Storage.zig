@@ -145,7 +145,7 @@ pub const ApplicationData = extern struct {
         const factory = @This().IApplicationDataStatics2Cache.get();
         return try factory.GetForUserAsync(user);
     }
-    pub fn getCurrent() core.HResult!*ApplicationData {
+    pub fn get_Current() core.HResult!*ApplicationData {
         const factory = @This().IApplicationDataStaticsCache.get();
         return try factory.getCurrent();
     }
@@ -473,13 +473,13 @@ pub const DownloadsFolder = extern struct {
         const factory = @This().IDownloadsFolderStatics2Cache.get();
         return try factory.CreateFolderForUserAsync(user, desiredName);
     }
-    pub fn CreateFileForUserAsyncWithDesiredNameWithOption(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileForUserAsyncWithOption(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         const factory = @This().IDownloadsFolderStatics2Cache.get();
-        return try factory.CreateFileForUserAsyncWithDesiredNameWithOption(user, desiredName, option);
+        return try factory.CreateFileForUserAsyncWithOption(user, desiredName, option);
     }
-    pub fn CreateFolderForUserAsyncWithDesiredNameWithOption(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderForUserAsyncWithOption(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         const factory = @This().IDownloadsFolderStatics2Cache.get();
-        return try factory.CreateFolderForUserAsyncWithDesiredNameWithOption(user, desiredName, option);
+        return try factory.CreateFolderForUserAsyncWithOption(user, desiredName, option);
     }
     pub fn CreateFileAsync(desiredName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         const factory = @This().IDownloadsFolderStaticsCache.get();
@@ -531,17 +531,17 @@ pub const FileIO = extern struct {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.WriteTextAsync(file, contents);
     }
-    pub fn WriteTextAsyncWithContentsWithEncoding(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteTextAsyncWithEncoding(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.WriteTextAsyncWithContentsWithEncoding(file, contents, encoding);
+        return try factory.WriteTextAsyncWithEncoding(file, contents, encoding);
     }
     pub fn AppendTextAsync(file: *IStorageFile, contents: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.AppendTextAsync(file, contents);
     }
-    pub fn AppendTextAsyncWithContentsWithEncoding(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendTextAsyncWithEncoding(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.AppendTextAsyncWithContentsWithEncoding(file, contents, encoding);
+        return try factory.AppendTextAsyncWithEncoding(file, contents, encoding);
     }
     pub fn ReadLinesAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         const factory = @This().IFileIOStaticsCache.get();
@@ -555,17 +555,17 @@ pub const FileIO = extern struct {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.WriteLinesAsync(file, lines);
     }
-    pub fn WriteLinesAsyncWithLinesWithEncoding(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteLinesAsyncWithEncoding(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.WriteLinesAsyncWithLinesWithEncoding(file, lines, encoding);
+        return try factory.WriteLinesAsyncWithEncoding(file, lines, encoding);
     }
     pub fn AppendLinesAsync(file: *IStorageFile, lines: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.AppendLinesAsync(file, lines);
     }
-    pub fn AppendLinesAsyncWithLinesWithEncoding(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendLinesAsyncWithEncoding(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.AppendLinesAsyncWithLinesWithEncoding(file, lines, encoding);
+        return try factory.AppendLinesAsyncWithEncoding(file, lines, encoding);
     }
     pub fn ReadBufferAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(IBuffer) {
         const factory = @This().IFileIOStaticsCache.get();
@@ -3515,7 +3515,7 @@ pub const KnownFolders = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSavedPictures() core.HResult!*StorageFolder {
+    pub fn get_SavedPictures() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersSavedPicturesStaticsCache.get();
         return try factory.getSavedPictures();
     }
@@ -3531,43 +3531,43 @@ pub const KnownFolders = extern struct {
         const factory = @This().IKnownFoldersStatics4Cache.get();
         return try factory.GetFolderAsync(folderId);
     }
-    pub fn getMusicLibrary() core.HResult!*StorageFolder {
+    pub fn get_MusicLibrary() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getMusicLibrary();
     }
-    pub fn getPicturesLibrary() core.HResult!*StorageFolder {
+    pub fn get_PicturesLibrary() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getPicturesLibrary();
     }
-    pub fn getVideosLibrary() core.HResult!*StorageFolder {
+    pub fn get_VideosLibrary() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getVideosLibrary();
     }
-    pub fn getDocumentsLibrary() core.HResult!*StorageFolder {
+    pub fn get_DocumentsLibrary() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getDocumentsLibrary();
     }
-    pub fn getHomeGroup() core.HResult!*StorageFolder {
+    pub fn get_HomeGroup() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getHomeGroup();
     }
-    pub fn getRemovableDevices() core.HResult!*StorageFolder {
+    pub fn get_RemovableDevices() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getRemovableDevices();
     }
-    pub fn getMediaServerDevices() core.HResult!*StorageFolder {
+    pub fn get_MediaServerDevices() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStaticsCache.get();
         return try factory.getMediaServerDevices();
     }
-    pub fn getObjects3D() core.HResult!*StorageFolder {
+    pub fn get_Objects3D() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStatics2Cache.get();
         return try factory.getObjects3D();
     }
-    pub fn getAppCaptures() core.HResult!*StorageFolder {
+    pub fn get_AppCaptures() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStatics2Cache.get();
         return try factory.getAppCaptures();
     }
-    pub fn getRecordedCalls() core.HResult!*StorageFolder {
+    pub fn get_RecordedCalls() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersStatics2Cache.get();
         return try factory.getRecordedCalls();
     }
@@ -3575,11 +3575,11 @@ pub const KnownFolders = extern struct {
         const factory = @This().IKnownFoldersStatics3Cache.get();
         return try factory.GetFolderForUserAsync(user, folderId);
     }
-    pub fn getCameraRoll() core.HResult!*StorageFolder {
+    pub fn get_CameraRoll() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersCameraRollStaticsCache.get();
         return try factory.getCameraRoll();
     }
-    pub fn getPlaylists() core.HResult!*StorageFolder {
+    pub fn get_Playlists() core.HResult!*StorageFolder {
         const factory = @This().IKnownFoldersPlaylistsStaticsCache.get();
         return try factory.getPlaylists();
     }
@@ -3629,17 +3629,17 @@ pub const PathIO = extern struct {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.WriteTextAsync(absolutePath, contents);
     }
-    pub fn WriteTextAsyncWithContentsWithEncoding(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteTextAsyncWithEncoding(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.WriteTextAsyncWithContentsWithEncoding(absolutePath, contents, encoding);
+        return try factory.WriteTextAsyncWithEncoding(absolutePath, contents, encoding);
     }
     pub fn AppendTextAsync(absolutePath: HSTRING, contents: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.AppendTextAsync(absolutePath, contents);
     }
-    pub fn AppendTextAsyncWithContentsWithEncoding(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendTextAsyncWithEncoding(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.AppendTextAsyncWithContentsWithEncoding(absolutePath, contents, encoding);
+        return try factory.AppendTextAsyncWithEncoding(absolutePath, contents, encoding);
     }
     pub fn ReadLinesAsync(absolutePath: HSTRING) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         const factory = @This().IPathIOStaticsCache.get();
@@ -3653,17 +3653,17 @@ pub const PathIO = extern struct {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.WriteLinesAsync(absolutePath, lines);
     }
-    pub fn WriteLinesAsyncWithLinesWithEncoding(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteLinesAsyncWithEncoding(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.WriteLinesAsyncWithLinesWithEncoding(absolutePath, lines, encoding);
+        return try factory.WriteLinesAsyncWithEncoding(absolutePath, lines, encoding);
     }
     pub fn AppendLinesAsync(absolutePath: HSTRING, lines: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.AppendLinesAsync(absolutePath, lines);
     }
-    pub fn AppendLinesAsyncWithLinesWithEncoding(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendLinesAsyncWithEncoding(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.AppendLinesAsyncWithLinesWithEncoding(absolutePath, lines, encoding);
+        return try factory.AppendLinesAsyncWithEncoding(absolutePath, lines, encoding);
     }
     pub fn ReadBufferAsync(absolutePath: HSTRING) core.HResult!*IAsyncOperation(IBuffer) {
         const factory = @This().IPathIOStaticsCache.get();
@@ -4484,7 +4484,7 @@ pub const StorageLibraryLastChangeId = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUnknown() core.HResult!u64 {
+    pub fn get_Unknown() core.HResult!u64 {
         const factory = @This().IStorageLibraryLastChangeIdStaticsCache.get();
         return try factory.getUnknown();
     }
@@ -4893,55 +4893,55 @@ pub const SystemProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAuthor() core.HResult!HSTRING {
+    pub fn get_Author() core.HResult!HSTRING {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getAuthor();
     }
-    pub fn getComment() core.HResult!HSTRING {
+    pub fn get_Comment() core.HResult!HSTRING {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getComment();
     }
-    pub fn getItemNameDisplay() core.HResult!HSTRING {
+    pub fn get_ItemNameDisplay() core.HResult!HSTRING {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getItemNameDisplay();
     }
-    pub fn getKeywords() core.HResult!HSTRING {
+    pub fn get_Keywords() core.HResult!HSTRING {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getKeywords();
     }
-    pub fn getRating() core.HResult!HSTRING {
+    pub fn get_Rating() core.HResult!HSTRING {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getRating();
     }
-    pub fn getTitle() core.HResult!HSTRING {
+    pub fn get_Title() core.HResult!HSTRING {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getTitle();
     }
-    pub fn getAudio() core.HResult!*SystemAudioProperties {
+    pub fn get_Audio() core.HResult!*SystemAudioProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getAudio();
     }
-    pub fn getGPS() core.HResult!*SystemGPSProperties {
+    pub fn get_GPS() core.HResult!*SystemGPSProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getGPS();
     }
-    pub fn getMedia() core.HResult!*SystemMediaProperties {
+    pub fn get_Media() core.HResult!*SystemMediaProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getMedia();
     }
-    pub fn getMusic() core.HResult!*SystemMusicProperties {
+    pub fn get_Music() core.HResult!*SystemMusicProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getMusic();
     }
-    pub fn getPhoto() core.HResult!*SystemPhotoProperties {
+    pub fn get_Photo() core.HResult!*SystemPhotoProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getPhoto();
     }
-    pub fn getVideo() core.HResult!*SystemVideoProperties {
+    pub fn get_Video() core.HResult!*SystemVideoProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getVideo();
     }
-    pub fn getImage() core.HResult!*SystemImageProperties {
+    pub fn get_Image() core.HResult!*SystemImageProperties {
         const factory = @This().ISystemPropertiesCache.get();
         return try factory.getImage();
     }

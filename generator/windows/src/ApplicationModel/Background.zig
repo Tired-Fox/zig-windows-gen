@@ -339,25 +339,25 @@ pub const BackgroundExecutionManager = extern struct {
         const factory = @This().IBackgroundExecutionManagerStaticsCache.get();
         return try factory.RequestAccessAsync();
     }
-    pub fn RequestAccessAsync(applicationId: HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
+    pub fn RequestAccessAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(BackgroundAccessStatus) {
         const factory = @This().IBackgroundExecutionManagerStaticsCache.get();
-        return try factory.RequestAccessAsync(applicationId);
+        return try factory.RequestAccessAsyncWithApplicationId(applicationId);
     }
     pub fn RemoveAccess() core.HResult!void {
         const factory = @This().IBackgroundExecutionManagerStaticsCache.get();
         return try factory.RemoveAccess();
     }
-    pub fn RemoveAccess(applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveAccessWithApplicationId(applicationId: HSTRING) core.HResult!void {
         const factory = @This().IBackgroundExecutionManagerStaticsCache.get();
-        return try factory.RemoveAccess(applicationId);
+        return try factory.RemoveAccessWithApplicationId(applicationId);
     }
     pub fn GetAccessStatus() core.HResult!BackgroundAccessStatus {
         const factory = @This().IBackgroundExecutionManagerStaticsCache.get();
         return try factory.GetAccessStatus();
     }
-    pub fn GetAccessStatus(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
+    pub fn GetAccessStatusWithApplicationId(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
         const factory = @This().IBackgroundExecutionManagerStaticsCache.get();
-        return try factory.GetAccessStatus(applicationId);
+        return try factory.GetAccessStatusWithApplicationId(applicationId);
     }
     pub fn RequestAccessKindAsync(requestedAccess: BackgroundAccessRequestKind, reason: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IBackgroundExecutionManagerStatics2Cache.get();
@@ -371,9 +371,9 @@ pub const BackgroundExecutionManager = extern struct {
         const factory = @This().IBackgroundExecutionManagerStatics3Cache.get();
         return try factory.GetAccessStatusForModernStandby();
     }
-    pub fn GetAccessStatusForModernStandby(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
+    pub fn GetAccessStatusForModernStandbyWithApplicationId(applicationId: HSTRING) core.HResult!BackgroundAccessStatus {
         const factory = @This().IBackgroundExecutionManagerStatics3Cache.get();
-        return try factory.GetAccessStatusForModernStandby(applicationId);
+        return try factory.GetAccessStatusForModernStandbyWithApplicationId(applicationId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.BackgroundExecutionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -486,7 +486,7 @@ pub const BackgroundTaskBuilder = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTaskBuilder.IID)));
     }
-    pub fn getIsRunningTaskInStandbySupported() core.HResult!bool {
+    pub fn get_IsRunningTaskInStandbySupported() core.HResult!bool {
         const factory = @This().IBackgroundTaskBuilderStaticsCache.get();
         return try factory.getIsRunningTaskInStandbySupported();
     }
@@ -874,11 +874,11 @@ pub const BackgroundTaskRegistration = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAllTasks() core.HResult!*IMapView(Guid,IBackgroundTaskRegistration) {
+    pub fn get_AllTasks() core.HResult!*IMapView(Guid,IBackgroundTaskRegistration) {
         const factory = @This().IBackgroundTaskRegistrationStaticsCache.get();
         return try factory.getAllTasks();
     }
-    pub fn getAllTaskGroups() core.HResult!*IMapView(HSTRING,BackgroundTaskRegistrationGroup) {
+    pub fn get_AllTaskGroups() core.HResult!*IMapView(HSTRING,BackgroundTaskRegistrationGroup) {
         const factory = @This().IBackgroundTaskRegistrationStatics2Cache.get();
         return try factory.getAllTaskGroups();
     }
@@ -944,19 +944,19 @@ pub const BackgroundWorkCost = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAppEnergyUseLevel() core.HResult!EnergyUseLevel {
+    pub fn get_AppEnergyUseLevel() core.HResult!EnergyUseLevel {
         const factory = @This().IBackgroundWorkCostStatics2Cache.get();
         return try factory.getAppEnergyUseLevel();
     }
-    pub fn getAppEnergyUsePrediction() core.HResult!EnergyUseLevel {
+    pub fn get_AppEnergyUsePrediction() core.HResult!EnergyUseLevel {
         const factory = @This().IBackgroundWorkCostStatics2Cache.get();
         return try factory.getAppEnergyUsePrediction();
     }
-    pub fn getAppLastThrottledInStandbyTimestamp() core.HResult!DateTime {
+    pub fn get_AppLastThrottledInStandbyTimestamp() core.HResult!DateTime {
         const factory = @This().IBackgroundWorkCostStatics2Cache.get();
         return try factory.getAppLastThrottledInStandbyTimestamp();
     }
-    pub fn getCurrentBackgroundWorkCost() core.HResult!BackgroundWorkCostValue {
+    pub fn get_CurrentBackgroundWorkCost() core.HResult!BackgroundWorkCostValue {
         const factory = @This().IBackgroundWorkCostStaticsCache.get();
         return try factory.getCurrentBackgroundWorkCost();
     }
@@ -1470,7 +1470,7 @@ pub const GattCharacteristicNotificationTrigger = extern struct {
         const factory = @This().IGattCharacteristicNotificationTriggerFactoryCache.get();
         return try factory.Create(characteristic);
     }
-    pub fn Create(characteristic: *GattCharacteristic, eventTriggeringMode: BluetoothEventTriggeringMode) core.HResult!*GattCharacteristicNotificationTrigger {
+    pub fn CreateWithEventTriggeringMode(characteristic: *GattCharacteristic, eventTriggeringMode: BluetoothEventTriggeringMode) core.HResult!*GattCharacteristicNotificationTrigger {
         const factory = @This().IGattCharacteristicNotificationTriggerFactory2Cache.get();
         return try factory.Create(characteristic, eventTriggeringMode);
     }

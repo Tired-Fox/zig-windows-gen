@@ -124,7 +124,7 @@ pub const UserNotificationListener = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*UserNotificationListener {
+    pub fn get_Current() core.HResult!*UserNotificationListener {
         const factory = @This().IUserNotificationListenerStaticsCache.get();
         return try factory.getCurrent();
     }

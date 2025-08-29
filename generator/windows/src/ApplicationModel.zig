@@ -182,7 +182,7 @@ pub const AppInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*AppInfo {
+    pub fn get_Current() core.HResult!*AppInfo {
         const factory = @This().IAppInfoStaticsCache.get();
         return try factory.getCurrent();
     }
@@ -324,7 +324,7 @@ pub const AppInstance = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRecommendedInstance() core.HResult!*AppInstance {
+    pub fn get_RecommendedInstance() core.HResult!*AppInstance {
         const factory = @This().IAppInstanceStaticsCache.get();
         return try factory.getRecommendedInstance();
     }
@@ -356,11 +356,11 @@ pub const DesignMode = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDesignModeEnabled() core.HResult!bool {
+    pub fn get_DesignModeEnabled() core.HResult!bool {
         const factory = @This().IDesignModeStaticsCache.get();
         return try factory.getDesignModeEnabled();
     }
-    pub fn getDesignMode2Enabled() core.HResult!bool {
+    pub fn get_DesignMode2Enabled() core.HResult!bool {
         const factory = @This().IDesignModeStatics2Cache.get();
         return try factory.getDesignMode2Enabled();
     }
@@ -2930,7 +2930,7 @@ pub const Package = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*Package {
+    pub fn get_Current() core.HResult!*Package {
         const factory = @This().IPackageStaticsCache.get();
         return try factory.getCurrent();
     }
@@ -3131,7 +3131,7 @@ pub const PackageContentGroup = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRequiredGroupName() core.HResult!HSTRING {
+    pub fn get_RequiredGroupName() core.HResult!HSTRING {
         const factory = @This().IPackageContentGroupStaticsCache.get();
         return try factory.getRequiredGroupName();
     }
@@ -3541,9 +3541,9 @@ pub const FullTrustProcessLauncher = extern struct {
         const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
         return try factory.LaunchFullTrustProcessForCurrentAppAsync();
     }
-    pub fn LaunchFullTrustProcessForCurrentAppAsync(parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
-        return try factory.LaunchFullTrustProcessForCurrentAppAsync(parameterGroupId);
+        return try factory.LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId);
     }
     pub fn LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IFullTrustProcessLauncherStaticsCache.get();

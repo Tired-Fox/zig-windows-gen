@@ -111,7 +111,7 @@ pub const EmailAttachment = extern struct {
         const factory = @This().IEmailAttachmentFactoryCache.get();
         return try factory.Create(fileName, data);
     }
-    pub fn Create(fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING) core.HResult!*EmailAttachment {
+    pub fn CreateWithMimeType(fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING) core.HResult!*EmailAttachment {
         const factory = @This().IEmailAttachmentFactory2Cache.get();
         return try factory.Create(fileName, data, mimeType);
     }

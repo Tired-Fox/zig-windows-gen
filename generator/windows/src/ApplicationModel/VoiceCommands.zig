@@ -712,7 +712,7 @@ pub const VoiceCommandDefinitionManager = extern struct {
         const factory = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
         return try factory.InstallCommandDefinitionsFromStorageFileAsync(file);
     }
-    pub fn getInstalledCommandDefinitions() core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
+    pub fn get_InstalledCommandDefinitions() core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
         const factory = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
         return try factory.getInstalledCommandDefinitions();
     }
@@ -765,7 +765,7 @@ pub const VoiceCommandResponse = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMaxSupportedVoiceCommandContentTiles() core.HResult!u32 {
+    pub fn get_MaxSupportedVoiceCommandContentTiles() core.HResult!u32 {
         const factory = @This().IVoiceCommandResponseStaticsCache.get();
         return try factory.getMaxSupportedVoiceCommandContentTiles();
     }
@@ -781,9 +781,9 @@ pub const VoiceCommandResponse = extern struct {
         const factory = @This().IVoiceCommandResponseStaticsCache.get();
         return try factory.CreateResponseForPrompt(message, repeatMessage);
     }
-    pub fn CreateResponseForPromptWithRepeatMessageWithContentTiles(message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
+    pub fn CreateResponseForPromptWithContentTiles(message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
         const factory = @This().IVoiceCommandResponseStaticsCache.get();
-        return try factory.CreateResponseForPromptWithRepeatMessageWithContentTiles(message, repeatMessage, contentTiles);
+        return try factory.CreateResponseForPromptWithContentTiles(message, repeatMessage, contentTiles);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandResponse";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

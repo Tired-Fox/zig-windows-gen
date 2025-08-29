@@ -203,91 +203,91 @@ pub const KnownRetailInfoProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRetailAccessCode() core.HResult!HSTRING {
+    pub fn get_RetailAccessCode() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getRetailAccessCode();
     }
-    pub fn getManufacturerName() core.HResult!HSTRING {
+    pub fn get_ManufacturerName() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getManufacturerName();
     }
-    pub fn getModelName() core.HResult!HSTRING {
+    pub fn get_ModelName() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getModelName();
     }
-    pub fn getDisplayModelName() core.HResult!HSTRING {
+    pub fn get_DisplayModelName() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getDisplayModelName();
     }
-    pub fn getPrice() core.HResult!HSTRING {
+    pub fn get_Price() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getPrice();
     }
-    pub fn getIsFeatured() core.HResult!HSTRING {
+    pub fn get_IsFeatured() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getIsFeatured();
     }
-    pub fn getFormFactor() core.HResult!HSTRING {
+    pub fn get_FormFactor() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getFormFactor();
     }
-    pub fn getScreenSize() core.HResult!HSTRING {
+    pub fn get_ScreenSize() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getScreenSize();
     }
-    pub fn getWeight() core.HResult!HSTRING {
+    pub fn get_Weight() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getWeight();
     }
-    pub fn getDisplayDescription() core.HResult!HSTRING {
+    pub fn get_DisplayDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getDisplayDescription();
     }
-    pub fn getBatteryLifeDescription() core.HResult!HSTRING {
+    pub fn get_BatteryLifeDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getBatteryLifeDescription();
     }
-    pub fn getProcessorDescription() core.HResult!HSTRING {
+    pub fn get_ProcessorDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getProcessorDescription();
     }
-    pub fn getMemory() core.HResult!HSTRING {
+    pub fn get_Memory() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getMemory();
     }
-    pub fn getStorageDescription() core.HResult!HSTRING {
+    pub fn get_StorageDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getStorageDescription();
     }
-    pub fn getGraphicsDescription() core.HResult!HSTRING {
+    pub fn get_GraphicsDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getGraphicsDescription();
     }
-    pub fn getFrontCameraDescription() core.HResult!HSTRING {
+    pub fn get_FrontCameraDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getFrontCameraDescription();
     }
-    pub fn getRearCameraDescription() core.HResult!HSTRING {
+    pub fn get_RearCameraDescription() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getRearCameraDescription();
     }
-    pub fn getHasNfc() core.HResult!HSTRING {
+    pub fn get_HasNfc() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getHasNfc();
     }
-    pub fn getHasSdSlot() core.HResult!HSTRING {
+    pub fn get_HasSdSlot() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getHasSdSlot();
     }
-    pub fn getHasOpticalDrive() core.HResult!HSTRING {
+    pub fn get_HasOpticalDrive() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getHasOpticalDrive();
     }
-    pub fn getIsOfficeInstalled() core.HResult!HSTRING {
+    pub fn get_IsOfficeInstalled() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getIsOfficeInstalled();
     }
-    pub fn getWindowsEdition() core.HResult!HSTRING {
+    pub fn get_WindowsEdition() core.HResult!HSTRING {
         const factory = @This().IKnownRetailInfoPropertiesStaticsCache.get();
         return try factory.getWindowsEdition();
     }
@@ -300,11 +300,11 @@ pub const RetailInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsDemoModeEnabled() core.HResult!bool {
+    pub fn get_IsDemoModeEnabled() core.HResult!bool {
         const factory = @This().IRetailInfoStaticsCache.get();
         return try factory.getIsDemoModeEnabled();
     }
-    pub fn getProperties() core.HResult!*IMapView(HSTRING,IInspectable) {
+    pub fn get_Properties() core.HResult!*IMapView(HSTRING,IInspectable) {
         const factory = @This().IRetailInfoStaticsCache.get();
         return try factory.getProperties();
     }
@@ -456,11 +456,11 @@ pub const SharedModeSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getShouldAvoidLocalStorage() core.HResult!bool {
+    pub fn get_ShouldAvoidLocalStorage() core.HResult!bool {
         const factory = @This().ISharedModeSettingsStatics2Cache.get();
         return try factory.getShouldAvoidLocalStorage();
     }
-    pub fn getIsEnabled() core.HResult!bool {
+    pub fn get_IsEnabled() core.HResult!bool {
         const factory = @This().ISharedModeSettingsStaticsCache.get();
         return try factory.getIsEnabled();
     }
@@ -497,7 +497,7 @@ pub const PlatformAutomaticAppSignInManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPolicy() core.HResult!PlatformAutomaticAppSignInPolicy {
+    pub fn get_Policy() core.HResult!PlatformAutomaticAppSignInPolicy {
         const factory = @This().IPlatformAutomaticAppSignInManagerStaticsCache.get();
         return try factory.getPolicy();
     }
@@ -519,11 +519,11 @@ pub const AnalyticsInfo = extern struct {
         const factory = @This().IAnalyticsInfoStatics2Cache.get();
         return try factory.GetSystemPropertiesAsync(attributeNames);
     }
-    pub fn getVersionInfo() core.HResult!*AnalyticsVersionInfo {
+    pub fn get_VersionInfo() core.HResult!*AnalyticsVersionInfo {
         const factory = @This().IAnalyticsInfoStaticsCache.get();
         return try factory.getVersionInfo();
     }
-    pub fn getDeviceForm() core.HResult!HSTRING {
+    pub fn get_DeviceForm() core.HResult!HSTRING {
         const factory = @This().IAnalyticsInfoStaticsCache.get();
         return try factory.getDeviceForm();
     }
@@ -572,7 +572,7 @@ pub const EducationSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsEducationEnvironment() core.HResult!bool {
+    pub fn get_IsEducationEnvironment() core.HResult!bool {
         const factory = @This().IEducationSettingsStaticsCache.get();
         return try factory.getIsEducationEnvironment();
     }
@@ -1001,15 +1001,15 @@ pub const PlatformDiagnosticsAndUsageDataSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCollectionLevel() core.HResult!PlatformDataCollectionLevel {
+    pub fn get_CollectionLevel() core.HResult!PlatformDataCollectionLevel {
         const factory = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try factory.getCollectionLevel();
     }
-    pub fn addCollectionLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_CollectionLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try factory.addCollectionLevelChanged(handler);
     }
-    pub fn removeCollectionLevelChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_CollectionLevelChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPlatformDiagnosticsAndUsageDataSettingsStaticsCache.get();
         return try factory.removeCollectionLevelChanged(token);
     }
@@ -1026,15 +1026,15 @@ pub const SmartAppControlPolicy = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsEnabled() core.HResult!bool {
+    pub fn get_IsEnabled() core.HResult!bool {
         const factory = @This().ISmartAppControlPolicyStaticsCache.get();
         return try factory.getIsEnabled();
     }
-    pub fn addChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_Changed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ISmartAppControlPolicyStaticsCache.get();
         return try factory.addChanged(handler);
     }
-    pub fn removeChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_Changed(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ISmartAppControlPolicyStaticsCache.get();
         return try factory.removeChanged(token);
     }
@@ -1091,15 +1091,15 @@ pub const SystemSetupInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getOutOfBoxExperienceState() core.HResult!SystemOutOfBoxExperienceState {
+    pub fn get_OutOfBoxExperienceState() core.HResult!SystemOutOfBoxExperienceState {
         const factory = @This().ISystemSetupInfoStaticsCache.get();
         return try factory.getOutOfBoxExperienceState();
     }
-    pub fn addOutOfBoxExperienceStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_OutOfBoxExperienceStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ISystemSetupInfoStaticsCache.get();
         return try factory.addOutOfBoxExperienceStateChanged(handler);
     }
-    pub fn removeOutOfBoxExperienceStateChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_OutOfBoxExperienceStateChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ISystemSetupInfoStaticsCache.get();
         return try factory.removeOutOfBoxExperienceStateChanged(token);
     }
@@ -1132,27 +1132,27 @@ pub const WindowsIntegrityPolicy = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsEnabled() core.HResult!bool {
+    pub fn get_IsEnabled() core.HResult!bool {
         const factory = @This().IWindowsIntegrityPolicyStaticsCache.get();
         return try factory.getIsEnabled();
     }
-    pub fn getIsEnabledForTrial() core.HResult!bool {
+    pub fn get_IsEnabledForTrial() core.HResult!bool {
         const factory = @This().IWindowsIntegrityPolicyStaticsCache.get();
         return try factory.getIsEnabledForTrial();
     }
-    pub fn getCanDisable() core.HResult!bool {
+    pub fn get_CanDisable() core.HResult!bool {
         const factory = @This().IWindowsIntegrityPolicyStaticsCache.get();
         return try factory.getCanDisable();
     }
-    pub fn getIsDisableSupported() core.HResult!bool {
+    pub fn get_IsDisableSupported() core.HResult!bool {
         const factory = @This().IWindowsIntegrityPolicyStaticsCache.get();
         return try factory.getIsDisableSupported();
     }
-    pub fn addPolicyChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_PolicyChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IWindowsIntegrityPolicyStaticsCache.get();
         return try factory.addPolicyChanged(handler);
     }
-    pub fn removePolicyChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_PolicyChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IWindowsIntegrityPolicyStaticsCache.get();
         return try factory.removePolicyChanged(token);
     }

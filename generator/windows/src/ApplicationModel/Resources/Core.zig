@@ -706,9 +706,9 @@ pub const ResourceContext = extern struct {
         const factory = @This().IResourceContextStatics2Cache.get();
         return try factory.ResetGlobalQualifierValues();
     }
-    pub fn ResetGlobalQualifierValues(qualifierNames: *IIterable(HSTRING)) core.HResult!void {
+    pub fn ResetGlobalQualifierValuesWithQualifierNames(qualifierNames: *IIterable(HSTRING)) core.HResult!void {
         const factory = @This().IResourceContextStatics2Cache.get();
-        return try factory.ResetGlobalQualifierValues(qualifierNames);
+        return try factory.ResetGlobalQualifierValuesWithQualifierNames(qualifierNames);
     }
     pub fn GetForViewIndependentUse() core.HResult!*ResourceContext {
         const factory = @This().IResourceContextStatics2Cache.get();
@@ -718,7 +718,7 @@ pub const ResourceContext = extern struct {
         const factory = @This().IResourceContextStatics4Cache.get();
         return try factory.GetForUIContext(context);
     }
-    pub fn SetGlobalQualifierValue(key: HSTRING, value: HSTRING, persistence: ResourceQualifierPersistence) core.HResult!void {
+    pub fn SetGlobalQualifierValueWithPersistence(key: HSTRING, value: HSTRING, persistence: ResourceQualifierPersistence) core.HResult!void {
         const factory = @This().IResourceContextStatics3Cache.get();
         return try factory.SetGlobalQualifierValue(key, value, persistence);
     }
@@ -807,7 +807,7 @@ pub const ResourceManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*ResourceManager {
+    pub fn get_Current() core.HResult!*ResourceManager {
         const factory = @This().IResourceManagerStaticsCache.get();
         return try factory.getCurrent();
     }

@@ -711,7 +711,7 @@ pub const SettingsCommand = extern struct {
         const factory = @This().ISettingsCommandFactoryCache.get();
         return try factory.CreateSettingsCommand(settingsCommandId, label, handler);
     }
-    pub fn getAccountsCommand() core.HResult!*SettingsCommand {
+    pub fn get_AccountsCommand() core.HResult!*SettingsCommand {
         const factory = @This().ISettingsCommandStaticsCache.get();
         return try factory.getAccountsCommand();
     }
@@ -1110,7 +1110,7 @@ pub const SettingsPane = extern struct {
         const factory = @This().ISettingsPaneStaticsCache.get();
         return try factory.Show();
     }
-    pub fn getEdge() core.HResult!SettingsEdgeLocation {
+    pub fn get_Edge() core.HResult!SettingsEdgeLocation {
         const factory = @This().ISettingsPaneStaticsCache.get();
         return try factory.getEdge();
     }

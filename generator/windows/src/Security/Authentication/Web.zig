@@ -135,9 +135,9 @@ pub const WebAuthenticationBroker = extern struct {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
         return try factory.AuthenticateAndContinueWithCallbackUri(requestUri, callbackUri);
     }
-    pub fn AuthenticateAndContinueWithOptions(requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
+    pub fn AuthenticateAndContinueWithCallbackUriWithContinuationDataWithOptions(requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
-        return try factory.AuthenticateAndContinueWithOptions(requestUri, callbackUri, continuationData, options);
+        return try factory.AuthenticateAndContinueWithCallbackUriWithContinuationDataWithOptions(requestUri, callbackUri, continuationData, options);
     }
     pub fn AuthenticateSilentlyAsync(requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
@@ -147,9 +147,9 @@ pub const WebAuthenticationBroker = extern struct {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
         return try factory.AuthenticateSilentlyAsyncWithOptions(requestUri, options);
     }
-    pub fn AuthenticateAsyncWithRequestUriWithCallbackUri(options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
+    pub fn AuthenticateAsyncWithCallbackUri(options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStaticsCache.get();
-        return try factory.AuthenticateAsyncWithRequestUriWithCallbackUri(options, requestUri, callbackUri);
+        return try factory.AuthenticateAsyncWithCallbackUri(options, requestUri, callbackUri);
     }
     pub fn AuthenticateAsync(options: WebAuthenticationOptions, requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStaticsCache.get();

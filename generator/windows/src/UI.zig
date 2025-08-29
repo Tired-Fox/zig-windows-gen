@@ -30,567 +30,567 @@ pub const Colors = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAliceBlue() core.HResult!Color {
+    pub fn get_AliceBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getAliceBlue();
     }
-    pub fn getAntiqueWhite() core.HResult!Color {
+    pub fn get_AntiqueWhite() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getAntiqueWhite();
     }
-    pub fn getAqua() core.HResult!Color {
+    pub fn get_Aqua() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getAqua();
     }
-    pub fn getAquamarine() core.HResult!Color {
+    pub fn get_Aquamarine() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getAquamarine();
     }
-    pub fn getAzure() core.HResult!Color {
+    pub fn get_Azure() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getAzure();
     }
-    pub fn getBeige() core.HResult!Color {
+    pub fn get_Beige() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBeige();
     }
-    pub fn getBisque() core.HResult!Color {
+    pub fn get_Bisque() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBisque();
     }
-    pub fn getBlack() core.HResult!Color {
+    pub fn get_Black() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBlack();
     }
-    pub fn getBlanchedAlmond() core.HResult!Color {
+    pub fn get_BlanchedAlmond() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBlanchedAlmond();
     }
-    pub fn getBlue() core.HResult!Color {
+    pub fn get_Blue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBlue();
     }
-    pub fn getBlueViolet() core.HResult!Color {
+    pub fn get_BlueViolet() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBlueViolet();
     }
-    pub fn getBrown() core.HResult!Color {
+    pub fn get_Brown() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBrown();
     }
-    pub fn getBurlyWood() core.HResult!Color {
+    pub fn get_BurlyWood() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getBurlyWood();
     }
-    pub fn getCadetBlue() core.HResult!Color {
+    pub fn get_CadetBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getCadetBlue();
     }
-    pub fn getChartreuse() core.HResult!Color {
+    pub fn get_Chartreuse() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getChartreuse();
     }
-    pub fn getChocolate() core.HResult!Color {
+    pub fn get_Chocolate() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getChocolate();
     }
-    pub fn getCoral() core.HResult!Color {
+    pub fn get_Coral() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getCoral();
     }
-    pub fn getCornflowerBlue() core.HResult!Color {
+    pub fn get_CornflowerBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getCornflowerBlue();
     }
-    pub fn getCornsilk() core.HResult!Color {
+    pub fn get_Cornsilk() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getCornsilk();
     }
-    pub fn getCrimson() core.HResult!Color {
+    pub fn get_Crimson() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getCrimson();
     }
-    pub fn getCyan() core.HResult!Color {
+    pub fn get_Cyan() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getCyan();
     }
-    pub fn getDarkBlue() core.HResult!Color {
+    pub fn get_DarkBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkBlue();
     }
-    pub fn getDarkCyan() core.HResult!Color {
+    pub fn get_DarkCyan() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkCyan();
     }
-    pub fn getDarkGoldenrod() core.HResult!Color {
+    pub fn get_DarkGoldenrod() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkGoldenrod();
     }
-    pub fn getDarkGray() core.HResult!Color {
+    pub fn get_DarkGray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkGray();
     }
-    pub fn getDarkGreen() core.HResult!Color {
+    pub fn get_DarkGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkGreen();
     }
-    pub fn getDarkKhaki() core.HResult!Color {
+    pub fn get_DarkKhaki() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkKhaki();
     }
-    pub fn getDarkMagenta() core.HResult!Color {
+    pub fn get_DarkMagenta() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkMagenta();
     }
-    pub fn getDarkOliveGreen() core.HResult!Color {
+    pub fn get_DarkOliveGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkOliveGreen();
     }
-    pub fn getDarkOrange() core.HResult!Color {
+    pub fn get_DarkOrange() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkOrange();
     }
-    pub fn getDarkOrchid() core.HResult!Color {
+    pub fn get_DarkOrchid() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkOrchid();
     }
-    pub fn getDarkRed() core.HResult!Color {
+    pub fn get_DarkRed() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkRed();
     }
-    pub fn getDarkSalmon() core.HResult!Color {
+    pub fn get_DarkSalmon() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkSalmon();
     }
-    pub fn getDarkSeaGreen() core.HResult!Color {
+    pub fn get_DarkSeaGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkSeaGreen();
     }
-    pub fn getDarkSlateBlue() core.HResult!Color {
+    pub fn get_DarkSlateBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkSlateBlue();
     }
-    pub fn getDarkSlateGray() core.HResult!Color {
+    pub fn get_DarkSlateGray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkSlateGray();
     }
-    pub fn getDarkTurquoise() core.HResult!Color {
+    pub fn get_DarkTurquoise() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkTurquoise();
     }
-    pub fn getDarkViolet() core.HResult!Color {
+    pub fn get_DarkViolet() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDarkViolet();
     }
-    pub fn getDeepPink() core.HResult!Color {
+    pub fn get_DeepPink() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDeepPink();
     }
-    pub fn getDeepSkyBlue() core.HResult!Color {
+    pub fn get_DeepSkyBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDeepSkyBlue();
     }
-    pub fn getDimGray() core.HResult!Color {
+    pub fn get_DimGray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDimGray();
     }
-    pub fn getDodgerBlue() core.HResult!Color {
+    pub fn get_DodgerBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getDodgerBlue();
     }
-    pub fn getFirebrick() core.HResult!Color {
+    pub fn get_Firebrick() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getFirebrick();
     }
-    pub fn getFloralWhite() core.HResult!Color {
+    pub fn get_FloralWhite() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getFloralWhite();
     }
-    pub fn getForestGreen() core.HResult!Color {
+    pub fn get_ForestGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getForestGreen();
     }
-    pub fn getFuchsia() core.HResult!Color {
+    pub fn get_Fuchsia() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getFuchsia();
     }
-    pub fn getGainsboro() core.HResult!Color {
+    pub fn get_Gainsboro() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGainsboro();
     }
-    pub fn getGhostWhite() core.HResult!Color {
+    pub fn get_GhostWhite() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGhostWhite();
     }
-    pub fn getGold() core.HResult!Color {
+    pub fn get_Gold() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGold();
     }
-    pub fn getGoldenrod() core.HResult!Color {
+    pub fn get_Goldenrod() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGoldenrod();
     }
-    pub fn getGray() core.HResult!Color {
+    pub fn get_Gray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGray();
     }
-    pub fn getGreen() core.HResult!Color {
+    pub fn get_Green() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGreen();
     }
-    pub fn getGreenYellow() core.HResult!Color {
+    pub fn get_GreenYellow() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getGreenYellow();
     }
-    pub fn getHoneydew() core.HResult!Color {
+    pub fn get_Honeydew() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getHoneydew();
     }
-    pub fn getHotPink() core.HResult!Color {
+    pub fn get_HotPink() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getHotPink();
     }
-    pub fn getIndianRed() core.HResult!Color {
+    pub fn get_IndianRed() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getIndianRed();
     }
-    pub fn getIndigo() core.HResult!Color {
+    pub fn get_Indigo() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getIndigo();
     }
-    pub fn getIvory() core.HResult!Color {
+    pub fn get_Ivory() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getIvory();
     }
-    pub fn getKhaki() core.HResult!Color {
+    pub fn get_Khaki() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getKhaki();
     }
-    pub fn getLavender() core.HResult!Color {
+    pub fn get_Lavender() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLavender();
     }
-    pub fn getLavenderBlush() core.HResult!Color {
+    pub fn get_LavenderBlush() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLavenderBlush();
     }
-    pub fn getLawnGreen() core.HResult!Color {
+    pub fn get_LawnGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLawnGreen();
     }
-    pub fn getLemonChiffon() core.HResult!Color {
+    pub fn get_LemonChiffon() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLemonChiffon();
     }
-    pub fn getLightBlue() core.HResult!Color {
+    pub fn get_LightBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightBlue();
     }
-    pub fn getLightCoral() core.HResult!Color {
+    pub fn get_LightCoral() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightCoral();
     }
-    pub fn getLightCyan() core.HResult!Color {
+    pub fn get_LightCyan() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightCyan();
     }
-    pub fn getLightGoldenrodYellow() core.HResult!Color {
+    pub fn get_LightGoldenrodYellow() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightGoldenrodYellow();
     }
-    pub fn getLightGreen() core.HResult!Color {
+    pub fn get_LightGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightGreen();
     }
-    pub fn getLightGray() core.HResult!Color {
+    pub fn get_LightGray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightGray();
     }
-    pub fn getLightPink() core.HResult!Color {
+    pub fn get_LightPink() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightPink();
     }
-    pub fn getLightSalmon() core.HResult!Color {
+    pub fn get_LightSalmon() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightSalmon();
     }
-    pub fn getLightSeaGreen() core.HResult!Color {
+    pub fn get_LightSeaGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightSeaGreen();
     }
-    pub fn getLightSkyBlue() core.HResult!Color {
+    pub fn get_LightSkyBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightSkyBlue();
     }
-    pub fn getLightSlateGray() core.HResult!Color {
+    pub fn get_LightSlateGray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightSlateGray();
     }
-    pub fn getLightSteelBlue() core.HResult!Color {
+    pub fn get_LightSteelBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightSteelBlue();
     }
-    pub fn getLightYellow() core.HResult!Color {
+    pub fn get_LightYellow() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLightYellow();
     }
-    pub fn getLime() core.HResult!Color {
+    pub fn get_Lime() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLime();
     }
-    pub fn getLimeGreen() core.HResult!Color {
+    pub fn get_LimeGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLimeGreen();
     }
-    pub fn getLinen() core.HResult!Color {
+    pub fn get_Linen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getLinen();
     }
-    pub fn getMagenta() core.HResult!Color {
+    pub fn get_Magenta() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMagenta();
     }
-    pub fn getMaroon() core.HResult!Color {
+    pub fn get_Maroon() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMaroon();
     }
-    pub fn getMediumAquamarine() core.HResult!Color {
+    pub fn get_MediumAquamarine() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumAquamarine();
     }
-    pub fn getMediumBlue() core.HResult!Color {
+    pub fn get_MediumBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumBlue();
     }
-    pub fn getMediumOrchid() core.HResult!Color {
+    pub fn get_MediumOrchid() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumOrchid();
     }
-    pub fn getMediumPurple() core.HResult!Color {
+    pub fn get_MediumPurple() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumPurple();
     }
-    pub fn getMediumSeaGreen() core.HResult!Color {
+    pub fn get_MediumSeaGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumSeaGreen();
     }
-    pub fn getMediumSlateBlue() core.HResult!Color {
+    pub fn get_MediumSlateBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumSlateBlue();
     }
-    pub fn getMediumSpringGreen() core.HResult!Color {
+    pub fn get_MediumSpringGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumSpringGreen();
     }
-    pub fn getMediumTurquoise() core.HResult!Color {
+    pub fn get_MediumTurquoise() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumTurquoise();
     }
-    pub fn getMediumVioletRed() core.HResult!Color {
+    pub fn get_MediumVioletRed() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMediumVioletRed();
     }
-    pub fn getMidnightBlue() core.HResult!Color {
+    pub fn get_MidnightBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMidnightBlue();
     }
-    pub fn getMintCream() core.HResult!Color {
+    pub fn get_MintCream() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMintCream();
     }
-    pub fn getMistyRose() core.HResult!Color {
+    pub fn get_MistyRose() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMistyRose();
     }
-    pub fn getMoccasin() core.HResult!Color {
+    pub fn get_Moccasin() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getMoccasin();
     }
-    pub fn getNavajoWhite() core.HResult!Color {
+    pub fn get_NavajoWhite() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getNavajoWhite();
     }
-    pub fn getNavy() core.HResult!Color {
+    pub fn get_Navy() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getNavy();
     }
-    pub fn getOldLace() core.HResult!Color {
+    pub fn get_OldLace() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getOldLace();
     }
-    pub fn getOlive() core.HResult!Color {
+    pub fn get_Olive() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getOlive();
     }
-    pub fn getOliveDrab() core.HResult!Color {
+    pub fn get_OliveDrab() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getOliveDrab();
     }
-    pub fn getOrange() core.HResult!Color {
+    pub fn get_Orange() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getOrange();
     }
-    pub fn getOrangeRed() core.HResult!Color {
+    pub fn get_OrangeRed() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getOrangeRed();
     }
-    pub fn getOrchid() core.HResult!Color {
+    pub fn get_Orchid() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getOrchid();
     }
-    pub fn getPaleGoldenrod() core.HResult!Color {
+    pub fn get_PaleGoldenrod() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPaleGoldenrod();
     }
-    pub fn getPaleGreen() core.HResult!Color {
+    pub fn get_PaleGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPaleGreen();
     }
-    pub fn getPaleTurquoise() core.HResult!Color {
+    pub fn get_PaleTurquoise() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPaleTurquoise();
     }
-    pub fn getPaleVioletRed() core.HResult!Color {
+    pub fn get_PaleVioletRed() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPaleVioletRed();
     }
-    pub fn getPapayaWhip() core.HResult!Color {
+    pub fn get_PapayaWhip() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPapayaWhip();
     }
-    pub fn getPeachPuff() core.HResult!Color {
+    pub fn get_PeachPuff() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPeachPuff();
     }
-    pub fn getPeru() core.HResult!Color {
+    pub fn get_Peru() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPeru();
     }
-    pub fn getPink() core.HResult!Color {
+    pub fn get_Pink() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPink();
     }
-    pub fn getPlum() core.HResult!Color {
+    pub fn get_Plum() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPlum();
     }
-    pub fn getPowderBlue() core.HResult!Color {
+    pub fn get_PowderBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPowderBlue();
     }
-    pub fn getPurple() core.HResult!Color {
+    pub fn get_Purple() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getPurple();
     }
-    pub fn getRed() core.HResult!Color {
+    pub fn get_Red() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getRed();
     }
-    pub fn getRosyBrown() core.HResult!Color {
+    pub fn get_RosyBrown() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getRosyBrown();
     }
-    pub fn getRoyalBlue() core.HResult!Color {
+    pub fn get_RoyalBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getRoyalBlue();
     }
-    pub fn getSaddleBrown() core.HResult!Color {
+    pub fn get_SaddleBrown() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSaddleBrown();
     }
-    pub fn getSalmon() core.HResult!Color {
+    pub fn get_Salmon() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSalmon();
     }
-    pub fn getSandyBrown() core.HResult!Color {
+    pub fn get_SandyBrown() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSandyBrown();
     }
-    pub fn getSeaGreen() core.HResult!Color {
+    pub fn get_SeaGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSeaGreen();
     }
-    pub fn getSeaShell() core.HResult!Color {
+    pub fn get_SeaShell() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSeaShell();
     }
-    pub fn getSienna() core.HResult!Color {
+    pub fn get_Sienna() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSienna();
     }
-    pub fn getSilver() core.HResult!Color {
+    pub fn get_Silver() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSilver();
     }
-    pub fn getSkyBlue() core.HResult!Color {
+    pub fn get_SkyBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSkyBlue();
     }
-    pub fn getSlateBlue() core.HResult!Color {
+    pub fn get_SlateBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSlateBlue();
     }
-    pub fn getSlateGray() core.HResult!Color {
+    pub fn get_SlateGray() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSlateGray();
     }
-    pub fn getSnow() core.HResult!Color {
+    pub fn get_Snow() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSnow();
     }
-    pub fn getSpringGreen() core.HResult!Color {
+    pub fn get_SpringGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSpringGreen();
     }
-    pub fn getSteelBlue() core.HResult!Color {
+    pub fn get_SteelBlue() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getSteelBlue();
     }
-    pub fn getTan() core.HResult!Color {
+    pub fn get_Tan() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getTan();
     }
-    pub fn getTeal() core.HResult!Color {
+    pub fn get_Teal() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getTeal();
     }
-    pub fn getThistle() core.HResult!Color {
+    pub fn get_Thistle() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getThistle();
     }
-    pub fn getTomato() core.HResult!Color {
+    pub fn get_Tomato() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getTomato();
     }
-    pub fn getTransparent() core.HResult!Color {
+    pub fn get_Transparent() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getTransparent();
     }
-    pub fn getTurquoise() core.HResult!Color {
+    pub fn get_Turquoise() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getTurquoise();
     }
-    pub fn getViolet() core.HResult!Color {
+    pub fn get_Violet() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getViolet();
     }
-    pub fn getWheat() core.HResult!Color {
+    pub fn get_Wheat() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getWheat();
     }
-    pub fn getWhite() core.HResult!Color {
+    pub fn get_White() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getWhite();
     }
-    pub fn getWhiteSmoke() core.HResult!Color {
+    pub fn get_WhiteSmoke() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getWhiteSmoke();
     }
-    pub fn getYellow() core.HResult!Color {
+    pub fn get_Yellow() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getYellow();
     }
-    pub fn getYellowGreen() core.HResult!Color {
+    pub fn get_YellowGreen() core.HResult!Color {
         const factory = @This().IColorsStaticsCache.get();
         return try factory.getYellowGreen();
     }

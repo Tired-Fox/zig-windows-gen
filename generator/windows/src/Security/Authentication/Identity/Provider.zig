@@ -461,11 +461,11 @@ pub const SecondaryAuthenticationFactorAuthentication = extern struct {
         const factory = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try factory.StartAuthenticationAsync(deviceId, serviceAuthenticationNonce);
     }
-    pub fn addAuthenticationStageChanged(handler: *EventHandler(SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_AuthenticationStageChanged(handler: *EventHandler(SecondaryAuthenticationFactorAuthenticationStageChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try factory.addAuthenticationStageChanged(handler);
     }
-    pub fn removeAuthenticationStageChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_AuthenticationStageChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ISecondaryAuthenticationFactorAuthenticationStaticsCache.get();
         return try factory.removeAuthenticationStageChanged(token);
     }

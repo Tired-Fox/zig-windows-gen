@@ -235,7 +235,7 @@ pub const DialReceiverApp = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*DialReceiverApp {
+    pub fn get_Current() core.HResult!*DialReceiverApp {
         const factory = @This().IDialReceiverAppStaticsCache.get();
         return try factory.getCurrent();
     }

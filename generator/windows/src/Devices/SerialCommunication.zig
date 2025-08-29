@@ -482,9 +482,9 @@ pub const SerialDevice = extern struct {
         const factory = @This().ISerialDeviceStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(portName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithPortName(portName: HSTRING) core.HResult!HSTRING {
         const factory = @This().ISerialDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(portName);
+        return try factory.GetDeviceSelectorWithPortName(portName);
     }
     pub fn GetDeviceSelectorFromUsbVidPid(vendorId: u16, productId: u16) core.HResult!HSTRING {
         const factory = @This().ISerialDeviceStaticsCache.get();

@@ -379,7 +379,7 @@ pub const RemoteDesktopRegistrar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDesktopInfos() core.HResult!*IVector(RemoteDesktopInfo) {
+    pub fn get_DesktopInfos() core.HResult!*IVector(RemoteDesktopInfo) {
         const factory = @This().IRemoteDesktopRegistrarStaticsCache.get();
         return try factory.getDesktopInfos();
     }

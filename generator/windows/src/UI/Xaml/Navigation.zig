@@ -934,7 +934,7 @@ pub const PageStackEntry = extern struct {
         const factory = @This().IPageStackEntryFactoryCache.get();
         return try factory.CreateInstance(sourcePageType, parameter, navigationTransitionInfo);
     }
-    pub fn getSourcePageTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_SourcePageTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPageStackEntryStaticsCache.get();
         return try factory.getSourcePageTypeProperty();
     }

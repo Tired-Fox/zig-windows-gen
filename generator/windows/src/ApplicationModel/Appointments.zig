@@ -729,29 +729,29 @@ pub const AppointmentManager = extern struct {
         const factory = @This().IAppointmentManagerStaticsCache.get();
         return try factory.ShowAddAppointmentAsync(appointment, selection);
     }
-    pub fn ShowAddAppointmentAsyncWithSelectionWithPreferredPlacement(appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowAddAppointmentAsyncWithPreferredPlacement(appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
-        return try factory.ShowAddAppointmentAsyncWithSelectionWithPreferredPlacement(appointment, selection, preferredPlacement);
+        return try factory.ShowAddAppointmentAsyncWithPreferredPlacement(appointment, selection, preferredPlacement);
     }
     pub fn ShowReplaceAppointmentAsync(appointmentId: HSTRING, appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
         return try factory.ShowReplaceAppointmentAsync(appointmentId, appointment, selection);
     }
-    pub fn ShowReplaceAppointmentAsyncWithAppointmentWithSelectionWithPreferredPlacement(appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowReplaceAppointmentAsyncWithPreferredPlacement(appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
-        return try factory.ShowReplaceAppointmentAsyncWithAppointmentWithSelectionWithPreferredPlacement(appointmentId, appointment, selection, preferredPlacement);
+        return try factory.ShowReplaceAppointmentAsyncWithPreferredPlacement(appointmentId, appointment, selection, preferredPlacement);
     }
-    pub fn ShowReplaceAppointmentAsyncWithSelectionWithPreferredPlacementWithInstanceStartDate(appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
-        return try factory.ShowReplaceAppointmentAsyncWithSelectionWithPreferredPlacementWithInstanceStartDate(appointmentId, appointment, selection, preferredPlacement, instanceStartDate);
+        return try factory.ShowReplaceAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(appointmentId, appointment, selection, preferredPlacement, instanceStartDate);
     }
     pub fn ShowRemoveAppointmentAsync(appointmentId: HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
         return try factory.ShowRemoveAppointmentAsync(appointmentId, selection);
     }
-    pub fn ShowRemoveAppointmentAsyncWithSelectionWithPreferredPlacement(appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn ShowRemoveAppointmentAsyncWithPreferredPlacement(appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
-        return try factory.ShowRemoveAppointmentAsyncWithSelectionWithPreferredPlacement(appointmentId, selection, preferredPlacement);
+        return try factory.ShowRemoveAppointmentAsyncWithPreferredPlacement(appointmentId, selection, preferredPlacement);
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IAppointmentManagerStaticsCache.get();
@@ -900,107 +900,107 @@ pub const AppointmentProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getChangeNumber() core.HResult!HSTRING {
+    pub fn get_ChangeNumber() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStatics2Cache.get();
         return try factory.getChangeNumber();
     }
-    pub fn getRemoteChangeNumber() core.HResult!HSTRING {
+    pub fn get_RemoteChangeNumber() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStatics2Cache.get();
         return try factory.getRemoteChangeNumber();
     }
-    pub fn getDetailsKind() core.HResult!HSTRING {
+    pub fn get_DetailsKind() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStatics2Cache.get();
         return try factory.getDetailsKind();
     }
-    pub fn getSubject() core.HResult!HSTRING {
+    pub fn get_Subject() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getSubject();
     }
-    pub fn getLocation() core.HResult!HSTRING {
+    pub fn get_Location() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getLocation();
     }
-    pub fn getStartTime() core.HResult!HSTRING {
+    pub fn get_StartTime() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getStartTime();
     }
-    pub fn getDuration() core.HResult!HSTRING {
+    pub fn get_Duration() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getDuration();
     }
-    pub fn getReminder() core.HResult!HSTRING {
+    pub fn get_Reminder() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getReminder();
     }
-    pub fn getBusyStatus() core.HResult!HSTRING {
+    pub fn get_BusyStatus() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getBusyStatus();
     }
-    pub fn getSensitivity() core.HResult!HSTRING {
+    pub fn get_Sensitivity() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getSensitivity();
     }
-    pub fn getOriginalStartTime() core.HResult!HSTRING {
+    pub fn get_OriginalStartTime() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getOriginalStartTime();
     }
-    pub fn getIsResponseRequested() core.HResult!HSTRING {
+    pub fn get_IsResponseRequested() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getIsResponseRequested();
     }
-    pub fn getAllowNewTimeProposal() core.HResult!HSTRING {
+    pub fn get_AllowNewTimeProposal() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getAllowNewTimeProposal();
     }
-    pub fn getAllDay() core.HResult!HSTRING {
+    pub fn get_AllDay() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getAllDay();
     }
-    pub fn getDetails() core.HResult!HSTRING {
+    pub fn get_Details() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getDetails();
     }
-    pub fn getOnlineMeetingLink() core.HResult!HSTRING {
+    pub fn get_OnlineMeetingLink() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getOnlineMeetingLink();
     }
-    pub fn getReplyTime() core.HResult!HSTRING {
+    pub fn get_ReplyTime() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getReplyTime();
     }
-    pub fn getOrganizer() core.HResult!HSTRING {
+    pub fn get_Organizer() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getOrganizer();
     }
-    pub fn getUserResponse() core.HResult!HSTRING {
+    pub fn get_UserResponse() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getUserResponse();
     }
-    pub fn getHasInvitees() core.HResult!HSTRING {
+    pub fn get_HasInvitees() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getHasInvitees();
     }
-    pub fn getIsCanceledMeeting() core.HResult!HSTRING {
+    pub fn get_IsCanceledMeeting() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getIsCanceledMeeting();
     }
-    pub fn getIsOrganizedByUser() core.HResult!HSTRING {
+    pub fn get_IsOrganizedByUser() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getIsOrganizedByUser();
     }
-    pub fn getRecurrence() core.HResult!HSTRING {
+    pub fn get_Recurrence() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getRecurrence();
     }
-    pub fn getUri() core.HResult!HSTRING {
+    pub fn get_Uri() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getUri();
     }
-    pub fn getInvitees() core.HResult!HSTRING {
+    pub fn get_Invitees() core.HResult!HSTRING {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getInvitees();
     }
-    pub fn getDefaultProperties() core.HResult!*IVector(HSTRING) {
+    pub fn get_DefaultProperties() core.HResult!*IVector(HSTRING) {
         const factory = @This().IAppointmentPropertiesStaticsCache.get();
         return try factory.getDefaultProperties();
     }

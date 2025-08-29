@@ -3398,7 +3398,7 @@ pub const PlayReadyStatics = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSecureStopServiceRequestType() core.HResult!*Guid {
+    pub fn get_SecureStopServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStatics3Cache.get();
         return try factory.getSecureStopServiceRequestType();
     }
@@ -3406,55 +3406,55 @@ pub const PlayReadyStatics = extern struct {
         const factory = @This().IPlayReadyStatics3Cache.get();
         return try factory.CheckSupportedHardware(hwdrmFeature);
     }
-    pub fn getPlayReadyCertificateSecurityLevel() core.HResult!u32 {
+    pub fn get_PlayReadyCertificateSecurityLevel() core.HResult!u32 {
         const factory = @This().IPlayReadyStatics2Cache.get();
         return try factory.getPlayReadyCertificateSecurityLevel();
     }
-    pub fn getInputTrustAuthorityToCreate() core.HResult!HSTRING {
+    pub fn get_InputTrustAuthorityToCreate() core.HResult!HSTRING {
         const factory = @This().IPlayReadyStatics4Cache.get();
         return try factory.getInputTrustAuthorityToCreate();
     }
-    pub fn getProtectionSystemId() core.HResult!*Guid {
+    pub fn get_ProtectionSystemId() core.HResult!*Guid {
         const factory = @This().IPlayReadyStatics4Cache.get();
         return try factory.getProtectionSystemId();
     }
-    pub fn getDomainJoinServiceRequestType() core.HResult!*Guid {
+    pub fn get_DomainJoinServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getDomainJoinServiceRequestType();
     }
-    pub fn getDomainLeaveServiceRequestType() core.HResult!*Guid {
+    pub fn get_DomainLeaveServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getDomainLeaveServiceRequestType();
     }
-    pub fn getIndividualizationServiceRequestType() core.HResult!*Guid {
+    pub fn get_IndividualizationServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getIndividualizationServiceRequestType();
     }
-    pub fn getLicenseAcquirerServiceRequestType() core.HResult!*Guid {
+    pub fn get_LicenseAcquirerServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getLicenseAcquirerServiceRequestType();
     }
-    pub fn getMeteringReportServiceRequestType() core.HResult!*Guid {
+    pub fn get_MeteringReportServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getMeteringReportServiceRequestType();
     }
-    pub fn getRevocationServiceRequestType() core.HResult!*Guid {
+    pub fn get_RevocationServiceRequestType() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getRevocationServiceRequestType();
     }
-    pub fn getMediaProtectionSystemId() core.HResult!*Guid {
+    pub fn get_MediaProtectionSystemId() core.HResult!*Guid {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getMediaProtectionSystemId();
     }
-    pub fn getPlayReadySecurityVersion() core.HResult!u32 {
+    pub fn get_PlayReadySecurityVersion() core.HResult!u32 {
         const factory = @This().IPlayReadyStaticsCache.get();
         return try factory.getPlayReadySecurityVersion();
     }
-    pub fn getHardwareDRMDisabledAtTime() core.HResult!*IReference(DateTime) {
+    pub fn get_HardwareDRMDisabledAtTime() core.HResult!*IReference(DateTime) {
         const factory = @This().IPlayReadyStatics5Cache.get();
         return try factory.getHardwareDRMDisabledAtTime();
     }
-    pub fn getHardwareDRMDisabledUntilTime() core.HResult!*IReference(DateTime) {
+    pub fn get_HardwareDRMDisabledUntilTime() core.HResult!*IReference(DateTime) {
         const factory = @This().IPlayReadyStatics5Cache.get();
         return try factory.getHardwareDRMDisabledUntilTime();
     }

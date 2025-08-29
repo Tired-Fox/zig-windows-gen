@@ -1478,9 +1478,9 @@ pub const MidiSynthesizer = extern struct {
         const factory = @This().IMidiSynthesizerStaticsCache.get();
         return try factory.CreateAsync();
     }
-    pub fn CreateAsync(audioDevice: *DeviceInformation) core.HResult!*IAsyncOperation(MidiSynthesizer) {
+    pub fn CreateAsyncWithAudioDevice(audioDevice: *DeviceInformation) core.HResult!*IAsyncOperation(MidiSynthesizer) {
         const factory = @This().IMidiSynthesizerStaticsCache.get();
-        return try factory.CreateAsync(audioDevice);
+        return try factory.CreateAsyncWithAudioDevice(audioDevice);
     }
     pub fn IsSynthesizer(midiDevice: *DeviceInformation) core.HResult!bool {
         const factory = @This().IMidiSynthesizerStaticsCache.get();

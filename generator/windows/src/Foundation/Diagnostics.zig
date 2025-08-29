@@ -23,11 +23,11 @@ pub const AsyncCausalityTracer = extern struct {
         const factory = @This().IAsyncCausalityTracerStaticsCache.get();
         return try factory.TraceSynchronousWorkCompletion(traceLevel, source, work);
     }
-    pub fn addTracingStatusChanged(handler: *EventHandler(TracingStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_TracingStatusChanged(handler: *EventHandler(TracingStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IAsyncCausalityTracerStaticsCache.get();
         return try factory.addTracingStatusChanged(handler);
     }
-    pub fn removeTracingStatusChanged(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_TracingStatusChanged(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IAsyncCausalityTracerStaticsCache.get();
         return try factory.removeTracingStatusChanged(cookie);
     }

@@ -75,23 +75,23 @@ pub const ArcadeStick = extern struct {
         const factory = @This().IArcadeStickStatics2Cache.get();
         return try factory.FromGameController(gameController);
     }
-    pub fn addArcadeStickAdded(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
+    pub fn add_ArcadeStickAdded(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
         const factory = @This().IArcadeStickStaticsCache.get();
         return try factory.addArcadeStickAdded(value);
     }
-    pub fn removeArcadeStickAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ArcadeStickAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IArcadeStickStaticsCache.get();
         return try factory.removeArcadeStickAdded(token);
     }
-    pub fn addArcadeStickRemoved(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
+    pub fn add_ArcadeStickRemoved(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
         const factory = @This().IArcadeStickStaticsCache.get();
         return try factory.addArcadeStickRemoved(value);
     }
-    pub fn removeArcadeStickRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ArcadeStickRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IArcadeStickStaticsCache.get();
         return try factory.removeArcadeStickRemoved(token);
     }
-    pub fn getArcadeSticks() core.HResult!*IVectorView(ArcadeStick) {
+    pub fn get_ArcadeSticks() core.HResult!*IVectorView(ArcadeStick) {
         const factory = @This().IArcadeStickStaticsCache.get();
         return try factory.getArcadeSticks();
     }
@@ -199,23 +199,23 @@ pub const FlightStick = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addFlightStickAdded(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
+    pub fn add_FlightStickAdded(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
         const factory = @This().IFlightStickStaticsCache.get();
         return try factory.addFlightStickAdded(value);
     }
-    pub fn removeFlightStickAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_FlightStickAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IFlightStickStaticsCache.get();
         return try factory.removeFlightStickAdded(token);
     }
-    pub fn addFlightStickRemoved(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
+    pub fn add_FlightStickRemoved(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
         const factory = @This().IFlightStickStaticsCache.get();
         return try factory.addFlightStickRemoved(value);
     }
-    pub fn removeFlightStickRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_FlightStickRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IFlightStickStaticsCache.get();
         return try factory.removeFlightStickRemoved(token);
     }
-    pub fn getFlightSticks() core.HResult!*IVectorView(FlightStick) {
+    pub fn get_FlightSticks() core.HResult!*IVectorView(FlightStick) {
         const factory = @This().IFlightStickStaticsCache.get();
         return try factory.getFlightSticks();
     }
@@ -418,23 +418,23 @@ pub const Gamepad = extern struct {
         const factory = @This().IGamepadStatics2Cache.get();
         return try factory.FromGameController(gameController);
     }
-    pub fn addGamepadAdded(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
+    pub fn add_GamepadAdded(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
         const factory = @This().IGamepadStaticsCache.get();
         return try factory.addGamepadAdded(value);
     }
-    pub fn removeGamepadAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GamepadAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGamepadStaticsCache.get();
         return try factory.removeGamepadAdded(token);
     }
-    pub fn addGamepadRemoved(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
+    pub fn add_GamepadRemoved(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
         const factory = @This().IGamepadStaticsCache.get();
         return try factory.addGamepadRemoved(value);
     }
-    pub fn removeGamepadRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GamepadRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGamepadStaticsCache.get();
         return try factory.removeGamepadRemoved(token);
     }
-    pub fn getGamepads() core.HResult!*IVectorView(Gamepad) {
+    pub fn get_Gamepads() core.HResult!*IVectorView(Gamepad) {
         const factory = @This().IGamepadStaticsCache.get();
         return try factory.getGamepads();
     }
@@ -1485,23 +1485,23 @@ pub const RacingWheel = extern struct {
         const factory = @This().IRacingWheelStatics2Cache.get();
         return try factory.FromGameController(gameController);
     }
-    pub fn addRacingWheelAdded(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
+    pub fn add_RacingWheelAdded(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
         const factory = @This().IRacingWheelStaticsCache.get();
         return try factory.addRacingWheelAdded(value);
     }
-    pub fn removeRacingWheelAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RacingWheelAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IRacingWheelStaticsCache.get();
         return try factory.removeRacingWheelAdded(token);
     }
-    pub fn addRacingWheelRemoved(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
+    pub fn add_RacingWheelRemoved(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
         const factory = @This().IRacingWheelStaticsCache.get();
         return try factory.addRacingWheelRemoved(value);
     }
-    pub fn removeRacingWheelRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RacingWheelRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IRacingWheelStaticsCache.get();
         return try factory.removeRacingWheelRemoved(token);
     }
-    pub fn getRacingWheels() core.HResult!*IVectorView(RacingWheel) {
+    pub fn get_RacingWheels() core.HResult!*IVectorView(RacingWheel) {
         const factory = @This().IRacingWheelStaticsCache.get();
         return try factory.getRacingWheels();
     }
@@ -1667,23 +1667,23 @@ pub const RawGameController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addRawGameControllerAdded(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
+    pub fn add_RawGameControllerAdded(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
         const factory = @This().IRawGameControllerStaticsCache.get();
         return try factory.addRawGameControllerAdded(value);
     }
-    pub fn removeRawGameControllerAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RawGameControllerAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IRawGameControllerStaticsCache.get();
         return try factory.removeRawGameControllerAdded(token);
     }
-    pub fn addRawGameControllerRemoved(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
+    pub fn add_RawGameControllerRemoved(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
         const factory = @This().IRawGameControllerStaticsCache.get();
         return try factory.addRawGameControllerRemoved(value);
     }
-    pub fn removeRawGameControllerRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RawGameControllerRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IRawGameControllerStaticsCache.get();
         return try factory.removeRawGameControllerRemoved(token);
     }
-    pub fn getRawGameControllers() core.HResult!*IVectorView(RawGameController) {
+    pub fn get_RawGameControllers() core.HResult!*IVectorView(RawGameController) {
         const factory = @This().IRawGameControllerStaticsCache.get();
         return try factory.getRawGameControllers();
     }
@@ -1786,23 +1786,23 @@ pub const UINavigationController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addUINavigationControllerAdded(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
+    pub fn add_UINavigationControllerAdded(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
         const factory = @This().IUINavigationControllerStaticsCache.get();
         return try factory.addUINavigationControllerAdded(value);
     }
-    pub fn removeUINavigationControllerAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_UINavigationControllerAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IUINavigationControllerStaticsCache.get();
         return try factory.removeUINavigationControllerAdded(token);
     }
-    pub fn addUINavigationControllerRemoved(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
+    pub fn add_UINavigationControllerRemoved(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
         const factory = @This().IUINavigationControllerStaticsCache.get();
         return try factory.addUINavigationControllerRemoved(value);
     }
-    pub fn removeUINavigationControllerRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_UINavigationControllerRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IUINavigationControllerStaticsCache.get();
         return try factory.removeUINavigationControllerRemoved(token);
     }
-    pub fn getUINavigationControllers() core.HResult!*IVectorView(UINavigationController) {
+    pub fn get_UINavigationControllers() core.HResult!*IVectorView(UINavigationController) {
         const factory = @This().IUINavigationControllerStaticsCache.get();
         return try factory.getUINavigationControllers();
     }

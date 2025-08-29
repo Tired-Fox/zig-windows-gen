@@ -3,51 +3,51 @@ pub const BackgroundEnergyManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getLowUsageLevel() core.HResult!u32 {
+    pub fn get_LowUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getLowUsageLevel();
     }
-    pub fn getNearMaxAcceptableUsageLevel() core.HResult!u32 {
+    pub fn get_NearMaxAcceptableUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getNearMaxAcceptableUsageLevel();
     }
-    pub fn getMaxAcceptableUsageLevel() core.HResult!u32 {
+    pub fn get_MaxAcceptableUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getMaxAcceptableUsageLevel();
     }
-    pub fn getExcessiveUsageLevel() core.HResult!u32 {
+    pub fn get_ExcessiveUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getExcessiveUsageLevel();
     }
-    pub fn getNearTerminationUsageLevel() core.HResult!u32 {
+    pub fn get_NearTerminationUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getNearTerminationUsageLevel();
     }
-    pub fn getTerminationUsageLevel() core.HResult!u32 {
+    pub fn get_TerminationUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getTerminationUsageLevel();
     }
-    pub fn getRecentEnergyUsage() core.HResult!u32 {
+    pub fn get_RecentEnergyUsage() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getRecentEnergyUsage();
     }
-    pub fn getRecentEnergyUsageLevel() core.HResult!u32 {
+    pub fn get_RecentEnergyUsageLevel() core.HResult!u32 {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.getRecentEnergyUsageLevel();
     }
-    pub fn addRecentEnergyUsageIncreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RecentEnergyUsageIncreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.addRecentEnergyUsageIncreased(handler);
     }
-    pub fn removeRecentEnergyUsageIncreased(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RecentEnergyUsageIncreased(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.removeRecentEnergyUsageIncreased(token);
     }
-    pub fn addRecentEnergyUsageReturnedToLow(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RecentEnergyUsageReturnedToLow(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.addRecentEnergyUsageReturnedToLow(handler);
     }
-    pub fn removeRecentEnergyUsageReturnedToLow(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RecentEnergyUsageReturnedToLow(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IBackgroundEnergyManagerStaticsCache.get();
         return try factory.removeRecentEnergyUsageReturnedToLow(token);
     }
@@ -71,43 +71,43 @@ pub const ForegroundEnergyManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getLowUsageLevel() core.HResult!u32 {
+    pub fn get_LowUsageLevel() core.HResult!u32 {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.getLowUsageLevel();
     }
-    pub fn getNearMaxAcceptableUsageLevel() core.HResult!u32 {
+    pub fn get_NearMaxAcceptableUsageLevel() core.HResult!u32 {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.getNearMaxAcceptableUsageLevel();
     }
-    pub fn getMaxAcceptableUsageLevel() core.HResult!u32 {
+    pub fn get_MaxAcceptableUsageLevel() core.HResult!u32 {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.getMaxAcceptableUsageLevel();
     }
-    pub fn getExcessiveUsageLevel() core.HResult!u32 {
+    pub fn get_ExcessiveUsageLevel() core.HResult!u32 {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.getExcessiveUsageLevel();
     }
-    pub fn getRecentEnergyUsage() core.HResult!u32 {
+    pub fn get_RecentEnergyUsage() core.HResult!u32 {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.getRecentEnergyUsage();
     }
-    pub fn getRecentEnergyUsageLevel() core.HResult!u32 {
+    pub fn get_RecentEnergyUsageLevel() core.HResult!u32 {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.getRecentEnergyUsageLevel();
     }
-    pub fn addRecentEnergyUsageIncreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RecentEnergyUsageIncreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.addRecentEnergyUsageIncreased(handler);
     }
-    pub fn removeRecentEnergyUsageIncreased(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RecentEnergyUsageIncreased(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.removeRecentEnergyUsageIncreased(token);
     }
-    pub fn addRecentEnergyUsageReturnedToLow(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RecentEnergyUsageReturnedToLow(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.addRecentEnergyUsageReturnedToLow(handler);
     }
-    pub fn removeRecentEnergyUsageReturnedToLow(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RecentEnergyUsageReturnedToLow(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IForegroundEnergyManagerStaticsCache.get();
         return try factory.removeRecentEnergyUsageReturnedToLow(token);
     }
@@ -409,63 +409,63 @@ pub const PowerManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEnergySaverStatus() core.HResult!EnergySaverStatus {
+    pub fn get_EnergySaverStatus() core.HResult!EnergySaverStatus {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.getEnergySaverStatus();
     }
-    pub fn addEnergySaverStatusChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_EnergySaverStatusChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.addEnergySaverStatusChanged(handler);
     }
-    pub fn removeEnergySaverStatusChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_EnergySaverStatusChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.removeEnergySaverStatusChanged(token);
     }
-    pub fn getBatteryStatus() core.HResult!BatteryStatus {
+    pub fn get_BatteryStatus() core.HResult!BatteryStatus {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.getBatteryStatus();
     }
-    pub fn addBatteryStatusChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_BatteryStatusChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.addBatteryStatusChanged(handler);
     }
-    pub fn removeBatteryStatusChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_BatteryStatusChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.removeBatteryStatusChanged(token);
     }
-    pub fn getPowerSupplyStatus() core.HResult!PowerSupplyStatus {
+    pub fn get_PowerSupplyStatus() core.HResult!PowerSupplyStatus {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.getPowerSupplyStatus();
     }
-    pub fn addPowerSupplyStatusChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_PowerSupplyStatusChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.addPowerSupplyStatusChanged(handler);
     }
-    pub fn removePowerSupplyStatusChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_PowerSupplyStatusChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.removePowerSupplyStatusChanged(token);
     }
-    pub fn getRemainingChargePercent() core.HResult!i32 {
+    pub fn get_RemainingChargePercent() core.HResult!i32 {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.getRemainingChargePercent();
     }
-    pub fn addRemainingChargePercentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RemainingChargePercentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.addRemainingChargePercentChanged(handler);
     }
-    pub fn removeRemainingChargePercentChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RemainingChargePercentChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.removeRemainingChargePercentChanged(token);
     }
-    pub fn getRemainingDischargeTime() core.HResult!TimeSpan {
+    pub fn get_RemainingDischargeTime() core.HResult!TimeSpan {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.getRemainingDischargeTime();
     }
-    pub fn addRemainingDischargeTimeChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RemainingDischargeTimeChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.addRemainingDischargeTimeChanged(handler);
     }
-    pub fn removeRemainingDischargeTimeChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RemainingDischargeTimeChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPowerManagerStaticsCache.get();
         return try factory.removeRemainingDischargeTimeChanged(token);
     }

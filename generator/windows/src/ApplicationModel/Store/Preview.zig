@@ -685,11 +685,11 @@ pub const StoreConfiguration = extern struct {
         const factory = @This().IStoreConfigurationStatics3Cache.get();
         return try factory.SetPurchasePromptingPolicyForUser(user, value);
     }
-    pub fn getPurchasePromptingPolicy() core.HResult!*IReference(u32) {
+    pub fn get_PurchasePromptingPolicy() core.HResult!*IReference(u32) {
         const factory = @This().IStoreConfigurationStatics2Cache.get();
         return try factory.getPurchasePromptingPolicy();
     }
-    pub fn putPurchasePromptingPolicy(value: *IReference(u32)) core.HResult!void {
+    pub fn put_PurchasePromptingPolicy(value: *IReference(u32)) core.HResult!void {
         const factory = @This().IStoreConfigurationStatics2Cache.get();
         return try factory.putPurchasePromptingPolicy(value);
     }
@@ -709,7 +709,7 @@ pub const StoreConfiguration = extern struct {
         const factory = @This().IStoreConfigurationStaticsCache.get();
         return try factory.IsStoreWebAccountId(webAccountId);
     }
-    pub fn getHardwareManufacturerInfo() core.HResult!*StoreHardwareManufacturerInfo {
+    pub fn get_HardwareManufacturerInfo() core.HResult!*StoreHardwareManufacturerInfo {
         const factory = @This().IStoreConfigurationStaticsCache.get();
         return try factory.getHardwareManufacturerInfo();
     }
@@ -906,9 +906,9 @@ pub const WebAuthenticationCoreManagerHelper = extern struct {
         const factory = @This().IWebAuthenticationCoreManagerHelperCache.get();
         return try factory.RequestTokenWithUIElementHostingAsync(request, uiElement);
     }
-    pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn RequestTokenWithUIElementHostingAsyncWithUiElement(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         const factory = @This().IWebAuthenticationCoreManagerHelperCache.get();
-        return try factory.RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(request, webAccount, uiElement);
+        return try factory.RequestTokenWithUIElementHostingAsyncWithUiElement(request, webAccount, uiElement);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.WebAuthenticationCoreManagerHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

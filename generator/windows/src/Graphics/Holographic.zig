@@ -671,19 +671,19 @@ pub const HolographicSpace = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().IHolographicSpaceStatics2Cache.get();
         return try factory.getIsSupported();
     }
-    pub fn getIsAvailable() core.HResult!bool {
+    pub fn get_IsAvailable() core.HResult!bool {
         const factory = @This().IHolographicSpaceStatics2Cache.get();
         return try factory.getIsAvailable();
     }
-    pub fn addIsAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_IsAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IHolographicSpaceStatics2Cache.get();
         return try factory.addIsAvailableChanged(handler);
     }
-    pub fn removeIsAvailableChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_IsAvailableChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IHolographicSpaceStatics2Cache.get();
         return try factory.removeIsAvailableChanged(token);
     }
@@ -691,7 +691,7 @@ pub const HolographicSpace = extern struct {
         const factory = @This().IHolographicSpaceStaticsCache.get();
         return try factory.CreateForCoreWindow(window);
     }
-    pub fn getIsConfigured() core.HResult!bool {
+    pub fn get_IsConfigured() core.HResult!bool {
         const factory = @This().IHolographicSpaceStatics3Cache.get();
         return try factory.getIsConfigured();
     }

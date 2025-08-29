@@ -823,11 +823,11 @@ pub const WiFiDirectDevice = extern struct {
         const factory = @This().IWiFiDirectDeviceStaticsCache.get();
         return try factory.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector(ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithTy(ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
         const factory = @This().IWiFiDirectDeviceStatics2Cache.get();
         return try factory.GetDeviceSelector(ty);
     }
-    pub fn FromIdAsync(deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
+    pub fn FromIdAsyncWithConnectionParameters(deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
         const factory = @This().IWiFiDirectDeviceStatics2Cache.get();
         return try factory.FromIdAsync(deviceId, connectionParameters);
     }

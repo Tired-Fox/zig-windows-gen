@@ -207,17 +207,17 @@ pub const ResourceLoader = extern struct {
         const factory = @This().IResourceLoaderStatics2Cache.get();
         return try factory.GetForCurrentView();
     }
-    pub fn GetForCurrentView(name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForCurrentViewWithName(name: HSTRING) core.HResult!*ResourceLoader {
         const factory = @This().IResourceLoaderStatics2Cache.get();
-        return try factory.GetForCurrentView(name);
+        return try factory.GetForCurrentViewWithName(name);
     }
     pub fn GetForViewIndependentUse() core.HResult!*ResourceLoader {
         const factory = @This().IResourceLoaderStatics2Cache.get();
         return try factory.GetForViewIndependentUse();
     }
-    pub fn GetForViewIndependentUse(name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForViewIndependentUseWithName(name: HSTRING) core.HResult!*ResourceLoader {
         const factory = @This().IResourceLoaderStatics2Cache.get();
-        return try factory.GetForViewIndependentUse(name);
+        return try factory.GetForViewIndependentUseWithName(name);
     }
     pub fn GetStringForReference(uri: *Uri) core.HResult!HSTRING {
         const factory = @This().IResourceLoaderStaticsCache.get();

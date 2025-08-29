@@ -15,31 +15,31 @@ pub const GameList = extern struct {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.FindAllAsync();
     }
-    pub fn FindAllAsync(packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
+    pub fn FindAllAsyncWithPackageFamilyName(packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         const factory = @This().IGameListStaticsCache.get();
-        return try factory.FindAllAsync(packageFamilyName);
+        return try factory.FindAllAsyncWithPackageFamilyName(packageFamilyName);
     }
-    pub fn addGameAdded(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_GameAdded(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.addGameAdded(handler);
     }
-    pub fn removeGameAdded(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GameAdded(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.removeGameAdded(token);
     }
-    pub fn addGameRemoved(handler: *GameListRemovedEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_GameRemoved(handler: *GameListRemovedEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.addGameRemoved(handler);
     }
-    pub fn removeGameRemoved(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GameRemoved(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.removeGameRemoved(token);
     }
-    pub fn addGameUpdated(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_GameUpdated(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.addGameUpdated(handler);
     }
-    pub fn removeGameUpdated(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GameUpdated(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGameListStaticsCache.get();
         return try factory.removeGameUpdated(token);
     }

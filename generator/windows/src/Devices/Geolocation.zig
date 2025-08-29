@@ -101,9 +101,9 @@ pub const GeoboundingBox = extern struct {
         const factory = @This().IGeoboundingBoxStaticsCache.get();
         return try factory.TryComputeWithAltitudeRefSystem(positions, altitudeRefSystem);
     }
-    pub fn TryComputeWithSpatialReferenceId(positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
+    pub fn TryComputeWithAltitudeRefSystemWithSpatialReferenceId(positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
         const factory = @This().IGeoboundingBoxStaticsCache.get();
-        return try factory.TryComputeWithSpatialReferenceId(positions, altitudeRefSystem, spatialReferenceId);
+        return try factory.TryComputeWithAltitudeRefSystemWithSpatialReferenceId(positions, altitudeRefSystem, spatialReferenceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.GeoboundingBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -349,15 +349,15 @@ pub const Geolocator = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGeolocator.IID)));
     }
-    pub fn getIsDefaultGeopositionRecommended() core.HResult!bool {
+    pub fn get_IsDefaultGeopositionRecommended() core.HResult!bool {
         const factory = @This().IGeolocatorStatics2Cache.get();
         return try factory.getIsDefaultGeopositionRecommended();
     }
-    pub fn putDefaultGeoposition(value: *IReference(BasicGeoposition)) core.HResult!void {
+    pub fn put_DefaultGeoposition(value: *IReference(BasicGeoposition)) core.HResult!void {
         const factory = @This().IGeolocatorStatics2Cache.get();
         return try factory.putDefaultGeoposition(value);
     }
-    pub fn getDefaultGeoposition() core.HResult!*IReference(BasicGeoposition) {
+    pub fn get_DefaultGeoposition() core.HResult!*IReference(BasicGeoposition) {
         const factory = @This().IGeolocatorStatics2Cache.get();
         return try factory.getDefaultGeoposition();
     }

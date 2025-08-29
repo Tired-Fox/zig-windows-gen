@@ -258,7 +258,7 @@ pub const PhoneCallOriginManager = extern struct {
         const factory = @This().IPhoneCallOriginManagerStatics2Cache.get();
         return try factory.RequestSetAsActiveCallOriginAppAsync();
     }
-    pub fn getIsCurrentAppActiveCallOriginApp() core.HResult!bool {
+    pub fn get_IsCurrentAppActiveCallOriginApp() core.HResult!bool {
         const factory = @This().IPhoneCallOriginManagerStaticsCache.get();
         return try factory.getIsCurrentAppActiveCallOriginApp();
     }
@@ -270,7 +270,7 @@ pub const PhoneCallOriginManager = extern struct {
         const factory = @This().IPhoneCallOriginManagerStaticsCache.get();
         return try factory.SetCallOrigin(requestId, callOrigin);
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().IPhoneCallOriginManagerStatics3Cache.get();
         return try factory.getIsSupported();
     }

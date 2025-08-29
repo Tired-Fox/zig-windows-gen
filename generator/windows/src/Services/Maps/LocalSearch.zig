@@ -327,35 +327,35 @@ pub const LocalCategories = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBankAndCreditUnions() core.HResult!HSTRING {
+    pub fn get_BankAndCreditUnions() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getBankAndCreditUnions();
     }
-    pub fn getEatDrink() core.HResult!HSTRING {
+    pub fn get_EatDrink() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getEatDrink();
     }
-    pub fn getHospitals() core.HResult!HSTRING {
+    pub fn get_Hospitals() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getHospitals();
     }
-    pub fn getHotelsAndMotels() core.HResult!HSTRING {
+    pub fn get_HotelsAndMotels() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getHotelsAndMotels();
     }
-    pub fn getAll() core.HResult!HSTRING {
+    pub fn get_All() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getAll();
     }
-    pub fn getParking() core.HResult!HSTRING {
+    pub fn get_Parking() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getParking();
     }
-    pub fn getSeeDo() core.HResult!HSTRING {
+    pub fn get_SeeDo() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getSeeDo();
     }
-    pub fn getShop() core.HResult!HSTRING {
+    pub fn get_Shop() core.HResult!HSTRING {
         const factory = @This().ILocalCategoriesStaticsCache.get();
         return try factory.getShop();
     }

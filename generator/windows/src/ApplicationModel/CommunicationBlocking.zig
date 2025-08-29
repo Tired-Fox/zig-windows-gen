@@ -3,7 +3,7 @@ pub const CommunicationBlockingAccessManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsBlockingActive() core.HResult!bool {
+    pub fn get_IsBlockingActive() core.HResult!bool {
         const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
         return try factory.getIsBlockingActive();
     }
@@ -36,7 +36,7 @@ pub const CommunicationBlockingAppManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsCurrentAppActiveBlockingApp() core.HResult!bool {
+    pub fn get_IsCurrentAppActiveBlockingApp() core.HResult!bool {
         const factory = @This().ICommunicationBlockingAppManagerStaticsCache.get();
         return try factory.getIsCurrentAppActiveBlockingApp();
     }

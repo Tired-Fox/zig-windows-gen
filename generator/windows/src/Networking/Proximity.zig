@@ -983,19 +983,19 @@ pub const PeerFinder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRole() core.HResult!PeerRole {
+    pub fn get_Role() core.HResult!PeerRole {
         const factory = @This().IPeerFinderStatics2Cache.get();
         return try factory.getRole();
     }
-    pub fn putRole(value: PeerRole) core.HResult!void {
+    pub fn put_Role(value: PeerRole) core.HResult!void {
         const factory = @This().IPeerFinderStatics2Cache.get();
         return try factory.putRole(value);
     }
-    pub fn getDiscoveryData() core.HResult!*IBuffer {
+    pub fn get_DiscoveryData() core.HResult!*IBuffer {
         const factory = @This().IPeerFinderStatics2Cache.get();
         return try factory.getDiscoveryData();
     }
-    pub fn putDiscoveryData(value: *IBuffer) core.HResult!void {
+    pub fn put_DiscoveryData(value: *IBuffer) core.HResult!void {
         const factory = @This().IPeerFinderStatics2Cache.get();
         return try factory.putDiscoveryData(value);
     }
@@ -1003,43 +1003,43 @@ pub const PeerFinder = extern struct {
         const factory = @This().IPeerFinderStatics2Cache.get();
         return try factory.CreateWatcher();
     }
-    pub fn getAllowBluetooth() core.HResult!bool {
+    pub fn get_AllowBluetooth() core.HResult!bool {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.getAllowBluetooth();
     }
-    pub fn putAllowBluetooth(value: bool) core.HResult!void {
+    pub fn put_AllowBluetooth(value: bool) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.putAllowBluetooth(value);
     }
-    pub fn getAllowInfrastructure() core.HResult!bool {
+    pub fn get_AllowInfrastructure() core.HResult!bool {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.getAllowInfrastructure();
     }
-    pub fn putAllowInfrastructure(value: bool) core.HResult!void {
+    pub fn put_AllowInfrastructure(value: bool) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.putAllowInfrastructure(value);
     }
-    pub fn getAllowWiFiDirect() core.HResult!bool {
+    pub fn get_AllowWiFiDirect() core.HResult!bool {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.getAllowWiFiDirect();
     }
-    pub fn putAllowWiFiDirect(value: bool) core.HResult!void {
+    pub fn put_AllowWiFiDirect(value: bool) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.putAllowWiFiDirect(value);
     }
-    pub fn getDisplayName() core.HResult!HSTRING {
+    pub fn get_DisplayName() core.HResult!HSTRING {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.getDisplayName();
     }
-    pub fn putDisplayName(value: HSTRING) core.HResult!void {
+    pub fn put_DisplayName(value: HSTRING) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.putDisplayName(value);
     }
-    pub fn getSupportedDiscoveryTypes() core.HResult!PeerDiscoveryTypes {
+    pub fn get_SupportedDiscoveryTypes() core.HResult!PeerDiscoveryTypes {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.getSupportedDiscoveryTypes();
     }
-    pub fn getAlternateIdentities() core.HResult!*IMap(HSTRING,HSTRING) {
+    pub fn get_AlternateIdentities() core.HResult!*IMap(HSTRING,HSTRING) {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.getAlternateIdentities();
     }
@@ -1047,27 +1047,27 @@ pub const PeerFinder = extern struct {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.Start();
     }
-    pub fn Start(peerMessage: HSTRING) core.HResult!void {
+    pub fn StartWithPeerMessage(peerMessage: HSTRING) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
-        return try factory.Start(peerMessage);
+        return try factory.StartWithPeerMessage(peerMessage);
     }
     pub fn Stop() core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.Stop();
     }
-    pub fn addTriggeredConnectionStateChanged(handler: *TypedEventHandler(IInspectable,TriggeredConnectionStateChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_TriggeredConnectionStateChanged(handler: *TypedEventHandler(IInspectable,TriggeredConnectionStateChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.addTriggeredConnectionStateChanged(handler);
     }
-    pub fn removeTriggeredConnectionStateChanged(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_TriggeredConnectionStateChanged(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.removeTriggeredConnectionStateChanged(cookie);
     }
-    pub fn addConnectionRequested(handler: *TypedEventHandler(IInspectable,ConnectionRequestedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_ConnectionRequested(handler: *TypedEventHandler(IInspectable,ConnectionRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.addConnectionRequested(handler);
     }
-    pub fn removeConnectionRequested(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ConnectionRequested(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPeerFinderStaticsCache.get();
         return try factory.removeConnectionRequested(cookie);
     }

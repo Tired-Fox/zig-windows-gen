@@ -111,19 +111,19 @@ pub const DateTimeFormatter = extern struct {
         const factory = @This().IDateTimeFormatterFactoryCache.get();
         return try factory.CreateDateTimeFormatterDateTimeContext(yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages, geographicRegion, calendar, clock);
     }
-    pub fn getLongDate() core.HResult!*DateTimeFormatter {
+    pub fn get_LongDate() core.HResult!*DateTimeFormatter {
         const factory = @This().IDateTimeFormatterStaticsCache.get();
         return try factory.getLongDate();
     }
-    pub fn getLongTime() core.HResult!*DateTimeFormatter {
+    pub fn get_LongTime() core.HResult!*DateTimeFormatter {
         const factory = @This().IDateTimeFormatterStaticsCache.get();
         return try factory.getLongTime();
     }
-    pub fn getShortDate() core.HResult!*DateTimeFormatter {
+    pub fn get_ShortDate() core.HResult!*DateTimeFormatter {
         const factory = @This().IDateTimeFormatterStaticsCache.get();
         return try factory.getShortDate();
     }
-    pub fn getShortTime() core.HResult!*DateTimeFormatter {
+    pub fn get_ShortTime() core.HResult!*DateTimeFormatter {
         const factory = @This().IDateTimeFormatterStaticsCache.get();
         return try factory.getShortTime();
     }

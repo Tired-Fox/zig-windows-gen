@@ -428,19 +428,19 @@ pub const DisplayInformation = extern struct {
         const factory = @This().IDisplayInformationStaticsCache.get();
         return try factory.GetForCurrentView();
     }
-    pub fn getAutoRotationPreferences() core.HResult!DisplayOrientations {
+    pub fn get_AutoRotationPreferences() core.HResult!DisplayOrientations {
         const factory = @This().IDisplayInformationStaticsCache.get();
         return try factory.getAutoRotationPreferences();
     }
-    pub fn putAutoRotationPreferences(value: DisplayOrientations) core.HResult!void {
+    pub fn put_AutoRotationPreferences(value: DisplayOrientations) core.HResult!void {
         const factory = @This().IDisplayInformationStaticsCache.get();
         return try factory.putAutoRotationPreferences(value);
     }
-    pub fn addDisplayContentsInvalidated(handler: *TypedEventHandler(DisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_DisplayContentsInvalidated(handler: *TypedEventHandler(DisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IDisplayInformationStaticsCache.get();
         return try factory.addDisplayContentsInvalidated(handler);
     }
-    pub fn removeDisplayContentsInvalidated(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_DisplayContentsInvalidated(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IDisplayInformationStaticsCache.get();
         return try factory.removeDisplayContentsInvalidated(token);
     }
@@ -463,55 +463,55 @@ pub const DisplayProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrentOrientation() core.HResult!DisplayOrientations {
+    pub fn get_CurrentOrientation() core.HResult!DisplayOrientations {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.getCurrentOrientation();
     }
-    pub fn getNativeOrientation() core.HResult!DisplayOrientations {
+    pub fn get_NativeOrientation() core.HResult!DisplayOrientations {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.getNativeOrientation();
     }
-    pub fn getAutoRotationPreferences() core.HResult!DisplayOrientations {
+    pub fn get_AutoRotationPreferences() core.HResult!DisplayOrientations {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.getAutoRotationPreferences();
     }
-    pub fn putAutoRotationPreferences(value: DisplayOrientations) core.HResult!void {
+    pub fn put_AutoRotationPreferences(value: DisplayOrientations) core.HResult!void {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.putAutoRotationPreferences(value);
     }
-    pub fn addOrientationChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_OrientationChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.addOrientationChanged(handler);
     }
-    pub fn removeOrientationChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_OrientationChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.removeOrientationChanged(token);
     }
-    pub fn getResolutionScale() core.HResult!ResolutionScale {
+    pub fn get_ResolutionScale() core.HResult!ResolutionScale {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.getResolutionScale();
     }
-    pub fn getLogicalDpi() core.HResult!f32 {
+    pub fn get_LogicalDpi() core.HResult!f32 {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.getLogicalDpi();
     }
-    pub fn addLogicalDpiChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_LogicalDpiChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.addLogicalDpiChanged(handler);
     }
-    pub fn removeLogicalDpiChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_LogicalDpiChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.removeLogicalDpiChanged(token);
     }
-    pub fn getStereoEnabled() core.HResult!bool {
+    pub fn get_StereoEnabled() core.HResult!bool {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.getStereoEnabled();
     }
-    pub fn addStereoEnabledChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_StereoEnabledChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.addStereoEnabledChanged(handler);
     }
-    pub fn removeStereoEnabledChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_StereoEnabledChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.removeStereoEnabledChanged(token);
     }
@@ -519,19 +519,19 @@ pub const DisplayProperties = extern struct {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.GetColorProfileAsync();
     }
-    pub fn addColorProfileChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_ColorProfileChanged(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.addColorProfileChanged(handler);
     }
-    pub fn removeColorProfileChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ColorProfileChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.removeColorProfileChanged(token);
     }
-    pub fn addDisplayContentsInvalidated(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
+    pub fn add_DisplayContentsInvalidated(handler: *DisplayPropertiesEventHandler) core.HResult!EventRegistrationToken {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.addDisplayContentsInvalidated(handler);
     }
-    pub fn removeDisplayContentsInvalidated(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_DisplayContentsInvalidated(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IDisplayPropertiesStaticsCache.get();
         return try factory.removeDisplayContentsInvalidated(token);
     }

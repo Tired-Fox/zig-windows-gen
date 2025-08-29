@@ -23,11 +23,11 @@ pub const BitmapSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPixelWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_PixelWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapSourceStaticsCache.get();
         return try factory.getPixelWidthProperty();
     }
-    pub fn getPixelHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_PixelHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapSourceStaticsCache.get();
         return try factory.getPixelHeightProperty();
     }
@@ -160,35 +160,35 @@ pub const BitmapImage = extern struct {
         const factory = @This().IBitmapImageFactoryCache.get();
         return try factory.CreateInstanceWithUriSource(uriSource);
     }
-    pub fn getDecodePixelTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_DecodePixelTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStatics2Cache.get();
         return try factory.getDecodePixelTypeProperty();
     }
-    pub fn getCreateOptionsProperty() core.HResult!*DependencyProperty {
+    pub fn get_CreateOptionsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStaticsCache.get();
         return try factory.getCreateOptionsProperty();
     }
-    pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_UriSourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStaticsCache.get();
         return try factory.getUriSourceProperty();
     }
-    pub fn getDecodePixelWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_DecodePixelWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStaticsCache.get();
         return try factory.getDecodePixelWidthProperty();
     }
-    pub fn getDecodePixelHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_DecodePixelHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStaticsCache.get();
         return try factory.getDecodePixelHeightProperty();
     }
-    pub fn getIsAnimatedBitmapProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsAnimatedBitmapProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStatics3Cache.get();
         return try factory.getIsAnimatedBitmapProperty();
     }
-    pub fn getIsPlayingProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsPlayingProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStatics3Cache.get();
         return try factory.getIsPlayingProperty();
     }
-    pub fn getAutoPlayProperty() core.HResult!*DependencyProperty {
+    pub fn get_AutoPlayProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBitmapImageStatics3Cache.get();
         return try factory.getAutoPlayProperty();
     }
@@ -1265,11 +1265,11 @@ pub const RenderTargetBitmap = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRenderTargetBitmap.IID)));
     }
-    pub fn getPixelWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_PixelWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRenderTargetBitmapStaticsCache.get();
         return try factory.getPixelWidthProperty();
     }
-    pub fn getPixelHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_PixelHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRenderTargetBitmapStaticsCache.get();
         return try factory.getPixelHeightProperty();
     }
@@ -1376,15 +1376,15 @@ pub const SvgImageSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_UriSourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISvgImageSourceStaticsCache.get();
         return try factory.getUriSourceProperty();
     }
-    pub fn getRasterizePixelWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_RasterizePixelWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISvgImageSourceStaticsCache.get();
         return try factory.getRasterizePixelWidthProperty();
     }
-    pub fn getRasterizePixelHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_RasterizePixelHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISvgImageSourceStaticsCache.get();
         return try factory.getRasterizePixelHeightProperty();
     }

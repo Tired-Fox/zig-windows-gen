@@ -949,11 +949,11 @@ pub const XamlUIPresenter = extern struct {
         const factory = @This().IXamlUIPresenterStatics2Cache.get();
         return try factory.GetFlyoutPlacement(placementTargetBounds, controlSize, minControlSize, containerRect, targetPreferredPlacement, allowFallbacks, chosenPlacement);
     }
-    pub fn getCompleteTimelinesAutomatically() core.HResult!bool {
+    pub fn get_CompleteTimelinesAutomatically() core.HResult!bool {
         const factory = @This().IXamlUIPresenterStaticsCache.get();
         return try factory.getCompleteTimelinesAutomatically();
     }
-    pub fn putCompleteTimelinesAutomatically(value: bool) core.HResult!void {
+    pub fn put_CompleteTimelinesAutomatically(value: bool) core.HResult!void {
         const factory = @This().IXamlUIPresenterStaticsCache.get();
         return try factory.putCompleteTimelinesAutomatically(value);
     }

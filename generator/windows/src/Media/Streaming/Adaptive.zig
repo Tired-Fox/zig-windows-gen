@@ -171,9 +171,9 @@ pub const AdaptiveMediaSource = extern struct {
         const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
         return try factory.CreateFromStreamAsync(stream, uri, contentType);
     }
-    pub fn CreateFromStreamAsyncWithUriWithContentTypeWithHttpClient(stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
+    pub fn CreateFromStreamAsyncWithHttpClient(stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
         const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
-        return try factory.CreateFromStreamAsyncWithUriWithContentTypeWithHttpClient(stream, uri, contentType, httpClient);
+        return try factory.CreateFromStreamAsyncWithHttpClient(stream, uri, contentType, httpClient);
     }
     pub const NAME: []const u8 = "Windows.Media.Streaming.Adaptive.AdaptiveMediaSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -170,9 +170,9 @@ pub const BackgroundDownloader = extern struct {
         const factory = @This().IBackgroundDownloaderStaticMethodsCache.get();
         return try factory.GetCurrentDownloadsAsync();
     }
-    pub fn GetCurrentDownloadsAsync(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
+    pub fn GetCurrentDownloadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         const factory = @This().IBackgroundDownloaderStaticMethodsCache.get();
-        return try factory.GetCurrentDownloadsAsync(group);
+        return try factory.GetCurrentDownloadsAsyncWithGroup(group);
     }
     pub fn GetCurrentDownloadsForTransferGroupAsync(group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         const factory = @This().IBackgroundDownloaderStaticMethods2Cache.get();
@@ -547,9 +547,9 @@ pub const BackgroundUploader = extern struct {
         const factory = @This().IBackgroundUploaderStaticMethodsCache.get();
         return try factory.GetCurrentUploadsAsync();
     }
-    pub fn GetCurrentUploadsAsync(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
+    pub fn GetCurrentUploadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         const factory = @This().IBackgroundUploaderStaticMethodsCache.get();
-        return try factory.GetCurrentUploadsAsync(group);
+        return try factory.GetCurrentUploadsAsyncWithGroup(group);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundUploader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -567,19 +567,19 @@ pub const ContentPrefetcher = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getContentUris() core.HResult!*IVector(Uri) {
+    pub fn get_ContentUris() core.HResult!*IVector(Uri) {
         const factory = @This().IContentPrefetcherCache.get();
         return try factory.getContentUris();
     }
-    pub fn putIndirectContentUri(value: *Uri) core.HResult!void {
+    pub fn put_IndirectContentUri(value: *Uri) core.HResult!void {
         const factory = @This().IContentPrefetcherCache.get();
         return try factory.putIndirectContentUri(value);
     }
-    pub fn getIndirectContentUri() core.HResult!*Uri {
+    pub fn get_IndirectContentUri() core.HResult!*Uri {
         const factory = @This().IContentPrefetcherCache.get();
         return try factory.getIndirectContentUri();
     }
-    pub fn getLastSuccessfulPrefetchTime() core.HResult!*IReference(DateTime) {
+    pub fn get_LastSuccessfulPrefetchTime() core.HResult!*IReference(DateTime) {
         const factory = @This().IContentPrefetcherTimeCache.get();
         return try factory.getLastSuccessfulPrefetchTime();
     }

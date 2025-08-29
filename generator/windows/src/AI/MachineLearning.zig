@@ -2593,9 +2593,9 @@ pub const TensorBoolean = extern struct {
         const factory = @This().ITensorBooleanStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorBoolean {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorBoolean {
         const factory = @This().ITensorBooleanStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]bool) core.HResult!*TensorBoolean {
         const factory = @This().ITensorBooleanStaticsCache.get();
@@ -2656,9 +2656,9 @@ pub const TensorDouble = extern struct {
         const factory = @This().ITensorDoubleStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorDouble {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorDouble {
         const factory = @This().ITensorDoubleStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]f64) core.HResult!*TensorDouble {
         const factory = @This().ITensorDoubleStaticsCache.get();
@@ -2767,9 +2767,9 @@ pub const TensorFloat = extern struct {
         const factory = @This().ITensorFloatStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorFloat {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorFloat {
         const factory = @This().ITensorFloatStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]f32) core.HResult!*TensorFloat {
         const factory = @This().ITensorFloatStaticsCache.get();
@@ -2846,9 +2846,9 @@ pub const TensorFloat16Bit = extern struct {
         const factory = @This().ITensorFloat16BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorFloat16Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorFloat16Bit {
         const factory = @This().ITensorFloat16BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]f32) core.HResult!*TensorFloat16Bit {
         const factory = @This().ITensorFloat16BitStaticsCache.get();
@@ -2909,9 +2909,9 @@ pub const TensorInt16Bit = extern struct {
         const factory = @This().ITensorInt16BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorInt16Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt16Bit {
         const factory = @This().ITensorInt16BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]i16) core.HResult!*TensorInt16Bit {
         const factory = @This().ITensorInt16BitStaticsCache.get();
@@ -2980,9 +2980,9 @@ pub const TensorInt32Bit = extern struct {
         const factory = @This().ITensorInt32BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorInt32Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt32Bit {
         const factory = @This().ITensorInt32BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]i32) core.HResult!*TensorInt32Bit {
         const factory = @This().ITensorInt32BitStaticsCache.get();
@@ -3051,9 +3051,9 @@ pub const TensorInt64Bit = extern struct {
         const factory = @This().ITensorInt64BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorInt64Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt64Bit {
         const factory = @This().ITensorInt64BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]i64) core.HResult!*TensorInt64Bit {
         const factory = @This().ITensorInt64BitStaticsCache.get();
@@ -3130,9 +3130,9 @@ pub const TensorInt8Bit = extern struct {
         const factory = @This().ITensorInt8BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorInt8Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt8Bit {
         const factory = @This().ITensorInt8BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u8) core.HResult!*TensorInt8Bit {
         const factory = @This().ITensorInt8BitStaticsCache.get();
@@ -3211,9 +3211,9 @@ pub const TensorString = extern struct {
         const factory = @This().ITensorStringStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorString {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorString {
         const factory = @This().ITensorStringStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]HSTRING) core.HResult!*TensorString {
         const factory = @This().ITensorStringStaticsCache.get();
@@ -3278,9 +3278,9 @@ pub const TensorUInt16Bit = extern struct {
         const factory = @This().ITensorUInt16BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorUInt16Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt16Bit {
         const factory = @This().ITensorUInt16BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u16) core.HResult!*TensorUInt16Bit {
         const factory = @This().ITensorUInt16BitStaticsCache.get();
@@ -3349,9 +3349,9 @@ pub const TensorUInt32Bit = extern struct {
         const factory = @This().ITensorUInt32BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorUInt32Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt32Bit {
         const factory = @This().ITensorUInt32BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u32) core.HResult!*TensorUInt32Bit {
         const factory = @This().ITensorUInt32BitStaticsCache.get();
@@ -3420,9 +3420,9 @@ pub const TensorUInt64Bit = extern struct {
         const factory = @This().ITensorUInt64BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorUInt64Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt64Bit {
         const factory = @This().ITensorUInt64BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u64) core.HResult!*TensorUInt64Bit {
         const factory = @This().ITensorUInt64BitStaticsCache.get();
@@ -3499,9 +3499,9 @@ pub const TensorUInt8Bit = extern struct {
         const factory = @This().ITensorUInt8BitStaticsCache.get();
         return try factory.Create();
     }
-    pub fn Create(shape: *IIterable(i64)) core.HResult!*TensorUInt8Bit {
+    pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt8Bit {
         const factory = @This().ITensorUInt8BitStaticsCache.get();
-        return try factory.Create(shape);
+        return try factory.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u8) core.HResult!*TensorUInt8Bit {
         const factory = @This().ITensorUInt8BitStaticsCache.get();

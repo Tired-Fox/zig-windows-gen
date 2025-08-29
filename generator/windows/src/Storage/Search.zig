@@ -72,9 +72,9 @@ pub const ContentIndexer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetIndexer(indexName: HSTRING) core.HResult!*ContentIndexer {
+    pub fn GetIndexerWithIndexName(indexName: HSTRING) core.HResult!*ContentIndexer {
         const factory = @This().IContentIndexerStaticsCache.get();
-        return try factory.GetIndexer(indexName);
+        return try factory.GetIndexerWithIndexName(indexName);
     }
     pub fn GetIndexer() core.HResult!*ContentIndexer {
         const factory = @This().IContentIndexerStaticsCache.get();

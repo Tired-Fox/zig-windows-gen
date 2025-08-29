@@ -43,27 +43,27 @@ pub const CoreApplication = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addBackgroundActivated(handler: *EventHandler(BackgroundActivatedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_BackgroundActivated(handler: *EventHandler(BackgroundActivatedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.addBackgroundActivated(handler);
     }
-    pub fn removeBackgroundActivated(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_BackgroundActivated(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.removeBackgroundActivated(token);
     }
-    pub fn addLeavingBackground(handler: *EventHandler(LeavingBackgroundEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_LeavingBackground(handler: *EventHandler(LeavingBackgroundEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.addLeavingBackground(handler);
     }
-    pub fn removeLeavingBackground(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_LeavingBackground(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.removeLeavingBackground(token);
     }
-    pub fn addEnteredBackground(handler: *EventHandler(EnteredBackgroundEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_EnteredBackground(handler: *EventHandler(EnteredBackgroundEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.addEnteredBackground(handler);
     }
-    pub fn removeEnteredBackground(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_EnteredBackground(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.removeEnteredBackground(token);
     }
@@ -71,27 +71,27 @@ pub const CoreApplication = extern struct {
         const factory = @This().ICoreApplication2Cache.get();
         return try factory.EnablePrelaunch(value);
     }
-    pub fn getId() core.HResult!HSTRING {
+    pub fn get_Id() core.HResult!HSTRING {
         const factory = @This().ICoreApplicationCache.get();
         return try factory.getId();
     }
-    pub fn addSuspending(handler: *EventHandler(SuspendingEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_Suspending(handler: *EventHandler(SuspendingEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplicationCache.get();
         return try factory.addSuspending(handler);
     }
-    pub fn removeSuspending(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_Suspending(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplicationCache.get();
         return try factory.removeSuspending(token);
     }
-    pub fn addResuming(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_Resuming(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplicationCache.get();
         return try factory.addResuming(handler);
     }
-    pub fn removeResuming(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_Resuming(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplicationCache.get();
         return try factory.removeResuming(token);
     }
-    pub fn getProperties() core.HResult!*IPropertySet {
+    pub fn get_Properties() core.HResult!*IPropertySet {
         const factory = @This().ICoreApplicationCache.get();
         return try factory.getProperties();
     }
@@ -111,11 +111,11 @@ pub const CoreApplication = extern struct {
         const factory = @This().ICoreImmersiveApplication2Cache.get();
         return try factory.CreateNewView();
     }
-    pub fn addUnhandledErrorDetected(handler: *EventHandler(UnhandledErrorDetectedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_UnhandledErrorDetected(handler: *EventHandler(UnhandledErrorDetectedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplicationUnhandledErrorCache.get();
         return try factory.addUnhandledErrorDetected(handler);
     }
-    pub fn removeUnhandledErrorDetected(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_UnhandledErrorDetected(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplicationUnhandledErrorCache.get();
         return try factory.removeUnhandledErrorDetected(token);
     }
@@ -135,19 +135,19 @@ pub const CoreApplication = extern struct {
         const factory = @This().ICoreApplication3Cache.get();
         return try factory.RequestRestartForUserAsync(user, launchArguments);
     }
-    pub fn CreateNewView(viewSource: *IFrameworkViewSource) core.HResult!*CoreApplicationView {
+    pub fn CreateNewViewWithViewSource(viewSource: *IFrameworkViewSource) core.HResult!*CoreApplicationView {
         const factory = @This().ICoreImmersiveApplication3Cache.get();
         return try factory.CreateNewView(viewSource);
     }
-    pub fn getViews() core.HResult!*IVectorView(CoreApplicationView) {
+    pub fn get_Views() core.HResult!*IVectorView(CoreApplicationView) {
         const factory = @This().ICoreImmersiveApplicationCache.get();
         return try factory.getViews();
     }
-    pub fn CreateNewView(runtimeType: HSTRING, entryPoint: HSTRING) core.HResult!*CoreApplicationView {
+    pub fn CreateNewViewWithRuntimeTypeWithEntryPoint(runtimeType: HSTRING, entryPoint: HSTRING) core.HResult!*CoreApplicationView {
         const factory = @This().ICoreImmersiveApplicationCache.get();
         return try factory.CreateNewView(runtimeType, entryPoint);
     }
-    pub fn getMainView() core.HResult!*CoreApplicationView {
+    pub fn get_MainView() core.HResult!*CoreApplicationView {
         const factory = @This().ICoreImmersiveApplicationCache.get();
         return try factory.getMainView();
     }
@@ -155,11 +155,11 @@ pub const CoreApplication = extern struct {
         const factory = @This().ICoreApplicationExitCache.get();
         return try factory.Exit();
     }
-    pub fn addExiting(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_Exiting(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ICoreApplicationExitCache.get();
         return try factory.addExiting(handler);
     }
-    pub fn removeExiting(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_Exiting(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICoreApplicationExitCache.get();
         return try factory.removeExiting(token);
     }

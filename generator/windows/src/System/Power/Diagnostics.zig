@@ -3,7 +3,7 @@ pub const BackgroundEnergyDiagnostics = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDeviceSpecificConversionFactor() core.HResult!f64 {
+    pub fn get_DeviceSpecificConversionFactor() core.HResult!f64 {
         const factory = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
         return try factory.getDeviceSpecificConversionFactor();
     }
@@ -24,7 +24,7 @@ pub const ForegroundEnergyDiagnostics = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDeviceSpecificConversionFactor() core.HResult!f64 {
+    pub fn get_DeviceSpecificConversionFactor() core.HResult!f64 {
         const factory = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
         return try factory.getDeviceSpecificConversionFactor();
     }

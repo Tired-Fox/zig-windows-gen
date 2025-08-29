@@ -3,23 +3,23 @@ pub const AnnotationPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAnnotationTypeIdProperty() core.HResult!*AutomationProperty {
+    pub fn get_AnnotationTypeIdProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
         return try factory.getAnnotationTypeIdProperty();
     }
-    pub fn getAnnotationTypeNameProperty() core.HResult!*AutomationProperty {
+    pub fn get_AnnotationTypeNameProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
         return try factory.getAnnotationTypeNameProperty();
     }
-    pub fn getAuthorProperty() core.HResult!*AutomationProperty {
+    pub fn get_AuthorProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
         return try factory.getAuthorProperty();
     }
-    pub fn getDateTimeProperty() core.HResult!*AutomationProperty {
+    pub fn get_DateTimeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
         return try factory.getDateTimeProperty();
     }
-    pub fn getTargetProperty() core.HResult!*AutomationProperty {
+    pub fn get_TargetProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
         return try factory.getTargetProperty();
     }
@@ -103,11 +103,11 @@ pub const AutomationAnnotation = extern struct {
         const factory = @This().IAutomationAnnotationFactoryCache.get();
         return try factory.CreateWithElementParameter(ty, element);
     }
-    pub fn getTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_TypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationAnnotationStaticsCache.get();
         return try factory.getTypeProperty();
     }
-    pub fn getElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_ElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationAnnotationStaticsCache.get();
         return try factory.getElementProperty();
     }
@@ -143,159 +143,159 @@ pub const AutomationElementIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsPeripheralProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsPeripheralProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
         return try factory.getIsPeripheralProperty();
     }
-    pub fn getIsDataValidForFormProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsDataValidForFormProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
         return try factory.getIsDataValidForFormProperty();
     }
-    pub fn getFullDescriptionProperty() core.HResult!*AutomationProperty {
+    pub fn get_FullDescriptionProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
         return try factory.getFullDescriptionProperty();
     }
-    pub fn getDescribedByProperty() core.HResult!*AutomationProperty {
+    pub fn get_DescribedByProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
         return try factory.getDescribedByProperty();
     }
-    pub fn getFlowsToProperty() core.HResult!*AutomationProperty {
+    pub fn get_FlowsToProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
         return try factory.getFlowsToProperty();
     }
-    pub fn getFlowsFromProperty() core.HResult!*AutomationProperty {
+    pub fn get_FlowsFromProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
         return try factory.getFlowsFromProperty();
     }
-    pub fn getPositionInSetProperty() core.HResult!*AutomationProperty {
+    pub fn get_PositionInSetProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
         return try factory.getPositionInSetProperty();
     }
-    pub fn getSizeOfSetProperty() core.HResult!*AutomationProperty {
+    pub fn get_SizeOfSetProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
         return try factory.getSizeOfSetProperty();
     }
-    pub fn getLevelProperty() core.HResult!*AutomationProperty {
+    pub fn get_LevelProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
         return try factory.getLevelProperty();
     }
-    pub fn getAnnotationsProperty() core.HResult!*AutomationProperty {
+    pub fn get_AnnotationsProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
         return try factory.getAnnotationsProperty();
     }
-    pub fn getCultureProperty() core.HResult!*AutomationProperty {
+    pub fn get_CultureProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics6Cache.get();
         return try factory.getCultureProperty();
     }
-    pub fn getLandmarkTypeProperty() core.HResult!*AutomationProperty {
+    pub fn get_LandmarkTypeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics4Cache.get();
         return try factory.getLandmarkTypeProperty();
     }
-    pub fn getLocalizedLandmarkTypeProperty() core.HResult!*AutomationProperty {
+    pub fn get_LocalizedLandmarkTypeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics4Cache.get();
         return try factory.getLocalizedLandmarkTypeProperty();
     }
-    pub fn getHeadingLevelProperty() core.HResult!*AutomationProperty {
+    pub fn get_HeadingLevelProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics7Cache.get();
         return try factory.getHeadingLevelProperty();
     }
-    pub fn getIsDialogProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsDialogProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics8Cache.get();
         return try factory.getIsDialogProperty();
     }
-    pub fn getControlledPeersProperty() core.HResult!*AutomationProperty {
+    pub fn get_ControlledPeersProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStatics2Cache.get();
         return try factory.getControlledPeersProperty();
     }
-    pub fn getAcceleratorKeyProperty() core.HResult!*AutomationProperty {
+    pub fn get_AcceleratorKeyProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getAcceleratorKeyProperty();
     }
-    pub fn getAccessKeyProperty() core.HResult!*AutomationProperty {
+    pub fn get_AccessKeyProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getAccessKeyProperty();
     }
-    pub fn getAutomationIdProperty() core.HResult!*AutomationProperty {
+    pub fn get_AutomationIdProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getAutomationIdProperty();
     }
-    pub fn getBoundingRectangleProperty() core.HResult!*AutomationProperty {
+    pub fn get_BoundingRectangleProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getBoundingRectangleProperty();
     }
-    pub fn getClassNameProperty() core.HResult!*AutomationProperty {
+    pub fn get_ClassNameProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getClassNameProperty();
     }
-    pub fn getClickablePointProperty() core.HResult!*AutomationProperty {
+    pub fn get_ClickablePointProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getClickablePointProperty();
     }
-    pub fn getControlTypeProperty() core.HResult!*AutomationProperty {
+    pub fn get_ControlTypeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getControlTypeProperty();
     }
-    pub fn getHasKeyboardFocusProperty() core.HResult!*AutomationProperty {
+    pub fn get_HasKeyboardFocusProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getHasKeyboardFocusProperty();
     }
-    pub fn getHelpTextProperty() core.HResult!*AutomationProperty {
+    pub fn get_HelpTextProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getHelpTextProperty();
     }
-    pub fn getIsContentElementProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsContentElementProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsContentElementProperty();
     }
-    pub fn getIsControlElementProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsControlElementProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsControlElementProperty();
     }
-    pub fn getIsEnabledProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsEnabledProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsEnabledProperty();
     }
-    pub fn getIsKeyboardFocusableProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsKeyboardFocusableProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsKeyboardFocusableProperty();
     }
-    pub fn getIsOffscreenProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsOffscreenProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsOffscreenProperty();
     }
-    pub fn getIsPasswordProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsPasswordProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsPasswordProperty();
     }
-    pub fn getIsRequiredForFormProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsRequiredForFormProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getIsRequiredForFormProperty();
     }
-    pub fn getItemStatusProperty() core.HResult!*AutomationProperty {
+    pub fn get_ItemStatusProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getItemStatusProperty();
     }
-    pub fn getItemTypeProperty() core.HResult!*AutomationProperty {
+    pub fn get_ItemTypeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getItemTypeProperty();
     }
-    pub fn getLabeledByProperty() core.HResult!*AutomationProperty {
+    pub fn get_LabeledByProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getLabeledByProperty();
     }
-    pub fn getLocalizedControlTypeProperty() core.HResult!*AutomationProperty {
+    pub fn get_LocalizedControlTypeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getLocalizedControlTypeProperty();
     }
-    pub fn getNameProperty() core.HResult!*AutomationProperty {
+    pub fn get_NameProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getNameProperty();
     }
-    pub fn getOrientationProperty() core.HResult!*AutomationProperty {
+    pub fn get_OrientationProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getOrientationProperty();
     }
-    pub fn getLiveSettingProperty() core.HResult!*AutomationProperty {
+    pub fn get_LiveSettingProperty() core.HResult!*AutomationProperty {
         const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
         return try factory.getLiveSettingProperty();
     }
@@ -331,7 +331,7 @@ pub const AutomationProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAutomationControlTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_AutomationControlTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics9Cache.get();
         return try factory.getAutomationControlTypeProperty();
     }
@@ -343,7 +343,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics9Cache.get();
         return try factory.SetAutomationControlType(element, value);
     }
-    pub fn getHeadingLevelProperty() core.HResult!*DependencyProperty {
+    pub fn get_HeadingLevelProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics7Cache.get();
         return try factory.getHeadingLevelProperty();
     }
@@ -355,7 +355,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics7Cache.get();
         return try factory.SetHeadingLevel(element, value);
     }
-    pub fn getCultureProperty() core.HResult!*DependencyProperty {
+    pub fn get_CultureProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics6Cache.get();
         return try factory.getCultureProperty();
     }
@@ -367,7 +367,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics6Cache.get();
         return try factory.SetCulture(element, value);
     }
-    pub fn getLandmarkTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_LandmarkTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics4Cache.get();
         return try factory.getLandmarkTypeProperty();
     }
@@ -379,7 +379,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics4Cache.get();
         return try factory.SetLandmarkType(element, value);
     }
-    pub fn getLocalizedLandmarkTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_LocalizedLandmarkTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics4Cache.get();
         return try factory.getLocalizedLandmarkTypeProperty();
     }
@@ -391,7 +391,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics4Cache.get();
         return try factory.SetLocalizedLandmarkType(element, value);
     }
-    pub fn getAcceleratorKeyProperty() core.HResult!*DependencyProperty {
+    pub fn get_AcceleratorKeyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getAcceleratorKeyProperty();
     }
@@ -403,7 +403,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetAcceleratorKey(element, value);
     }
-    pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessKeyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getAccessKeyProperty();
     }
@@ -415,7 +415,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetAccessKey(element, value);
     }
-    pub fn getAutomationIdProperty() core.HResult!*DependencyProperty {
+    pub fn get_AutomationIdProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getAutomationIdProperty();
     }
@@ -427,7 +427,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetAutomationId(element, value);
     }
-    pub fn getHelpTextProperty() core.HResult!*DependencyProperty {
+    pub fn get_HelpTextProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getHelpTextProperty();
     }
@@ -439,7 +439,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetHelpText(element, value);
     }
-    pub fn getIsRequiredForFormProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsRequiredForFormProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getIsRequiredForFormProperty();
     }
@@ -451,7 +451,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetIsRequiredForForm(element, value);
     }
-    pub fn getItemStatusProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemStatusProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getItemStatusProperty();
     }
@@ -463,7 +463,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetItemStatus(element, value);
     }
-    pub fn getItemTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getItemTypeProperty();
     }
@@ -475,7 +475,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetItemType(element, value);
     }
-    pub fn getLabeledByProperty() core.HResult!*DependencyProperty {
+    pub fn get_LabeledByProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getLabeledByProperty();
     }
@@ -487,7 +487,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetLabeledBy(element, value);
     }
-    pub fn getNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_NameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getNameProperty();
     }
@@ -499,7 +499,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetName(element, value);
     }
-    pub fn getLiveSettingProperty() core.HResult!*DependencyProperty {
+    pub fn get_LiveSettingProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.getLiveSettingProperty();
     }
@@ -511,7 +511,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStaticsCache.get();
         return try factory.SetLiveSetting(element, value);
     }
-    pub fn getIsPeripheralProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsPeripheralProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getIsPeripheralProperty();
     }
@@ -523,7 +523,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.SetIsPeripheral(element, value);
     }
-    pub fn getIsDataValidForFormProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsDataValidForFormProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getIsDataValidForFormProperty();
     }
@@ -535,7 +535,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.SetIsDataValidForForm(element, value);
     }
-    pub fn getFullDescriptionProperty() core.HResult!*DependencyProperty {
+    pub fn get_FullDescriptionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getFullDescriptionProperty();
     }
@@ -547,7 +547,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.SetFullDescription(element, value);
     }
-    pub fn getLocalizedControlTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_LocalizedControlTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getLocalizedControlTypeProperty();
     }
@@ -559,7 +559,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.SetLocalizedControlType(element, value);
     }
-    pub fn getDescribedByProperty() core.HResult!*DependencyProperty {
+    pub fn get_DescribedByProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getDescribedByProperty();
     }
@@ -567,7 +567,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.GetDescribedBy(element);
     }
-    pub fn getFlowsToProperty() core.HResult!*DependencyProperty {
+    pub fn get_FlowsToProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getFlowsToProperty();
     }
@@ -575,7 +575,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.GetFlowsTo(element);
     }
-    pub fn getFlowsFromProperty() core.HResult!*DependencyProperty {
+    pub fn get_FlowsFromProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.getFlowsFromProperty();
     }
@@ -583,7 +583,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics5Cache.get();
         return try factory.GetFlowsFrom(element);
     }
-    pub fn getAccessibilityViewProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessibilityViewProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics2Cache.get();
         return try factory.getAccessibilityViewProperty();
     }
@@ -595,7 +595,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics2Cache.get();
         return try factory.SetAccessibilityView(element, value);
     }
-    pub fn getControlledPeersProperty() core.HResult!*DependencyProperty {
+    pub fn get_ControlledPeersProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics2Cache.get();
         return try factory.getControlledPeersProperty();
     }
@@ -603,7 +603,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics2Cache.get();
         return try factory.GetControlledPeers(element);
     }
-    pub fn getIsDialogProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsDialogProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics8Cache.get();
         return try factory.getIsDialogProperty();
     }
@@ -615,7 +615,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics8Cache.get();
         return try factory.SetIsDialog(element, value);
     }
-    pub fn getPositionInSetProperty() core.HResult!*DependencyProperty {
+    pub fn get_PositionInSetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.getPositionInSetProperty();
     }
@@ -627,7 +627,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.SetPositionInSet(element, value);
     }
-    pub fn getSizeOfSetProperty() core.HResult!*DependencyProperty {
+    pub fn get_SizeOfSetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.getSizeOfSetProperty();
     }
@@ -639,7 +639,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.SetSizeOfSet(element, value);
     }
-    pub fn getLevelProperty() core.HResult!*DependencyProperty {
+    pub fn get_LevelProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.getLevelProperty();
     }
@@ -651,7 +651,7 @@ pub const AutomationProperties = extern struct {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.SetLevel(element, value);
     }
-    pub fn getAnnotationsProperty() core.HResult!*DependencyProperty {
+    pub fn get_AnnotationsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPropertiesStatics3Cache.get();
         return try factory.getAnnotationsProperty();
     }
@@ -731,7 +731,7 @@ pub const DockPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDockPositionProperty() core.HResult!*AutomationProperty {
+    pub fn get_DockPositionProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDockPatternIdentifiersStaticsCache.get();
         return try factory.getDockPositionProperty();
     }
@@ -755,19 +755,19 @@ pub const DragPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDropEffectProperty() core.HResult!*AutomationProperty {
+    pub fn get_DropEffectProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDragPatternIdentifiersStaticsCache.get();
         return try factory.getDropEffectProperty();
     }
-    pub fn getDropEffectsProperty() core.HResult!*AutomationProperty {
+    pub fn get_DropEffectsProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDragPatternIdentifiersStaticsCache.get();
         return try factory.getDropEffectsProperty();
     }
-    pub fn getGrabbedItemsProperty() core.HResult!*AutomationProperty {
+    pub fn get_GrabbedItemsProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDragPatternIdentifiersStaticsCache.get();
         return try factory.getGrabbedItemsProperty();
     }
-    pub fn getIsGrabbedProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsGrabbedProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDragPatternIdentifiersStaticsCache.get();
         return try factory.getIsGrabbedProperty();
     }
@@ -783,11 +783,11 @@ pub const DropTargetPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDropTargetEffectProperty() core.HResult!*AutomationProperty {
+    pub fn get_DropTargetEffectProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDropTargetPatternIdentifiersStaticsCache.get();
         return try factory.getDropTargetEffectProperty();
     }
-    pub fn getDropTargetEffectsProperty() core.HResult!*AutomationProperty {
+    pub fn get_DropTargetEffectsProperty() core.HResult!*AutomationProperty {
         const factory = @This().IDropTargetPatternIdentifiersStaticsCache.get();
         return try factory.getDropTargetEffectsProperty();
     }
@@ -803,7 +803,7 @@ pub const ExpandCollapsePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExpandCollapseStateProperty() core.HResult!*AutomationProperty {
+    pub fn get_ExpandCollapseStateProperty() core.HResult!*AutomationProperty {
         const factory = @This().IExpandCollapsePatternIdentifiersStaticsCache.get();
         return try factory.getExpandCollapseStateProperty();
     }
@@ -825,23 +825,23 @@ pub const GridItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColumnProperty() core.HResult!*AutomationProperty {
+    pub fn get_ColumnProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
         return try factory.getColumnProperty();
     }
-    pub fn getColumnSpanProperty() core.HResult!*AutomationProperty {
+    pub fn get_ColumnSpanProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
         return try factory.getColumnSpanProperty();
     }
-    pub fn getContainingGridProperty() core.HResult!*AutomationProperty {
+    pub fn get_ContainingGridProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
         return try factory.getContainingGridProperty();
     }
-    pub fn getRowProperty() core.HResult!*AutomationProperty {
+    pub fn get_RowProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
         return try factory.getRowProperty();
     }
-    pub fn getRowSpanProperty() core.HResult!*AutomationProperty {
+    pub fn get_RowSpanProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
         return try factory.getRowSpanProperty();
     }
@@ -857,11 +857,11 @@ pub const GridPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColumnCountProperty() core.HResult!*AutomationProperty {
+    pub fn get_ColumnCountProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridPatternIdentifiersStaticsCache.get();
         return try factory.getColumnCountProperty();
     }
-    pub fn getRowCountProperty() core.HResult!*AutomationProperty {
+    pub fn get_RowCountProperty() core.HResult!*AutomationProperty {
         const factory = @This().IGridPatternIdentifiersStaticsCache.get();
         return try factory.getRowCountProperty();
     }
@@ -3251,11 +3251,11 @@ pub const MultipleViewPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrentViewProperty() core.HResult!*AutomationProperty {
+    pub fn get_CurrentViewProperty() core.HResult!*AutomationProperty {
         const factory = @This().IMultipleViewPatternIdentifiersStaticsCache.get();
         return try factory.getCurrentViewProperty();
     }
-    pub fn getSupportedViewsProperty() core.HResult!*AutomationProperty {
+    pub fn get_SupportedViewsProperty() core.HResult!*AutomationProperty {
         const factory = @This().IMultipleViewPatternIdentifiersStaticsCache.get();
         return try factory.getSupportedViewsProperty();
     }
@@ -3271,27 +3271,27 @@ pub const RangeValuePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsReadOnlyProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsReadOnlyProperty() core.HResult!*AutomationProperty {
         const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
         return try factory.getIsReadOnlyProperty();
     }
-    pub fn getLargeChangeProperty() core.HResult!*AutomationProperty {
+    pub fn get_LargeChangeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
         return try factory.getLargeChangeProperty();
     }
-    pub fn getMaximumProperty() core.HResult!*AutomationProperty {
+    pub fn get_MaximumProperty() core.HResult!*AutomationProperty {
         const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
         return try factory.getMaximumProperty();
     }
-    pub fn getMinimumProperty() core.HResult!*AutomationProperty {
+    pub fn get_MinimumProperty() core.HResult!*AutomationProperty {
         const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
         return try factory.getMinimumProperty();
     }
-    pub fn getSmallChangeProperty() core.HResult!*AutomationProperty {
+    pub fn get_SmallChangeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
         return try factory.getSmallChangeProperty();
     }
-    pub fn getValueProperty() core.HResult!*AutomationProperty {
+    pub fn get_ValueProperty() core.HResult!*AutomationProperty {
         const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
         return try factory.getValueProperty();
     }
@@ -3319,31 +3319,31 @@ pub const ScrollPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getHorizontallyScrollableProperty() core.HResult!*AutomationProperty {
+    pub fn get_HorizontallyScrollableProperty() core.HResult!*AutomationProperty {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getHorizontallyScrollableProperty();
     }
-    pub fn getHorizontalScrollPercentProperty() core.HResult!*AutomationProperty {
+    pub fn get_HorizontalScrollPercentProperty() core.HResult!*AutomationProperty {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getHorizontalScrollPercentProperty();
     }
-    pub fn getHorizontalViewSizeProperty() core.HResult!*AutomationProperty {
+    pub fn get_HorizontalViewSizeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getHorizontalViewSizeProperty();
     }
-    pub fn getNoScroll() core.HResult!f64 {
+    pub fn get_NoScroll() core.HResult!f64 {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getNoScroll();
     }
-    pub fn getVerticallyScrollableProperty() core.HResult!*AutomationProperty {
+    pub fn get_VerticallyScrollableProperty() core.HResult!*AutomationProperty {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getVerticallyScrollableProperty();
     }
-    pub fn getVerticalScrollPercentProperty() core.HResult!*AutomationProperty {
+    pub fn get_VerticalScrollPercentProperty() core.HResult!*AutomationProperty {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getVerticalScrollPercentProperty();
     }
-    pub fn getVerticalViewSizeProperty() core.HResult!*AutomationProperty {
+    pub fn get_VerticalViewSizeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
         return try factory.getVerticalViewSizeProperty();
     }
@@ -3359,11 +3359,11 @@ pub const SelectionItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsSelectedProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsSelectedProperty() core.HResult!*AutomationProperty {
         const factory = @This().ISelectionItemPatternIdentifiersStaticsCache.get();
         return try factory.getIsSelectedProperty();
     }
-    pub fn getSelectionContainerProperty() core.HResult!*AutomationProperty {
+    pub fn get_SelectionContainerProperty() core.HResult!*AutomationProperty {
         const factory = @This().ISelectionItemPatternIdentifiersStaticsCache.get();
         return try factory.getSelectionContainerProperty();
     }
@@ -3379,15 +3379,15 @@ pub const SelectionPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCanSelectMultipleProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanSelectMultipleProperty() core.HResult!*AutomationProperty {
         const factory = @This().ISelectionPatternIdentifiersStaticsCache.get();
         return try factory.getCanSelectMultipleProperty();
     }
-    pub fn getIsSelectionRequiredProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsSelectionRequiredProperty() core.HResult!*AutomationProperty {
         const factory = @This().ISelectionPatternIdentifiersStaticsCache.get();
         return try factory.getIsSelectionRequiredProperty();
     }
-    pub fn getSelectionProperty() core.HResult!*AutomationProperty {
+    pub fn get_SelectionProperty() core.HResult!*AutomationProperty {
         const factory = @This().ISelectionPatternIdentifiersStaticsCache.get();
         return try factory.getSelectionProperty();
     }
@@ -3403,7 +3403,7 @@ pub const SpreadsheetItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFormulaProperty() core.HResult!*AutomationProperty {
+    pub fn get_FormulaProperty() core.HResult!*AutomationProperty {
         const factory = @This().ISpreadsheetItemPatternIdentifiersStaticsCache.get();
         return try factory.getFormulaProperty();
     }
@@ -3419,31 +3419,31 @@ pub const StylesPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExtendedPropertiesProperty() core.HResult!*AutomationProperty {
+    pub fn get_ExtendedPropertiesProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getExtendedPropertiesProperty();
     }
-    pub fn getFillColorProperty() core.HResult!*AutomationProperty {
+    pub fn get_FillColorProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getFillColorProperty();
     }
-    pub fn getFillPatternColorProperty() core.HResult!*AutomationProperty {
+    pub fn get_FillPatternColorProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getFillPatternColorProperty();
     }
-    pub fn getFillPatternStyleProperty() core.HResult!*AutomationProperty {
+    pub fn get_FillPatternStyleProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getFillPatternStyleProperty();
     }
-    pub fn getShapeProperty() core.HResult!*AutomationProperty {
+    pub fn get_ShapeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getShapeProperty();
     }
-    pub fn getStyleIdProperty() core.HResult!*AutomationProperty {
+    pub fn get_StyleIdProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getStyleIdProperty();
     }
-    pub fn getStyleNameProperty() core.HResult!*AutomationProperty {
+    pub fn get_StyleNameProperty() core.HResult!*AutomationProperty {
         const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
         return try factory.getStyleNameProperty();
     }
@@ -3472,11 +3472,11 @@ pub const TableItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColumnHeaderItemsProperty() core.HResult!*AutomationProperty {
+    pub fn get_ColumnHeaderItemsProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITableItemPatternIdentifiersStaticsCache.get();
         return try factory.getColumnHeaderItemsProperty();
     }
-    pub fn getRowHeaderItemsProperty() core.HResult!*AutomationProperty {
+    pub fn get_RowHeaderItemsProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITableItemPatternIdentifiersStaticsCache.get();
         return try factory.getRowHeaderItemsProperty();
     }
@@ -3492,15 +3492,15 @@ pub const TablePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColumnHeadersProperty() core.HResult!*AutomationProperty {
+    pub fn get_ColumnHeadersProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITablePatternIdentifiersStaticsCache.get();
         return try factory.getColumnHeadersProperty();
     }
-    pub fn getRowHeadersProperty() core.HResult!*AutomationProperty {
+    pub fn get_RowHeadersProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITablePatternIdentifiersStaticsCache.get();
         return try factory.getRowHeadersProperty();
     }
-    pub fn getRowOrColumnMajorProperty() core.HResult!*AutomationProperty {
+    pub fn get_RowOrColumnMajorProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITablePatternIdentifiersStaticsCache.get();
         return try factory.getRowOrColumnMajorProperty();
     }
@@ -3516,7 +3516,7 @@ pub const TogglePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getToggleStateProperty() core.HResult!*AutomationProperty {
+    pub fn get_ToggleStateProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITogglePatternIdentifiersStaticsCache.get();
         return try factory.getToggleStateProperty();
     }
@@ -3537,19 +3537,19 @@ pub const TransformPattern2Identifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCanZoomProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanZoomProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
         return try factory.getCanZoomProperty();
     }
-    pub fn getZoomLevelProperty() core.HResult!*AutomationProperty {
+    pub fn get_ZoomLevelProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
         return try factory.getZoomLevelProperty();
     }
-    pub fn getMaxZoomProperty() core.HResult!*AutomationProperty {
+    pub fn get_MaxZoomProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
         return try factory.getMaxZoomProperty();
     }
-    pub fn getMinZoomProperty() core.HResult!*AutomationProperty {
+    pub fn get_MinZoomProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
         return try factory.getMinZoomProperty();
     }
@@ -3565,15 +3565,15 @@ pub const TransformPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCanMoveProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanMoveProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPatternIdentifiersStaticsCache.get();
         return try factory.getCanMoveProperty();
     }
-    pub fn getCanResizeProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanResizeProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPatternIdentifiersStaticsCache.get();
         return try factory.getCanResizeProperty();
     }
-    pub fn getCanRotateProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanRotateProperty() core.HResult!*AutomationProperty {
         const factory = @This().ITransformPatternIdentifiersStaticsCache.get();
         return try factory.getCanRotateProperty();
     }
@@ -3589,11 +3589,11 @@ pub const ValuePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsReadOnlyProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsReadOnlyProperty() core.HResult!*AutomationProperty {
         const factory = @This().IValuePatternIdentifiersStaticsCache.get();
         return try factory.getIsReadOnlyProperty();
     }
-    pub fn getValueProperty() core.HResult!*AutomationProperty {
+    pub fn get_ValueProperty() core.HResult!*AutomationProperty {
         const factory = @This().IValuePatternIdentifiersStaticsCache.get();
         return try factory.getValueProperty();
     }
@@ -3616,27 +3616,27 @@ pub const WindowPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCanMaximizeProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanMaximizeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
         return try factory.getCanMaximizeProperty();
     }
-    pub fn getCanMinimizeProperty() core.HResult!*AutomationProperty {
+    pub fn get_CanMinimizeProperty() core.HResult!*AutomationProperty {
         const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
         return try factory.getCanMinimizeProperty();
     }
-    pub fn getIsModalProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsModalProperty() core.HResult!*AutomationProperty {
         const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
         return try factory.getIsModalProperty();
     }
-    pub fn getIsTopmostProperty() core.HResult!*AutomationProperty {
+    pub fn get_IsTopmostProperty() core.HResult!*AutomationProperty {
         const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
         return try factory.getIsTopmostProperty();
     }
-    pub fn getWindowInteractionStateProperty() core.HResult!*AutomationProperty {
+    pub fn get_WindowInteractionStateProperty() core.HResult!*AutomationProperty {
         const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
         return try factory.getWindowInteractionStateProperty();
     }
-    pub fn getWindowVisualStateProperty() core.HResult!*AutomationProperty {
+    pub fn get_WindowVisualStateProperty() core.HResult!*AutomationProperty {
         const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
         return try factory.getWindowVisualStateProperty();
     }

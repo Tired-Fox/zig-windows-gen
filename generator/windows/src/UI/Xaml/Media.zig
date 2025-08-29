@@ -39,15 +39,15 @@ pub const Brush = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBrushStaticsCache.get();
         return try factory.getOpacityProperty();
     }
-    pub fn getTransformProperty() core.HResult!*DependencyProperty {
+    pub fn get_TransformProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBrushStaticsCache.get();
         return try factory.getTransformProperty();
     }
-    pub fn getRelativeTransformProperty() core.HResult!*DependencyProperty {
+    pub fn get_RelativeTransformProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBrushStaticsCache.get();
         return try factory.getRelativeTransformProperty();
     }
@@ -92,15 +92,15 @@ pub const TileBrush = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAlignmentXProperty() core.HResult!*DependencyProperty {
+    pub fn get_AlignmentXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITileBrushStaticsCache.get();
         return try factory.getAlignmentXProperty();
     }
-    pub fn getAlignmentYProperty() core.HResult!*DependencyProperty {
+    pub fn get_AlignmentYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITileBrushStaticsCache.get();
         return try factory.getAlignmentYProperty();
     }
-    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITileBrushStaticsCache.get();
         return try factory.getStretchProperty();
     }
@@ -157,7 +157,7 @@ pub const XamlCompositionBrushBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFallbackColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_FallbackColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlCompositionBrushBaseStaticsCache.get();
         return try factory.getFallbackColorProperty();
     }
@@ -230,27 +230,27 @@ pub const AcrylicBrush = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBackgroundSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_BackgroundSourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAcrylicBrushStaticsCache.get();
         return try factory.getBackgroundSourceProperty();
     }
-    pub fn getTintColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_TintColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAcrylicBrushStaticsCache.get();
         return try factory.getTintColorProperty();
     }
-    pub fn getTintOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_TintOpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAcrylicBrushStaticsCache.get();
         return try factory.getTintOpacityProperty();
     }
-    pub fn getTintTransitionDurationProperty() core.HResult!*DependencyProperty {
+    pub fn get_TintTransitionDurationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAcrylicBrushStaticsCache.get();
         return try factory.getTintTransitionDurationProperty();
     }
-    pub fn getAlwaysUseFallbackProperty() core.HResult!*DependencyProperty {
+    pub fn get_AlwaysUseFallbackProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAcrylicBrushStaticsCache.get();
         return try factory.getAlwaysUseFallbackProperty();
     }
-    pub fn getTintLuminosityOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_TintLuminosityOpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAcrylicBrushStatics2Cache.get();
         return try factory.getTintLuminosityOpacityProperty();
     }
@@ -338,23 +338,23 @@ pub const ArcSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IArcSegment.IID)));
     }
-    pub fn getPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointProperty() core.HResult!*DependencyProperty {
         const factory = @This().IArcSegmentStaticsCache.get();
         return try factory.getPointProperty();
     }
-    pub fn getSizeProperty() core.HResult!*DependencyProperty {
+    pub fn get_SizeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IArcSegmentStaticsCache.get();
         return try factory.getSizeProperty();
     }
-    pub fn getRotationAngleProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationAngleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IArcSegmentStaticsCache.get();
         return try factory.getRotationAngleProperty();
     }
-    pub fn getIsLargeArcProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsLargeArcProperty() core.HResult!*DependencyProperty {
         const factory = @This().IArcSegmentStaticsCache.get();
         return try factory.getIsLargeArcProperty();
     }
-    pub fn getSweepDirectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_SweepDirectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IArcSegmentStaticsCache.get();
         return try factory.getSweepDirectionProperty();
     }
@@ -418,15 +418,15 @@ pub const BezierSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBezierSegment.IID)));
     }
-    pub fn getPoint1Property() core.HResult!*DependencyProperty {
+    pub fn get_Point1Property() core.HResult!*DependencyProperty {
         const factory = @This().IBezierSegmentStaticsCache.get();
         return try factory.getPoint1Property();
     }
-    pub fn getPoint2Property() core.HResult!*DependencyProperty {
+    pub fn get_Point2Property() core.HResult!*DependencyProperty {
         const factory = @This().IBezierSegmentStaticsCache.get();
         return try factory.getPoint2Property();
     }
-    pub fn getPoint3Property() core.HResult!*DependencyProperty {
+    pub fn get_Point3Property() core.HResult!*DependencyProperty {
         const factory = @This().IBezierSegmentStaticsCache.get();
         return try factory.getPoint3Property();
     }
@@ -691,39 +691,39 @@ pub const CompositeTransform = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositeTransform.IID)));
     }
-    pub fn getCenterXProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getCenterXProperty();
     }
-    pub fn getCenterYProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getCenterYProperty();
     }
-    pub fn getScaleXProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getScaleXProperty();
     }
-    pub fn getScaleYProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getScaleYProperty();
     }
-    pub fn getSkewXProperty() core.HResult!*DependencyProperty {
+    pub fn get_SkewXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getSkewXProperty();
     }
-    pub fn getSkewYProperty() core.HResult!*DependencyProperty {
+    pub fn get_SkewYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getSkewYProperty();
     }
-    pub fn getRotationProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getRotationProperty();
     }
-    pub fn getTranslateXProperty() core.HResult!*DependencyProperty {
+    pub fn get_TranslateXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getTranslateXProperty();
     }
-    pub fn getTranslateYProperty() core.HResult!*DependencyProperty {
+    pub fn get_TranslateYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransformStaticsCache.get();
         return try factory.getTranslateYProperty();
     }
@@ -740,27 +740,27 @@ pub const CompositionTarget = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addRendered(handler: *EventHandler(RenderedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_Rendered(handler: *EventHandler(RenderedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().ICompositionTargetStatics3Cache.get();
         return try factory.addRendered(handler);
     }
-    pub fn removeRendered(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_Rendered(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICompositionTargetStatics3Cache.get();
         return try factory.removeRendered(token);
     }
-    pub fn addRendering(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_Rendering(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ICompositionTargetStaticsCache.get();
         return try factory.addRendering(handler);
     }
-    pub fn removeRendering(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_Rendering(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICompositionTargetStaticsCache.get();
         return try factory.removeRendering(token);
     }
-    pub fn addSurfaceContentsLost(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_SurfaceContentsLost(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ICompositionTargetStaticsCache.get();
         return try factory.addSurfaceContentsLost(handler);
     }
-    pub fn removeSurfaceContentsLost(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_SurfaceContentsLost(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ICompositionTargetStaticsCache.get();
         return try factory.removeSurfaceContentsLost(token);
     }
@@ -864,15 +864,15 @@ pub const Geometry = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEmpty() core.HResult!*Geometry {
+    pub fn get_Empty() core.HResult!*Geometry {
         const factory = @This().IGeometryStaticsCache.get();
         return try factory.getEmpty();
     }
-    pub fn getStandardFlatteningTolerance() core.HResult!f64 {
+    pub fn get_StandardFlatteningTolerance() core.HResult!f64 {
         const factory = @This().IGeometryStaticsCache.get();
         return try factory.getStandardFlatteningTolerance();
     }
-    pub fn getTransformProperty() core.HResult!*DependencyProperty {
+    pub fn get_TransformProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGeometryStaticsCache.get();
         return try factory.getTransformProperty();
     }
@@ -917,15 +917,15 @@ pub const EllipseGeometry = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEllipseGeometry.IID)));
     }
-    pub fn getCenterProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEllipseGeometryStaticsCache.get();
         return try factory.getCenterProperty();
     }
-    pub fn getRadiusXProperty() core.HResult!*DependencyProperty {
+    pub fn get_RadiusXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEllipseGeometryStaticsCache.get();
         return try factory.getRadiusXProperty();
     }
-    pub fn getRadiusYProperty() core.HResult!*DependencyProperty {
+    pub fn get_RadiusYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEllipseGeometryStaticsCache.get();
         return try factory.getRadiusYProperty();
     }
@@ -955,7 +955,7 @@ pub const FontFamily = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getXamlAutoFontFamily() core.HResult!*FontFamily {
+    pub fn get_XamlAutoFontFamily() core.HResult!*FontFamily {
         const factory = @This().IFontFamilyStatics2Cache.get();
         return try factory.getXamlAutoFontFamily();
     }
@@ -1066,11 +1066,11 @@ pub const GeometryGroup = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGeometryGroup.IID)));
     }
-    pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillRuleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGeometryGroupStaticsCache.get();
         return try factory.getFillRuleProperty();
     }
-    pub fn getChildrenProperty() core.HResult!*DependencyProperty {
+    pub fn get_ChildrenProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGeometryGroupStaticsCache.get();
         return try factory.getChildrenProperty();
     }
@@ -1119,19 +1119,19 @@ pub const GradientBrush = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSpreadMethodProperty() core.HResult!*DependencyProperty {
+    pub fn get_SpreadMethodProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGradientBrushStaticsCache.get();
         return try factory.getSpreadMethodProperty();
     }
-    pub fn getMappingModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_MappingModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGradientBrushStaticsCache.get();
         return try factory.getMappingModeProperty();
     }
-    pub fn getColorInterpolationModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorInterpolationModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGradientBrushStaticsCache.get();
         return try factory.getColorInterpolationModeProperty();
     }
-    pub fn getGradientStopsProperty() core.HResult!*DependencyProperty {
+    pub fn get_GradientStopsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGradientBrushStaticsCache.get();
         return try factory.getGradientStopsProperty();
     }
@@ -1177,11 +1177,11 @@ pub const GradientStop = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGradientStop.IID)));
     }
-    pub fn getColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGradientStopStaticsCache.get();
         return try factory.getColorProperty();
     }
-    pub fn getOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_OffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGradientStopStaticsCache.get();
         return try factory.getOffsetProperty();
     }
@@ -5792,7 +5792,7 @@ pub const ImageBrush = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IImageBrush.IID)));
     }
-    pub fn getImageSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_ImageSourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().IImageBrushStaticsCache.get();
         return try factory.getImageSourceProperty();
     }
@@ -5841,11 +5841,11 @@ pub const LineGeometry = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILineGeometry.IID)));
     }
-    pub fn getStartPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_StartPointProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILineGeometryStaticsCache.get();
         return try factory.getStartPointProperty();
     }
-    pub fn getEndPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_EndPointProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILineGeometryStaticsCache.get();
         return try factory.getEndPointProperty();
     }
@@ -5874,7 +5874,7 @@ pub const LineSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILineSegment.IID)));
     }
-    pub fn getPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILineSegmentStaticsCache.get();
         return try factory.getPointProperty();
     }
@@ -5915,11 +5915,11 @@ pub const LinearGradientBrush = extern struct {
         const factory = @This().ILinearGradientBrushFactoryCache.get();
         return try factory.CreateInstanceWithGradientStopCollectionAndAngle(gradientStopCollection, angle);
     }
-    pub fn getStartPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_StartPointProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILinearGradientBrushStaticsCache.get();
         return try factory.getStartPointProperty();
     }
-    pub fn getEndPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_EndPointProperty() core.HResult!*DependencyProperty {
         const factory = @This().ILinearGradientBrushStaticsCache.get();
         return try factory.getEndPointProperty();
     }
@@ -6045,7 +6045,7 @@ pub const Matrix3DProjection = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMatrix3DProjection.IID)));
     }
-    pub fn getProjectionMatrixProperty() core.HResult!*DependencyProperty {
+    pub fn get_ProjectionMatrixProperty() core.HResult!*DependencyProperty {
         const factory = @This().IMatrix3DProjectionStaticsCache.get();
         return try factory.getProjectionMatrixProperty();
     }
@@ -6062,7 +6062,7 @@ pub const MatrixHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIdentity() core.HResult!Matrix {
+    pub fn get_Identity() core.HResult!Matrix {
         const factory = @This().IMatrixHelperStaticsCache.get();
         return try factory.getIdentity();
     }
@@ -6102,7 +6102,7 @@ pub const MatrixTransform = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMatrixTransform.IID)));
     }
-    pub fn getMatrixProperty() core.HResult!*DependencyProperty {
+    pub fn get_MatrixProperty() core.HResult!*DependencyProperty {
         const factory = @This().IMatrixTransformStaticsCache.get();
         return try factory.getMatrixProperty();
     }
@@ -6210,19 +6210,19 @@ pub const PathFigure = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPathFigure.IID)));
     }
-    pub fn getSegmentsProperty() core.HResult!*DependencyProperty {
+    pub fn get_SegmentsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathFigureStaticsCache.get();
         return try factory.getSegmentsProperty();
     }
-    pub fn getStartPointProperty() core.HResult!*DependencyProperty {
+    pub fn get_StartPointProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathFigureStaticsCache.get();
         return try factory.getStartPointProperty();
     }
-    pub fn getIsClosedProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsClosedProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathFigureStaticsCache.get();
         return try factory.getIsClosedProperty();
     }
-    pub fn getIsFilledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsFilledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathFigureStaticsCache.get();
         return try factory.getIsFilledProperty();
     }
@@ -6329,11 +6329,11 @@ pub const PathGeometry = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPathGeometry.IID)));
     }
-    pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillRuleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathGeometryStaticsCache.get();
         return try factory.getFillRuleProperty();
     }
-    pub fn getFiguresProperty() core.HResult!*DependencyProperty {
+    pub fn get_FiguresProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathGeometryStaticsCache.get();
         return try factory.getFiguresProperty();
     }
@@ -6535,55 +6535,55 @@ pub const PlaneProjection = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlaneProjection.IID)));
     }
-    pub fn getLocalOffsetXProperty() core.HResult!*DependencyProperty {
+    pub fn get_LocalOffsetXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getLocalOffsetXProperty();
     }
-    pub fn getLocalOffsetYProperty() core.HResult!*DependencyProperty {
+    pub fn get_LocalOffsetYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getLocalOffsetYProperty();
     }
-    pub fn getLocalOffsetZProperty() core.HResult!*DependencyProperty {
+    pub fn get_LocalOffsetZProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getLocalOffsetZProperty();
     }
-    pub fn getRotationXProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getRotationXProperty();
     }
-    pub fn getRotationYProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getRotationYProperty();
     }
-    pub fn getRotationZProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationZProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getRotationZProperty();
     }
-    pub fn getCenterOfRotationXProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterOfRotationXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getCenterOfRotationXProperty();
     }
-    pub fn getCenterOfRotationYProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterOfRotationYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getCenterOfRotationYProperty();
     }
-    pub fn getCenterOfRotationZProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterOfRotationZProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getCenterOfRotationZProperty();
     }
-    pub fn getGlobalOffsetXProperty() core.HResult!*DependencyProperty {
+    pub fn get_GlobalOffsetXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getGlobalOffsetXProperty();
     }
-    pub fn getGlobalOffsetYProperty() core.HResult!*DependencyProperty {
+    pub fn get_GlobalOffsetYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getGlobalOffsetYProperty();
     }
-    pub fn getGlobalOffsetZProperty() core.HResult!*DependencyProperty {
+    pub fn get_GlobalOffsetZProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getGlobalOffsetZProperty();
     }
-    pub fn getProjectionMatrixProperty() core.HResult!*DependencyProperty {
+    pub fn get_ProjectionMatrixProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPlaneProjectionStaticsCache.get();
         return try factory.getProjectionMatrixProperty();
     }
@@ -6682,7 +6682,7 @@ pub const PolyBezierSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyBezierSegment.IID)));
     }
-    pub fn getPointsProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolyBezierSegmentStaticsCache.get();
         return try factory.getPointsProperty();
     }
@@ -6711,7 +6711,7 @@ pub const PolyLineSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyLineSegment.IID)));
     }
-    pub fn getPointsProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolyLineSegmentStaticsCache.get();
         return try factory.getPointsProperty();
     }
@@ -6740,7 +6740,7 @@ pub const PolyQuadraticBezierSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyQuadraticBezierSegment.IID)));
     }
-    pub fn getPointsProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolyQuadraticBezierSegmentStaticsCache.get();
         return try factory.getPointsProperty();
     }
@@ -6777,11 +6777,11 @@ pub const QuadraticBezierSegment = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IQuadraticBezierSegment.IID)));
     }
-    pub fn getPoint1Property() core.HResult!*DependencyProperty {
+    pub fn get_Point1Property() core.HResult!*DependencyProperty {
         const factory = @This().IQuadraticBezierSegmentStaticsCache.get();
         return try factory.getPoint1Property();
     }
-    pub fn getPoint2Property() core.HResult!*DependencyProperty {
+    pub fn get_Point2Property() core.HResult!*DependencyProperty {
         const factory = @This().IQuadraticBezierSegmentStaticsCache.get();
         return try factory.getPoint2Property();
     }
@@ -6913,7 +6913,7 @@ pub const RectangleGeometry = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRectangleGeometry.IID)));
     }
-    pub fn getRectProperty() core.HResult!*DependencyProperty {
+    pub fn get_RectProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRectangleGeometryStaticsCache.get();
         return try factory.getRectProperty();
     }
@@ -6978,19 +6978,19 @@ pub const RevealBrush = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRevealBrushStaticsCache.get();
         return try factory.getColorProperty();
     }
-    pub fn getTargetThemeProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetThemeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRevealBrushStaticsCache.get();
         return try factory.getTargetThemeProperty();
     }
-    pub fn getAlwaysUseFallbackProperty() core.HResult!*DependencyProperty {
+    pub fn get_AlwaysUseFallbackProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRevealBrushStaticsCache.get();
         return try factory.getAlwaysUseFallbackProperty();
     }
-    pub fn getStateProperty() core.HResult!*DependencyProperty {
+    pub fn get_StateProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRevealBrushStaticsCache.get();
         return try factory.getStateProperty();
     }
@@ -7084,15 +7084,15 @@ pub const RotateTransform = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRotateTransform.IID)));
     }
-    pub fn getCenterXProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRotateTransformStaticsCache.get();
         return try factory.getCenterXProperty();
     }
-    pub fn getCenterYProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRotateTransformStaticsCache.get();
         return try factory.getCenterYProperty();
     }
-    pub fn getAngleProperty() core.HResult!*DependencyProperty {
+    pub fn get_AngleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRotateTransformStaticsCache.get();
         return try factory.getAngleProperty();
     }
@@ -7145,19 +7145,19 @@ pub const ScaleTransform = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScaleTransform.IID)));
     }
-    pub fn getCenterXProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScaleTransformStaticsCache.get();
         return try factory.getCenterXProperty();
     }
-    pub fn getCenterYProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScaleTransformStaticsCache.get();
         return try factory.getCenterYProperty();
     }
-    pub fn getScaleXProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScaleTransformStaticsCache.get();
         return try factory.getScaleXProperty();
     }
-    pub fn getScaleYProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IScaleTransformStaticsCache.get();
         return try factory.getScaleYProperty();
     }
@@ -7222,19 +7222,19 @@ pub const SkewTransform = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISkewTransform.IID)));
     }
-    pub fn getCenterXProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISkewTransformStaticsCache.get();
         return try factory.getCenterXProperty();
     }
-    pub fn getCenterYProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISkewTransformStaticsCache.get();
         return try factory.getCenterYProperty();
     }
-    pub fn getAngleXProperty() core.HResult!*DependencyProperty {
+    pub fn get_AngleXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISkewTransformStaticsCache.get();
         return try factory.getAngleXProperty();
     }
-    pub fn getAngleYProperty() core.HResult!*DependencyProperty {
+    pub fn get_AngleYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISkewTransformStaticsCache.get();
         return try factory.getAngleYProperty();
     }
@@ -7267,7 +7267,7 @@ pub const SolidColorBrush = extern struct {
         const factory = @This().ISolidColorBrushFactoryCache.get();
         return try factory.CreateInstanceWithColor(color);
     }
-    pub fn getColorProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISolidColorBrushStaticsCache.get();
         return try factory.getColorProperty();
     }
@@ -7358,15 +7358,15 @@ pub const TimelineMarker = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITimelineMarker.IID)));
     }
-    pub fn getTimeProperty() core.HResult!*DependencyProperty {
+    pub fn get_TimeProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineMarkerStaticsCache.get();
         return try factory.getTimeProperty();
     }
-    pub fn getTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_TypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineMarkerStaticsCache.get();
         return try factory.getTypeProperty();
     }
-    pub fn getTextProperty() core.HResult!*DependencyProperty {
+    pub fn get_TextProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineMarkerStaticsCache.get();
         return try factory.getTextProperty();
     }
@@ -7650,7 +7650,7 @@ pub const TransformGroup = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITransformGroup.IID)));
     }
-    pub fn getChildrenProperty() core.HResult!*DependencyProperty {
+    pub fn get_ChildrenProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITransformGroupStaticsCache.get();
         return try factory.getChildrenProperty();
     }
@@ -7687,11 +7687,11 @@ pub const TranslateTransform = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITranslateTransform.IID)));
     }
-    pub fn getXProperty() core.HResult!*DependencyProperty {
+    pub fn get_XProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITranslateTransformStaticsCache.get();
         return try factory.getXProperty();
     }
-    pub fn getYProperty() core.HResult!*DependencyProperty {
+    pub fn get_YProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITranslateTransformStaticsCache.get();
         return try factory.getYProperty();
     }
@@ -7720,13 +7720,13 @@ pub const VisualTreeHelper = extern struct {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
         return try factory.FindElementsInHostCoordinatesWithIntersectingRect(intersectingRect, subtree);
     }
-    pub fn FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithIncludeAllElements(intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
-        return try factory.FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingPoint, subtree, includeAllElements);
+        return try factory.FindElementsInHostCoordinatesWithIncludeAllElements(intersectingPoint, subtree, includeAllElements);
     }
-    pub fn FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithIncludeAllElements(intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
-        return try factory.FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingRect, subtree, includeAllElements);
+        return try factory.FindElementsInHostCoordinatesWithIncludeAllElements(intersectingRect, subtree, includeAllElements);
     }
     pub fn GetChild(reference: *DependencyObject, childIndex: i32) core.HResult!*DependencyObject {
         const factory = @This().IVisualTreeHelperStaticsCache.get();

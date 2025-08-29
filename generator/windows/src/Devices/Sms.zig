@@ -2875,7 +2875,7 @@ pub const SmsMessageRegistration = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAllRegistrations() core.HResult!*IVectorView(SmsMessageRegistration) {
+    pub fn get_AllRegistrations() core.HResult!*IVectorView(SmsMessageRegistration) {
         const factory = @This().ISmsMessageRegistrationStaticsCache.get();
         return try factory.getAllRegistrations();
     }

@@ -11,23 +11,23 @@ pub const CurrentApp = extern struct {
         const factory = @This().ICurrentAppWithConsumablesCache.get();
         return try factory.RequestProductPurchaseAsync(productId);
     }
-    pub fn RequestProductPurchaseAsyncWithDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
+    pub fn RequestProductPurchaseAsyncWithOfferIdWithDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
         const factory = @This().ICurrentAppWithConsumablesCache.get();
-        return try factory.RequestProductPurchaseAsyncWithDisplayProperties(productId, offerId, displayProperties);
+        return try factory.RequestProductPurchaseAsyncWithOfferIdWithDisplayProperties(productId, offerId, displayProperties);
     }
     pub fn GetUnfulfilledConsumablesAsync() core.HResult!*IAsyncOperation(IVectorView(UnfulfilledConsumable)) {
         const factory = @This().ICurrentAppWithConsumablesCache.get();
         return try factory.GetUnfulfilledConsumablesAsync();
     }
-    pub fn getLicenseInformation() core.HResult!*LicenseInformation {
+    pub fn get_LicenseInformation() core.HResult!*LicenseInformation {
         const factory = @This().ICurrentAppCache.get();
         return try factory.getLicenseInformation();
     }
-    pub fn getLinkUri() core.HResult!*Uri {
+    pub fn get_LinkUri() core.HResult!*Uri {
         const factory = @This().ICurrentAppCache.get();
         return try factory.getLinkUri();
     }
-    pub fn getAppId() core.HResult!*Guid {
+    pub fn get_AppId() core.HResult!*Guid {
         const factory = @This().ICurrentAppCache.get();
         return try factory.getAppId();
     }
@@ -35,7 +35,7 @@ pub const CurrentApp = extern struct {
         const factory = @This().ICurrentAppCache.get();
         return try factory.RequestAppPurchaseAsync(includeReceipt);
     }
-    pub fn RequestProductPurchaseAsync(productId: HSTRING, includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn RequestProductPurchaseAsyncWithIncludeReceipt(productId: HSTRING, includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().ICurrentAppCache.get();
         return try factory.RequestProductPurchaseAsync(productId, includeReceipt);
     }
@@ -108,23 +108,23 @@ pub const CurrentAppSimulator = extern struct {
         const factory = @This().ICurrentAppSimulatorWithConsumablesCache.get();
         return try factory.RequestProductPurchaseAsync(productId);
     }
-    pub fn RequestProductPurchaseAsyncWithDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
+    pub fn RequestProductPurchaseAsyncWithOfferIdWithDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
         const factory = @This().ICurrentAppSimulatorWithConsumablesCache.get();
-        return try factory.RequestProductPurchaseAsyncWithDisplayProperties(productId, offerId, displayProperties);
+        return try factory.RequestProductPurchaseAsyncWithOfferIdWithDisplayProperties(productId, offerId, displayProperties);
     }
     pub fn GetUnfulfilledConsumablesAsync() core.HResult!*IAsyncOperation(IVectorView(UnfulfilledConsumable)) {
         const factory = @This().ICurrentAppSimulatorWithConsumablesCache.get();
         return try factory.GetUnfulfilledConsumablesAsync();
     }
-    pub fn getLicenseInformation() core.HResult!*LicenseInformation {
+    pub fn get_LicenseInformation() core.HResult!*LicenseInformation {
         const factory = @This().ICurrentAppSimulatorCache.get();
         return try factory.getLicenseInformation();
     }
-    pub fn getLinkUri() core.HResult!*Uri {
+    pub fn get_LinkUri() core.HResult!*Uri {
         const factory = @This().ICurrentAppSimulatorCache.get();
         return try factory.getLinkUri();
     }
-    pub fn getAppId() core.HResult!*Guid {
+    pub fn get_AppId() core.HResult!*Guid {
         const factory = @This().ICurrentAppSimulatorCache.get();
         return try factory.getAppId();
     }
@@ -132,7 +132,7 @@ pub const CurrentAppSimulator = extern struct {
         const factory = @This().ICurrentAppSimulatorCache.get();
         return try factory.RequestAppPurchaseAsync(includeReceipt);
     }
-    pub fn RequestProductPurchaseAsync(productId: HSTRING, includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn RequestProductPurchaseAsyncWithIncludeReceipt(productId: HSTRING, includeReceipt: bool) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().ICurrentAppSimulatorCache.get();
         return try factory.RequestProductPurchaseAsync(productId, includeReceipt);
     }

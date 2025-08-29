@@ -469,11 +469,11 @@ pub const SpeechSynthesizer = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpeechSynthesizer.IID)));
     }
-    pub fn getAllVoices() core.HResult!*IVectorView(VoiceInformation) {
+    pub fn get_AllVoices() core.HResult!*IVectorView(VoiceInformation) {
         const factory = @This().IInstalledVoicesStaticCache.get();
         return try factory.getAllVoices();
     }
-    pub fn getDefaultVoice() core.HResult!*VoiceInformation {
+    pub fn get_DefaultVoice() core.HResult!*VoiceInformation {
         const factory = @This().IInstalledVoicesStaticCache.get();
         return try factory.getDefaultVoice();
     }

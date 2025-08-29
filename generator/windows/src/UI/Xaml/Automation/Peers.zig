@@ -1007,11 +1007,11 @@ pub const AutomationPeerAnnotation = extern struct {
         const factory = @This().IAutomationPeerAnnotationFactoryCache.get();
         return try factory.CreateWithPeerParameter(ty, peer);
     }
-    pub fn getTypeProperty() core.HResult!*DependencyProperty {
+    pub fn get_TypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPeerAnnotationStaticsCache.get();
         return try factory.getTypeProperty();
     }
-    pub fn getPeerProperty() core.HResult!*DependencyProperty {
+    pub fn get_PeerProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPeerAnnotationStaticsCache.get();
         return try factory.getPeerProperty();
     }

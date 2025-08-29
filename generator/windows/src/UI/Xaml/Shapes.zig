@@ -101,47 +101,47 @@ pub const Shape = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFillProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getFillProperty();
     }
-    pub fn getStrokeProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeProperty();
     }
-    pub fn getStrokeMiterLimitProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeMiterLimitProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeMiterLimitProperty();
     }
-    pub fn getStrokeThicknessProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeThicknessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeThicknessProperty();
     }
-    pub fn getStrokeStartLineCapProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeStartLineCapProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeStartLineCapProperty();
     }
-    pub fn getStrokeEndLineCapProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeEndLineCapProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeEndLineCapProperty();
     }
-    pub fn getStrokeLineJoinProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeLineJoinProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeLineJoinProperty();
     }
-    pub fn getStrokeDashOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeDashOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeDashOffsetProperty();
     }
-    pub fn getStrokeDashCapProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeDashCapProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeDashCapProperty();
     }
-    pub fn getStrokeDashArrayProperty() core.HResult!*DependencyProperty {
+    pub fn get_StrokeDashArrayProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStrokeDashArrayProperty();
     }
-    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
         const factory = @This().IShapeStaticsCache.get();
         return try factory.getStretchProperty();
     }
@@ -916,19 +916,19 @@ pub const Line = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILine.IID)));
     }
-    pub fn getX1Property() core.HResult!*DependencyProperty {
+    pub fn get_X1Property() core.HResult!*DependencyProperty {
         const factory = @This().ILineStaticsCache.get();
         return try factory.getX1Property();
     }
-    pub fn getY1Property() core.HResult!*DependencyProperty {
+    pub fn get_Y1Property() core.HResult!*DependencyProperty {
         const factory = @This().ILineStaticsCache.get();
         return try factory.getY1Property();
     }
-    pub fn getX2Property() core.HResult!*DependencyProperty {
+    pub fn get_X2Property() core.HResult!*DependencyProperty {
         const factory = @This().ILineStaticsCache.get();
         return try factory.getX2Property();
     }
-    pub fn getY2Property() core.HResult!*DependencyProperty {
+    pub fn get_Y2Property() core.HResult!*DependencyProperty {
         const factory = @This().ILineStaticsCache.get();
         return try factory.getY2Property();
     }
@@ -953,7 +953,7 @@ pub const Path = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDataProperty() core.HResult!*DependencyProperty {
+    pub fn get_DataProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPathStaticsCache.get();
         return try factory.getDataProperty();
     }
@@ -994,11 +994,11 @@ pub const Polygon = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolygon.IID)));
     }
-    pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillRuleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolygonStaticsCache.get();
         return try factory.getFillRuleProperty();
     }
-    pub fn getPointsProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolygonStaticsCache.get();
         return try factory.getPointsProperty();
     }
@@ -1035,11 +1035,11 @@ pub const Polyline = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPolyline.IID)));
     }
-    pub fn getFillRuleProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillRuleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolylineStaticsCache.get();
         return try factory.getFillRuleProperty();
     }
-    pub fn getPointsProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPolylineStaticsCache.get();
         return try factory.getPointsProperty();
     }
@@ -1076,11 +1076,11 @@ pub const Rectangle = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRectangle.IID)));
     }
-    pub fn getRadiusXProperty() core.HResult!*DependencyProperty {
+    pub fn get_RadiusXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRectangleStaticsCache.get();
         return try factory.getRadiusXProperty();
     }
-    pub fn getRadiusYProperty() core.HResult!*DependencyProperty {
+    pub fn get_RadiusYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRectangleStaticsCache.get();
         return try factory.getRadiusYProperty();
     }

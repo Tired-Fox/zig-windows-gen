@@ -181,31 +181,31 @@ pub const BitmapDecoder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBmpDecoderId() core.HResult!*Guid {
+    pub fn get_BmpDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getBmpDecoderId();
     }
-    pub fn getJpegDecoderId() core.HResult!*Guid {
+    pub fn get_JpegDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getJpegDecoderId();
     }
-    pub fn getPngDecoderId() core.HResult!*Guid {
+    pub fn get_PngDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getPngDecoderId();
     }
-    pub fn getTiffDecoderId() core.HResult!*Guid {
+    pub fn get_TiffDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getTiffDecoderId();
     }
-    pub fn getGifDecoderId() core.HResult!*Guid {
+    pub fn get_GifDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getGifDecoderId();
     }
-    pub fn getJpegXRDecoderId() core.HResult!*Guid {
+    pub fn get_JpegXRDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getJpegXRDecoderId();
     }
-    pub fn getIcoDecoderId() core.HResult!*Guid {
+    pub fn get_IcoDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.getIcoDecoderId();
     }
@@ -221,11 +221,11 @@ pub const BitmapDecoder = extern struct {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.CreateAsyncWithStream(decoderId, stream);
     }
-    pub fn getHeifDecoderId() core.HResult!*Guid {
+    pub fn get_HeifDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStatics2Cache.get();
         return try factory.getHeifDecoderId();
     }
-    pub fn getWebpDecoderId() core.HResult!*Guid {
+    pub fn get_WebpDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStatics2Cache.get();
         return try factory.getWebpDecoderId();
     }
@@ -304,31 +304,31 @@ pub const BitmapEncoder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getHeifEncoderId() core.HResult!*Guid {
+    pub fn get_HeifEncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStatics2Cache.get();
         return try factory.getHeifEncoderId();
     }
-    pub fn getBmpEncoderId() core.HResult!*Guid {
+    pub fn get_BmpEncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.getBmpEncoderId();
     }
-    pub fn getJpegEncoderId() core.HResult!*Guid {
+    pub fn get_JpegEncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.getJpegEncoderId();
     }
-    pub fn getPngEncoderId() core.HResult!*Guid {
+    pub fn get_PngEncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.getPngEncoderId();
     }
-    pub fn getTiffEncoderId() core.HResult!*Guid {
+    pub fn get_TiffEncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.getTiffEncoderId();
     }
-    pub fn getGifEncoderId() core.HResult!*Guid {
+    pub fn get_GifEncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.getGifEncoderId();
     }
-    pub fn getJpegXREncoderId() core.HResult!*Guid {
+    pub fn get_JpegXREncoderId() core.HResult!*Guid {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.getJpegXREncoderId();
     }
@@ -340,9 +340,9 @@ pub const BitmapEncoder = extern struct {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.CreateAsync(encoderId, stream);
     }
-    pub fn CreateAsyncWithStreamWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
+    pub fn CreateAsyncWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
         const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.CreateAsyncWithStreamWithEncodingOptions(encoderId, stream, encodingOptions);
+        return try factory.CreateAsyncWithEncodingOptions(encoderId, stream, encodingOptions);
     }
     pub fn CreateForTranscodingAsync(stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder) core.HResult!*IAsyncOperation(BitmapEncoder) {
         const factory = @This().IBitmapEncoderStaticsCache.get();
@@ -1880,17 +1880,17 @@ pub const SoftwareBitmap = extern struct {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
         return try factory.Convert(source, format);
     }
-    pub fn ConvertWithFormatWithAlpha(source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn ConvertWithAlpha(source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.ConvertWithFormatWithAlpha(source, format, alpha);
+        return try factory.ConvertWithAlpha(source, format, alpha);
     }
     pub fn CreateCopyFromBuffer(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
         return try factory.CreateCopyFromBuffer(source, format, width, height);
     }
-    pub fn CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn CreateCopyFromBufferWithAlpha(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(source, format, width, height, alpha);
+        return try factory.CreateCopyFromBufferWithAlpha(source, format, width, height, alpha);
     }
     pub fn CreateCopyFromSurfaceAsync(surface: *IDirect3DSurface) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         const factory = @This().ISoftwareBitmapStaticsCache.get();

@@ -331,7 +331,7 @@ pub const MdmSessionManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSessionIds() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_SessionIds() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IMdmSessionManagerStaticsCache.get();
         return try factory.getSessionIds();
     }

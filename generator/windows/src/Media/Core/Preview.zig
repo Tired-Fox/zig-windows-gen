@@ -38,15 +38,15 @@ pub const SoundLevelBroker = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSoundLevel() core.HResult!SoundLevel {
+    pub fn get_SoundLevel() core.HResult!SoundLevel {
         const factory = @This().ISoundLevelBrokerStaticsCache.get();
         return try factory.getSoundLevel();
     }
-    pub fn addSoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_SoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ISoundLevelBrokerStaticsCache.get();
         return try factory.addSoundLevelChanged(handler);
     }
-    pub fn removeSoundLevelChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_SoundLevelChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ISoundLevelBrokerStaticsCache.get();
         return try factory.removeSoundLevelChanged(token);
     }

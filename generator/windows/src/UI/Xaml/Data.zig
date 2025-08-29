@@ -229,19 +229,19 @@ pub const CollectionViewSource = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICollectionViewSource.IID)));
     }
-    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICollectionViewSourceStaticsCache.get();
         return try factory.getSourceProperty();
     }
-    pub fn getViewProperty() core.HResult!*DependencyProperty {
+    pub fn get_ViewProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICollectionViewSourceStaticsCache.get();
         return try factory.getViewProperty();
     }
-    pub fn getIsSourceGroupedProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsSourceGroupedProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICollectionViewSourceStaticsCache.get();
         return try factory.getIsSourceGroupedProperty();
     }
-    pub fn getItemsPathProperty() core.HResult!*DependencyProperty {
+    pub fn get_ItemsPathProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICollectionViewSourceStaticsCache.get();
         return try factory.getItemsPathProperty();
     }

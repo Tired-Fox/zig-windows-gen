@@ -93,11 +93,11 @@ pub const AdaptiveTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMinWindowWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinWindowWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAdaptiveTriggerStaticsCache.get();
         return try factory.getMinWindowWidthProperty();
     }
-    pub fn getMinWindowHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinWindowHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAdaptiveTriggerStaticsCache.get();
         return try factory.getMinWindowHeightProperty();
     }
@@ -286,7 +286,7 @@ pub const Application = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*Application {
+    pub fn get_Current() core.HResult!*Application {
         const factory = @This().IApplicationStaticsCache.get();
         return try factory.getCurrent();
     }
@@ -298,9 +298,9 @@ pub const Application = extern struct {
         const factory = @This().IApplicationStaticsCache.get();
         return try factory.LoadComponent(component, resourceLocator);
     }
-    pub fn LoadComponentWithResourceLocatorWithComponentResourceLocation(component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) core.HResult!void {
+    pub fn LoadComponentWithComponentResourceLocation(component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) core.HResult!void {
         const factory = @This().IApplicationStaticsCache.get();
-        return try factory.LoadComponentWithResourceLocatorWithComponentResourceLocation(component, resourceLocator, componentResourceLocation);
+        return try factory.LoadComponentWithComponentResourceLocation(component, resourceLocator, componentResourceLocation);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Application {
         const factory = @This().IApplicationFactoryCache.get();
@@ -2165,171 +2165,171 @@ pub const UIElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getKeyDownEvent() core.HResult!*RoutedEvent {
+    pub fn get_KeyDownEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getKeyDownEvent();
     }
-    pub fn getKeyUpEvent() core.HResult!*RoutedEvent {
+    pub fn get_KeyUpEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getKeyUpEvent();
     }
-    pub fn getPointerEnteredEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerEnteredEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerEnteredEvent();
     }
-    pub fn getPointerPressedEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerPressedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerPressedEvent();
     }
-    pub fn getPointerMovedEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerMovedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerMovedEvent();
     }
-    pub fn getPointerReleasedEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerReleasedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerReleasedEvent();
     }
-    pub fn getPointerExitedEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerExitedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerExitedEvent();
     }
-    pub fn getPointerCaptureLostEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerCaptureLostEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerCaptureLostEvent();
     }
-    pub fn getPointerCanceledEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerCanceledEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerCanceledEvent();
     }
-    pub fn getPointerWheelChangedEvent() core.HResult!*RoutedEvent {
+    pub fn get_PointerWheelChangedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerWheelChangedEvent();
     }
-    pub fn getTappedEvent() core.HResult!*RoutedEvent {
+    pub fn get_TappedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getTappedEvent();
     }
-    pub fn getDoubleTappedEvent() core.HResult!*RoutedEvent {
+    pub fn get_DoubleTappedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getDoubleTappedEvent();
     }
-    pub fn getHoldingEvent() core.HResult!*RoutedEvent {
+    pub fn get_HoldingEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getHoldingEvent();
     }
-    pub fn getRightTappedEvent() core.HResult!*RoutedEvent {
+    pub fn get_RightTappedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getRightTappedEvent();
     }
-    pub fn getManipulationStartingEvent() core.HResult!*RoutedEvent {
+    pub fn get_ManipulationStartingEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getManipulationStartingEvent();
     }
-    pub fn getManipulationInertiaStartingEvent() core.HResult!*RoutedEvent {
+    pub fn get_ManipulationInertiaStartingEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getManipulationInertiaStartingEvent();
     }
-    pub fn getManipulationStartedEvent() core.HResult!*RoutedEvent {
+    pub fn get_ManipulationStartedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getManipulationStartedEvent();
     }
-    pub fn getManipulationDeltaEvent() core.HResult!*RoutedEvent {
+    pub fn get_ManipulationDeltaEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getManipulationDeltaEvent();
     }
-    pub fn getManipulationCompletedEvent() core.HResult!*RoutedEvent {
+    pub fn get_ManipulationCompletedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getManipulationCompletedEvent();
     }
-    pub fn getDragEnterEvent() core.HResult!*RoutedEvent {
+    pub fn get_DragEnterEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getDragEnterEvent();
     }
-    pub fn getDragLeaveEvent() core.HResult!*RoutedEvent {
+    pub fn get_DragLeaveEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getDragLeaveEvent();
     }
-    pub fn getDragOverEvent() core.HResult!*RoutedEvent {
+    pub fn get_DragOverEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getDragOverEvent();
     }
-    pub fn getDropEvent() core.HResult!*RoutedEvent {
+    pub fn get_DropEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getDropEvent();
     }
-    pub fn getAllowDropProperty() core.HResult!*DependencyProperty {
+    pub fn get_AllowDropProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getAllowDropProperty();
     }
-    pub fn getOpacityProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpacityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getOpacityProperty();
     }
-    pub fn getClipProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClipProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getClipProperty();
     }
-    pub fn getRenderTransformProperty() core.HResult!*DependencyProperty {
+    pub fn get_RenderTransformProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getRenderTransformProperty();
     }
-    pub fn getProjectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_ProjectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getProjectionProperty();
     }
-    pub fn getRenderTransformOriginProperty() core.HResult!*DependencyProperty {
+    pub fn get_RenderTransformOriginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getRenderTransformOriginProperty();
     }
-    pub fn getIsHitTestVisibleProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsHitTestVisibleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getIsHitTestVisibleProperty();
     }
-    pub fn getVisibilityProperty() core.HResult!*DependencyProperty {
+    pub fn get_VisibilityProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getVisibilityProperty();
     }
-    pub fn getUseLayoutRoundingProperty() core.HResult!*DependencyProperty {
+    pub fn get_UseLayoutRoundingProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getUseLayoutRoundingProperty();
     }
-    pub fn getTransitionsProperty() core.HResult!*DependencyProperty {
+    pub fn get_TransitionsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getTransitionsProperty();
     }
-    pub fn getCacheModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_CacheModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getCacheModeProperty();
     }
-    pub fn getIsTapEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsTapEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getIsTapEnabledProperty();
     }
-    pub fn getIsDoubleTapEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsDoubleTapEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getIsDoubleTapEnabledProperty();
     }
-    pub fn getIsRightTapEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsRightTapEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getIsRightTapEnabledProperty();
     }
-    pub fn getIsHoldingEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsHoldingEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getIsHoldingEnabledProperty();
     }
-    pub fn getManipulationModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ManipulationModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getManipulationModeProperty();
     }
-    pub fn getPointerCapturesProperty() core.HResult!*DependencyProperty {
+    pub fn get_PointerCapturesProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStaticsCache.get();
         return try factory.getPointerCapturesProperty();
     }
-    pub fn getTransform3DProperty() core.HResult!*DependencyProperty {
+    pub fn get_Transform3DProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics3Cache.get();
         return try factory.getTransform3DProperty();
     }
-    pub fn getCanDragProperty() core.HResult!*DependencyProperty {
+    pub fn get_CanDragProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics3Cache.get();
         return try factory.getCanDragProperty();
     }
@@ -2337,95 +2337,95 @@ pub const UIElement = extern struct {
         const factory = @This().IUIElementStatics3Cache.get();
         return try factory.TryStartDirectManipulation(value);
     }
-    pub fn getShadowProperty() core.HResult!*DependencyProperty {
+    pub fn get_ShadowProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics10Cache.get();
         return try factory.getShadowProperty();
     }
-    pub fn getLightsProperty() core.HResult!*DependencyProperty {
+    pub fn get_LightsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getLightsProperty();
     }
-    pub fn getKeyTipPlacementModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipPlacementModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getKeyTipPlacementModeProperty();
     }
-    pub fn getKeyTipHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getKeyTipHorizontalOffsetProperty();
     }
-    pub fn getKeyTipVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getKeyTipVerticalOffsetProperty();
     }
-    pub fn getXYFocusKeyboardNavigationProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusKeyboardNavigationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getXYFocusKeyboardNavigationProperty();
     }
-    pub fn getXYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getXYFocusUpNavigationStrategyProperty();
     }
-    pub fn getXYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getXYFocusDownNavigationStrategyProperty();
     }
-    pub fn getXYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getXYFocusLeftNavigationStrategyProperty();
     }
-    pub fn getXYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getXYFocusRightNavigationStrategyProperty();
     }
-    pub fn getHighContrastAdjustmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_HighContrastAdjustmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getHighContrastAdjustmentProperty();
     }
-    pub fn getTabFocusNavigationProperty() core.HResult!*DependencyProperty {
+    pub fn get_TabFocusNavigationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics5Cache.get();
         return try factory.getTabFocusNavigationProperty();
     }
-    pub fn getContextFlyoutProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContextFlyoutProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics4Cache.get();
         return try factory.getContextFlyoutProperty();
     }
-    pub fn getExitDisplayModeOnAccessKeyInvokedProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitDisplayModeOnAccessKeyInvokedProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics4Cache.get();
         return try factory.getExitDisplayModeOnAccessKeyInvokedProperty();
     }
-    pub fn getIsAccessKeyScopeProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsAccessKeyScopeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics4Cache.get();
         return try factory.getIsAccessKeyScopeProperty();
     }
-    pub fn getAccessKeyScopeOwnerProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessKeyScopeOwnerProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics4Cache.get();
         return try factory.getAccessKeyScopeOwnerProperty();
     }
-    pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessKeyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics4Cache.get();
         return try factory.getAccessKeyProperty();
     }
-    pub fn getCompositeModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_CompositeModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics2Cache.get();
         return try factory.getCompositeModeProperty();
     }
-    pub fn getBringIntoViewRequestedEvent() core.HResult!*RoutedEvent {
+    pub fn get_BringIntoViewRequestedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics8Cache.get();
         return try factory.getBringIntoViewRequestedEvent();
     }
-    pub fn getContextRequestedEvent() core.HResult!*RoutedEvent {
+    pub fn get_ContextRequestedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics8Cache.get();
         return try factory.getContextRequestedEvent();
     }
-    pub fn getKeyTipTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics8Cache.get();
         return try factory.getKeyTipTargetProperty();
     }
-    pub fn getKeyboardAcceleratorPlacementTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyboardAcceleratorPlacementTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics8Cache.get();
         return try factory.getKeyboardAcceleratorPlacementTargetProperty();
     }
-    pub fn getKeyboardAcceleratorPlacementModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyboardAcceleratorPlacementModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics8Cache.get();
         return try factory.getKeyboardAcceleratorPlacementModeProperty();
     }
@@ -2433,31 +2433,31 @@ pub const UIElement = extern struct {
         const factory = @This().IUIElementStatics8Cache.get();
         return try factory.RegisterAsScrollPort(element);
     }
-    pub fn getGettingFocusEvent() core.HResult!*RoutedEvent {
+    pub fn get_GettingFocusEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics6Cache.get();
         return try factory.getGettingFocusEvent();
     }
-    pub fn getLosingFocusEvent() core.HResult!*RoutedEvent {
+    pub fn get_LosingFocusEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics6Cache.get();
         return try factory.getLosingFocusEvent();
     }
-    pub fn getNoFocusCandidateFoundEvent() core.HResult!*RoutedEvent {
+    pub fn get_NoFocusCandidateFoundEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics6Cache.get();
         return try factory.getNoFocusCandidateFoundEvent();
     }
-    pub fn getPreviewKeyDownEvent() core.HResult!*RoutedEvent {
+    pub fn get_PreviewKeyDownEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics7Cache.get();
         return try factory.getPreviewKeyDownEvent();
     }
-    pub fn getCharacterReceivedEvent() core.HResult!*RoutedEvent {
+    pub fn get_CharacterReceivedEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics7Cache.get();
         return try factory.getCharacterReceivedEvent();
     }
-    pub fn getPreviewKeyUpEvent() core.HResult!*RoutedEvent {
+    pub fn get_PreviewKeyUpEvent() core.HResult!*RoutedEvent {
         const factory = @This().IUIElementStatics7Cache.get();
         return try factory.getPreviewKeyUpEvent();
     }
-    pub fn getCanBeScrollAnchorProperty() core.HResult!*DependencyProperty {
+    pub fn get_CanBeScrollAnchorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IUIElementStatics9Cache.get();
         return try factory.getCanBeScrollAnchorProperty();
     }
@@ -2867,107 +2867,107 @@ pub const FrameworkElement = extern struct {
         const factory = @This().IFrameworkElementStatics5Cache.get();
         return try factory.DeferTree(element);
     }
-    pub fn getTagProperty() core.HResult!*DependencyProperty {
+    pub fn get_TagProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getTagProperty();
     }
-    pub fn getLanguageProperty() core.HResult!*DependencyProperty {
+    pub fn get_LanguageProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getLanguageProperty();
     }
-    pub fn getActualWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_ActualWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getActualWidthProperty();
     }
-    pub fn getActualHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_ActualHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getActualHeightProperty();
     }
-    pub fn getWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_WidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getWidthProperty();
     }
-    pub fn getHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_HeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getHeightProperty();
     }
-    pub fn getMinWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getMinWidthProperty();
     }
-    pub fn getMaxWidthProperty() core.HResult!*DependencyProperty {
+    pub fn get_MaxWidthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getMaxWidthProperty();
     }
-    pub fn getMinHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_MinHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getMinHeightProperty();
     }
-    pub fn getMaxHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_MaxHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getMaxHeightProperty();
     }
-    pub fn getHorizontalAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_HorizontalAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getHorizontalAlignmentProperty();
     }
-    pub fn getVerticalAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_VerticalAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getVerticalAlignmentProperty();
     }
-    pub fn getMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_MarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getMarginProperty();
     }
-    pub fn getNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_NameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getNameProperty();
     }
-    pub fn getDataContextProperty() core.HResult!*DependencyProperty {
+    pub fn get_DataContextProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getDataContextProperty();
     }
-    pub fn getStyleProperty() core.HResult!*DependencyProperty {
+    pub fn get_StyleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getStyleProperty();
     }
-    pub fn getFlowDirectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_FlowDirectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStaticsCache.get();
         return try factory.getFlowDirectionProperty();
     }
-    pub fn getActualThemeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ActualThemeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics6Cache.get();
         return try factory.getActualThemeProperty();
     }
-    pub fn getAllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
+    pub fn get_AllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getAllowFocusOnInteractionProperty();
     }
-    pub fn getFocusVisualMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusVisualMarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getFocusVisualMarginProperty();
     }
-    pub fn getFocusVisualSecondaryThicknessProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusVisualSecondaryThicknessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getFocusVisualSecondaryThicknessProperty();
     }
-    pub fn getFocusVisualPrimaryThicknessProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusVisualPrimaryThicknessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getFocusVisualPrimaryThicknessProperty();
     }
-    pub fn getFocusVisualSecondaryBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusVisualSecondaryBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getFocusVisualSecondaryBrushProperty();
     }
-    pub fn getFocusVisualPrimaryBrushProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusVisualPrimaryBrushProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getFocusVisualPrimaryBrushProperty();
     }
-    pub fn getAllowFocusWhenDisabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_AllowFocusWhenDisabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics4Cache.get();
         return try factory.getAllowFocusWhenDisabledProperty();
     }
-    pub fn getRequestedThemeProperty() core.HResult!*DependencyProperty {
+    pub fn get_RequestedThemeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFrameworkElementStatics2Cache.get();
         return try factory.getRequestedThemeProperty();
     }
@@ -3157,7 +3157,7 @@ pub const DataTemplate = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExtensionInstanceProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExtensionInstanceProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDataTemplateStatics2Cache.get();
         return try factory.getExtensionInstanceProperty();
     }
@@ -3396,7 +3396,7 @@ pub const DependencyProperty = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUnsetValue() core.HResult!*IInspectable {
+    pub fn get_UnsetValue() core.HResult!*IInspectable {
         const factory = @This().IDependencyPropertyStaticsCache.get();
         return try factory.getUnsetValue();
     }
@@ -3975,11 +3975,11 @@ pub const DurationHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAutomatic() core.HResult!Duration {
+    pub fn get_Automatic() core.HResult!Duration {
         const factory = @This().IDurationHelperStaticsCache.get();
         return try factory.getAutomatic();
     }
-    pub fn getForever() core.HResult!Duration {
+    pub fn get_Forever() core.HResult!Duration {
         const factory = @This().IDurationHelperStaticsCache.get();
         return try factory.getForever();
     }
@@ -4131,19 +4131,19 @@ pub const ElementSoundPlayer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getVolume() core.HResult!f64 {
+    pub fn get_Volume() core.HResult!f64 {
         const factory = @This().IElementSoundPlayerStaticsCache.get();
         return try factory.getVolume();
     }
-    pub fn putVolume(value: f64) core.HResult!void {
+    pub fn put_Volume(value: f64) core.HResult!void {
         const factory = @This().IElementSoundPlayerStaticsCache.get();
         return try factory.putVolume(value);
     }
-    pub fn getState() core.HResult!ElementSoundPlayerState {
+    pub fn get_State() core.HResult!ElementSoundPlayerState {
         const factory = @This().IElementSoundPlayerStaticsCache.get();
         return try factory.getState();
     }
-    pub fn putState(value: ElementSoundPlayerState) core.HResult!void {
+    pub fn put_State(value: ElementSoundPlayerState) core.HResult!void {
         const factory = @This().IElementSoundPlayerStaticsCache.get();
         return try factory.putState(value);
     }
@@ -4151,11 +4151,11 @@ pub const ElementSoundPlayer = extern struct {
         const factory = @This().IElementSoundPlayerStaticsCache.get();
         return try factory.Play(sound);
     }
-    pub fn getSpatialAudioMode() core.HResult!ElementSpatialAudioMode {
+    pub fn get_SpatialAudioMode() core.HResult!ElementSpatialAudioMode {
         const factory = @This().IElementSoundPlayerStatics2Cache.get();
         return try factory.getSpatialAudioMode();
     }
-    pub fn putSpatialAudioMode(value: ElementSpatialAudioMode) core.HResult!void {
+    pub fn put_SpatialAudioMode(value: ElementSpatialAudioMode) core.HResult!void {
         const factory = @This().IElementSoundPlayerStatics2Cache.get();
         return try factory.putSpatialAudioMode(value);
     }
@@ -4544,7 +4544,7 @@ pub const GridLengthHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAuto() core.HResult!GridLength {
+    pub fn get_Auto() core.HResult!GridLength {
         const factory = @This().IGridLengthHelperStaticsCache.get();
         return try factory.getAuto();
     }
@@ -12748,7 +12748,7 @@ pub const RectHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEmpty() core.HResult!Rect {
+    pub fn get_Empty() core.HResult!Rect {
         const factory = @This().IRectHelperStaticsCache.get();
         return try factory.getEmpty();
     }
@@ -13201,7 +13201,7 @@ pub const SizeHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEmpty() core.HResult!Size {
+    pub fn get_Empty() core.HResult!Size {
         const factory = @This().ISizeHelperStaticsCache.get();
         return try factory.getEmpty();
     }
@@ -13241,7 +13241,7 @@ pub const StateTrigger = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStateTrigger.IID)));
     }
-    pub fn getIsActiveProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsActiveProperty() core.HResult!*DependencyProperty {
         const factory = @This().IStateTriggerStaticsCache.get();
         return try factory.getIsActiveProperty();
     }
@@ -14124,7 +14124,7 @@ pub const VisualStateManager = extern struct {
         const factory = @This().IVisualStateManagerStaticsCache.get();
         return try factory.GetVisualStateGroups(obj);
     }
-    pub fn getCustomVisualStateManagerProperty() core.HResult!*DependencyProperty {
+    pub fn get_CustomVisualStateManagerProperty() core.HResult!*DependencyProperty {
         const factory = @This().IVisualStateManagerStaticsCache.get();
         return try factory.getCustomVisualStateManagerProperty();
     }
@@ -14295,7 +14295,7 @@ pub const Window = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*Window {
+    pub fn get_Current() core.HResult!*Window {
         const factory = @This().IWindowStaticsCache.get();
         return try factory.getCurrent();
     }

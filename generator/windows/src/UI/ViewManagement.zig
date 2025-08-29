@@ -3,7 +3,7 @@ pub const ApplicationViewScaling = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDisableLayoutScaling() core.HResult!bool {
+    pub fn get_DisableLayoutScaling() core.HResult!bool {
         const factory = @This().IApplicationViewScalingStaticsCache.get();
         return try factory.getDisableLayoutScaling();
     }
@@ -333,31 +333,31 @@ pub const ApplicationView = extern struct {
         const factory = @This().IApplicationViewStatics2Cache.get();
         return try factory.GetForCurrentView();
     }
-    pub fn getTerminateAppOnFinalViewClose() core.HResult!bool {
+    pub fn get_TerminateAppOnFinalViewClose() core.HResult!bool {
         const factory = @This().IApplicationViewStatics2Cache.get();
         return try factory.getTerminateAppOnFinalViewClose();
     }
-    pub fn putTerminateAppOnFinalViewClose(value: bool) core.HResult!void {
+    pub fn put_TerminateAppOnFinalViewClose(value: bool) core.HResult!void {
         const factory = @This().IApplicationViewStatics2Cache.get();
         return try factory.putTerminateAppOnFinalViewClose(value);
     }
-    pub fn getPreferredLaunchWindowingMode() core.HResult!ApplicationViewWindowingMode {
+    pub fn get_PreferredLaunchWindowingMode() core.HResult!ApplicationViewWindowingMode {
         const factory = @This().IApplicationViewStatics3Cache.get();
         return try factory.getPreferredLaunchWindowingMode();
     }
-    pub fn putPreferredLaunchWindowingMode(value: ApplicationViewWindowingMode) core.HResult!void {
+    pub fn put_PreferredLaunchWindowingMode(value: ApplicationViewWindowingMode) core.HResult!void {
         const factory = @This().IApplicationViewStatics3Cache.get();
         return try factory.putPreferredLaunchWindowingMode(value);
     }
-    pub fn getPreferredLaunchViewSize() core.HResult!Size {
+    pub fn get_PreferredLaunchViewSize() core.HResult!Size {
         const factory = @This().IApplicationViewStatics3Cache.get();
         return try factory.getPreferredLaunchViewSize();
     }
-    pub fn putPreferredLaunchViewSize(value: Size) core.HResult!void {
+    pub fn put_PreferredLaunchViewSize(value: Size) core.HResult!void {
         const factory = @This().IApplicationViewStatics3Cache.get();
         return try factory.putPreferredLaunchViewSize(value);
     }
-    pub fn getValue() core.HResult!ApplicationViewState {
+    pub fn get_Value() core.HResult!ApplicationViewState {
         const factory = @This().IApplicationViewStaticsCache.get();
         return try factory.getValue();
     }
@@ -442,9 +442,9 @@ pub const ApplicationViewSwitcher = extern struct {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
         return try factory.TryShowAsStandaloneAsyncWithSizePreference(viewId, sizePreference);
     }
-    pub fn TryShowAsStandaloneAsyncWithAnchorSizePreference(viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsStandaloneAsyncWithSizePreferenceWithAnchorViewIdWithAnchorSizePreference(viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
-        return try factory.TryShowAsStandaloneAsyncWithAnchorSizePreference(viewId, sizePreference, anchorViewId, anchorSizePreference);
+        return try factory.TryShowAsStandaloneAsyncWithSizePreferenceWithAnchorViewIdWithAnchorSizePreference(viewId, sizePreference, anchorViewId, anchorSizePreference);
     }
     pub fn SwitchAsync(viewId: i32) core.HResult!*IAsyncAction {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
@@ -454,9 +454,9 @@ pub const ApplicationViewSwitcher = extern struct {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
         return try factory.SwitchAsyncWithFromViewId(toViewId, fromViewId);
     }
-    pub fn SwitchAsyncWithOptions(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
+    pub fn SwitchAsyncWithFromViewIdWithOptions(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
-        return try factory.SwitchAsyncWithOptions(toViewId, fromViewId, options);
+        return try factory.SwitchAsyncWithFromViewIdWithOptions(toViewId, fromViewId, options);
     }
     pub fn PrepareForCustomAnimatedSwitchAsync(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
@@ -466,9 +466,9 @@ pub const ApplicationViewSwitcher = extern struct {
         const factory = @This().IApplicationViewSwitcherStatics3Cache.get();
         return try factory.TryShowAsViewModeAsync(viewId, viewMode);
     }
-    pub fn TryShowAsViewModeAsyncWithViewModeWithViewModePreferences(viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsViewModeAsyncWithViewModePreferences(viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStatics3Cache.get();
-        return try factory.TryShowAsViewModeAsyncWithViewModeWithViewModePreferences(viewId, viewMode, viewModePreferences);
+        return try factory.TryShowAsViewModeAsyncWithViewModePreferences(viewId, viewMode, viewModePreferences);
     }
     pub fn DisableSystemViewActivationPolicy() core.HResult!void {
         const factory = @This().IApplicationViewSwitcherStatics2Cache.get();
@@ -606,7 +606,7 @@ pub const ApplicationViewTransferContext = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IApplicationViewTransferContext.IID)));
     }
-    pub fn getDataPackageFormatId() core.HResult!HSTRING {
+    pub fn get_DataPackageFormatId() core.HResult!HSTRING {
         const factory = @This().IApplicationViewTransferContextStaticsCache.get();
         return try factory.getDataPackageFormatId();
     }
@@ -2492,19 +2492,19 @@ pub const ProjectionManager = extern struct {
         const factory = @This().IProjectionManagerStaticsCache.get();
         return try factory.StopProjectingAsync(projectionViewId, anchorViewId);
     }
-    pub fn getProjectionDisplayAvailable() core.HResult!bool {
+    pub fn get_ProjectionDisplayAvailable() core.HResult!bool {
         const factory = @This().IProjectionManagerStaticsCache.get();
         return try factory.getProjectionDisplayAvailable();
     }
-    pub fn addProjectionDisplayAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_ProjectionDisplayAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IProjectionManagerStaticsCache.get();
         return try factory.addProjectionDisplayAvailableChanged(handler);
     }
-    pub fn removeProjectionDisplayAvailableChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ProjectionDisplayAvailableChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IProjectionManagerStaticsCache.get();
         return try factory.removeProjectionDisplayAvailableChanged(token);
     }
-    pub fn StartProjectingAsync(projectionViewId: i32, anchorViewId: i32, displayDeviceInfo: *DeviceInformation) core.HResult!*IAsyncAction {
+    pub fn StartProjectingAsyncWithDisplayDeviceInfo(projectionViewId: i32, anchorViewId: i32, displayDeviceInfo: *DeviceInformation) core.HResult!*IAsyncAction {
         const factory = @This().IProjectionManagerStatics2Cache.get();
         return try factory.StartProjectingAsync(projectionViewId, anchorViewId, displayDeviceInfo);
     }
@@ -2512,9 +2512,9 @@ pub const ProjectionManager = extern struct {
         const factory = @This().IProjectionManagerStatics2Cache.get();
         return try factory.RequestStartProjectingAsync(projectionViewId, anchorViewId, selection);
     }
-    pub fn RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement(projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestStartProjectingAsyncWithPrefferedPlacement(projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IProjectionManagerStatics2Cache.get();
-        return try factory.RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement(projectionViewId, anchorViewId, selection, prefferedPlacement);
+        return try factory.RequestStartProjectingAsyncWithPrefferedPlacement(projectionViewId, anchorViewId, selection, prefferedPlacement);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
         const factory = @This().IProjectionManagerStatics2Cache.get();

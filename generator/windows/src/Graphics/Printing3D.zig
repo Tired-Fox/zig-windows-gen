@@ -1937,11 +1937,11 @@ pub const Printing3DBaseMaterial = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DBaseMaterial.IID)));
     }
-    pub fn getAbs() core.HResult!HSTRING {
+    pub fn get_Abs() core.HResult!HSTRING {
         const factory = @This().IPrinting3DBaseMaterialStaticsCache.get();
         return try factory.getAbs();
     }
-    pub fn getPla() core.HResult!HSTRING {
+    pub fn get_Pla() core.HResult!HSTRING {
         const factory = @This().IPrinting3DBaseMaterialStaticsCache.get();
         return try factory.getPla();
     }

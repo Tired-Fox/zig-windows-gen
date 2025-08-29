@@ -986,11 +986,11 @@ pub const WebAuthenticationCoreManager = extern struct {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
         return try factory.FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
-    pub fn FindSystemAccountProviderAsyncWithUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthorityWithUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
-        return try factory.FindSystemAccountProviderAsyncWithUser(webAccountProviderId, authority, user);
+        return try factory.FindSystemAccountProviderAsyncWithAuthorityWithUser(webAccountProviderId, authority, user);
     }
-    pub fn FindAccountProviderAsync(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsyncWithAuthorityWithUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStatics2Cache.get();
         return try factory.FindAccountProviderAsync(webAccountProviderId, authority, user);
     }

@@ -821,7 +821,7 @@ pub const XboxLiveDeviceAddress = extern struct {
         const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
         return try factory.GetLocal();
     }
-    pub fn getMaxSnapshotBytesSize() core.HResult!u32 {
+    pub fn get_MaxSnapshotBytesSize() core.HResult!u32 {
         const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
         return try factory.getMaxSnapshotBytesSize();
     }
@@ -1025,7 +1025,7 @@ pub const XboxLiveEndpointPairTemplate = extern struct {
         const factory = @This().IXboxLiveEndpointPairTemplateStaticsCache.get();
         return try factory.GetTemplateByName(name);
     }
-    pub fn getTemplates() core.HResult!*IVectorView(XboxLiveEndpointPairTemplate) {
+    pub fn get_Templates() core.HResult!*IVectorView(XboxLiveEndpointPairTemplate) {
         const factory = @This().IXboxLiveEndpointPairTemplateStaticsCache.get();
         return try factory.getTemplates();
     }
@@ -1134,39 +1134,39 @@ pub const XboxLiveQualityOfServiceMeasurement = extern struct {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.ClearPrivatePayload();
     }
-    pub fn getMaxSimultaneousProbeConnections() core.HResult!u32 {
+    pub fn get_MaxSimultaneousProbeConnections() core.HResult!u32 {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.getMaxSimultaneousProbeConnections();
     }
-    pub fn putMaxSimultaneousProbeConnections(value: u32) core.HResult!void {
+    pub fn put_MaxSimultaneousProbeConnections(value: u32) core.HResult!void {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.putMaxSimultaneousProbeConnections(value);
     }
-    pub fn getIsSystemOutboundBandwidthConstrained() core.HResult!bool {
+    pub fn get_IsSystemOutboundBandwidthConstrained() core.HResult!bool {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.getIsSystemOutboundBandwidthConstrained();
     }
-    pub fn putIsSystemOutboundBandwidthConstrained(value: bool) core.HResult!void {
+    pub fn put_IsSystemOutboundBandwidthConstrained(value: bool) core.HResult!void {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.putIsSystemOutboundBandwidthConstrained(value);
     }
-    pub fn getIsSystemInboundBandwidthConstrained() core.HResult!bool {
+    pub fn get_IsSystemInboundBandwidthConstrained() core.HResult!bool {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.getIsSystemInboundBandwidthConstrained();
     }
-    pub fn putIsSystemInboundBandwidthConstrained(value: bool) core.HResult!void {
+    pub fn put_IsSystemInboundBandwidthConstrained(value: bool) core.HResult!void {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.putIsSystemInboundBandwidthConstrained(value);
     }
-    pub fn getPublishedPrivatePayload() core.HResult!*IBuffer {
+    pub fn get_PublishedPrivatePayload() core.HResult!*IBuffer {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.getPublishedPrivatePayload();
     }
-    pub fn putPublishedPrivatePayload(value: *IBuffer) core.HResult!void {
+    pub fn put_PublishedPrivatePayload(value: *IBuffer) core.HResult!void {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.putPublishedPrivatePayload(value);
     }
-    pub fn getMaxPrivatePayloadSize() core.HResult!u32 {
+    pub fn get_MaxPrivatePayloadSize() core.HResult!u32 {
         const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
         return try factory.getMaxPrivatePayloadSize();
     }

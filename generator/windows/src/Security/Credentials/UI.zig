@@ -20,9 +20,9 @@ pub const CredentialPicker = extern struct {
         const factory = @This().ICredentialPickerStaticsCache.get();
         return try factory.PickAsyncWithMessage(targetName, message);
     }
-    pub fn PickAsyncWithCaption(targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithMessageWithCaption(targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         const factory = @This().ICredentialPickerStaticsCache.get();
-        return try factory.PickAsyncWithCaption(targetName, message, caption);
+        return try factory.PickAsyncWithMessageWithCaption(targetName, message, caption);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.UI.CredentialPicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

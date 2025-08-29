@@ -9,23 +9,23 @@ pub const BackgroundMediaPlayer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*MediaPlayer {
+    pub fn get_Current() core.HResult!*MediaPlayer {
         const factory = @This().IBackgroundMediaPlayerStaticsCache.get();
         return try factory.getCurrent();
     }
-    pub fn addMessageReceivedFromBackground(value: *EventHandler(MediaPlayerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_MessageReceivedFromBackground(value: *EventHandler(MediaPlayerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IBackgroundMediaPlayerStaticsCache.get();
         return try factory.addMessageReceivedFromBackground(value);
     }
-    pub fn removeMessageReceivedFromBackground(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_MessageReceivedFromBackground(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IBackgroundMediaPlayerStaticsCache.get();
         return try factory.removeMessageReceivedFromBackground(token);
     }
-    pub fn addMessageReceivedFromForeground(value: *EventHandler(MediaPlayerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_MessageReceivedFromForeground(value: *EventHandler(MediaPlayerDataReceivedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IBackgroundMediaPlayerStaticsCache.get();
         return try factory.addMessageReceivedFromForeground(value);
     }
-    pub fn removeMessageReceivedFromForeground(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_MessageReceivedFromForeground(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IBackgroundMediaPlayerStaticsCache.get();
         return try factory.removeMessageReceivedFromForeground(token);
     }

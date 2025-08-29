@@ -150,327 +150,327 @@ pub const GattCharacteristicUuids = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAlertCategoryId() core.HResult!*Guid {
+    pub fn get_AlertCategoryId() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getAlertCategoryId();
     }
-    pub fn getAlertCategoryIdBitMask() core.HResult!*Guid {
+    pub fn get_AlertCategoryIdBitMask() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getAlertCategoryIdBitMask();
     }
-    pub fn getAlertLevel() core.HResult!*Guid {
+    pub fn get_AlertLevel() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getAlertLevel();
     }
-    pub fn getAlertNotificationControlPoint() core.HResult!*Guid {
+    pub fn get_AlertNotificationControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getAlertNotificationControlPoint();
     }
-    pub fn getAlertStatus() core.HResult!*Guid {
+    pub fn get_AlertStatus() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getAlertStatus();
     }
-    pub fn getGapAppearance() core.HResult!*Guid {
+    pub fn get_GapAppearance() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getGapAppearance();
     }
-    pub fn getBootKeyboardInputReport() core.HResult!*Guid {
+    pub fn get_BootKeyboardInputReport() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getBootKeyboardInputReport();
     }
-    pub fn getBootKeyboardOutputReport() core.HResult!*Guid {
+    pub fn get_BootKeyboardOutputReport() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getBootKeyboardOutputReport();
     }
-    pub fn getBootMouseInputReport() core.HResult!*Guid {
+    pub fn get_BootMouseInputReport() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getBootMouseInputReport();
     }
-    pub fn getCurrentTime() core.HResult!*Guid {
+    pub fn get_CurrentTime() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getCurrentTime();
     }
-    pub fn getCyclingPowerControlPoint() core.HResult!*Guid {
+    pub fn get_CyclingPowerControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getCyclingPowerControlPoint();
     }
-    pub fn getCyclingPowerFeature() core.HResult!*Guid {
+    pub fn get_CyclingPowerFeature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getCyclingPowerFeature();
     }
-    pub fn getCyclingPowerMeasurement() core.HResult!*Guid {
+    pub fn get_CyclingPowerMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getCyclingPowerMeasurement();
     }
-    pub fn getCyclingPowerVector() core.HResult!*Guid {
+    pub fn get_CyclingPowerVector() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getCyclingPowerVector();
     }
-    pub fn getDateTime() core.HResult!*Guid {
+    pub fn get_DateTime() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getDateTime();
     }
-    pub fn getDayDateTime() core.HResult!*Guid {
+    pub fn get_DayDateTime() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getDayDateTime();
     }
-    pub fn getDayOfWeek() core.HResult!*Guid {
+    pub fn get_DayOfWeek() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getDayOfWeek();
     }
-    pub fn getGapDeviceName() core.HResult!*Guid {
+    pub fn get_GapDeviceName() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getGapDeviceName();
     }
-    pub fn getDstOffset() core.HResult!*Guid {
+    pub fn get_DstOffset() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getDstOffset();
     }
-    pub fn getExactTime256() core.HResult!*Guid {
+    pub fn get_ExactTime256() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getExactTime256();
     }
-    pub fn getFirmwareRevisionString() core.HResult!*Guid {
+    pub fn get_FirmwareRevisionString() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getFirmwareRevisionString();
     }
-    pub fn getHardwareRevisionString() core.HResult!*Guid {
+    pub fn get_HardwareRevisionString() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getHardwareRevisionString();
     }
-    pub fn getHidControlPoint() core.HResult!*Guid {
+    pub fn get_HidControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getHidControlPoint();
     }
-    pub fn getHidInformation() core.HResult!*Guid {
+    pub fn get_HidInformation() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getHidInformation();
     }
-    pub fn getIeee1107320601RegulatoryCertificationDataList() core.HResult!*Guid {
+    pub fn get_Ieee1107320601RegulatoryCertificationDataList() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getIeee1107320601RegulatoryCertificationDataList();
     }
-    pub fn getLnControlPoint() core.HResult!*Guid {
+    pub fn get_LnControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getLnControlPoint();
     }
-    pub fn getLnFeature() core.HResult!*Guid {
+    pub fn get_LnFeature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getLnFeature();
     }
-    pub fn getLocalTimeInformation() core.HResult!*Guid {
+    pub fn get_LocalTimeInformation() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getLocalTimeInformation();
     }
-    pub fn getLocationAndSpeed() core.HResult!*Guid {
+    pub fn get_LocationAndSpeed() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getLocationAndSpeed();
     }
-    pub fn getManufacturerNameString() core.HResult!*Guid {
+    pub fn get_ManufacturerNameString() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getManufacturerNameString();
     }
-    pub fn getModelNumberString() core.HResult!*Guid {
+    pub fn get_ModelNumberString() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getModelNumberString();
     }
-    pub fn getNavigation() core.HResult!*Guid {
+    pub fn get_Navigation() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getNavigation();
     }
-    pub fn getNewAlert() core.HResult!*Guid {
+    pub fn get_NewAlert() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getNewAlert();
     }
-    pub fn getGapPeripheralPreferredConnectionParameters() core.HResult!*Guid {
+    pub fn get_GapPeripheralPreferredConnectionParameters() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getGapPeripheralPreferredConnectionParameters();
     }
-    pub fn getGapPeripheralPrivacyFlag() core.HResult!*Guid {
+    pub fn get_GapPeripheralPrivacyFlag() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getGapPeripheralPrivacyFlag();
     }
-    pub fn getPnpId() core.HResult!*Guid {
+    pub fn get_PnpId() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getPnpId();
     }
-    pub fn getPositionQuality() core.HResult!*Guid {
+    pub fn get_PositionQuality() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getPositionQuality();
     }
-    pub fn getProtocolMode() core.HResult!*Guid {
+    pub fn get_ProtocolMode() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getProtocolMode();
     }
-    pub fn getGapReconnectionAddress() core.HResult!*Guid {
+    pub fn get_GapReconnectionAddress() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getGapReconnectionAddress();
     }
-    pub fn getReferenceTimeInformation() core.HResult!*Guid {
+    pub fn get_ReferenceTimeInformation() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getReferenceTimeInformation();
     }
-    pub fn getReport() core.HResult!*Guid {
+    pub fn get_Report() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getReport();
     }
-    pub fn getReportMap() core.HResult!*Guid {
+    pub fn get_ReportMap() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getReportMap();
     }
-    pub fn getRingerControlPoint() core.HResult!*Guid {
+    pub fn get_RingerControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getRingerControlPoint();
     }
-    pub fn getRingerSetting() core.HResult!*Guid {
+    pub fn get_RingerSetting() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getRingerSetting();
     }
-    pub fn getScanIntervalWindow() core.HResult!*Guid {
+    pub fn get_ScanIntervalWindow() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getScanIntervalWindow();
     }
-    pub fn getScanRefresh() core.HResult!*Guid {
+    pub fn get_ScanRefresh() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getScanRefresh();
     }
-    pub fn getSerialNumberString() core.HResult!*Guid {
+    pub fn get_SerialNumberString() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getSerialNumberString();
     }
-    pub fn getGattServiceChanged() core.HResult!*Guid {
+    pub fn get_GattServiceChanged() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getGattServiceChanged();
     }
-    pub fn getSoftwareRevisionString() core.HResult!*Guid {
+    pub fn get_SoftwareRevisionString() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getSoftwareRevisionString();
     }
-    pub fn getSupportedNewAlertCategory() core.HResult!*Guid {
+    pub fn get_SupportedNewAlertCategory() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getSupportedNewAlertCategory();
     }
-    pub fn getSupportUnreadAlertCategory() core.HResult!*Guid {
+    pub fn get_SupportUnreadAlertCategory() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getSupportUnreadAlertCategory();
     }
-    pub fn getSystemId() core.HResult!*Guid {
+    pub fn get_SystemId() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getSystemId();
     }
-    pub fn getTimeAccuracy() core.HResult!*Guid {
+    pub fn get_TimeAccuracy() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTimeAccuracy();
     }
-    pub fn getTimeSource() core.HResult!*Guid {
+    pub fn get_TimeSource() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTimeSource();
     }
-    pub fn getTimeUpdateControlPoint() core.HResult!*Guid {
+    pub fn get_TimeUpdateControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTimeUpdateControlPoint();
     }
-    pub fn getTimeUpdateState() core.HResult!*Guid {
+    pub fn get_TimeUpdateState() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTimeUpdateState();
     }
-    pub fn getTimeWithDst() core.HResult!*Guid {
+    pub fn get_TimeWithDst() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTimeWithDst();
     }
-    pub fn getTimeZone() core.HResult!*Guid {
+    pub fn get_TimeZone() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTimeZone();
     }
-    pub fn getTxPowerLevel() core.HResult!*Guid {
+    pub fn get_TxPowerLevel() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getTxPowerLevel();
     }
-    pub fn getUnreadAlertStatus() core.HResult!*Guid {
+    pub fn get_UnreadAlertStatus() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStatics2Cache.get();
         return try factory.getUnreadAlertStatus();
     }
-    pub fn getBatteryLevel() core.HResult!*Guid {
+    pub fn get_BatteryLevel() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getBatteryLevel();
     }
-    pub fn getBloodPressureFeature() core.HResult!*Guid {
+    pub fn get_BloodPressureFeature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getBloodPressureFeature();
     }
-    pub fn getBloodPressureMeasurement() core.HResult!*Guid {
+    pub fn get_BloodPressureMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getBloodPressureMeasurement();
     }
-    pub fn getBodySensorLocation() core.HResult!*Guid {
+    pub fn get_BodySensorLocation() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getBodySensorLocation();
     }
-    pub fn getCscFeature() core.HResult!*Guid {
+    pub fn get_CscFeature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getCscFeature();
     }
-    pub fn getCscMeasurement() core.HResult!*Guid {
+    pub fn get_CscMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getCscMeasurement();
     }
-    pub fn getGlucoseFeature() core.HResult!*Guid {
+    pub fn get_GlucoseFeature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getGlucoseFeature();
     }
-    pub fn getGlucoseMeasurement() core.HResult!*Guid {
+    pub fn get_GlucoseMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getGlucoseMeasurement();
     }
-    pub fn getGlucoseMeasurementContext() core.HResult!*Guid {
+    pub fn get_GlucoseMeasurementContext() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getGlucoseMeasurementContext();
     }
-    pub fn getHeartRateControlPoint() core.HResult!*Guid {
+    pub fn get_HeartRateControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getHeartRateControlPoint();
     }
-    pub fn getHeartRateMeasurement() core.HResult!*Guid {
+    pub fn get_HeartRateMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getHeartRateMeasurement();
     }
-    pub fn getIntermediateCuffPressure() core.HResult!*Guid {
+    pub fn get_IntermediateCuffPressure() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getIntermediateCuffPressure();
     }
-    pub fn getIntermediateTemperature() core.HResult!*Guid {
+    pub fn get_IntermediateTemperature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getIntermediateTemperature();
     }
-    pub fn getMeasurementInterval() core.HResult!*Guid {
+    pub fn get_MeasurementInterval() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getMeasurementInterval();
     }
-    pub fn getRecordAccessControlPoint() core.HResult!*Guid {
+    pub fn get_RecordAccessControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getRecordAccessControlPoint();
     }
-    pub fn getRscFeature() core.HResult!*Guid {
+    pub fn get_RscFeature() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getRscFeature();
     }
-    pub fn getRscMeasurement() core.HResult!*Guid {
+    pub fn get_RscMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getRscMeasurement();
     }
-    pub fn getSCControlPoint() core.HResult!*Guid {
+    pub fn get_SCControlPoint() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getSCControlPoint();
     }
-    pub fn getSensorLocation() core.HResult!*Guid {
+    pub fn get_SensorLocation() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getSensorLocation();
     }
-    pub fn getTemperatureMeasurement() core.HResult!*Guid {
+    pub fn get_TemperatureMeasurement() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getTemperatureMeasurement();
     }
-    pub fn getTemperatureType() core.HResult!*Guid {
+    pub fn get_TemperatureType() core.HResult!*Guid {
         const factory = @This().IGattCharacteristicUuidsStaticsCache.get();
         return try factory.getTemperatureType();
     }
@@ -591,27 +591,27 @@ pub const GattDescriptorUuids = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCharacteristicAggregateFormat() core.HResult!*Guid {
+    pub fn get_CharacteristicAggregateFormat() core.HResult!*Guid {
         const factory = @This().IGattDescriptorUuidsStaticsCache.get();
         return try factory.getCharacteristicAggregateFormat();
     }
-    pub fn getCharacteristicExtendedProperties() core.HResult!*Guid {
+    pub fn get_CharacteristicExtendedProperties() core.HResult!*Guid {
         const factory = @This().IGattDescriptorUuidsStaticsCache.get();
         return try factory.getCharacteristicExtendedProperties();
     }
-    pub fn getCharacteristicPresentationFormat() core.HResult!*Guid {
+    pub fn get_CharacteristicPresentationFormat() core.HResult!*Guid {
         const factory = @This().IGattDescriptorUuidsStaticsCache.get();
         return try factory.getCharacteristicPresentationFormat();
     }
-    pub fn getCharacteristicUserDescription() core.HResult!*Guid {
+    pub fn get_CharacteristicUserDescription() core.HResult!*Guid {
         const factory = @This().IGattDescriptorUuidsStaticsCache.get();
         return try factory.getCharacteristicUserDescription();
     }
-    pub fn getClientCharacteristicConfiguration() core.HResult!*Guid {
+    pub fn get_ClientCharacteristicConfiguration() core.HResult!*Guid {
         const factory = @This().IGattDescriptorUuidsStaticsCache.get();
         return try factory.getClientCharacteristicConfiguration();
     }
-    pub fn getServerCharacteristicConfiguration() core.HResult!*Guid {
+    pub fn get_ServerCharacteristicConfiguration() core.HResult!*Guid {
         const factory = @This().IGattDescriptorUuidsStaticsCache.get();
         return try factory.getServerCharacteristicConfiguration();
     }
@@ -788,7 +788,7 @@ pub const GattDeviceService = extern struct {
         const factory = @This().IGattDeviceServiceStaticsCache.get();
         return try factory.ConvertShortIdToUuid(shortId);
     }
-    pub fn FromIdAsync(deviceId: HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
+    pub fn FromIdAsyncWithSharingMode(deviceId: HSTRING, sharingMode: GattSharingMode) core.HResult!*IAsyncOperation(GattDeviceService) {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
         return try factory.FromIdAsync(deviceId, sharingMode);
     }
@@ -804,9 +804,9 @@ pub const GattDeviceService = extern struct {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
         return try factory.GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId, serviceUuid);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode(bluetoothDeviceId, serviceUuid, cacheMode);
+        return try factory.GetDeviceSelectorForBluetoothDeviceIdAndUuidWithCacheMode(bluetoothDeviceId, serviceUuid, cacheMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.GenericAttributeProfile.GattDeviceService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1145,7 +1145,7 @@ pub const GattPresentationFormat = extern struct {
         const factory = @This().IGattPresentationFormatStatics2Cache.get();
         return try factory.FromParts(formatType, exponent, unit, namespaceId, description);
     }
-    pub fn getBluetoothSigAssignedNumbers() core.HResult!u8 {
+    pub fn get_BluetoothSigAssignedNumbers() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatStaticsCache.get();
         return try factory.getBluetoothSigAssignedNumbers();
     }
@@ -1162,111 +1162,111 @@ pub const GattPresentationFormatTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBoolean() core.HResult!u8 {
+    pub fn get_Boolean() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getBoolean();
     }
-    pub fn getBit2() core.HResult!u8 {
+    pub fn get_Bit2() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getBit2();
     }
-    pub fn getNibble() core.HResult!u8 {
+    pub fn get_Nibble() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getNibble();
     }
-    pub fn getUInt8() core.HResult!u8 {
+    pub fn get_UInt8() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt8();
     }
-    pub fn getUInt12() core.HResult!u8 {
+    pub fn get_UInt12() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt12();
     }
-    pub fn getUInt16() core.HResult!u8 {
+    pub fn get_UInt16() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt16();
     }
-    pub fn getUInt24() core.HResult!u8 {
+    pub fn get_UInt24() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt24();
     }
-    pub fn getUInt32() core.HResult!u8 {
+    pub fn get_UInt32() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt32();
     }
-    pub fn getUInt48() core.HResult!u8 {
+    pub fn get_UInt48() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt48();
     }
-    pub fn getUInt64() core.HResult!u8 {
+    pub fn get_UInt64() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt64();
     }
-    pub fn getUInt128() core.HResult!u8 {
+    pub fn get_UInt128() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUInt128();
     }
-    pub fn getSInt8() core.HResult!u8 {
+    pub fn get_SInt8() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt8();
     }
-    pub fn getSInt12() core.HResult!u8 {
+    pub fn get_SInt12() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt12();
     }
-    pub fn getSInt16() core.HResult!u8 {
+    pub fn get_SInt16() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt16();
     }
-    pub fn getSInt24() core.HResult!u8 {
+    pub fn get_SInt24() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt24();
     }
-    pub fn getSInt32() core.HResult!u8 {
+    pub fn get_SInt32() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt32();
     }
-    pub fn getSInt48() core.HResult!u8 {
+    pub fn get_SInt48() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt48();
     }
-    pub fn getSInt64() core.HResult!u8 {
+    pub fn get_SInt64() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt64();
     }
-    pub fn getSInt128() core.HResult!u8 {
+    pub fn get_SInt128() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSInt128();
     }
-    pub fn getFloat32() core.HResult!u8 {
+    pub fn get_Float32() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getFloat32();
     }
-    pub fn getFloat64() core.HResult!u8 {
+    pub fn get_Float64() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getFloat64();
     }
-    pub fn getSFloat() core.HResult!u8 {
+    pub fn get_SFloat() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getSFloat();
     }
-    pub fn getFloat() core.HResult!u8 {
+    pub fn get_Float() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getFloat();
     }
-    pub fn getDUInt16() core.HResult!u8 {
+    pub fn get_DUInt16() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getDUInt16();
     }
-    pub fn getUtf8() core.HResult!u8 {
+    pub fn get_Utf8() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUtf8();
     }
-    pub fn getUtf16() core.HResult!u8 {
+    pub fn get_Utf16() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getUtf16();
     }
-    pub fn getStruct() core.HResult!u8 {
+    pub fn get_Struct() core.HResult!u8 {
         const factory = @This().IGattPresentationFormatTypesStaticsCache.get();
         return try factory.getStruct();
     }
@@ -1285,71 +1285,71 @@ pub const GattProtocolError = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getInvalidHandle() core.HResult!u8 {
+    pub fn get_InvalidHandle() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInvalidHandle();
     }
-    pub fn getReadNotPermitted() core.HResult!u8 {
+    pub fn get_ReadNotPermitted() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getReadNotPermitted();
     }
-    pub fn getWriteNotPermitted() core.HResult!u8 {
+    pub fn get_WriteNotPermitted() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getWriteNotPermitted();
     }
-    pub fn getInvalidPdu() core.HResult!u8 {
+    pub fn get_InvalidPdu() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInvalidPdu();
     }
-    pub fn getInsufficientAuthentication() core.HResult!u8 {
+    pub fn get_InsufficientAuthentication() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInsufficientAuthentication();
     }
-    pub fn getRequestNotSupported() core.HResult!u8 {
+    pub fn get_RequestNotSupported() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getRequestNotSupported();
     }
-    pub fn getInvalidOffset() core.HResult!u8 {
+    pub fn get_InvalidOffset() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInvalidOffset();
     }
-    pub fn getInsufficientAuthorization() core.HResult!u8 {
+    pub fn get_InsufficientAuthorization() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInsufficientAuthorization();
     }
-    pub fn getPrepareQueueFull() core.HResult!u8 {
+    pub fn get_PrepareQueueFull() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getPrepareQueueFull();
     }
-    pub fn getAttributeNotFound() core.HResult!u8 {
+    pub fn get_AttributeNotFound() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getAttributeNotFound();
     }
-    pub fn getAttributeNotLong() core.HResult!u8 {
+    pub fn get_AttributeNotLong() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getAttributeNotLong();
     }
-    pub fn getInsufficientEncryptionKeySize() core.HResult!u8 {
+    pub fn get_InsufficientEncryptionKeySize() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInsufficientEncryptionKeySize();
     }
-    pub fn getInvalidAttributeValueLength() core.HResult!u8 {
+    pub fn get_InvalidAttributeValueLength() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInvalidAttributeValueLength();
     }
-    pub fn getUnlikelyError() core.HResult!u8 {
+    pub fn get_UnlikelyError() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getUnlikelyError();
     }
-    pub fn getInsufficientEncryption() core.HResult!u8 {
+    pub fn get_InsufficientEncryption() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInsufficientEncryption();
     }
-    pub fn getUnsupportedGroupType() core.HResult!u8 {
+    pub fn get_UnsupportedGroupType() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getUnsupportedGroupType();
     }
-    pub fn getInsufficientResources() core.HResult!u8 {
+    pub fn get_InsufficientResources() core.HResult!u8 {
         const factory = @This().IGattProtocolErrorStaticsCache.get();
         return try factory.getInsufficientResources();
     }
@@ -1670,91 +1670,91 @@ pub const GattServiceUuids = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAlertNotification() core.HResult!*Guid {
+    pub fn get_AlertNotification() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getAlertNotification();
     }
-    pub fn getCurrentTime() core.HResult!*Guid {
+    pub fn get_CurrentTime() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getCurrentTime();
     }
-    pub fn getCyclingPower() core.HResult!*Guid {
+    pub fn get_CyclingPower() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getCyclingPower();
     }
-    pub fn getDeviceInformation() core.HResult!*Guid {
+    pub fn get_DeviceInformation() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getDeviceInformation();
     }
-    pub fn getHumanInterfaceDevice() core.HResult!*Guid {
+    pub fn get_HumanInterfaceDevice() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getHumanInterfaceDevice();
     }
-    pub fn getImmediateAlert() core.HResult!*Guid {
+    pub fn get_ImmediateAlert() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getImmediateAlert();
     }
-    pub fn getLinkLoss() core.HResult!*Guid {
+    pub fn get_LinkLoss() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getLinkLoss();
     }
-    pub fn getLocationAndNavigation() core.HResult!*Guid {
+    pub fn get_LocationAndNavigation() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getLocationAndNavigation();
     }
-    pub fn getNextDstChange() core.HResult!*Guid {
+    pub fn get_NextDstChange() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getNextDstChange();
     }
-    pub fn getPhoneAlertStatus() core.HResult!*Guid {
+    pub fn get_PhoneAlertStatus() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getPhoneAlertStatus();
     }
-    pub fn getReferenceTimeUpdate() core.HResult!*Guid {
+    pub fn get_ReferenceTimeUpdate() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getReferenceTimeUpdate();
     }
-    pub fn getScanParameters() core.HResult!*Guid {
+    pub fn get_ScanParameters() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getScanParameters();
     }
-    pub fn getTxPower() core.HResult!*Guid {
+    pub fn get_TxPower() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStatics2Cache.get();
         return try factory.getTxPower();
     }
-    pub fn getBattery() core.HResult!*Guid {
+    pub fn get_Battery() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getBattery();
     }
-    pub fn getBloodPressure() core.HResult!*Guid {
+    pub fn get_BloodPressure() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getBloodPressure();
     }
-    pub fn getCyclingSpeedAndCadence() core.HResult!*Guid {
+    pub fn get_CyclingSpeedAndCadence() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getCyclingSpeedAndCadence();
     }
-    pub fn getGenericAccess() core.HResult!*Guid {
+    pub fn get_GenericAccess() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getGenericAccess();
     }
-    pub fn getGenericAttribute() core.HResult!*Guid {
+    pub fn get_GenericAttribute() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getGenericAttribute();
     }
-    pub fn getGlucose() core.HResult!*Guid {
+    pub fn get_Glucose() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getGlucose();
     }
-    pub fn getHealthThermometer() core.HResult!*Guid {
+    pub fn get_HealthThermometer() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getHealthThermometer();
     }
-    pub fn getHeartRate() core.HResult!*Guid {
+    pub fn get_HeartRate() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getHeartRate();
     }
-    pub fn getRunningSpeedAndCadence() core.HResult!*Guid {
+    pub fn get_RunningSpeedAndCadence() core.HResult!*Guid {
         const factory = @This().IGattServiceUuidsStaticsCache.get();
         return try factory.getRunningSpeedAndCadence();
     }

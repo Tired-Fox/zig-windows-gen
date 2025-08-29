@@ -167,7 +167,7 @@ pub const CertificateEnrollmentManager = extern struct {
         const factory = @This().ICertificateEnrollmentManagerStaticsCache.get();
         return try factory.InstallCertificateAsync(certificate, installOption);
     }
-    pub fn ImportPfxDataAsync(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().ICertificateEnrollmentManagerStaticsCache.get();
         return try factory.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
@@ -175,11 +175,11 @@ pub const CertificateEnrollmentManager = extern struct {
         const factory = @This().ICertificateEnrollmentManagerStatics3Cache.get();
         return try factory.ImportPfxDataAsync(pfxData, password, pfxImportParameters);
     }
-    pub fn getUserCertificateEnrollmentManager() core.HResult!*UserCertificateEnrollmentManager {
+    pub fn get_UserCertificateEnrollmentManager() core.HResult!*UserCertificateEnrollmentManager {
         const factory = @This().ICertificateEnrollmentManagerStatics2Cache.get();
         return try factory.getUserCertificateEnrollmentManager();
     }
-    pub fn ImportPfxDataAsync(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().ICertificateEnrollmentManagerStatics2Cache.get();
         return try factory.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
@@ -638,15 +638,15 @@ pub const CertificateStores = extern struct {
         const factory = @This().ICertificateStoresStaticsCache.get();
         return try factory.FindAllAsync();
     }
-    pub fn FindAllAsync(query: *CertificateQuery) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
+    pub fn FindAllAsyncWithQuery(query: *CertificateQuery) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
         const factory = @This().ICertificateStoresStaticsCache.get();
-        return try factory.FindAllAsync(query);
+        return try factory.FindAllAsyncWithQuery(query);
     }
-    pub fn getTrustedRootCertificationAuthorities() core.HResult!*CertificateStore {
+    pub fn get_TrustedRootCertificationAuthorities() core.HResult!*CertificateStore {
         const factory = @This().ICertificateStoresStaticsCache.get();
         return try factory.getTrustedRootCertificationAuthorities();
     }
-    pub fn getIntermediateCertificationAuthorities() core.HResult!*CertificateStore {
+    pub fn get_IntermediateCertificationAuthorities() core.HResult!*CertificateStore {
         const factory = @This().ICertificateStoresStaticsCache.get();
         return try factory.getIntermediateCertificationAuthorities();
     }
@@ -2951,43 +2951,43 @@ pub const KeyAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getRsa() core.HResult!HSTRING {
+    pub fn get_Rsa() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getRsa();
     }
-    pub fn getDsa() core.HResult!HSTRING {
+    pub fn get_Dsa() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getDsa();
     }
-    pub fn getEcdh256() core.HResult!HSTRING {
+    pub fn get_Ecdh256() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getEcdh256();
     }
-    pub fn getEcdh384() core.HResult!HSTRING {
+    pub fn get_Ecdh384() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getEcdh384();
     }
-    pub fn getEcdh521() core.HResult!HSTRING {
+    pub fn get_Ecdh521() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getEcdh521();
     }
-    pub fn getEcdsa256() core.HResult!HSTRING {
+    pub fn get_Ecdsa256() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getEcdsa256();
     }
-    pub fn getEcdsa384() core.HResult!HSTRING {
+    pub fn get_Ecdsa384() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getEcdsa384();
     }
-    pub fn getEcdsa521() core.HResult!HSTRING {
+    pub fn get_Ecdsa521() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
         return try factory.getEcdsa521();
     }
-    pub fn getEcdsa() core.HResult!HSTRING {
+    pub fn get_Ecdsa() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStatics2Cache.get();
         return try factory.getEcdsa();
     }
-    pub fn getEcdh() core.HResult!HSTRING {
+    pub fn get_Ecdh() core.HResult!HSTRING {
         const factory = @This().IKeyAlgorithmNamesStatics2Cache.get();
         return try factory.getEcdh();
     }
@@ -3001,7 +3001,7 @@ pub const KeyAttestationHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn DecryptTpmAttestationCredentialAsync(credential: HSTRING, containerName: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn DecryptTpmAttestationCredentialAsyncWithContainerName(credential: HSTRING, containerName: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IKeyAttestationHelperStatics2Cache.get();
         return try factory.DecryptTpmAttestationCredentialAsync(credential, containerName);
     }
@@ -3034,19 +3034,19 @@ pub const KeyStorageProviderNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPassportKeyStorageProvider() core.HResult!HSTRING {
+    pub fn get_PassportKeyStorageProvider() core.HResult!HSTRING {
         const factory = @This().IKeyStorageProviderNamesStatics2Cache.get();
         return try factory.getPassportKeyStorageProvider();
     }
-    pub fn getSoftwareKeyStorageProvider() core.HResult!HSTRING {
+    pub fn get_SoftwareKeyStorageProvider() core.HResult!HSTRING {
         const factory = @This().IKeyStorageProviderNamesStaticsCache.get();
         return try factory.getSoftwareKeyStorageProvider();
     }
-    pub fn getSmartcardKeyStorageProvider() core.HResult!HSTRING {
+    pub fn get_SmartcardKeyStorageProvider() core.HResult!HSTRING {
         const factory = @This().IKeyStorageProviderNamesStaticsCache.get();
         return try factory.getSmartcardKeyStorageProvider();
     }
-    pub fn getPlatformKeyStorageProvider() core.HResult!HSTRING {
+    pub fn get_PlatformKeyStorageProvider() core.HResult!HSTRING {
         const factory = @This().IKeyStorageProviderNamesStaticsCache.get();
         return try factory.getPlatformKeyStorageProvider();
     }
@@ -3139,15 +3139,15 @@ pub const StandardCertificateStoreNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPersonal() core.HResult!HSTRING {
+    pub fn get_Personal() core.HResult!HSTRING {
         const factory = @This().IStandardCertificateStoreNamesStaticsCache.get();
         return try factory.getPersonal();
     }
-    pub fn getTrustedRootCertificationAuthorities() core.HResult!HSTRING {
+    pub fn get_TrustedRootCertificationAuthorities() core.HResult!HSTRING {
         const factory = @This().IStandardCertificateStoreNamesStaticsCache.get();
         return try factory.getTrustedRootCertificationAuthorities();
     }
-    pub fn getIntermediateCertificationAuthorities() core.HResult!HSTRING {
+    pub fn get_IntermediateCertificationAuthorities() core.HResult!HSTRING {
         const factory = @This().IStandardCertificateStoreNamesStaticsCache.get();
         return try factory.getIntermediateCertificationAuthorities();
     }

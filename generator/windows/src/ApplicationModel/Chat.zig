@@ -39,11 +39,11 @@ pub const ChatCapabilitiesManager = extern struct {
         const factory = @This().IChatCapabilitiesManagerStaticsCache.get();
         return try factory.GetCapabilitiesFromNetworkAsync(address);
     }
-    pub fn GetCachedCapabilitiesAsync(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCachedCapabilitiesAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         const factory = @This().IChatCapabilitiesManagerStatics2Cache.get();
         return try factory.GetCachedCapabilitiesAsync(address, transportId);
     }
-    pub fn GetCapabilitiesFromNetworkAsync(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
+    pub fn GetCapabilitiesFromNetworkAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
         const factory = @This().IChatCapabilitiesManagerStatics2Cache.get();
         return try factory.GetCapabilitiesFromNetworkAsync(address, transportId);
     }
@@ -3802,11 +3802,11 @@ pub const RcsManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addTransportListChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_TransportListChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IRcsManagerStatics2Cache.get();
         return try factory.addTransportListChanged(handler);
     }
-    pub fn removeTransportListChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_TransportListChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IRcsManagerStatics2Cache.get();
         return try factory.removeTransportListChanged(token);
     }

@@ -431,9 +431,9 @@ pub const SpiDevice = extern struct {
         const factory = @This().ISpiDeviceStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
         const factory = @This().ISpiDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(friendlyName);
+        return try factory.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn GetBusInfo(busId: HSTRING) core.HResult!*SpiBusInfo {
         const factory = @This().ISpiDeviceStaticsCache.get();

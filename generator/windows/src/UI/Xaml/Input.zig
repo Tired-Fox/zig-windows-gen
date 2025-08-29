@@ -63,15 +63,15 @@ pub const AccessKeyManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsDisplayModeEnabled() core.HResult!bool {
+    pub fn get_IsDisplayModeEnabled() core.HResult!bool {
         const factory = @This().IAccessKeyManagerStaticsCache.get();
         return try factory.getIsDisplayModeEnabled();
     }
-    pub fn addIsDisplayModeEnabledChanged(handler: *TypedEventHandler(IInspectable,IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_IsDisplayModeEnabledChanged(handler: *TypedEventHandler(IInspectable,IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IAccessKeyManagerStaticsCache.get();
         return try factory.addIsDisplayModeEnabledChanged(handler);
     }
-    pub fn removeIsDisplayModeEnabledChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_IsDisplayModeEnabledChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IAccessKeyManagerStaticsCache.get();
         return try factory.removeIsDisplayModeEnabledChanged(token);
     }
@@ -79,11 +79,11 @@ pub const AccessKeyManager = extern struct {
         const factory = @This().IAccessKeyManagerStaticsCache.get();
         return try factory.ExitDisplayMode();
     }
-    pub fn getAreKeyTipsEnabled() core.HResult!bool {
+    pub fn get_AreKeyTipsEnabled() core.HResult!bool {
         const factory = @This().IAccessKeyManagerStatics2Cache.get();
         return try factory.getAreKeyTipsEnabled();
     }
-    pub fn putAreKeyTipsEnabled(value: bool) core.HResult!void {
+    pub fn put_AreKeyTipsEnabled(value: bool) core.HResult!void {
         const factory = @This().IAccessKeyManagerStatics2Cache.get();
         return try factory.putAreKeyTipsEnabled(value);
     }
@@ -383,43 +383,43 @@ pub const FocusManager = extern struct {
         const factory = @This().IFocusManagerStatics5Cache.get();
         return try factory.TryMoveFocusAsyncWithFocusNavigationOptions(focusNavigationDirection, focusNavigationOptions);
     }
-    pub fn addGotFocus(handler: *EventHandler(FocusManagerGotFocusEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_GotFocus(handler: *EventHandler(FocusManagerGotFocusEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.addGotFocus(handler);
     }
-    pub fn removeGotFocus(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GotFocus(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.removeGotFocus(token);
     }
-    pub fn addLostFocus(handler: *EventHandler(FocusManagerLostFocusEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_LostFocus(handler: *EventHandler(FocusManagerLostFocusEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.addLostFocus(handler);
     }
-    pub fn removeLostFocus(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_LostFocus(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.removeLostFocus(token);
     }
-    pub fn addGettingFocus(handler: *EventHandler(GettingFocusEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_GettingFocus(handler: *EventHandler(GettingFocusEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.addGettingFocus(handler);
     }
-    pub fn removeGettingFocus(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_GettingFocus(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.removeGettingFocus(token);
     }
-    pub fn addLosingFocus(handler: *EventHandler(LosingFocusEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_LosingFocus(handler: *EventHandler(LosingFocusEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.addLosingFocus(handler);
     }
-    pub fn removeLosingFocus(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_LosingFocus(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IFocusManagerStatics6Cache.get();
         return try factory.removeLosingFocus(token);
     }
-    pub fn GetFocusedElement(xamlRoot: *XamlRoot) core.HResult!*IInspectable {
+    pub fn GetFocusedElementWithXamlRoot(xamlRoot: *XamlRoot) core.HResult!*IInspectable {
         const factory = @This().IFocusManagerStatics7Cache.get();
         return try factory.GetFocusedElement(xamlRoot);
     }
-    pub fn TryMoveFocus(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!bool {
+    pub fn TryMoveFocusWithFocusNavigationOptions(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!bool {
         const factory = @This().IFocusManagerStatics4Cache.get();
         return try factory.TryMoveFocus(focusNavigationDirection, focusNavigationOptions);
     }
@@ -3665,19 +3665,19 @@ pub const KeyboardAccelerator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getKeyProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IKeyboardAcceleratorStaticsCache.get();
         return try factory.getKeyProperty();
     }
-    pub fn getModifiersProperty() core.HResult!*DependencyProperty {
+    pub fn get_ModifiersProperty() core.HResult!*DependencyProperty {
         const factory = @This().IKeyboardAcceleratorStaticsCache.get();
         return try factory.getModifiersProperty();
     }
-    pub fn getIsEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IKeyboardAcceleratorStaticsCache.get();
         return try factory.getIsEnabledProperty();
     }
-    pub fn getScopeOwnerProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScopeOwnerProperty() core.HResult!*DependencyProperty {
         const factory = @This().IKeyboardAcceleratorStaticsCache.get();
         return try factory.getScopeOwnerProperty();
     }
@@ -4953,27 +4953,27 @@ pub const XamlUICommand = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getLabelProperty() core.HResult!*DependencyProperty {
+    pub fn get_LabelProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlUICommandStaticsCache.get();
         return try factory.getLabelProperty();
     }
-    pub fn getIconSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_IconSourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlUICommandStaticsCache.get();
         return try factory.getIconSourceProperty();
     }
-    pub fn getKeyboardAcceleratorsProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyboardAcceleratorsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlUICommandStaticsCache.get();
         return try factory.getKeyboardAcceleratorsProperty();
     }
-    pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessKeyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlUICommandStaticsCache.get();
         return try factory.getAccessKeyProperty();
     }
-    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlUICommandStaticsCache.get();
         return try factory.getDescriptionProperty();
     }
-    pub fn getCommandProperty() core.HResult!*DependencyProperty {
+    pub fn get_CommandProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlUICommandStaticsCache.get();
         return try factory.getCommandProperty();
     }
@@ -5004,7 +5004,7 @@ pub const StandardUICommand = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getKindProperty() core.HResult!*DependencyProperty {
+    pub fn get_KindProperty() core.HResult!*DependencyProperty {
         const factory = @This().IStandardUICommandStaticsCache.get();
         return try factory.getKindProperty();
     }

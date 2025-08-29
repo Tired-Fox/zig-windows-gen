@@ -586,7 +586,7 @@ pub const PrintDocument = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDocumentSourceProperty() core.HResult!*DependencyProperty {
+    pub fn get_DocumentSourceProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPrintDocumentStaticsCache.get();
         return try factory.getDocumentSourceProperty();
     }

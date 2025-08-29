@@ -469,7 +469,7 @@ pub const CoreTextServicesConstants = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getHiddenCharacter() core.HResult!u16 {
+    pub fn get_HiddenCharacter() core.HResult!u16 {
         const factory = @This().ICoreTextServicesStaticsCache.get();
         return try factory.getHiddenCharacter();
     }

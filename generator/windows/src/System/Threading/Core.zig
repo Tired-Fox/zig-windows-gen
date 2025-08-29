@@ -260,17 +260,17 @@ pub const SignalNotifier = extern struct {
         const factory = @This().ISignalNotifierStaticsCache.get();
         return try factory.AttachToEvent(name, handler);
     }
-    pub fn AttachToEventWithHandlerWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
+    pub fn AttachToEventWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         const factory = @This().ISignalNotifierStaticsCache.get();
-        return try factory.AttachToEventWithHandlerWithTimeout(name, handler, timeout);
+        return try factory.AttachToEventWithTimeout(name, handler, timeout);
     }
     pub fn AttachToSemaphore(name: HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
         const factory = @This().ISignalNotifierStaticsCache.get();
         return try factory.AttachToSemaphore(name, handler);
     }
-    pub fn AttachToSemaphoreWithHandlerWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
+    pub fn AttachToSemaphoreWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         const factory = @This().ISignalNotifierStaticsCache.get();
-        return try factory.AttachToSemaphoreWithHandlerWithTimeout(name, handler, timeout);
+        return try factory.AttachToSemaphoreWithTimeout(name, handler, timeout);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.SignalNotifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

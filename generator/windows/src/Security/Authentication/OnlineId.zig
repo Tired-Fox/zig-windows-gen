@@ -471,7 +471,7 @@ pub const OnlineIdSystemAuthenticator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDefault() core.HResult!*OnlineIdSystemAuthenticatorForUser {
+    pub fn get_Default() core.HResult!*OnlineIdSystemAuthenticatorForUser {
         const factory = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
         return try factory.getDefault();
     }

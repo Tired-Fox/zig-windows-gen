@@ -319,11 +319,11 @@ pub const StorageApplicationPermissions = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFutureAccessList() core.HResult!*StorageItemAccessList {
+    pub fn get_FutureAccessList() core.HResult!*StorageItemAccessList {
         const factory = @This().IStorageApplicationPermissionsStaticsCache.get();
         return try factory.getFutureAccessList();
     }
-    pub fn getMostRecentlyUsedList() core.HResult!*StorageItemMostRecentlyUsedList {
+    pub fn get_MostRecentlyUsedList() core.HResult!*StorageItemMostRecentlyUsedList {
         const factory = @This().IStorageApplicationPermissionsStaticsCache.get();
         return try factory.getMostRecentlyUsedList();
     }

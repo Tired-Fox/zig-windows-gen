@@ -328,7 +328,7 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
+    pub fn get_Current() core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
         const factory = @This().IMicrosoftAccountMultiFactorAuthenticatorStaticsCache.get();
         return try factory.getCurrent();
     }

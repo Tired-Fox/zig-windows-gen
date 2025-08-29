@@ -9,11 +9,11 @@ pub const CustomXamlResourceLoader = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*CustomXamlResourceLoader {
+    pub fn get_Current() core.HResult!*CustomXamlResourceLoader {
         const factory = @This().ICustomXamlResourceLoaderStaticsCache.get();
         return try factory.getCurrent();
     }
-    pub fn putCurrent(value: *CustomXamlResourceLoader) core.HResult!void {
+    pub fn put_Current(value: *CustomXamlResourceLoader) core.HResult!void {
         const factory = @This().ICustomXamlResourceLoaderStaticsCache.get();
         return try factory.putCurrent(value);
     }

@@ -2122,19 +2122,19 @@ pub const KnownCameraIntrinsicsProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getFocalLength() core.HResult!HSTRING {
+    pub fn get_FocalLength() core.HResult!HSTRING {
         const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try factory.getFocalLength();
     }
-    pub fn getPrincipalPoint() core.HResult!HSTRING {
+    pub fn get_PrincipalPoint() core.HResult!HSTRING {
         const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try factory.getPrincipalPoint();
     }
-    pub fn getRadialDistortion() core.HResult!HSTRING {
+    pub fn get_RadialDistortion() core.HResult!HSTRING {
         const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try factory.getRadialDistortion();
     }
-    pub fn getTangentialDistortion() core.HResult!HSTRING {
+    pub fn get_TangentialDistortion() core.HResult!HSTRING {
         const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
         return try factory.getTangentialDistortion();
     }
@@ -2147,15 +2147,15 @@ pub const KnownPerceptionColorFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExposure() core.HResult!HSTRING {
+    pub fn get_Exposure() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try factory.getExposure();
     }
-    pub fn getAutoExposureEnabled() core.HResult!HSTRING {
+    pub fn get_AutoExposureEnabled() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try factory.getAutoExposureEnabled();
     }
-    pub fn getExposureCompensation() core.HResult!HSTRING {
+    pub fn get_ExposureCompensation() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
         return try factory.getExposureCompensation();
     }
@@ -2168,11 +2168,11 @@ pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMinDepth() core.HResult!HSTRING {
+    pub fn get_MinDepth() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
         return try factory.getMinDepth();
     }
-    pub fn getMaxDepth() core.HResult!HSTRING {
+    pub fn get_MaxDepth() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
         return try factory.getMaxDepth();
     }
@@ -2185,27 +2185,27 @@ pub const KnownPerceptionFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDeviceId() core.HResult!HSTRING {
+    pub fn get_DeviceId() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameSourcePropertiesStatics2Cache.get();
         return try factory.getDeviceId();
     }
-    pub fn getId() core.HResult!HSTRING {
+    pub fn get_Id() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try factory.getId();
     }
-    pub fn getPhysicalDeviceIds() core.HResult!HSTRING {
+    pub fn get_PhysicalDeviceIds() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try factory.getPhysicalDeviceIds();
     }
-    pub fn getFrameKind() core.HResult!HSTRING {
+    pub fn get_FrameKind() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try factory.getFrameKind();
     }
-    pub fn getDeviceModelVersion() core.HResult!HSTRING {
+    pub fn get_DeviceModelVersion() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try factory.getDeviceModelVersion();
     }
-    pub fn getEnclosureLocation() core.HResult!HSTRING {
+    pub fn get_EnclosureLocation() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
         return try factory.getEnclosureLocation();
     }
@@ -2219,31 +2219,31 @@ pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getExposure() core.HResult!HSTRING {
+    pub fn get_Exposure() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getExposure();
     }
-    pub fn getAutoExposureEnabled() core.HResult!HSTRING {
+    pub fn get_AutoExposureEnabled() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getAutoExposureEnabled();
     }
-    pub fn getExposureCompensation() core.HResult!HSTRING {
+    pub fn get_ExposureCompensation() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getExposureCompensation();
     }
-    pub fn getActiveIlluminationEnabled() core.HResult!HSTRING {
+    pub fn get_ActiveIlluminationEnabled() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getActiveIlluminationEnabled();
     }
-    pub fn getAmbientSubtractionEnabled() core.HResult!HSTRING {
+    pub fn get_AmbientSubtractionEnabled() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getAmbientSubtractionEnabled();
     }
-    pub fn getStructureLightPatternEnabled() core.HResult!HSTRING {
+    pub fn get_StructureLightPatternEnabled() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getStructureLightPatternEnabled();
     }
-    pub fn getInterleavedIlluminationEnabled() core.HResult!HSTRING {
+    pub fn get_InterleavedIlluminationEnabled() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
         return try factory.getInterleavedIlluminationEnabled();
     }
@@ -2256,23 +2256,23 @@ pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getVideoProfile() core.HResult!HSTRING {
+    pub fn get_VideoProfile() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try factory.getVideoProfile();
     }
-    pub fn getSupportedVideoProfiles() core.HResult!HSTRING {
+    pub fn get_SupportedVideoProfiles() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try factory.getSupportedVideoProfiles();
     }
-    pub fn getAvailableVideoProfiles() core.HResult!HSTRING {
+    pub fn get_AvailableVideoProfiles() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try factory.getAvailableVideoProfiles();
     }
-    pub fn getIsMirrored() core.HResult!HSTRING {
+    pub fn get_IsMirrored() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try factory.getIsMirrored();
     }
-    pub fn getCameraIntrinsics() core.HResult!HSTRING {
+    pub fn get_CameraIntrinsics() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
         return try factory.getCameraIntrinsics();
     }
@@ -2285,23 +2285,23 @@ pub const KnownPerceptionVideoProfileProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBitmapPixelFormat() core.HResult!HSTRING {
+    pub fn get_BitmapPixelFormat() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try factory.getBitmapPixelFormat();
     }
-    pub fn getBitmapAlphaMode() core.HResult!HSTRING {
+    pub fn get_BitmapAlphaMode() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try factory.getBitmapAlphaMode();
     }
-    pub fn getWidth() core.HResult!HSTRING {
+    pub fn get_Width() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try factory.getWidth();
     }
-    pub fn getHeight() core.HResult!HSTRING {
+    pub fn get_Height() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try factory.getHeight();
     }
-    pub fn getFrameDuration() core.HResult!HSTRING {
+    pub fn get_FrameDuration() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
         return try factory.getFrameDuration();
     }

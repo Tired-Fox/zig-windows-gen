@@ -206,11 +206,11 @@ pub const AnimationController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMaxPlaybackRate() core.HResult!f32 {
+    pub fn get_MaxPlaybackRate() core.HResult!f32 {
         const factory = @This().IAnimationControllerStaticsCache.get();
         return try factory.getMaxPlaybackRate();
     }
-    pub fn getMinPlaybackRate() core.HResult!f32 {
+    pub fn get_MinPlaybackRate() core.HResult!f32 {
         const factory = @This().IAnimationControllerStaticsCache.get();
         return try factory.getMinPlaybackRate();
     }
@@ -1985,7 +1985,7 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMaxRespectedCasters() core.HResult!i32 {
+    pub fn get_MaxRespectedCasters() core.HResult!i32 {
         const factory = @This().ICompositionProjectedShadowCasterCollectionStaticsCache.get();
         return try factory.getMaxRespectedCasters();
     }
@@ -3265,11 +3265,11 @@ pub const Compositor = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositor.IID)));
     }
-    pub fn getMaxGlobalPlaybackRate() core.HResult!f32 {
+    pub fn get_MaxGlobalPlaybackRate() core.HResult!f32 {
         const factory = @This().ICompositorStaticsCache.get();
         return try factory.getMaxGlobalPlaybackRate();
     }
-    pub fn getMinGlobalPlaybackRate() core.HResult!f32 {
+    pub fn get_MinGlobalPlaybackRate() core.HResult!f32 {
         const factory = @This().ICompositorStaticsCache.get();
         return try factory.getMinGlobalPlaybackRate();
     }

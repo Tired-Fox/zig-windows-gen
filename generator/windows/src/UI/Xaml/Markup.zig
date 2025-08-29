@@ -755,7 +755,7 @@ pub const XamlBindingHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDataTemplateComponentProperty() core.HResult!*DependencyProperty {
+    pub fn get_DataTemplateComponentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IXamlBindingHelperStaticsCache.get();
         return try factory.getDataTemplateComponentProperty();
     }

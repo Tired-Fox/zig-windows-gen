@@ -26,7 +26,7 @@ pub const WorkplaceSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsMicrosoftAccountOptional() core.HResult!bool {
+    pub fn get_IsMicrosoftAccountOptional() core.HResult!bool {
         const factory = @This().IWorkplaceSettingsStaticsCache.get();
         return try factory.getIsMicrosoftAccountOptional();
     }

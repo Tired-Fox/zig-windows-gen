@@ -1631,19 +1631,19 @@ pub const PhoneCallBlocking = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBlockUnknownNumbers() core.HResult!bool {
+    pub fn get_BlockUnknownNumbers() core.HResult!bool {
         const factory = @This().IPhoneCallBlockingStaticsCache.get();
         return try factory.getBlockUnknownNumbers();
     }
-    pub fn putBlockUnknownNumbers(value: bool) core.HResult!void {
+    pub fn put_BlockUnknownNumbers(value: bool) core.HResult!void {
         const factory = @This().IPhoneCallBlockingStaticsCache.get();
         return try factory.putBlockUnknownNumbers(value);
     }
-    pub fn getBlockPrivateNumbers() core.HResult!bool {
+    pub fn get_BlockPrivateNumbers() core.HResult!bool {
         const factory = @This().IPhoneCallBlockingStaticsCache.get();
         return try factory.getBlockPrivateNumbers();
     }
-    pub fn putBlockPrivateNumbers(value: bool) core.HResult!void {
+    pub fn put_BlockPrivateNumbers(value: bool) core.HResult!void {
         const factory = @This().IPhoneCallBlockingStaticsCache.get();
         return try factory.putBlockPrivateNumbers(value);
     }
@@ -1701,19 +1701,19 @@ pub const PhoneCallManager = extern struct {
         const factory = @This().IPhoneCallManagerStaticsCache.get();
         return try factory.ShowPhoneCallUI(phoneNumber, displayName);
     }
-    pub fn addCallStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_CallStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPhoneCallManagerStatics2Cache.get();
         return try factory.addCallStateChanged(handler);
     }
-    pub fn removeCallStateChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_CallStateChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPhoneCallManagerStatics2Cache.get();
         return try factory.removeCallStateChanged(token);
     }
-    pub fn getIsCallActive() core.HResult!bool {
+    pub fn get_IsCallActive() core.HResult!bool {
         const factory = @This().IPhoneCallManagerStatics2Cache.get();
         return try factory.getIsCallActive();
     }
-    pub fn getIsCallIncoming() core.HResult!bool {
+    pub fn get_IsCallIncoming() core.HResult!bool {
         const factory = @This().IPhoneCallManagerStatics2Cache.get();
         return try factory.getIsCallIncoming();
     }
@@ -2162,9 +2162,9 @@ pub const PhoneLineTransportDevice = extern struct {
         const factory = @This().IPhoneLineTransportDeviceStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(transport: PhoneLineTransport) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithTransport(transport: PhoneLineTransport) core.HResult!HSTRING {
         const factory = @This().IPhoneLineTransportDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(transport);
+        return try factory.GetDeviceSelectorWithTransport(transport);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.PhoneLineTransportDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

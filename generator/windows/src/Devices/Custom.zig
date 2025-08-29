@@ -267,7 +267,7 @@ pub const KnownDeviceTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUnknown() core.HResult!u16 {
+    pub fn get_Unknown() core.HResult!u16 {
         const factory = @This().IKnownDeviceTypesStaticsCache.get();
         return try factory.getUnknown();
     }

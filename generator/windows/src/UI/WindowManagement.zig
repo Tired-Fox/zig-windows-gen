@@ -1643,9 +1643,9 @@ pub const WindowingEnvironment = extern struct {
         const factory = @This().IWindowingEnvironmentStaticsCache.get();
         return try factory.FindAll();
     }
-    pub fn FindAll(kind: WindowingEnvironmentKind) core.HResult!*IVectorView(WindowingEnvironment) {
+    pub fn FindAllWithKind(kind: WindowingEnvironmentKind) core.HResult!*IVectorView(WindowingEnvironment) {
         const factory = @This().IWindowingEnvironmentStaticsCache.get();
-        return try factory.FindAll(kind);
+        return try factory.FindAllWithKind(kind);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.WindowingEnvironment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

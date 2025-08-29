@@ -4821,19 +4821,19 @@ pub const MediaDevice = extern struct {
         const factory = @This().IMediaDeviceStaticsCache.get();
         return try factory.GetDefaultAudioRenderId(role);
     }
-    pub fn addDefaultAudioCaptureDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioCaptureDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_DefaultAudioCaptureDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioCaptureDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaDeviceStaticsCache.get();
         return try factory.addDefaultAudioCaptureDeviceChanged(handler);
     }
-    pub fn removeDefaultAudioCaptureDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_DefaultAudioCaptureDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaDeviceStaticsCache.get();
         return try factory.removeDefaultAudioCaptureDeviceChanged(cookie);
     }
-    pub fn addDefaultAudioRenderDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioRenderDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_DefaultAudioRenderDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioRenderDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaDeviceStaticsCache.get();
         return try factory.addDefaultAudioRenderDeviceChanged(handler);
     }
-    pub fn removeDefaultAudioRenderDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_DefaultAudioRenderDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaDeviceStaticsCache.get();
         return try factory.removeDefaultAudioRenderDeviceChanged(cookie);
     }

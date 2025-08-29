@@ -218,135 +218,135 @@ pub const MediaControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addSoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_SoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addSoundLevelChanged(handler);
     }
-    pub fn removeSoundLevelChanged(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_SoundLevelChanged(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeSoundLevelChanged(cookie);
     }
-    pub fn addPlayPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_PlayPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addPlayPressed(handler);
     }
-    pub fn removePlayPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_PlayPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removePlayPressed(cookie);
     }
-    pub fn addPausePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_PausePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addPausePressed(handler);
     }
-    pub fn removePausePressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_PausePressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removePausePressed(cookie);
     }
-    pub fn addStopPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_StopPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addStopPressed(handler);
     }
-    pub fn removeStopPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_StopPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeStopPressed(cookie);
     }
-    pub fn addPlayPauseTogglePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_PlayPauseTogglePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addPlayPauseTogglePressed(handler);
     }
-    pub fn removePlayPauseTogglePressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_PlayPauseTogglePressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removePlayPauseTogglePressed(cookie);
     }
-    pub fn addRecordPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RecordPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addRecordPressed(handler);
     }
-    pub fn removeRecordPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RecordPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeRecordPressed(cookie);
     }
-    pub fn addNextTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_NextTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addNextTrackPressed(handler);
     }
-    pub fn removeNextTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_NextTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeNextTrackPressed(cookie);
     }
-    pub fn addPreviousTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_PreviousTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addPreviousTrackPressed(handler);
     }
-    pub fn removePreviousTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_PreviousTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removePreviousTrackPressed(cookie);
     }
-    pub fn addFastForwardPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_FastForwardPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addFastForwardPressed(handler);
     }
-    pub fn removeFastForwardPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_FastForwardPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeFastForwardPressed(cookie);
     }
-    pub fn addRewindPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RewindPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addRewindPressed(handler);
     }
-    pub fn removeRewindPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RewindPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeRewindPressed(cookie);
     }
-    pub fn addChannelUpPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_ChannelUpPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addChannelUpPressed(handler);
     }
-    pub fn removeChannelUpPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ChannelUpPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeChannelUpPressed(cookie);
     }
-    pub fn addChannelDownPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_ChannelDownPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMediaControlCache.get();
         return try factory.addChannelDownPressed(handler);
     }
-    pub fn removeChannelDownPressed(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ChannelDownPressed(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.removeChannelDownPressed(cookie);
     }
-    pub fn getSoundLevel() core.HResult!SoundLevel {
+    pub fn get_SoundLevel() core.HResult!SoundLevel {
         const factory = @This().IMediaControlCache.get();
         return try factory.getSoundLevel();
     }
-    pub fn putTrackName(value: HSTRING) core.HResult!void {
+    pub fn put_TrackName(value: HSTRING) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.putTrackName(value);
     }
-    pub fn getTrackName() core.HResult!HSTRING {
+    pub fn get_TrackName() core.HResult!HSTRING {
         const factory = @This().IMediaControlCache.get();
         return try factory.getTrackName();
     }
-    pub fn putArtistName(value: HSTRING) core.HResult!void {
+    pub fn put_ArtistName(value: HSTRING) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.putArtistName(value);
     }
-    pub fn getArtistName() core.HResult!HSTRING {
+    pub fn get_ArtistName() core.HResult!HSTRING {
         const factory = @This().IMediaControlCache.get();
         return try factory.getArtistName();
     }
-    pub fn putIsPlaying(value: bool) core.HResult!void {
+    pub fn put_IsPlaying(value: bool) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.putIsPlaying(value);
     }
-    pub fn getIsPlaying() core.HResult!bool {
+    pub fn get_IsPlaying() core.HResult!bool {
         const factory = @This().IMediaControlCache.get();
         return try factory.getIsPlaying();
     }
-    pub fn putAlbumArt(value: *Uri) core.HResult!void {
+    pub fn put_AlbumArt(value: *Uri) core.HResult!void {
         const factory = @This().IMediaControlCache.get();
         return try factory.putAlbumArt(value);
     }
-    pub fn getAlbumArt() core.HResult!*Uri {
+    pub fn get_AlbumArt() core.HResult!*Uri {
         const factory = @This().IMediaControlCache.get();
         return try factory.getAlbumArt();
     }
@@ -2178,7 +2178,7 @@ pub const MediaMarkerTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBookmark() core.HResult!HSTRING {
+    pub fn get_Bookmark() core.HResult!HSTRING {
         const factory = @This().IMediaMarkerTypesStaticsCache.get();
         return try factory.getBookmark();
     }
@@ -2877,7 +2877,7 @@ pub const VideoEffects = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getVideoStabilization() core.HResult!HSTRING {
+    pub fn get_VideoStabilization() core.HResult!HSTRING {
         const factory = @This().IVideoEffectsStaticsCache.get();
         return try factory.getVideoStabilization();
     }
@@ -2994,9 +2994,9 @@ pub const VideoFrame = extern struct {
         const factory = @This().IVideoFrameStaticsCache.get();
         return try factory.CreateAsDirect3D11SurfaceBacked(format, width, height);
     }
-    pub fn CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
+    pub fn CreateAsDirect3D11SurfaceBackedWithDevice(format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
         const factory = @This().IVideoFrameStaticsCache.get();
-        return try factory.CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(format, width, height, device);
+        return try factory.CreateAsDirect3D11SurfaceBackedWithDevice(format, width, height, device);
     }
     pub fn CreateWithSoftwareBitmap(bitmap: *SoftwareBitmap) core.HResult!*VideoFrame {
         const factory = @This().IVideoFrameStaticsCache.get();

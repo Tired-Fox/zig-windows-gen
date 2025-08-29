@@ -51,7 +51,7 @@ pub const FaceDetector = extern struct {
         const factory = @This().IFaceDetectorStaticsCache.get();
         return try factory.IsBitmapPixelFormatSupported(bitmapPixelFormat);
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().IFaceDetectorStaticsCache.get();
         return try factory.getIsSupported();
     }
@@ -99,7 +99,7 @@ pub const FaceTracker = extern struct {
         const factory = @This().IFaceTrackerStaticsCache.get();
         return try factory.IsBitmapPixelFormatSupported(bitmapPixelFormat);
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().IFaceTrackerStaticsCache.get();
         return try factory.getIsSupported();
     }

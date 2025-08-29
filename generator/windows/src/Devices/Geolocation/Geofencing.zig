@@ -91,7 +91,7 @@ pub const GeofenceMonitor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*GeofenceMonitor {
+    pub fn get_Current() core.HResult!*GeofenceMonitor {
         const factory = @This().IGeofenceMonitorStaticsCache.get();
         return try factory.getCurrent();
     }

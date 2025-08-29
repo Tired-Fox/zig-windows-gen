@@ -2074,19 +2074,19 @@ pub const KnownRemoteSystemCapabilities = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAppService() core.HResult!HSTRING {
+    pub fn get_AppService() core.HResult!HSTRING {
         const factory = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try factory.getAppService();
     }
-    pub fn getLaunchUri() core.HResult!HSTRING {
+    pub fn get_LaunchUri() core.HResult!HSTRING {
         const factory = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try factory.getLaunchUri();
     }
-    pub fn getRemoteSession() core.HResult!HSTRING {
+    pub fn get_RemoteSession() core.HResult!HSTRING {
         const factory = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try factory.getRemoteSession();
     }
-    pub fn getSpatialEntity() core.HResult!HSTRING {
+    pub fn get_SpatialEntity() core.HResult!HSTRING {
         const factory = @This().IKnownRemoteSystemCapabilitiesStaticsCache.get();
         return try factory.getSpatialEntity();
     }
@@ -2169,9 +2169,9 @@ pub const RemoteSystem = extern struct {
         const factory = @This().IRemoteSystemStaticsCache.get();
         return try factory.CreateWatcher();
     }
-    pub fn CreateWatcher(filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
+    pub fn CreateWatcherWithFilters(filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
         const factory = @This().IRemoteSystemStaticsCache.get();
-        return try factory.CreateWatcher(filters);
+        return try factory.CreateWatcherWithFilters(filters);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(RemoteSystemAccessStatus) {
         const factory = @This().IRemoteSystemStaticsCache.get();
@@ -2437,35 +2437,35 @@ pub const RemoteSystemKinds = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getPhone() core.HResult!HSTRING {
+    pub fn get_Phone() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStaticsCache.get();
         return try factory.getPhone();
     }
-    pub fn getHub() core.HResult!HSTRING {
+    pub fn get_Hub() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStaticsCache.get();
         return try factory.getHub();
     }
-    pub fn getHolographic() core.HResult!HSTRING {
+    pub fn get_Holographic() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStaticsCache.get();
         return try factory.getHolographic();
     }
-    pub fn getDesktop() core.HResult!HSTRING {
+    pub fn get_Desktop() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStaticsCache.get();
         return try factory.getDesktop();
     }
-    pub fn getXbox() core.HResult!HSTRING {
+    pub fn get_Xbox() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStaticsCache.get();
         return try factory.getXbox();
     }
-    pub fn getIot() core.HResult!HSTRING {
+    pub fn get_Iot() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStatics2Cache.get();
         return try factory.getIot();
     }
-    pub fn getTablet() core.HResult!HSTRING {
+    pub fn get_Tablet() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStatics2Cache.get();
         return try factory.getTablet();
     }
-    pub fn getLaptop() core.HResult!HSTRING {
+    pub fn get_Laptop() core.HResult!HSTRING {
         const factory = @This().IRemoteSystemKindStatics2Cache.get();
         return try factory.getLaptop();
     }
@@ -2789,9 +2789,9 @@ pub const RemoteSystemSessionMessageChannel = extern struct {
         const factory = @This().IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try factory.Create(session, channelName);
     }
-    pub fn CreateWithChannelNameWithReliability(session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn CreateWithReliability(session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
         const factory = @This().IRemoteSystemSessionMessageChannelFactoryCache.get();
-        return try factory.CreateWithChannelNameWithReliability(session, channelName, reliability);
+        return try factory.CreateWithReliability(session, channelName, reliability);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemSessionMessageChannel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

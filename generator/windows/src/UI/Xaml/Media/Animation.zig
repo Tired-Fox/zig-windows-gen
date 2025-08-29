@@ -43,7 +43,7 @@ pub const EasingFunctionBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEasingModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEasingFunctionBaseStaticsCache.get();
         return try factory.getEasingModeProperty();
     }
@@ -72,7 +72,7 @@ pub const BackEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackEase.IID)));
     }
-    pub fn getAmplitudeProperty() core.HResult!*DependencyProperty {
+    pub fn get_AmplitudeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBackEaseStaticsCache.get();
         return try factory.getAmplitudeProperty();
     }
@@ -129,7 +129,7 @@ pub const BeginStoryboard = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBeginStoryboard.IID)));
     }
-    pub fn getStoryboardProperty() core.HResult!*DependencyProperty {
+    pub fn get_StoryboardProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBeginStoryboardStaticsCache.get();
         return try factory.getStoryboardProperty();
     }
@@ -166,11 +166,11 @@ pub const BounceEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBounceEase.IID)));
     }
-    pub fn getBouncesProperty() core.HResult!*DependencyProperty {
+    pub fn get_BouncesProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBounceEaseStaticsCache.get();
         return try factory.getBouncesProperty();
     }
-    pub fn getBouncinessProperty() core.HResult!*DependencyProperty {
+    pub fn get_BouncinessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBounceEaseStaticsCache.get();
         return try factory.getBouncinessProperty();
     }
@@ -264,35 +264,35 @@ pub const Timeline = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAllowDependentAnimations() core.HResult!bool {
+    pub fn get_AllowDependentAnimations() core.HResult!bool {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getAllowDependentAnimations();
     }
-    pub fn putAllowDependentAnimations(value: bool) core.HResult!void {
+    pub fn put_AllowDependentAnimations(value: bool) core.HResult!void {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.putAllowDependentAnimations(value);
     }
-    pub fn getAutoReverseProperty() core.HResult!*DependencyProperty {
+    pub fn get_AutoReverseProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getAutoReverseProperty();
     }
-    pub fn getBeginTimeProperty() core.HResult!*DependencyProperty {
+    pub fn get_BeginTimeProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getBeginTimeProperty();
     }
-    pub fn getDurationProperty() core.HResult!*DependencyProperty {
+    pub fn get_DurationProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getDurationProperty();
     }
-    pub fn getSpeedRatioProperty() core.HResult!*DependencyProperty {
+    pub fn get_SpeedRatioProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getSpeedRatioProperty();
     }
-    pub fn getFillBehaviorProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillBehaviorProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getFillBehaviorProperty();
     }
-    pub fn getRepeatBehaviorProperty() core.HResult!*DependencyProperty {
+    pub fn get_RepeatBehaviorProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITimelineStaticsCache.get();
         return try factory.getRepeatBehaviorProperty();
     }
@@ -357,23 +357,23 @@ pub const ColorAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IColorAnimation.IID)));
     }
-    pub fn getFromProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorAnimationStaticsCache.get();
         return try factory.getFromProperty();
     }
-    pub fn getToProperty() core.HResult!*DependencyProperty {
+    pub fn get_ToProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorAnimationStaticsCache.get();
         return try factory.getToProperty();
     }
-    pub fn getByProperty() core.HResult!*DependencyProperty {
+    pub fn get_ByProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorAnimationStaticsCache.get();
         return try factory.getByProperty();
     }
-    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorAnimationStaticsCache.get();
         return try factory.getEasingFunctionProperty();
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorAnimationStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -406,7 +406,7 @@ pub const ColorAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IColorAnimationUsingKeyFrames.IID)));
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorAnimationUsingKeyFramesStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -439,11 +439,11 @@ pub const ColorKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorKeyFrameStaticsCache.get();
         return try factory.getValueProperty();
     }
-    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IColorKeyFrameStaticsCache.get();
         return try factory.getKeyTimeProperty();
     }
@@ -574,11 +574,11 @@ pub const CommonNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICommonNavigationTransitionInfo.IID)));
     }
-    pub fn getIsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICommonNavigationTransitionInfoStaticsCache.get();
         return try factory.getIsStaggeringEnabledProperty();
     }
-    pub fn getIsStaggerElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsStaggerElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICommonNavigationTransitionInfoStaticsCache.get();
         return try factory.getIsStaggerElementProperty();
     }
@@ -736,11 +736,11 @@ pub const ContentThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContentThemeTransition.IID)));
     }
-    pub fn getHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_HorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentThemeTransitionStaticsCache.get();
         return try factory.getHorizontalOffsetProperty();
     }
-    pub fn getVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_VerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentThemeTransitionStaticsCache.get();
         return try factory.getVerticalOffsetProperty();
     }
@@ -769,11 +769,11 @@ pub const ContinuumNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContinuumNavigationTransitionInfo.IID)));
     }
-    pub fn getExitElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
         return try factory.getExitElementProperty();
     }
-    pub fn getIsEntranceElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsEntranceElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
         return try factory.getIsEntranceElementProperty();
     }
@@ -785,7 +785,7 @@ pub const ContinuumNavigationTransitionInfo = extern struct {
         const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
         return try factory.SetIsEntranceElement(element, value);
     }
-    pub fn getIsExitElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsExitElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
         return try factory.getIsExitElementProperty();
     }
@@ -797,7 +797,7 @@ pub const ContinuumNavigationTransitionInfo = extern struct {
         const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
         return try factory.SetIsExitElement(element, value);
     }
-    pub fn getExitElementContainerProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitElementContainerProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
         return try factory.getExitElementContainerProperty();
     }
@@ -886,11 +886,11 @@ pub const DoubleKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleKeyFrameStaticsCache.get();
         return try factory.getValueProperty();
     }
-    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleKeyFrameStaticsCache.get();
         return try factory.getKeyTimeProperty();
     }
@@ -943,11 +943,11 @@ pub const ObjectKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IObjectKeyFrameStaticsCache.get();
         return try factory.getValueProperty();
     }
-    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IObjectKeyFrameStaticsCache.get();
         return try factory.getKeyTimeProperty();
     }
@@ -1000,11 +1000,11 @@ pub const PointKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getValueProperty() core.HResult!*DependencyProperty {
+    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointKeyFrameStaticsCache.get();
         return try factory.getValueProperty();
     }
-    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointKeyFrameStaticsCache.get();
         return try factory.getKeyTimeProperty();
     }
@@ -1085,23 +1085,23 @@ pub const DoubleAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDoubleAnimation.IID)));
     }
-    pub fn getFromProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleAnimationStaticsCache.get();
         return try factory.getFromProperty();
     }
-    pub fn getToProperty() core.HResult!*DependencyProperty {
+    pub fn get_ToProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleAnimationStaticsCache.get();
         return try factory.getToProperty();
     }
-    pub fn getByProperty() core.HResult!*DependencyProperty {
+    pub fn get_ByProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleAnimationStaticsCache.get();
         return try factory.getByProperty();
     }
-    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleAnimationStaticsCache.get();
         return try factory.getEasingFunctionProperty();
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleAnimationStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -1134,7 +1134,7 @@ pub const DoubleAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDoubleAnimationUsingKeyFrames.IID)));
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDoubleAnimationUsingKeyFramesStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -1233,7 +1233,7 @@ pub const DragItemThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDragItemThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDragItemThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -1278,15 +1278,15 @@ pub const DragOverThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDragOverThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDragOverThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
-    pub fn getToOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ToOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDragOverThemeAnimationStaticsCache.get();
         return try factory.getToOffsetProperty();
     }
-    pub fn getDirectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_DirectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDragOverThemeAnimationStaticsCache.get();
         return try factory.getDirectionProperty();
     }
@@ -1355,19 +1355,19 @@ pub const DrillInThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDrillInThemeAnimation.IID)));
     }
-    pub fn getEntranceTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_EntranceTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillInThemeAnimationStaticsCache.get();
         return try factory.getEntranceTargetNameProperty();
     }
-    pub fn getEntranceTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_EntranceTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillInThemeAnimationStaticsCache.get();
         return try factory.getEntranceTargetProperty();
     }
-    pub fn getExitTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillInThemeAnimationStaticsCache.get();
         return try factory.getExitTargetNameProperty();
     }
-    pub fn getExitTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillInThemeAnimationStaticsCache.get();
         return try factory.getExitTargetProperty();
     }
@@ -1420,19 +1420,19 @@ pub const DrillOutThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDrillOutThemeAnimation.IID)));
     }
-    pub fn getEntranceTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_EntranceTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
         return try factory.getEntranceTargetNameProperty();
     }
-    pub fn getEntranceTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_EntranceTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
         return try factory.getEntranceTargetProperty();
     }
-    pub fn getExitTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
         return try factory.getExitTargetNameProperty();
     }
-    pub fn getExitTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
         return try factory.getExitTargetProperty();
     }
@@ -1461,7 +1461,7 @@ pub const DropTargetItemThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDropTargetItemThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IDropTargetItemThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -1490,7 +1490,7 @@ pub const EasingColorKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasingColorKeyFrame.IID)));
     }
-    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEasingColorKeyFrameStaticsCache.get();
         return try factory.getEasingFunctionProperty();
     }
@@ -1519,7 +1519,7 @@ pub const EasingDoubleKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasingDoubleKeyFrame.IID)));
     }
-    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEasingDoubleKeyFrameStaticsCache.get();
         return try factory.getEasingFunctionProperty();
     }
@@ -1553,7 +1553,7 @@ pub const EasingPointKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasingPointKeyFrame.IID)));
     }
-    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEasingPointKeyFrameStaticsCache.get();
         return try factory.getEasingFunctionProperty();
     }
@@ -1582,7 +1582,7 @@ pub const EdgeUIThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEdgeUIThemeTransition.IID)));
     }
-    pub fn getEdgeProperty() core.HResult!*DependencyProperty {
+    pub fn get_EdgeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEdgeUIThemeTransitionStaticsCache.get();
         return try factory.getEdgeProperty();
     }
@@ -1619,11 +1619,11 @@ pub const ElasticEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IElasticEase.IID)));
     }
-    pub fn getOscillationsProperty() core.HResult!*DependencyProperty {
+    pub fn get_OscillationsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IElasticEaseStaticsCache.get();
         return try factory.getOscillationsProperty();
     }
-    pub fn getSpringinessProperty() core.HResult!*DependencyProperty {
+    pub fn get_SpringinessProperty() core.HResult!*DependencyProperty {
         const factory = @This().IElasticEaseStaticsCache.get();
         return try factory.getSpringinessProperty();
     }
@@ -1644,7 +1644,7 @@ pub const EntranceNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEntranceNavigationTransitionInfo.IID)));
     }
-    pub fn getIsTargetElementProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsTargetElementProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
         return try factory.getIsTargetElementProperty();
     }
@@ -1697,15 +1697,15 @@ pub const EntranceThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEntranceThemeTransition.IID)));
     }
-    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEntranceThemeTransitionStaticsCache.get();
         return try factory.getFromHorizontalOffsetProperty();
     }
-    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEntranceThemeTransitionStaticsCache.get();
         return try factory.getFromVerticalOffsetProperty();
     }
-    pub fn getIsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IEntranceThemeTransitionStaticsCache.get();
         return try factory.getIsStaggeringEnabledProperty();
     }
@@ -1734,7 +1734,7 @@ pub const ExponentialEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IExponentialEase.IID)));
     }
-    pub fn getExponentProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExponentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IExponentialEaseStaticsCache.get();
         return try factory.getExponentProperty();
     }
@@ -1763,7 +1763,7 @@ pub const FadeInThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFadeInThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFadeInThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -1792,7 +1792,7 @@ pub const FadeOutThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFadeOutThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IFadeOutThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -7121,7 +7121,7 @@ pub const NavigationThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INavigationThemeTransition.IID)));
     }
-    pub fn getDefaultNavigationTransitionInfoProperty() core.HResult!*DependencyProperty {
+    pub fn get_DefaultNavigationTransitionInfoProperty() core.HResult!*DependencyProperty {
         const factory = @This().INavigationThemeTransitionStaticsCache.get();
         return try factory.getDefaultNavigationTransitionInfoProperty();
     }
@@ -7154,7 +7154,7 @@ pub const ObjectAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IObjectAnimationUsingKeyFrames.IID)));
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IObjectAnimationUsingKeyFramesStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -7253,7 +7253,7 @@ pub const PaneThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPaneThemeTransition.IID)));
     }
-    pub fn getEdgeProperty() core.HResult!*DependencyProperty {
+    pub fn get_EdgeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPaneThemeTransitionStaticsCache.get();
         return try factory.getEdgeProperty();
     }
@@ -7314,23 +7314,23 @@ pub const PointAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointAnimation.IID)));
     }
-    pub fn getFromProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointAnimationStaticsCache.get();
         return try factory.getFromProperty();
     }
-    pub fn getToProperty() core.HResult!*DependencyProperty {
+    pub fn get_ToProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointAnimationStaticsCache.get();
         return try factory.getToProperty();
     }
-    pub fn getByProperty() core.HResult!*DependencyProperty {
+    pub fn get_ByProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointAnimationStaticsCache.get();
         return try factory.getByProperty();
     }
-    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointAnimationStaticsCache.get();
         return try factory.getEasingFunctionProperty();
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointAnimationStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -7363,7 +7363,7 @@ pub const PointAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointAnimationUsingKeyFrames.IID)));
     }
-    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointAnimationUsingKeyFramesStaticsCache.get();
         return try factory.getEnableDependentAnimationProperty();
     }
@@ -7462,7 +7462,7 @@ pub const PointerDownThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointerDownThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointerDownThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -7491,7 +7491,7 @@ pub const PointerUpThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointerUpThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPointerUpThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -7536,15 +7536,15 @@ pub const PopInThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopInThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopInThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
-    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopInThemeAnimationStaticsCache.get();
         return try factory.getFromHorizontalOffsetProperty();
     }
-    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopInThemeAnimationStaticsCache.get();
         return try factory.getFromVerticalOffsetProperty();
     }
@@ -7573,7 +7573,7 @@ pub const PopOutThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopOutThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopOutThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -7610,11 +7610,11 @@ pub const PopupThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopupThemeTransition.IID)));
     }
-    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupThemeTransitionStaticsCache.get();
         return try factory.getFromHorizontalOffsetProperty();
     }
-    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPopupThemeTransitionStaticsCache.get();
         return try factory.getFromVerticalOffsetProperty();
     }
@@ -7643,7 +7643,7 @@ pub const PowerEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPowerEase.IID)));
     }
-    pub fn getPowerProperty() core.HResult!*DependencyProperty {
+    pub fn get_PowerProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPowerEaseStaticsCache.get();
         return try factory.getPowerProperty();
     }
@@ -7729,7 +7729,7 @@ pub const RepeatBehaviorHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getForever() core.HResult!RepeatBehavior {
+    pub fn get_Forever() core.HResult!RepeatBehavior {
         const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
         return try factory.getForever();
     }
@@ -7798,15 +7798,15 @@ pub const RepositionThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRepositionThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRepositionThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
-    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRepositionThemeAnimationStaticsCache.get();
         return try factory.getFromHorizontalOffsetProperty();
     }
-    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRepositionThemeAnimationStaticsCache.get();
         return try factory.getFromVerticalOffsetProperty();
     }
@@ -7839,7 +7839,7 @@ pub const RepositionThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRepositionThemeTransition.IID)));
     }
-    pub fn getIsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRepositionThemeTransitionStatics2Cache.get();
         return try factory.getIsStaggeringEnabledProperty();
     }
@@ -7893,7 +7893,7 @@ pub const SlideNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISlideNavigationTransitionInfo.IID)));
     }
-    pub fn getEffectProperty() core.HResult!*DependencyProperty {
+    pub fn get_EffectProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISlideNavigationTransitionInfoStatics2Cache.get();
         return try factory.getEffectProperty();
     }
@@ -7922,7 +7922,7 @@ pub const SplineColorKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplineColorKeyFrame.IID)));
     }
-    pub fn getKeySplineProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeySplineProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplineColorKeyFrameStaticsCache.get();
         return try factory.getKeySplineProperty();
     }
@@ -7951,7 +7951,7 @@ pub const SplineDoubleKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplineDoubleKeyFrame.IID)));
     }
-    pub fn getKeySplineProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeySplineProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplineDoubleKeyFrameStaticsCache.get();
         return try factory.getKeySplineProperty();
     }
@@ -7980,7 +7980,7 @@ pub const SplinePointKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplinePointKeyFrame.IID)));
     }
-    pub fn getKeySplineProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeySplineProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplinePointKeyFrameStaticsCache.get();
         return try factory.getKeySplineProperty();
     }
@@ -8089,47 +8089,47 @@ pub const SplitCloseThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplitCloseThemeAnimation.IID)));
     }
-    pub fn getOpenedTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpenedTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getOpenedTargetNameProperty();
     }
-    pub fn getOpenedTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpenedTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getOpenedTargetProperty();
     }
-    pub fn getClosedTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClosedTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getClosedTargetNameProperty();
     }
-    pub fn getClosedTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClosedTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getClosedTargetProperty();
     }
-    pub fn getContentTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getContentTargetNameProperty();
     }
-    pub fn getContentTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getContentTargetProperty();
     }
-    pub fn getOpenedLengthProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpenedLengthProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getOpenedLengthProperty();
     }
-    pub fn getClosedLengthProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClosedLengthProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getClosedLengthProperty();
     }
-    pub fn getOffsetFromCenterProperty() core.HResult!*DependencyProperty {
+    pub fn get_OffsetFromCenterProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getOffsetFromCenterProperty();
     }
-    pub fn getContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getContentTranslationDirectionProperty();
     }
-    pub fn getContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
         return try factory.getContentTranslationOffsetProperty();
     }
@@ -8238,47 +8238,47 @@ pub const SplitOpenThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplitOpenThemeAnimation.IID)));
     }
-    pub fn getOpenedTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpenedTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getOpenedTargetNameProperty();
     }
-    pub fn getOpenedTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpenedTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getOpenedTargetProperty();
     }
-    pub fn getClosedTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClosedTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getClosedTargetNameProperty();
     }
-    pub fn getClosedTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClosedTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getClosedTargetProperty();
     }
-    pub fn getContentTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getContentTargetNameProperty();
     }
-    pub fn getContentTargetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTargetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getContentTargetProperty();
     }
-    pub fn getOpenedLengthProperty() core.HResult!*DependencyProperty {
+    pub fn get_OpenedLengthProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getOpenedLengthProperty();
     }
-    pub fn getClosedLengthProperty() core.HResult!*DependencyProperty {
+    pub fn get_ClosedLengthProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getClosedLengthProperty();
     }
-    pub fn getOffsetFromCenterProperty() core.HResult!*DependencyProperty {
+    pub fn get_OffsetFromCenterProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getOffsetFromCenterProperty();
     }
-    pub fn getContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getContentTranslationDirectionProperty();
     }
-    pub fn getContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
         return try factory.getContentTranslationOffsetProperty();
     }
@@ -8339,7 +8339,7 @@ pub const Storyboard = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStoryboard.IID)));
     }
-    pub fn getTargetPropertyProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetPropertyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IStoryboardStaticsCache.get();
         return try factory.getTargetPropertyProperty();
     }
@@ -8351,7 +8351,7 @@ pub const Storyboard = extern struct {
         const factory = @This().IStoryboardStaticsCache.get();
         return try factory.SetTargetProperty(element, path);
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().IStoryboardStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
@@ -8424,15 +8424,15 @@ pub const SwipeBackThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISwipeBackThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISwipeBackThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
-    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISwipeBackThemeAnimationStaticsCache.get();
         return try factory.getFromHorizontalOffsetProperty();
     }
-    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISwipeBackThemeAnimationStaticsCache.get();
         return try factory.getFromVerticalOffsetProperty();
     }
@@ -8477,15 +8477,15 @@ pub const SwipeHintThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISwipeHintThemeAnimation.IID)));
     }
-    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISwipeHintThemeAnimationStaticsCache.get();
         return try factory.getTargetNameProperty();
     }
-    pub fn getToHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ToHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISwipeHintThemeAnimationStaticsCache.get();
         return try factory.getToHorizontalOffsetProperty();
     }
-    pub fn getToVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_ToVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ISwipeHintThemeAnimationStaticsCache.get();
         return try factory.getToVerticalOffsetProperty();
     }

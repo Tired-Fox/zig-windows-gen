@@ -31,27 +31,27 @@ pub const Clipboard = extern struct {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.SetContentWithOptions(content, options);
     }
-    pub fn addHistoryChanged(handler: *EventHandler(ClipboardHistoryChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_HistoryChanged(handler: *EventHandler(ClipboardHistoryChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.addHistoryChanged(handler);
     }
-    pub fn removeHistoryChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_HistoryChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.removeHistoryChanged(token);
     }
-    pub fn addRoamingEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_RoamingEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.addRoamingEnabledChanged(handler);
     }
-    pub fn removeRoamingEnabledChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_RoamingEnabledChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.removeRoamingEnabledChanged(token);
     }
-    pub fn addHistoryEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_HistoryEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.addHistoryEnabledChanged(handler);
     }
-    pub fn removeHistoryEnabledChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_HistoryEnabledChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IClipboardStatics2Cache.get();
         return try factory.removeHistoryEnabledChanged(token);
     }
@@ -71,11 +71,11 @@ pub const Clipboard = extern struct {
         const factory = @This().IClipboardStaticsCache.get();
         return try factory.Clear();
     }
-    pub fn addContentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_ContentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IClipboardStaticsCache.get();
         return try factory.addContentChanged(handler);
     }
-    pub fn removeContentChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ContentChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IClipboardStaticsCache.get();
         return try factory.removeContentChanged(token);
     }
@@ -905,7 +905,7 @@ pub const DataTransferManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn ShowShareUI(options: *ShareUIOptions) core.HResult!void {
+    pub fn ShowShareUIWithOptions(options: *ShareUIOptions) core.HResult!void {
         const factory = @This().IDataTransferManagerStatics3Cache.get();
         return try factory.ShowShareUI(options);
     }
@@ -3081,39 +3081,39 @@ pub const StandardDataFormats = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUserActivityJsonArray() core.HResult!HSTRING {
+    pub fn get_UserActivityJsonArray() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStatics3Cache.get();
         return try factory.getUserActivityJsonArray();
     }
-    pub fn getWebLink() core.HResult!HSTRING {
+    pub fn get_WebLink() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStatics2Cache.get();
         return try factory.getWebLink();
     }
-    pub fn getApplicationLink() core.HResult!HSTRING {
+    pub fn get_ApplicationLink() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStatics2Cache.get();
         return try factory.getApplicationLink();
     }
-    pub fn getText() core.HResult!HSTRING {
+    pub fn get_Text() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStaticsCache.get();
         return try factory.getText();
     }
-    pub fn getUri() core.HResult!HSTRING {
+    pub fn get_Uri() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStaticsCache.get();
         return try factory.getUri();
     }
-    pub fn getHtml() core.HResult!HSTRING {
+    pub fn get_Html() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStaticsCache.get();
         return try factory.getHtml();
     }
-    pub fn getRtf() core.HResult!HSTRING {
+    pub fn get_Rtf() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStaticsCache.get();
         return try factory.getRtf();
     }
-    pub fn getBitmap() core.HResult!HSTRING {
+    pub fn get_Bitmap() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStaticsCache.get();
         return try factory.getBitmap();
     }
-    pub fn getStorageItems() core.HResult!HSTRING {
+    pub fn get_StorageItems() core.HResult!HSTRING {
         const factory = @This().IStandardDataFormatsStaticsCache.get();
         return try factory.getStorageItems();
     }

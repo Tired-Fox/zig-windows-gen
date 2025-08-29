@@ -119,51 +119,51 @@ pub const CompositeTransform3D = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositeTransform3D.IID)));
     }
-    pub fn getCenterXProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getCenterXProperty();
     }
-    pub fn getCenterYProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getCenterYProperty();
     }
-    pub fn getCenterZProperty() core.HResult!*DependencyProperty {
+    pub fn get_CenterZProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getCenterZProperty();
     }
-    pub fn getRotationXProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getRotationXProperty();
     }
-    pub fn getRotationYProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getRotationYProperty();
     }
-    pub fn getRotationZProperty() core.HResult!*DependencyProperty {
+    pub fn get_RotationZProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getRotationZProperty();
     }
-    pub fn getScaleXProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getScaleXProperty();
     }
-    pub fn getScaleYProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getScaleYProperty();
     }
-    pub fn getScaleZProperty() core.HResult!*DependencyProperty {
+    pub fn get_ScaleZProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getScaleZProperty();
     }
-    pub fn getTranslateXProperty() core.HResult!*DependencyProperty {
+    pub fn get_TranslateXProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getTranslateXProperty();
     }
-    pub fn getTranslateYProperty() core.HResult!*DependencyProperty {
+    pub fn get_TranslateYProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getTranslateYProperty();
     }
-    pub fn getTranslateZProperty() core.HResult!*DependencyProperty {
+    pub fn get_TranslateZProperty() core.HResult!*DependencyProperty {
         const factory = @This().ICompositeTransform3DStaticsCache.get();
         return try factory.getTranslateZProperty();
     }
@@ -660,7 +660,7 @@ pub const Matrix3DHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIdentity() core.HResult!Matrix3D {
+    pub fn get_Identity() core.HResult!Matrix3D {
         const factory = @This().IMatrix3DHelperStaticsCache.get();
         return try factory.getIdentity();
     }
@@ -724,15 +724,15 @@ pub const PerspectiveTransform3D = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPerspectiveTransform3D.IID)));
     }
-    pub fn getDepthProperty() core.HResult!*DependencyProperty {
+    pub fn get_DepthProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPerspectiveTransform3DStaticsCache.get();
         return try factory.getDepthProperty();
     }
-    pub fn getOffsetXProperty() core.HResult!*DependencyProperty {
+    pub fn get_OffsetXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPerspectiveTransform3DStaticsCache.get();
         return try factory.getOffsetXProperty();
     }
-    pub fn getOffsetYProperty() core.HResult!*DependencyProperty {
+    pub fn get_OffsetYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IPerspectiveTransform3DStaticsCache.get();
         return try factory.getOffsetYProperty();
     }

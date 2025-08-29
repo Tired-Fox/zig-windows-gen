@@ -1366,9 +1366,9 @@ pub const SecondaryTile = extern struct {
         const factory = @This().ISecondaryTileStaticsCache.get();
         return try factory.FindAllAsync();
     }
-    pub fn FindAllAsync(applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
+    pub fn FindAllAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         const factory = @This().ISecondaryTileStaticsCache.get();
-        return try factory.FindAllAsync(applicationId);
+        return try factory.FindAllAsyncWithApplicationId(applicationId);
     }
     pub fn FindAllForPackageAsync() core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         const factory = @This().ISecondaryTileStaticsCache.get();

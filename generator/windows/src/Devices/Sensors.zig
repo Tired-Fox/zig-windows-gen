@@ -95,7 +95,7 @@ pub const Accelerometer = extern struct {
         const factory = @This().IAccelerometerStaticsCache.get();
         return try factory.GetDefault();
     }
-    pub fn GetDefault(readingType: AccelerometerReadingType) core.HResult!*Accelerometer {
+    pub fn GetDefaultWithReadingType(readingType: AccelerometerReadingType) core.HResult!*Accelerometer {
         const factory = @This().IAccelerometerStatics2Cache.get();
         return try factory.GetDefault(readingType);
     }
@@ -1470,11 +1470,11 @@ pub const HumanPresenceSettings = extern struct {
         const factory = @This().IHumanPresenceSettingsStaticsCache.get();
         return try factory.GetSupportedLockOnLeaveTimeouts();
     }
-    pub fn addSettingsChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_SettingsChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IHumanPresenceSettingsStaticsCache.get();
         return try factory.addSettingsChanged(handler);
     }
-    pub fn removeSettingsChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_SettingsChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IHumanPresenceSettingsStaticsCache.get();
         return try factory.removeSettingsChanged(token);
     }
@@ -7058,7 +7058,7 @@ pub const Inclinometer = extern struct {
         const factory = @This().IInclinometerStatics4Cache.get();
         return try factory.FromIdAsync(deviceId);
     }
-    pub fn GetDefault(sensorReadingtype: SensorReadingType) core.HResult!*Inclinometer {
+    pub fn GetDefaultWithSensorReadingtype(sensorReadingtype: SensorReadingType) core.HResult!*Inclinometer {
         const factory = @This().IInclinometerStatics3Cache.get();
         return try factory.GetDefault(sensorReadingtype);
     }
@@ -7636,11 +7636,11 @@ pub const OrientationSensor = extern struct {
         const factory = @This().IOrientationSensorStatics2Cache.get();
         return try factory.GetDefaultForRelativeReadings();
     }
-    pub fn GetDefault(sensorReadingtype: SensorReadingType) core.HResult!*OrientationSensor {
+    pub fn GetDefaultWithSensorReadingtype(sensorReadingtype: SensorReadingType) core.HResult!*OrientationSensor {
         const factory = @This().IOrientationSensorStatics3Cache.get();
         return try factory.GetDefault(sensorReadingtype);
     }
-    pub fn GetDefaultWithOptimizationGoal(sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
+    pub fn GetDefaultWithSensorReadingTypeWithOptimizationGoal(sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
         const factory = @This().IOrientationSensorStatics3Cache.get();
         return try factory.GetDefaultWithOptimizationGoal(sensorReadingType, optimizationGoal);
     }

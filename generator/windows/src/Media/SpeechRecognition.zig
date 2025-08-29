@@ -1539,15 +1539,15 @@ pub const SpeechRecognizer = extern struct {
         const factory = @This().ISpeechRecognizerFactoryCache.get();
         return try factory.Create(language);
     }
-    pub fn getSystemSpeechLanguage() core.HResult!*Language {
+    pub fn get_SystemSpeechLanguage() core.HResult!*Language {
         const factory = @This().ISpeechRecognizerStaticsCache.get();
         return try factory.getSystemSpeechLanguage();
     }
-    pub fn getSupportedTopicLanguages() core.HResult!*IVectorView(Language) {
+    pub fn get_SupportedTopicLanguages() core.HResult!*IVectorView(Language) {
         const factory = @This().ISpeechRecognizerStaticsCache.get();
         return try factory.getSupportedTopicLanguages();
     }
-    pub fn getSupportedGrammarLanguages() core.HResult!*IVectorView(Language) {
+    pub fn get_SupportedGrammarLanguages() core.HResult!*IVectorView(Language) {
         const factory = @This().ISpeechRecognizerStaticsCache.get();
         return try factory.getSupportedGrammarLanguages();
     }

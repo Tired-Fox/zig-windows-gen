@@ -205,27 +205,27 @@ pub const GameBar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn addVisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_VisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IGameBarStaticsCache.get();
         return try factory.addVisibilityChanged(handler);
     }
-    pub fn removeVisibilityChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_VisibilityChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGameBarStaticsCache.get();
         return try factory.removeVisibilityChanged(token);
     }
-    pub fn addIsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_IsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IGameBarStaticsCache.get();
         return try factory.addIsInputRedirectedChanged(handler);
     }
-    pub fn removeIsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_IsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IGameBarStaticsCache.get();
         return try factory.removeIsInputRedirectedChanged(token);
     }
-    pub fn getVisible() core.HResult!bool {
+    pub fn get_Visible() core.HResult!bool {
         const factory = @This().IGameBarStaticsCache.get();
         return try factory.getVisible();
     }
-    pub fn getIsInputRedirected() core.HResult!bool {
+    pub fn get_IsInputRedirected() core.HResult!bool {
         const factory = @This().IGameBarStaticsCache.get();
         return try factory.getIsInputRedirected();
     }

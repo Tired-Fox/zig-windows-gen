@@ -303,7 +303,7 @@ pub const ESimManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getServiceInfo() core.HResult!*ESimServiceInfo {
+    pub fn get_ServiceInfo() core.HResult!*ESimServiceInfo {
         const factory = @This().IESimManagerStaticsCache.get();
         return try factory.getServiceInfo();
     }
@@ -311,11 +311,11 @@ pub const ESimManager = extern struct {
         const factory = @This().IESimManagerStaticsCache.get();
         return try factory.TryCreateESimWatcher();
     }
-    pub fn addServiceInfoChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_ServiceInfoChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IESimManagerStaticsCache.get();
         return try factory.addServiceInfoChanged(handler);
     }
-    pub fn removeServiceInfoChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ServiceInfoChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IESimManagerStaticsCache.get();
         return try factory.removeServiceInfoChanged(token);
     }
@@ -5565,15 +5565,15 @@ pub const KnownCSimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownCSimFilePathsStaticsCache.get();
         return try factory.getEFSpn();
     }
-    pub fn getGid1() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownCSimFilePathsStaticsCache.get();
         return try factory.getGid1();
     }
-    pub fn getGid2() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownCSimFilePathsStaticsCache.get();
         return try factory.getGid2();
     }
@@ -5586,15 +5586,15 @@ pub const KnownRuimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownRuimFilePathsStaticsCache.get();
         return try factory.getEFSpn();
     }
-    pub fn getGid1() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownRuimFilePathsStaticsCache.get();
         return try factory.getGid1();
     }
-    pub fn getGid2() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownRuimFilePathsStaticsCache.get();
         return try factory.getGid2();
     }
@@ -5607,19 +5607,19 @@ pub const KnownSimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEFOns() core.HResult!*IVectorView(u32) {
+    pub fn get_EFOns() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownSimFilePathsStaticsCache.get();
         return try factory.getEFOns();
     }
-    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownSimFilePathsStaticsCache.get();
         return try factory.getEFSpn();
     }
-    pub fn getGid1() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownSimFilePathsStaticsCache.get();
         return try factory.getGid1();
     }
-    pub fn getGid2() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownSimFilePathsStaticsCache.get();
         return try factory.getGid2();
     }
@@ -5632,23 +5632,23 @@ pub const KnownUSimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownUSimFilePathsStaticsCache.get();
         return try factory.getEFSpn();
     }
-    pub fn getEFOpl() core.HResult!*IVectorView(u32) {
+    pub fn get_EFOpl() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownUSimFilePathsStaticsCache.get();
         return try factory.getEFOpl();
     }
-    pub fn getEFPnn() core.HResult!*IVectorView(u32) {
+    pub fn get_EFPnn() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownUSimFilePathsStaticsCache.get();
         return try factory.getEFPnn();
     }
-    pub fn getGid1() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownUSimFilePathsStaticsCache.get();
         return try factory.getGid1();
     }
-    pub fn getGid2() core.HResult!*IVectorView(u32) {
+    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
         const factory = @This().IKnownUSimFilePathsStaticsCache.get();
         return try factory.getGid2();
     }
@@ -5693,7 +5693,7 @@ pub const MobileBroadbandAccount = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAvailableNetworkAccountIds() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_AvailableNetworkAccountIds() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IMobileBroadbandAccountStaticsCache.get();
         return try factory.getAvailableNetworkAccountIds();
     }
@@ -7398,7 +7398,7 @@ pub const NetworkOperatorTetheringManager = extern struct {
         const factory = @This().INetworkOperatorTetheringManagerStatics2Cache.get();
         return try factory.CreateFromConnectionProfile(profile);
     }
-    pub fn CreateFromConnectionProfile(profile: *ConnectionProfile, adapter: *NetworkAdapter) core.HResult!*NetworkOperatorTetheringManager {
+    pub fn CreateFromConnectionProfileWithAdapter(profile: *ConnectionProfile, adapter: *NetworkAdapter) core.HResult!*NetworkOperatorTetheringManager {
         const factory = @This().INetworkOperatorTetheringManagerStatics3Cache.get();
         return try factory.CreateFromConnectionProfile(profile, adapter);
     }

@@ -265,75 +265,75 @@ pub const TextElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getTextDecorationsProperty() core.HResult!*DependencyProperty {
+    pub fn get_TextDecorationsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics4Cache.get();
         return try factory.getTextDecorationsProperty();
     }
-    pub fn getIsAccessKeyScopeProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsAccessKeyScopeProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics4Cache.get();
         return try factory.getIsAccessKeyScopeProperty();
     }
-    pub fn getAccessKeyScopeOwnerProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessKeyScopeOwnerProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics4Cache.get();
         return try factory.getAccessKeyScopeOwnerProperty();
     }
-    pub fn getKeyTipPlacementModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipPlacementModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics4Cache.get();
         return try factory.getKeyTipPlacementModeProperty();
     }
-    pub fn getKeyTipHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipHorizontalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics4Cache.get();
         return try factory.getKeyTipHorizontalOffsetProperty();
     }
-    pub fn getKeyTipVerticalOffsetProperty() core.HResult!*DependencyProperty {
+    pub fn get_KeyTipVerticalOffsetProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics4Cache.get();
         return try factory.getKeyTipVerticalOffsetProperty();
     }
-    pub fn getAllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
+    pub fn get_AllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics3Cache.get();
         return try factory.getAllowFocusOnInteractionProperty();
     }
-    pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
+    pub fn get_AccessKeyProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics3Cache.get();
         return try factory.getAccessKeyProperty();
     }
-    pub fn getExitDisplayModeOnAccessKeyInvokedProperty() core.HResult!*DependencyProperty {
+    pub fn get_ExitDisplayModeOnAccessKeyInvokedProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics3Cache.get();
         return try factory.getExitDisplayModeOnAccessKeyInvokedProperty();
     }
-    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStatics2Cache.get();
         return try factory.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getFontSizeProperty();
     }
-    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getFontFamilyProperty();
     }
-    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getFontWeightProperty();
     }
-    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getFontStyleProperty();
     }
-    pub fn getFontStretchProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontStretchProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getFontStretchProperty();
     }
-    pub fn getCharacterSpacingProperty() core.HResult!*DependencyProperty {
+    pub fn get_CharacterSpacingProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getCharacterSpacingProperty();
     }
-    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getForegroundProperty();
     }
-    pub fn getLanguageProperty() core.HResult!*DependencyProperty {
+    pub fn get_LanguageProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextElementStaticsCache.get();
         return try factory.getLanguageProperty();
     }
@@ -397,23 +397,23 @@ pub const Block = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getTextAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_TextAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBlockStaticsCache.get();
         return try factory.getTextAlignmentProperty();
     }
-    pub fn getLineHeightProperty() core.HResult!*DependencyProperty {
+    pub fn get_LineHeightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBlockStaticsCache.get();
         return try factory.getLineHeightProperty();
     }
-    pub fn getLineStackingStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_LineStackingStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBlockStaticsCache.get();
         return try factory.getLineStackingStrategyProperty();
     }
-    pub fn getMarginProperty() core.HResult!*DependencyProperty {
+    pub fn get_MarginProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBlockStaticsCache.get();
         return try factory.getMarginProperty();
     }
-    pub fn getHorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_HorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IBlockStatics2Cache.get();
         return try factory.getHorizontalTextAlignmentProperty();
     }
@@ -733,59 +733,59 @@ pub const ContentLink = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContentLink.IID)));
     }
-    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getBackgroundProperty();
     }
-    pub fn getCursorProperty() core.HResult!*DependencyProperty {
+    pub fn get_CursorProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getCursorProperty();
     }
-    pub fn getXYFocusLeftProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusLeftProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusLeftProperty();
     }
-    pub fn getXYFocusRightProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusRightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusRightProperty();
     }
-    pub fn getXYFocusUpProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusUpProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusUpProperty();
     }
-    pub fn getXYFocusDownProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusDownProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusDownProperty();
     }
-    pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ElementSoundModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getElementSoundModeProperty();
     }
-    pub fn getFocusStateProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusStateProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getFocusStateProperty();
     }
-    pub fn getXYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusUpNavigationStrategyProperty();
     }
-    pub fn getXYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusDownNavigationStrategyProperty();
     }
-    pub fn getXYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusLeftNavigationStrategyProperty();
     }
-    pub fn getXYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getXYFocusRightNavigationStrategyProperty();
     }
-    pub fn getIsTabStopProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsTabStopProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getIsTabStopProperty();
     }
-    pub fn getTabIndexProperty() core.HResult!*DependencyProperty {
+    pub fn get_TabIndexProperty() core.HResult!*DependencyProperty {
         const factory = @This().IContentLinkStaticsCache.get();
         return try factory.getTabIndexProperty();
     }
@@ -1008,43 +1008,43 @@ pub const Glyphs = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGlyphs.IID)));
     }
-    pub fn getUnicodeStringProperty() core.HResult!*DependencyProperty {
+    pub fn get_UnicodeStringProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getUnicodeStringProperty();
     }
-    pub fn getIndicesProperty() core.HResult!*DependencyProperty {
+    pub fn get_IndicesProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getIndicesProperty();
     }
-    pub fn getFontUriProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontUriProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getFontUriProperty();
     }
-    pub fn getStyleSimulationsProperty() core.HResult!*DependencyProperty {
+    pub fn get_StyleSimulationsProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getStyleSimulationsProperty();
     }
-    pub fn getFontRenderingEmSizeProperty() core.HResult!*DependencyProperty {
+    pub fn get_FontRenderingEmSizeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getFontRenderingEmSizeProperty();
     }
-    pub fn getOriginXProperty() core.HResult!*DependencyProperty {
+    pub fn get_OriginXProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getOriginXProperty();
     }
-    pub fn getOriginYProperty() core.HResult!*DependencyProperty {
+    pub fn get_OriginYProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getOriginYProperty();
     }
-    pub fn getFillProperty() core.HResult!*DependencyProperty {
+    pub fn get_FillProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStaticsCache.get();
         return try factory.getFillProperty();
     }
-    pub fn getIsColorFontEnabledProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsColorFontEnabledProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStatics2Cache.get();
         return try factory.getIsColorFontEnabledProperty();
     }
-    pub fn getColorFontPaletteIndexProperty() core.HResult!*DependencyProperty {
+    pub fn get_ColorFontPaletteIndexProperty() core.HResult!*DependencyProperty {
         const factory = @This().IGlyphsStatics2Cache.get();
         return try factory.getColorFontPaletteIndexProperty();
     }
@@ -1262,59 +1262,59 @@ pub const Hyperlink = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHyperlink.IID)));
     }
-    pub fn getUnderlineStyleProperty() core.HResult!*DependencyProperty {
+    pub fn get_UnderlineStyleProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics2Cache.get();
         return try factory.getUnderlineStyleProperty();
     }
-    pub fn getNavigateUriProperty() core.HResult!*DependencyProperty {
+    pub fn get_NavigateUriProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStaticsCache.get();
         return try factory.getNavigateUriProperty();
     }
-    pub fn getXYFocusLeftProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusLeftProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics3Cache.get();
         return try factory.getXYFocusLeftProperty();
     }
-    pub fn getXYFocusRightProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusRightProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics3Cache.get();
         return try factory.getXYFocusRightProperty();
     }
-    pub fn getXYFocusUpProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusUpProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics3Cache.get();
         return try factory.getXYFocusUpProperty();
     }
-    pub fn getXYFocusDownProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusDownProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics3Cache.get();
         return try factory.getXYFocusDownProperty();
     }
-    pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
+    pub fn get_ElementSoundModeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics3Cache.get();
         return try factory.getElementSoundModeProperty();
     }
-    pub fn getIsTabStopProperty() core.HResult!*DependencyProperty {
+    pub fn get_IsTabStopProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics5Cache.get();
         return try factory.getIsTabStopProperty();
     }
-    pub fn getTabIndexProperty() core.HResult!*DependencyProperty {
+    pub fn get_TabIndexProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics5Cache.get();
         return try factory.getTabIndexProperty();
     }
-    pub fn getFocusStateProperty() core.HResult!*DependencyProperty {
+    pub fn get_FocusStateProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics4Cache.get();
         return try factory.getFocusStateProperty();
     }
-    pub fn getXYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics4Cache.get();
         return try factory.getXYFocusUpNavigationStrategyProperty();
     }
-    pub fn getXYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics4Cache.get();
         return try factory.getXYFocusDownNavigationStrategyProperty();
     }
-    pub fn getXYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics4Cache.get();
         return try factory.getXYFocusLeftNavigationStrategyProperty();
     }
-    pub fn getXYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
+    pub fn get_XYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
         const factory = @This().IHyperlinkStatics4Cache.get();
         return try factory.getXYFocusRightNavigationStrategyProperty();
     }
@@ -4822,7 +4822,7 @@ pub const Paragraph = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IParagraph.IID)));
     }
-    pub fn getTextIndentProperty() core.HResult!*DependencyProperty {
+    pub fn get_TextIndentProperty() core.HResult!*DependencyProperty {
         const factory = @This().IParagraphStaticsCache.get();
         return try factory.getTextIndentProperty();
     }
@@ -4875,7 +4875,7 @@ pub const Run = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRun.IID)));
     }
-    pub fn getFlowDirectionProperty() core.HResult!*DependencyProperty {
+    pub fn get_FlowDirectionProperty() core.HResult!*DependencyProperty {
         const factory = @This().IRunStaticsCache.get();
         return try factory.getFlowDirectionProperty();
     }
@@ -4912,11 +4912,11 @@ pub const TextHighlighter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextHighlighterStaticsCache.get();
         return try factory.getForegroundProperty();
     }
-    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITextHighlighterStaticsCache.get();
         return try factory.getBackgroundProperty();
     }
@@ -4985,7 +4985,7 @@ pub const Typography = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAnnotationAlternatesProperty() core.HResult!*DependencyProperty {
+    pub fn get_AnnotationAlternatesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getAnnotationAlternatesProperty();
     }
@@ -4997,7 +4997,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetAnnotationAlternates(element, value);
     }
-    pub fn getEastAsianExpertFormsProperty() core.HResult!*DependencyProperty {
+    pub fn get_EastAsianExpertFormsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getEastAsianExpertFormsProperty();
     }
@@ -5009,7 +5009,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetEastAsianExpertForms(element, value);
     }
-    pub fn getEastAsianLanguageProperty() core.HResult!*DependencyProperty {
+    pub fn get_EastAsianLanguageProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getEastAsianLanguageProperty();
     }
@@ -5021,7 +5021,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetEastAsianLanguage(element, value);
     }
-    pub fn getEastAsianWidthsProperty() core.HResult!*DependencyProperty {
+    pub fn get_EastAsianWidthsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getEastAsianWidthsProperty();
     }
@@ -5033,7 +5033,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetEastAsianWidths(element, value);
     }
-    pub fn getStandardLigaturesProperty() core.HResult!*DependencyProperty {
+    pub fn get_StandardLigaturesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStandardLigaturesProperty();
     }
@@ -5045,7 +5045,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStandardLigatures(element, value);
     }
-    pub fn getContextualLigaturesProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContextualLigaturesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getContextualLigaturesProperty();
     }
@@ -5057,7 +5057,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetContextualLigatures(element, value);
     }
-    pub fn getDiscretionaryLigaturesProperty() core.HResult!*DependencyProperty {
+    pub fn get_DiscretionaryLigaturesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getDiscretionaryLigaturesProperty();
     }
@@ -5069,7 +5069,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetDiscretionaryLigatures(element, value);
     }
-    pub fn getHistoricalLigaturesProperty() core.HResult!*DependencyProperty {
+    pub fn get_HistoricalLigaturesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getHistoricalLigaturesProperty();
     }
@@ -5081,7 +5081,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetHistoricalLigatures(element, value);
     }
-    pub fn getStandardSwashesProperty() core.HResult!*DependencyProperty {
+    pub fn get_StandardSwashesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStandardSwashesProperty();
     }
@@ -5093,7 +5093,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStandardSwashes(element, value);
     }
-    pub fn getContextualSwashesProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContextualSwashesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getContextualSwashesProperty();
     }
@@ -5105,7 +5105,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetContextualSwashes(element, value);
     }
-    pub fn getContextualAlternatesProperty() core.HResult!*DependencyProperty {
+    pub fn get_ContextualAlternatesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getContextualAlternatesProperty();
     }
@@ -5117,7 +5117,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetContextualAlternates(element, value);
     }
-    pub fn getStylisticAlternatesProperty() core.HResult!*DependencyProperty {
+    pub fn get_StylisticAlternatesProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticAlternatesProperty();
     }
@@ -5129,7 +5129,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticAlternates(element, value);
     }
-    pub fn getStylisticSet1Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet1Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet1Property();
     }
@@ -5141,7 +5141,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet1(element, value);
     }
-    pub fn getStylisticSet2Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet2Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet2Property();
     }
@@ -5153,7 +5153,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet2(element, value);
     }
-    pub fn getStylisticSet3Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet3Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet3Property();
     }
@@ -5165,7 +5165,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet3(element, value);
     }
-    pub fn getStylisticSet4Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet4Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet4Property();
     }
@@ -5177,7 +5177,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet4(element, value);
     }
-    pub fn getStylisticSet5Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet5Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet5Property();
     }
@@ -5189,7 +5189,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet5(element, value);
     }
-    pub fn getStylisticSet6Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet6Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet6Property();
     }
@@ -5201,7 +5201,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet6(element, value);
     }
-    pub fn getStylisticSet7Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet7Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet7Property();
     }
@@ -5213,7 +5213,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet7(element, value);
     }
-    pub fn getStylisticSet8Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet8Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet8Property();
     }
@@ -5225,7 +5225,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet8(element, value);
     }
-    pub fn getStylisticSet9Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet9Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet9Property();
     }
@@ -5237,7 +5237,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet9(element, value);
     }
-    pub fn getStylisticSet10Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet10Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet10Property();
     }
@@ -5249,7 +5249,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet10(element, value);
     }
-    pub fn getStylisticSet11Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet11Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet11Property();
     }
@@ -5261,7 +5261,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet11(element, value);
     }
-    pub fn getStylisticSet12Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet12Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet12Property();
     }
@@ -5273,7 +5273,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet12(element, value);
     }
-    pub fn getStylisticSet13Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet13Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet13Property();
     }
@@ -5285,7 +5285,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet13(element, value);
     }
-    pub fn getStylisticSet14Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet14Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet14Property();
     }
@@ -5297,7 +5297,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet14(element, value);
     }
-    pub fn getStylisticSet15Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet15Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet15Property();
     }
@@ -5309,7 +5309,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet15(element, value);
     }
-    pub fn getStylisticSet16Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet16Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet16Property();
     }
@@ -5321,7 +5321,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet16(element, value);
     }
-    pub fn getStylisticSet17Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet17Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet17Property();
     }
@@ -5333,7 +5333,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet17(element, value);
     }
-    pub fn getStylisticSet18Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet18Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet18Property();
     }
@@ -5345,7 +5345,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet18(element, value);
     }
-    pub fn getStylisticSet19Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet19Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet19Property();
     }
@@ -5357,7 +5357,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet19(element, value);
     }
-    pub fn getStylisticSet20Property() core.HResult!*DependencyProperty {
+    pub fn get_StylisticSet20Property() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getStylisticSet20Property();
     }
@@ -5369,7 +5369,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetStylisticSet20(element, value);
     }
-    pub fn getCapitalsProperty() core.HResult!*DependencyProperty {
+    pub fn get_CapitalsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getCapitalsProperty();
     }
@@ -5381,7 +5381,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetCapitals(element, value);
     }
-    pub fn getCapitalSpacingProperty() core.HResult!*DependencyProperty {
+    pub fn get_CapitalSpacingProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getCapitalSpacingProperty();
     }
@@ -5393,7 +5393,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetCapitalSpacing(element, value);
     }
-    pub fn getKerningProperty() core.HResult!*DependencyProperty {
+    pub fn get_KerningProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getKerningProperty();
     }
@@ -5405,7 +5405,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetKerning(element, value);
     }
-    pub fn getCaseSensitiveFormsProperty() core.HResult!*DependencyProperty {
+    pub fn get_CaseSensitiveFormsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getCaseSensitiveFormsProperty();
     }
@@ -5417,7 +5417,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetCaseSensitiveForms(element, value);
     }
-    pub fn getHistoricalFormsProperty() core.HResult!*DependencyProperty {
+    pub fn get_HistoricalFormsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getHistoricalFormsProperty();
     }
@@ -5429,7 +5429,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetHistoricalForms(element, value);
     }
-    pub fn getFractionProperty() core.HResult!*DependencyProperty {
+    pub fn get_FractionProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getFractionProperty();
     }
@@ -5441,7 +5441,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetFraction(element, value);
     }
-    pub fn getNumeralStyleProperty() core.HResult!*DependencyProperty {
+    pub fn get_NumeralStyleProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getNumeralStyleProperty();
     }
@@ -5453,7 +5453,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetNumeralStyle(element, value);
     }
-    pub fn getNumeralAlignmentProperty() core.HResult!*DependencyProperty {
+    pub fn get_NumeralAlignmentProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getNumeralAlignmentProperty();
     }
@@ -5465,7 +5465,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetNumeralAlignment(element, value);
     }
-    pub fn getSlashedZeroProperty() core.HResult!*DependencyProperty {
+    pub fn get_SlashedZeroProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getSlashedZeroProperty();
     }
@@ -5477,7 +5477,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetSlashedZero(element, value);
     }
-    pub fn getMathematicalGreekProperty() core.HResult!*DependencyProperty {
+    pub fn get_MathematicalGreekProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getMathematicalGreekProperty();
     }
@@ -5489,7 +5489,7 @@ pub const Typography = extern struct {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.SetMathematicalGreek(element, value);
     }
-    pub fn getVariantsProperty() core.HResult!*DependencyProperty {
+    pub fn get_VariantsProperty() core.HResult!*DependencyProperty {
         const factory = @This().ITypographyStaticsCache.get();
         return try factory.getVariantsProperty();
     }

@@ -2212,9 +2212,9 @@ pub const VirtualPrinterManager = extern struct {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();
         return try factory.FindAllVirtualPrinters();
     }
-    pub fn FindAllVirtualPrinters(appPackageFamilyName: HSTRING) core.HResult!*IVectorView(HSTRING) {
+    pub fn FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName: HSTRING) core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();
-        return try factory.FindAllVirtualPrinters(appPackageFamilyName);
+        return try factory.FindAllVirtualPrintersWithAppPackageFamilyName(appPackageFamilyName);
     }
     pub fn RemoveVirtualPrinterAsync(printerName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();

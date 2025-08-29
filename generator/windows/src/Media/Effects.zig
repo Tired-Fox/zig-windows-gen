@@ -129,17 +129,17 @@ pub const AudioEffectsManager = extern struct {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
         return try factory.CreateAudioRenderEffectsManager(deviceId, category);
     }
-    pub fn CreateAudioRenderEffectsManagerWithCategoryWithMode(deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManagerWithMode(deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
-        return try factory.CreateAudioRenderEffectsManagerWithCategoryWithMode(deviceId, category, mode);
+        return try factory.CreateAudioRenderEffectsManagerWithMode(deviceId, category, mode);
     }
     pub fn CreateAudioCaptureEffectsManager(deviceId: HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
         return try factory.CreateAudioCaptureEffectsManager(deviceId, category);
     }
-    pub fn CreateAudioCaptureEffectsManagerWithCategoryWithMode(deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManagerWithMode(deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
-        return try factory.CreateAudioCaptureEffectsManagerWithCategoryWithMode(deviceId, category, mode);
+        return try factory.CreateAudioCaptureEffectsManagerWithMode(deviceId, category, mode);
     }
     pub const NAME: []const u8 = "Windows.Media.Effects.AudioEffectsManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

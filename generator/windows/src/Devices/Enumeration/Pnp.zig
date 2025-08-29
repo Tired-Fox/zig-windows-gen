@@ -250,17 +250,17 @@ pub const PnpObject = extern struct {
         const factory = @This().IPnpObjectStaticsCache.get();
         return try factory.FindAllAsync(ty, requestedProperties);
     }
-    pub fn FindAllAsyncWithRequestedPropertiesWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsyncWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.FindAllAsyncWithRequestedPropertiesWithAqsFilter(ty, requestedProperties, aqsFilter);
+        return try factory.FindAllAsyncWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
     pub fn CreateWatcher(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
         const factory = @This().IPnpObjectStaticsCache.get();
         return try factory.CreateWatcher(ty, requestedProperties);
     }
-    pub fn CreateWatcherWithRequestedPropertiesWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcherWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateWatcherWithRequestedPropertiesWithAqsFilter(ty, requestedProperties, aqsFilter);
+        return try factory.CreateWatcherWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.Pnp.PnpObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

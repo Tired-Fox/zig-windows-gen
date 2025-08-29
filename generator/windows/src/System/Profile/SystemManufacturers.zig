@@ -201,7 +201,7 @@ pub const SmbiosInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getSerialNumber() core.HResult!HSTRING {
+    pub fn get_SerialNumber() core.HResult!HSTRING {
         const factory = @This().ISmbiosInformationStaticsCache.get();
         return try factory.getSerialNumber();
     }
@@ -250,15 +250,15 @@ pub const SystemSupportInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getLocalSystemEdition() core.HResult!HSTRING {
+    pub fn get_LocalSystemEdition() core.HResult!HSTRING {
         const factory = @This().ISystemSupportInfoStaticsCache.get();
         return try factory.getLocalSystemEdition();
     }
-    pub fn getOemSupportInfo() core.HResult!*OemSupportInfo {
+    pub fn get_OemSupportInfo() core.HResult!*OemSupportInfo {
         const factory = @This().ISystemSupportInfoStaticsCache.get();
         return try factory.getOemSupportInfo();
     }
-    pub fn getLocalDeviceInfo() core.HResult!*SystemSupportDeviceInfo {
+    pub fn get_LocalDeviceInfo() core.HResult!*SystemSupportDeviceInfo {
         const factory = @This().ISystemSupportInfoStatics2Cache.get();
         return try factory.getLocalDeviceInfo();
     }

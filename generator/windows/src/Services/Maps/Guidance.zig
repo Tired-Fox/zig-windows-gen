@@ -354,7 +354,7 @@ pub const GuidanceNavigator = extern struct {
         const factory = @This().IGuidanceNavigatorStaticsCache.get();
         return try factory.GetCurrent();
     }
-    pub fn getUseAppProvidedVoice() core.HResult!bool {
+    pub fn get_UseAppProvidedVoice() core.HResult!bool {
         const factory = @This().IGuidanceNavigatorStatics2Cache.get();
         return try factory.getUseAppProvidedVoice();
     }

@@ -149,9 +149,9 @@ pub const SpatialGraphInteropPreview = extern struct {
         const factory = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
         return try factory.TryCreateFrameOfReferenceWithRelativePosition(coordinateSystem, relativePosition);
     }
-    pub fn TryCreateFrameOfReferenceWithRelativeOrientation(coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
+    pub fn TryCreateFrameOfReferenceWithRelativePositionWithRelativeOrientation(coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
         const factory = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
-        return try factory.TryCreateFrameOfReferenceWithRelativeOrientation(coordinateSystem, relativePosition, relativeOrientation);
+        return try factory.TryCreateFrameOfReferenceWithRelativePositionWithRelativeOrientation(coordinateSystem, relativePosition, relativeOrientation);
     }
     pub fn CreateCoordinateSystemForNode(nodeId: *Guid) core.HResult!*SpatialCoordinateSystem {
         const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
@@ -161,9 +161,9 @@ pub const SpatialGraphInteropPreview = extern struct {
         const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
         return try factory.CreateCoordinateSystemForNodeWithRelativePosition(nodeId, relativePosition);
     }
-    pub fn CreateCoordinateSystemForNodeWithRelativeOrientation(nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
+    pub fn CreateCoordinateSystemForNodeWithRelativePositionWithRelativeOrientation(nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
         const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
-        return try factory.CreateCoordinateSystemForNodeWithRelativeOrientation(nodeId, relativePosition, relativeOrientation);
+        return try factory.CreateCoordinateSystemForNodeWithRelativePositionWithRelativeOrientation(nodeId, relativePosition, relativeOrientation);
     }
     pub fn CreateLocatorForNode(nodeId: *Guid) core.HResult!*SpatialLocator {
         const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();

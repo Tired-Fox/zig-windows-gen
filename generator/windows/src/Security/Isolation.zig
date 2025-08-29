@@ -1382,11 +1382,11 @@ pub const IsolatedWindowsEnvironmentHost = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsReady() core.HResult!bool {
+    pub fn get_IsReady() core.HResult!bool {
         const factory = @This().IIsolatedWindowsEnvironmentHostStaticsCache.get();
         return try factory.getIsReady();
     }
-    pub fn getHostErrors() core.HResult!*IVectorView(IsolatedWindowsEnvironmentHostError) {
+    pub fn get_HostErrors() core.HResult!*IVectorView(IsolatedWindowsEnvironmentHostError) {
         const factory = @This().IIsolatedWindowsEnvironmentHostStaticsCache.get();
         return try factory.getHostErrors();
     }

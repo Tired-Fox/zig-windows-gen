@@ -1983,63 +1983,63 @@ pub const StandardPrintTaskOptions = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBordering() core.HResult!HSTRING {
+    pub fn get_Bordering() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStatic2Cache.get();
         return try factory.getBordering();
     }
-    pub fn getCustomPageRanges() core.HResult!HSTRING {
+    pub fn get_CustomPageRanges() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStatic3Cache.get();
         return try factory.getCustomPageRanges();
     }
-    pub fn getMediaSize() core.HResult!HSTRING {
+    pub fn get_MediaSize() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getMediaSize();
     }
-    pub fn getMediaType() core.HResult!HSTRING {
+    pub fn get_MediaType() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getMediaType();
     }
-    pub fn getOrientation() core.HResult!HSTRING {
+    pub fn get_Orientation() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getOrientation();
     }
-    pub fn getPrintQuality() core.HResult!HSTRING {
+    pub fn get_PrintQuality() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getPrintQuality();
     }
-    pub fn getColorMode() core.HResult!HSTRING {
+    pub fn get_ColorMode() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getColorMode();
     }
-    pub fn getDuplex() core.HResult!HSTRING {
+    pub fn get_Duplex() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getDuplex();
     }
-    pub fn getCollation() core.HResult!HSTRING {
+    pub fn get_Collation() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getCollation();
     }
-    pub fn getStaple() core.HResult!HSTRING {
+    pub fn get_Staple() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getStaple();
     }
-    pub fn getHolePunch() core.HResult!HSTRING {
+    pub fn get_HolePunch() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getHolePunch();
     }
-    pub fn getBinding() core.HResult!HSTRING {
+    pub fn get_Binding() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getBinding();
     }
-    pub fn getCopies() core.HResult!HSTRING {
+    pub fn get_Copies() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getCopies();
     }
-    pub fn getNUp() core.HResult!HSTRING {
+    pub fn get_NUp() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getNUp();
     }
-    pub fn getInputBin() core.HResult!HSTRING {
+    pub fn get_InputBin() core.HResult!HSTRING {
         const factory = @This().IStandardPrintTaskOptionsStaticCache.get();
         return try factory.getInputBin();
     }

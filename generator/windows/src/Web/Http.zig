@@ -526,31 +526,31 @@ pub const HttpMethod = extern struct {
         const factory = @This().IHttpMethodFactoryCache.get();
         return try factory.Create(method);
     }
-    pub fn getDelete() core.HResult!*HttpMethod {
+    pub fn get_Delete() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getDelete();
     }
-    pub fn getGet() core.HResult!*HttpMethod {
+    pub fn get_Get() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getGet();
     }
-    pub fn getHead() core.HResult!*HttpMethod {
+    pub fn get_Head() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getHead();
     }
-    pub fn getOptions() core.HResult!*HttpMethod {
+    pub fn get_Options() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getOptions();
     }
-    pub fn getPatch() core.HResult!*HttpMethod {
+    pub fn get_Patch() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getPatch();
     }
-    pub fn getPost() core.HResult!*HttpMethod {
+    pub fn get_Post() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getPost();
     }
-    pub fn getPut() core.HResult!*HttpMethod {
+    pub fn get_Put() core.HResult!*HttpMethod {
         const factory = @This().IHttpMethodStaticsCache.get();
         return try factory.getPut();
     }

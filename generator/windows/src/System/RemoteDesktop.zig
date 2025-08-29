@@ -26,7 +26,7 @@ pub const InteractiveSession = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsRemote() core.HResult!bool {
+    pub fn get_IsRemote() core.HResult!bool {
         const factory = @This().IInteractiveSessionStaticsCache.get();
         return try factory.getIsRemote();
     }

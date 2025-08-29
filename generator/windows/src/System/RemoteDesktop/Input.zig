@@ -156,7 +156,7 @@ pub const RemoteTextConnection = extern struct {
         const factory = @This().IRemoteTextConnectionFactoryCache.get();
         return try factory.CreateInstance(connectionId, pduForwarder);
     }
-    pub fn CreateInstance(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions) core.HResult!*RemoteTextConnection {
+    pub fn CreateInstanceWithOptions(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions) core.HResult!*RemoteTextConnection {
         const factory = @This().IRemoteTextConnectionFactory2Cache.get();
         return try factory.CreateInstance(connectionId, pduForwarder, options);
     }

@@ -239,7 +239,7 @@ pub const PaymentAppManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*PaymentAppManager {
+    pub fn get_Current() core.HResult!*PaymentAppManager {
         const factory = @This().IPaymentAppManagerStaticsCache.get();
         return try factory.getCurrent();
     }

@@ -113,9 +113,9 @@ pub const I2cDevice = extern struct {
         const factory = @This().II2cDeviceStaticsCache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
         const factory = @This().II2cDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(friendlyName);
+        return try factory.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn FromIdAsync(deviceId: HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
         const factory = @This().II2cDeviceStaticsCache.get();

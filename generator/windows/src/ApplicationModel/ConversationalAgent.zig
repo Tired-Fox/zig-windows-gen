@@ -365,7 +365,7 @@ pub const ConversationalAgentDetectorManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDefault() core.HResult!*ConversationalAgentDetectorManager {
+    pub fn get_Default() core.HResult!*ConversationalAgentDetectorManager {
         const factory = @This().IConversationalAgentDetectorManagerStaticsCache.get();
         return try factory.getDefault();
     }

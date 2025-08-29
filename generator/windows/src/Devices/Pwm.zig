@@ -236,9 +236,9 @@ pub const PwmController = extern struct {
         const factory = @This().IPwmControllerStatics3Cache.get();
         return try factory.GetDeviceSelector();
     }
-    pub fn GetDeviceSelector(friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
         const factory = @This().IPwmControllerStatics3Cache.get();
-        return try factory.GetDeviceSelector(friendlyName);
+        return try factory.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(PwmController) {
         const factory = @This().IPwmControllerStatics3Cache.get();

@@ -2020,7 +2020,7 @@ pub const GuidHelper = extern struct {
         const factory = @This().IGuidHelperStaticsCache.get();
         return try factory.CreateNewGuid();
     }
-    pub fn getEmpty() core.HResult!*Guid {
+    pub fn get_Empty() core.HResult!*Guid {
         const factory = @This().IGuidHelperStaticsCache.get();
         return try factory.getEmpty();
     }

@@ -189,11 +189,11 @@ pub const OcrEngine = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getMaxImageDimension() core.HResult!u32 {
+    pub fn get_MaxImageDimension() core.HResult!u32 {
         const factory = @This().IOcrEngineStaticsCache.get();
         return try factory.getMaxImageDimension();
     }
-    pub fn getAvailableRecognizerLanguages() core.HResult!*IVectorView(Language) {
+    pub fn get_AvailableRecognizerLanguages() core.HResult!*IVectorView(Language) {
         const factory = @This().IOcrEngineStaticsCache.get();
         return try factory.getAvailableRecognizerLanguages();
     }

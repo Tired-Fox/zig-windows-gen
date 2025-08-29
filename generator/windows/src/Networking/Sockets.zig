@@ -410,9 +410,9 @@ pub const DatagramSocket = extern struct {
         const factory = @This().IDatagramSocketStaticsCache.get();
         return try factory.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
     }
-    pub fn GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
+    pub fn GetEndpointPairsAsyncWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
         const factory = @This().IDatagramSocketStaticsCache.get();
-        return try factory.GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
+        return try factory.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.DatagramSocket";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3303,7 +3303,7 @@ pub const SocketActivityInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAllSockets() core.HResult!*IMapView(HSTRING,SocketActivityInformation) {
+    pub fn get_AllSockets() core.HResult!*IMapView(HSTRING,SocketActivityInformation) {
         const factory = @This().ISocketActivityInformationStaticsCache.get();
         return try factory.getAllSockets();
     }
@@ -3520,9 +3520,9 @@ pub const StreamSocket = extern struct {
         const factory = @This().IStreamSocketStaticsCache.get();
         return try factory.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
     }
-    pub fn GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
+    pub fn GetEndpointPairsAsyncWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
         const factory = @This().IStreamSocketStaticsCache.get();
-        return try factory.GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
+        return try factory.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.StreamSocket";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

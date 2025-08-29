@@ -137,11 +137,11 @@ pub const PowerGridForecast = extern struct {
         const factory = @This().IPowerGridForecastStaticsCache.get();
         return try factory.GetForecast();
     }
-    pub fn addForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_ForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IPowerGridForecastStaticsCache.get();
         return try factory.addForecastUpdated(handler);
     }
-    pub fn removeForecastUpdated(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ForecastUpdated(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPowerGridForecastStaticsCache.get();
         return try factory.removeForecastUpdated(token);
     }
@@ -173,7 +173,7 @@ pub const Battery = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAggregateBattery() core.HResult!*Battery {
+    pub fn get_AggregateBattery() core.HResult!*Battery {
         const factory = @This().IBatteryStaticsCache.get();
         return try factory.getAggregateBattery();
     }

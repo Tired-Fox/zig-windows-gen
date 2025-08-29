@@ -35,23 +35,23 @@ pub const AppointmentsProviderLaunchActionVerbs = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAddAppointment() core.HResult!HSTRING {
+    pub fn get_AddAppointment() core.HResult!HSTRING {
         const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try factory.getAddAppointment();
     }
-    pub fn getReplaceAppointment() core.HResult!HSTRING {
+    pub fn get_ReplaceAppointment() core.HResult!HSTRING {
         const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try factory.getReplaceAppointment();
     }
-    pub fn getRemoveAppointment() core.HResult!HSTRING {
+    pub fn get_RemoveAppointment() core.HResult!HSTRING {
         const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try factory.getRemoveAppointment();
     }
-    pub fn getShowTimeFrame() core.HResult!HSTRING {
+    pub fn get_ShowTimeFrame() core.HResult!HSTRING {
         const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
         return try factory.getShowTimeFrame();
     }
-    pub fn getShowAppointmentDetails() core.HResult!HSTRING {
+    pub fn get_ShowAppointmentDetails() core.HResult!HSTRING {
         const factory = @This().IAppointmentsProviderLaunchActionVerbsStatics2Cache.get();
         return try factory.getShowAppointmentDetails();
     }

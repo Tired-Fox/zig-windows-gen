@@ -1606,9 +1606,9 @@ pub const UsbDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelectorWithWinUsbInterfaceClass(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithProductIdWithWinUsbInterfaceClass(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
         const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorWithWinUsbInterfaceClass(vendorId, productId, winUsbInterfaceClass);
+        return try factory.GetDeviceSelectorWithProductIdWithWinUsbInterfaceClass(vendorId, productId, winUsbInterfaceClass);
     }
     pub fn GetDeviceSelector(winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
         const factory = @This().IUsbDeviceStaticsCache.get();
@@ -1678,39 +1678,39 @@ pub const UsbDeviceClasses = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCdcControl() core.HResult!*UsbDeviceClass {
+    pub fn get_CdcControl() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getCdcControl();
     }
-    pub fn getPhysical() core.HResult!*UsbDeviceClass {
+    pub fn get_Physical() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getPhysical();
     }
-    pub fn getPersonalHealthcare() core.HResult!*UsbDeviceClass {
+    pub fn get_PersonalHealthcare() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getPersonalHealthcare();
     }
-    pub fn getActiveSync() core.HResult!*UsbDeviceClass {
+    pub fn get_ActiveSync() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getActiveSync();
     }
-    pub fn getPalmSync() core.HResult!*UsbDeviceClass {
+    pub fn get_PalmSync() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getPalmSync();
     }
-    pub fn getDeviceFirmwareUpdate() core.HResult!*UsbDeviceClass {
+    pub fn get_DeviceFirmwareUpdate() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getDeviceFirmwareUpdate();
     }
-    pub fn getIrda() core.HResult!*UsbDeviceClass {
+    pub fn get_Irda() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getIrda();
     }
-    pub fn getMeasurement() core.HResult!*UsbDeviceClass {
+    pub fn get_Measurement() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getMeasurement();
     }
-    pub fn getVendorSpecific() core.HResult!*UsbDeviceClass {
+    pub fn get_VendorSpecific() core.HResult!*UsbDeviceClass {
         const factory = @This().IUsbDeviceClassesStaticsCache.get();
         return try factory.getVendorSpecific();
     }

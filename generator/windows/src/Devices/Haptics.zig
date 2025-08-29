@@ -334,63 +334,63 @@ pub const KnownSimpleHapticsControllerWaveforms = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getClick() core.HResult!u16 {
+    pub fn get_Click() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try factory.getClick();
     }
-    pub fn getBuzzContinuous() core.HResult!u16 {
+    pub fn get_BuzzContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try factory.getBuzzContinuous();
     }
-    pub fn getRumbleContinuous() core.HResult!u16 {
+    pub fn get_RumbleContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try factory.getRumbleContinuous();
     }
-    pub fn getPress() core.HResult!u16 {
+    pub fn get_Press() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try factory.getPress();
     }
-    pub fn getRelease() core.HResult!u16 {
+    pub fn get_Release() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStaticsCache.get();
         return try factory.getRelease();
     }
-    pub fn getBrushContinuous() core.HResult!u16 {
+    pub fn get_BrushContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getBrushContinuous();
     }
-    pub fn getChiselMarkerContinuous() core.HResult!u16 {
+    pub fn get_ChiselMarkerContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getChiselMarkerContinuous();
     }
-    pub fn getEraserContinuous() core.HResult!u16 {
+    pub fn get_EraserContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getEraserContinuous();
     }
-    pub fn getError() core.HResult!u16 {
+    pub fn get_Error() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getError();
     }
-    pub fn getGalaxyPenContinuous() core.HResult!u16 {
+    pub fn get_GalaxyPenContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getGalaxyPenContinuous();
     }
-    pub fn getHover() core.HResult!u16 {
+    pub fn get_Hover() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getHover();
     }
-    pub fn getInkContinuous() core.HResult!u16 {
+    pub fn get_InkContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getInkContinuous();
     }
-    pub fn getMarkerContinuous() core.HResult!u16 {
+    pub fn get_MarkerContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getMarkerContinuous();
     }
-    pub fn getPencilContinuous() core.HResult!u16 {
+    pub fn get_PencilContinuous() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getPencilContinuous();
     }
-    pub fn getSuccess() core.HResult!u16 {
+    pub fn get_Success() core.HResult!u16 {
         const factory = @This().IKnownSimpleHapticsControllerWaveformsStatics2Cache.get();
         return try factory.getSuccess();
     }

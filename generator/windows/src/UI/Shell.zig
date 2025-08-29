@@ -727,9 +727,9 @@ pub const WindowTabIcon = extern struct {
         const factory = @This().IWindowTabIconStaticsCache.get();
         return try factory.CreateFromFontGlyph(glyph, fontFamily);
     }
-    pub fn CreateFromFontGlyphWithFontFamilyWithFontUri(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyphWithFontUri(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
         const factory = @This().IWindowTabIconStaticsCache.get();
-        return try factory.CreateFromFontGlyphWithFontFamilyWithFontUri(glyph, fontFamily, fontUri);
+        return try factory.CreateFromFontGlyphWithFontUri(glyph, fontFamily, fontUri);
     }
     pub fn CreateFromImage(image: *IRandomAccessStreamReference) core.HResult!*WindowTabIcon {
         const factory = @This().IWindowTabIconStaticsCache.get();
@@ -940,7 +940,7 @@ pub const FocusSessionManager = extern struct {
         const factory = @This().IFocusSessionManagerStaticsCache.get();
         return try factory.GetDefault();
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().IFocusSessionManagerStaticsCache.get();
         return try factory.getIsSupported();
     }

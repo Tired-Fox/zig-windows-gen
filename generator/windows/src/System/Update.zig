@@ -370,35 +370,35 @@ pub const SystemUpdateManager = extern struct {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.IsSupported();
     }
-    pub fn getState() core.HResult!SystemUpdateManagerState {
+    pub fn get_State() core.HResult!SystemUpdateManagerState {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getState();
     }
-    pub fn addStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_StateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.addStateChanged(handler);
     }
-    pub fn removeStateChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_StateChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.removeStateChanged(token);
     }
-    pub fn getDownloadProgress() core.HResult!f64 {
+    pub fn get_DownloadProgress() core.HResult!f64 {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getDownloadProgress();
     }
-    pub fn getInstallProgress() core.HResult!f64 {
+    pub fn get_InstallProgress() core.HResult!f64 {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getInstallProgress();
     }
-    pub fn getUserActiveHoursStart() core.HResult!TimeSpan {
+    pub fn get_UserActiveHoursStart() core.HResult!TimeSpan {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getUserActiveHoursStart();
     }
-    pub fn getUserActiveHoursEnd() core.HResult!TimeSpan {
+    pub fn get_UserActiveHoursEnd() core.HResult!TimeSpan {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getUserActiveHoursEnd();
     }
-    pub fn getUserActiveHoursMax() core.HResult!i32 {
+    pub fn get_UserActiveHoursMax() core.HResult!i32 {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getUserActiveHoursMax();
     }
@@ -406,15 +406,15 @@ pub const SystemUpdateManager = extern struct {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.TrySetUserActiveHours(start, end);
     }
-    pub fn getLastUpdateCheckTime() core.HResult!DateTime {
+    pub fn get_LastUpdateCheckTime() core.HResult!DateTime {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getLastUpdateCheckTime();
     }
-    pub fn getLastUpdateInstallTime() core.HResult!DateTime {
+    pub fn get_LastUpdateInstallTime() core.HResult!DateTime {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getLastUpdateInstallTime();
     }
-    pub fn getLastErrorInfo() core.HResult!*SystemUpdateLastErrorInfo {
+    pub fn get_LastErrorInfo() core.HResult!*SystemUpdateLastErrorInfo {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getLastErrorInfo();
     }
@@ -430,7 +430,7 @@ pub const SystemUpdateManager = extern struct {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.UnblockAutomaticRebootAsync(lockId);
     }
-    pub fn getExtendedError() core.HResult!HResult {
+    pub fn get_ExtendedError() core.HResult!HResult {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getExtendedError();
     }
@@ -438,7 +438,7 @@ pub const SystemUpdateManager = extern struct {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.GetUpdateItems();
     }
-    pub fn getAttentionRequiredReason() core.HResult!SystemUpdateAttentionRequiredReason {
+    pub fn get_AttentionRequiredReason() core.HResult!SystemUpdateAttentionRequiredReason {
         const factory = @This().ISystemUpdateManagerStaticsCache.get();
         return try factory.getAttentionRequiredReason();
     }

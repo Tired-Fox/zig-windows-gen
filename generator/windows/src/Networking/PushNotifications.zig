@@ -426,11 +426,11 @@ pub const PushNotificationChannelManager = extern struct {
         const factory = @This().IPushNotificationChannelManagerStatics2Cache.get();
         return try factory.GetForUser(user);
     }
-    pub fn addChannelsRevoked(handler: *EventHandler(PushNotificationChannelsRevokedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_ChannelsRevoked(handler: *EventHandler(PushNotificationChannelsRevokedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IPushNotificationChannelManagerStatics4Cache.get();
         return try factory.addChannelsRevoked(handler);
     }
-    pub fn removeChannelsRevoked(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_ChannelsRevoked(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IPushNotificationChannelManagerStatics4Cache.get();
         return try factory.removeChannelsRevoked(token);
     }
@@ -438,9 +438,9 @@ pub const PushNotificationChannelManager = extern struct {
         const factory = @This().IPushNotificationChannelManagerStaticsCache.get();
         return try factory.CreatePushNotificationChannelForApplicationAsync();
     }
-    pub fn CreatePushNotificationChannelForApplicationAsync(applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
+    pub fn CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         const factory = @This().IPushNotificationChannelManagerStaticsCache.get();
-        return try factory.CreatePushNotificationChannelForApplicationAsync(applicationId);
+        return try factory.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId);
     }
     pub fn CreatePushNotificationChannelForSecondaryTileAsync(tileId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         const factory = @This().IPushNotificationChannelManagerStaticsCache.get();

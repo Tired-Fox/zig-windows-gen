@@ -975,9 +975,9 @@ pub const ContactField = extern struct {
         const factory = @This().IContactFieldFactoryCache.get();
         return try factory.CreateField(value, ty);
     }
-    pub fn CreateFieldWithTyWithCategory(value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithCategory(value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const factory = @This().IContactFieldFactoryCache.get();
-        return try factory.CreateFieldWithTyWithCategory(value, ty, category);
+        return try factory.CreateFieldWithCategory(value, ty, category);
     }
     pub fn CreateFieldWithTyWithCategory(name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const factory = @This().IContactFieldFactoryCache.get();
@@ -1176,9 +1176,9 @@ pub const ContactInstantMessageField = extern struct {
         const factory = @This().IContactInstantMessageFieldFactoryCache.get();
         return try factory.CreateInstantMessageWithCategory(userName, category);
     }
-    pub fn CreateInstantMessageWithVerb(userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategoryWithServiceWithDisplayTextWithVerb(userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         const factory = @This().IContactInstantMessageFieldFactoryCache.get();
-        return try factory.CreateInstantMessageWithVerb(userName, category, service, displayText, verb);
+        return try factory.CreateInstantMessageWithCategoryWithServiceWithDisplayTextWithVerb(userName, category, service, displayText, verb);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactInstantMessageField";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1272,23 +1272,23 @@ pub const ContactLaunchActionVerbs = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCall() core.HResult!HSTRING {
+    pub fn get_Call() core.HResult!HSTRING {
         const factory = @This().IContactLaunchActionVerbsStaticsCache.get();
         return try factory.getCall();
     }
-    pub fn getMessage() core.HResult!HSTRING {
+    pub fn get_Message() core.HResult!HSTRING {
         const factory = @This().IContactLaunchActionVerbsStaticsCache.get();
         return try factory.getMessage();
     }
-    pub fn getMap() core.HResult!HSTRING {
+    pub fn get_Map() core.HResult!HSTRING {
         const factory = @This().IContactLaunchActionVerbsStaticsCache.get();
         return try factory.getMap();
     }
-    pub fn getPost() core.HResult!HSTRING {
+    pub fn get_Post() core.HResult!HSTRING {
         const factory = @This().IContactLaunchActionVerbsStaticsCache.get();
         return try factory.getPost();
     }
-    pub fn getVideoCall() core.HResult!HSTRING {
+    pub fn get_VideoCall() core.HResult!HSTRING {
         const factory = @This().IContactLaunchActionVerbsStaticsCache.get();
         return try factory.getVideoCall();
     }
@@ -1813,9 +1813,9 @@ pub const ContactLocationField = extern struct {
         const factory = @This().IContactLocationFieldFactoryCache.get();
         return try factory.CreateLocationWithCategory(unstructuredAddress, category);
     }
-    pub fn CreateLocationWithPostalCode(unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategoryWithStreetWithCityWithRegionWithCountryWithPostalCode(unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
         const factory = @This().IContactLocationFieldFactoryCache.get();
-        return try factory.CreateLocationWithPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
+        return try factory.CreateLocationWithCategoryWithStreetWithCityWithRegionWithCountryWithPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactLocationField";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1833,11 +1833,11 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStatics5Cache.get();
         return try factory.IsShowFullContactCardSupportedAsync();
     }
-    pub fn getIncludeMiddleNameInSystemDisplayAndSort() core.HResult!bool {
+    pub fn get_IncludeMiddleNameInSystemDisplayAndSort() core.HResult!bool {
         const factory = @This().IContactManagerStatics5Cache.get();
         return try factory.getIncludeMiddleNameInSystemDisplayAndSort();
     }
-    pub fn putIncludeMiddleNameInSystemDisplayAndSort(value: bool) core.HResult!void {
+    pub fn put_IncludeMiddleNameInSystemDisplayAndSort(value: bool) core.HResult!void {
         const factory = @This().IContactManagerStatics5Cache.get();
         return try factory.putIncludeMiddleNameInSystemDisplayAndSort(value);
     }
@@ -1849,9 +1849,9 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStaticsCache.get();
         return try factory.ShowContactCard(contact, selection);
     }
-    pub fn ShowContactCardWithSelectionWithPreferredPlacement(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
+    pub fn ShowContactCardWithPreferredPlacement(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
         const factory = @This().IContactManagerStaticsCache.get();
-        return try factory.ShowContactCardWithSelectionWithPreferredPlacement(contact, selection, preferredPlacement);
+        return try factory.ShowContactCardWithPreferredPlacement(contact, selection, preferredPlacement);
     }
     pub fn ShowDelayLoadedContactCard(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!*ContactCardDelayedDataLoader {
         const factory = @This().IContactManagerStaticsCache.get();
@@ -1873,7 +1873,7 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.ConvertVCardToContactAsync(vCard);
     }
-    pub fn RequestStoreAsync(accessType: ContactStoreAccessType) core.HResult!*IAsyncOperation(ContactStore) {
+    pub fn RequestStoreAsyncWithAccessType(accessType: ContactStoreAccessType) core.HResult!*IAsyncOperation(ContactStore) {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.RequestStoreAsync(accessType);
     }
@@ -1885,7 +1885,7 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.IsShowContactCardSupported();
     }
-    pub fn ShowContactCard(contact: *Contact, selection: Rect, preferredPlacement: Placement, contactCardOptions: *ContactCardOptions) core.HResult!void {
+    pub fn ShowContactCardWithPreferredPlacementWithContactCardOptions(contact: *Contact, selection: Rect, preferredPlacement: Placement, contactCardOptions: *ContactCardOptions) core.HResult!void {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.ShowContactCard(contact, selection, preferredPlacement, contactCardOptions);
     }
@@ -1893,7 +1893,7 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.IsShowDelayLoadedContactCardSupported();
     }
-    pub fn ShowDelayLoadedContactCard(contact: *Contact, selection: Rect, preferredPlacement: Placement, contactCardOptions: *ContactCardOptions) core.HResult!*ContactCardDelayedDataLoader {
+    pub fn ShowDelayLoadedContactCardWithContactCardOptions(contact: *Contact, selection: Rect, preferredPlacement: Placement, contactCardOptions: *ContactCardOptions) core.HResult!*ContactCardDelayedDataLoader {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.ShowDelayLoadedContactCard(contact, selection, preferredPlacement, contactCardOptions);
     }
@@ -1901,19 +1901,19 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.ShowFullContactCard(contact, fullContactCardOptions);
     }
-    pub fn getSystemDisplayNameOrder() core.HResult!ContactNameOrder {
+    pub fn get_SystemDisplayNameOrder() core.HResult!ContactNameOrder {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.getSystemDisplayNameOrder();
     }
-    pub fn putSystemDisplayNameOrder(value: ContactNameOrder) core.HResult!void {
+    pub fn put_SystemDisplayNameOrder(value: ContactNameOrder) core.HResult!void {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.putSystemDisplayNameOrder(value);
     }
-    pub fn getSystemSortOrder() core.HResult!ContactNameOrder {
+    pub fn get_SystemSortOrder() core.HResult!ContactNameOrder {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.getSystemSortOrder();
     }
-    pub fn putSystemSortOrder(value: ContactNameOrder) core.HResult!void {
+    pub fn put_SystemSortOrder(value: ContactNameOrder) core.HResult!void {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.putSystemSortOrder(value);
     }
@@ -6490,19 +6490,19 @@ pub const KnownContactField = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getEmail() core.HResult!HSTRING {
+    pub fn get_Email() core.HResult!HSTRING {
         const factory = @This().IKnownContactFieldStaticsCache.get();
         return try factory.getEmail();
     }
-    pub fn getPhoneNumber() core.HResult!HSTRING {
+    pub fn get_PhoneNumber() core.HResult!HSTRING {
         const factory = @This().IKnownContactFieldStaticsCache.get();
         return try factory.getPhoneNumber();
     }
-    pub fn getLocation() core.HResult!HSTRING {
+    pub fn get_Location() core.HResult!HSTRING {
         const factory = @This().IKnownContactFieldStaticsCache.get();
         return try factory.getLocation();
     }
-    pub fn getInstantMessage() core.HResult!HSTRING {
+    pub fn get_InstantMessage() core.HResult!HSTRING {
         const factory = @This().IKnownContactFieldStaticsCache.get();
         return try factory.getInstantMessage();
     }

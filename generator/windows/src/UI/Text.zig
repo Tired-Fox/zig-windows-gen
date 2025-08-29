@@ -88,47 +88,47 @@ pub const FontWeights = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBlack() core.HResult!FontWeight {
+    pub fn get_Black() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getBlack();
     }
-    pub fn getBold() core.HResult!FontWeight {
+    pub fn get_Bold() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getBold();
     }
-    pub fn getExtraBlack() core.HResult!FontWeight {
+    pub fn get_ExtraBlack() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getExtraBlack();
     }
-    pub fn getExtraBold() core.HResult!FontWeight {
+    pub fn get_ExtraBold() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getExtraBold();
     }
-    pub fn getExtraLight() core.HResult!FontWeight {
+    pub fn get_ExtraLight() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getExtraLight();
     }
-    pub fn getLight() core.HResult!FontWeight {
+    pub fn get_Light() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getLight();
     }
-    pub fn getMedium() core.HResult!FontWeight {
+    pub fn get_Medium() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getMedium();
     }
-    pub fn getNormal() core.HResult!FontWeight {
+    pub fn get_Normal() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getNormal();
     }
-    pub fn getSemiBold() core.HResult!FontWeight {
+    pub fn get_SemiBold() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getSemiBold();
     }
-    pub fn getSemiLight() core.HResult!FontWeight {
+    pub fn get_SemiLight() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getSemiLight();
     }
-    pub fn getThin() core.HResult!FontWeight {
+    pub fn get_Thin() core.HResult!FontWeight {
         const factory = @This().IFontWeightsStaticsCache.get();
         return try factory.getThin();
     }
@@ -2271,35 +2271,35 @@ pub const TextConstants = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAutoColor() core.HResult!Color {
+    pub fn get_AutoColor() core.HResult!Color {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getAutoColor();
     }
-    pub fn getMinUnitCount() core.HResult!i32 {
+    pub fn get_MinUnitCount() core.HResult!i32 {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getMinUnitCount();
     }
-    pub fn getMaxUnitCount() core.HResult!i32 {
+    pub fn get_MaxUnitCount() core.HResult!i32 {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getMaxUnitCount();
     }
-    pub fn getUndefinedColor() core.HResult!Color {
+    pub fn get_UndefinedColor() core.HResult!Color {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getUndefinedColor();
     }
-    pub fn getUndefinedFloatValue() core.HResult!f32 {
+    pub fn get_UndefinedFloatValue() core.HResult!f32 {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getUndefinedFloatValue();
     }
-    pub fn getUndefinedInt32Value() core.HResult!i32 {
+    pub fn get_UndefinedInt32Value() core.HResult!i32 {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getUndefinedInt32Value();
     }
-    pub fn getUndefinedFontStretch() core.HResult!FontStretch {
+    pub fn get_UndefinedFontStretch() core.HResult!FontStretch {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getUndefinedFontStretch();
     }
-    pub fn getUndefinedFontStyle() core.HResult!FontStyle {
+    pub fn get_UndefinedFontStyle() core.HResult!FontStyle {
         const factory = @This().ITextConstantsStaticsCache.get();
         return try factory.getUndefinedFontStyle();
     }

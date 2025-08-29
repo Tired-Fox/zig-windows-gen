@@ -86,9 +86,9 @@ pub const BadgeUpdateManager = extern struct {
         const factory = @This().IBadgeUpdateManagerStaticsCache.get();
         return try factory.CreateBadgeUpdaterForApplication();
     }
-    pub fn CreateBadgeUpdaterForApplication(applicationId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*BadgeUpdater {
         const factory = @This().IBadgeUpdateManagerStaticsCache.get();
-        return try factory.CreateBadgeUpdaterForApplication(applicationId);
+        return try factory.CreateBadgeUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateBadgeUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*BadgeUpdater {
         const factory = @This().IBadgeUpdateManagerStaticsCache.get();
@@ -2743,27 +2743,27 @@ pub const KnownAdaptiveNotificationHints = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getStyle() core.HResult!HSTRING {
+    pub fn get_Style() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try factory.getStyle();
     }
-    pub fn getWrap() core.HResult!HSTRING {
+    pub fn get_Wrap() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try factory.getWrap();
     }
-    pub fn getMaxLines() core.HResult!HSTRING {
+    pub fn get_MaxLines() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try factory.getMaxLines();
     }
-    pub fn getMinLines() core.HResult!HSTRING {
+    pub fn get_MinLines() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try factory.getMinLines();
     }
-    pub fn getTextStacking() core.HResult!HSTRING {
+    pub fn get_TextStacking() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try factory.getTextStacking();
     }
-    pub fn getAlign() core.HResult!HSTRING {
+    pub fn get_Align() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationHintsStaticsCache.get();
         return try factory.getAlign();
     }
@@ -2776,79 +2776,79 @@ pub const KnownAdaptiveNotificationTextStyles = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCaption() core.HResult!HSTRING {
+    pub fn get_Caption() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getCaption();
     }
-    pub fn getBody() core.HResult!HSTRING {
+    pub fn get_Body() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getBody();
     }
-    pub fn getBase() core.HResult!HSTRING {
+    pub fn get_Base() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getBase();
     }
-    pub fn getSubtitle() core.HResult!HSTRING {
+    pub fn get_Subtitle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getSubtitle();
     }
-    pub fn getTitle() core.HResult!HSTRING {
+    pub fn get_Title() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getTitle();
     }
-    pub fn getSubheader() core.HResult!HSTRING {
+    pub fn get_Subheader() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getSubheader();
     }
-    pub fn getHeader() core.HResult!HSTRING {
+    pub fn get_Header() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getHeader();
     }
-    pub fn getTitleNumeral() core.HResult!HSTRING {
+    pub fn get_TitleNumeral() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getTitleNumeral();
     }
-    pub fn getSubheaderNumeral() core.HResult!HSTRING {
+    pub fn get_SubheaderNumeral() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getSubheaderNumeral();
     }
-    pub fn getHeaderNumeral() core.HResult!HSTRING {
+    pub fn get_HeaderNumeral() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getHeaderNumeral();
     }
-    pub fn getCaptionSubtle() core.HResult!HSTRING {
+    pub fn get_CaptionSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getCaptionSubtle();
     }
-    pub fn getBodySubtle() core.HResult!HSTRING {
+    pub fn get_BodySubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getBodySubtle();
     }
-    pub fn getBaseSubtle() core.HResult!HSTRING {
+    pub fn get_BaseSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getBaseSubtle();
     }
-    pub fn getSubtitleSubtle() core.HResult!HSTRING {
+    pub fn get_SubtitleSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getSubtitleSubtle();
     }
-    pub fn getTitleSubtle() core.HResult!HSTRING {
+    pub fn get_TitleSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getTitleSubtle();
     }
-    pub fn getSubheaderSubtle() core.HResult!HSTRING {
+    pub fn get_SubheaderSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getSubheaderSubtle();
     }
-    pub fn getSubheaderNumeralSubtle() core.HResult!HSTRING {
+    pub fn get_SubheaderNumeralSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getSubheaderNumeralSubtle();
     }
-    pub fn getHeaderSubtle() core.HResult!HSTRING {
+    pub fn get_HeaderSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getHeaderSubtle();
     }
-    pub fn getHeaderNumeralSubtle() core.HResult!HSTRING {
+    pub fn get_HeaderNumeralSubtle() core.HResult!HSTRING {
         const factory = @This().IKnownAdaptiveNotificationTextStylesStaticsCache.get();
         return try factory.getHeaderNumeralSubtle();
     }
@@ -2861,7 +2861,7 @@ pub const KnownNotificationBindings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getToastGeneric() core.HResult!HSTRING {
+    pub fn get_ToastGeneric() core.HResult!HSTRING {
         const factory = @This().IKnownNotificationBindingsStaticsCache.get();
         return try factory.getToastGeneric();
     }
@@ -3261,9 +3261,9 @@ pub const TileFlyoutUpdateManager = extern struct {
         const factory = @This().ITileFlyoutUpdateManagerStaticsCache.get();
         return try factory.CreateTileFlyoutUpdaterForApplication();
     }
-    pub fn CreateTileFlyoutUpdaterForApplication(applicationId: HSTRING) core.HResult!*TileFlyoutUpdater {
+    pub fn CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*TileFlyoutUpdater {
         const factory = @This().ITileFlyoutUpdateManagerStaticsCache.get();
-        return try factory.CreateTileFlyoutUpdaterForApplication(applicationId);
+        return try factory.CreateTileFlyoutUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateTileFlyoutUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*TileFlyoutUpdater {
         const factory = @This().ITileFlyoutUpdateManagerStaticsCache.get();
@@ -3482,9 +3482,9 @@ pub const TileUpdateManager = extern struct {
         const factory = @This().ITileUpdateManagerStaticsCache.get();
         return try factory.CreateTileUpdaterForApplication();
     }
-    pub fn CreateTileUpdaterForApplication(applicationId: HSTRING) core.HResult!*TileUpdater {
+    pub fn CreateTileUpdaterForApplicationWithApplicationId(applicationId: HSTRING) core.HResult!*TileUpdater {
         const factory = @This().ITileUpdateManagerStaticsCache.get();
-        return try factory.CreateTileUpdaterForApplication(applicationId);
+        return try factory.CreateTileUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateTileUpdaterForSecondaryTile(tileId: HSTRING) core.HResult!*TileUpdater {
         const factory = @This().ITileUpdateManagerStaticsCache.get();
@@ -3969,7 +3969,7 @@ pub const ToastNotificationManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getHistory() core.HResult!*ToastNotificationHistory {
+    pub fn get_History() core.HResult!*ToastNotificationHistory {
         const factory = @This().IToastNotificationManagerStatics2Cache.get();
         return try factory.getHistory();
     }
@@ -3989,9 +3989,9 @@ pub const ToastNotificationManager = extern struct {
         const factory = @This().IToastNotificationManagerStaticsCache.get();
         return try factory.CreateToastNotifier();
     }
-    pub fn CreateToastNotifier(applicationId: HSTRING) core.HResult!*ToastNotifier {
+    pub fn CreateToastNotifierWithApplicationId(applicationId: HSTRING) core.HResult!*ToastNotifier {
         const factory = @This().IToastNotificationManagerStaticsCache.get();
-        return try factory.CreateToastNotifier(applicationId);
+        return try factory.CreateToastNotifierWithApplicationId(applicationId);
     }
     pub fn GetTemplateContent(ty: ToastTemplateType) core.HResult!*XmlDocument {
         const factory = @This().IToastNotificationManagerStaticsCache.get();

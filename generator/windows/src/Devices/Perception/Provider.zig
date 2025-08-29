@@ -599,15 +599,15 @@ pub const KnownPerceptionFrameKind = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getColor() core.HResult!HSTRING {
+    pub fn get_Color() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameKindStaticsCache.get();
         return try factory.getColor();
     }
-    pub fn getDepth() core.HResult!HSTRING {
+    pub fn get_Depth() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameKindStaticsCache.get();
         return try factory.getDepth();
     }
-    pub fn getInfrared() core.HResult!HSTRING {
+    pub fn get_Infrared() core.HResult!HSTRING {
         const factory = @This().IKnownPerceptionFrameKindStaticsCache.get();
         return try factory.getInfrared();
     }

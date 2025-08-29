@@ -85,7 +85,7 @@ pub const LockScreen = extern struct {
         const factory = @This().ILockScreenImageFeedStaticsCache.get();
         return try factory.TryRemoveImageFeed();
     }
-    pub fn getOriginalImageFile() core.HResult!*Uri {
+    pub fn get_OriginalImageFile() core.HResult!*Uri {
         const factory = @This().ILockScreenStaticsCache.get();
         return try factory.getOriginalImageFile();
     }
@@ -248,11 +248,11 @@ pub const UserInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAccountPictureChangeEnabled() core.HResult!bool {
+    pub fn get_AccountPictureChangeEnabled() core.HResult!bool {
         const factory = @This().IUserInformationStaticsCache.get();
         return try factory.getAccountPictureChangeEnabled();
     }
-    pub fn getNameAccessAllowed() core.HResult!bool {
+    pub fn get_NameAccessAllowed() core.HResult!bool {
         const factory = @This().IUserInformationStaticsCache.get();
         return try factory.getNameAccessAllowed();
     }
@@ -276,11 +276,11 @@ pub const UserInformation = extern struct {
         const factory = @This().IUserInformationStaticsCache.get();
         return try factory.SetAccountPicturesFromStreamsAsync(smallImage, largeImage, video);
     }
-    pub fn addAccountPictureChanged(changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_AccountPictureChanged(changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IUserInformationStaticsCache.get();
         return try factory.addAccountPictureChanged(changeHandler);
     }
-    pub fn removeAccountPictureChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_AccountPictureChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IUserInformationStaticsCache.get();
         return try factory.removeAccountPictureChanged(token);
     }
@@ -317,7 +317,7 @@ pub const AdvertisingManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAdvertisingId() core.HResult!HSTRING {
+    pub fn get_AdvertisingId() core.HResult!HSTRING {
         const factory = @This().IAdvertisingManagerStaticsCache.get();
         return try factory.getAdvertisingId();
     }
@@ -457,27 +457,27 @@ pub const GlobalizationPreferences = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCalendars() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_Calendars() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IGlobalizationPreferencesStaticsCache.get();
         return try factory.getCalendars();
     }
-    pub fn getClocks() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_Clocks() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IGlobalizationPreferencesStaticsCache.get();
         return try factory.getClocks();
     }
-    pub fn getCurrencies() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_Currencies() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IGlobalizationPreferencesStaticsCache.get();
         return try factory.getCurrencies();
     }
-    pub fn getLanguages() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_Languages() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IGlobalizationPreferencesStaticsCache.get();
         return try factory.getLanguages();
     }
-    pub fn getHomeGeographicRegion() core.HResult!HSTRING {
+    pub fn get_HomeGeographicRegion() core.HResult!HSTRING {
         const factory = @This().IGlobalizationPreferencesStaticsCache.get();
         return try factory.getHomeGeographicRegion();
     }
-    pub fn getWeekStartsOn() core.HResult!DayOfWeek {
+    pub fn get_WeekStartsOn() core.HResult!DayOfWeek {
         const factory = @This().IGlobalizationPreferencesStaticsCache.get();
         return try factory.getWeekStartsOn();
     }
@@ -1026,7 +1026,7 @@ pub const UserProfilePersonalizationSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*UserProfilePersonalizationSettings {
+    pub fn get_Current() core.HResult!*UserProfilePersonalizationSettings {
         const factory = @This().IUserProfilePersonalizationSettingsStaticsCache.get();
         return try factory.getCurrent();
     }

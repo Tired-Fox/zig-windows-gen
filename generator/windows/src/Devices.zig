@@ -157,11 +157,11 @@ pub const LowLevelDevicesController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDefaultProvider() core.HResult!*ILowLevelDevicesAggregateProvider {
+    pub fn get_DefaultProvider() core.HResult!*ILowLevelDevicesAggregateProvider {
         const factory = @This().ILowLevelDevicesControllerStaticsCache.get();
         return try factory.getDefaultProvider();
     }
-    pub fn putDefaultProvider(value: *ILowLevelDevicesAggregateProvider) core.HResult!void {
+    pub fn put_DefaultProvider(value: *ILowLevelDevicesAggregateProvider) core.HResult!void {
         const factory = @This().ILowLevelDevicesControllerStaticsCache.get();
         return try factory.putDefaultProvider(value);
     }

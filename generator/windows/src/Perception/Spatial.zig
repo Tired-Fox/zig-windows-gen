@@ -1146,9 +1146,9 @@ pub const SpatialAnchor = extern struct {
         const factory = @This().ISpatialAnchorStaticsCache.get();
         return try factory.TryCreateRelativeToWithPosition(coordinateSystem, position);
     }
-    pub fn TryCreateRelativeToWithOrientation(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
+    pub fn TryCreateRelativeToWithPositionWithOrientation(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
         const factory = @This().ISpatialAnchorStaticsCache.get();
-        return try factory.TryCreateRelativeToWithOrientation(coordinateSystem, position, orientation);
+        return try factory.TryCreateRelativeToWithPositionWithOrientation(coordinateSystem, position, orientation);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1413,7 +1413,7 @@ pub const SpatialEntityStore = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().ISpatialEntityStoreStaticsCache.get();
         return try factory.getIsSupported();
     }
@@ -1718,15 +1718,15 @@ pub const SpatialStageFrameOfReference = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrent() core.HResult!*SpatialStageFrameOfReference {
+    pub fn get_Current() core.HResult!*SpatialStageFrameOfReference {
         const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
         return try factory.getCurrent();
     }
-    pub fn addCurrentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_CurrentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
         return try factory.addCurrentChanged(handler);
     }
-    pub fn removeCurrentChanged(cookie: EventRegistrationToken) core.HResult!void {
+    pub fn remove_CurrentChanged(cookie: EventRegistrationToken) core.HResult!void {
         const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
         return try factory.removeCurrentChanged(cookie);
     }

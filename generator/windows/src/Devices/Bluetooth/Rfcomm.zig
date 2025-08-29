@@ -490,9 +490,9 @@ pub const RfcommDeviceService = extern struct {
         const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
         return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
+        return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommDeviceService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -543,27 +543,27 @@ pub const RfcommServiceId = extern struct {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.FromShortId(shortId);
     }
-    pub fn getSerialPort() core.HResult!*RfcommServiceId {
+    pub fn get_SerialPort() core.HResult!*RfcommServiceId {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.getSerialPort();
     }
-    pub fn getObexObjectPush() core.HResult!*RfcommServiceId {
+    pub fn get_ObexObjectPush() core.HResult!*RfcommServiceId {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.getObexObjectPush();
     }
-    pub fn getObexFileTransfer() core.HResult!*RfcommServiceId {
+    pub fn get_ObexFileTransfer() core.HResult!*RfcommServiceId {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.getObexFileTransfer();
     }
-    pub fn getPhoneBookAccessPce() core.HResult!*RfcommServiceId {
+    pub fn get_PhoneBookAccessPce() core.HResult!*RfcommServiceId {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.getPhoneBookAccessPce();
     }
-    pub fn getPhoneBookAccessPse() core.HResult!*RfcommServiceId {
+    pub fn get_PhoneBookAccessPse() core.HResult!*RfcommServiceId {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.getPhoneBookAccessPse();
     }
-    pub fn getGenericFileTransfer() core.HResult!*RfcommServiceId {
+    pub fn get_GenericFileTransfer() core.HResult!*RfcommServiceId {
         const factory = @This().IRfcommServiceIdStaticsCache.get();
         return try factory.getGenericFileTransfer();
     }

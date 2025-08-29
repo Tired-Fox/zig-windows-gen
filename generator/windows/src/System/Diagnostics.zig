@@ -46,7 +46,7 @@ pub const DiagnosticInvoker = extern struct {
         const factory = @This().IDiagnosticInvokerStaticsCache.get();
         return try factory.GetForUser(user);
     }
-    pub fn getIsSupported() core.HResult!bool {
+    pub fn get_IsSupported() core.HResult!bool {
         const factory = @This().IDiagnosticInvokerStaticsCache.get();
         return try factory.getIsSupported();
     }
@@ -1036,7 +1036,7 @@ pub const SystemDiagnosticInfo = extern struct {
         const factory = @This().ISystemDiagnosticInfoStatics2Cache.get();
         return try factory.IsArchitectureSupported(ty);
     }
-    pub fn getPreferredArchitecture() core.HResult!ProcessorArchitecture {
+    pub fn get_PreferredArchitecture() core.HResult!ProcessorArchitecture {
         const factory = @This().ISystemDiagnosticInfoStatics2Cache.get();
         return try factory.getPreferredArchitecture();
     }

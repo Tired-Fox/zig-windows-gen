@@ -4768,19 +4768,19 @@ pub const RadialControllerConfiguration = extern struct {
         const factory = @This().IRadialControllerConfigurationStaticsCache.get();
         return try factory.GetForCurrentView();
     }
-    pub fn putAppController(value: *RadialController) core.HResult!void {
+    pub fn put_AppController(value: *RadialController) core.HResult!void {
         const factory = @This().IRadialControllerConfigurationStatics2Cache.get();
         return try factory.putAppController(value);
     }
-    pub fn getAppController() core.HResult!*RadialController {
+    pub fn get_AppController() core.HResult!*RadialController {
         const factory = @This().IRadialControllerConfigurationStatics2Cache.get();
         return try factory.getAppController();
     }
-    pub fn putIsAppControllerEnabled(value: bool) core.HResult!void {
+    pub fn put_IsAppControllerEnabled(value: bool) core.HResult!void {
         const factory = @This().IRadialControllerConfigurationStatics2Cache.get();
         return try factory.putIsAppControllerEnabled(value);
     }
-    pub fn getIsAppControllerEnabled() core.HResult!bool {
+    pub fn get_IsAppControllerEnabled() core.HResult!bool {
         const factory = @This().IRadialControllerConfigurationStatics2Cache.get();
         return try factory.getIsAppControllerEnabled();
     }
@@ -4885,9 +4885,9 @@ pub const RadialControllerMenuItem = extern struct {
         const factory = @This().IRadialControllerMenuItemStatics2Cache.get();
         return try factory.CreateFromFontGlyph(displayText, glyph, fontFamily);
     }
-    pub fn CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyphWithFontUri(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
         const factory = @This().IRadialControllerMenuItemStatics2Cache.get();
-        return try factory.CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri(displayText, glyph, fontFamily, fontUri);
+        return try factory.CreateFromFontGlyphWithFontUri(displayText, glyph, fontFamily, fontUri);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.RadialControllerMenuItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

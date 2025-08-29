@@ -1449,13 +1449,13 @@ pub const AudioStateMonitor = extern struct {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
         return try factory.CreateForRenderMonitoring();
     }
-    pub fn CreateForRenderMonitoring(category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
+    pub fn CreateForRenderMonitoringWithCategory(category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForRenderMonitoring(category);
+        return try factory.CreateForRenderMonitoringWithCategory(category);
     }
-    pub fn CreateForRenderMonitoring(category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
+    pub fn CreateForRenderMonitoringWithCategoryWithRole(category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForRenderMonitoring(category, role);
+        return try factory.CreateForRenderMonitoringWithCategoryWithRole(category, role);
     }
     pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(category: AudioRenderCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
@@ -1465,13 +1465,13 @@ pub const AudioStateMonitor = extern struct {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
         return try factory.CreateForCaptureMonitoring();
     }
-    pub fn CreateForCaptureMonitoring(category: MediaCategory) core.HResult!*AudioStateMonitor {
+    pub fn CreateForCaptureMonitoringWithCategory(category: MediaCategory) core.HResult!*AudioStateMonitor {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForCaptureMonitoring(category);
+        return try factory.CreateForCaptureMonitoringWithCategory(category);
     }
-    pub fn CreateForCaptureMonitoring(category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
+    pub fn CreateForCaptureMonitoringWithCategoryWithRole(category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForCaptureMonitoring(category, role);
+        return try factory.CreateForCaptureMonitoringWithCategoryWithRole(category, role);
     }
     pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(category: MediaCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
         const factory = @This().IAudioStateMonitorStaticsCache.get();
@@ -5352,31 +5352,31 @@ pub const SpatialAudioFormatSubtype = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDTSXForHomeTheater() core.HResult!HSTRING {
+    pub fn get_DTSXForHomeTheater() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStatics2Cache.get();
         return try factory.getDTSXForHomeTheater();
     }
-    pub fn getWindowsSonic() core.HResult!HSTRING {
+    pub fn get_WindowsSonic() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
         return try factory.getWindowsSonic();
     }
-    pub fn getDolbyAtmosForHeadphones() core.HResult!HSTRING {
+    pub fn get_DolbyAtmosForHeadphones() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
         return try factory.getDolbyAtmosForHeadphones();
     }
-    pub fn getDolbyAtmosForHomeTheater() core.HResult!HSTRING {
+    pub fn get_DolbyAtmosForHomeTheater() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
         return try factory.getDolbyAtmosForHomeTheater();
     }
-    pub fn getDolbyAtmosForSpeakers() core.HResult!HSTRING {
+    pub fn get_DolbyAtmosForSpeakers() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
         return try factory.getDolbyAtmosForSpeakers();
     }
-    pub fn getDTSHeadphoneX() core.HResult!HSTRING {
+    pub fn get_DTSHeadphoneX() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
         return try factory.getDTSHeadphoneX();
     }
-    pub fn getDTSXUltra() core.HResult!HSTRING {
+    pub fn get_DTSXUltra() core.HResult!HSTRING {
         const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
         return try factory.getDTSXUltra();
     }

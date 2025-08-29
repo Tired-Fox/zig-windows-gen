@@ -102,7 +102,7 @@ pub const GattServiceProviderConnection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getAllServices() core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
+    pub fn get_AllServices() core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
         const factory = @This().IGattServiceProviderConnectionStaticsCache.get();
         return try factory.getAllServices();
     }

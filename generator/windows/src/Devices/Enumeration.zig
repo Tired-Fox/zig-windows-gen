@@ -168,59 +168,59 @@ pub const DeviceInformation = extern struct {
         const factory = @This().IDeviceInformationStaticsCache.get();
         return try factory.FindAllAsync();
     }
-    pub fn FindAllAsync(deviceClass: DeviceClass) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithDeviceClass(deviceClass: DeviceClass) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.FindAllAsync(deviceClass);
+        return try factory.FindAllAsyncWithDeviceClass(deviceClass);
     }
-    pub fn FindAllAsync(aqsFilter: HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilter(aqsFilter: HSTRING) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.FindAllAsync(aqsFilter);
+        return try factory.FindAllAsyncWithAqsFilter(aqsFilter);
     }
-    pub fn FindAllAsync(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterWithAdditionalProperties(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.FindAllAsync(aqsFilter, additionalProperties);
+        return try factory.FindAllAsyncWithAqsFilterWithAdditionalProperties(aqsFilter, additionalProperties);
     }
     pub fn CreateWatcher() core.HResult!*DeviceWatcher {
         const factory = @This().IDeviceInformationStaticsCache.get();
         return try factory.CreateWatcher();
     }
-    pub fn CreateWatcher(deviceClass: DeviceClass) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithDeviceClass(deviceClass: DeviceClass) core.HResult!*DeviceWatcher {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.CreateWatcher(deviceClass);
+        return try factory.CreateWatcherWithDeviceClass(deviceClass);
     }
-    pub fn CreateWatcher(aqsFilter: HSTRING) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilter(aqsFilter: HSTRING) core.HResult!*DeviceWatcher {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.CreateWatcher(aqsFilter);
+        return try factory.CreateWatcherWithAqsFilter(aqsFilter);
     }
-    pub fn CreateWatcher(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterWithAdditionalProperties(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*DeviceWatcher {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.CreateWatcher(aqsFilter, additionalProperties);
+        return try factory.CreateWatcherWithAqsFilterWithAdditionalProperties(aqsFilter, additionalProperties);
     }
     pub fn GetAqsFilterFromDeviceClass(deviceClass: DeviceClass) core.HResult!HSTRING {
         const factory = @This().IDeviceInformationStatics2Cache.get();
         return try factory.GetAqsFilterFromDeviceClass(deviceClass);
     }
-    pub fn CreateFromIdAsync(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalPropertiesWithKind(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformation) {
         const factory = @This().IDeviceInformationStatics2Cache.get();
         return try factory.CreateFromIdAsync(deviceId, additionalProperties, kind);
     }
-    pub fn FindAllAsync(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterWithAdditionalPropertiesWithKind(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const factory = @This().IDeviceInformationStatics2Cache.get();
         return try factory.FindAllAsync(aqsFilter, additionalProperties, kind);
     }
-    pub fn CreateWatcher(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterWithAdditionalPropertiesWithKind(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind) core.HResult!*DeviceWatcher {
         const factory = @This().IDeviceInformationStatics2Cache.get();
         return try factory.CreateWatcher(aqsFilter, additionalProperties, kind);
     }
-    pub fn CreateFromIdAsync(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalPropertiesWithKindWithSettings(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformation) {
         const factory = @This().IDeviceInformationStatics3Cache.get();
         return try factory.CreateFromIdAsync(deviceId, additionalProperties, kind, settings);
     }
-    pub fn FindAllAsync(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
+    pub fn FindAllAsyncWithAqsFilterWithAdditionalPropertiesWithKindWithSettings(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const factory = @This().IDeviceInformationStatics3Cache.get();
         return try factory.FindAllAsync(aqsFilter, additionalProperties, kind, settings);
     }
-    pub fn CreateWatcher(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
+    pub fn CreateWatcherWithAqsFilterWithAdditionalPropertiesWithKindWithSettings(aqsFilter: HSTRING, additionalProperties: *IIterable(HSTRING), kind: DeviceInformationKind, settings: *IDeviceEnumerationSettings) core.HResult!*DeviceWatcher {
         const factory = @This().IDeviceInformationStatics3Cache.get();
         return try factory.CreateWatcher(aqsFilter, additionalProperties, kind, settings);
     }

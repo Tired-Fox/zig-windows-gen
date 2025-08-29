@@ -57,9 +57,9 @@ pub const AppDiagnosticInfo = extern struct {
         const factory = @This().IAppDiagnosticInfoStatics2Cache.get();
         return try factory.RequestInfoForAppAsync();
     }
-    pub fn RequestInfoForAppAsync(appUserModelId: HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
+    pub fn RequestInfoForAppAsyncWithAppUserModelId(appUserModelId: HSTRING) core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
         const factory = @This().IAppDiagnosticInfoStatics2Cache.get();
-        return try factory.RequestInfoForAppAsync(appUserModelId);
+        return try factory.RequestInfoForAppAsyncWithAppUserModelId(appUserModelId);
     }
     pub fn RequestInfoAsync() core.HResult!*IAsyncOperation(IVector(AppDiagnosticInfo)) {
         const factory = @This().IAppDiagnosticInfoStaticsCache.get();
@@ -3618,43 +3618,43 @@ pub const KnownUserProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getDisplayName() core.HResult!HSTRING {
+    pub fn get_DisplayName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getDisplayName();
     }
-    pub fn getFirstName() core.HResult!HSTRING {
+    pub fn get_FirstName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getFirstName();
     }
-    pub fn getLastName() core.HResult!HSTRING {
+    pub fn get_LastName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getLastName();
     }
-    pub fn getProviderName() core.HResult!HSTRING {
+    pub fn get_ProviderName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getProviderName();
     }
-    pub fn getAccountName() core.HResult!HSTRING {
+    pub fn get_AccountName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getAccountName();
     }
-    pub fn getGuestHost() core.HResult!HSTRING {
+    pub fn get_GuestHost() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getGuestHost();
     }
-    pub fn getPrincipalName() core.HResult!HSTRING {
+    pub fn get_PrincipalName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getPrincipalName();
     }
-    pub fn getDomainName() core.HResult!HSTRING {
+    pub fn get_DomainName() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getDomainName();
     }
-    pub fn getSessionInitiationProtocolUri() core.HResult!HSTRING {
+    pub fn get_SessionInitiationProtocolUri() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStaticsCache.get();
         return try factory.getSessionInitiationProtocolUri();
     }
-    pub fn getAgeEnforcementRegion() core.HResult!HSTRING {
+    pub fn get_AgeEnforcementRegion() core.HResult!HSTRING {
         const factory = @This().IKnownUserPropertiesStatics2Cache.get();
         return try factory.getAgeEnforcementRegion();
     }
@@ -3724,9 +3724,9 @@ pub const Launcher = extern struct {
         const factory = @This().ILauncherStatics4Cache.get();
         return try factory.LaunchUriForUserAsync(user, uri);
     }
-    pub fn LaunchUriForUserAsyncWithUriWithOptions(user: *User, uri: *Uri, options: *LauncherOptions) core.HResult!*IAsyncOperation(LaunchUriStatus) {
+    pub fn LaunchUriForUserAsyncWithOptions(user: *User, uri: *Uri, options: *LauncherOptions) core.HResult!*IAsyncOperation(LaunchUriStatus) {
         const factory = @This().ILauncherStatics4Cache.get();
-        return try factory.LaunchUriForUserAsyncWithUriWithOptions(user, uri, options);
+        return try factory.LaunchUriForUserAsyncWithOptions(user, uri, options);
     }
     pub fn LaunchUriForUserAsyncWithOptionsWithInputData(user: *User, uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(LaunchUriStatus) {
         const factory = @This().ILauncherStatics4Cache.get();
@@ -3736,9 +3736,9 @@ pub const Launcher = extern struct {
         const factory = @This().ILauncherStatics4Cache.get();
         return try factory.LaunchUriForResultsForUserAsync(user, uri, options);
     }
-    pub fn LaunchUriForResultsForUserAsyncWithUriWithOptionsWithInputData(user: *User, uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(LaunchUriResult) {
+    pub fn LaunchUriForResultsForUserAsyncWithInputData(user: *User, uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(LaunchUriResult) {
         const factory = @This().ILauncherStatics4Cache.get();
-        return try factory.LaunchUriForResultsForUserAsyncWithUriWithOptionsWithInputData(user, uri, options, inputData);
+        return try factory.LaunchUriForResultsForUserAsyncWithInputData(user, uri, options, inputData);
     }
     pub fn LaunchFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().ILauncherStaticsCache.get();
@@ -3768,9 +3768,9 @@ pub const Launcher = extern struct {
         const factory = @This().ILauncherStatics5Cache.get();
         return try factory.LaunchFolderPathForUserAsync(user, path);
     }
-    pub fn LaunchFolderPathForUserAsyncWithPathWithOptions(user: *User, path: HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchFolderPathForUserAsyncWithOptions(user: *User, path: HSTRING, options: *FolderLauncherOptions) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().ILauncherStatics5Cache.get();
-        return try factory.LaunchFolderPathForUserAsyncWithPathWithOptions(user, path, options);
+        return try factory.LaunchFolderPathForUserAsyncWithOptions(user, path, options);
     }
     pub fn LaunchFolderAsync(folder: *IStorageFolder) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().ILauncherStatics3Cache.get();
@@ -3784,11 +3784,11 @@ pub const Launcher = extern struct {
         const factory = @This().ILauncherStatics2Cache.get();
         return try factory.LaunchUriForResultsAsync(uri, options);
     }
-    pub fn LaunchUriForResultsAsyncWithOptionsWithInputData(uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(LaunchUriResult) {
+    pub fn LaunchUriForResultsAsyncWithInputData(uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(LaunchUriResult) {
         const factory = @This().ILauncherStatics2Cache.get();
-        return try factory.LaunchUriForResultsAsyncWithOptionsWithInputData(uri, options, inputData);
+        return try factory.LaunchUriForResultsAsyncWithInputData(uri, options, inputData);
     }
-    pub fn LaunchUriAsync(uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(bool) {
+    pub fn LaunchUriAsyncWithOptionsWithInputData(uri: *Uri, options: *LauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().ILauncherStatics2Cache.get();
         return try factory.LaunchUriAsync(uri, options, inputData);
     }
@@ -3796,9 +3796,9 @@ pub const Launcher = extern struct {
         const factory = @This().ILauncherStatics2Cache.get();
         return try factory.QueryUriSupportAsync(uri, launchQuerySupportType);
     }
-    pub fn QueryUriSupportAsyncWithLaunchQuerySupportTypeWithPackageFamilyName(uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
+    pub fn QueryUriSupportAsyncWithPackageFamilyName(uri: *Uri, launchQuerySupportType: LaunchQuerySupportType, packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         const factory = @This().ILauncherStatics2Cache.get();
-        return try factory.QueryUriSupportAsyncWithLaunchQuerySupportTypeWithPackageFamilyName(uri, launchQuerySupportType, packageFamilyName);
+        return try factory.QueryUriSupportAsyncWithPackageFamilyName(uri, launchQuerySupportType, packageFamilyName);
     }
     pub fn QueryFileSupportAsync(file: *StorageFile) core.HResult!*IAsyncOperation(LaunchQuerySupportStatus) {
         const factory = @This().ILauncherStatics2Cache.get();
@@ -4001,7 +4001,7 @@ pub const MemoryManager = extern struct {
         const factory = @This().IMemoryManagerStatics2Cache.get();
         return try factory.GetProcessMemoryReport();
     }
-    pub fn getExpectedAppMemoryUsageLimit() core.HResult!u64 {
+    pub fn get_ExpectedAppMemoryUsageLimit() core.HResult!u64 {
         const factory = @This().IMemoryManagerStatics4Cache.get();
         return try factory.getExpectedAppMemoryUsageLimit();
     }
@@ -4009,39 +4009,39 @@ pub const MemoryManager = extern struct {
         const factory = @This().IMemoryManagerStatics3Cache.get();
         return try factory.TrySetAppMemoryUsageLimit(value);
     }
-    pub fn getAppMemoryUsage() core.HResult!u64 {
+    pub fn get_AppMemoryUsage() core.HResult!u64 {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.getAppMemoryUsage();
     }
-    pub fn getAppMemoryUsageLimit() core.HResult!u64 {
+    pub fn get_AppMemoryUsageLimit() core.HResult!u64 {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.getAppMemoryUsageLimit();
     }
-    pub fn getAppMemoryUsageLevel() core.HResult!AppMemoryUsageLevel {
+    pub fn get_AppMemoryUsageLevel() core.HResult!AppMemoryUsageLevel {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.getAppMemoryUsageLevel();
     }
-    pub fn addAppMemoryUsageIncreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_AppMemoryUsageIncreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.addAppMemoryUsageIncreased(handler);
     }
-    pub fn removeAppMemoryUsageIncreased(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_AppMemoryUsageIncreased(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.removeAppMemoryUsageIncreased(token);
     }
-    pub fn addAppMemoryUsageDecreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+    pub fn add_AppMemoryUsageDecreased(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.addAppMemoryUsageDecreased(handler);
     }
-    pub fn removeAppMemoryUsageDecreased(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_AppMemoryUsageDecreased(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.removeAppMemoryUsageDecreased(token);
     }
-    pub fn addAppMemoryUsageLimitChanging(handler: *EventHandler(AppMemoryUsageLimitChangingEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_AppMemoryUsageLimitChanging(handler: *EventHandler(AppMemoryUsageLimitChangingEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.addAppMemoryUsageLimitChanging(handler);
     }
-    pub fn removeAppMemoryUsageLimitChanging(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_AppMemoryUsageLimitChanging(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IMemoryManagerStaticsCache.get();
         return try factory.removeAppMemoryUsageLimitChanging(token);
     }
@@ -4108,9 +4108,9 @@ pub const RemoteLauncher = extern struct {
         const factory = @This().IRemoteLauncherStaticsCache.get();
         return try factory.LaunchUriAsync(remoteSystemConnectionRequest, uri);
     }
-    pub fn LaunchUriAsyncWithUriWithOptions(remoteSystemConnectionRequest: *RemoteSystemConnectionRequest, uri: *Uri, options: *RemoteLauncherOptions) core.HResult!*IAsyncOperation(RemoteLaunchUriStatus) {
+    pub fn LaunchUriAsyncWithOptions(remoteSystemConnectionRequest: *RemoteSystemConnectionRequest, uri: *Uri, options: *RemoteLauncherOptions) core.HResult!*IAsyncOperation(RemoteLaunchUriStatus) {
         const factory = @This().IRemoteLauncherStaticsCache.get();
-        return try factory.LaunchUriAsyncWithUriWithOptions(remoteSystemConnectionRequest, uri, options);
+        return try factory.LaunchUriAsyncWithOptions(remoteSystemConnectionRequest, uri, options);
     }
     pub fn LaunchUriAsyncWithOptionsWithInputData(remoteSystemConnectionRequest: *RemoteSystemConnectionRequest, uri: *Uri, options: *RemoteLauncherOptions, inputData: *ValueSet) core.HResult!*IAsyncOperation(RemoteLaunchUriStatus) {
         const factory = @This().IRemoteLauncherStaticsCache.get();
@@ -4191,13 +4191,13 @@ pub const User = extern struct {
         const factory = @This().IUserStaticsCache.get();
         return try factory.FindAllAsync();
     }
-    pub fn FindAllAsync(ty: UserType) core.HResult!*IAsyncOperation(IVectorView(User)) {
+    pub fn FindAllAsyncWithTy(ty: UserType) core.HResult!*IAsyncOperation(IVectorView(User)) {
         const factory = @This().IUserStaticsCache.get();
-        return try factory.FindAllAsync(ty);
+        return try factory.FindAllAsyncWithTy(ty);
     }
-    pub fn FindAllAsync(ty: UserType, status: UserAuthenticationStatus) core.HResult!*IAsyncOperation(IVectorView(User)) {
+    pub fn FindAllAsyncWithTyWithStatus(ty: UserType, status: UserAuthenticationStatus) core.HResult!*IAsyncOperation(IVectorView(User)) {
         const factory = @This().IUserStaticsCache.get();
-        return try factory.FindAllAsync(ty, status);
+        return try factory.FindAllAsyncWithTyWithStatus(ty, status);
     }
     pub fn GetFromId(nonRoamableId: HSTRING) core.HResult!*User {
         const factory = @This().IUserStaticsCache.get();
@@ -4295,11 +4295,11 @@ pub const UserDeviceAssociation = extern struct {
         const factory = @This().IUserDeviceAssociationStaticsCache.get();
         return try factory.FindUserFromDeviceId(deviceId);
     }
-    pub fn addUserDeviceAssociationChanged(handler: *EventHandler(UserDeviceAssociationChangedEventArgs)) core.HResult!EventRegistrationToken {
+    pub fn add_UserDeviceAssociationChanged(handler: *EventHandler(UserDeviceAssociationChangedEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IUserDeviceAssociationStaticsCache.get();
         return try factory.addUserDeviceAssociationChanged(handler);
     }
-    pub fn removeUserDeviceAssociationChanged(token: EventRegistrationToken) core.HResult!void {
+    pub fn remove_UserDeviceAssociationChanged(token: EventRegistrationToken) core.HResult!void {
         const factory = @This().IUserDeviceAssociationStaticsCache.get();
         return try factory.removeUserDeviceAssociationChanged(token);
     }
@@ -4943,9 +4943,9 @@ pub const ProcessLauncher = extern struct {
         const factory = @This().IProcessLauncherStaticsCache.get();
         return try factory.RunToCompletionAsync(fileName, args);
     }
-    pub fn RunToCompletionAsyncWithArgsWithOptions(fileName: HSTRING, args: HSTRING, options: *ProcessLauncherOptions) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
+    pub fn RunToCompletionAsyncWithOptions(fileName: HSTRING, args: HSTRING, options: *ProcessLauncherOptions) core.HResult!*IAsyncOperation(ProcessLauncherResult) {
         const factory = @This().IProcessLauncherStaticsCache.get();
-        return try factory.RunToCompletionAsyncWithArgsWithOptions(fileName, args, options);
+        return try factory.RunToCompletionAsyncWithOptions(fileName, args, options);
     }
     pub const NAME: []const u8 = "Windows.System.ProcessLauncher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5050,15 +5050,15 @@ pub const TimeZoneSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getCurrentTimeZoneDisplayName() core.HResult!HSTRING {
+    pub fn get_CurrentTimeZoneDisplayName() core.HResult!HSTRING {
         const factory = @This().ITimeZoneSettingsStaticsCache.get();
         return try factory.getCurrentTimeZoneDisplayName();
     }
-    pub fn getSupportedTimeZoneDisplayNames() core.HResult!*IVectorView(HSTRING) {
+    pub fn get_SupportedTimeZoneDisplayNames() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().ITimeZoneSettingsStaticsCache.get();
         return try factory.getSupportedTimeZoneDisplayNames();
     }
-    pub fn getCanChangeTimeZone() core.HResult!bool {
+    pub fn get_CanChangeTimeZone() core.HResult!bool {
         const factory = @This().ITimeZoneSettingsStaticsCache.get();
         return try factory.getCanChangeTimeZone();
     }

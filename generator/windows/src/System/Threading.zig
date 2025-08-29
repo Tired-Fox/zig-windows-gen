@@ -127,9 +127,9 @@ pub const ThreadPool = extern struct {
         const factory = @This().IThreadPoolStaticsCache.get();
         return try factory.RunAsyncWithPriority(handler, priority);
     }
-    pub fn RunAsyncWithOptions(handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
+    pub fn RunAsyncWithPriorityWithOptions(handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
         const factory = @This().IThreadPoolStaticsCache.get();
-        return try factory.RunAsyncWithOptions(handler, priority, options);
+        return try factory.RunAsyncWithPriorityWithOptions(handler, priority, options);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.ThreadPool";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -160,13 +160,13 @@ pub const ThreadPoolTimer = extern struct {
         const factory = @This().IThreadPoolTimerStaticsCache.get();
         return try factory.CreateTimer(handler, delay);
     }
-    pub fn CreatePeriodicTimerWithPeriodWithDestroyed(handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
+    pub fn CreatePeriodicTimerWithDestroyed(handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         const factory = @This().IThreadPoolTimerStaticsCache.get();
-        return try factory.CreatePeriodicTimerWithPeriodWithDestroyed(handler, period, destroyed);
+        return try factory.CreatePeriodicTimerWithDestroyed(handler, period, destroyed);
     }
-    pub fn CreateTimerWithDelayWithDestroyed(handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
+    pub fn CreateTimerWithDestroyed(handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         const factory = @This().IThreadPoolTimerStaticsCache.get();
-        return try factory.CreateTimerWithDelayWithDestroyed(handler, delay, destroyed);
+        return try factory.CreateTimerWithDestroyed(handler, delay, destroyed);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.ThreadPoolTimer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

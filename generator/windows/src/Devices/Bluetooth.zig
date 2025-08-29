@@ -381,91 +381,91 @@ pub const BluetoothLEAppearanceCategories = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getUncategorized() core.HResult!u16 {
+    pub fn get_Uncategorized() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getUncategorized();
     }
-    pub fn getPhone() core.HResult!u16 {
+    pub fn get_Phone() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getPhone();
     }
-    pub fn getComputer() core.HResult!u16 {
+    pub fn get_Computer() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getComputer();
     }
-    pub fn getWatch() core.HResult!u16 {
+    pub fn get_Watch() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getWatch();
     }
-    pub fn getClock() core.HResult!u16 {
+    pub fn get_Clock() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getClock();
     }
-    pub fn getDisplay() core.HResult!u16 {
+    pub fn get_Display() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getDisplay();
     }
-    pub fn getRemoteControl() core.HResult!u16 {
+    pub fn get_RemoteControl() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getRemoteControl();
     }
-    pub fn getEyeGlasses() core.HResult!u16 {
+    pub fn get_EyeGlasses() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getEyeGlasses();
     }
-    pub fn getTag() core.HResult!u16 {
+    pub fn get_Tag() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getTag();
     }
-    pub fn getKeyring() core.HResult!u16 {
+    pub fn get_Keyring() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getKeyring();
     }
-    pub fn getMediaPlayer() core.HResult!u16 {
+    pub fn get_MediaPlayer() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getMediaPlayer();
     }
-    pub fn getBarcodeScanner() core.HResult!u16 {
+    pub fn get_BarcodeScanner() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getBarcodeScanner();
     }
-    pub fn getThermometer() core.HResult!u16 {
+    pub fn get_Thermometer() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getThermometer();
     }
-    pub fn getHeartRate() core.HResult!u16 {
+    pub fn get_HeartRate() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getHeartRate();
     }
-    pub fn getBloodPressure() core.HResult!u16 {
+    pub fn get_BloodPressure() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getBloodPressure();
     }
-    pub fn getHumanInterfaceDevice() core.HResult!u16 {
+    pub fn get_HumanInterfaceDevice() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getHumanInterfaceDevice();
     }
-    pub fn getGlucoseMeter() core.HResult!u16 {
+    pub fn get_GlucoseMeter() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getGlucoseMeter();
     }
-    pub fn getRunningWalking() core.HResult!u16 {
+    pub fn get_RunningWalking() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getRunningWalking();
     }
-    pub fn getCycling() core.HResult!u16 {
+    pub fn get_Cycling() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getCycling();
     }
-    pub fn getPulseOximeter() core.HResult!u16 {
+    pub fn get_PulseOximeter() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getPulseOximeter();
     }
-    pub fn getWeightScale() core.HResult!u16 {
+    pub fn get_WeightScale() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getWeightScale();
     }
-    pub fn getOutdoorSportActivity() core.HResult!u16 {
+    pub fn get_OutdoorSportActivity() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
         return try factory.getOutdoorSportActivity();
     }
@@ -478,115 +478,115 @@ pub const BluetoothLEAppearanceSubcategories = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getGeneric() core.HResult!u16 {
+    pub fn get_Generic() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getGeneric();
     }
-    pub fn getSportsWatch() core.HResult!u16 {
+    pub fn get_SportsWatch() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getSportsWatch();
     }
-    pub fn getThermometerEar() core.HResult!u16 {
+    pub fn get_ThermometerEar() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getThermometerEar();
     }
-    pub fn getHeartRateBelt() core.HResult!u16 {
+    pub fn get_HeartRateBelt() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getHeartRateBelt();
     }
-    pub fn getBloodPressureArm() core.HResult!u16 {
+    pub fn get_BloodPressureArm() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getBloodPressureArm();
     }
-    pub fn getBloodPressureWrist() core.HResult!u16 {
+    pub fn get_BloodPressureWrist() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getBloodPressureWrist();
     }
-    pub fn getKeyboard() core.HResult!u16 {
+    pub fn get_Keyboard() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getKeyboard();
     }
-    pub fn getMouse() core.HResult!u16 {
+    pub fn get_Mouse() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getMouse();
     }
-    pub fn getJoystick() core.HResult!u16 {
+    pub fn get_Joystick() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getJoystick();
     }
-    pub fn getGamepad() core.HResult!u16 {
+    pub fn get_Gamepad() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getGamepad();
     }
-    pub fn getDigitizerTablet() core.HResult!u16 {
+    pub fn get_DigitizerTablet() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getDigitizerTablet();
     }
-    pub fn getCardReader() core.HResult!u16 {
+    pub fn get_CardReader() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getCardReader();
     }
-    pub fn getDigitalPen() core.HResult!u16 {
+    pub fn get_DigitalPen() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getDigitalPen();
     }
-    pub fn getBarcodeScanner() core.HResult!u16 {
+    pub fn get_BarcodeScanner() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getBarcodeScanner();
     }
-    pub fn getRunningWalkingInShoe() core.HResult!u16 {
+    pub fn get_RunningWalkingInShoe() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getRunningWalkingInShoe();
     }
-    pub fn getRunningWalkingOnShoe() core.HResult!u16 {
+    pub fn get_RunningWalkingOnShoe() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getRunningWalkingOnShoe();
     }
-    pub fn getRunningWalkingOnHip() core.HResult!u16 {
+    pub fn get_RunningWalkingOnHip() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getRunningWalkingOnHip();
     }
-    pub fn getCyclingComputer() core.HResult!u16 {
+    pub fn get_CyclingComputer() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getCyclingComputer();
     }
-    pub fn getCyclingSpeedSensor() core.HResult!u16 {
+    pub fn get_CyclingSpeedSensor() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getCyclingSpeedSensor();
     }
-    pub fn getCyclingCadenceSensor() core.HResult!u16 {
+    pub fn get_CyclingCadenceSensor() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getCyclingCadenceSensor();
     }
-    pub fn getCyclingPowerSensor() core.HResult!u16 {
+    pub fn get_CyclingPowerSensor() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getCyclingPowerSensor();
     }
-    pub fn getCyclingSpeedCadenceSensor() core.HResult!u16 {
+    pub fn get_CyclingSpeedCadenceSensor() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getCyclingSpeedCadenceSensor();
     }
-    pub fn getOximeterFingertip() core.HResult!u16 {
+    pub fn get_OximeterFingertip() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getOximeterFingertip();
     }
-    pub fn getOximeterWristWorn() core.HResult!u16 {
+    pub fn get_OximeterWristWorn() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getOximeterWristWorn();
     }
-    pub fn getLocationDisplay() core.HResult!u16 {
+    pub fn get_LocationDisplay() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getLocationDisplay();
     }
-    pub fn getLocationNavigationDisplay() core.HResult!u16 {
+    pub fn get_LocationNavigationDisplay() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getLocationNavigationDisplay();
     }
-    pub fn getLocationPod() core.HResult!u16 {
+    pub fn get_LocationPod() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getLocationPod();
     }
-    pub fn getLocationNavigationPod() core.HResult!u16 {
+    pub fn get_LocationNavigationPod() core.HResult!u16 {
         const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
         return try factory.getLocationNavigationPod();
     }
@@ -841,7 +841,7 @@ pub const BluetoothLEDevice = extern struct {
         const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
         return try factory.GetDeviceSelectorFromAppearance(appearance);
     }
-    pub fn FromBluetoothAddressAsync(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
+    pub fn FromBluetoothAddressAsyncWithBluetoothAddressType(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
         const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
         return try factory.FromBluetoothAddressAsync(bluetoothAddress, bluetoothAddressType);
     }
@@ -886,15 +886,15 @@ pub const BluetoothLEPreferredConnectionParameters = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn getBalanced() core.HResult!*BluetoothLEPreferredConnectionParameters {
+    pub fn get_Balanced() core.HResult!*BluetoothLEPreferredConnectionParameters {
         const factory = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
         return try factory.getBalanced();
     }
-    pub fn getThroughputOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
+    pub fn get_ThroughputOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
         const factory = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
         return try factory.getThroughputOptimized();
     }
-    pub fn getPowerOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
+    pub fn get_PowerOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
         const factory = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
         return try factory.getPowerOptimized();
     }
