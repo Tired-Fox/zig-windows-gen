@@ -214,15 +214,15 @@ pub const ISpatialAnchorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCreateRelativeTo(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!*SpatialAnchor {
+    pub fn TryCreateRelativeToWithPosition(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!*SpatialAnchor {
         var _r: *SpatialAnchor = undefined;
-        const _c = self.vtable.TryCreateRelativeTo(@ptrCast(self), coordinateSystem, position, &_r);
+        const _c = self.vtable.TryCreateRelativeToWithPosition(@ptrCast(self), coordinateSystem, position, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCreateRelativeTo(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
+    pub fn TryCreateRelativeToWithOrientation(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
         var _r: *SpatialAnchor = undefined;
-        const _c = self.vtable.TryCreateRelativeTo(@ptrCast(self), coordinateSystem, position, orientation, &_r);
+        const _c = self.vtable.TryCreateRelativeToWithOrientation(@ptrCast(self), coordinateSystem, position, orientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -239,8 +239,8 @@ pub const ISpatialAnchorStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryCreateRelativeTo: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
-        TryCreateRelativeTo: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
-        TryCreateRelativeTo: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
+        TryCreateRelativeToWithPosition: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
+        TryCreateRelativeToWithOrientation: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialAnchorStore = extern struct {
@@ -1142,13 +1142,13 @@ pub const SpatialAnchor = extern struct {
         const factory = @This().ISpatialAnchorStaticsCache.get();
         return try factory.TryCreateRelativeTo(coordinateSystem);
     }
-    pub fn TryCreateRelativeTo(coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!*SpatialAnchor {
+    pub fn TryCreateRelativeToWithPosition(coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!*SpatialAnchor {
         const factory = @This().ISpatialAnchorStaticsCache.get();
-        return try factory.TryCreateRelativeTo(coordinateSystem, position);
+        return try factory.TryCreateRelativeToWithPosition(coordinateSystem, position);
     }
-    pub fn TryCreateRelativeTo(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
+    pub fn TryCreateRelativeToWithOrientation(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
         const factory = @This().ISpatialAnchorStaticsCache.get();
-        return try factory.TryCreateRelativeTo(coordinateSystem, position, orientation);
+        return try factory.TryCreateRelativeToWithOrientation(coordinateSystem, position, orientation);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

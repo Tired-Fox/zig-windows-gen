@@ -334,11 +334,26 @@ pub fn main() !void {
 
         for (namespace.types) |*ty| {
             switch (ty.Kind) {
-                .Interface => try metadata.interface.serialize(allocator, &ctx, ty, writer),
-                .Class => try metadata.class.serialize(allocator, &ctx, ty, writer),
-                .Enum => try metadata.enumeration.serialize(ty, writer),
-                .Struct => try metadata.structure.serialize(allocator, &ctx, ty, writer),
-                .Delegate => try metadata.delegate.serialize(allocator, &ctx, ty, writer),
+                .Interface => metadata.interface.serialize(allocator, &ctx, ty, writer) catch |e| {
+                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    return e;
+                },
+                .Class => metadata.class.serialize(allocator, &ctx, ty, writer) catch |e| {
+                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    return e;
+                },
+                .Enum => metadata.enumeration.serialize(ty, writer) catch |e| {
+                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    return e;
+                },
+                .Struct => metadata.structure.serialize(allocator, &ctx, ty, writer) catch |e| {
+                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    return e;
+                },
+                .Delegate => metadata.delegate.serialize(allocator, &ctx, ty, writer) catch |e| {
+                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    return e;
+                },
                 else => std.debug.print("\x1b[31m{f}\x1b[39m\n", .{ ty })
             }
         }

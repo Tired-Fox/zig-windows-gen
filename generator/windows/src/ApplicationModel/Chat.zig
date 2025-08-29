@@ -875,11 +875,11 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationAsync(conversationId);
     }
-    pub fn GetConversationAsync(self: *@This(), conversationId: HSTRING, transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
+    pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: HSTRING, transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetConversationAsync(conversationId, transportIds);
+        return try this.?.GetConversationAsyncWithTransportIds(conversationId, transportIds);
     }
     pub fn GetConversationFromThreadingInfoAsync(self: *@This(), threadingInfo: *ChatConversationThreadingInfo) core.HResult!*IAsyncOperation(ChatConversation) {
         var this: ?*IChatMessageStore2 = undefined;
@@ -2669,9 +2669,9 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationAsync(self: *@This(), conversationId: HSTRING, transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
+    pub fn GetConversationAsyncWithTransportIds(self: *@This(), conversationId: HSTRING, transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ChatConversation) {
         var _r: *IAsyncOperation(ChatConversation) = undefined;
-        const _c = self.vtable.GetConversationAsync(@ptrCast(self), conversationId, transportIds, &_r);
+        const _c = self.vtable.GetConversationAsyncWithTransportIds(@ptrCast(self), conversationId, transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2771,7 +2771,7 @@ pub const IChatMessageStore2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ForwardMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, addresses: *IIterable(HSTRING), _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
         GetConversationAsync: *const fn(self: *anyopaque, conversationId: HSTRING, _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
-        GetConversationAsync: *const fn(self: *anyopaque, conversationId: HSTRING, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
+        GetConversationAsyncWithTransportIds: *const fn(self: *anyopaque, conversationId: HSTRING, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
         GetConversationFromThreadingInfoAsync: *const fn(self: *anyopaque, threadingInfo: *ChatConversationThreadingInfo, _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **ChatConversationReader) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **ChatConversationReader) callconv(.winapi) HRESULT,

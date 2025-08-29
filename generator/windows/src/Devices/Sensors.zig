@@ -258,9 +258,9 @@ pub const ActivitySensor = extern struct {
         const factory = @This().IActivitySensorStaticsCache.get();
         return try factory.GetSystemHistoryAsync(fromTime);
     }
-    pub fn GetSystemHistoryAsync(fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(ActivitySensorReading)) {
+    pub fn GetSystemHistoryAsyncWithDuration(fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(ActivitySensorReading)) {
         const factory = @This().IActivitySensorStaticsCache.get();
-        return try factory.GetSystemHistoryAsync(fromTime, duration);
+        return try factory.GetSystemHistoryAsyncWithDuration(fromTime, duration);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.ActivitySensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2110,9 +2110,9 @@ pub const IActivitySensorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSystemHistoryAsync(self: *@This(), fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(ActivitySensorReading)) {
+    pub fn GetSystemHistoryAsyncWithDuration(self: *@This(), fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(ActivitySensorReading)) {
         var _r: *IAsyncOperation(IVectorView(ActivitySensorReading)) = undefined;
-        const _c = self.vtable.GetSystemHistoryAsync(@ptrCast(self), fromTime, duration, &_r);
+        const _c = self.vtable.GetSystemHistoryAsyncWithDuration(@ptrCast(self), fromTime, duration, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2132,7 +2132,7 @@ pub const IActivitySensorStatics = extern struct {
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(ActivitySensor)) callconv(.winapi) HRESULT,
         GetSystemHistoryAsync: *const fn(self: *anyopaque, fromTime: DateTime, _r: **IAsyncOperation(IVectorView(ActivitySensorReading))) callconv(.winapi) HRESULT,
-        GetSystemHistoryAsync: *const fn(self: *anyopaque, fromTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(ActivitySensorReading))) callconv(.winapi) HRESULT,
+        GetSystemHistoryAsyncWithDuration: *const fn(self: *anyopaque, fromTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(ActivitySensorReading))) callconv(.winapi) HRESULT,
     };
 };
 pub const IActivitySensorTriggerDetails = extern struct {
@@ -6081,9 +6081,9 @@ pub const IOrientationSensorStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDefault(self: *@This(), sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
+    pub fn GetDefaultWithOptimizationGoal(self: *@This(), sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
         var _r: *OrientationSensor = undefined;
-        const _c = self.vtable.GetDefault(@ptrCast(self), sensorReadingType, optimizationGoal, &_r);
+        const _c = self.vtable.GetDefaultWithOptimizationGoal(@ptrCast(self), sensorReadingType, optimizationGoal, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6100,7 +6100,7 @@ pub const IOrientationSensorStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDefault: *const fn(self: *anyopaque, sensorReadingtype: SensorReadingType, _r: **OrientationSensor) callconv(.winapi) HRESULT,
-        GetDefault: *const fn(self: *anyopaque, sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal, _r: **OrientationSensor) callconv(.winapi) HRESULT,
+        GetDefaultWithOptimizationGoal: *const fn(self: *anyopaque, sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal, _r: **OrientationSensor) callconv(.winapi) HRESULT,
     };
 };
 pub const IOrientationSensorStatics4 = extern struct {
@@ -6111,9 +6111,9 @@ pub const IOrientationSensorStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithOptimizationGoal(self: *@This(), readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), readingType, optimizationGoal, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithOptimizationGoal(@ptrCast(self), readingType, optimizationGoal, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6136,7 +6136,7 @@ pub const IOrientationSensorStatics4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, readingType: SensorReadingType, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithOptimizationGoal: *const fn(self: *anyopaque, readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(OrientationSensor)) callconv(.winapi) HRESULT,
     };
 };
@@ -6340,9 +6340,9 @@ pub const IPedometerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSystemHistoryAsync(self: *@This(), fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(PedometerReading)) {
+    pub fn GetSystemHistoryAsyncWithDuration(self: *@This(), fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(PedometerReading)) {
         var _r: *IAsyncOperation(IVectorView(PedometerReading)) = undefined;
-        const _c = self.vtable.GetSystemHistoryAsync(@ptrCast(self), fromTime, duration, &_r);
+        const _c = self.vtable.GetSystemHistoryAsyncWithDuration(@ptrCast(self), fromTime, duration, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6362,7 +6362,7 @@ pub const IPedometerStatics = extern struct {
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Pedometer)) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetSystemHistoryAsync: *const fn(self: *anyopaque, fromTime: DateTime, _r: **IAsyncOperation(IVectorView(PedometerReading))) callconv(.winapi) HRESULT,
-        GetSystemHistoryAsync: *const fn(self: *anyopaque, fromTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(PedometerReading))) callconv(.winapi) HRESULT,
+        GetSystemHistoryAsyncWithDuration: *const fn(self: *anyopaque, fromTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(PedometerReading))) callconv(.winapi) HRESULT,
     };
 };
 pub const IPedometerStatics2 = extern struct {
@@ -7640,9 +7640,9 @@ pub const OrientationSensor = extern struct {
         const factory = @This().IOrientationSensorStatics3Cache.get();
         return try factory.GetDefault(sensorReadingtype);
     }
-    pub fn GetDefault(sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
+    pub fn GetDefaultWithOptimizationGoal(sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
         const factory = @This().IOrientationSensorStatics3Cache.get();
-        return try factory.GetDefault(sensorReadingType, optimizationGoal);
+        return try factory.GetDefaultWithOptimizationGoal(sensorReadingType, optimizationGoal);
     }
     pub fn GetDefault() core.HResult!*OrientationSensor {
         const factory = @This().IOrientationSensorStaticsCache.get();
@@ -7652,9 +7652,9 @@ pub const OrientationSensor = extern struct {
         const factory = @This().IOrientationSensorStatics4Cache.get();
         return try factory.GetDeviceSelector(readingType);
     }
-    pub fn GetDeviceSelector(readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithOptimizationGoal(readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
         const factory = @This().IOrientationSensorStatics4Cache.get();
-        return try factory.GetDeviceSelector(readingType, optimizationGoal);
+        return try factory.GetDeviceSelectorWithOptimizationGoal(readingType, optimizationGoal);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(OrientationSensor) {
         const factory = @This().IOrientationSensorStatics4Cache.get();
@@ -7775,9 +7775,9 @@ pub const Pedometer = extern struct {
         const factory = @This().IPedometerStaticsCache.get();
         return try factory.GetSystemHistoryAsync(fromTime);
     }
-    pub fn GetSystemHistoryAsync(fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(PedometerReading)) {
+    pub fn GetSystemHistoryAsyncWithDuration(fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(PedometerReading)) {
         const factory = @This().IPedometerStaticsCache.get();
-        return try factory.GetSystemHistoryAsync(fromTime, duration);
+        return try factory.GetSystemHistoryAsyncWithDuration(fromTime, duration);
     }
     pub fn GetReadingsFromTriggerDetails(triggerDetails: *SensorDataThresholdTriggerDetails) core.HResult!*IVectorView(PedometerReading) {
         const factory = @This().IPedometerStatics2Cache.get();

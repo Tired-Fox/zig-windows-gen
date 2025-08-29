@@ -340,9 +340,9 @@ pub const IXboxLiveEndpointPairTemplate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateEndpointPairAsync(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
+    pub fn CreateEndpointPairAsyncWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         var _r: *IAsyncOperation(XboxLiveEndpointPairCreationResult) = undefined;
-        const _c = self.vtable.CreateEndpointPairAsync(@ptrCast(self), deviceAddress, behaviors, &_r);
+        const _c = self.vtable.CreateEndpointPairAsyncWithBehaviors(@ptrCast(self), deviceAddress, behaviors, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -352,9 +352,9 @@ pub const IXboxLiveEndpointPairTemplate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateEndpointPairForPortsAsync(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
+    pub fn CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         var _r: *IAsyncOperation(XboxLiveEndpointPairCreationResult) = undefined;
-        const _c = self.vtable.CreateEndpointPairForPortsAsync(@ptrCast(self), deviceAddress, initiatorPort, acceptorPort, behaviors, &_r);
+        const _c = self.vtable.CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(@ptrCast(self), deviceAddress, initiatorPort, acceptorPort, behaviors, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -415,9 +415,9 @@ pub const IXboxLiveEndpointPairTemplate = extern struct {
         add_InboundEndpointPairCreated: *const fn(self: *anyopaque, handler: *TypedEventHandler(XboxLiveEndpointPairTemplate,XboxLiveInboundEndpointPairCreatedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_InboundEndpointPairCreated: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         CreateEndpointPairAsync: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
-        CreateEndpointPairAsync: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
+        CreateEndpointPairAsyncWithBehaviors: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
         CreateEndpointPairForPortsAsync: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
-        CreateEndpointPairForPortsAsync: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
+        CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
         get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_SocketKind: *const fn(self: *anyopaque, _r: *XboxLiveSocketKind) callconv(.winapi) HRESULT,
         get_InitiatorBoundPortRangeLower: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
@@ -978,17 +978,17 @@ pub const XboxLiveEndpointPairTemplate = extern struct {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
         return try this.CreateEndpointPairAsync(deviceAddress);
     }
-    pub fn CreateEndpointPairAsync(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
+    pub fn CreateEndpointPairAsyncWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
-        return try this.CreateEndpointPairAsync(deviceAddress, behaviors);
+        return try this.CreateEndpointPairAsyncWithBehaviors(deviceAddress, behaviors);
     }
     pub fn CreateEndpointPairForPortsAsync(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
         return try this.CreateEndpointPairForPortsAsync(deviceAddress, initiatorPort, acceptorPort);
     }
-    pub fn CreateEndpointPairForPortsAsync(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
+    pub fn CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
-        return try this.CreateEndpointPairForPortsAsync(deviceAddress, initiatorPort, acceptorPort, behaviors);
+        return try this.CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(deviceAddress, initiatorPort, acceptorPort, behaviors);
     }
     pub fn getName(self: *@This()) core.HResult!HSTRING {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);

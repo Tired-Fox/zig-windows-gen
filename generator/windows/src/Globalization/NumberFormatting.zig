@@ -92,17 +92,17 @@ pub const CurrencyFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn Format(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
         var this: ?*INumberFormatter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Format(value);
+        return try this.?.FormatWithValue(value);
     }
-    pub fn Format(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
         var this: ?*INumberFormatter = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Format(value);
+        return try this.?.FormatWithValue(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         var this: ?*INumberFormatter = undefined;
@@ -308,13 +308,13 @@ pub const DecimalFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn Format(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.Format(value);
+        return try this.FormatWithValue(value);
     }
-    pub fn Format(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.Format(value);
+        return try this.FormatWithValue(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
@@ -567,15 +567,15 @@ pub const IIncrementNumberRounder = extern struct {
 };
 pub const INumberFormatter = extern struct {
     vtable: *const VTable,
-    pub fn Format(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.Format(@ptrCast(self), value, &_r);
+        const _c = self.vtable.FormatWithValue(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Format(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.Format(@ptrCast(self), value, &_r);
+        const _c = self.vtable.FormatWithValue(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -597,8 +597,8 @@ pub const INumberFormatter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Format: *const fn(self: *anyopaque, value: i64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        Format: *const fn(self: *anyopaque, value: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FormatWithValue: *const fn(self: *anyopaque, value: i64, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FormatWithValue: *const fn(self: *anyopaque, value: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
         Format: *const fn(self: *anyopaque, value: f64, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
@@ -1271,13 +1271,13 @@ pub const PercentFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn Format(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.Format(value);
+        return try this.FormatWithValue(value);
     }
-    pub fn Format(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.Format(value);
+        return try this.FormatWithValue(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
@@ -1460,13 +1460,13 @@ pub const PermilleFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn Format(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.Format(value);
+        return try this.FormatWithValue(value);
     }
-    pub fn Format(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.Format(value);
+        return try this.FormatWithValue(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);

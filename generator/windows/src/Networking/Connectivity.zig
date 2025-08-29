@@ -313,9 +313,9 @@ pub const ConnectionProfile = extern struct {
         const this: *IConnectionProfile = @ptrCast(self);
         return try this.GetLocalUsage(StartTime, EndTime);
     }
-    pub fn GetLocalUsage(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
+    pub fn GetLocalUsageWithEndTimeWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
         const this: *IConnectionProfile = @ptrCast(self);
-        return try this.GetLocalUsage(StartTime, EndTime, States);
+        return try this.GetLocalUsageWithEndTimeWithStates(StartTime, EndTime, States);
     }
     pub fn getNetworkSecuritySettings(self: *@This()) core.HResult!*NetworkSecuritySettings {
         const this: *IConnectionProfile = @ptrCast(self);
@@ -940,9 +940,9 @@ pub const IConnectionProfile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalUsage(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
+    pub fn GetLocalUsageWithEndTimeWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
         var _r: *DataUsage = undefined;
-        const _c = self.vtable.GetLocalUsage(@ptrCast(self), StartTime, EndTime, States, &_r);
+        const _c = self.vtable.GetLocalUsageWithEndTimeWithStates(@ptrCast(self), StartTime, EndTime, States, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -971,7 +971,7 @@ pub const IConnectionProfile = extern struct {
         GetDataPlanStatus: *const fn(self: *anyopaque, _r: **DataPlanStatus) callconv(.winapi) HRESULT,
         get_NetworkAdapter: *const fn(self: *anyopaque, _r: **NetworkAdapter) callconv(.winapi) HRESULT,
         GetLocalUsage: *const fn(self: *anyopaque, StartTime: DateTime, EndTime: DateTime, _r: **DataUsage) callconv(.winapi) HRESULT,
-        GetLocalUsage: *const fn(self: *anyopaque, StartTime: DateTime, EndTime: DateTime, States: RoamingStates, _r: **DataUsage) callconv(.winapi) HRESULT,
+        GetLocalUsageWithEndTimeWithStates: *const fn(self: *anyopaque, StartTime: DateTime, EndTime: DateTime, States: RoamingStates, _r: **DataUsage) callconv(.winapi) HRESULT,
         get_NetworkSecuritySettings: *const fn(self: *anyopaque, _r: **NetworkSecuritySettings) callconv(.winapi) HRESULT,
     };
 };
@@ -2075,9 +2075,9 @@ pub const IRoutePolicy = extern struct {
 };
 pub const IRoutePolicyFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateRoutePolicy(self: *@This(), connectionProfile: *ConnectionProfile, hostName: *HostName, type: DomainNameType) core.HResult!*RoutePolicy {
+    pub fn CreateRoutePolicy(self: *@This(), connectionProfile: *ConnectionProfile, hostName: *HostName, ty: DomainNameType) core.HResult!*RoutePolicy {
         var _r: *RoutePolicy = undefined;
-        const _c = self.vtable.CreateRoutePolicy(@ptrCast(self), connectionProfile, hostName, type, &_r);
+        const _c = self.vtable.CreateRoutePolicy(@ptrCast(self), connectionProfile, hostName, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2093,7 +2093,7 @@ pub const IRoutePolicyFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateRoutePolicy: *const fn(self: *anyopaque, connectionProfile: *ConnectionProfile, hostName: *HostName, type: DomainNameType, _r: **RoutePolicy) callconv(.winapi) HRESULT,
+        CreateRoutePolicy: *const fn(self: *anyopaque, connectionProfile: *ConnectionProfile, hostName: *HostName, ty: DomainNameType, _r: **RoutePolicy) callconv(.winapi) HRESULT,
     };
 };
 pub const IWlanConnectionProfileDetails = extern struct {
@@ -2526,9 +2526,9 @@ pub const RoutePolicy = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateRoutePolicy(connectionProfile: *ConnectionProfile, hostName: *HostName, type: DomainNameType) core.HResult!*RoutePolicy {
+    pub fn CreateRoutePolicy(connectionProfile: *ConnectionProfile, hostName: *HostName, ty: DomainNameType) core.HResult!*RoutePolicy {
         const factory = @This().IRoutePolicyFactoryCache.get();
-        return try factory.CreateRoutePolicy(connectionProfile, hostName, type);
+        return try factory.CreateRoutePolicy(connectionProfile, hostName, ty);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.RoutePolicy";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

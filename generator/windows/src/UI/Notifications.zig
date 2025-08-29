@@ -94,9 +94,9 @@ pub const BadgeUpdateManager = extern struct {
         const factory = @This().IBadgeUpdateManagerStaticsCache.get();
         return try factory.CreateBadgeUpdaterForSecondaryTile(tileId);
     }
-    pub fn GetTemplateContent(type: BadgeTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(ty: BadgeTemplateType) core.HResult!*XmlDocument {
         const factory = @This().IBadgeUpdateManagerStaticsCache.get();
-        return try factory.GetTemplateContent(type);
+        return try factory.GetTemplateContent(ty);
     }
     pub fn GetForUser(user: *User) core.HResult!*BadgeUpdateManagerForUser {
         const factory = @This().IBadgeUpdateManagerStatics2Cache.get();
@@ -145,9 +145,9 @@ pub const BadgeUpdater = extern struct {
         const this: *IBadgeUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdate(badgeContent, requestedInterval);
     }
-    pub fn StartPeriodicUpdate(self: *@This(), badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *IBadgeUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdate(badgeContent, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateWithStartTimeWithRequestedInterval(badgeContent, startTime, requestedInterval);
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
         const this: *IBadgeUpdater = @ptrCast(self);
@@ -351,9 +351,9 @@ pub const IBadgeUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTemplateContent(self: *@This(), type: BadgeTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(self: *@This(), ty: BadgeTemplateType) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
-        const _c = self.vtable.GetTemplateContent(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetTemplateContent(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -372,7 +372,7 @@ pub const IBadgeUpdateManagerStatics = extern struct {
         CreateBadgeUpdaterForApplication: *const fn(self: *anyopaque, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
         CreateBadgeUpdaterForApplication: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
         CreateBadgeUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **BadgeUpdater) callconv(.winapi) HRESULT,
-        GetTemplateContent: *const fn(self: *anyopaque, type: BadgeTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
+        GetTemplateContent: *const fn(self: *anyopaque, ty: BadgeTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const IBadgeUpdateManagerStatics2 = extern struct {
@@ -412,8 +412,8 @@ pub const IBadgeUpdater = extern struct {
         const _c = self.vtable.StartPeriodicUpdate(@ptrCast(self), badgeContent, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartPeriodicUpdate(self: *@This(), badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
-        const _c = self.vtable.StartPeriodicUpdate(@ptrCast(self), badgeContent, startTime, requestedInterval);
+    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+        const _c = self.vtable.StartPeriodicUpdateWithStartTimeWithRequestedInterval(@ptrCast(self), badgeContent, startTime, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
@@ -435,7 +435,7 @@ pub const IBadgeUpdater = extern struct {
         Update: *const fn(self: *anyopaque, notification: *BadgeNotification) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         StartPeriodicUpdate: *const fn(self: *anyopaque, badgeContent: *Uri, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
-        StartPeriodicUpdate: *const fn(self: *anyopaque, badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
+        StartPeriodicUpdateWithStartTimeWithRequestedInterval: *const fn(self: *anyopaque, badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
         StopPeriodicUpdate: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -800,9 +800,9 @@ pub const INotificationData = extern struct {
 };
 pub const INotificationDataFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateNotificationData(self: *@This(), initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
+    pub fn CreateNotificationDataWithSequenceNumber(self: *@This(), initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
         var _r: *NotificationData = undefined;
-        const _c = self.vtable.CreateNotificationData(@ptrCast(self), initialValues, sequenceNumber, &_r);
+        const _c = self.vtable.CreateNotificationDataWithSequenceNumber(@ptrCast(self), initialValues, sequenceNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -824,7 +824,7 @@ pub const INotificationDataFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateNotificationData: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32, _r: **NotificationData) callconv(.winapi) HRESULT,
+        CreateNotificationDataWithSequenceNumber: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32, _r: **NotificationData) callconv(.winapi) HRESULT,
         CreateNotificationData: *const fn(self: *anyopaque, initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), _r: **NotificationData) callconv(.winapi) HRESULT,
     };
 };
@@ -1308,9 +1308,9 @@ pub const ITileFlyoutUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTemplateContent(self: *@This(), type: TileFlyoutTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(self: *@This(), ty: TileFlyoutTemplateType) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
-        const _c = self.vtable.GetTemplateContent(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetTemplateContent(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1329,7 +1329,7 @@ pub const ITileFlyoutUpdateManagerStatics = extern struct {
         CreateTileFlyoutUpdaterForApplication: *const fn(self: *anyopaque, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
         CreateTileFlyoutUpdaterForApplication: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
         CreateTileFlyoutUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **TileFlyoutUpdater) callconv(.winapi) HRESULT,
-        GetTemplateContent: *const fn(self: *anyopaque, type: TileFlyoutTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
+        GetTemplateContent: *const fn(self: *anyopaque, ty: TileFlyoutTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const ITileFlyoutUpdater = extern struct {
@@ -1346,8 +1346,8 @@ pub const ITileFlyoutUpdater = extern struct {
         const _c = self.vtable.StartPeriodicUpdate(@ptrCast(self), tileFlyoutContent, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartPeriodicUpdate(self: *@This(), tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
-        const _c = self.vtable.StartPeriodicUpdate(@ptrCast(self), tileFlyoutContent, startTime, requestedInterval);
+    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+        const _c = self.vtable.StartPeriodicUpdateWithStartTimeWithRequestedInterval(@ptrCast(self), tileFlyoutContent, startTime, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
@@ -1375,7 +1375,7 @@ pub const ITileFlyoutUpdater = extern struct {
         Update: *const fn(self: *anyopaque, notification: *TileFlyoutNotification) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         StartPeriodicUpdate: *const fn(self: *anyopaque, tileFlyoutContent: *Uri, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
-        StartPeriodicUpdate: *const fn(self: *anyopaque, tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
+        StartPeriodicUpdateWithStartTimeWithRequestedInterval: *const fn(self: *anyopaque, tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
         StopPeriodicUpdate: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         get_Setting: *const fn(self: *anyopaque, _r: *NotificationSetting) callconv(.winapi) HRESULT,
     };
@@ -1514,9 +1514,9 @@ pub const ITileUpdateManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTemplateContent(self: *@This(), type: TileTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(self: *@This(), ty: TileTemplateType) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
-        const _c = self.vtable.GetTemplateContent(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetTemplateContent(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1535,7 +1535,7 @@ pub const ITileUpdateManagerStatics = extern struct {
         CreateTileUpdaterForApplication: *const fn(self: *anyopaque, _r: **TileUpdater) callconv(.winapi) HRESULT,
         CreateTileUpdaterForApplication: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
         CreateTileUpdaterForSecondaryTile: *const fn(self: *anyopaque, tileId: HSTRING, _r: **TileUpdater) callconv(.winapi) HRESULT,
-        GetTemplateContent: *const fn(self: *anyopaque, type: TileTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
+        GetTemplateContent: *const fn(self: *anyopaque, ty: TileTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const ITileUpdateManagerStatics2 = extern struct {
@@ -1599,8 +1599,8 @@ pub const ITileUpdater = extern struct {
         const _c = self.vtable.StartPeriodicUpdate(@ptrCast(self), tileContent, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartPeriodicUpdate(self: *@This(), tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
-        const _c = self.vtable.StartPeriodicUpdate(@ptrCast(self), tileContent, startTime, requestedInterval);
+    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+        const _c = self.vtable.StartPeriodicUpdateWithStartTimeWithRequestedInterval(@ptrCast(self), tileContent, startTime, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
@@ -1611,8 +1611,8 @@ pub const ITileUpdater = extern struct {
         const _c = self.vtable.StartPeriodicUpdateBatch(@ptrCast(self), tileContents, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn StartPeriodicUpdateBatch(self: *@This(), tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
-        const _c = self.vtable.StartPeriodicUpdateBatch(@ptrCast(self), tileContents, startTime, requestedInterval);
+    pub fn StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval(self: *@This(), tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+        const _c = self.vtable.StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval(@ptrCast(self), tileContents, startTime, requestedInterval);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ITileUpdater";
@@ -1635,10 +1635,10 @@ pub const ITileUpdater = extern struct {
         RemoveFromSchedule: *const fn(self: *anyopaque, scheduledTile: *ScheduledTileNotification) callconv(.winapi) HRESULT,
         GetScheduledTileNotifications: *const fn(self: *anyopaque, _r: **IVectorView(ScheduledTileNotification)) callconv(.winapi) HRESULT,
         StartPeriodicUpdate: *const fn(self: *anyopaque, tileContent: *Uri, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
-        StartPeriodicUpdate: *const fn(self: *anyopaque, tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
+        StartPeriodicUpdateWithStartTimeWithRequestedInterval: *const fn(self: *anyopaque, tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
         StopPeriodicUpdate: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         StartPeriodicUpdateBatch: *const fn(self: *anyopaque, tileContents: *IIterable(Uri), requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
-        StartPeriodicUpdateBatch: *const fn(self: *anyopaque, tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
+        StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval: *const fn(self: *anyopaque, tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) callconv(.winapi) HRESULT,
     };
 };
 pub const ITileUpdater2 = extern struct {
@@ -2201,16 +2201,16 @@ pub const IToastNotificationHistory = extern struct {
         const _c = self.vtable.RemoveGroup(@ptrCast(self), group);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RemoveGroup(self: *@This(), group: HSTRING, applicationId: HSTRING) core.HResult!void {
-        const _c = self.vtable.RemoveGroup(@ptrCast(self), group, applicationId);
+    pub fn RemoveGroupWithApplicationId(self: *@This(), group: HSTRING, applicationId: HSTRING) core.HResult!void {
+        const _c = self.vtable.RemoveGroupWithApplicationId(@ptrCast(self), group, applicationId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Remove(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
-        const _c = self.vtable.Remove(@ptrCast(self), tag, group, applicationId);
+    pub fn RemoveWithApplicationId(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
+        const _c = self.vtable.RemoveWithApplicationId(@ptrCast(self), tag, group, applicationId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Remove(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
-        const _c = self.vtable.Remove(@ptrCast(self), tag, group);
+    pub fn RemoveWithGroup(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
+        const _c = self.vtable.RemoveWithGroup(@ptrCast(self), tag, group);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Remove(self: *@This(), tag: HSTRING) core.HResult!void {
@@ -2238,9 +2238,9 @@ pub const IToastNotificationHistory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RemoveGroup: *const fn(self: *anyopaque, group: HSTRING) callconv(.winapi) HRESULT,
-        RemoveGroup: *const fn(self: *anyopaque, group: HSTRING, applicationId: HSTRING) callconv(.winapi) HRESULT,
-        Remove: *const fn(self: *anyopaque, tag: HSTRING, group: HSTRING, applicationId: HSTRING) callconv(.winapi) HRESULT,
-        Remove: *const fn(self: *anyopaque, tag: HSTRING, group: HSTRING) callconv(.winapi) HRESULT,
+        RemoveGroupWithApplicationId: *const fn(self: *anyopaque, group: HSTRING, applicationId: HSTRING) callconv(.winapi) HRESULT,
+        RemoveWithApplicationId: *const fn(self: *anyopaque, tag: HSTRING, group: HSTRING, applicationId: HSTRING) callconv(.winapi) HRESULT,
+        RemoveWithGroup: *const fn(self: *anyopaque, tag: HSTRING, group: HSTRING) callconv(.winapi) HRESULT,
         Remove: *const fn(self: *anyopaque, tag: HSTRING) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque, applicationId: HSTRING) callconv(.winapi) HRESULT,
@@ -2459,9 +2459,9 @@ pub const IToastNotificationManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTemplateContent(self: *@This(), type: ToastTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(self: *@This(), ty: ToastTemplateType) core.HResult!*XmlDocument {
         var _r: *XmlDocument = undefined;
-        const _c = self.vtable.GetTemplateContent(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetTemplateContent(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2479,7 +2479,7 @@ pub const IToastNotificationManagerStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateToastNotifier: *const fn(self: *anyopaque, _r: **ToastNotifier) callconv(.winapi) HRESULT,
         CreateToastNotifier: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **ToastNotifier) callconv(.winapi) HRESULT,
-        GetTemplateContent: *const fn(self: *anyopaque, type: ToastTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
+        GetTemplateContent: *const fn(self: *anyopaque, ty: ToastTemplateType, _r: **XmlDocument) callconv(.winapi) HRESULT,
     };
 };
 pub const IToastNotificationManagerStatics2 = extern struct {
@@ -2608,9 +2608,9 @@ pub const IToastNotifier = extern struct {
 };
 pub const IToastNotifier2 = extern struct {
     vtable: *const VTable,
-    pub fn Update(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn UpdateWithTagWithGroup(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
         var _r: NotificationUpdateResult = undefined;
-        const _c = self.vtable.Update(@ptrCast(self), data, tag, group, &_r);
+        const _c = self.vtable.UpdateWithTagWithGroup(@ptrCast(self), data, tag, group, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2632,7 +2632,7 @@ pub const IToastNotifier2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Update: *const fn(self: *anyopaque, data: *NotificationData, tag: HSTRING, group: HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
+        UpdateWithTagWithGroup: *const fn(self: *anyopaque, data: *NotificationData, tag: HSTRING, group: HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
         Update: *const fn(self: *anyopaque, data: *NotificationData, tag: HSTRING, _r: *NotificationUpdateResult) callconv(.winapi) HRESULT,
     };
 };
@@ -2954,9 +2954,9 @@ pub const NotificationData = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INotificationData.IID)));
     }
-    pub fn CreateNotificationData(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
+    pub fn CreateNotificationDataWithSequenceNumber(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING)), sequenceNumber: u32) core.HResult!*NotificationData {
         const factory = @This().INotificationDataFactoryCache.get();
-        return try factory.CreateNotificationData(initialValues, sequenceNumber);
+        return try factory.CreateNotificationDataWithSequenceNumber(initialValues, sequenceNumber);
     }
     pub fn CreateNotificationData(initialValues: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*NotificationData {
         const factory = @This().INotificationDataFactoryCache.get();
@@ -3269,9 +3269,9 @@ pub const TileFlyoutUpdateManager = extern struct {
         const factory = @This().ITileFlyoutUpdateManagerStaticsCache.get();
         return try factory.CreateTileFlyoutUpdaterForSecondaryTile(tileId);
     }
-    pub fn GetTemplateContent(type: TileFlyoutTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(ty: TileFlyoutTemplateType) core.HResult!*XmlDocument {
         const factory = @This().ITileFlyoutUpdateManagerStaticsCache.get();
-        return try factory.GetTemplateContent(type);
+        return try factory.GetTemplateContent(ty);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.TileFlyoutUpdateManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3291,9 +3291,9 @@ pub const TileFlyoutUpdater = extern struct {
         const this: *ITileFlyoutUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdate(tileFlyoutContent, requestedInterval);
     }
-    pub fn StartPeriodicUpdate(self: *@This(), tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *ITileFlyoutUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdate(tileFlyoutContent, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateWithStartTimeWithRequestedInterval(tileFlyoutContent, startTime, requestedInterval);
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
         const this: *ITileFlyoutUpdater = @ptrCast(self);
@@ -3490,9 +3490,9 @@ pub const TileUpdateManager = extern struct {
         const factory = @This().ITileUpdateManagerStaticsCache.get();
         return try factory.CreateTileUpdaterForSecondaryTile(tileId);
     }
-    pub fn GetTemplateContent(type: TileTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(ty: TileTemplateType) core.HResult!*XmlDocument {
         const factory = @This().ITileUpdateManagerStaticsCache.get();
-        return try factory.GetTemplateContent(type);
+        return try factory.GetTemplateContent(ty);
     }
     pub fn GetForUser(user: *User) core.HResult!*TileUpdateManagerForUser {
         const factory = @This().ITileUpdateManagerStatics2Cache.get();
@@ -3561,9 +3561,9 @@ pub const TileUpdater = extern struct {
         const this: *ITileUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdate(tileContent, requestedInterval);
     }
-    pub fn StartPeriodicUpdate(self: *@This(), tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *ITileUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdate(tileContent, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateWithStartTimeWithRequestedInterval(tileContent, startTime, requestedInterval);
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
         const this: *ITileUpdater = @ptrCast(self);
@@ -3573,9 +3573,9 @@ pub const TileUpdater = extern struct {
         const this: *ITileUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdateBatch(tileContents, requestedInterval);
     }
-    pub fn StartPeriodicUpdateBatch(self: *@This(), tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval(self: *@This(), tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *ITileUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdateBatch(tileContents, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval(tileContents, startTime, requestedInterval);
     }
     pub fn EnableNotificationQueueForSquare150x150(self: *@This(), enable: bool) core.HResult!void {
         var this: ?*ITileUpdater2 = undefined;
@@ -3916,17 +3916,17 @@ pub const ToastNotificationHistory = extern struct {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.RemoveGroup(group);
     }
-    pub fn RemoveGroup(self: *@This(), group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveGroupWithApplicationId(self: *@This(), group: HSTRING, applicationId: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
-        return try this.RemoveGroup(group, applicationId);
+        return try this.RemoveGroupWithApplicationId(group, applicationId);
     }
-    pub fn Remove(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveWithApplicationId(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
-        return try this.Remove(tag, group, applicationId);
+        return try this.RemoveWithApplicationId(tag, group, applicationId);
     }
-    pub fn Remove(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
+    pub fn RemoveWithGroup(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
-        return try this.Remove(tag, group);
+        return try this.RemoveWithGroup(tag, group);
     }
     pub fn Remove(self: *@This(), tag: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
@@ -3993,9 +3993,9 @@ pub const ToastNotificationManager = extern struct {
         const factory = @This().IToastNotificationManagerStaticsCache.get();
         return try factory.CreateToastNotifier(applicationId);
     }
-    pub fn GetTemplateContent(type: ToastTemplateType) core.HResult!*XmlDocument {
+    pub fn GetTemplateContent(ty: ToastTemplateType) core.HResult!*XmlDocument {
         const factory = @This().IToastNotificationManagerStaticsCache.get();
-        return try factory.GetTemplateContent(type);
+        return try factory.GetTemplateContent(ty);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ToastNotificationManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4105,11 +4105,11 @@ pub const ToastNotifier = extern struct {
         const this: *IToastNotifier = @ptrCast(self);
         return try this.GetScheduledToastNotifications();
     }
-    pub fn Update(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn UpdateWithTagWithGroup(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Update(data, tag, group);
+        return try this.?.UpdateWithTagWithGroup(data, tag, group);
     }
     pub fn Update(self: *@This(), data: *NotificationData, tag: HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;

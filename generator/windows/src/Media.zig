@@ -670,48 +670,48 @@ pub const IMediaExtensionManager = extern struct {
         const _c = self.vtable.RegisterSchemeHandler(@ptrCast(self), activatableClassId, scheme);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterSchemeHandler(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterSchemeHandler(@ptrCast(self), activatableClassId, scheme, configuration);
+    pub fn RegisterSchemeHandlerWithSchemeWithConfiguration(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterSchemeHandlerWithSchemeWithConfiguration(@ptrCast(self), activatableClassId, scheme, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterByteStreamHandler(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING) core.HResult!void {
         const _c = self.vtable.RegisterByteStreamHandler(@ptrCast(self), activatableClassId, fileExtension, mimeType);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterByteStreamHandler(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterByteStreamHandler(@ptrCast(self), activatableClassId, fileExtension, mimeType, configuration);
+    pub fn RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(@ptrCast(self), activatableClassId, fileExtension, mimeType, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterAudioDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterAudioDecoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterAudioDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterAudioDecoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterAudioEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterAudioEncoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterAudioEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterAudioEncoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterVideoDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterVideoDecoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterVideoDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterVideoDecoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterVideoEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterVideoEncoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterVideoEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterVideoEncoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Media.IMediaExtensionManager";
@@ -727,17 +727,17 @@ pub const IMediaExtensionManager = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RegisterSchemeHandler: *const fn(self: *anyopaque, activatableClassId: HSTRING, scheme: HSTRING) callconv(.winapi) HRESULT,
-        RegisterSchemeHandler: *const fn(self: *anyopaque, activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterSchemeHandlerWithSchemeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterByteStreamHandler: *const fn(self: *anyopaque, activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING) callconv(.winapi) HRESULT,
-        RegisterByteStreamHandler: *const fn(self: *anyopaque, activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterAudioDecoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterAudioDecoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterAudioEncoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterAudioEncoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterVideoDecoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterVideoDecoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterVideoEncoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterVideoEncoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaExtensionManager2 = extern struct {
@@ -1697,9 +1697,9 @@ pub const ISystemMediaTransportControlsDisplayUpdater = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CopyFromFileAsync(self: *@This(), type: MediaPlaybackType, source: *StorageFile) core.HResult!*IAsyncOperation(bool) {
+    pub fn CopyFromFileAsync(self: *@This(), ty: MediaPlaybackType, source: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.CopyFromFileAsync(@ptrCast(self), type, source, &_r);
+        const _c = self.vtable.CopyFromFileAsync(@ptrCast(self), ty, source, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1732,7 +1732,7 @@ pub const ISystemMediaTransportControlsDisplayUpdater = extern struct {
         get_MusicProperties: *const fn(self: *anyopaque, _r: **MusicDisplayProperties) callconv(.winapi) HRESULT,
         get_VideoProperties: *const fn(self: *anyopaque, _r: **VideoDisplayProperties) callconv(.winapi) HRESULT,
         get_ImageProperties: *const fn(self: *anyopaque, _r: **ImageDisplayProperties) callconv(.winapi) HRESULT,
-        CopyFromFileAsync: *const fn(self: *anyopaque, type: MediaPlaybackType, source: *StorageFile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        CopyFromFileAsync: *const fn(self: *anyopaque, ty: MediaPlaybackType, source: *StorageFile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         ClearAll: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Update: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
@@ -2043,9 +2043,9 @@ pub const IVideoFrameStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsDirect3D11SurfaceBacked(self: *@This(), format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
+    pub fn CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(self: *@This(), format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
-        const _c = self.vtable.CreateAsDirect3D11SurfaceBacked(@ptrCast(self), format, width, height, device, &_r);
+        const _c = self.vtable.CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(@ptrCast(self), format, width, height, device, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2074,7 +2074,7 @@ pub const IVideoFrameStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateAsDirect3D11SurfaceBacked: *const fn(self: *anyopaque, format: DirectXPixelFormat, width: i32, height: i32, _r: **VideoFrame) callconv(.winapi) HRESULT,
-        CreateAsDirect3D11SurfaceBacked: *const fn(self: *anyopaque, format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice, _r: **VideoFrame) callconv(.winapi) HRESULT,
+        CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice: *const fn(self: *anyopaque, format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice, _r: **VideoFrame) callconv(.winapi) HRESULT,
         CreateWithSoftwareBitmap: *const fn(self: *anyopaque, bitmap: *SoftwareBitmap, _r: **VideoFrame) callconv(.winapi) HRESULT,
         CreateWithDirect3D11Surface: *const fn(self: *anyopaque, surface: *IDirect3DSurface, _r: **VideoFrame) callconv(.winapi) HRESULT,
     };
@@ -2109,49 +2109,49 @@ pub const MediaExtensionManager = extern struct {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterSchemeHandler(activatableClassId, scheme);
     }
-    pub fn RegisterSchemeHandler(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterSchemeHandlerWithSchemeWithConfiguration(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterSchemeHandler(activatableClassId, scheme, configuration);
+        return try this.RegisterSchemeHandlerWithSchemeWithConfiguration(activatableClassId, scheme, configuration);
     }
     pub fn RegisterByteStreamHandler(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterByteStreamHandler(activatableClassId, fileExtension, mimeType);
     }
-    pub fn RegisterByteStreamHandler(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterByteStreamHandler(activatableClassId, fileExtension, mimeType, configuration);
+        return try this.RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(activatableClassId, fileExtension, mimeType, configuration);
     }
     pub fn RegisterAudioDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterAudioDecoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterAudioDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterAudioDecoder(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterAudioEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterAudioEncoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterAudioEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterAudioEncoder(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterVideoDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterVideoDecoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterVideoDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterVideoDecoder(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterVideoEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterVideoEncoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterVideoEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterVideoEncoder(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterMediaExtensionForAppService(self: *@This(), extension: *IMediaExtension, connection: *AppServiceConnection) core.HResult!void {
         var this: ?*IMediaExtensionManager2 = undefined;
@@ -2753,9 +2753,9 @@ pub const SystemMediaTransportControlsDisplayUpdater = extern struct {
         const this: *ISystemMediaTransportControlsDisplayUpdater = @ptrCast(self);
         return try this.getImageProperties();
     }
-    pub fn CopyFromFileAsync(self: *@This(), type: MediaPlaybackType, source: *StorageFile) core.HResult!*IAsyncOperation(bool) {
+    pub fn CopyFromFileAsync(self: *@This(), ty: MediaPlaybackType, source: *StorageFile) core.HResult!*IAsyncOperation(bool) {
         const this: *ISystemMediaTransportControlsDisplayUpdater = @ptrCast(self);
-        return try this.CopyFromFileAsync(type, source);
+        return try this.CopyFromFileAsync(ty, source);
     }
     pub fn ClearAll(self: *@This()) core.HResult!void {
         const this: *ISystemMediaTransportControlsDisplayUpdater = @ptrCast(self);
@@ -2973,11 +2973,11 @@ pub const VideoFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn CopyToAsync(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
+    pub fn CopyToAsyncWithDestinationBounds(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
         var this: ?*IVideoFrame2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyToAsync(frame, sourceBounds, destinationBounds);
+        return try this.?.CopyToAsyncWithDestinationBounds(frame, sourceBounds, destinationBounds);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2994,9 +2994,9 @@ pub const VideoFrame = extern struct {
         const factory = @This().IVideoFrameStaticsCache.get();
         return try factory.CreateAsDirect3D11SurfaceBacked(format, width, height);
     }
-    pub fn CreateAsDirect3D11SurfaceBacked(format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
+    pub fn CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
         const factory = @This().IVideoFrameStaticsCache.get();
-        return try factory.CreateAsDirect3D11SurfaceBacked(format, width, height, device);
+        return try factory.CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(format, width, height, device);
     }
     pub fn CreateWithSoftwareBitmap(bitmap: *SoftwareBitmap) core.HResult!*VideoFrame {
         const factory = @This().IVideoFrameStaticsCache.get();

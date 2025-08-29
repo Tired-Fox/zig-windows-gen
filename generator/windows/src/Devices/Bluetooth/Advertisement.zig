@@ -32,9 +32,9 @@ pub const BluetoothLEAdvertisement = extern struct {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
         return try this.GetManufacturerDataByCompanyId(companyId);
     }
-    pub fn GetSectionsByType(self: *@This(), type: u8) core.HResult!*IVectorView(BluetoothLEAdvertisementDataSection) {
+    pub fn GetSectionsByType(self: *@This(), ty: u8) core.HResult!*IVectorView(BluetoothLEAdvertisementDataSection) {
         const this: *IBluetoothLEAdvertisement = @ptrCast(self);
-        return try this.GetSectionsByType(type);
+        return try this.GetSectionsByType(ty);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -792,9 +792,9 @@ pub const IBluetoothLEAdvertisement = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSectionsByType(self: *@This(), type: u8) core.HResult!*IVectorView(BluetoothLEAdvertisementDataSection) {
+    pub fn GetSectionsByType(self: *@This(), ty: u8) core.HResult!*IVectorView(BluetoothLEAdvertisementDataSection) {
         var _r: *IVectorView(BluetoothLEAdvertisementDataSection) = undefined;
-        const _c = self.vtable.GetSectionsByType(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetSectionsByType(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -818,7 +818,7 @@ pub const IBluetoothLEAdvertisement = extern struct {
         get_ManufacturerData: *const fn(self: *anyopaque, _r: **IVector(BluetoothLEManufacturerData)) callconv(.winapi) HRESULT,
         get_DataSections: *const fn(self: *anyopaque, _r: **IVector(BluetoothLEAdvertisementDataSection)) callconv(.winapi) HRESULT,
         GetManufacturerDataByCompanyId: *const fn(self: *anyopaque, companyId: u16, _r: **IVectorView(BluetoothLEManufacturerData)) callconv(.winapi) HRESULT,
-        GetSectionsByType: *const fn(self: *anyopaque, type: u8, _r: **IVectorView(BluetoothLEAdvertisementDataSection)) callconv(.winapi) HRESULT,
+        GetSectionsByType: *const fn(self: *anyopaque, ty: u8, _r: **IVectorView(BluetoothLEAdvertisementDataSection)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothLEAdvertisementBytePattern = extern struct {

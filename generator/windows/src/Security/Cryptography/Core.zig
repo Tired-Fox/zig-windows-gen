@@ -106,17 +106,17 @@ pub const AsymmetricKeyAlgorithmProvider = extern struct {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.ImportKeyPair(keyBlob);
     }
-    pub fn ImportKeyPair(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType) core.HResult!*CryptographicKey {
+    pub fn ImportKeyPairWithBlobType(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType) core.HResult!*CryptographicKey {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
-        return try this.ImportKeyPair(keyBlob, BlobType);
+        return try this.ImportKeyPairWithBlobType(keyBlob, BlobType);
     }
     pub fn ImportPublicKey(self: *@This(), keyBlob: *IBuffer) core.HResult!*CryptographicKey {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
         return try this.ImportPublicKey(keyBlob);
     }
-    pub fn ImportPublicKey(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPublicKeyBlobType) core.HResult!*CryptographicKey {
+    pub fn ImportPublicKeyWithBlobType(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPublicKeyBlobType) core.HResult!*CryptographicKey {
         const this: *IAsymmetricKeyAlgorithmProvider = @ptrCast(self);
-        return try this.ImportPublicKey(keyBlob, BlobType);
+        return try this.ImportPublicKeyWithBlobType(keyBlob, BlobType);
     }
     pub fn CreateKeyPairWithCurveName(self: *@This(), curveName: HSTRING) core.HResult!*CryptographicKey {
         var this: ?*IAsymmetricKeyAlgorithmProvider2 = undefined;
@@ -739,9 +739,9 @@ pub const IAsymmetricKeyAlgorithmProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportKeyPair(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType) core.HResult!*CryptographicKey {
+    pub fn ImportKeyPairWithBlobType(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType) core.HResult!*CryptographicKey {
         var _r: *CryptographicKey = undefined;
-        const _c = self.vtable.ImportKeyPair(@ptrCast(self), keyBlob, BlobType, &_r);
+        const _c = self.vtable.ImportKeyPairWithBlobType(@ptrCast(self), keyBlob, BlobType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -751,9 +751,9 @@ pub const IAsymmetricKeyAlgorithmProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportPublicKey(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPublicKeyBlobType) core.HResult!*CryptographicKey {
+    pub fn ImportPublicKeyWithBlobType(self: *@This(), keyBlob: *IBuffer, BlobType: CryptographicPublicKeyBlobType) core.HResult!*CryptographicKey {
         var _r: *CryptographicKey = undefined;
-        const _c = self.vtable.ImportPublicKey(@ptrCast(self), keyBlob, BlobType, &_r);
+        const _c = self.vtable.ImportPublicKeyWithBlobType(@ptrCast(self), keyBlob, BlobType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -772,9 +772,9 @@ pub const IAsymmetricKeyAlgorithmProvider = extern struct {
         get_AlgorithmName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         CreateKeyPair: *const fn(self: *anyopaque, keySize: u32, _r: **CryptographicKey) callconv(.winapi) HRESULT,
         ImportKeyPair: *const fn(self: *anyopaque, keyBlob: *IBuffer, _r: **CryptographicKey) callconv(.winapi) HRESULT,
-        ImportKeyPair: *const fn(self: *anyopaque, keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType, _r: **CryptographicKey) callconv(.winapi) HRESULT,
+        ImportKeyPairWithBlobType: *const fn(self: *anyopaque, keyBlob: *IBuffer, BlobType: CryptographicPrivateKeyBlobType, _r: **CryptographicKey) callconv(.winapi) HRESULT,
         ImportPublicKey: *const fn(self: *anyopaque, keyBlob: *IBuffer, _r: **CryptographicKey) callconv(.winapi) HRESULT,
-        ImportPublicKey: *const fn(self: *anyopaque, keyBlob: *IBuffer, BlobType: CryptographicPublicKeyBlobType, _r: **CryptographicKey) callconv(.winapi) HRESULT,
+        ImportPublicKeyWithBlobType: *const fn(self: *anyopaque, keyBlob: *IBuffer, BlobType: CryptographicPublicKeyBlobType, _r: **CryptographicKey) callconv(.winapi) HRESULT,
     };
 };
 pub const IAsymmetricKeyAlgorithmProvider2 = extern struct {

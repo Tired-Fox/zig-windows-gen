@@ -135,8 +135,8 @@ pub const ILearningModelBindingPreview = extern struct {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.Bind(@ptrCast(self), name, value, metadata);
+    pub fn BindWithValueWithMetadata(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.BindWithValueWithMetadata(@ptrCast(self), name, value, metadata);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Clear(self: *@This()) core.HResult!void {
@@ -156,7 +156,7 @@ pub const ILearningModelBindingPreview = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, metadata: *IPropertySet) callconv(.winapi) HRESULT,
+        BindWithValueWithMetadata: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, metadata: *IPropertySet) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -603,9 +603,9 @@ pub const LearningModelBindingPreview = extern struct {
         const this: *ILearningModelBindingPreview = @ptrCast(self);
         return try this.Bind(name, value);
     }
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
+    pub fn BindWithValueWithMetadata(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
         const this: *ILearningModelBindingPreview = @ptrCast(self);
-        return try this.Bind(name, value, metadata);
+        return try this.BindWithValueWithMetadata(name, value, metadata);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const this: *ILearningModelBindingPreview = @ptrCast(self);

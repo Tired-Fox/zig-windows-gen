@@ -298,9 +298,9 @@ pub const AppWindowPresenter = extern struct {
         const this: *IAppWindowPresenter = @ptrCast(self);
         return try this.RequestPresentation(configuration);
     }
-    pub fn RequestPresentation(self: *@This(), presentationKind: AppWindowPresentationKind) core.HResult!bool {
+    pub fn RequestPresentationWithPresentationKind(self: *@This(), presentationKind: AppWindowPresentationKind) core.HResult!bool {
         const this: *IAppWindowPresenter = @ptrCast(self);
-        return try this.RequestPresentation(presentationKind);
+        return try this.RequestPresentationWithPresentationKind(presentationKind);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.AppWindowPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1020,9 +1020,9 @@ pub const IAppWindowPresenter = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPresentation(self: *@This(), presentationKind: AppWindowPresentationKind) core.HResult!bool {
+    pub fn RequestPresentationWithPresentationKind(self: *@This(), presentationKind: AppWindowPresentationKind) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.RequestPresentation(@ptrCast(self), presentationKind, &_r);
+        const _c = self.vtable.RequestPresentationWithPresentationKind(@ptrCast(self), presentationKind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1041,7 +1041,7 @@ pub const IAppWindowPresenter = extern struct {
         GetConfiguration: *const fn(self: *anyopaque, _r: **AppWindowPresentationConfiguration) callconv(.winapi) HRESULT,
         IsPresentationSupported: *const fn(self: *anyopaque, presentationKind: AppWindowPresentationKind, _r: *bool) callconv(.winapi) HRESULT,
         RequestPresentation: *const fn(self: *anyopaque, configuration: *AppWindowPresentationConfiguration, _r: *bool) callconv(.winapi) HRESULT,
-        RequestPresentation: *const fn(self: *anyopaque, presentationKind: AppWindowPresentationKind, _r: *bool) callconv(.winapi) HRESULT,
+        RequestPresentationWithPresentationKind: *const fn(self: *anyopaque, presentationKind: AppWindowPresentationKind, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IAppWindowStatics = extern struct {

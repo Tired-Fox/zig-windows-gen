@@ -18,9 +18,9 @@ pub const IPlaylist = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SaveAsAsync(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.SaveAsAsync(@ptrCast(self), saveLocation, desiredName, option, playlistFormat, &_r);
+        const _c = self.vtable.SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(@ptrCast(self), saveLocation, desiredName, option, playlistFormat, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -39,7 +39,7 @@ pub const IPlaylist = extern struct {
         get_Files: *const fn(self: *anyopaque, _r: **IVector(StorageFile)) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SaveAsAsync: *const fn(self: *anyopaque, saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        SaveAsAsync: *const fn(self: *anyopaque, saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat: *const fn(self: *anyopaque, saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlaylistStatics = extern struct {
@@ -79,9 +79,9 @@ pub const Playlist = extern struct {
         const this: *IPlaylist = @ptrCast(self);
         return try this.SaveAsAsync(saveLocation, desiredName, option);
     }
-    pub fn SaveAsAsync(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IPlaylist = @ptrCast(self);
-        return try this.SaveAsAsync(saveLocation, desiredName, option, playlistFormat);
+        return try this.SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(saveLocation, desiredName, option, playlistFormat);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

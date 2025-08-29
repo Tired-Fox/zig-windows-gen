@@ -42,33 +42,33 @@ pub const IPnpObject = extern struct {
 };
 pub const IPnpObjectStatics = extern struct {
     vtable: *const VTable,
-    pub fn CreateFromIdAsync(self: *@This(), type: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
+    pub fn CreateFromIdAsync(self: *@This(), ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
         var _r: *IAsyncOperation(PnpObject) = undefined;
-        const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), type, id, requestedProperties, &_r);
+        const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), ty, id, requestedProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), type: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsync(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         var _r: *IAsyncOperation(PnpObjectCollection) = undefined;
-        const _c = self.vtable.FindAllAsync(@ptrCast(self), type, requestedProperties, &_r);
+        const _c = self.vtable.FindAllAsync(@ptrCast(self), ty, requestedProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), type: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsyncWithRequestedPropertiesWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         var _r: *IAsyncOperation(PnpObjectCollection) = undefined;
-        const _c = self.vtable.FindAllAsync(@ptrCast(self), type, requestedProperties, aqsFilter, &_r);
+        const _c = self.vtable.FindAllAsyncWithRequestedPropertiesWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcher(self: *@This(), type: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcher(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
         var _r: *PnpObjectWatcher = undefined;
-        const _c = self.vtable.CreateWatcher(@ptrCast(self), type, requestedProperties, &_r);
+        const _c = self.vtable.CreateWatcher(@ptrCast(self), ty, requestedProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcher(self: *@This(), type: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcherWithRequestedPropertiesWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
         var _r: *PnpObjectWatcher = undefined;
-        const _c = self.vtable.CreateWatcher(@ptrCast(self), type, requestedProperties, aqsFilter, &_r);
+        const _c = self.vtable.CreateWatcherWithRequestedPropertiesWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -84,11 +84,11 @@ pub const IPnpObjectStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateFromIdAsync: *const fn(self: *anyopaque, type: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObject)) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, type: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, type: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
-        CreateWatcher: *const fn(self: *anyopaque, type: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
-        CreateWatcher: *const fn(self: *anyopaque, type: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
+        CreateFromIdAsync: *const fn(self: *anyopaque, ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObject)) callconv(.winapi) HRESULT,
+        FindAllAsync: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
+        FindAllAsyncWithRequestedPropertiesWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
+        CreateWatcher: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
+        CreateWatcherWithRequestedPropertiesWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IPnpObjectUpdate = extern struct {
@@ -242,25 +242,25 @@ pub const PnpObject = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateFromIdAsync(type: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
+    pub fn CreateFromIdAsync(ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateFromIdAsync(type, id, requestedProperties);
+        return try factory.CreateFromIdAsync(ty, id, requestedProperties);
     }
-    pub fn FindAllAsync(type: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsync(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.FindAllAsync(type, requestedProperties);
+        return try factory.FindAllAsync(ty, requestedProperties);
     }
-    pub fn FindAllAsync(type: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsyncWithRequestedPropertiesWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.FindAllAsync(type, requestedProperties, aqsFilter);
+        return try factory.FindAllAsyncWithRequestedPropertiesWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
-    pub fn CreateWatcher(type: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcher(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateWatcher(type, requestedProperties);
+        return try factory.CreateWatcher(ty, requestedProperties);
     }
-    pub fn CreateWatcher(type: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcherWithRequestedPropertiesWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
         const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateWatcher(type, requestedProperties, aqsFilter);
+        return try factory.CreateWatcherWithRequestedPropertiesWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.Pnp.PnpObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

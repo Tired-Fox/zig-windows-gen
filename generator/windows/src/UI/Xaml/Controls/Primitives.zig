@@ -424,11 +424,11 @@ pub const FlyoutBase = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsOpen();
     }
-    pub fn ShowAt(self: *@This(), placementTarget: *DependencyObject, showOptions: *FlyoutShowOptions) core.HResult!void {
+    pub fn ShowAtWithShowOptions(self: *@This(), placementTarget: *DependencyObject, showOptions: *FlyoutShowOptions) core.HResult!void {
         var this: ?*IFlyoutBase5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ShowAt(placementTarget, showOptions);
+        return try this.?.ShowAtWithShowOptions(placementTarget, showOptions);
     }
     pub fn getShouldConstrainToRootBounds(self: *@This()) core.HResult!bool {
         var this: ?*IFlyoutBase6 = undefined;

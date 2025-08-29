@@ -715,41 +715,41 @@ pub const JsonObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn GetNamedValue(self: *@This(), name: HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
+    pub fn GetNamedValueWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: *JsonValue) core.HResult!*JsonValue {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedValue(name, defaultValue);
+        return try this.?.GetNamedValueWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedObject(self: *@This(), name: HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
+    pub fn GetNamedObjectWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: *JsonObject) core.HResult!*JsonObject {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedObject(name, defaultValue);
+        return try this.?.GetNamedObjectWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedString(self: *@This(), name: HSTRING, defaultValue: HSTRING) core.HResult!HSTRING {
+    pub fn GetNamedStringWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: HSTRING) core.HResult!HSTRING {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedString(name, defaultValue);
+        return try this.?.GetNamedStringWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedArray(self: *@This(), name: HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
+    pub fn GetNamedArrayWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: *JsonArray) core.HResult!*JsonArray {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedArray(name, defaultValue);
+        return try this.?.GetNamedArrayWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedNumber(self: *@This(), name: HSTRING, defaultValue: f64) core.HResult!f64 {
+    pub fn GetNamedNumberWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: f64) core.HResult!f64 {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedNumber(name, defaultValue);
+        return try this.?.GetNamedNumberWithDefaultValue(name, defaultValue);
     }
-    pub fn GetNamedBoolean(self: *@This(), name: HSTRING, defaultValue: bool) core.HResult!bool {
+    pub fn GetNamedBooleanWithDefaultValue(self: *@This(), name: HSTRING, defaultValue: bool) core.HResult!bool {
         var this: ?*IJsonObjectWithDefaultValues = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedBoolean(name, defaultValue);
+        return try this.?.GetNamedBooleanWithDefaultValue(name, defaultValue);
     }
     pub fn ToString(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStringable = undefined;

@@ -138,9 +138,9 @@ pub const IPopupMenu = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowForSelectionAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(IUICommand) {
+    pub fn ShowForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(IUICommand) {
         var _r: *IAsyncOperation(IUICommand) = undefined;
-        const _c = self.vtable.ShowForSelectionAsync(@ptrCast(self), selection, preferredPlacement, &_r);
+        const _c = self.vtable.ShowForSelectionAsyncWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -159,7 +159,7 @@ pub const IPopupMenu = extern struct {
         get_Commands: *const fn(self: *anyopaque, _r: **IVector(IUICommand)) callconv(.winapi) HRESULT,
         ShowAsync: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
         ShowForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
-        ShowForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
+        ShowForSelectionAsyncWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(IUICommand)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUICommand = extern struct {
@@ -344,9 +344,9 @@ pub const PopupMenu = extern struct {
         const this: *IPopupMenu = @ptrCast(self);
         return try this.ShowForSelectionAsync(selection);
     }
-    pub fn ShowForSelectionAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(IUICommand) {
+    pub fn ShowForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(IUICommand) {
         const this: *IPopupMenu = @ptrCast(self);
-        return try this.ShowForSelectionAsync(selection, preferredPlacement);
+        return try this.ShowForSelectionAsyncWithPreferredPlacement(selection, preferredPlacement);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

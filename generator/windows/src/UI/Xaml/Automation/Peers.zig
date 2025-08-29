@@ -999,13 +999,13 @@ pub const AutomationPeerAnnotation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutomationPeerAnnotation.IID)));
     }
-    pub fn CreateInstance(type: AnnotationType) core.HResult!*AutomationPeerAnnotation {
+    pub fn CreateInstance(ty: AnnotationType) core.HResult!*AutomationPeerAnnotation {
         const factory = @This().IAutomationPeerAnnotationFactoryCache.get();
-        return try factory.CreateInstance(type);
+        return try factory.CreateInstance(ty);
     }
-    pub fn CreateWithPeerParameter(type: AnnotationType, peer: *AutomationPeer) core.HResult!*AutomationPeerAnnotation {
+    pub fn CreateWithPeerParameter(ty: AnnotationType, peer: *AutomationPeer) core.HResult!*AutomationPeerAnnotation {
         const factory = @This().IAutomationPeerAnnotationFactoryCache.get();
-        return try factory.CreateWithPeerParameter(type, peer);
+        return try factory.CreateWithPeerParameter(ty, peer);
     }
     pub fn getTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationPeerAnnotationStaticsCache.get();
@@ -2482,15 +2482,15 @@ pub const IAutomationPeerAnnotation = extern struct {
 };
 pub const IAutomationPeerAnnotationFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), type: AnnotationType) core.HResult!*AutomationPeerAnnotation {
+    pub fn CreateInstance(self: *@This(), ty: AnnotationType) core.HResult!*AutomationPeerAnnotation {
         var _r: *AutomationPeerAnnotation = undefined;
-        const _c = self.vtable.CreateInstance(@ptrCast(self), type, &_r);
+        const _c = self.vtable.CreateInstance(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithPeerParameter(self: *@This(), type: AnnotationType, peer: *AutomationPeer) core.HResult!*AutomationPeerAnnotation {
+    pub fn CreateWithPeerParameter(self: *@This(), ty: AnnotationType, peer: *AutomationPeer) core.HResult!*AutomationPeerAnnotation {
         var _r: *AutomationPeerAnnotation = undefined;
-        const _c = self.vtable.CreateWithPeerParameter(@ptrCast(self), type, peer, &_r);
+        const _c = self.vtable.CreateWithPeerParameter(@ptrCast(self), ty, peer, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2506,8 +2506,8 @@ pub const IAutomationPeerAnnotationFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, type: AnnotationType, _r: **AutomationPeerAnnotation) callconv(.winapi) HRESULT,
-        CreateWithPeerParameter: *const fn(self: *anyopaque, type: AnnotationType, peer: *AutomationPeer, _r: **AutomationPeerAnnotation) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, ty: AnnotationType, _r: **AutomationPeerAnnotation) callconv(.winapi) HRESULT,
+        CreateWithPeerParameter: *const fn(self: *anyopaque, ty: AnnotationType, peer: *AutomationPeer, _r: **AutomationPeerAnnotation) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationPeerAnnotationStatics = extern struct {

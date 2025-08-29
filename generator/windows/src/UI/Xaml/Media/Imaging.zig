@@ -760,9 +760,9 @@ pub const IRenderTargetBitmap = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderAsync(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
+    pub fn RenderAsyncWithScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.RenderAsync(@ptrCast(self), element, scaledWidth, scaledHeight, &_r);
+        const _c = self.vtable.RenderAsyncWithScaledHeight(@ptrCast(self), element, scaledWidth, scaledHeight, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -787,7 +787,7 @@ pub const IRenderTargetBitmap = extern struct {
         get_PixelWidth: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_PixelHeight: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         RenderAsync: *const fn(self: *anyopaque, element: *UIElement, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RenderAsync: *const fn(self: *anyopaque, element: *UIElement, scaledWidth: i32, scaledHeight: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RenderAsyncWithScaledHeight: *const fn(self: *anyopaque, element: *UIElement, scaledWidth: i32, scaledHeight: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetPixelsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
     };
 };
@@ -1250,9 +1250,9 @@ pub const RenderTargetBitmap = extern struct {
         const this: *IRenderTargetBitmap = @ptrCast(self);
         return try this.RenderAsync(element);
     }
-    pub fn RenderAsync(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
+    pub fn RenderAsyncWithScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
         const this: *IRenderTargetBitmap = @ptrCast(self);
-        return try this.RenderAsync(element, scaledWidth, scaledHeight);
+        return try this.RenderAsyncWithScaledHeight(element, scaledWidth, scaledHeight);
     }
     pub fn GetPixelsAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IRenderTargetBitmap = @ptrCast(self);

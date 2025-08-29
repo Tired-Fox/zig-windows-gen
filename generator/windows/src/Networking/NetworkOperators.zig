@@ -6519,11 +6519,11 @@ pub const MobileBroadbandModem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeIsInEmergencyCallModeChanged(token);
     }
-    pub fn SetIsPassthroughEnabledAsync(self: *@This(), value: bool, slotindex: i32) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
+    pub fn SetIsPassthroughEnabledAsyncWithSlotindex(self: *@This(), value: bool, slotindex: i32) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
         var this: ?*IMobileBroadbandModem4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetIsPassthroughEnabledAsync(value, slotindex);
+        return try this.?.SetIsPassthroughEnabledAsyncWithSlotindex(value, slotindex);
     }
     pub fn GetIsPassthroughEnabledAsync(self: *@This(), slotindex: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandModem4 = undefined;

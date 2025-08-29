@@ -4,9 +4,9 @@ pub const HolographicKeyboard = extern struct {
         const this: *IHolographicKeyboard = @ptrCast(self);
         return try this.SetPlacementOverride(coordinateSystem, topCenterPosition, orientation);
     }
-    pub fn SetPlacementOverride(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
+    pub fn SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
         const this: *IHolographicKeyboard = @ptrCast(self);
-        return try this.SetPlacementOverride(coordinateSystem, topCenterPosition, orientation, maxSize);
+        return try this.SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(coordinateSystem, topCenterPosition, orientation, maxSize);
     }
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
         const this: *IHolographicKeyboard = @ptrCast(self);
@@ -32,8 +32,8 @@ pub const IHolographicKeyboard = extern struct {
         const _c = self.vtable.SetPlacementOverride(@ptrCast(self), coordinateSystem, topCenterPosition, orientation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetPlacementOverride(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
-        const _c = self.vtable.SetPlacementOverride(@ptrCast(self), coordinateSystem, topCenterPosition, orientation, maxSize);
+    pub fn SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
+        const _c = self.vtable.SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(@ptrCast(self), coordinateSystem, topCenterPosition, orientation, maxSize);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
@@ -53,7 +53,7 @@ pub const IHolographicKeyboard = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetPlacementOverride: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion) callconv(.winapi) HRESULT,
-        SetPlacementOverride: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) callconv(.winapi) HRESULT,
+        SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) callconv(.winapi) HRESULT,
         ResetPlacementOverride: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };

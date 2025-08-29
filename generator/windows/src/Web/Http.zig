@@ -68,9 +68,9 @@ pub const HttpClient = extern struct {
         const this: *IHttpClient = @ptrCast(self);
         return try this.GetAsync(uri);
     }
-    pub fn GetAsync(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
+    pub fn GetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         const this: *IHttpClient = @ptrCast(self);
-        return try this.GetAsync(uri, completionOption);
+        return try this.GetAsyncWithCompletionOption(uri, completionOption);
     }
     pub fn GetBufferAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(IBuffer,HttpProgress) {
         const this: *IHttpClient = @ptrCast(self);
@@ -96,9 +96,9 @@ pub const HttpClient = extern struct {
         const this: *IHttpClient = @ptrCast(self);
         return try this.SendRequestAsync(request);
     }
-    pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
+    pub fn SendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         const this: *IHttpClient = @ptrCast(self);
-        return try this.SendRequestAsync(request, completionOption);
+        return try this.SendRequestAsyncWithCompletionOption(request, completionOption);
     }
     pub fn getDefaultRequestHeaders(self: *@This()) core.HResult!*HttpRequestHeaderCollection {
         const this: *IHttpClient = @ptrCast(self);
@@ -116,11 +116,11 @@ pub const HttpClient = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetAsync(uri);
     }
-    pub fn TryGetAsync(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
+    pub fn TryGetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryGetAsync(uri, completionOption);
+        return try this.?.TryGetAsyncWithCompletionOption(uri, completionOption);
     }
     pub fn TryGetBufferAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperationWithProgress(HttpGetBufferResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
@@ -158,11 +158,11 @@ pub const HttpClient = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySendRequestAsync(request);
     }
-    pub fn TrySendRequestAsync(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
+    pub fn TrySendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var this: ?*IHttpClient2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpClient2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TrySendRequestAsync(request, completionOption);
+        return try this.?.TrySendRequestAsyncWithCompletionOption(request, completionOption);
     }
     pub fn getDefaultPrivacyAnnotation(self: *@This()) core.HResult!HSTRING {
         var this: ?*IHttpClient3 = undefined;
@@ -313,9 +313,9 @@ pub const HttpCookieManager = extern struct {
         const this: *IHttpCookieManager = @ptrCast(self);
         return try this.SetCookie(cookie);
     }
-    pub fn SetCookie(self: *@This(), cookie: *HttpCookie, thirdParty: bool) core.HResult!bool {
+    pub fn SetCookieWithThirdParty(self: *@This(), cookie: *HttpCookie, thirdParty: bool) core.HResult!bool {
         const this: *IHttpCookieManager = @ptrCast(self);
-        return try this.SetCookie(cookie, thirdParty);
+        return try this.SetCookieWithThirdParty(cookie, thirdParty);
     }
     pub fn DeleteCookie(self: *@This(), cookie: *HttpCookie) core.HResult!void {
         const this: *IHttpCookieManager = @ptrCast(self);
@@ -647,17 +647,17 @@ pub const HttpMultipartFormDataContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Add(content);
     }
-    pub fn Add(self: *@This(), content: *IHttpContent, name: HSTRING) core.HResult!void {
+    pub fn AddWithName(self: *@This(), content: *IHttpContent, name: HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Add(content, name);
+        return try this.?.AddWithName(content, name);
     }
-    pub fn Add(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
+    pub fn AddWithFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Add(content, name, fileName);
+        return try this.?.AddWithFileName(content, name, fileName);
     }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         const this: *IHttpContent = @ptrCast(self);
@@ -1219,9 +1219,9 @@ pub const IHttpClient = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetAsync(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
+    pub fn GetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
-        const _c = self.vtable.GetAsync(@ptrCast(self), uri, completionOption, &_r);
+        const _c = self.vtable.GetAsyncWithCompletionOption(@ptrCast(self), uri, completionOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1261,9 +1261,9 @@ pub const IHttpClient = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SendRequestAsync(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
+    pub fn SendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress) = undefined;
-        const _c = self.vtable.SendRequestAsync(@ptrCast(self), request, completionOption, &_r);
+        const _c = self.vtable.SendRequestAsyncWithCompletionOption(@ptrCast(self), request, completionOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1287,14 +1287,14 @@ pub const IHttpClient = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         GetAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
-        GetAsync: *const fn(self: *anyopaque, uri: *Uri, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
+        GetAsyncWithCompletionOption: *const fn(self: *anyopaque, uri: *Uri, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         GetBufferAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(IBuffer,HttpProgress)) callconv(.winapi) HRESULT,
         GetInputStreamAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(IInputStream,HttpProgress)) callconv(.winapi) HRESULT,
         GetStringAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HSTRING,HttpProgress)) callconv(.winapi) HRESULT,
         PostAsync: *const fn(self: *anyopaque, uri: *Uri, content: *IHttpContent, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         PutAsync: *const fn(self: *anyopaque, uri: *Uri, content: *IHttpContent, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         SendRequestAsync: *const fn(self: *anyopaque, request: *HttpRequestMessage, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
-        SendRequestAsync: *const fn(self: *anyopaque, request: *HttpRequestMessage, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
+        SendRequestAsyncWithCompletionOption: *const fn(self: *anyopaque, request: *HttpRequestMessage, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpResponseMessage,HttpProgress)) callconv(.winapi) HRESULT,
         get_DefaultRequestHeaders: *const fn(self: *anyopaque, _r: **HttpRequestHeaderCollection) callconv(.winapi) HRESULT,
     };
 };
@@ -1312,9 +1312,9 @@ pub const IHttpClient2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetAsync(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
+    pub fn TryGetAsyncWithCompletionOption(self: *@This(), uri: *Uri, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
-        const _c = self.vtable.TryGetAsync(@ptrCast(self), uri, completionOption, &_r);
+        const _c = self.vtable.TryGetAsyncWithCompletionOption(@ptrCast(self), uri, completionOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1354,9 +1354,9 @@ pub const IHttpClient2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySendRequestAsync(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
+    pub fn TrySendRequestAsyncWithCompletionOption(self: *@This(), request: *HttpRequestMessage, completionOption: HttpCompletionOption) core.HResult!*IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) {
         var _r: *IAsyncOperationWithProgress(HttpRequestResult,HttpProgress) = undefined;
-        const _c = self.vtable.TrySendRequestAsync(@ptrCast(self), request, completionOption, &_r);
+        const _c = self.vtable.TrySendRequestAsyncWithCompletionOption(@ptrCast(self), request, completionOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1374,14 +1374,14 @@ pub const IHttpClient2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryDeleteAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
         TryGetAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
-        TryGetAsync: *const fn(self: *anyopaque, uri: *Uri, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
+        TryGetAsyncWithCompletionOption: *const fn(self: *anyopaque, uri: *Uri, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
         TryGetBufferAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpGetBufferResult,HttpProgress)) callconv(.winapi) HRESULT,
         TryGetInputStreamAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpGetInputStreamResult,HttpProgress)) callconv(.winapi) HRESULT,
         TryGetStringAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperationWithProgress(HttpGetStringResult,HttpProgress)) callconv(.winapi) HRESULT,
         TryPostAsync: *const fn(self: *anyopaque, uri: *Uri, content: *IHttpContent, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
         TryPutAsync: *const fn(self: *anyopaque, uri: *Uri, content: *IHttpContent, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
         TrySendRequestAsync: *const fn(self: *anyopaque, request: *HttpRequestMessage, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
-        TrySendRequestAsync: *const fn(self: *anyopaque, request: *HttpRequestMessage, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
+        TrySendRequestAsyncWithCompletionOption: *const fn(self: *anyopaque, request: *HttpRequestMessage, completionOption: HttpCompletionOption, _r: **IAsyncOperationWithProgress(HttpRequestResult,HttpProgress)) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpClient3 = extern struct {
@@ -1616,9 +1616,9 @@ pub const IHttpCookieManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetCookie(self: *@This(), cookie: *HttpCookie, thirdParty: bool) core.HResult!bool {
+    pub fn SetCookieWithThirdParty(self: *@This(), cookie: *HttpCookie, thirdParty: bool) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.SetCookie(@ptrCast(self), cookie, thirdParty, &_r);
+        const _c = self.vtable.SetCookieWithThirdParty(@ptrCast(self), cookie, thirdParty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1645,7 +1645,7 @@ pub const IHttpCookieManager = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetCookie: *const fn(self: *anyopaque, cookie: *HttpCookie, _r: *bool) callconv(.winapi) HRESULT,
-        SetCookie: *const fn(self: *anyopaque, cookie: *HttpCookie, thirdParty: bool, _r: *bool) callconv(.winapi) HRESULT,
+        SetCookieWithThirdParty: *const fn(self: *anyopaque, cookie: *HttpCookie, thirdParty: bool, _r: *bool) callconv(.winapi) HRESULT,
         DeleteCookie: *const fn(self: *anyopaque, cookie: *HttpCookie) callconv(.winapi) HRESULT,
         GetCookies: *const fn(self: *anyopaque, uri: *Uri, _r: **HttpCookieCollection) callconv(.winapi) HRESULT,
     };
@@ -1994,12 +1994,12 @@ pub const IHttpMultipartFormDataContent = extern struct {
         const _c = self.vtable.Add(@ptrCast(self), content);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Add(self: *@This(), content: *IHttpContent, name: HSTRING) core.HResult!void {
-        const _c = self.vtable.Add(@ptrCast(self), content, name);
+    pub fn AddWithName(self: *@This(), content: *IHttpContent, name: HSTRING) core.HResult!void {
+        const _c = self.vtable.AddWithName(@ptrCast(self), content, name);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Add(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
-        const _c = self.vtable.Add(@ptrCast(self), content, name, fileName);
+    pub fn AddWithFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
+        const _c = self.vtable.AddWithFileName(@ptrCast(self), content, name, fileName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMultipartFormDataContent";
@@ -2015,8 +2015,8 @@ pub const IHttpMultipartFormDataContent = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Add: *const fn(self: *anyopaque, content: *IHttpContent) callconv(.winapi) HRESULT,
-        Add: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING) callconv(.winapi) HRESULT,
-        Add: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING, fileName: HSTRING) callconv(.winapi) HRESULT,
+        AddWithName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING) callconv(.winapi) HRESULT,
+        AddWithFileName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING, fileName: HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMultipartFormDataContentFactory = extern struct {

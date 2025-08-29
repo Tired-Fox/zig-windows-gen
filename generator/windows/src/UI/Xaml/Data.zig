@@ -1146,9 +1146,9 @@ pub const ICustomPropertyProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetIndexedProperty(self: *@This(), name: HSTRING, type: TypeName) core.HResult!*ICustomProperty {
+    pub fn GetIndexedProperty(self: *@This(), name: HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
         var _r: *ICustomProperty = undefined;
-        const _c = self.vtable.GetIndexedProperty(@ptrCast(self), name, type, &_r);
+        const _c = self.vtable.GetIndexedProperty(@ptrCast(self), name, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1177,7 +1177,7 @@ pub const ICustomPropertyProvider = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCustomProperty: *const fn(self: *anyopaque, name: HSTRING, _r: **ICustomProperty) callconv(.winapi) HRESULT,
-        GetIndexedProperty: *const fn(self: *anyopaque, name: HSTRING, type: TypeName, _r: **ICustomProperty) callconv(.winapi) HRESULT,
+        GetIndexedProperty: *const fn(self: *anyopaque, name: HSTRING, ty: TypeName, _r: **ICustomProperty) callconv(.winapi) HRESULT,
         GetStringRepresentation: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_Type: *const fn(self: *anyopaque, _r: *TypeName) callconv(.winapi) HRESULT,
     };

@@ -495,15 +495,15 @@ pub const IMediaComposition = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderToFileAsync(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithTrimmingPreference(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         var _r: *IAsyncOperationWithProgress(TranscodeFailureReason,f64) = undefined;
-        const _c = self.vtable.RenderToFileAsync(@ptrCast(self), destination, trimmingPreference, &_r);
+        const _c = self.vtable.RenderToFileAsyncWithTrimmingPreference(@ptrCast(self), destination, trimmingPreference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderToFileAsync(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         var _r: *IAsyncOperationWithProgress(TranscodeFailureReason,f64) = undefined;
-        const _c = self.vtable.RenderToFileAsync(@ptrCast(self), destination, trimmingPreference, encodingProfile, &_r);
+        const _c = self.vtable.RenderToFileAsyncWithEncodingProfile(@ptrCast(self), destination, trimmingPreference, encodingProfile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -552,8 +552,8 @@ pub const IMediaComposition = extern struct {
         GetThumbnailAsync: *const fn(self: *anyopaque, timeFromStart: TimeSpan, scaledWidth: i32, scaledHeight: i32, framePrecision: VideoFramePrecision, _r: **IAsyncOperation(ImageStream)) callconv(.winapi) HRESULT,
         GetThumbnailsAsync: *const fn(self: *anyopaque, timesFromStart: *IIterable(TimeSpan), scaledWidth: i32, scaledHeight: i32, framePrecision: VideoFramePrecision, _r: **IAsyncOperation(IVectorView(ImageStream))) callconv(.winapi) HRESULT,
         RenderToFileAsync: *const fn(self: *anyopaque, destination: *IStorageFile, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
-        RenderToFileAsync: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
-        RenderToFileAsync: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
+        RenderToFileAsyncWithTrimmingPreference: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
+        RenderToFileAsyncWithEncodingProfile: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
         CreateDefaultEncodingProfile: *const fn(self: *anyopaque, _r: **MediaEncodingProfile) callconv(.winapi) HRESULT,
         GenerateMediaStreamSource: *const fn(self: *anyopaque, _r: **MediaStreamSource) callconv(.winapi) HRESULT,
         GenerateMediaStreamSource: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, _r: **MediaStreamSource) callconv(.winapi) HRESULT,
@@ -913,13 +913,13 @@ pub const MediaComposition = extern struct {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.RenderToFileAsync(destination);
     }
-    pub fn RenderToFileAsync(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithTrimmingPreference(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         const this: *IMediaComposition = @ptrCast(self);
-        return try this.RenderToFileAsync(destination, trimmingPreference);
+        return try this.RenderToFileAsyncWithTrimmingPreference(destination, trimmingPreference);
     }
-    pub fn RenderToFileAsync(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         const this: *IMediaComposition = @ptrCast(self);
-        return try this.RenderToFileAsync(destination, trimmingPreference, encodingProfile);
+        return try this.RenderToFileAsyncWithEncodingProfile(destination, trimmingPreference, encodingProfile);
     }
     pub fn CreateDefaultEncodingProfile(self: *@This()) core.HResult!*MediaEncodingProfile {
         const this: *IMediaComposition = @ptrCast(self);

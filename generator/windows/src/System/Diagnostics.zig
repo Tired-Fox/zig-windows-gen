@@ -690,9 +690,9 @@ pub const ISystemDiagnosticInfoStatics = extern struct {
 };
 pub const ISystemDiagnosticInfoStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn IsArchitectureSupported(self: *@This(), type: ProcessorArchitecture) core.HResult!bool {
+    pub fn IsArchitectureSupported(self: *@This(), ty: ProcessorArchitecture) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.IsArchitectureSupported(@ptrCast(self), type, &_r);
+        const _c = self.vtable.IsArchitectureSupported(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -714,7 +714,7 @@ pub const ISystemDiagnosticInfoStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsArchitectureSupported: *const fn(self: *anyopaque, type: ProcessorArchitecture, _r: *bool) callconv(.winapi) HRESULT,
+        IsArchitectureSupported: *const fn(self: *anyopaque, ty: ProcessorArchitecture, _r: *bool) callconv(.winapi) HRESULT,
         get_PreferredArchitecture: *const fn(self: *anyopaque, _r: *ProcessorArchitecture) callconv(.winapi) HRESULT,
     };
 };
@@ -1032,9 +1032,9 @@ pub const SystemDiagnosticInfo = extern struct {
         const factory = @This().ISystemDiagnosticInfoStaticsCache.get();
         return try factory.GetForCurrentSystem();
     }
-    pub fn IsArchitectureSupported(type: ProcessorArchitecture) core.HResult!bool {
+    pub fn IsArchitectureSupported(ty: ProcessorArchitecture) core.HResult!bool {
         const factory = @This().ISystemDiagnosticInfoStatics2Cache.get();
-        return try factory.IsArchitectureSupported(type);
+        return try factory.IsArchitectureSupported(ty);
     }
     pub fn getPreferredArchitecture() core.HResult!ProcessorArchitecture {
         const factory = @This().ISystemDiagnosticInfoStatics2Cache.get();

@@ -971,17 +971,17 @@ pub const ContactField = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateField(value: HSTRING, type: ContactFieldType) core.HResult!*ContactField {
+    pub fn CreateField(value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         const factory = @This().IContactFieldFactoryCache.get();
-        return try factory.CreateField(value, type);
+        return try factory.CreateField(value, ty);
     }
-    pub fn CreateField(value: HSTRING, type: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithTyWithCategory(value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const factory = @This().IContactFieldFactoryCache.get();
-        return try factory.CreateField(value, type, category);
+        return try factory.CreateFieldWithTyWithCategory(value, ty, category);
     }
-    pub fn CreateField(name: HSTRING, value: HSTRING, type: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithTyWithCategory(name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const factory = @This().IContactFieldFactoryCache.get();
-        return try factory.CreateField(name, value, type, category);
+        return try factory.CreateFieldWithTyWithCategory(name, value, ty, category);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactField";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -999,17 +999,17 @@ pub const ContactFieldCategory = enum(i32) {
 };
 pub const ContactFieldFactory = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn CreateField(self: *@This(), value: HSTRING, type: ContactFieldType) core.HResult!*ContactField {
+    pub fn CreateField(self: *@This(), value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
-        return try this.CreateField(value, type);
+        return try this.CreateField(value, ty);
     }
-    pub fn CreateField(self: *@This(), value: HSTRING, type: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithTyWithCategory(self: *@This(), value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
-        return try this.CreateField(value, type, category);
+        return try this.CreateFieldWithTyWithCategory(value, ty, category);
     }
-    pub fn CreateField(self: *@This(), name: HSTRING, value: HSTRING, type: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithTyWithCategory(self: *@This(), name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
-        return try this.CreateField(name, value, type, category);
+        return try this.CreateFieldWithTyWithCategory(name, value, ty, category);
     }
     pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
@@ -1017,17 +1017,17 @@ pub const ContactFieldFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocation(unstructuredAddress);
     }
-    pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateLocation(unstructuredAddress, category);
+        return try this.?.CreateLocationWithCategory(unstructuredAddress, category);
     }
-    pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithPostalCode(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateLocation(unstructuredAddress, category, street, city, region, country, postalCode);
+        return try this.?.CreateLocationWithPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
     pub fn CreateInstantMessage(self: *@This(), userName: HSTRING) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
@@ -1035,17 +1035,17 @@ pub const ContactFieldFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessage(userName);
     }
-    pub fn CreateInstantMessage(self: *@This(), userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategory(self: *@This(), userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateInstantMessage(userName, category);
+        return try this.?.CreateInstantMessageWithCategory(userName, category);
     }
-    pub fn CreateInstantMessage(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithVerb(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateInstantMessage(userName, category, service, displayText, verb);
+        return try this.?.CreateInstantMessageWithVerb(userName, category, service, displayText, verb);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1172,13 +1172,13 @@ pub const ContactInstantMessageField = extern struct {
         const factory = @This().IContactInstantMessageFieldFactoryCache.get();
         return try factory.CreateInstantMessage(userName);
     }
-    pub fn CreateInstantMessage(userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategory(userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         const factory = @This().IContactInstantMessageFieldFactoryCache.get();
-        return try factory.CreateInstantMessage(userName, category);
+        return try factory.CreateInstantMessageWithCategory(userName, category);
     }
-    pub fn CreateInstantMessage(userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithVerb(userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         const factory = @This().IContactInstantMessageFieldFactoryCache.get();
-        return try factory.CreateInstantMessage(userName, category, service, displayText, verb);
+        return try factory.CreateInstantMessageWithVerb(userName, category, service, displayText, verb);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactInstantMessageField";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1809,13 +1809,13 @@ pub const ContactLocationField = extern struct {
         const factory = @This().IContactLocationFieldFactoryCache.get();
         return try factory.CreateLocation(unstructuredAddress);
     }
-    pub fn CreateLocation(unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategory(unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         const factory = @This().IContactLocationFieldFactoryCache.get();
-        return try factory.CreateLocation(unstructuredAddress, category);
+        return try factory.CreateLocationWithCategory(unstructuredAddress, category);
     }
-    pub fn CreateLocation(unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithPostalCode(unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
         const factory = @This().IContactLocationFieldFactoryCache.get();
-        return try factory.CreateLocation(unstructuredAddress, category, street, city, region, country, postalCode);
+        return try factory.CreateLocationWithPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.ContactLocationField";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1849,9 +1849,9 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStaticsCache.get();
         return try factory.ShowContactCard(contact, selection);
     }
-    pub fn ShowContactCard(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
+    pub fn ShowContactCardWithSelectionWithPreferredPlacement(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
         const factory = @This().IContactManagerStaticsCache.get();
-        return try factory.ShowContactCard(contact, selection, preferredPlacement);
+        return try factory.ShowContactCardWithSelectionWithPreferredPlacement(contact, selection, preferredPlacement);
     }
     pub fn ShowDelayLoadedContactCard(contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!*ContactCardDelayedDataLoader {
         const factory = @This().IContactManagerStaticsCache.get();
@@ -1865,9 +1865,9 @@ pub const ContactManager = extern struct {
         const factory = @This().IContactManagerStatics3Cache.get();
         return try factory.ConvertContactToVCardAsync(contact);
     }
-    pub fn ConvertContactToVCardAsync(contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
+    pub fn ConvertContactToVCardAsyncWithMaxBytes(contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         const factory = @This().IContactManagerStatics3Cache.get();
-        return try factory.ConvertContactToVCardAsync(contact, maxBytes);
+        return try factory.ConvertContactToVCardAsyncWithMaxBytes(contact, maxBytes);
     }
     pub fn ConvertVCardToContactAsync(vCard: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(Contact) {
         const factory = @This().IContactManagerStatics3Cache.get();
@@ -1931,9 +1931,9 @@ pub const ContactManagerForUser = extern struct {
         const this: *IContactManagerForUser = @ptrCast(self);
         return try this.ConvertContactToVCardAsync(contact);
     }
-    pub fn ConvertContactToVCardAsync(self: *@This(), contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
+    pub fn ConvertContactToVCardAsyncWithMaxBytes(self: *@This(), contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         const this: *IContactManagerForUser = @ptrCast(self);
-        return try this.ConvertContactToVCardAsync(contact, maxBytes);
+        return try this.ConvertContactToVCardAsyncWithMaxBytes(contact, maxBytes);
     }
     pub fn ConvertVCardToContactAsync(self: *@This(), vCard: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(Contact) {
         const this: *IContactManagerForUser = @ptrCast(self);
@@ -2460,11 +2460,11 @@ pub const ContactStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactReader(options);
     }
-    pub fn CreateContactListAsync(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateContactListAsync(displayName, userDataAccountId);
+        return try this.?.CreateContactListAsyncWithUserDataAccountId(displayName, userDataAccountId);
     }
     pub fn GetChangeTracker(self: *@This(), identity: HSTRING) core.HResult!*ContactChangeTracker {
         var this: ?*IContactStore3 = undefined;
@@ -3819,21 +3819,21 @@ pub const IContactField = extern struct {
 };
 pub const IContactFieldFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateField(self: *@This(), value: HSTRING, type: ContactFieldType) core.HResult!*ContactField {
+    pub fn CreateField(self: *@This(), value: HSTRING, ty: ContactFieldType) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
-        const _c = self.vtable.CreateField(@ptrCast(self), value, type, &_r);
+        const _c = self.vtable.CreateField(@ptrCast(self), value, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateField(self: *@This(), value: HSTRING, type: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithTyWithCategory(self: *@This(), value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
-        const _c = self.vtable.CreateField(@ptrCast(self), value, type, category, &_r);
+        const _c = self.vtable.CreateFieldWithTyWithCategory(@ptrCast(self), value, ty, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateField(self: *@This(), name: HSTRING, value: HSTRING, type: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithTyWithCategory(self: *@This(), name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         var _r: *ContactField = undefined;
-        const _c = self.vtable.CreateField(@ptrCast(self), name, value, type, category, &_r);
+        const _c = self.vtable.CreateFieldWithTyWithCategory(@ptrCast(self), name, value, ty, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3849,9 +3849,9 @@ pub const IContactFieldFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateField: *const fn(self: *anyopaque, value: HSTRING, type: ContactFieldType, _r: **ContactField) callconv(.winapi) HRESULT,
-        CreateField: *const fn(self: *anyopaque, value: HSTRING, type: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
-        CreateField: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING, type: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
+        CreateField: *const fn(self: *anyopaque, value: HSTRING, ty: ContactFieldType, _r: **ContactField) callconv(.winapi) HRESULT,
+        CreateFieldWithTyWithCategory: *const fn(self: *anyopaque, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
+        CreateFieldWithTyWithCategory: *const fn(self: *anyopaque, name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory, _r: **ContactField) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactGroup = extern struct {
@@ -3994,15 +3994,15 @@ pub const IContactInstantMessageFieldFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstantMessage(self: *@This(), userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategory(self: *@This(), userName: HSTRING, category: ContactFieldCategory) core.HResult!*ContactInstantMessageField {
         var _r: *ContactInstantMessageField = undefined;
-        const _c = self.vtable.CreateInstantMessage(@ptrCast(self), userName, category, &_r);
+        const _c = self.vtable.CreateInstantMessageWithCategory(@ptrCast(self), userName, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateInstantMessage(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithVerb(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         var _r: *ContactInstantMessageField = undefined;
-        const _c = self.vtable.CreateInstantMessage(@ptrCast(self), userName, category, service, displayText, verb, &_r);
+        const _c = self.vtable.CreateInstantMessageWithVerb(@ptrCast(self), userName, category, service, displayText, verb, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4019,8 +4019,8 @@ pub const IContactInstantMessageFieldFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateInstantMessage: *const fn(self: *anyopaque, userName: HSTRING, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
-        CreateInstantMessage: *const fn(self: *anyopaque, userName: HSTRING, category: ContactFieldCategory, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
-        CreateInstantMessage: *const fn(self: *anyopaque, userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
+        CreateInstantMessageWithCategory: *const fn(self: *anyopaque, userName: HSTRING, category: ContactFieldCategory, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
+        CreateInstantMessageWithVerb: *const fn(self: *anyopaque, userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri, _r: **ContactInstantMessageField) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactJobInfo = extern struct {
@@ -4967,15 +4967,15 @@ pub const IContactLocationFieldFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategory(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory) core.HResult!*ContactLocationField {
         var _r: *ContactLocationField = undefined;
-        const _c = self.vtable.CreateLocation(@ptrCast(self), unstructuredAddress, category, &_r);
+        const _c = self.vtable.CreateLocationWithCategory(@ptrCast(self), unstructuredAddress, category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateLocation(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithPostalCode(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
         var _r: *ContactLocationField = undefined;
-        const _c = self.vtable.CreateLocation(@ptrCast(self), unstructuredAddress, category, street, city, region, country, postalCode, &_r);
+        const _c = self.vtable.CreateLocationWithPostalCode(@ptrCast(self), unstructuredAddress, category, street, city, region, country, postalCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4992,8 +4992,8 @@ pub const IContactLocationFieldFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateLocation: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
-        CreateLocation: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, category: ContactFieldCategory, _r: **ContactLocationField) callconv(.winapi) HRESULT,
-        CreateLocation: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
+        CreateLocationWithCategory: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, category: ContactFieldCategory, _r: **ContactLocationField) callconv(.winapi) HRESULT,
+        CreateLocationWithPostalCode: *const fn(self: *anyopaque, unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING, _r: **ContactLocationField) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactManagerForUser = extern struct {
@@ -5004,9 +5004,9 @@ pub const IContactManagerForUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertContactToVCardAsync(self: *@This(), contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
+    pub fn ConvertContactToVCardAsyncWithMaxBytes(self: *@This(), contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         var _r: *IAsyncOperation(RandomAccessStreamReference) = undefined;
-        const _c = self.vtable.ConvertContactToVCardAsync(@ptrCast(self), contact, maxBytes, &_r);
+        const _c = self.vtable.ConvertContactToVCardAsyncWithMaxBytes(@ptrCast(self), contact, maxBytes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5067,7 +5067,7 @@ pub const IContactManagerForUser = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ConvertContactToVCardAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
-        ConvertContactToVCardAsync: *const fn(self: *anyopaque, contact: *Contact, maxBytes: u32, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
+        ConvertContactToVCardAsyncWithMaxBytes: *const fn(self: *anyopaque, contact: *Contact, maxBytes: u32, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
         ConvertVCardToContactAsync: *const fn(self: *anyopaque, vCard: *IRandomAccessStreamReference, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
         RequestStoreAsync: *const fn(self: *anyopaque, accessType: ContactStoreAccessType, _r: **IAsyncOperation(ContactStore)) callconv(.winapi) HRESULT,
         RequestAnnotationStoreAsync: *const fn(self: *anyopaque, accessType: ContactAnnotationStoreAccessType, _r: **IAsyncOperation(ContactAnnotationStore)) callconv(.winapi) HRESULT,
@@ -5105,8 +5105,8 @@ pub const IContactManagerStatics = extern struct {
         const _c = self.vtable.ShowContactCard(@ptrCast(self), contact, selection);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ShowContactCard(self: *@This(), contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
-        const _c = self.vtable.ShowContactCard(@ptrCast(self), contact, selection, preferredPlacement);
+    pub fn ShowContactCardWithSelectionWithPreferredPlacement(self: *@This(), contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!void {
+        const _c = self.vtable.ShowContactCardWithSelectionWithPreferredPlacement(@ptrCast(self), contact, selection, preferredPlacement);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ShowDelayLoadedContactCard(self: *@This(), contact: *Contact, selection: Rect, preferredPlacement: Placement) core.HResult!*ContactCardDelayedDataLoader {
@@ -5128,7 +5128,7 @@ pub const IContactManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ShowContactCard: *const fn(self: *anyopaque, contact: *Contact, selection: Rect) callconv(.winapi) HRESULT,
-        ShowContactCard: *const fn(self: *anyopaque, contact: *Contact, selection: Rect, preferredPlacement: Placement) callconv(.winapi) HRESULT,
+        ShowContactCardWithSelectionWithPreferredPlacement: *const fn(self: *anyopaque, contact: *Contact, selection: Rect, preferredPlacement: Placement) callconv(.winapi) HRESULT,
         ShowDelayLoadedContactCard: *const fn(self: *anyopaque, contact: *Contact, selection: Rect, preferredPlacement: Placement, _r: **ContactCardDelayedDataLoader) callconv(.winapi) HRESULT,
     };
 };
@@ -5163,9 +5163,9 @@ pub const IContactManagerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertContactToVCardAsync(self: *@This(), contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
+    pub fn ConvertContactToVCardAsyncWithMaxBytes(self: *@This(), contact: *Contact, maxBytes: u32) core.HResult!*IAsyncOperation(RandomAccessStreamReference) {
         var _r: *IAsyncOperation(RandomAccessStreamReference) = undefined;
-        const _c = self.vtable.ConvertContactToVCardAsync(@ptrCast(self), contact, maxBytes, &_r);
+        const _c = self.vtable.ConvertContactToVCardAsyncWithMaxBytes(@ptrCast(self), contact, maxBytes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5246,7 +5246,7 @@ pub const IContactManagerStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ConvertContactToVCardAsync: *const fn(self: *anyopaque, contact: *Contact, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
-        ConvertContactToVCardAsync: *const fn(self: *anyopaque, contact: *Contact, maxBytes: u32, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
+        ConvertContactToVCardAsyncWithMaxBytes: *const fn(self: *anyopaque, contact: *Contact, maxBytes: u32, _r: **IAsyncOperation(RandomAccessStreamReference)) callconv(.winapi) HRESULT,
         ConvertVCardToContactAsync: *const fn(self: *anyopaque, vCard: *IRandomAccessStreamReference, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
         RequestStoreAsync: *const fn(self: *anyopaque, accessType: ContactStoreAccessType, _r: **IAsyncOperation(ContactStore)) callconv(.winapi) HRESULT,
         RequestAnnotationStoreAsync: *const fn(self: *anyopaque, accessType: ContactAnnotationStoreAccessType, _r: **IAsyncOperation(ContactAnnotationStore)) callconv(.winapi) HRESULT,
@@ -6131,9 +6131,9 @@ pub const IContactStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateContactListAsync(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
+    pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var _r: *IAsyncOperation(ContactList) = undefined;
-        const _c = self.vtable.CreateContactListAsync(@ptrCast(self), displayName, userDataAccountId, &_r);
+        const _c = self.vtable.CreateContactListAsyncWithUserDataAccountId(@ptrCast(self), displayName, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6159,7 +6159,7 @@ pub const IContactStore2 = extern struct {
         GetMeContactAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Contact)) callconv(.winapi) HRESULT,
         GetContactReader: *const fn(self: *anyopaque, _r: **ContactReader) callconv(.winapi) HRESULT,
         GetContactReader: *const fn(self: *anyopaque, options: *ContactQueryOptions, _r: **ContactReader) callconv(.winapi) HRESULT,
-        CreateContactListAsync: *const fn(self: *anyopaque, displayName: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
+        CreateContactListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, displayName: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(ContactList)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContactStore3 = extern struct {
@@ -6329,9 +6329,9 @@ pub const IKnownContactFieldStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertTypeToName(self: *@This(), type: ContactFieldType) core.HResult!HSTRING {
+    pub fn ConvertTypeToName(self: *@This(), ty: ContactFieldType) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.ConvertTypeToName(@ptrCast(self), type, &_r);
+        const _c = self.vtable.ConvertTypeToName(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6352,7 +6352,7 @@ pub const IKnownContactFieldStatics = extern struct {
         get_Location: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_InstantMessage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         ConvertNameToType: *const fn(self: *anyopaque, name: HSTRING, _r: *ContactFieldType) callconv(.winapi) HRESULT,
-        ConvertTypeToName: *const fn(self: *anyopaque, type: ContactFieldType, _r: *HSTRING) callconv(.winapi) HRESULT,
+        ConvertTypeToName: *const fn(self: *anyopaque, ty: ContactFieldType, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IPinnedContactIdsQueryResult = extern struct {
@@ -6510,9 +6510,9 @@ pub const KnownContactField = extern struct {
         const factory = @This().IKnownContactFieldStaticsCache.get();
         return try factory.ConvertNameToType(name);
     }
-    pub fn ConvertTypeToName(type: ContactFieldType) core.HResult!HSTRING {
+    pub fn ConvertTypeToName(ty: ContactFieldType) core.HResult!HSTRING {
         const factory = @This().IKnownContactFieldStaticsCache.get();
-        return try factory.ConvertTypeToName(type);
+        return try factory.ConvertTypeToName(ty);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Contacts.KnownContactField";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

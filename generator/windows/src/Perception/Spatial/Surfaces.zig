@@ -24,9 +24,9 @@ pub const ISpatialSurfaceInfo = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryComputeLatestMeshAsync(self: *@This(), maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions) core.HResult!*IAsyncOperation(SpatialSurfaceMesh) {
+    pub fn TryComputeLatestMeshAsyncWithOptions(self: *@This(), maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions) core.HResult!*IAsyncOperation(SpatialSurfaceMesh) {
         var _r: *IAsyncOperation(SpatialSurfaceMesh) = undefined;
-        const _c = self.vtable.TryComputeLatestMeshAsync(@ptrCast(self), maxTrianglesPerCubicMeter, options, &_r);
+        const _c = self.vtable.TryComputeLatestMeshAsyncWithOptions(@ptrCast(self), maxTrianglesPerCubicMeter, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -46,7 +46,7 @@ pub const ISpatialSurfaceInfo = extern struct {
         get_UpdateTime: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
         TryGetBounds: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, _r: **IReference(SpatialBoundingOrientedBox)) callconv(.winapi) HRESULT,
         TryComputeLatestMeshAsync: *const fn(self: *anyopaque, maxTrianglesPerCubicMeter: f64, _r: **IAsyncOperation(SpatialSurfaceMesh)) callconv(.winapi) HRESULT,
-        TryComputeLatestMeshAsync: *const fn(self: *anyopaque, maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions, _r: **IAsyncOperation(SpatialSurfaceMesh)) callconv(.winapi) HRESULT,
+        TryComputeLatestMeshAsyncWithOptions: *const fn(self: *anyopaque, maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions, _r: **IAsyncOperation(SpatialSurfaceMesh)) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialSurfaceMesh = extern struct {
@@ -361,9 +361,9 @@ pub const SpatialSurfaceInfo = extern struct {
         const this: *ISpatialSurfaceInfo = @ptrCast(self);
         return try this.TryComputeLatestMeshAsync(maxTrianglesPerCubicMeter);
     }
-    pub fn TryComputeLatestMeshAsync(self: *@This(), maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions) core.HResult!*IAsyncOperation(SpatialSurfaceMesh) {
+    pub fn TryComputeLatestMeshAsyncWithOptions(self: *@This(), maxTrianglesPerCubicMeter: f64, options: *SpatialSurfaceMeshOptions) core.HResult!*IAsyncOperation(SpatialSurfaceMesh) {
         const this: *ISpatialSurfaceInfo = @ptrCast(self);
-        return try this.TryComputeLatestMeshAsync(maxTrianglesPerCubicMeter, options);
+        return try this.TryComputeLatestMeshAsyncWithOptions(maxTrianglesPerCubicMeter, options);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.SpatialSurfaceInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -51,17 +51,17 @@ pub const ContentIndexer = extern struct {
         const this: *IContentIndexer = @ptrCast(self);
         return try this.getRevision();
     }
-    pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrderWithSearchFilterLanguage(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateQuery(searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage);
+        return try this.?.CreateQueryWithSortOrderWithSearchFilterLanguage(searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage);
     }
-    pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithPropertiesToRetrieveWithSortOrder(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateQuery(searchFilter, propertiesToRetrieve, sortOrder);
+        return try this.?.CreateQueryWithPropertiesToRetrieveWithSortOrder(searchFilter, propertiesToRetrieve, sortOrder);
     }
     pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
@@ -253,15 +253,15 @@ pub const IContentIndexerQuery = extern struct {
 };
 pub const IContentIndexerQueryOperations = extern struct {
     vtable: *const VTable,
-    pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrderWithSearchFilterLanguage(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING) core.HResult!*ContentIndexerQuery {
         var _r: *ContentIndexerQuery = undefined;
-        const _c = self.vtable.CreateQuery(@ptrCast(self), searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage, &_r);
+        const _c = self.vtable.CreateQueryWithSortOrderWithSearchFilterLanguage(@ptrCast(self), searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithPropertiesToRetrieveWithSortOrder(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
         var _r: *ContentIndexerQuery = undefined;
-        const _c = self.vtable.CreateQuery(@ptrCast(self), searchFilter, propertiesToRetrieve, sortOrder, &_r);
+        const _c = self.vtable.CreateQueryWithPropertiesToRetrieveWithSortOrder(@ptrCast(self), searchFilter, propertiesToRetrieve, sortOrder, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -283,8 +283,8 @@ pub const IContentIndexerQueryOperations = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateQuery: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING, _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
-        CreateQuery: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
+        CreateQueryWithSortOrderWithSearchFilterLanguage: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), searchFilterLanguage: HSTRING, _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
+        CreateQueryWithPropertiesToRetrieveWithSortOrder: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
         CreateQuery: *const fn(self: *anyopaque, searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), _r: **ContentIndexerQuery) callconv(.winapi) HRESULT,
     };
 };
@@ -665,9 +665,9 @@ pub const IStorageFolderQueryOperations = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFilesAsync(self: *@This(), query: CommonFileQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
+    pub fn GetFilesAsyncWithMaxItemsToRetrieve(self: *@This(), query: CommonFileQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
         var _r: *IAsyncOperation(IVectorView(StorageFile)) = undefined;
-        const _c = self.vtable.GetFilesAsync(@ptrCast(self), query, startIndex, maxItemsToRetrieve, &_r);
+        const _c = self.vtable.GetFilesAsyncWithMaxItemsToRetrieve(@ptrCast(self), query, startIndex, maxItemsToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -677,9 +677,9 @@ pub const IStorageFolderQueryOperations = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFoldersAsync(self: *@This(), query: CommonFolderQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
+    pub fn GetFoldersAsyncWithMaxItemsToRetrieve(self: *@This(), query: CommonFolderQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
         var _r: *IAsyncOperation(IVectorView(StorageFolder)) = undefined;
-        const _c = self.vtable.GetFoldersAsync(@ptrCast(self), query, startIndex, maxItemsToRetrieve, &_r);
+        const _c = self.vtable.GetFoldersAsyncWithMaxItemsToRetrieve(@ptrCast(self), query, startIndex, maxItemsToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -734,9 +734,9 @@ pub const IStorageFolderQueryOperations = extern struct {
         CreateFolderQueryWithOptions: *const fn(self: *anyopaque, queryOptions: *QueryOptions, _r: **StorageFolderQueryResult) callconv(.winapi) HRESULT,
         CreateItemQuery: *const fn(self: *anyopaque, _r: **StorageItemQueryResult) callconv(.winapi) HRESULT,
         CreateItemQueryWithOptions: *const fn(self: *anyopaque, queryOptions: *QueryOptions, _r: **StorageItemQueryResult) callconv(.winapi) HRESULT,
-        GetFilesAsync: *const fn(self: *anyopaque, query: CommonFileQuery, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(StorageFile))) callconv(.winapi) HRESULT,
+        GetFilesAsyncWithMaxItemsToRetrieve: *const fn(self: *anyopaque, query: CommonFileQuery, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(StorageFile))) callconv(.winapi) HRESULT,
         GetFilesAsync: *const fn(self: *anyopaque, query: CommonFileQuery, _r: **IAsyncOperation(IVectorView(StorageFile))) callconv(.winapi) HRESULT,
-        GetFoldersAsync: *const fn(self: *anyopaque, query: CommonFolderQuery, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(StorageFolder))) callconv(.winapi) HRESULT,
+        GetFoldersAsyncWithMaxItemsToRetrieve: *const fn(self: *anyopaque, query: CommonFolderQuery, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(StorageFolder))) callconv(.winapi) HRESULT,
         GetFoldersAsync: *const fn(self: *anyopaque, query: CommonFolderQuery, _r: **IAsyncOperation(IVectorView(StorageFolder))) callconv(.winapi) HRESULT,
         GetItemsAsync: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(IStorageItem))) callconv(.winapi) HRESULT,
         AreQueryOptionsSupported: *const fn(self: *anyopaque, queryOptions: *QueryOptions, _r: *bool) callconv(.winapi) HRESULT,

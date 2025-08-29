@@ -1122,9 +1122,9 @@ pub const DigitalWindowControl = extern struct {
         const this: *IDigitalWindowControl = @ptrCast(self);
         return try this.Configure(digitalWindowMode);
     }
-    pub fn Configure(self: *@This(), digitalWindowMode: DigitalWindowMode, digitalWindowBounds: *DigitalWindowBounds) core.HResult!void {
+    pub fn ConfigureWithDigitalWindowBounds(self: *@This(), digitalWindowMode: DigitalWindowMode, digitalWindowBounds: *DigitalWindowBounds) core.HResult!void {
         const this: *IDigitalWindowControl = @ptrCast(self);
-        return try this.Configure(digitalWindowMode, digitalWindowBounds);
+        return try this.ConfigureWithDigitalWindowBounds(digitalWindowMode, digitalWindowBounds);
     }
     pub fn getSupportedCapabilities(self: *@This()) core.HResult!*IVectorView(DigitalWindowCapability) {
         const this: *IDigitalWindowControl = @ptrCast(self);
@@ -1325,9 +1325,9 @@ pub const FocusControl = extern struct {
         const this: *IFocusControl = @ptrCast(self);
         return try this.SetPresetAsync(preset);
     }
-    pub fn SetPresetAsync(self: *@This(), preset: FocusPreset, completeBeforeFocus: bool) core.HResult!*IAsyncAction {
+    pub fn SetPresetAsyncWithCompleteBeforeFocus(self: *@This(), preset: FocusPreset, completeBeforeFocus: bool) core.HResult!*IAsyncAction {
         const this: *IFocusControl = @ptrCast(self);
-        return try this.SetPresetAsync(preset, completeBeforeFocus);
+        return try this.SetPresetAsyncWithCompleteBeforeFocus(preset, completeBeforeFocus);
     }
     pub fn getMin(self: *@This()) core.HResult!u32 {
         const this: *IFocusControl = @ptrCast(self);
@@ -2492,8 +2492,8 @@ pub const IDigitalWindowControl = extern struct {
         const _c = self.vtable.Configure(@ptrCast(self), digitalWindowMode);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Configure(self: *@This(), digitalWindowMode: DigitalWindowMode, digitalWindowBounds: *DigitalWindowBounds) core.HResult!void {
-        const _c = self.vtable.Configure(@ptrCast(self), digitalWindowMode, digitalWindowBounds);
+    pub fn ConfigureWithDigitalWindowBounds(self: *@This(), digitalWindowMode: DigitalWindowMode, digitalWindowBounds: *DigitalWindowBounds) core.HResult!void {
+        const _c = self.vtable.ConfigureWithDigitalWindowBounds(@ptrCast(self), digitalWindowMode, digitalWindowBounds);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getSupportedCapabilities(self: *@This()) core.HResult!*IVectorView(DigitalWindowCapability) {
@@ -2525,7 +2525,7 @@ pub const IDigitalWindowControl = extern struct {
         get_CurrentMode: *const fn(self: *anyopaque, _r: *DigitalWindowMode) callconv(.winapi) HRESULT,
         GetBounds: *const fn(self: *anyopaque, _r: **DigitalWindowBounds) callconv(.winapi) HRESULT,
         Configure: *const fn(self: *anyopaque, digitalWindowMode: DigitalWindowMode) callconv(.winapi) HRESULT,
-        Configure: *const fn(self: *anyopaque, digitalWindowMode: DigitalWindowMode, digitalWindowBounds: *DigitalWindowBounds) callconv(.winapi) HRESULT,
+        ConfigureWithDigitalWindowBounds: *const fn(self: *anyopaque, digitalWindowMode: DigitalWindowMode, digitalWindowBounds: *DigitalWindowBounds) callconv(.winapi) HRESULT,
         get_SupportedCapabilities: *const fn(self: *anyopaque, _r: **IVectorView(DigitalWindowCapability)) callconv(.winapi) HRESULT,
         GetCapabilityForSize: *const fn(self: *anyopaque, width: i32, height: i32, _r: **DigitalWindowCapability) callconv(.winapi) HRESULT,
     };
@@ -2841,9 +2841,9 @@ pub const IFocusControl = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetPresetAsync(self: *@This(), preset: FocusPreset, completeBeforeFocus: bool) core.HResult!*IAsyncAction {
+    pub fn SetPresetAsyncWithCompleteBeforeFocus(self: *@This(), preset: FocusPreset, completeBeforeFocus: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SetPresetAsync(@ptrCast(self), preset, completeBeforeFocus, &_r);
+        const _c = self.vtable.SetPresetAsyncWithCompleteBeforeFocus(@ptrCast(self), preset, completeBeforeFocus, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2899,7 +2899,7 @@ pub const IFocusControl = extern struct {
         get_SupportedPresets: *const fn(self: *anyopaque, _r: **IVectorView(FocusPreset)) callconv(.winapi) HRESULT,
         get_Preset: *const fn(self: *anyopaque, _r: *FocusPreset) callconv(.winapi) HRESULT,
         SetPresetAsync: *const fn(self: *anyopaque, preset: FocusPreset, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SetPresetAsync: *const fn(self: *anyopaque, preset: FocusPreset, completeBeforeFocus: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetPresetAsyncWithCompleteBeforeFocus: *const fn(self: *anyopaque, preset: FocusPreset, completeBeforeFocus: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_Min: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Max: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Step: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
@@ -4002,9 +4002,9 @@ pub const IRegionsOfInterestControl = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetRegionsAsync(self: *@This(), regions: *IIterable(RegionOfInterest), lockValues: bool) core.HResult!*IAsyncAction {
+    pub fn SetRegionsAsyncWithLockValues(self: *@This(), regions: *IIterable(RegionOfInterest), lockValues: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SetRegionsAsync(@ptrCast(self), regions, lockValues, &_r);
+        const _c = self.vtable.SetRegionsAsyncWithLockValues(@ptrCast(self), regions, lockValues, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4046,7 +4046,7 @@ pub const IRegionsOfInterestControl = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_MaxRegions: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         SetRegionsAsync: *const fn(self: *anyopaque, regions: *IIterable(RegionOfInterest), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SetRegionsAsync: *const fn(self: *anyopaque, regions: *IIterable(RegionOfInterest), lockValues: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetRegionsAsyncWithLockValues: *const fn(self: *anyopaque, regions: *IIterable(RegionOfInterest), lockValues: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ClearRegionsAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_AutoFocusSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_AutoWhiteBalanceSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
@@ -5092,9 +5092,9 @@ pub const RegionsOfInterestControl = extern struct {
         const this: *IRegionsOfInterestControl = @ptrCast(self);
         return try this.SetRegionsAsync(regions);
     }
-    pub fn SetRegionsAsync(self: *@This(), regions: *IIterable(RegionOfInterest), lockValues: bool) core.HResult!*IAsyncAction {
+    pub fn SetRegionsAsyncWithLockValues(self: *@This(), regions: *IIterable(RegionOfInterest), lockValues: bool) core.HResult!*IAsyncAction {
         const this: *IRegionsOfInterestControl = @ptrCast(self);
-        return try this.SetRegionsAsync(regions, lockValues);
+        return try this.SetRegionsAsyncWithLockValues(regions, lockValues);
     }
     pub fn ClearRegionsAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IRegionsOfInterestControl = @ptrCast(self);

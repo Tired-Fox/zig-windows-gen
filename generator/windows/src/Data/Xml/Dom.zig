@@ -754,8 +754,8 @@ pub const IXmlDocumentIO = extern struct {
         const _c = self.vtable.LoadXml(@ptrCast(self), xml);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn LoadXml(self: *@This(), xml: HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
-        const _c = self.vtable.LoadXml(@ptrCast(self), xml, loadSettings);
+    pub fn LoadXmlWithLoadSettings(self: *@This(), xml: HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
+        const _c = self.vtable.LoadXmlWithLoadSettings(@ptrCast(self), xml, loadSettings);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SaveToFileAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncAction {
@@ -777,7 +777,7 @@ pub const IXmlDocumentIO = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LoadXml: *const fn(self: *anyopaque, xml: HSTRING) callconv(.winapi) HRESULT,
-        LoadXml: *const fn(self: *anyopaque, xml: HSTRING, loadSettings: *XmlLoadSettings) callconv(.winapi) HRESULT,
+        LoadXmlWithLoadSettings: *const fn(self: *anyopaque, xml: HSTRING, loadSettings: *XmlLoadSettings) callconv(.winapi) HRESULT,
         SaveToFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -787,8 +787,8 @@ pub const IXmlDocumentIO2 = extern struct {
         const _c = self.vtable.LoadXmlFromBuffer(@ptrCast(self), buffer);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn LoadXmlFromBuffer(self: *@This(), buffer: *IBuffer, loadSettings: *XmlLoadSettings) core.HResult!void {
-        const _c = self.vtable.LoadXmlFromBuffer(@ptrCast(self), buffer, loadSettings);
+    pub fn LoadXmlFromBufferWithLoadSettings(self: *@This(), buffer: *IBuffer, loadSettings: *XmlLoadSettings) core.HResult!void {
+        const _c = self.vtable.LoadXmlFromBufferWithLoadSettings(@ptrCast(self), buffer, loadSettings);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.IXmlDocumentIO2";
@@ -804,7 +804,7 @@ pub const IXmlDocumentIO2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LoadXmlFromBuffer: *const fn(self: *anyopaque, buffer: *IBuffer) callconv(.winapi) HRESULT,
-        LoadXmlFromBuffer: *const fn(self: *anyopaque, buffer: *IBuffer, loadSettings: *XmlLoadSettings) callconv(.winapi) HRESULT,
+        LoadXmlFromBufferWithLoadSettings: *const fn(self: *anyopaque, buffer: *IBuffer, loadSettings: *XmlLoadSettings) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlDocumentStatics = extern struct {
@@ -815,9 +815,9 @@ pub const IXmlDocumentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromUriAsync(self: *@This(), uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
+    pub fn LoadFromUriAsyncWithLoadSettings(self: *@This(), uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
-        const _c = self.vtable.LoadFromUriAsync(@ptrCast(self), uri, loadSettings, &_r);
+        const _c = self.vtable.LoadFromUriAsyncWithLoadSettings(@ptrCast(self), uri, loadSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -827,9 +827,9 @@ pub const IXmlDocumentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromFileAsync(self: *@This(), file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
+    pub fn LoadFromFileAsyncWithLoadSettings(self: *@This(), file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
         var _r: *IAsyncOperation(XmlDocument) = undefined;
-        const _c = self.vtable.LoadFromFileAsync(@ptrCast(self), file, loadSettings, &_r);
+        const _c = self.vtable.LoadFromFileAsyncWithLoadSettings(@ptrCast(self), file, loadSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -846,9 +846,9 @@ pub const IXmlDocumentStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LoadFromUriAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(XmlDocument)) callconv(.winapi) HRESULT,
-        LoadFromUriAsync: *const fn(self: *anyopaque, uri: *Uri, loadSettings: *XmlLoadSettings, _r: **IAsyncOperation(XmlDocument)) callconv(.winapi) HRESULT,
+        LoadFromUriAsyncWithLoadSettings: *const fn(self: *anyopaque, uri: *Uri, loadSettings: *XmlLoadSettings, _r: **IAsyncOperation(XmlDocument)) callconv(.winapi) HRESULT,
         LoadFromFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(XmlDocument)) callconv(.winapi) HRESULT,
-        LoadFromFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, loadSettings: *XmlLoadSettings, _r: **IAsyncOperation(XmlDocument)) callconv(.winapi) HRESULT,
+        LoadFromFileAsyncWithLoadSettings: *const fn(self: *anyopaque, file: *IStorageFile, loadSettings: *XmlLoadSettings, _r: **IAsyncOperation(XmlDocument)) callconv(.winapi) HRESULT,
     };
 };
 pub const IXmlDocumentType = extern struct {
@@ -2465,11 +2465,11 @@ pub const XmlDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LoadXml(xml);
     }
-    pub fn LoadXml(self: *@This(), xml: HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
+    pub fn LoadXmlWithLoadSettings(self: *@This(), xml: HSTRING, loadSettings: *XmlLoadSettings) core.HResult!void {
         var this: ?*IXmlDocumentIO = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.LoadXml(xml, loadSettings);
+        return try this.?.LoadXmlWithLoadSettings(xml, loadSettings);
     }
     pub fn SaveToFileAsync(self: *@This(), file: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IXmlDocumentIO = undefined;
@@ -2483,11 +2483,11 @@ pub const XmlDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LoadXmlFromBuffer(buffer);
     }
-    pub fn LoadXmlFromBuffer(self: *@This(), buffer: *IBuffer, loadSettings: *XmlLoadSettings) core.HResult!void {
+    pub fn LoadXmlFromBufferWithLoadSettings(self: *@This(), buffer: *IBuffer, loadSettings: *XmlLoadSettings) core.HResult!void {
         var this: ?*IXmlDocumentIO2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlDocumentIO2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.LoadXmlFromBuffer(buffer, loadSettings);
+        return try this.?.LoadXmlFromBufferWithLoadSettings(buffer, loadSettings);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2500,17 +2500,17 @@ pub const XmlDocument = extern struct {
         const factory = @This().IXmlDocumentStaticsCache.get();
         return try factory.LoadFromUriAsync(uri);
     }
-    pub fn LoadFromUriAsync(uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
+    pub fn LoadFromUriAsyncWithLoadSettings(uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
         const factory = @This().IXmlDocumentStaticsCache.get();
-        return try factory.LoadFromUriAsync(uri, loadSettings);
+        return try factory.LoadFromUriAsyncWithLoadSettings(uri, loadSettings);
     }
     pub fn LoadFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(XmlDocument) {
         const factory = @This().IXmlDocumentStaticsCache.get();
         return try factory.LoadFromFileAsync(file);
     }
-    pub fn LoadFromFileAsync(file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
+    pub fn LoadFromFileAsyncWithLoadSettings(file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
         const factory = @This().IXmlDocumentStaticsCache.get();
-        return try factory.LoadFromFileAsync(file, loadSettings);
+        return try factory.LoadFromFileAsyncWithLoadSettings(file, loadSettings);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocument";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

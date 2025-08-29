@@ -128,11 +128,11 @@ pub const CoreInputView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShow();
     }
-    pub fn TryShow(self: *@This(), type: CoreInputViewKind) core.HResult!bool {
+    pub fn TryShow(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryShow(type);
+        return try this.?.TryShow(ty);
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
@@ -164,11 +164,11 @@ pub const CoreInputView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removePrimaryViewHiding(token);
     }
-    pub fn IsKindSupported(self: *@This(), type: CoreInputViewKind) core.HResult!bool {
+    pub fn IsKindSupported(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsKindSupported(type);
+        return try this.?.IsKindSupported(ty);
     }
     pub fn addSupportedKindsChanged(self: *@This(), handler: *TypedEventHandler(CoreInputView,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*ICoreInputView5 = undefined;
@@ -591,9 +591,9 @@ pub const ICoreInputView3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryShow(self: *@This(), type: CoreInputViewKind) core.HResult!bool {
+    pub fn TryShow(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.TryShow(@ptrCast(self), type, &_r);
+        const _c = self.vtable.TryShow(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -616,7 +616,7 @@ pub const ICoreInputView3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryShow: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        TryShow: *const fn(self: *anyopaque, type: CoreInputViewKind, _r: *bool) callconv(.winapi) HRESULT,
+        TryShow: *const fn(self: *anyopaque, ty: CoreInputViewKind, _r: *bool) callconv(.winapi) HRESULT,
         TryHide: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
@@ -662,9 +662,9 @@ pub const ICoreInputView4 = extern struct {
 };
 pub const ICoreInputView5 = extern struct {
     vtable: *const VTable,
-    pub fn IsKindSupported(self: *@This(), type: CoreInputViewKind) core.HResult!bool {
+    pub fn IsKindSupported(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.IsKindSupported(@ptrCast(self), type, &_r);
+        const _c = self.vtable.IsKindSupported(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -700,7 +700,7 @@ pub const ICoreInputView5 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsKindSupported: *const fn(self: *anyopaque, type: CoreInputViewKind, _r: *bool) callconv(.winapi) HRESULT,
+        IsKindSupported: *const fn(self: *anyopaque, ty: CoreInputViewKind, _r: *bool) callconv(.winapi) HRESULT,
         add_SupportedKindsChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreInputView,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_SupportedKindsChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_PrimaryViewAnimationStarting: *const fn(self: *anyopaque, handler: *TypedEventHandler(CoreInputView,CoreInputViewAnimationStartingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,

@@ -1338,9 +1338,9 @@ pub const IVirtualPrinterManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InstallVirtualPrinterAsync(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         var _r: *IAsyncOperation(VirtualPrinterInstallationResult) = undefined;
-        const _c = self.vtable.InstallVirtualPrinterAsync(@ptrCast(self), parameters, appPackageFamilyName, &_r);
+        const _c = self.vtable.InstallVirtualPrinterAsyncWithAppPackageFamilyName(@ptrCast(self), parameters, appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1350,9 +1350,9 @@ pub const IVirtualPrinterManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn InstallVirtualPrinterForAllUsersAsync(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(self: *@This(), parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         var _r: *IAsyncOperation(VirtualPrinterInstallationResult) = undefined;
-        const _c = self.vtable.InstallVirtualPrinterForAllUsersAsync(@ptrCast(self), parameters, appPackageFamilyName, &_r);
+        const _c = self.vtable.InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(@ptrCast(self), parameters, appPackageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1393,9 +1393,9 @@ pub const IVirtualPrinterManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InstallVirtualPrinterAsync: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
-        InstallVirtualPrinterAsync: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
+        InstallVirtualPrinterAsyncWithAppPackageFamilyName: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
         InstallVirtualPrinterForAllUsersAsync: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
-        InstallVirtualPrinterForAllUsersAsync: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
+        InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName: *const fn(self: *anyopaque, parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING, _r: **IAsyncOperation(VirtualPrinterInstallationResult)) callconv(.winapi) HRESULT,
         FindAllVirtualPrinters: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
         FindAllVirtualPrinters: *const fn(self: *anyopaque, appPackageFamilyName: HSTRING, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
         RemoveVirtualPrinterAsync: *const fn(self: *anyopaque, printerName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -2196,17 +2196,17 @@ pub const VirtualPrinterManager = extern struct {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();
         return try factory.InstallVirtualPrinterAsync(parameters);
     }
-    pub fn InstallVirtualPrinterAsync(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();
-        return try factory.InstallVirtualPrinterAsync(parameters, appPackageFamilyName);
+        return try factory.InstallVirtualPrinterAsyncWithAppPackageFamilyName(parameters, appPackageFamilyName);
     }
     pub fn InstallVirtualPrinterForAllUsersAsync(parameters: *VirtualPrinterInstallationParameters) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();
         return try factory.InstallVirtualPrinterForAllUsersAsync(parameters);
     }
-    pub fn InstallVirtualPrinterForAllUsersAsync(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
+    pub fn InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters: *VirtualPrinterInstallationParameters, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(VirtualPrinterInstallationResult) {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();
-        return try factory.InstallVirtualPrinterForAllUsersAsync(parameters, appPackageFamilyName);
+        return try factory.InstallVirtualPrinterForAllUsersAsyncWithAppPackageFamilyName(parameters, appPackageFamilyName);
     }
     pub fn FindAllVirtualPrinters() core.HResult!*IVectorView(HSTRING) {
         const factory = @This().IVirtualPrinterManagerStaticsCache.get();

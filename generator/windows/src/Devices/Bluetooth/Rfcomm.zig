@@ -154,9 +154,9 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDevice(self: *@This(), bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorForBluetoothDevice(@ptrCast(self), bluetoothDevice, cacheMode, &_r);
+        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceWithCacheMode(@ptrCast(self), bluetoothDevice, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -166,9 +166,9 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceId(@ptrCast(self), bluetoothDevice, serviceId, cacheMode, &_r);
+        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(@ptrCast(self), bluetoothDevice, serviceId, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -185,9 +185,9 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelectorForBluetoothDevice: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDevice: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorForBluetoothDeviceAndServiceId: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceAndServiceId: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRfcommDeviceServicesResult = extern struct {
@@ -482,17 +482,17 @@ pub const RfcommDeviceService = extern struct {
         const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
         return try factory.GetDeviceSelectorForBluetoothDevice(bluetoothDevice);
     }
-    pub fn GetDeviceSelectorForBluetoothDevice(bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDevice(bluetoothDevice, cacheMode);
+        return try factory.GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice, cacheMode);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!HSTRING {
         const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
         return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId, cacheMode);
+        return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommDeviceService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -594,11 +594,11 @@ pub const RfcommServiceProvider = extern struct {
         const this: *IRfcommServiceProvider = @ptrCast(self);
         return try this.StopAdvertising();
     }
-    pub fn StartAdvertising(self: *@This(), listener: *StreamSocketListener, radioDiscoverable: bool) core.HResult!void {
+    pub fn StartAdvertisingWithRadioDiscoverable(self: *@This(), listener: *StreamSocketListener, radioDiscoverable: bool) core.HResult!void {
         var this: ?*IRfcommServiceProvider2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRfcommServiceProvider2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAdvertising(listener, radioDiscoverable);
+        return try this.?.StartAdvertisingWithRadioDiscoverable(listener, radioDiscoverable);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

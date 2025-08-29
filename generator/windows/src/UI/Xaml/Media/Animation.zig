@@ -635,11 +635,11 @@ pub const ConnectedAnimation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putIsScaleAnimationEnabled(value);
     }
-    pub fn TryStart(self: *@This(), destination: *UIElement, coordinatedElements: *IIterable(UIElement)) core.HResult!bool {
+    pub fn TryStartWithCoordinatedElements(self: *@This(), destination: *UIElement, coordinatedElements: *IIterable(UIElement)) core.HResult!bool {
         var this: ?*IConnectedAnimation2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IConnectedAnimation2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryStart(destination, coordinatedElements);
+        return try this.?.TryStartWithCoordinatedElements(destination, coordinatedElements);
     }
     pub fn SetAnimationComponent(self: *@This(), component: ConnectedAnimationComponent, animation: *ICompositionAnimationBase) core.HResult!void {
         var this: ?*IConnectedAnimation2 = undefined;

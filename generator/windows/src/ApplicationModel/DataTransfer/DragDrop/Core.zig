@@ -70,9 +70,9 @@ pub const CoreDragOperation = extern struct {
         const this: *ICoreDragOperation = @ptrCast(self);
         return try this.SetDragUIContentFromSoftwareBitmap(softwareBitmap);
     }
-    pub fn SetDragUIContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+    pub fn SetDragUIContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
         const this: *ICoreDragOperation = @ptrCast(self);
-        return try this.SetDragUIContentFromSoftwareBitmap(softwareBitmap, anchorPoint);
+        return try this.SetDragUIContentFromSoftwareBitmapWithAnchorPoint(softwareBitmap, anchorPoint);
     }
     pub fn getDragUIContentMode(self: *@This()) core.HResult!CoreDragUIContentMode {
         const this: *ICoreDragOperation = @ptrCast(self);
@@ -122,9 +122,9 @@ pub const CoreDragUIOverride = extern struct {
         const this: *ICoreDragUIOverride = @ptrCast(self);
         return try this.SetContentFromSoftwareBitmap(softwareBitmap);
     }
-    pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+    pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
         const this: *ICoreDragUIOverride = @ptrCast(self);
-        return try this.SetContentFromSoftwareBitmap(softwareBitmap, anchorPoint);
+        return try this.SetContentFromSoftwareBitmapWithAnchorPoint(softwareBitmap, anchorPoint);
     }
     pub fn getIsContentVisible(self: *@This()) core.HResult!bool {
         const this: *ICoreDragUIOverride = @ptrCast(self);
@@ -319,8 +319,8 @@ pub const ICoreDragOperation = extern struct {
         const _c = self.vtable.SetDragUIContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetDragUIContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
-        const _c = self.vtable.SetDragUIContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap, anchorPoint);
+    pub fn SetDragUIContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+        const _c = self.vtable.SetDragUIContentFromSoftwareBitmapWithAnchorPoint(@ptrCast(self), softwareBitmap, anchorPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getDragUIContentMode(self: *@This()) core.HResult!CoreDragUIContentMode {
@@ -354,7 +354,7 @@ pub const ICoreDragOperation = extern struct {
         get_Data: *const fn(self: *anyopaque, _r: **DataPackage) callconv(.winapi) HRESULT,
         SetPointerId: *const fn(self: *anyopaque, pointerId: u32) callconv(.winapi) HRESULT,
         SetDragUIContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap) callconv(.winapi) HRESULT,
-        SetDragUIContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
+        SetDragUIContentFromSoftwareBitmapWithAnchorPoint: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
         get_DragUIContentMode: *const fn(self: *anyopaque, _r: *CoreDragUIContentMode) callconv(.winapi) HRESULT,
         put_DragUIContentMode: *const fn(self: *anyopaque, value: CoreDragUIContentMode) callconv(.winapi) HRESULT,
         StartAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DataPackageOperation)) callconv(.winapi) HRESULT,
@@ -394,8 +394,8 @@ pub const ICoreDragUIOverride = extern struct {
         const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
-        const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap, anchorPoint);
+    pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+        const _c = self.vtable.SetContentFromSoftwareBitmapWithAnchorPoint(@ptrCast(self), softwareBitmap, anchorPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getIsContentVisible(self: *@This()) core.HResult!bool {
@@ -455,7 +455,7 @@ pub const ICoreDragUIOverride = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap) callconv(.winapi) HRESULT,
-        SetContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
+        SetContentFromSoftwareBitmapWithAnchorPoint: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
         get_IsContentVisible: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsContentVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Caption: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,

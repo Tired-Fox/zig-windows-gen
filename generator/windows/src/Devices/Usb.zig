@@ -394,9 +394,9 @@ pub const IUsbDescriptor = extern struct {
 };
 pub const IUsbDevice = extern struct {
     vtable: *const VTable,
-    pub fn SendControlOutTransferAsync(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(u32) {
+    pub fn SendControlOutTransferAsyncWithBuffer(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(u32) {
         var _r: *IAsyncOperation(u32) = undefined;
-        const _c = self.vtable.SendControlOutTransferAsync(@ptrCast(self), setupPacket, buffer, &_r);
+        const _c = self.vtable.SendControlOutTransferAsyncWithBuffer(@ptrCast(self), setupPacket, buffer, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -406,9 +406,9 @@ pub const IUsbDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SendControlInTransferAsync(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
+    pub fn SendControlInTransferAsyncWithBuffer(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
         var _r: *IAsyncOperation(IBuffer) = undefined;
-        const _c = self.vtable.SendControlInTransferAsync(@ptrCast(self), setupPacket, buffer, &_r);
+        const _c = self.vtable.SendControlInTransferAsyncWithBuffer(@ptrCast(self), setupPacket, buffer, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -448,9 +448,9 @@ pub const IUsbDevice = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        SendControlOutTransferAsync: *const fn(self: *anyopaque, setupPacket: *UsbSetupPacket, buffer: *IBuffer, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
+        SendControlOutTransferAsyncWithBuffer: *const fn(self: *anyopaque, setupPacket: *UsbSetupPacket, buffer: *IBuffer, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         SendControlOutTransferAsync: *const fn(self: *anyopaque, setupPacket: *UsbSetupPacket, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
-        SendControlInTransferAsync: *const fn(self: *anyopaque, setupPacket: *UsbSetupPacket, buffer: *IBuffer, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
+        SendControlInTransferAsyncWithBuffer: *const fn(self: *anyopaque, setupPacket: *UsbSetupPacket, buffer: *IBuffer, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
         SendControlInTransferAsync: *const fn(self: *anyopaque, setupPacket: *UsbSetupPacket, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
         get_DefaultInterface: *const fn(self: *anyopaque, _r: **UsbInterface) callconv(.winapi) HRESULT,
         get_DeviceDescriptor: *const fn(self: *anyopaque, _r: **UsbDeviceDescriptor) callconv(.winapi) HRESULT,
@@ -664,9 +664,9 @@ pub const IUsbDeviceDescriptor = extern struct {
 };
 pub const IUsbDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithWinUsbInterfaceClass(self: *@This(), vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), vendorId, productId, winUsbInterfaceClass, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithWinUsbInterfaceClass(@ptrCast(self), vendorId, productId, winUsbInterfaceClass, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -676,9 +676,9 @@ pub const IUsbDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), vendorId: u32, productId: u32) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithProductId(self: *@This(), vendorId: u32, productId: u32) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), vendorId, productId, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithProductId(@ptrCast(self), vendorId, productId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -706,9 +706,9 @@ pub const IUsbDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithWinUsbInterfaceClass: *const fn(self: *anyopaque, vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, winUsbInterfaceClass: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, vendorId: u32, productId: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithProductId: *const fn(self: *anyopaque, vendorId: u32, productId: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceClassSelector: *const fn(self: *anyopaque, usbClass: *UsbDeviceClass, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(UsbDevice)) callconv(.winapi) HRESULT,
     };
@@ -1569,17 +1569,17 @@ pub const UsbDescriptor = extern struct {
 };
 pub const UsbDevice = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SendControlOutTransferAsync(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(u32) {
+    pub fn SendControlOutTransferAsyncWithBuffer(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(u32) {
         const this: *IUsbDevice = @ptrCast(self);
-        return try this.SendControlOutTransferAsync(setupPacket, buffer);
+        return try this.SendControlOutTransferAsyncWithBuffer(setupPacket, buffer);
     }
     pub fn SendControlOutTransferAsync(self: *@This(), setupPacket: *UsbSetupPacket) core.HResult!*IAsyncOperation(u32) {
         const this: *IUsbDevice = @ptrCast(self);
         return try this.SendControlOutTransferAsync(setupPacket);
     }
-    pub fn SendControlInTransferAsync(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
+    pub fn SendControlInTransferAsyncWithBuffer(self: *@This(), setupPacket: *UsbSetupPacket, buffer: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IUsbDevice = @ptrCast(self);
-        return try this.SendControlInTransferAsync(setupPacket, buffer);
+        return try this.SendControlInTransferAsyncWithBuffer(setupPacket, buffer);
     }
     pub fn SendControlInTransferAsync(self: *@This(), setupPacket: *UsbSetupPacket) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IUsbDevice = @ptrCast(self);
@@ -1606,17 +1606,17 @@ pub const UsbDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithWinUsbInterfaceClass(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
         const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(vendorId, productId, winUsbInterfaceClass);
+        return try factory.GetDeviceSelectorWithWinUsbInterfaceClass(vendorId, productId, winUsbInterfaceClass);
     }
     pub fn GetDeviceSelector(winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
         const factory = @This().IUsbDeviceStaticsCache.get();
         return try factory.GetDeviceSelector(winUsbInterfaceClass);
     }
-    pub fn GetDeviceSelector(vendorId: u32, productId: u32) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithProductId(vendorId: u32, productId: u32) core.HResult!HSTRING {
         const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(vendorId, productId);
+        return try factory.GetDeviceSelectorWithProductId(vendorId, productId);
     }
     pub fn GetDeviceClassSelector(usbClass: *UsbDeviceClass) core.HResult!HSTRING {
         const factory = @This().IUsbDeviceStaticsCache.get();

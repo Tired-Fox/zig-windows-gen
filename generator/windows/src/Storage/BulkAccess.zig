@@ -70,17 +70,17 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyAsync(destinationFolder);
     }
-    pub fn CopyAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithDesiredNewName(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyAsync(destinationFolder, desiredNewName);
+        return try this.?.CopyAsyncWithDesiredNewName(destinationFolder, desiredNewName);
     }
-    pub fn CopyAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyAsync(destinationFolder, desiredNewName, option);
+        return try this.?.CopyAsyncWithOption(destinationFolder, desiredNewName, option);
     }
     pub fn CopyAndReplaceAsync(self: *@This(), fileToReplace: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
@@ -94,17 +94,17 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MoveAsync(destinationFolder);
     }
-    pub fn MoveAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithDesiredNewName(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.MoveAsync(destinationFolder, desiredNewName);
+        return try this.?.MoveAsyncWithDesiredNewName(destinationFolder, desiredNewName);
     }
-    pub fn MoveAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.MoveAsync(destinationFolder, desiredNewName, option);
+        return try this.?.MoveAsyncWithOption(destinationFolder, desiredNewName, option);
     }
     pub fn MoveAndReplaceAsync(self: *@This(), fileToReplace: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
@@ -118,11 +118,11 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenameAsync(desiredName);
     }
-    pub fn RenameAsync(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn RenameAsyncWithOption(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RenameAsync(desiredName, option);
+        return try this.?.RenameAsyncWithOption(desiredName, option);
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
@@ -166,11 +166,11 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDateCreated();
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsOfType(type);
+        return try this.?.IsOfType(ty);
     }
     pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         var this: ?*IRandomAccessStreamReference = undefined;
@@ -190,17 +190,17 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailAsync(mode);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize);
+        return try this.?.GetThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize, options);
+        return try this.?.GetThumbnailAsyncWithOptions(mode, requestedSize, options);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStorageItemProperties = undefined;
@@ -250,11 +250,11 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAvailable();
     }
-    pub fn OpenAsync(self: *@This(), accessMode: FileAccessMode, options: StorageOpenOptions) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenAsyncWithOptions(self: *@This(), accessMode: FileAccessMode, options: StorageOpenOptions) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var this: ?*IStorageFile2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.OpenAsync(accessMode, options);
+        return try this.?.OpenAsyncWithOptions(accessMode, options);
     }
     pub fn OpenTransactedWriteAsync(self: *@This(), options: StorageOpenOptions) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         var this: ?*IStorageFile2 = undefined;
@@ -380,11 +380,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFileAsync(desiredName);
     }
-    pub fn CreateFileAsync(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileAsyncWithOptions(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageFolder = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFolder.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFileAsync(desiredName, options);
+        return try this.?.CreateFileAsyncWithOptions(desiredName, options);
     }
     pub fn CreateFolderAsync(self: *@This(), desiredName: HSTRING) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageFolder = undefined;
@@ -392,11 +392,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFolderAsync(desiredName);
     }
-    pub fn CreateFolderAsync(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderAsyncWithOptions(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageFolder = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFolder.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFolderAsync(desiredName, options);
+        return try this.?.CreateFolderAsyncWithOptions(desiredName, options);
     }
     pub fn GetFileAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageFolder = undefined;
@@ -440,11 +440,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenameAsync(desiredName);
     }
-    pub fn RenameAsync(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn RenameAsyncWithOption(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RenameAsync(desiredName, option);
+        return try this.?.RenameAsyncWithOption(desiredName, option);
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
@@ -488,11 +488,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDateCreated();
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsOfType(type);
+        return try this.?.IsOfType(ty);
     }
     pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
@@ -500,17 +500,17 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailAsync(mode);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize);
+        return try this.?.GetThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize, options);
+        return try this.?.GetThumbnailAsyncWithOptions(mode, requestedSize, options);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStorageItemProperties = undefined;

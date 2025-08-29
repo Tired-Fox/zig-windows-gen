@@ -16,11 +16,11 @@ pub const AudioDeviceInputNode = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
-    pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
+    pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddOutgoingConnection(destination, gain);
+        return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
@@ -330,11 +330,11 @@ pub const AudioFileInputNode = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
-    pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
+    pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddOutgoingConnection(destination, gain);
+        return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
@@ -587,11 +587,11 @@ pub const AudioFrameInputNode = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
-    pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
+    pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddOutgoingConnection(destination, gain);
+        return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
@@ -787,17 +787,17 @@ pub const AudioGraph = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateDeviceInputNodeAsync(category);
     }
-    pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithEncodingProperties(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateDeviceInputNodeAsync(category, encodingProperties);
+        return try this.?.CreateDeviceInputNodeAsyncWithEncodingProperties(category, encodingProperties);
     }
-    pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateDeviceInputNodeAsync(category, encodingProperties, device);
+        return try this.?.CreateDeviceInputNodeAsyncWithDevice(category, encodingProperties, device);
     }
     pub fn CreateFrameOutputNode(self: *@This()) core.HResult!*AudioFrameOutputNode {
         const this: *IAudioGraph = @ptrCast(self);
@@ -821,9 +821,9 @@ pub const AudioGraph = extern struct {
         const this: *IAudioGraph = @ptrCast(self);
         return try this.CreateFileOutputNodeAsync(file);
     }
-    pub fn CreateFileOutputNodeAsync(self: *@This(), file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperation(CreateAudioFileOutputNodeResult) {
+    pub fn CreateFileOutputNodeAsyncWithFileEncodingProfile(self: *@This(), file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperation(CreateAudioFileOutputNodeResult) {
         const this: *IAudioGraph = @ptrCast(self);
-        return try this.CreateFileOutputNodeAsync(file, fileEncodingProfile);
+        return try this.CreateFileOutputNodeAsyncWithFileEncodingProfile(file, fileEncodingProfile);
     }
     pub fn CreateSubmixNode(self: *@This()) core.HResult!*AudioSubmixNode {
         var this: ?*IAudioGraph2 = undefined;
@@ -909,17 +909,17 @@ pub const AudioGraph = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameInputNode(encodingProperties, emitter);
     }
-    pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithEmitter(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateDeviceInputNodeAsync(category, encodingProperties, device, emitter);
+        return try this.?.CreateDeviceInputNodeAsyncWithEmitter(category, encodingProperties, device, emitter);
     }
-    pub fn CreateFileInputNodeAsync(self: *@This(), file: *IStorageFile, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
+    pub fn CreateFileInputNodeAsyncWithEmitter(self: *@This(), file: *IStorageFile, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFileInputNodeAsync(file, emitter);
+        return try this.?.CreateFileInputNodeAsyncWithEmitter(file, emitter);
     }
     pub fn CreateSubmixNode(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioSubmixNode {
         var this: ?*IAudioGraph2 = undefined;
@@ -939,11 +939,11 @@ pub const AudioGraph = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateMediaSourceAudioInputNodeAsync(mediaSource);
     }
-    pub fn CreateMediaSourceAudioInputNodeAsync(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
+    pub fn CreateMediaSourceAudioInputNodeAsyncWithEmitter(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var this: ?*IAudioGraph3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateMediaSourceAudioInputNodeAsync(mediaSource, emitter);
+        return try this.?.CreateMediaSourceAudioInputNodeAsyncWithEmitter(mediaSource, emitter);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1494,9 +1494,9 @@ pub const AudioSubmixNode = extern struct {
         const this: *IAudioInputNode = @ptrCast(self);
         return try this.AddOutgoingConnection(destination);
     }
-    pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
+    pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         const this: *IAudioInputNode = @ptrCast(self);
-        return try this.AddOutgoingConnection(destination, gain);
+        return try this.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         const this: *IAudioInputNode = @ptrCast(self);
@@ -2245,15 +2245,15 @@ pub const IAudioGraph = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithEncodingProperties(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
-        const _c = self.vtable.CreateDeviceInputNodeAsync(@ptrCast(self), category, encodingProperties, &_r);
+        const _c = self.vtable.CreateDeviceInputNodeAsyncWithEncodingProperties(@ptrCast(self), category, encodingProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDeviceInputNodeAsync(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
-        const _c = self.vtable.CreateDeviceInputNodeAsync(@ptrCast(self), category, encodingProperties, device, &_r);
+        const _c = self.vtable.CreateDeviceInputNodeAsyncWithDevice(@ptrCast(self), category, encodingProperties, device, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2287,9 +2287,9 @@ pub const IAudioGraph = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFileOutputNodeAsync(self: *@This(), file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperation(CreateAudioFileOutputNodeResult) {
+    pub fn CreateFileOutputNodeAsyncWithFileEncodingProfile(self: *@This(), file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperation(CreateAudioFileOutputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioFileOutputNodeResult) = undefined;
-        const _c = self.vtable.CreateFileOutputNodeAsync(@ptrCast(self), file, fileEncodingProfile, &_r);
+        const _c = self.vtable.CreateFileOutputNodeAsyncWithFileEncodingProfile(@ptrCast(self), file, fileEncodingProfile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2398,14 +2398,14 @@ pub const IAudioGraph = extern struct {
         CreateFrameInputNode: *const fn(self: *anyopaque, _r: **AudioFrameInputNode) callconv(.winapi) HRESULT,
         CreateFrameInputNode: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioFrameInputNode) callconv(.winapi) HRESULT,
         CreateDeviceInputNodeAsync: *const fn(self: *anyopaque, category: MediaCategory, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
-        CreateDeviceInputNodeAsync: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
-        CreateDeviceInputNodeAsync: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
+        CreateDeviceInputNodeAsyncWithEncodingProperties: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
+        CreateDeviceInputNodeAsyncWithDevice: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
         CreateFrameOutputNode: *const fn(self: *anyopaque, _r: **AudioFrameOutputNode) callconv(.winapi) HRESULT,
         CreateFrameOutputNode: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioFrameOutputNode) callconv(.winapi) HRESULT,
         CreateDeviceOutputNodeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(CreateAudioDeviceOutputNodeResult)) callconv(.winapi) HRESULT,
         CreateFileInputNodeAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(CreateAudioFileInputNodeResult)) callconv(.winapi) HRESULT,
         CreateFileOutputNodeAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(CreateAudioFileOutputNodeResult)) callconv(.winapi) HRESULT,
-        CreateFileOutputNodeAsync: *const fn(self: *anyopaque, file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile, _r: **IAsyncOperation(CreateAudioFileOutputNodeResult)) callconv(.winapi) HRESULT,
+        CreateFileOutputNodeAsyncWithFileEncodingProfile: *const fn(self: *anyopaque, file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile, _r: **IAsyncOperation(CreateAudioFileOutputNodeResult)) callconv(.winapi) HRESULT,
         CreateSubmixNode: *const fn(self: *anyopaque, _r: **AudioSubmixNode) callconv(.winapi) HRESULT,
         CreateSubmixNode: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioSubmixNode) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -2484,9 +2484,9 @@ pub const IAudioGraph3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMediaSourceAudioInputNodeAsync(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
+    pub fn CreateMediaSourceAudioInputNodeAsyncWithEmitter(self: *@This(), mediaSource: *MediaSource, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateMediaSourceAudioInputNodeResult) {
         var _r: *IAsyncOperation(CreateMediaSourceAudioInputNodeResult) = undefined;
-        const _c = self.vtable.CreateMediaSourceAudioInputNodeAsync(@ptrCast(self), mediaSource, emitter, &_r);
+        const _c = self.vtable.CreateMediaSourceAudioInputNodeAsyncWithEmitter(@ptrCast(self), mediaSource, emitter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2503,7 +2503,7 @@ pub const IAudioGraph3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateMediaSourceAudioInputNodeAsync: *const fn(self: *anyopaque, mediaSource: *MediaSource, _r: **IAsyncOperation(CreateMediaSourceAudioInputNodeResult)) callconv(.winapi) HRESULT,
-        CreateMediaSourceAudioInputNodeAsync: *const fn(self: *anyopaque, mediaSource: *MediaSource, emitter: *AudioNodeEmitter, _r: **IAsyncOperation(CreateMediaSourceAudioInputNodeResult)) callconv(.winapi) HRESULT,
+        CreateMediaSourceAudioInputNodeAsyncWithEmitter: *const fn(self: *anyopaque, mediaSource: *MediaSource, emitter: *AudioNodeEmitter, _r: **IAsyncOperation(CreateMediaSourceAudioInputNodeResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioGraphConnection = extern struct {
@@ -2738,8 +2738,8 @@ pub const IAudioInputNode = extern struct {
         const _c = self.vtable.AddOutgoingConnection(@ptrCast(self), destination);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
-        const _c = self.vtable.AddOutgoingConnection(@ptrCast(self), destination, gain);
+    pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
+        const _c = self.vtable.AddOutgoingConnectionWithGain(@ptrCast(self), destination, gain);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
@@ -2760,7 +2760,7 @@ pub const IAudioInputNode = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_OutgoingConnections: *const fn(self: *anyopaque, _r: **IVectorView(AudioGraphConnection)) callconv(.winapi) HRESULT,
         AddOutgoingConnection: *const fn(self: *anyopaque, destination: *IAudioNode) callconv(.winapi) HRESULT,
-        AddOutgoingConnection: *const fn(self: *anyopaque, destination: *IAudioNode, gain: f64) callconv(.winapi) HRESULT,
+        AddOutgoingConnectionWithGain: *const fn(self: *anyopaque, destination: *IAudioNode, gain: f64) callconv(.winapi) HRESULT,
         RemoveOutgoingConnection: *const fn(self: *anyopaque, destination: *IAudioNode) callconv(.winapi) HRESULT,
     };
 };
@@ -4924,11 +4924,11 @@ pub const MediaSourceAudioInputNode = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOutgoingConnection(destination);
     }
-    pub fn AddOutgoingConnection(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
+    pub fn AddOutgoingConnectionWithGain(self: *@This(), destination: *IAudioNode, gain: f64) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddOutgoingConnection(destination, gain);
+        return try this.?.AddOutgoingConnectionWithGain(destination, gain);
     }
     pub fn RemoveOutgoingConnection(self: *@This(), destination: *IAudioNode) core.HResult!void {
         var this: ?*IAudioInputNode = undefined;

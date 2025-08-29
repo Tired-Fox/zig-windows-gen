@@ -457,9 +457,9 @@ pub const IResourceMap = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetValue(self: *@This(), resource: HSTRING, context: *ResourceContext) core.HResult!*ResourceCandidate {
+    pub fn GetValueWithContext(self: *@This(), resource: HSTRING, context: *ResourceContext) core.HResult!*ResourceCandidate {
         var _r: *ResourceCandidate = undefined;
-        const _c = self.vtable.GetValue(@ptrCast(self), resource, context, &_r);
+        const _c = self.vtable.GetValueWithContext(@ptrCast(self), resource, context, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -483,7 +483,7 @@ pub const IResourceMap = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         GetValue: *const fn(self: *anyopaque, resource: HSTRING, _r: **ResourceCandidate) callconv(.winapi) HRESULT,
-        GetValue: *const fn(self: *anyopaque, resource: HSTRING, context: *ResourceContext, _r: **ResourceCandidate) callconv(.winapi) HRESULT,
+        GetValueWithContext: *const fn(self: *anyopaque, resource: HSTRING, context: *ResourceContext, _r: **ResourceCandidate) callconv(.winapi) HRESULT,
         GetSubtree: *const fn(self: *anyopaque, reference: HSTRING, _r: **ResourceMap) callconv(.winapi) HRESULT,
     };
 };
@@ -832,9 +832,9 @@ pub const ResourceMap = extern struct {
         const this: *IResourceMap = @ptrCast(self);
         return try this.GetValue(resource);
     }
-    pub fn GetValue(self: *@This(), resource: HSTRING, context: *ResourceContext) core.HResult!*ResourceCandidate {
+    pub fn GetValueWithContext(self: *@This(), resource: HSTRING, context: *ResourceContext) core.HResult!*ResourceCandidate {
         const this: *IResourceMap = @ptrCast(self);
-        return try this.GetValue(resource, context);
+        return try this.GetValueWithContext(resource, context);
     }
     pub fn GetSubtree(self: *@This(), reference: HSTRING) core.HResult!*ResourceMap {
         const this: *IResourceMap = @ptrCast(self);

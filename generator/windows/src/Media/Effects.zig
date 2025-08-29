@@ -129,17 +129,17 @@ pub const AudioEffectsManager = extern struct {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
         return try factory.CreateAudioRenderEffectsManager(deviceId, category);
     }
-    pub fn CreateAudioRenderEffectsManager(deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManagerWithCategoryWithMode(deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
-        return try factory.CreateAudioRenderEffectsManager(deviceId, category, mode);
+        return try factory.CreateAudioRenderEffectsManagerWithCategoryWithMode(deviceId, category, mode);
     }
     pub fn CreateAudioCaptureEffectsManager(deviceId: HSTRING, category: MediaCategory) core.HResult!*AudioCaptureEffectsManager {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
         return try factory.CreateAudioCaptureEffectsManager(deviceId, category);
     }
-    pub fn CreateAudioCaptureEffectsManager(deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManagerWithCategoryWithMode(deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
         const factory = @This().IAudioEffectsManagerStaticsCache.get();
-        return try factory.CreateAudioCaptureEffectsManager(deviceId, category, mode);
+        return try factory.CreateAudioCaptureEffectsManagerWithCategoryWithMode(deviceId, category, mode);
     }
     pub const NAME: []const u8 = "Windows.Media.Effects.AudioEffectsManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -396,9 +396,9 @@ pub const IAudioEffectsManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAudioRenderEffectsManager(self: *@This(), deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
+    pub fn CreateAudioRenderEffectsManagerWithCategoryWithMode(self: *@This(), deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing) core.HResult!*AudioRenderEffectsManager {
         var _r: *AudioRenderEffectsManager = undefined;
-        const _c = self.vtable.CreateAudioRenderEffectsManager(@ptrCast(self), deviceId, category, mode, &_r);
+        const _c = self.vtable.CreateAudioRenderEffectsManagerWithCategoryWithMode(@ptrCast(self), deviceId, category, mode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -408,9 +408,9 @@ pub const IAudioEffectsManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAudioCaptureEffectsManager(self: *@This(), deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
+    pub fn CreateAudioCaptureEffectsManagerWithCategoryWithMode(self: *@This(), deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing) core.HResult!*AudioCaptureEffectsManager {
         var _r: *AudioCaptureEffectsManager = undefined;
-        const _c = self.vtable.CreateAudioCaptureEffectsManager(@ptrCast(self), deviceId, category, mode, &_r);
+        const _c = self.vtable.CreateAudioCaptureEffectsManagerWithCategoryWithMode(@ptrCast(self), deviceId, category, mode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -427,9 +427,9 @@ pub const IAudioEffectsManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateAudioRenderEffectsManager: *const fn(self: *anyopaque, deviceId: HSTRING, category: AudioRenderCategory, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
-        CreateAudioRenderEffectsManager: *const fn(self: *anyopaque, deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
+        CreateAudioRenderEffectsManagerWithCategoryWithMode: *const fn(self: *anyopaque, deviceId: HSTRING, category: AudioRenderCategory, mode: AudioProcessing, _r: **AudioRenderEffectsManager) callconv(.winapi) HRESULT,
         CreateAudioCaptureEffectsManager: *const fn(self: *anyopaque, deviceId: HSTRING, category: MediaCategory, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
-        CreateAudioCaptureEffectsManager: *const fn(self: *anyopaque, deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
+        CreateAudioCaptureEffectsManagerWithCategoryWithMode: *const fn(self: *anyopaque, deviceId: HSTRING, category: MediaCategory, mode: AudioProcessing, _r: **AudioCaptureEffectsManager) callconv(.winapi) HRESULT,
     };
 };
 pub const IAudioRenderEffectsManager = extern struct {

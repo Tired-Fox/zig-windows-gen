@@ -254,9 +254,9 @@ pub const DataWriter = extern struct {
         const this: *IDataWriter = @ptrCast(self);
         return try this.WriteBuffer(buffer);
     }
-    pub fn WriteBuffer(self: *@This(), buffer: *IBuffer, start: u32, count: u32) core.HResult!void {
+    pub fn WriteBufferWithCount(self: *@This(), buffer: *IBuffer, start: u32, count: u32) core.HResult!void {
         const this: *IDataWriter = @ptrCast(self);
-        return try this.WriteBuffer(buffer, start, count);
+        return try this.WriteBufferWithCount(buffer, start, count);
     }
     pub fn WriteBoolean(self: *@This(), value: bool) core.HResult!void {
         const this: *IDataWriter = @ptrCast(self);
@@ -521,33 +521,33 @@ pub const FileRandomAccessStream = extern struct {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
         return try factory.OpenAsync(filePath, accessMode);
     }
-    pub fn OpenAsync(filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenAsyncWithSharingOptionsWithOpenDisposition(filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
-        return try factory.OpenAsync(filePath, accessMode, sharingOptions, openDisposition);
+        return try factory.OpenAsyncWithSharingOptionsWithOpenDisposition(filePath, accessMode, sharingOptions, openDisposition);
     }
     pub fn OpenTransactedWriteAsync(filePath: HSTRING) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
         return try factory.OpenTransactedWriteAsync(filePath);
     }
-    pub fn OpenTransactedWriteAsync(filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
+    pub fn OpenTransactedWriteAsyncWithOpenDisposition(filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
-        return try factory.OpenTransactedWriteAsync(filePath, openOptions, openDisposition);
+        return try factory.OpenTransactedWriteAsyncWithOpenDisposition(filePath, openOptions, openDisposition);
     }
     pub fn OpenForUserAsync(user: *User, filePath: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
         return try factory.OpenForUserAsync(user, filePath, accessMode);
     }
-    pub fn OpenForUserAsync(user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition(user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
-        return try factory.OpenForUserAsync(user, filePath, accessMode, sharingOptions, openDisposition);
+        return try factory.OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition(user, filePath, accessMode, sharingOptions, openDisposition);
     }
     pub fn OpenTransactedWriteForUserAsync(user: *User, filePath: HSTRING) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
         return try factory.OpenTransactedWriteForUserAsync(user, filePath);
     }
-    pub fn OpenTransactedWriteForUserAsync(user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
+    pub fn OpenTransactedWriteForUserAsyncWithOpenOptionsWithOpenDisposition(user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         const factory = @This().IFileRandomAccessStreamStaticsCache.get();
-        return try factory.OpenTransactedWriteForUserAsync(user, filePath, openOptions, openDisposition);
+        return try factory.OpenTransactedWriteForUserAsyncWithOpenOptionsWithOpenDisposition(user, filePath, openOptions, openDisposition);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.FileRandomAccessStream";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -943,8 +943,8 @@ pub const IDataWriter = extern struct {
         const _c = self.vtable.WriteBuffer(@ptrCast(self), buffer);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn WriteBuffer(self: *@This(), buffer: *IBuffer, start: u32, count: u32) core.HResult!void {
-        const _c = self.vtable.WriteBuffer(@ptrCast(self), buffer, start, count);
+    pub fn WriteBufferWithCount(self: *@This(), buffer: *IBuffer, start: u32, count: u32) core.HResult!void {
+        const _c = self.vtable.WriteBufferWithCount(@ptrCast(self), buffer, start, count);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn WriteBoolean(self: *@This(), value: bool) core.HResult!void {
@@ -1051,7 +1051,7 @@ pub const IDataWriter = extern struct {
         WriteByte: *const fn(self: *anyopaque, value: u8) callconv(.winapi) HRESULT,
         WriteBytes: *const fn(self: *anyopaque, value: [*]u8) callconv(.winapi) HRESULT,
         WriteBuffer: *const fn(self: *anyopaque, buffer: *IBuffer) callconv(.winapi) HRESULT,
-        WriteBuffer: *const fn(self: *anyopaque, buffer: *IBuffer, start: u32, count: u32) callconv(.winapi) HRESULT,
+        WriteBufferWithCount: *const fn(self: *anyopaque, buffer: *IBuffer, start: u32, count: u32) callconv(.winapi) HRESULT,
         WriteBoolean: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         WriteGuid: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
         WriteInt16: *const fn(self: *anyopaque, value: i16) callconv(.winapi) HRESULT,
@@ -1103,9 +1103,9 @@ pub const IFileRandomAccessStreamStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenAsync(self: *@This(), filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenAsyncWithSharingOptionsWithOpenDisposition(self: *@This(), filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var _r: *IAsyncOperation(IRandomAccessStream) = undefined;
-        const _c = self.vtable.OpenAsync(@ptrCast(self), filePath, accessMode, sharingOptions, openDisposition, &_r);
+        const _c = self.vtable.OpenAsyncWithSharingOptionsWithOpenDisposition(@ptrCast(self), filePath, accessMode, sharingOptions, openDisposition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1115,9 +1115,9 @@ pub const IFileRandomAccessStreamStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenTransactedWriteAsync(self: *@This(), filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
+    pub fn OpenTransactedWriteAsyncWithOpenDisposition(self: *@This(), filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         var _r: *IAsyncOperation(StorageStreamTransaction) = undefined;
-        const _c = self.vtable.OpenTransactedWriteAsync(@ptrCast(self), filePath, openOptions, openDisposition, &_r);
+        const _c = self.vtable.OpenTransactedWriteAsyncWithOpenDisposition(@ptrCast(self), filePath, openOptions, openDisposition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1127,9 +1127,9 @@ pub const IFileRandomAccessStreamStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenForUserAsync(self: *@This(), user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition(self: *@This(), user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var _r: *IAsyncOperation(IRandomAccessStream) = undefined;
-        const _c = self.vtable.OpenForUserAsync(@ptrCast(self), user, filePath, accessMode, sharingOptions, openDisposition, &_r);
+        const _c = self.vtable.OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition(@ptrCast(self), user, filePath, accessMode, sharingOptions, openDisposition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1139,9 +1139,9 @@ pub const IFileRandomAccessStreamStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenTransactedWriteForUserAsync(self: *@This(), user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
+    pub fn OpenTransactedWriteForUserAsyncWithOpenOptionsWithOpenDisposition(self: *@This(), user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         var _r: *IAsyncOperation(StorageStreamTransaction) = undefined;
-        const _c = self.vtable.OpenTransactedWriteForUserAsync(@ptrCast(self), user, filePath, openOptions, openDisposition, &_r);
+        const _c = self.vtable.OpenTransactedWriteForUserAsyncWithOpenOptionsWithOpenDisposition(@ptrCast(self), user, filePath, openOptions, openDisposition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1158,13 +1158,13 @@ pub const IFileRandomAccessStreamStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         OpenAsync: *const fn(self: *anyopaque, filePath: HSTRING, accessMode: FileAccessMode, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
-        OpenAsync: *const fn(self: *anyopaque, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
+        OpenAsyncWithSharingOptionsWithOpenDisposition: *const fn(self: *anyopaque, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
         OpenTransactedWriteAsync: *const fn(self: *anyopaque, filePath: HSTRING, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
-        OpenTransactedWriteAsync: *const fn(self: *anyopaque, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
+        OpenTransactedWriteAsyncWithOpenDisposition: *const fn(self: *anyopaque, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
         OpenForUserAsync: *const fn(self: *anyopaque, user: *User, filePath: HSTRING, accessMode: FileAccessMode, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
-        OpenForUserAsync: *const fn(self: *anyopaque, user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
+        OpenForUserAsyncWithAccessModeWithSharingOptionsWithOpenDisposition: *const fn(self: *anyopaque, user: *User, filePath: HSTRING, accessMode: FileAccessMode, sharingOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
         OpenTransactedWriteForUserAsync: *const fn(self: *anyopaque, user: *User, filePath: HSTRING, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
-        OpenTransactedWriteForUserAsync: *const fn(self: *anyopaque, user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
+        OpenTransactedWriteForUserAsyncWithOpenOptionsWithOpenDisposition: *const fn(self: *anyopaque, user: *User, filePath: HSTRING, openOptions: StorageOpenOptions, openDisposition: FileOpenDisposition, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
     };
 };
 pub const IInputStream = extern struct {
@@ -1414,9 +1414,9 @@ pub const IRandomAccessStreamStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CopyAsync(self: *@This(), source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
+    pub fn CopyAsyncWithDestinationWithBytesToCopy(self: *@This(), source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         var _r: *IAsyncOperationWithProgress(u64,u64) = undefined;
-        const _c = self.vtable.CopyAsync(@ptrCast(self), source, destination, bytesToCopy, &_r);
+        const _c = self.vtable.CopyAsyncWithDestinationWithBytesToCopy(@ptrCast(self), source, destination, bytesToCopy, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1439,7 +1439,7 @@ pub const IRandomAccessStreamStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CopyAsync: *const fn(self: *anyopaque, source: *IInputStream, destination: *IOutputStream, _r: **IAsyncOperationWithProgress(u64,u64)) callconv(.winapi) HRESULT,
-        CopyAsync: *const fn(self: *anyopaque, source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64, _r: **IAsyncOperationWithProgress(u64,u64)) callconv(.winapi) HRESULT,
+        CopyAsyncWithDestinationWithBytesToCopy: *const fn(self: *anyopaque, source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64, _r: **IAsyncOperationWithProgress(u64,u64)) callconv(.winapi) HRESULT,
         CopyAndCloseAsync: *const fn(self: *anyopaque, source: *IInputStream, destination: *IOutputStream, _r: **IAsyncOperationWithProgress(u64,u64)) callconv(.winapi) HRESULT,
     };
 };
@@ -1589,9 +1589,9 @@ pub const RandomAccessStream = extern struct {
         const factory = @This().IRandomAccessStreamStaticsCache.get();
         return try factory.CopyAsync(source, destination);
     }
-    pub fn CopyAsync(source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
+    pub fn CopyAsyncWithDestinationWithBytesToCopy(source: *IInputStream, destination: *IOutputStream, bytesToCopy: u64) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         const factory = @This().IRandomAccessStreamStaticsCache.get();
-        return try factory.CopyAsync(source, destination, bytesToCopy);
+        return try factory.CopyAsyncWithDestinationWithBytesToCopy(source, destination, bytesToCopy);
     }
     pub fn CopyAndCloseAsync(source: *IInputStream, destination: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u64,u64) {
         const factory = @This().IRandomAccessStreamStaticsCache.get();

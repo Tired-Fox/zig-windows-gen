@@ -3676,8 +3676,8 @@ pub const IMseSourceBuffer = extern struct {
         const _c = self.vtable.AppendStream(@ptrCast(self), stream);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AppendStream(self: *@This(), stream: *IInputStream, maxSize: u64) core.HResult!void {
-        const _c = self.vtable.AppendStream(@ptrCast(self), stream, maxSize);
+    pub fn AppendStreamWithMaxSize(self: *@This(), stream: *IInputStream, maxSize: u64) core.HResult!void {
+        const _c = self.vtable.AppendStreamWithMaxSize(@ptrCast(self), stream, maxSize);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Abort(self: *@This()) core.HResult!void {
@@ -3722,7 +3722,7 @@ pub const IMseSourceBuffer = extern struct {
         put_AppendWindowEnd: *const fn(self: *anyopaque, value: *IReference(TimeSpan)) callconv(.winapi) HRESULT,
         AppendBuffer: *const fn(self: *anyopaque, buffer: *IBuffer) callconv(.winapi) HRESULT,
         AppendStream: *const fn(self: *anyopaque, stream: *IInputStream) callconv(.winapi) HRESULT,
-        AppendStream: *const fn(self: *anyopaque, stream: *IInputStream, maxSize: u64) callconv(.winapi) HRESULT,
+        AppendStreamWithMaxSize: *const fn(self: *anyopaque, stream: *IInputStream, maxSize: u64) callconv(.winapi) HRESULT,
         Abort: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Remove: *const fn(self: *anyopaque, start: TimeSpan, end: *IReference(TimeSpan)) callconv(.winapi) HRESULT,
     };
@@ -4844,15 +4844,15 @@ pub const ITimedTextSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStream(self: *@This(), stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
-        const _c = self.vtable.CreateFromStream(@ptrCast(self), stream, defaultLanguage, &_r);
+        const _c = self.vtable.CreateFromStreamWithDefaultLanguage(@ptrCast(self), stream, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromUri(self: *@This(), uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithDefaultLanguage(self: *@This(), uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
-        const _c = self.vtable.CreateFromUri(@ptrCast(self), uri, defaultLanguage, &_r);
+        const _c = self.vtable.CreateFromUriWithDefaultLanguage(@ptrCast(self), uri, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4870,8 +4870,8 @@ pub const ITimedTextSourceStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **TimedTextSource) callconv(.winapi) HRESULT,
         CreateFromUri: *const fn(self: *anyopaque, uri: *Uri, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromUri: *const fn(self: *anyopaque, uri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromStreamWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromUriWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedTextSourceStatics2 = extern struct {
@@ -4888,15 +4888,15 @@ pub const ITimedTextSourceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamWithIndex(self: *@This(), stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
-        const _c = self.vtable.CreateFromStreamWithIndex(@ptrCast(self), stream, indexStream, defaultLanguage, &_r);
+        const _c = self.vtable.CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage(@ptrCast(self), stream, indexStream, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromUriWithIndex(self: *@This(), uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithIndexWithIndexUriWithDefaultLanguage(self: *@This(), uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
-        const _c = self.vtable.CreateFromUriWithIndex(@ptrCast(self), uri, indexUri, defaultLanguage, &_r);
+        const _c = self.vtable.CreateFromUriWithIndexWithIndexUriWithDefaultLanguage(@ptrCast(self), uri, indexUri, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4914,8 +4914,8 @@ pub const ITimedTextSourceStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromStreamWithIndex: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, _r: **TimedTextSource) callconv(.winapi) HRESULT,
         CreateFromUriWithIndex: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromStreamWithIndex: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromUriWithIndex: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromUriWithIndexWithIndexUriWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedTextStyle = extern struct {
@@ -6597,9 +6597,9 @@ pub const MseSourceBuffer = extern struct {
         const this: *IMseSourceBuffer = @ptrCast(self);
         return try this.AppendStream(stream);
     }
-    pub fn AppendStream(self: *@This(), stream: *IInputStream, maxSize: u64) core.HResult!void {
+    pub fn AppendStreamWithMaxSize(self: *@This(), stream: *IInputStream, maxSize: u64) core.HResult!void {
         const this: *IMseSourceBuffer = @ptrCast(self);
-        return try this.AppendStream(stream, maxSize);
+        return try this.AppendStreamWithMaxSize(stream, maxSize);
     }
     pub fn Abort(self: *@This()) core.HResult!void {
         const this: *IMseSourceBuffer = @ptrCast(self);
@@ -7575,13 +7575,13 @@ pub const TimedTextSource = extern struct {
         const factory = @This().ITimedTextSourceStatics2Cache.get();
         return try factory.CreateFromUriWithIndex(uri, indexUri);
     }
-    pub fn CreateFromStreamWithIndex(stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage(stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         const factory = @This().ITimedTextSourceStatics2Cache.get();
-        return try factory.CreateFromStreamWithIndex(stream, indexStream, defaultLanguage);
+        return try factory.CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage(stream, indexStream, defaultLanguage);
     }
-    pub fn CreateFromUriWithIndex(uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithIndexWithIndexUriWithDefaultLanguage(uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         const factory = @This().ITimedTextSourceStatics2Cache.get();
-        return try factory.CreateFromUriWithIndex(uri, indexUri, defaultLanguage);
+        return try factory.CreateFromUriWithIndexWithIndexUriWithDefaultLanguage(uri, indexUri, defaultLanguage);
     }
     pub fn CreateFromStream(stream: *IRandomAccessStream) core.HResult!*TimedTextSource {
         const factory = @This().ITimedTextSourceStaticsCache.get();
@@ -7591,13 +7591,13 @@ pub const TimedTextSource = extern struct {
         const factory = @This().ITimedTextSourceStaticsCache.get();
         return try factory.CreateFromUri(uri);
     }
-    pub fn CreateFromStream(stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithDefaultLanguage(stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         const factory = @This().ITimedTextSourceStaticsCache.get();
-        return try factory.CreateFromStream(stream, defaultLanguage);
+        return try factory.CreateFromStreamWithDefaultLanguage(stream, defaultLanguage);
     }
-    pub fn CreateFromUri(uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithDefaultLanguage(uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         const factory = @This().ITimedTextSourceStaticsCache.get();
-        return try factory.CreateFromUri(uri, defaultLanguage);
+        return try factory.CreateFromUriWithDefaultLanguage(uri, defaultLanguage);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.TimedTextSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

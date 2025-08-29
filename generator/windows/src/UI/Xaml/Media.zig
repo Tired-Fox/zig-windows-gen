@@ -3171,9 +3171,9 @@ pub const ILoadedImageSurface = extern struct {
 };
 pub const ILoadedImageSurfaceStatics = extern struct {
     vtable: *const VTable,
-    pub fn StartLoadFromUri(self: *@This(), uri: *Uri, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
+    pub fn StartLoadFromUriWithDesiredMaxSize(self: *@This(), uri: *Uri, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
         var _r: *LoadedImageSurface = undefined;
-        const _c = self.vtable.StartLoadFromUri(@ptrCast(self), uri, desiredMaxSize, &_r);
+        const _c = self.vtable.StartLoadFromUriWithDesiredMaxSize(@ptrCast(self), uri, desiredMaxSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3183,9 +3183,9 @@ pub const ILoadedImageSurfaceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartLoadFromStream(self: *@This(), stream: *IRandomAccessStream, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
+    pub fn StartLoadFromStreamWithDesiredMaxSize(self: *@This(), stream: *IRandomAccessStream, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
         var _r: *LoadedImageSurface = undefined;
-        const _c = self.vtable.StartLoadFromStream(@ptrCast(self), stream, desiredMaxSize, &_r);
+        const _c = self.vtable.StartLoadFromStreamWithDesiredMaxSize(@ptrCast(self), stream, desiredMaxSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3207,9 +3207,9 @@ pub const ILoadedImageSurfaceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        StartLoadFromUri: *const fn(self: *anyopaque, uri: *Uri, desiredMaxSize: Size, _r: **LoadedImageSurface) callconv(.winapi) HRESULT,
+        StartLoadFromUriWithDesiredMaxSize: *const fn(self: *anyopaque, uri: *Uri, desiredMaxSize: Size, _r: **LoadedImageSurface) callconv(.winapi) HRESULT,
         StartLoadFromUri: *const fn(self: *anyopaque, uri: *Uri, _r: **LoadedImageSurface) callconv(.winapi) HRESULT,
-        StartLoadFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, desiredMaxSize: Size, _r: **LoadedImageSurface) callconv(.winapi) HRESULT,
+        StartLoadFromStreamWithDesiredMaxSize: *const fn(self: *anyopaque, stream: *IRandomAccessStream, desiredMaxSize: Size, _r: **LoadedImageSurface) callconv(.winapi) HRESULT,
         StartLoadFromStream: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **LoadedImageSurface) callconv(.winapi) HRESULT,
     };
 };
@@ -5387,21 +5387,21 @@ pub const IVisualTreeHelperStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindElementsInHostCoordinates(self: *@This(), intersectingRect: Rect, subtree: *UIElement) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithIntersectingRect(self: *@This(), intersectingRect: Rect, subtree: *UIElement) core.HResult!*IIterable(UIElement) {
         var _r: *IIterable(UIElement) = undefined;
-        const _c = self.vtable.FindElementsInHostCoordinates(@ptrCast(self), intersectingRect, subtree, &_r);
+        const _c = self.vtable.FindElementsInHostCoordinatesWithIntersectingRect(@ptrCast(self), intersectingRect, subtree, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindElementsInHostCoordinates(self: *@This(), intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(self: *@This(), intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
         var _r: *IIterable(UIElement) = undefined;
-        const _c = self.vtable.FindElementsInHostCoordinates(@ptrCast(self), intersectingPoint, subtree, includeAllElements, &_r);
+        const _c = self.vtable.FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(@ptrCast(self), intersectingPoint, subtree, includeAllElements, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindElementsInHostCoordinates(self: *@This(), intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(self: *@This(), intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
         var _r: *IIterable(UIElement) = undefined;
-        const _c = self.vtable.FindElementsInHostCoordinates(@ptrCast(self), intersectingRect, subtree, includeAllElements, &_r);
+        const _c = self.vtable.FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(@ptrCast(self), intersectingRect, subtree, includeAllElements, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5440,9 +5440,9 @@ pub const IVisualTreeHelperStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindElementsInHostCoordinates: *const fn(self: *anyopaque, intersectingPoint: Point, subtree: *UIElement, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
-        FindElementsInHostCoordinates: *const fn(self: *anyopaque, intersectingRect: Rect, subtree: *UIElement, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
-        FindElementsInHostCoordinates: *const fn(self: *anyopaque, intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
-        FindElementsInHostCoordinates: *const fn(self: *anyopaque, intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
+        FindElementsInHostCoordinatesWithIntersectingRect: *const fn(self: *anyopaque, intersectingRect: Rect, subtree: *UIElement, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
+        FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements: *const fn(self: *anyopaque, intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
+        FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements: *const fn(self: *anyopaque, intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool, _r: **IIterable(UIElement)) callconv(.winapi) HRESULT,
         GetChild: *const fn(self: *anyopaque, reference: *DependencyObject, childIndex: i32, _r: **DependencyObject) callconv(.winapi) HRESULT,
         GetChildrenCount: *const fn(self: *anyopaque, reference: *DependencyObject, _r: *i32) callconv(.winapi) HRESULT,
         GetParent: *const fn(self: *anyopaque, reference: *DependencyObject, _r: **DependencyObject) callconv(.winapi) HRESULT,
@@ -5981,17 +5981,17 @@ pub const LoadedImageSurface = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn StartLoadFromUri(uri: *Uri, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
+    pub fn StartLoadFromUriWithDesiredMaxSize(uri: *Uri, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
         const factory = @This().ILoadedImageSurfaceStaticsCache.get();
-        return try factory.StartLoadFromUri(uri, desiredMaxSize);
+        return try factory.StartLoadFromUriWithDesiredMaxSize(uri, desiredMaxSize);
     }
     pub fn StartLoadFromUri(uri: *Uri) core.HResult!*LoadedImageSurface {
         const factory = @This().ILoadedImageSurfaceStaticsCache.get();
         return try factory.StartLoadFromUri(uri);
     }
-    pub fn StartLoadFromStream(stream: *IRandomAccessStream, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
+    pub fn StartLoadFromStreamWithDesiredMaxSize(stream: *IRandomAccessStream, desiredMaxSize: Size) core.HResult!*LoadedImageSurface {
         const factory = @This().ILoadedImageSurfaceStaticsCache.get();
-        return try factory.StartLoadFromStream(stream, desiredMaxSize);
+        return try factory.StartLoadFromStreamWithDesiredMaxSize(stream, desiredMaxSize);
     }
     pub fn StartLoadFromStream(stream: *IRandomAccessStream) core.HResult!*LoadedImageSurface {
         const factory = @This().ILoadedImageSurfaceStaticsCache.get();
@@ -7716,17 +7716,17 @@ pub const VisualTreeHelper = extern struct {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
         return try factory.FindElementsInHostCoordinates(intersectingPoint, subtree);
     }
-    pub fn FindElementsInHostCoordinates(intersectingRect: Rect, subtree: *UIElement) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithIntersectingRect(intersectingRect: Rect, subtree: *UIElement) core.HResult!*IIterable(UIElement) {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
-        return try factory.FindElementsInHostCoordinates(intersectingRect, subtree);
+        return try factory.FindElementsInHostCoordinatesWithIntersectingRect(intersectingRect, subtree);
     }
-    pub fn FindElementsInHostCoordinates(intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingPoint: Point, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
-        return try factory.FindElementsInHostCoordinates(intersectingPoint, subtree, includeAllElements);
+        return try factory.FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingPoint, subtree, includeAllElements);
     }
-    pub fn FindElementsInHostCoordinates(intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
+    pub fn FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingRect: Rect, subtree: *UIElement, includeAllElements: bool) core.HResult!*IIterable(UIElement) {
         const factory = @This().IVisualTreeHelperStaticsCache.get();
-        return try factory.FindElementsInHostCoordinates(intersectingRect, subtree, includeAllElements);
+        return try factory.FindElementsInHostCoordinatesWithSubtreeWithIncludeAllElements(intersectingRect, subtree, includeAllElements);
     }
     pub fn GetChild(reference: *DependencyObject, childIndex: i32) core.HResult!*DependencyObject {
         const factory = @This().IVisualTreeHelperStaticsCache.get();

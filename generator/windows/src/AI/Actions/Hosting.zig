@@ -18,11 +18,11 @@ pub const ActionCatalog = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetActionsForInputs(inputEntities);
     }
-    pub fn GetActionsForInputs(self: *@This(), inputEntities: [*]ActionEntity, invokerWindowId: WindowId) core.HResult![*]ActionInstance {
+    pub fn GetActionsForInputsWithInvokerWindowId(self: *@This(), inputEntities: [*]ActionEntity, invokerWindowId: WindowId) core.HResult![*]ActionInstance {
         var this: ?*IActionCatalog2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionCatalog2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetActionsForInputs(inputEntities, invokerWindowId);
+        return try this.?.GetActionsForInputsWithInvokerWindowId(inputEntities, invokerWindowId);
     }
     pub fn GetActionsForCurrentApp(self: *@This()) core.HResult![*]ActionDefinition {
         var this: ?*IActionCatalog3 = undefined;
@@ -261,9 +261,9 @@ pub const IActionCatalog2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetActionsForInputs(self: *@This(), inputEntities: [*]ActionEntity, invokerWindowId: WindowId) core.HResult![*]ActionInstance {
+    pub fn GetActionsForInputsWithInvokerWindowId(self: *@This(), inputEntities: [*]ActionEntity, invokerWindowId: WindowId) core.HResult![*]ActionInstance {
         var _r: [*]ActionInstance = undefined;
-        const _c = self.vtable.GetActionsForInputs(@ptrCast(self), inputEntities, invokerWindowId, &_r);
+        const _c = self.vtable.GetActionsForInputsWithInvokerWindowId(@ptrCast(self), inputEntities, invokerWindowId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -280,7 +280,7 @@ pub const IActionCatalog2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetActionsForInputs: *const fn(self: *anyopaque, inputEntities: [*]ActionEntity, _r: *[*]ActionInstance) callconv(.winapi) HRESULT,
-        GetActionsForInputs: *const fn(self: *anyopaque, inputEntities: [*]ActionEntity, invokerWindowId: WindowId, _r: *[*]ActionInstance) callconv(.winapi) HRESULT,
+        GetActionsForInputsWithInvokerWindowId: *const fn(self: *anyopaque, inputEntities: [*]ActionEntity, invokerWindowId: WindowId, _r: *[*]ActionInstance) callconv(.winapi) HRESULT,
     };
 };
 pub const IActionCatalog3 = extern struct {

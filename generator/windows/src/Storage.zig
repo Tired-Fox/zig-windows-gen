@@ -473,13 +473,13 @@ pub const DownloadsFolder = extern struct {
         const factory = @This().IDownloadsFolderStatics2Cache.get();
         return try factory.CreateFolderForUserAsync(user, desiredName);
     }
-    pub fn CreateFileForUserAsync(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileForUserAsyncWithDesiredNameWithOption(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         const factory = @This().IDownloadsFolderStatics2Cache.get();
-        return try factory.CreateFileForUserAsync(user, desiredName, option);
+        return try factory.CreateFileForUserAsyncWithDesiredNameWithOption(user, desiredName, option);
     }
-    pub fn CreateFolderForUserAsync(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderForUserAsyncWithDesiredNameWithOption(user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         const factory = @This().IDownloadsFolderStatics2Cache.get();
-        return try factory.CreateFolderForUserAsync(user, desiredName, option);
+        return try factory.CreateFolderForUserAsyncWithDesiredNameWithOption(user, desiredName, option);
     }
     pub fn CreateFileAsync(desiredName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         const factory = @This().IDownloadsFolderStaticsCache.get();
@@ -489,13 +489,13 @@ pub const DownloadsFolder = extern struct {
         const factory = @This().IDownloadsFolderStaticsCache.get();
         return try factory.CreateFolderAsync(desiredName);
     }
-    pub fn CreateFileAsync(desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileAsyncWithOption(desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         const factory = @This().IDownloadsFolderStaticsCache.get();
-        return try factory.CreateFileAsync(desiredName, option);
+        return try factory.CreateFileAsyncWithOption(desiredName, option);
     }
-    pub fn CreateFolderAsync(desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderAsyncWithOption(desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         const factory = @This().IDownloadsFolderStaticsCache.get();
-        return try factory.CreateFolderAsync(desiredName, option);
+        return try factory.CreateFolderAsyncWithOption(desiredName, option);
     }
     pub const NAME: []const u8 = "Windows.Storage.DownloadsFolder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -523,49 +523,49 @@ pub const FileIO = extern struct {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.ReadTextAsync(file);
     }
-    pub fn ReadTextAsync(file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ReadTextAsyncWithEncoding(file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.ReadTextAsync(file, encoding);
+        return try factory.ReadTextAsyncWithEncoding(file, encoding);
     }
     pub fn WriteTextAsync(file: *IStorageFile, contents: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.WriteTextAsync(file, contents);
     }
-    pub fn WriteTextAsync(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteTextAsyncWithContentsWithEncoding(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.WriteTextAsync(file, contents, encoding);
+        return try factory.WriteTextAsyncWithContentsWithEncoding(file, contents, encoding);
     }
     pub fn AppendTextAsync(file: *IStorageFile, contents: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.AppendTextAsync(file, contents);
     }
-    pub fn AppendTextAsync(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendTextAsyncWithContentsWithEncoding(file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.AppendTextAsync(file, contents, encoding);
+        return try factory.AppendTextAsyncWithContentsWithEncoding(file, contents, encoding);
     }
     pub fn ReadLinesAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.ReadLinesAsync(file);
     }
-    pub fn ReadLinesAsync(file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
+    pub fn ReadLinesAsyncWithEncoding(file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.ReadLinesAsync(file, encoding);
+        return try factory.ReadLinesAsyncWithEncoding(file, encoding);
     }
     pub fn WriteLinesAsync(file: *IStorageFile, lines: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.WriteLinesAsync(file, lines);
     }
-    pub fn WriteLinesAsync(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteLinesAsyncWithLinesWithEncoding(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.WriteLinesAsync(file, lines, encoding);
+        return try factory.WriteLinesAsyncWithLinesWithEncoding(file, lines, encoding);
     }
     pub fn AppendLinesAsync(file: *IStorageFile, lines: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
         return try factory.AppendLinesAsync(file, lines);
     }
-    pub fn AppendLinesAsync(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendLinesAsyncWithLinesWithEncoding(file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IFileIOStaticsCache.get();
-        return try factory.AppendLinesAsync(file, lines, encoding);
+        return try factory.AppendLinesAsyncWithLinesWithEncoding(file, lines, encoding);
     }
     pub fn ReadBufferAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(IBuffer) {
         const factory = @This().IFileIOStaticsCache.get();
@@ -999,15 +999,15 @@ pub const IDownloadsFolderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFileAsync(self: *@This(), desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileAsyncWithOption(self: *@This(), desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.CreateFileAsync(@ptrCast(self), desiredName, option, &_r);
+        const _c = self.vtable.CreateFileAsyncWithOption(@ptrCast(self), desiredName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFolderAsync(self: *@This(), desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderAsyncWithOption(self: *@This(), desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
-        const _c = self.vtable.CreateFolderAsync(@ptrCast(self), desiredName, option, &_r);
+        const _c = self.vtable.CreateFolderAsyncWithOption(@ptrCast(self), desiredName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1025,8 +1025,8 @@ pub const IDownloadsFolderStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFileAsync: *const fn(self: *anyopaque, desiredName: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         CreateFolderAsync: *const fn(self: *anyopaque, desiredName: HSTRING, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
-        CreateFileAsync: *const fn(self: *anyopaque, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        CreateFolderAsync: *const fn(self: *anyopaque, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
+        CreateFileAsyncWithOption: *const fn(self: *anyopaque, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        CreateFolderAsyncWithOption: *const fn(self: *anyopaque, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDownloadsFolderStatics2 = extern struct {
@@ -1043,15 +1043,15 @@ pub const IDownloadsFolderStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFileForUserAsync(self: *@This(), user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileForUserAsyncWithDesiredNameWithOption(self: *@This(), user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.CreateFileForUserAsync(@ptrCast(self), user, desiredName, option, &_r);
+        const _c = self.vtable.CreateFileForUserAsyncWithDesiredNameWithOption(@ptrCast(self), user, desiredName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFolderForUserAsync(self: *@This(), user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderForUserAsyncWithDesiredNameWithOption(self: *@This(), user: *User, desiredName: HSTRING, option: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
-        const _c = self.vtable.CreateFolderForUserAsync(@ptrCast(self), user, desiredName, option, &_r);
+        const _c = self.vtable.CreateFolderForUserAsyncWithDesiredNameWithOption(@ptrCast(self), user, desiredName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1069,8 +1069,8 @@ pub const IDownloadsFolderStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFileForUserAsync: *const fn(self: *anyopaque, user: *User, desiredName: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         CreateFolderForUserAsync: *const fn(self: *anyopaque, user: *User, desiredName: HSTRING, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
-        CreateFileForUserAsync: *const fn(self: *anyopaque, user: *User, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        CreateFolderForUserAsync: *const fn(self: *anyopaque, user: *User, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
+        CreateFileForUserAsyncWithDesiredNameWithOption: *const fn(self: *anyopaque, user: *User, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        CreateFolderForUserAsyncWithDesiredNameWithOption: *const fn(self: *anyopaque, user: *User, desiredName: HSTRING, option: CreationCollisionOption, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
     };
 };
 pub const IFileIOStatics = extern struct {
@@ -1081,9 +1081,9 @@ pub const IFileIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadTextAsync(self: *@This(), file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ReadTextAsyncWithEncoding(self: *@This(), file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
         var _r: *IAsyncOperation(HSTRING) = undefined;
-        const _c = self.vtable.ReadTextAsync(@ptrCast(self), file, encoding, &_r);
+        const _c = self.vtable.ReadTextAsyncWithEncoding(@ptrCast(self), file, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1093,9 +1093,9 @@ pub const IFileIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WriteTextAsync(self: *@This(), file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteTextAsyncWithContentsWithEncoding(self: *@This(), file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.WriteTextAsync(@ptrCast(self), file, contents, encoding, &_r);
+        const _c = self.vtable.WriteTextAsyncWithContentsWithEncoding(@ptrCast(self), file, contents, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1105,9 +1105,9 @@ pub const IFileIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AppendTextAsync(self: *@This(), file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendTextAsyncWithContentsWithEncoding(self: *@This(), file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.AppendTextAsync(@ptrCast(self), file, contents, encoding, &_r);
+        const _c = self.vtable.AppendTextAsyncWithContentsWithEncoding(@ptrCast(self), file, contents, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1117,9 +1117,9 @@ pub const IFileIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadLinesAsync(self: *@This(), file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
+    pub fn ReadLinesAsyncWithEncoding(self: *@This(), file: *IStorageFile, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         var _r: *IAsyncOperation(IVector(HSTRING)) = undefined;
-        const _c = self.vtable.ReadLinesAsync(@ptrCast(self), file, encoding, &_r);
+        const _c = self.vtable.ReadLinesAsyncWithEncoding(@ptrCast(self), file, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1129,9 +1129,9 @@ pub const IFileIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WriteLinesAsync(self: *@This(), file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteLinesAsyncWithLinesWithEncoding(self: *@This(), file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.WriteLinesAsync(@ptrCast(self), file, lines, encoding, &_r);
+        const _c = self.vtable.WriteLinesAsyncWithLinesWithEncoding(@ptrCast(self), file, lines, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1141,9 +1141,9 @@ pub const IFileIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AppendLinesAsync(self: *@This(), file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendLinesAsyncWithLinesWithEncoding(self: *@This(), file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.AppendLinesAsync(@ptrCast(self), file, lines, encoding, &_r);
+        const _c = self.vtable.AppendLinesAsyncWithLinesWithEncoding(@ptrCast(self), file, lines, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1178,17 +1178,17 @@ pub const IFileIOStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReadTextAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        ReadTextAsync: *const fn(self: *anyopaque, file: *IStorageFile, encoding: UnicodeEncoding, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        ReadTextAsyncWithEncoding: *const fn(self: *anyopaque, file: *IStorageFile, encoding: UnicodeEncoding, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
         WriteTextAsync: *const fn(self: *anyopaque, file: *IStorageFile, contents: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        WriteTextAsync: *const fn(self: *anyopaque, file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        WriteTextAsyncWithContentsWithEncoding: *const fn(self: *anyopaque, file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         AppendTextAsync: *const fn(self: *anyopaque, file: *IStorageFile, contents: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        AppendTextAsync: *const fn(self: *anyopaque, file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AppendTextAsyncWithContentsWithEncoding: *const fn(self: *anyopaque, file: *IStorageFile, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReadLinesAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
-        ReadLinesAsync: *const fn(self: *anyopaque, file: *IStorageFile, encoding: UnicodeEncoding, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
+        ReadLinesAsyncWithEncoding: *const fn(self: *anyopaque, file: *IStorageFile, encoding: UnicodeEncoding, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
         WriteLinesAsync: *const fn(self: *anyopaque, file: *IStorageFile, lines: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        WriteLinesAsync: *const fn(self: *anyopaque, file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        WriteLinesAsyncWithLinesWithEncoding: *const fn(self: *anyopaque, file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         AppendLinesAsync: *const fn(self: *anyopaque, file: *IStorageFile, lines: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        AppendLinesAsync: *const fn(self: *anyopaque, file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AppendLinesAsyncWithLinesWithEncoding: *const fn(self: *anyopaque, file: *IStorageFile, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReadBufferAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
         WriteBufferAsync: *const fn(self: *anyopaque, file: *IStorageFile, buffer: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         WriteBytesAsync: *const fn(self: *anyopaque, file: *IStorageFile, buffer: [*]u8, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -1433,9 +1433,9 @@ pub const IPathIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadTextAsync(self: *@This(), absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ReadTextAsyncWithEncoding(self: *@This(), absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
         var _r: *IAsyncOperation(HSTRING) = undefined;
-        const _c = self.vtable.ReadTextAsync(@ptrCast(self), absolutePath, encoding, &_r);
+        const _c = self.vtable.ReadTextAsyncWithEncoding(@ptrCast(self), absolutePath, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1445,9 +1445,9 @@ pub const IPathIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WriteTextAsync(self: *@This(), absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteTextAsyncWithContentsWithEncoding(self: *@This(), absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.WriteTextAsync(@ptrCast(self), absolutePath, contents, encoding, &_r);
+        const _c = self.vtable.WriteTextAsyncWithContentsWithEncoding(@ptrCast(self), absolutePath, contents, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1457,9 +1457,9 @@ pub const IPathIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AppendTextAsync(self: *@This(), absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendTextAsyncWithContentsWithEncoding(self: *@This(), absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.AppendTextAsync(@ptrCast(self), absolutePath, contents, encoding, &_r);
+        const _c = self.vtable.AppendTextAsyncWithContentsWithEncoding(@ptrCast(self), absolutePath, contents, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1469,9 +1469,9 @@ pub const IPathIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadLinesAsync(self: *@This(), absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
+    pub fn ReadLinesAsyncWithEncoding(self: *@This(), absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         var _r: *IAsyncOperation(IVector(HSTRING)) = undefined;
-        const _c = self.vtable.ReadLinesAsync(@ptrCast(self), absolutePath, encoding, &_r);
+        const _c = self.vtable.ReadLinesAsyncWithEncoding(@ptrCast(self), absolutePath, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1481,9 +1481,9 @@ pub const IPathIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WriteLinesAsync(self: *@This(), absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteLinesAsyncWithLinesWithEncoding(self: *@This(), absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.WriteLinesAsync(@ptrCast(self), absolutePath, lines, encoding, &_r);
+        const _c = self.vtable.WriteLinesAsyncWithLinesWithEncoding(@ptrCast(self), absolutePath, lines, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1493,9 +1493,9 @@ pub const IPathIOStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AppendLinesAsync(self: *@This(), absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendLinesAsyncWithLinesWithEncoding(self: *@This(), absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.AppendLinesAsync(@ptrCast(self), absolutePath, lines, encoding, &_r);
+        const _c = self.vtable.AppendLinesAsyncWithLinesWithEncoding(@ptrCast(self), absolutePath, lines, encoding, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1530,17 +1530,17 @@ pub const IPathIOStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReadTextAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        ReadTextAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        ReadTextAsyncWithEncoding: *const fn(self: *anyopaque, absolutePath: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
         WriteTextAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, contents: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        WriteTextAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        WriteTextAsyncWithContentsWithEncoding: *const fn(self: *anyopaque, absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         AppendTextAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, contents: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        AppendTextAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AppendTextAsyncWithContentsWithEncoding: *const fn(self: *anyopaque, absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReadLinesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
-        ReadLinesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
+        ReadLinesAsyncWithEncoding: *const fn(self: *anyopaque, absolutePath: HSTRING, encoding: UnicodeEncoding, _r: **IAsyncOperation(IVector(HSTRING))) callconv(.winapi) HRESULT,
         WriteLinesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, lines: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        WriteLinesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        WriteLinesAsyncWithLinesWithEncoding: *const fn(self: *anyopaque, absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         AppendLinesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, lines: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        AppendLinesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        AppendLinesAsyncWithLinesWithEncoding: *const fn(self: *anyopaque, absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ReadBufferAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
         WriteBufferAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, buffer: *IBuffer, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         WriteBytesAsync: *const fn(self: *anyopaque, absolutePath: HSTRING, buffer: [*]u8, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -1636,15 +1636,15 @@ pub const IStorageFile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CopyAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithDesiredNewName(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.CopyAsync(@ptrCast(self), destinationFolder, desiredNewName, &_r);
+        const _c = self.vtable.CopyAsyncWithDesiredNewName(@ptrCast(self), destinationFolder, desiredNewName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CopyAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.CopyAsync(@ptrCast(self), destinationFolder, desiredNewName, option, &_r);
+        const _c = self.vtable.CopyAsyncWithOption(@ptrCast(self), destinationFolder, desiredNewName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1660,15 +1660,15 @@ pub const IStorageFile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MoveAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithDesiredNewName(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MoveAsync(@ptrCast(self), destinationFolder, desiredNewName, &_r);
+        const _c = self.vtable.MoveAsyncWithDesiredNewName(@ptrCast(self), destinationFolder, desiredNewName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MoveAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MoveAsync(@ptrCast(self), destinationFolder, desiredNewName, option, &_r);
+        const _c = self.vtable.MoveAsyncWithOption(@ptrCast(self), destinationFolder, desiredNewName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1695,12 +1695,12 @@ pub const IStorageFile = extern struct {
         OpenAsync: *const fn(self: *anyopaque, accessMode: FileAccessMode, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
         OpenTransactedWriteAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorageStreamTransaction)) callconv(.winapi) HRESULT,
         CopyAsync: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        CopyAsync: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        CopyAsync: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        CopyAsyncWithDesiredNewName: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        CopyAsyncWithOption: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         CopyAndReplaceAsync: *const fn(self: *anyopaque, fileToReplace: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         MoveAsync: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MoveAsync: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MoveAsync: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MoveAsyncWithDesiredNewName: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MoveAsyncWithOption: *const fn(self: *anyopaque, destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         MoveAndReplaceAsync: *const fn(self: *anyopaque, fileToReplace: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -1846,9 +1846,9 @@ pub const IStorageFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFileAsync(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileAsyncWithOptions(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.CreateFileAsync(@ptrCast(self), desiredName, options, &_r);
+        const _c = self.vtable.CreateFileAsyncWithOptions(@ptrCast(self), desiredName, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1858,9 +1858,9 @@ pub const IStorageFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFolderAsync(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderAsyncWithOptions(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
-        const _c = self.vtable.CreateFolderAsync(@ptrCast(self), desiredName, options, &_r);
+        const _c = self.vtable.CreateFolderAsyncWithOptions(@ptrCast(self), desiredName, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1913,9 +1913,9 @@ pub const IStorageFolder = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFileAsync: *const fn(self: *anyopaque, desiredName: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        CreateFileAsync: *const fn(self: *anyopaque, desiredName: HSTRING, options: CreationCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        CreateFileAsyncWithOptions: *const fn(self: *anyopaque, desiredName: HSTRING, options: CreationCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         CreateFolderAsync: *const fn(self: *anyopaque, desiredName: HSTRING, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
-        CreateFolderAsync: *const fn(self: *anyopaque, desiredName: HSTRING, options: CreationCollisionOption, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
+        CreateFolderAsyncWithOptions: *const fn(self: *anyopaque, desiredName: HSTRING, options: CreationCollisionOption, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
         GetFileAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         GetFolderAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
         GetItemAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(IStorageItem)) callconv(.winapi) HRESULT,
@@ -2024,9 +2024,9 @@ pub const IStorageItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenameAsync(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn RenameAsyncWithOption(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.RenameAsync(@ptrCast(self), desiredName, option, &_r);
+        const _c = self.vtable.RenameAsyncWithOption(@ptrCast(self), desiredName, option, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2072,9 +2072,9 @@ pub const IStorageItem = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.IsOfType(@ptrCast(self), type, &_r);
+        const _c = self.vtable.IsOfType(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2091,7 +2091,7 @@ pub const IStorageItem = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RenameAsync: *const fn(self: *anyopaque, desiredName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RenameAsync: *const fn(self: *anyopaque, desiredName: HSTRING, option: NameCollisionOption, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RenameAsyncWithOption: *const fn(self: *anyopaque, desiredName: HSTRING, option: NameCollisionOption, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, option: StorageDeleteOption, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetBasicPropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(BasicProperties)) callconv(.winapi) HRESULT,
@@ -2099,7 +2099,7 @@ pub const IStorageItem = extern struct {
         get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_Attributes: *const fn(self: *anyopaque, _r: *FileAttributes) callconv(.winapi) HRESULT,
         get_DateCreated: *const fn(self: *anyopaque, _r: *DateTime) callconv(.winapi) HRESULT,
-        IsOfType: *const fn(self: *anyopaque, type: StorageItemTypes, _r: *bool) callconv(.winapi) HRESULT,
+        IsOfType: *const fn(self: *anyopaque, ty: StorageItemTypes, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageItem2 = extern struct {
@@ -2140,15 +2140,15 @@ pub const IStorageItemProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var _r: *IAsyncOperation(StorageItemThumbnail) = undefined;
-        const _c = self.vtable.GetThumbnailAsync(@ptrCast(self), mode, requestedSize, &_r);
+        const _c = self.vtable.GetThumbnailAsyncWithRequestedSize(@ptrCast(self), mode, requestedSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var _r: *IAsyncOperation(StorageItemThumbnail) = undefined;
-        const _c = self.vtable.GetThumbnailAsync(@ptrCast(self), mode, requestedSize, options, &_r);
+        const _c = self.vtable.GetThumbnailAsyncWithOptions(@ptrCast(self), mode, requestedSize, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2189,8 +2189,8 @@ pub const IStorageItemProperties = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetThumbnailAsync: *const fn(self: *anyopaque, mode: ThumbnailMode, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
-        GetThumbnailAsync: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
-        GetThumbnailAsync: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
+        GetThumbnailAsyncWithRequestedSize: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
+        GetThumbnailAsyncWithOptions: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
         get_DisplayName: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_DisplayType: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_FolderRelativeId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
@@ -2205,15 +2205,15 @@ pub const IStorageItemProperties2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetScaledImageAsThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetScaledImageAsThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var _r: *IAsyncOperation(StorageItemThumbnail) = undefined;
-        const _c = self.vtable.GetScaledImageAsThumbnailAsync(@ptrCast(self), mode, requestedSize, &_r);
+        const _c = self.vtable.GetScaledImageAsThumbnailAsyncWithRequestedSize(@ptrCast(self), mode, requestedSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetScaledImageAsThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetScaledImageAsThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var _r: *IAsyncOperation(StorageItemThumbnail) = undefined;
-        const _c = self.vtable.GetScaledImageAsThumbnailAsync(@ptrCast(self), mode, requestedSize, options, &_r);
+        const _c = self.vtable.GetScaledImageAsThumbnailAsyncWithOptions(@ptrCast(self), mode, requestedSize, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2230,8 +2230,8 @@ pub const IStorageItemProperties2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetScaledImageAsThumbnailAsync: *const fn(self: *anyopaque, mode: ThumbnailMode, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
-        GetScaledImageAsThumbnailAsync: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
-        GetScaledImageAsThumbnailAsync: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
+        GetScaledImageAsThumbnailAsyncWithRequestedSize: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
+        GetScaledImageAsThumbnailAsyncWithOptions: *const fn(self: *anyopaque, mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions, _r: **IAsyncOperation(StorageItemThumbnail)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStorageItemPropertiesWithProvider = extern struct {
@@ -2379,9 +2379,9 @@ pub const IStorageLibraryChange = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.IsOfType(@ptrCast(self), type, &_r);
+        const _c = self.vtable.IsOfType(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2406,7 +2406,7 @@ pub const IStorageLibraryChange = extern struct {
         get_ChangeType: *const fn(self: *anyopaque, _r: *StorageLibraryChangeType) callconv(.winapi) HRESULT,
         get_Path: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_PreviousPath: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        IsOfType: *const fn(self: *anyopaque, type: StorageItemTypes, _r: *bool) callconv(.winapi) HRESULT,
+        IsOfType: *const fn(self: *anyopaque, ty: StorageItemTypes, _r: *bool) callconv(.winapi) HRESULT,
         GetStorageItemAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IStorageItem)) callconv(.winapi) HRESULT,
     };
 };
@@ -3621,49 +3621,49 @@ pub const PathIO = extern struct {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.ReadTextAsync(absolutePath);
     }
-    pub fn ReadTextAsync(absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ReadTextAsyncWithEncoding(absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.ReadTextAsync(absolutePath, encoding);
+        return try factory.ReadTextAsyncWithEncoding(absolutePath, encoding);
     }
     pub fn WriteTextAsync(absolutePath: HSTRING, contents: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.WriteTextAsync(absolutePath, contents);
     }
-    pub fn WriteTextAsync(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteTextAsyncWithContentsWithEncoding(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.WriteTextAsync(absolutePath, contents, encoding);
+        return try factory.WriteTextAsyncWithContentsWithEncoding(absolutePath, contents, encoding);
     }
     pub fn AppendTextAsync(absolutePath: HSTRING, contents: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.AppendTextAsync(absolutePath, contents);
     }
-    pub fn AppendTextAsync(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendTextAsyncWithContentsWithEncoding(absolutePath: HSTRING, contents: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.AppendTextAsync(absolutePath, contents, encoding);
+        return try factory.AppendTextAsyncWithContentsWithEncoding(absolutePath, contents, encoding);
     }
     pub fn ReadLinesAsync(absolutePath: HSTRING) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.ReadLinesAsync(absolutePath);
     }
-    pub fn ReadLinesAsync(absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
+    pub fn ReadLinesAsyncWithEncoding(absolutePath: HSTRING, encoding: UnicodeEncoding) core.HResult!*IAsyncOperation(IVector(HSTRING)) {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.ReadLinesAsync(absolutePath, encoding);
+        return try factory.ReadLinesAsyncWithEncoding(absolutePath, encoding);
     }
     pub fn WriteLinesAsync(absolutePath: HSTRING, lines: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.WriteLinesAsync(absolutePath, lines);
     }
-    pub fn WriteLinesAsync(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn WriteLinesAsyncWithLinesWithEncoding(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.WriteLinesAsync(absolutePath, lines, encoding);
+        return try factory.WriteLinesAsyncWithLinesWithEncoding(absolutePath, lines, encoding);
     }
     pub fn AppendLinesAsync(absolutePath: HSTRING, lines: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
         return try factory.AppendLinesAsync(absolutePath, lines);
     }
-    pub fn AppendLinesAsync(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
+    pub fn AppendLinesAsyncWithLinesWithEncoding(absolutePath: HSTRING, lines: *IIterable(HSTRING), encoding: UnicodeEncoding) core.HResult!*IAsyncAction {
         const factory = @This().IPathIOStaticsCache.get();
-        return try factory.AppendLinesAsync(absolutePath, lines, encoding);
+        return try factory.AppendLinesAsyncWithLinesWithEncoding(absolutePath, lines, encoding);
     }
     pub fn ReadBufferAsync(absolutePath: HSTRING) core.HResult!*IAsyncOperation(IBuffer) {
         const factory = @This().IPathIOStaticsCache.get();
@@ -3743,13 +3743,13 @@ pub const StorageFile = extern struct {
         const this: *IStorageFile = @ptrCast(self);
         return try this.CopyAsync(destinationFolder);
     }
-    pub fn CopyAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithDesiredNewName(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IStorageFile = @ptrCast(self);
-        return try this.CopyAsync(destinationFolder, desiredNewName);
+        return try this.CopyAsyncWithDesiredNewName(destinationFolder, desiredNewName);
     }
-    pub fn CopyAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IStorageFile = @ptrCast(self);
-        return try this.CopyAsync(destinationFolder, desiredNewName, option);
+        return try this.CopyAsyncWithOption(destinationFolder, desiredNewName, option);
     }
     pub fn CopyAndReplaceAsync(self: *@This(), fileToReplace: *IStorageFile) core.HResult!*IAsyncAction {
         const this: *IStorageFile = @ptrCast(self);
@@ -3759,13 +3759,13 @@ pub const StorageFile = extern struct {
         const this: *IStorageFile = @ptrCast(self);
         return try this.MoveAsync(destinationFolder);
     }
-    pub fn MoveAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithDesiredNewName(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING) core.HResult!*IAsyncAction {
         const this: *IStorageFile = @ptrCast(self);
-        return try this.MoveAsync(destinationFolder, desiredNewName);
+        return try this.MoveAsyncWithDesiredNewName(destinationFolder, desiredNewName);
     }
-    pub fn MoveAsync(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         const this: *IStorageFile = @ptrCast(self);
-        return try this.MoveAsync(destinationFolder, desiredNewName, option);
+        return try this.MoveAsyncWithOption(destinationFolder, desiredNewName, option);
     }
     pub fn MoveAndReplaceAsync(self: *@This(), fileToReplace: *IStorageFile) core.HResult!*IAsyncAction {
         const this: *IStorageFile = @ptrCast(self);
@@ -3777,11 +3777,11 @@ pub const StorageFile = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenameAsync(desiredName);
     }
-    pub fn RenameAsync(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn RenameAsyncWithOption(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RenameAsync(desiredName, option);
+        return try this.?.RenameAsyncWithOption(desiredName, option);
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
@@ -3825,11 +3825,11 @@ pub const StorageFile = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDateCreated();
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsOfType(type);
+        return try this.?.IsOfType(ty);
     }
     pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
         var this: ?*IRandomAccessStreamReference = undefined;
@@ -3849,17 +3849,17 @@ pub const StorageFile = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailAsync(mode);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize);
+        return try this.?.GetThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize, options);
+        return try this.?.GetThumbnailAsyncWithOptions(mode, requestedSize, options);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStorageItemProperties = undefined;
@@ -3891,17 +3891,17 @@ pub const StorageFile = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetScaledImageAsThumbnailAsync(mode);
     }
-    pub fn GetScaledImageAsThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetScaledImageAsThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetScaledImageAsThumbnailAsync(mode, requestedSize);
+        return try this.?.GetScaledImageAsThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetScaledImageAsThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetScaledImageAsThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetScaledImageAsThumbnailAsync(mode, requestedSize, options);
+        return try this.?.GetScaledImageAsThumbnailAsyncWithOptions(mode, requestedSize, options);
     }
     pub fn GetParentAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageItem2 = undefined;
@@ -3927,11 +3927,11 @@ pub const StorageFile = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsAvailable();
     }
-    pub fn OpenAsync(self: *@This(), accessMode: FileAccessMode, options: StorageOpenOptions) core.HResult!*IAsyncOperation(IRandomAccessStream) {
+    pub fn OpenAsyncWithOptions(self: *@This(), accessMode: FileAccessMode, options: StorageOpenOptions) core.HResult!*IAsyncOperation(IRandomAccessStream) {
         var this: ?*IStorageFile2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.OpenAsync(accessMode, options);
+        return try this.?.OpenAsyncWithOptions(accessMode, options);
     }
     pub fn OpenTransactedWriteAsync(self: *@This(), options: StorageOpenOptions) core.HResult!*IAsyncOperation(StorageStreamTransaction) {
         var this: ?*IStorageFile2 = undefined;
@@ -3984,17 +3984,17 @@ pub const StorageFolder = extern struct {
         const this: *IStorageFolder = @ptrCast(self);
         return try this.CreateFileAsync(desiredName);
     }
-    pub fn CreateFileAsync(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CreateFileAsyncWithOptions(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IStorageFolder = @ptrCast(self);
-        return try this.CreateFileAsync(desiredName, options);
+        return try this.CreateFileAsyncWithOptions(desiredName, options);
     }
     pub fn CreateFolderAsync(self: *@This(), desiredName: HSTRING) core.HResult!*IAsyncOperation(StorageFolder) {
         const this: *IStorageFolder = @ptrCast(self);
         return try this.CreateFolderAsync(desiredName);
     }
-    pub fn CreateFolderAsync(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn CreateFolderAsyncWithOptions(self: *@This(), desiredName: HSTRING, options: CreationCollisionOption) core.HResult!*IAsyncOperation(StorageFolder) {
         const this: *IStorageFolder = @ptrCast(self);
-        return try this.CreateFolderAsync(desiredName, options);
+        return try this.CreateFolderAsyncWithOptions(desiredName, options);
     }
     pub fn GetFileAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IStorageFolder = @ptrCast(self);
@@ -4032,11 +4032,11 @@ pub const StorageFolder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenameAsync(desiredName);
     }
-    pub fn RenameAsync(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn RenameAsyncWithOption(self: *@This(), desiredName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RenameAsync(desiredName, option);
+        return try this.?.RenameAsyncWithOption(desiredName, option);
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
@@ -4080,11 +4080,11 @@ pub const StorageFolder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getDateCreated();
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         var this: ?*IStorageItem = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItem.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsOfType(type);
+        return try this.?.IsOfType(ty);
     }
     pub fn GetIndexedStateAsync(self: *@This()) core.HResult!*IAsyncOperation(IndexedState) {
         var this: ?*IStorageFolderQueryOperations = undefined;
@@ -4194,17 +4194,17 @@ pub const StorageFolder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailAsync(mode);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize);
+        return try this.?.GetThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsync(mode, requestedSize, options);
+        return try this.?.GetThumbnailAsyncWithOptions(mode, requestedSize, options);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStorageItemProperties = undefined;
@@ -4236,17 +4236,17 @@ pub const StorageFolder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetScaledImageAsThumbnailAsync(mode);
     }
-    pub fn GetScaledImageAsThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetScaledImageAsThumbnailAsyncWithRequestedSize(self: *@This(), mode: ThumbnailMode, requestedSize: u32) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetScaledImageAsThumbnailAsync(mode, requestedSize);
+        return try this.?.GetScaledImageAsThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetScaledImageAsThumbnailAsync(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetScaledImageAsThumbnailAsyncWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetScaledImageAsThumbnailAsync(mode, requestedSize, options);
+        return try this.?.GetScaledImageAsThumbnailAsyncWithOptions(mode, requestedSize, options);
     }
     pub fn GetParentAsync(self: *@This()) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageItem2 = undefined;
@@ -4373,9 +4373,9 @@ pub const StorageLibraryChange = extern struct {
         const this: *IStorageLibraryChange = @ptrCast(self);
         return try this.getPreviousPath();
     }
-    pub fn IsOfType(self: *@This(), type: StorageItemTypes) core.HResult!bool {
+    pub fn IsOfType(self: *@This(), ty: StorageItemTypes) core.HResult!bool {
         const this: *IStorageLibraryChange = @ptrCast(self);
-        return try this.IsOfType(type);
+        return try this.IsOfType(ty);
     }
     pub fn GetStorageItemAsync(self: *@This()) core.HResult!*IAsyncOperation(IStorageItem) {
         const this: *IStorageLibraryChange = @ptrCast(self);

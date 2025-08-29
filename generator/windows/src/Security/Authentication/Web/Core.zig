@@ -262,9 +262,9 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTokenSilentlyAsync(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn GetTokenSilentlyAsyncWithWebAccount(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         var _r: *IAsyncOperation(WebTokenRequestResult) = undefined;
-        const _c = self.vtable.GetTokenSilentlyAsync(@ptrCast(self), request, webAccount, &_r);
+        const _c = self.vtable.GetTokenSilentlyAsyncWithWebAccount(@ptrCast(self), request, webAccount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -274,9 +274,9 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestTokenAsync(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn RequestTokenAsyncWithWebAccount(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         var _r: *IAsyncOperation(WebTokenRequestResult) = undefined;
-        const _c = self.vtable.RequestTokenAsync(@ptrCast(self), request, webAccount, &_r);
+        const _c = self.vtable.RequestTokenAsyncWithWebAccount(@ptrCast(self), request, webAccount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -292,9 +292,9 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAccountProviderAsync(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsyncWithAuthority(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
-        const _c = self.vtable.FindAccountProviderAsync(@ptrCast(self), webAccountProviderId, authority, &_r);
+        const _c = self.vtable.FindAccountProviderAsyncWithAuthority(@ptrCast(self), webAccountProviderId, authority, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -311,12 +311,12 @@ pub const IWebAuthenticationCoreManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetTokenSilentlyAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
-        GetTokenSilentlyAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
+        GetTokenSilentlyAsyncWithWebAccount: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
         RequestTokenAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
-        RequestTokenAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
+        RequestTokenAsyncWithWebAccount: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
         FindAccountAsync: *const fn(self: *anyopaque, provider: *WebAccountProvider, webAccountId: HSTRING, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
         FindAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
-        FindAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindAccountProviderAsyncWithAuthority: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationCoreManagerStatics2 = extern struct {
@@ -373,9 +373,9 @@ pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAccountsAsync(self: *@This(), provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
+    pub fn FindAllAccountsAsyncWithClientId(self: *@This(), provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
         var _r: *IAsyncOperation(FindAllAccountsResult) = undefined;
-        const _c = self.vtable.FindAllAccountsAsync(@ptrCast(self), provider, clientId, &_r);
+        const _c = self.vtable.FindAllAccountsAsyncWithClientId(@ptrCast(self), provider, clientId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -385,15 +385,15 @@ pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindSystemAccountProviderAsync(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthority(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
-        const _c = self.vtable.FindSystemAccountProviderAsync(@ptrCast(self), webAccountProviderId, authority, &_r);
+        const _c = self.vtable.FindSystemAccountProviderAsyncWithAuthority(@ptrCast(self), webAccountProviderId, authority, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindSystemAccountProviderAsync(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithUser(self: *@This(), webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         var _r: *IAsyncOperation(WebAccountProvider) = undefined;
-        const _c = self.vtable.FindSystemAccountProviderAsync(@ptrCast(self), webAccountProviderId, authority, user, &_r);
+        const _c = self.vtable.FindSystemAccountProviderAsyncWithUser(@ptrCast(self), webAccountProviderId, authority, user, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -410,10 +410,10 @@ pub const IWebAuthenticationCoreManagerStatics4 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAccountsAsync: *const fn(self: *anyopaque, provider: *WebAccountProvider, _r: **IAsyncOperation(FindAllAccountsResult)) callconv(.winapi) HRESULT,
-        FindAllAccountsAsync: *const fn(self: *anyopaque, provider: *WebAccountProvider, clientId: HSTRING, _r: **IAsyncOperation(FindAllAccountsResult)) callconv(.winapi) HRESULT,
+        FindAllAccountsAsyncWithClientId: *const fn(self: *anyopaque, provider: *WebAccountProvider, clientId: HSTRING, _r: **IAsyncOperation(FindAllAccountsResult)) callconv(.winapi) HRESULT,
         FindSystemAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
-        FindSystemAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
-        FindSystemAccountProviderAsync: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, user: *User, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindSystemAccountProviderAsyncWithAuthority: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
+        FindSystemAccountProviderAsyncWithUser: *const fn(self: *anyopaque, webAccountProviderId: HSTRING, authority: HSTRING, user: *User, _r: **IAsyncOperation(WebAccountProvider)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationCoreManagerStatics5 = extern struct {
@@ -974,21 +974,21 @@ pub const WebAuthenticationCoreManager = extern struct {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
         return try factory.FindAllAccountsAsync(provider);
     }
-    pub fn FindAllAccountsAsync(provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
+    pub fn FindAllAccountsAsyncWithClientId(provider: *WebAccountProvider, clientId: HSTRING) core.HResult!*IAsyncOperation(FindAllAccountsResult) {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
-        return try factory.FindAllAccountsAsync(provider, clientId);
+        return try factory.FindAllAccountsAsyncWithClientId(provider, clientId);
     }
     pub fn FindSystemAccountProviderAsync(webAccountProviderId: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
         return try factory.FindSystemAccountProviderAsync(webAccountProviderId);
     }
-    pub fn FindSystemAccountProviderAsync(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
-        return try factory.FindSystemAccountProviderAsync(webAccountProviderId, authority);
+        return try factory.FindSystemAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
-    pub fn FindSystemAccountProviderAsync(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindSystemAccountProviderAsyncWithUser(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStatics4Cache.get();
-        return try factory.FindSystemAccountProviderAsync(webAccountProviderId, authority, user);
+        return try factory.FindSystemAccountProviderAsyncWithUser(webAccountProviderId, authority, user);
     }
     pub fn FindAccountProviderAsync(webAccountProviderId: HSTRING, authority: HSTRING, user: *User) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStatics2Cache.get();
@@ -998,17 +998,17 @@ pub const WebAuthenticationCoreManager = extern struct {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
         return try factory.GetTokenSilentlyAsync(request);
     }
-    pub fn GetTokenSilentlyAsync(request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn GetTokenSilentlyAsyncWithWebAccount(request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
-        return try factory.GetTokenSilentlyAsync(request, webAccount);
+        return try factory.GetTokenSilentlyAsyncWithWebAccount(request, webAccount);
     }
     pub fn RequestTokenAsync(request: *WebTokenRequest) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
         return try factory.RequestTokenAsync(request);
     }
-    pub fn RequestTokenAsync(request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn RequestTokenAsyncWithWebAccount(request: *WebTokenRequest, webAccount: *WebAccount) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
-        return try factory.RequestTokenAsync(request, webAccount);
+        return try factory.RequestTokenAsyncWithWebAccount(request, webAccount);
     }
     pub fn FindAccountAsync(provider: *WebAccountProvider, webAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
@@ -1018,9 +1018,9 @@ pub const WebAuthenticationCoreManager = extern struct {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
         return try factory.FindAccountProviderAsync(webAccountProviderId);
     }
-    pub fn FindAccountProviderAsync(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
+    pub fn FindAccountProviderAsyncWithAuthority(webAccountProviderId: HSTRING, authority: HSTRING) core.HResult!*IAsyncOperation(WebAccountProvider) {
         const factory = @This().IWebAuthenticationCoreManagerStaticsCache.get();
-        return try factory.FindAccountProviderAsync(webAccountProviderId, authority);
+        return try factory.FindAccountProviderAsyncWithAuthority(webAccountProviderId, authority);
     }
     pub fn AddAccountWithTransferTokenAsync(request: *WebAuthenticationTransferTokenRequest) core.HResult!*IAsyncOperation(WebAuthenticationAddAccountResult) {
         const factory = @This().IWebAuthenticationCoreManagerStatics5Cache.get();

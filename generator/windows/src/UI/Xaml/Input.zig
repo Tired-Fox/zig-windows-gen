@@ -367,9 +367,9 @@ pub const FocusManager = extern struct {
         const factory = @This().IFocusManagerStatics3Cache.get();
         return try factory.FindNextFocusableElement(focusNavigationDirection);
     }
-    pub fn FindNextFocusableElement(focusNavigationDirection: FocusNavigationDirection, hintRect: Rect) core.HResult!*UIElement {
+    pub fn FindNextFocusableElementWithHintRect(focusNavigationDirection: FocusNavigationDirection, hintRect: Rect) core.HResult!*UIElement {
         const factory = @This().IFocusManagerStatics3Cache.get();
-        return try factory.FindNextFocusableElement(focusNavigationDirection, hintRect);
+        return try factory.FindNextFocusableElementWithHintRect(focusNavigationDirection, hintRect);
     }
     pub fn TryFocusAsync(element: *DependencyObject, value: FocusState) core.HResult!*IAsyncOperation(FocusMovementResult) {
         const factory = @This().IFocusManagerStatics5Cache.get();
@@ -379,9 +379,9 @@ pub const FocusManager = extern struct {
         const factory = @This().IFocusManagerStatics5Cache.get();
         return try factory.TryMoveFocusAsync(focusNavigationDirection);
     }
-    pub fn TryMoveFocusAsync(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*IAsyncOperation(FocusMovementResult) {
+    pub fn TryMoveFocusAsyncWithFocusNavigationOptions(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*IAsyncOperation(FocusMovementResult) {
         const factory = @This().IFocusManagerStatics5Cache.get();
-        return try factory.TryMoveFocusAsync(focusNavigationDirection, focusNavigationOptions);
+        return try factory.TryMoveFocusAsyncWithFocusNavigationOptions(focusNavigationDirection, focusNavigationOptions);
     }
     pub fn addGotFocus(handler: *EventHandler(FocusManagerGotFocusEventArgs)) core.HResult!EventRegistrationToken {
         const factory = @This().IFocusManagerStatics6Cache.get();
@@ -435,9 +435,9 @@ pub const FocusManager = extern struct {
         const factory = @This().IFocusManagerStatics4Cache.get();
         return try factory.FindLastFocusableElement(searchScope);
     }
-    pub fn FindNextElement(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*DependencyObject {
+    pub fn FindNextElementWithFocusNavigationOptions(focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*DependencyObject {
         const factory = @This().IFocusManagerStatics4Cache.get();
-        return try factory.FindNextElement(focusNavigationDirection, focusNavigationOptions);
+        return try factory.FindNextElementWithFocusNavigationOptions(focusNavigationDirection, focusNavigationOptions);
     }
     pub fn TryMoveFocus(focusNavigationDirection: FocusNavigationDirection) core.HResult!bool {
         const factory = @This().IFocusManagerStatics2Cache.get();
@@ -1260,9 +1260,9 @@ pub const IFocusManagerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindNextFocusableElement(self: *@This(), focusNavigationDirection: FocusNavigationDirection, hintRect: Rect) core.HResult!*UIElement {
+    pub fn FindNextFocusableElementWithHintRect(self: *@This(), focusNavigationDirection: FocusNavigationDirection, hintRect: Rect) core.HResult!*UIElement {
         var _r: *UIElement = undefined;
-        const _c = self.vtable.FindNextFocusableElement(@ptrCast(self), focusNavigationDirection, hintRect, &_r);
+        const _c = self.vtable.FindNextFocusableElementWithHintRect(@ptrCast(self), focusNavigationDirection, hintRect, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1279,7 +1279,7 @@ pub const IFocusManagerStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindNextFocusableElement: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, _r: **UIElement) callconv(.winapi) HRESULT,
-        FindNextFocusableElement: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, hintRect: Rect, _r: **UIElement) callconv(.winapi) HRESULT,
+        FindNextFocusableElementWithHintRect: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, hintRect: Rect, _r: **UIElement) callconv(.winapi) HRESULT,
     };
 };
 pub const IFocusManagerStatics4 = extern struct {
@@ -1308,9 +1308,9 @@ pub const IFocusManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindNextElement(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*DependencyObject {
+    pub fn FindNextElementWithFocusNavigationOptions(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*DependencyObject {
         var _r: *DependencyObject = undefined;
-        const _c = self.vtable.FindNextElement(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
+        const _c = self.vtable.FindNextElementWithFocusNavigationOptions(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1330,7 +1330,7 @@ pub const IFocusManagerStatics4 = extern struct {
         FindNextElement: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, _r: **DependencyObject) callconv(.winapi) HRESULT,
         FindFirstFocusableElement: *const fn(self: *anyopaque, searchScope: *DependencyObject, _r: **DependencyObject) callconv(.winapi) HRESULT,
         FindLastFocusableElement: *const fn(self: *anyopaque, searchScope: *DependencyObject, _r: **DependencyObject) callconv(.winapi) HRESULT,
-        FindNextElement: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions, _r: **DependencyObject) callconv(.winapi) HRESULT,
+        FindNextElementWithFocusNavigationOptions: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions, _r: **DependencyObject) callconv(.winapi) HRESULT,
     };
 };
 pub const IFocusManagerStatics5 = extern struct {
@@ -1347,9 +1347,9 @@ pub const IFocusManagerStatics5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveFocusAsync(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*IAsyncOperation(FocusMovementResult) {
+    pub fn TryMoveFocusAsyncWithFocusNavigationOptions(self: *@This(), focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions) core.HResult!*IAsyncOperation(FocusMovementResult) {
         var _r: *IAsyncOperation(FocusMovementResult) = undefined;
-        const _c = self.vtable.TryMoveFocusAsync(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
+        const _c = self.vtable.TryMoveFocusAsyncWithFocusNavigationOptions(@ptrCast(self), focusNavigationDirection, focusNavigationOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1367,7 +1367,7 @@ pub const IFocusManagerStatics5 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryFocusAsync: *const fn(self: *anyopaque, element: *DependencyObject, value: FocusState, _r: **IAsyncOperation(FocusMovementResult)) callconv(.winapi) HRESULT,
         TryMoveFocusAsync: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, _r: **IAsyncOperation(FocusMovementResult)) callconv(.winapi) HRESULT,
-        TryMoveFocusAsync: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions, _r: **IAsyncOperation(FocusMovementResult)) callconv(.winapi) HRESULT,
+        TryMoveFocusAsyncWithFocusNavigationOptions: *const fn(self: *anyopaque, focusNavigationDirection: FocusNavigationDirection, focusNavigationOptions: *FindNextElementOptions, _r: **IAsyncOperation(FocusMovementResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IFocusManagerStatics6 = extern struct {

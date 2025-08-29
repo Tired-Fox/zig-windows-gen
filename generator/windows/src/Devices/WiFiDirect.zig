@@ -403,9 +403,9 @@ pub const IWiFiDirectDeviceStatics = extern struct {
 };
 pub const IWiFiDirectDeviceStatics2 = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), type: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(self: *@This(), ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -427,7 +427,7 @@ pub const IWiFiDirectDeviceStatics2 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, type: WiFiDirectDeviceSelectorType, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, ty: WiFiDirectDeviceSelectorType, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters, _r: **IAsyncOperation(WiFiDirectDevice)) callconv(.winapi) HRESULT,
     };
 };
@@ -823,9 +823,9 @@ pub const WiFiDirectDevice = extern struct {
         const factory = @This().IWiFiDirectDeviceStaticsCache.get();
         return try factory.FromIdAsync(deviceId);
     }
-    pub fn GetDeviceSelector(type: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(ty: WiFiDirectDeviceSelectorType) core.HResult!HSTRING {
         const factory = @This().IWiFiDirectDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelector(type);
+        return try factory.GetDeviceSelector(ty);
     }
     pub fn FromIdAsync(deviceId: HSTRING, connectionParameters: *WiFiDirectConnectionParameters) core.HResult!*IAsyncOperation(WiFiDirectDevice) {
         const factory = @This().IWiFiDirectDeviceStatics2Cache.get();

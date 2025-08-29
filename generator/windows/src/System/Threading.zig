@@ -6,15 +6,15 @@ pub const IThreadPoolStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RunAsync(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*IAsyncAction {
+    pub fn RunAsyncWithPriority(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.RunAsync(@ptrCast(self), handler, priority, &_r);
+        const _c = self.vtable.RunAsyncWithPriority(@ptrCast(self), handler, priority, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RunAsync(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
+    pub fn RunAsyncWithOptions(self: *@This(), handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.RunAsync(@ptrCast(self), handler, priority, options, &_r);
+        const _c = self.vtable.RunAsyncWithOptions(@ptrCast(self), handler, priority, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -31,8 +31,8 @@ pub const IThreadPoolStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RunAsync: *const fn(self: *anyopaque, handler: *WorkItemHandler, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RunAsync: *const fn(self: *anyopaque, handler: *WorkItemHandler, priority: WorkItemPriority, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RunAsync: *const fn(self: *anyopaque, handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RunAsyncWithPriority: *const fn(self: *anyopaque, handler: *WorkItemHandler, priority: WorkItemPriority, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RunAsyncWithOptions: *const fn(self: *anyopaque, handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IThreadPoolTimer = extern struct {
@@ -84,15 +84,15 @@ pub const IThreadPoolTimerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreatePeriodicTimer(self: *@This(), handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
+    pub fn CreatePeriodicTimerWithPeriodWithDestroyed(self: *@This(), handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
-        const _c = self.vtable.CreatePeriodicTimer(@ptrCast(self), handler, period, destroyed, &_r);
+        const _c = self.vtable.CreatePeriodicTimerWithPeriodWithDestroyed(@ptrCast(self), handler, period, destroyed, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateTimer(self: *@This(), handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
+    pub fn CreateTimerWithDelayWithDestroyed(self: *@This(), handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         var _r: *ThreadPoolTimer = undefined;
-        const _c = self.vtable.CreateTimer(@ptrCast(self), handler, delay, destroyed, &_r);
+        const _c = self.vtable.CreateTimerWithDelayWithDestroyed(@ptrCast(self), handler, delay, destroyed, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -110,8 +110,8 @@ pub const IThreadPoolTimerStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreatePeriodicTimer: *const fn(self: *anyopaque, handler: *TimerElapsedHandler, period: TimeSpan, _r: **ThreadPoolTimer) callconv(.winapi) HRESULT,
         CreateTimer: *const fn(self: *anyopaque, handler: *TimerElapsedHandler, delay: TimeSpan, _r: **ThreadPoolTimer) callconv(.winapi) HRESULT,
-        CreatePeriodicTimer: *const fn(self: *anyopaque, handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler, _r: **ThreadPoolTimer) callconv(.winapi) HRESULT,
-        CreateTimer: *const fn(self: *anyopaque, handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler, _r: **ThreadPoolTimer) callconv(.winapi) HRESULT,
+        CreatePeriodicTimerWithPeriodWithDestroyed: *const fn(self: *anyopaque, handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler, _r: **ThreadPoolTimer) callconv(.winapi) HRESULT,
+        CreateTimerWithDelayWithDestroyed: *const fn(self: *anyopaque, handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler, _r: **ThreadPoolTimer) callconv(.winapi) HRESULT,
     };
 };
 pub const ThreadPool = extern struct {
@@ -123,13 +123,13 @@ pub const ThreadPool = extern struct {
         const factory = @This().IThreadPoolStaticsCache.get();
         return try factory.RunAsync(handler);
     }
-    pub fn RunAsync(handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*IAsyncAction {
+    pub fn RunAsyncWithPriority(handler: *WorkItemHandler, priority: WorkItemPriority) core.HResult!*IAsyncAction {
         const factory = @This().IThreadPoolStaticsCache.get();
-        return try factory.RunAsync(handler, priority);
+        return try factory.RunAsyncWithPriority(handler, priority);
     }
-    pub fn RunAsync(handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
+    pub fn RunAsyncWithOptions(handler: *WorkItemHandler, priority: WorkItemPriority, options: WorkItemOptions) core.HResult!*IAsyncAction {
         const factory = @This().IThreadPoolStaticsCache.get();
-        return try factory.RunAsync(handler, priority, options);
+        return try factory.RunAsyncWithOptions(handler, priority, options);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.ThreadPool";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -160,13 +160,13 @@ pub const ThreadPoolTimer = extern struct {
         const factory = @This().IThreadPoolTimerStaticsCache.get();
         return try factory.CreateTimer(handler, delay);
     }
-    pub fn CreatePeriodicTimer(handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
+    pub fn CreatePeriodicTimerWithPeriodWithDestroyed(handler: *TimerElapsedHandler, period: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         const factory = @This().IThreadPoolTimerStaticsCache.get();
-        return try factory.CreatePeriodicTimer(handler, period, destroyed);
+        return try factory.CreatePeriodicTimerWithPeriodWithDestroyed(handler, period, destroyed);
     }
-    pub fn CreateTimer(handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
+    pub fn CreateTimerWithDelayWithDestroyed(handler: *TimerElapsedHandler, delay: TimeSpan, destroyed: *TimerDestroyedHandler) core.HResult!*ThreadPoolTimer {
         const factory = @This().IThreadPoolTimerStaticsCache.get();
-        return try factory.CreateTimer(handler, delay, destroyed);
+        return try factory.CreateTimerWithDelayWithDestroyed(handler, delay, destroyed);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.ThreadPoolTimer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

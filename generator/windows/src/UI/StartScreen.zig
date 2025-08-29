@@ -329,9 +329,9 @@ pub const ISecondaryTile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestCreateForSelectionAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestCreateForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestCreateForSelectionAsync(@ptrCast(self), selection, preferredPlacement, &_r);
+        const _c = self.vtable.RequestCreateForSelectionAsyncWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -353,9 +353,9 @@ pub const ISecondaryTile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestDeleteForSelectionAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestDeleteForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestDeleteForSelectionAsync(@ptrCast(self), selection, preferredPlacement, &_r);
+        const _c = self.vtable.RequestDeleteForSelectionAsyncWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -404,11 +404,11 @@ pub const ISecondaryTile = extern struct {
         RequestCreateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestCreateAsync: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestCreateForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestCreateForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestCreateForSelectionAsyncWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteAsync: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestDeleteForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestDeleteForSelectionAsyncWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         UpdateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -1269,9 +1269,9 @@ pub const SecondaryTile = extern struct {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.RequestCreateForSelectionAsync(selection);
     }
-    pub fn RequestCreateForSelectionAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestCreateForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);
-        return try this.RequestCreateForSelectionAsync(selection, preferredPlacement);
+        return try this.RequestCreateForSelectionAsyncWithPreferredPlacement(selection, preferredPlacement);
     }
     pub fn RequestDeleteAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);
@@ -1285,9 +1285,9 @@ pub const SecondaryTile = extern struct {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.RequestDeleteForSelectionAsync(selection);
     }
-    pub fn RequestDeleteForSelectionAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestDeleteForSelectionAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);
-        return try this.RequestDeleteForSelectionAsync(selection, preferredPlacement);
+        return try this.RequestDeleteForSelectionAsyncWithPreferredPlacement(selection, preferredPlacement);
     }
     pub fn UpdateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);

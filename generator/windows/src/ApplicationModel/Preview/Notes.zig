@@ -339,17 +339,17 @@ pub const NotesWindowManagerPreview = extern struct {
         const this: *INotesWindowManagerPreview = @ptrCast(self);
         return try this.removeNoteVisibilityChanged(token);
     }
-    pub fn ShowNoteRelativeTo(self: *@This(), noteViewId: i32, anchorNoteViewId: i32, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
+    pub fn ShowNoteRelativeToWithAnchorNoteViewIdWithOptions(self: *@This(), noteViewId: i32, anchorNoteViewId: i32, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
         var this: ?*INotesWindowManagerPreview2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotesWindowManagerPreview2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ShowNoteRelativeTo(noteViewId, anchorNoteViewId, options);
+        return try this.?.ShowNoteRelativeToWithAnchorNoteViewIdWithOptions(noteViewId, anchorNoteViewId, options);
     }
-    pub fn ShowNoteWithPlacement(self: *@This(), noteViewId: i32, data: *IBuffer, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
+    pub fn ShowNoteWithPlacementWithDataWithOptions(self: *@This(), noteViewId: i32, data: *IBuffer, options: *NotesWindowManagerPreviewShowNoteOptions) core.HResult!void {
         var this: ?*INotesWindowManagerPreview2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INotesWindowManagerPreview2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ShowNoteWithPlacement(noteViewId, data, options);
+        return try this.?.ShowNoteWithPlacementWithDataWithOptions(noteViewId, data, options);
     }
     pub fn SetFocusToPreviousView(self: *@This()) core.HResult!void {
         var this: ?*INotesWindowManagerPreview2 = undefined;

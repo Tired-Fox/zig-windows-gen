@@ -109,9 +109,9 @@ pub const CastingDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelector(type: CastingPlaybackTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(ty: CastingPlaybackTypes) core.HResult!HSTRING {
         const factory = @This().ICastingDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(type);
+        return try factory.GetDeviceSelector(ty);
     }
     pub fn GetDeviceSelectorFromCastingSourceAsync(castingSource: *CastingSource) core.HResult!*IAsyncOperation(HSTRING) {
         const factory = @This().ICastingDeviceStaticsCache.get();
@@ -162,9 +162,9 @@ pub const CastingDevicePicker = extern struct {
         const this: *ICastingDevicePicker = @ptrCast(self);
         return try this.Show(selection);
     }
-    pub fn Show(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
+    pub fn ShowWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
         const this: *ICastingDevicePicker = @ptrCast(self);
-        return try this.Show(selection, preferredPlacement);
+        return try this.ShowWithPreferredPlacement(selection, preferredPlacement);
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         const this: *ICastingDevicePicker = @ptrCast(self);
@@ -453,8 +453,8 @@ pub const ICastingDevicePicker = extern struct {
         const _c = self.vtable.Show(@ptrCast(self), selection);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Show(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
-        const _c = self.vtable.Show(@ptrCast(self), selection, preferredPlacement);
+    pub fn ShowWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
+        const _c = self.vtable.ShowWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Hide(self: *@This()) core.HResult!void {
@@ -480,7 +480,7 @@ pub const ICastingDevicePicker = extern struct {
         add_CastingDevicePickerDismissed: *const fn(self: *anyopaque, handler: *TypedEventHandler(CastingDevicePicker,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_CastingDevicePickerDismissed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         Show: *const fn(self: *anyopaque, selection: Rect) callconv(.winapi) HRESULT,
-        Show: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement) callconv(.winapi) HRESULT,
+        ShowWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement) callconv(.winapi) HRESULT,
         Hide: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -568,9 +568,9 @@ pub const ICastingDeviceSelectedEventArgs = extern struct {
 };
 pub const ICastingDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelector(self: *@This(), type: CastingPlaybackTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelector(self: *@This(), ty: CastingPlaybackTypes) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -604,7 +604,7 @@ pub const ICastingDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, type: CastingPlaybackTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelector: *const fn(self: *anyopaque, ty: CastingPlaybackTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorFromCastingSourceAsync: *const fn(self: *anyopaque, castingSource: *CastingSource, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, value: HSTRING, _r: **IAsyncOperation(CastingDevice)) callconv(.winapi) HRESULT,
         DeviceInfoSupportsCastingAsync: *const fn(self: *anyopaque, device: *DeviceInformation, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,

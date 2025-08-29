@@ -575,9 +575,9 @@ pub const IProximityDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishMessage(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishMessageWithMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
-        const _c = self.vtable.PublishMessage(@ptrCast(self), messageType, message, messageTransmittedHandler, &_r);
+        const _c = self.vtable.PublishMessageWithMessageWithMessageTransmittedHandler(@ptrCast(self), messageType, message, messageTransmittedHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -587,9 +587,9 @@ pub const IProximityDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishBinaryMessage(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishBinaryMessageWithMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
-        const _c = self.vtable.PublishBinaryMessage(@ptrCast(self), messageType, message, messageTransmittedHandler, &_r);
+        const _c = self.vtable.PublishBinaryMessageWithMessageWithMessageTransmittedHandler(@ptrCast(self), messageType, message, messageTransmittedHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -599,9 +599,9 @@ pub const IProximityDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PublishUriMessage(self: *@This(), message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishUriMessageWithMessageTransmittedHandler(self: *@This(), message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         var _r: i64 = undefined;
-        const _c = self.vtable.PublishUriMessage(@ptrCast(self), message, messageTransmittedHandler, &_r);
+        const _c = self.vtable.PublishUriMessageWithMessageTransmittedHandler(@ptrCast(self), message, messageTransmittedHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -665,11 +665,11 @@ pub const IProximityDevice = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SubscribeForMessage: *const fn(self: *anyopaque, messageType: HSTRING, messageReceivedHandler: *MessageReceivedHandler, _r: *i64) callconv(.winapi) HRESULT,
         PublishMessage: *const fn(self: *anyopaque, messageType: HSTRING, message: HSTRING, _r: *i64) callconv(.winapi) HRESULT,
-        PublishMessage: *const fn(self: *anyopaque, messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
+        PublishMessageWithMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
         PublishBinaryMessage: *const fn(self: *anyopaque, messageType: HSTRING, message: *IBuffer, _r: *i64) callconv(.winapi) HRESULT,
-        PublishBinaryMessage: *const fn(self: *anyopaque, messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
+        PublishBinaryMessageWithMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
         PublishUriMessage: *const fn(self: *anyopaque, message: *Uri, _r: *i64) callconv(.winapi) HRESULT,
-        PublishUriMessage: *const fn(self: *anyopaque, message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
+        PublishUriMessageWithMessageTransmittedHandler: *const fn(self: *anyopaque, message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler, _r: *i64) callconv(.winapi) HRESULT,
         StopSubscribingForMessage: *const fn(self: *anyopaque, subscriptionId: i64) callconv(.winapi) HRESULT,
         StopPublishingMessage: *const fn(self: *anyopaque, messageId: i64) callconv(.winapi) HRESULT,
         add_DeviceArrived: *const fn(self: *anyopaque, arrivedHandler: *DeviceArrivedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1203,25 +1203,25 @@ pub const ProximityDevice = extern struct {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishMessage(messageType, message);
     }
-    pub fn PublishMessage(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishMessageWithMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
-        return try this.PublishMessage(messageType, message, messageTransmittedHandler);
+        return try this.PublishMessageWithMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
     }
     pub fn PublishBinaryMessage(self: *@This(), messageType: HSTRING, message: *IBuffer) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishBinaryMessage(messageType, message);
     }
-    pub fn PublishBinaryMessage(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishBinaryMessageWithMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
-        return try this.PublishBinaryMessage(messageType, message, messageTransmittedHandler);
+        return try this.PublishBinaryMessageWithMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
     }
     pub fn PublishUriMessage(self: *@This(), message: *Uri) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishUriMessage(message);
     }
-    pub fn PublishUriMessage(self: *@This(), message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishUriMessageWithMessageTransmittedHandler(self: *@This(), message: *Uri, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
-        return try this.PublishUriMessage(message, messageTransmittedHandler);
+        return try this.PublishUriMessageWithMessageTransmittedHandler(message, messageTransmittedHandler);
     }
     pub fn StopSubscribingForMessage(self: *@This(), subscriptionId: i64) core.HResult!void {
         const this: *IProximityDevice = @ptrCast(self);

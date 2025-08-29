@@ -135,8 +135,8 @@ pub const IMiracastReceiverConnection = extern struct {
         const _c = self.vtable.Disconnect(@ptrCast(self), reason);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Disconnect(self: *@This(), reason: MiracastReceiverDisconnectReason, message: HSTRING) core.HResult!void {
-        const _c = self.vtable.Disconnect(@ptrCast(self), reason, message);
+    pub fn DisconnectWithMessage(self: *@This(), reason: MiracastReceiverDisconnectReason, message: HSTRING) core.HResult!void {
+        const _c = self.vtable.DisconnectWithMessage(@ptrCast(self), reason, message);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Pause(self: *@This()) core.HResult!void {
@@ -196,7 +196,7 @@ pub const IMiracastReceiverConnection = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Disconnect: *const fn(self: *anyopaque, reason: MiracastReceiverDisconnectReason) callconv(.winapi) HRESULT,
-        Disconnect: *const fn(self: *anyopaque, reason: MiracastReceiverDisconnectReason, message: HSTRING) callconv(.winapi) HRESULT,
+        DisconnectWithMessage: *const fn(self: *anyopaque, reason: MiracastReceiverDisconnectReason, message: HSTRING) callconv(.winapi) HRESULT,
         Pause: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         PauseAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         Resume: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -1077,9 +1077,9 @@ pub const MiracastReceiverConnection = extern struct {
         const this: *IMiracastReceiverConnection = @ptrCast(self);
         return try this.Disconnect(reason);
     }
-    pub fn Disconnect(self: *@This(), reason: MiracastReceiverDisconnectReason, message: HSTRING) core.HResult!void {
+    pub fn DisconnectWithMessage(self: *@This(), reason: MiracastReceiverDisconnectReason, message: HSTRING) core.HResult!void {
         const this: *IMiracastReceiverConnection = @ptrCast(self);
-        return try this.Disconnect(reason, message);
+        return try this.DisconnectWithMessage(reason, message);
     }
     pub fn Pause(self: *@This()) core.HResult!void {
         const this: *IMiracastReceiverConnection = @ptrCast(self);

@@ -1306,9 +1306,9 @@ pub const IPackage5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
+    pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var _r: *IAsyncOperation(IVector(PackageContentGroup)) = undefined;
-        const _c = self.vtable.StageContentGroupsAsync(@ptrCast(self), names, moveToHeadOfQueue, &_r);
+        const _c = self.vtable.StageContentGroupsAsyncWithMoveToHeadOfQueue(@ptrCast(self), names, moveToHeadOfQueue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1333,7 +1333,7 @@ pub const IPackage5 = extern struct {
         GetContentGroupsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
         GetContentGroupAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(PackageContentGroup)) callconv(.winapi) HRESULT,
         StageContentGroupsAsync: *const fn(self: *anyopaque, names: *IIterable(HSTRING), _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
-        StageContentGroupsAsync: *const fn(self: *anyopaque, names: *IIterable(HSTRING), moveToHeadOfQueue: bool, _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
+        StageContentGroupsAsyncWithMoveToHeadOfQueue: *const fn(self: *anyopaque, names: *IIterable(HSTRING), moveToHeadOfQueue: bool, _r: **IAsyncOperation(IVector(PackageContentGroup))) callconv(.winapi) HRESULT,
         SetInUseAsync: *const fn(self: *anyopaque, inUse: bool, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -2807,11 +2807,11 @@ pub const Package = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StageContentGroupsAsync(names);
     }
-    pub fn StageContentGroupsAsync(self: *@This(), names: *IIterable(HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
+    pub fn StageContentGroupsAsyncWithMoveToHeadOfQueue(self: *@This(), names: *IIterable(HSTRING), moveToHeadOfQueue: bool) core.HResult!*IAsyncOperation(IVector(PackageContentGroup)) {
         var this: ?*IPackage5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackage5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StageContentGroupsAsync(names, moveToHeadOfQueue);
+        return try this.?.StageContentGroupsAsyncWithMoveToHeadOfQueue(names, moveToHeadOfQueue);
     }
     pub fn SetInUseAsync(self: *@This(), inUse: bool) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPackage5 = undefined;
@@ -3549,9 +3549,9 @@ pub const FullTrustProcessLauncher = extern struct {
         const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
         return try factory.LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId);
     }
-    pub fn LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
         const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
-        return try factory.LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId, parameterGroupId);
+        return try factory.LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId, parameterGroupId);
     }
     pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
         const factory = @This().IFullTrustProcessLauncherStatics2Cache.get();
@@ -3616,9 +3616,9 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFullTrustProcessForAppAsync(self: *@This(), fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(self: *@This(), fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.LaunchFullTrustProcessForAppAsync(@ptrCast(self), fullTrustPackageRelativeAppId, parameterGroupId, &_r);
+        const _c = self.vtable.LaunchFullTrustProcessForAppAsyncWithParameterGroupId(@ptrCast(self), fullTrustPackageRelativeAppId, parameterGroupId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3637,7 +3637,7 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
         LaunchFullTrustProcessForCurrentAppAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         LaunchFullTrustProcessForCurrentAppAsync: *const fn(self: *anyopaque, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         LaunchFullTrustProcessForAppAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForAppAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IFullTrustProcessLauncherStatics2 = extern struct {

@@ -11,9 +11,9 @@ pub const CurrentApp = extern struct {
         const factory = @This().ICurrentAppWithConsumablesCache.get();
         return try factory.RequestProductPurchaseAsync(productId);
     }
-    pub fn RequestProductPurchaseAsync(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
+    pub fn RequestProductPurchaseAsyncWithDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
         const factory = @This().ICurrentAppWithConsumablesCache.get();
-        return try factory.RequestProductPurchaseAsync(productId, offerId, displayProperties);
+        return try factory.RequestProductPurchaseAsyncWithDisplayProperties(productId, offerId, displayProperties);
     }
     pub fn GetUnfulfilledConsumablesAsync() core.HResult!*IAsyncOperation(IVectorView(UnfulfilledConsumable)) {
         const factory = @This().ICurrentAppWithConsumablesCache.get();
@@ -108,9 +108,9 @@ pub const CurrentAppSimulator = extern struct {
         const factory = @This().ICurrentAppSimulatorWithConsumablesCache.get();
         return try factory.RequestProductPurchaseAsync(productId);
     }
-    pub fn RequestProductPurchaseAsync(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
+    pub fn RequestProductPurchaseAsyncWithDisplayProperties(productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
         const factory = @This().ICurrentAppSimulatorWithConsumablesCache.get();
-        return try factory.RequestProductPurchaseAsync(productId, offerId, displayProperties);
+        return try factory.RequestProductPurchaseAsyncWithDisplayProperties(productId, offerId, displayProperties);
     }
     pub fn GetUnfulfilledConsumablesAsync() core.HResult!*IAsyncOperation(IVectorView(UnfulfilledConsumable)) {
         const factory = @This().ICurrentAppSimulatorWithConsumablesCache.get();
@@ -414,9 +414,9 @@ pub const ICurrentAppSimulatorWithConsumables = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestProductPurchaseAsync(self: *@This(), productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
+    pub fn RequestProductPurchaseAsyncWithDisplayProperties(self: *@This(), productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
         var _r: *IAsyncOperation(PurchaseResults) = undefined;
-        const _c = self.vtable.RequestProductPurchaseAsync(@ptrCast(self), productId, offerId, displayProperties, &_r);
+        const _c = self.vtable.RequestProductPurchaseAsyncWithDisplayProperties(@ptrCast(self), productId, offerId, displayProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -440,7 +440,7 @@ pub const ICurrentAppSimulatorWithConsumables = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportConsumableFulfillmentAsync: *const fn(self: *anyopaque, productId: HSTRING, transactionId: *Guid, _r: **IAsyncOperation(FulfillmentResult)) callconv(.winapi) HRESULT,
         RequestProductPurchaseAsync: *const fn(self: *anyopaque, productId: HSTRING, _r: **IAsyncOperation(PurchaseResults)) callconv(.winapi) HRESULT,
-        RequestProductPurchaseAsync: *const fn(self: *anyopaque, productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties, _r: **IAsyncOperation(PurchaseResults)) callconv(.winapi) HRESULT,
+        RequestProductPurchaseAsyncWithDisplayProperties: *const fn(self: *anyopaque, productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties, _r: **IAsyncOperation(PurchaseResults)) callconv(.winapi) HRESULT,
         GetUnfulfilledConsumablesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UnfulfilledConsumable))) callconv(.winapi) HRESULT,
     };
 };
@@ -516,9 +516,9 @@ pub const ICurrentAppWithConsumables = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestProductPurchaseAsync(self: *@This(), productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
+    pub fn RequestProductPurchaseAsyncWithDisplayProperties(self: *@This(), productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties) core.HResult!*IAsyncOperation(PurchaseResults) {
         var _r: *IAsyncOperation(PurchaseResults) = undefined;
-        const _c = self.vtable.RequestProductPurchaseAsync(@ptrCast(self), productId, offerId, displayProperties, &_r);
+        const _c = self.vtable.RequestProductPurchaseAsyncWithDisplayProperties(@ptrCast(self), productId, offerId, displayProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -542,7 +542,7 @@ pub const ICurrentAppWithConsumables = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReportConsumableFulfillmentAsync: *const fn(self: *anyopaque, productId: HSTRING, transactionId: *Guid, _r: **IAsyncOperation(FulfillmentResult)) callconv(.winapi) HRESULT,
         RequestProductPurchaseAsync: *const fn(self: *anyopaque, productId: HSTRING, _r: **IAsyncOperation(PurchaseResults)) callconv(.winapi) HRESULT,
-        RequestProductPurchaseAsync: *const fn(self: *anyopaque, productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties, _r: **IAsyncOperation(PurchaseResults)) callconv(.winapi) HRESULT,
+        RequestProductPurchaseAsyncWithDisplayProperties: *const fn(self: *anyopaque, productId: HSTRING, offerId: HSTRING, displayProperties: *ProductPurchaseDisplayProperties, _r: **IAsyncOperation(PurchaseResults)) callconv(.winapi) HRESULT,
         GetUnfulfilledConsumablesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UnfulfilledConsumable))) callconv(.winapi) HRESULT,
     };
 };

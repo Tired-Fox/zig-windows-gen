@@ -102,9 +102,9 @@ pub const ActivationViewSwitcher = extern struct {
         const this: *IActivationViewSwitcher = @ptrCast(self);
         return try this.ShowAsStandaloneAsync(viewId);
     }
-    pub fn ShowAsStandaloneAsync(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncAction {
+    pub fn ShowAsStandaloneAsyncWithSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncAction {
         const this: *IActivationViewSwitcher = @ptrCast(self);
-        return try this.ShowAsStandaloneAsync(viewId, sizePreference);
+        return try this.ShowAsStandaloneAsyncWithSizePreference(viewId, sizePreference);
     }
     pub fn IsViewPresentedOnActivationVirtualDesktop(self: *@This(), viewId: i32) core.HResult!bool {
         const this: *IActivationViewSwitcher = @ptrCast(self);
@@ -280,11 +280,11 @@ pub const ApplicationView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryEnterViewModeAsync(viewMode);
     }
-    pub fn TryEnterViewModeAsync(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryEnterViewModeAsyncWithViewModePreferences(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IApplicationView4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryEnterViewModeAsync(viewMode, viewModePreferences);
+        return try this.?.TryEnterViewModeAsyncWithViewModePreferences(viewMode, viewModePreferences);
     }
     pub fn TryConsolidateAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IApplicationView4 = undefined;
@@ -438,25 +438,25 @@ pub const ApplicationViewSwitcher = extern struct {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
         return try factory.TryShowAsStandaloneAsync(viewId);
     }
-    pub fn TryShowAsStandaloneAsync(viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsStandaloneAsyncWithSizePreference(viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
-        return try factory.TryShowAsStandaloneAsync(viewId, sizePreference);
+        return try factory.TryShowAsStandaloneAsyncWithSizePreference(viewId, sizePreference);
     }
-    pub fn TryShowAsStandaloneAsync(viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsStandaloneAsyncWithAnchorSizePreference(viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
-        return try factory.TryShowAsStandaloneAsync(viewId, sizePreference, anchorViewId, anchorSizePreference);
+        return try factory.TryShowAsStandaloneAsyncWithAnchorSizePreference(viewId, sizePreference, anchorViewId, anchorSizePreference);
     }
     pub fn SwitchAsync(viewId: i32) core.HResult!*IAsyncAction {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
         return try factory.SwitchAsync(viewId);
     }
-    pub fn SwitchAsync(toViewId: i32, fromViewId: i32) core.HResult!*IAsyncAction {
+    pub fn SwitchAsyncWithFromViewId(toViewId: i32, fromViewId: i32) core.HResult!*IAsyncAction {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
-        return try factory.SwitchAsync(toViewId, fromViewId);
+        return try factory.SwitchAsyncWithFromViewId(toViewId, fromViewId);
     }
-    pub fn SwitchAsync(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
+    pub fn SwitchAsyncWithOptions(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
-        return try factory.SwitchAsync(toViewId, fromViewId, options);
+        return try factory.SwitchAsyncWithOptions(toViewId, fromViewId, options);
     }
     pub fn PrepareForCustomAnimatedSwitchAsync(toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStaticsCache.get();
@@ -466,9 +466,9 @@ pub const ApplicationViewSwitcher = extern struct {
         const factory = @This().IApplicationViewSwitcherStatics3Cache.get();
         return try factory.TryShowAsViewModeAsync(viewId, viewMode);
     }
-    pub fn TryShowAsViewModeAsync(viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsViewModeAsyncWithViewModeWithViewModePreferences(viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IApplicationViewSwitcherStatics3Cache.get();
-        return try factory.TryShowAsViewModeAsync(viewId, viewMode, viewModePreferences);
+        return try factory.TryShowAsViewModeAsyncWithViewModeWithViewModePreferences(viewId, viewMode, viewModePreferences);
     }
     pub fn DisableSystemViewActivationPolicy() core.HResult!void {
         const factory = @This().IApplicationViewSwitcherStatics2Cache.get();
@@ -683,9 +683,9 @@ pub const IActivationViewSwitcher = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowAsStandaloneAsync(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncAction {
+    pub fn ShowAsStandaloneAsyncWithSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ShowAsStandaloneAsync(@ptrCast(self), viewId, sizePreference, &_r);
+        const _c = self.vtable.ShowAsStandaloneAsyncWithSizePreference(@ptrCast(self), viewId, sizePreference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -708,7 +708,7 @@ pub const IActivationViewSwitcher = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ShowAsStandaloneAsync: *const fn(self: *anyopaque, viewId: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowAsStandaloneAsync: *const fn(self: *anyopaque, viewId: i32, sizePreference: ViewSizePreference, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowAsStandaloneAsyncWithSizePreference: *const fn(self: *anyopaque, viewId: i32, sizePreference: ViewSizePreference, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         IsViewPresentedOnActivationVirtualDesktop: *const fn(self: *anyopaque, viewId: i32, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
@@ -958,9 +958,9 @@ pub const IApplicationView4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryEnterViewModeAsync(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryEnterViewModeAsyncWithViewModePreferences(self: *@This(), viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryEnterViewModeAsync(@ptrCast(self), viewMode, viewModePreferences, &_r);
+        const _c = self.vtable.TryEnterViewModeAsyncWithViewModePreferences(@ptrCast(self), viewMode, viewModePreferences, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -985,7 +985,7 @@ pub const IApplicationView4 = extern struct {
         get_ViewMode: *const fn(self: *anyopaque, _r: *ApplicationViewMode) callconv(.winapi) HRESULT,
         IsViewModeSupported: *const fn(self: *anyopaque, viewMode: ApplicationViewMode, _r: *bool) callconv(.winapi) HRESULT,
         TryEnterViewModeAsync: *const fn(self: *anyopaque, viewMode: ApplicationViewMode, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryEnterViewModeAsync: *const fn(self: *anyopaque, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryEnterViewModeAsyncWithViewModePreferences: *const fn(self: *anyopaque, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryConsolidateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -1282,15 +1282,15 @@ pub const IApplicationViewSwitcherStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryShowAsStandaloneAsync(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsStandaloneAsyncWithSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryShowAsStandaloneAsync(@ptrCast(self), viewId, sizePreference, &_r);
+        const _c = self.vtable.TryShowAsStandaloneAsyncWithSizePreference(@ptrCast(self), viewId, sizePreference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryShowAsStandaloneAsync(self: *@This(), viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsStandaloneAsyncWithAnchorSizePreference(self: *@This(), viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryShowAsStandaloneAsync(@ptrCast(self), viewId, sizePreference, anchorViewId, anchorSizePreference, &_r);
+        const _c = self.vtable.TryShowAsStandaloneAsyncWithAnchorSizePreference(@ptrCast(self), viewId, sizePreference, anchorViewId, anchorSizePreference, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1300,15 +1300,15 @@ pub const IApplicationViewSwitcherStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SwitchAsync(self: *@This(), toViewId: i32, fromViewId: i32) core.HResult!*IAsyncAction {
+    pub fn SwitchAsyncWithFromViewId(self: *@This(), toViewId: i32, fromViewId: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SwitchAsync(@ptrCast(self), toViewId, fromViewId, &_r);
+        const _c = self.vtable.SwitchAsyncWithFromViewId(@ptrCast(self), toViewId, fromViewId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SwitchAsync(self: *@This(), toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
+    pub fn SwitchAsyncWithOptions(self: *@This(), toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SwitchAsync(@ptrCast(self), toViewId, fromViewId, options, &_r);
+        const _c = self.vtable.SwitchAsyncWithOptions(@ptrCast(self), toViewId, fromViewId, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1332,11 +1332,11 @@ pub const IApplicationViewSwitcherStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         DisableShowingMainViewOnActivation: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         TryShowAsStandaloneAsync: *const fn(self: *anyopaque, viewId: i32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryShowAsStandaloneAsync: *const fn(self: *anyopaque, viewId: i32, sizePreference: ViewSizePreference, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryShowAsStandaloneAsync: *const fn(self: *anyopaque, viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryShowAsStandaloneAsyncWithSizePreference: *const fn(self: *anyopaque, viewId: i32, sizePreference: ViewSizePreference, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryShowAsStandaloneAsyncWithAnchorSizePreference: *const fn(self: *anyopaque, viewId: i32, sizePreference: ViewSizePreference, anchorViewId: i32, anchorSizePreference: ViewSizePreference, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         SwitchAsync: *const fn(self: *anyopaque, viewId: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SwitchAsync: *const fn(self: *anyopaque, toViewId: i32, fromViewId: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SwitchAsync: *const fn(self: *anyopaque, toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SwitchAsyncWithFromViewId: *const fn(self: *anyopaque, toViewId: i32, fromViewId: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SwitchAsyncWithOptions: *const fn(self: *anyopaque, toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         PrepareForCustomAnimatedSwitchAsync: *const fn(self: *anyopaque, toViewId: i32, fromViewId: i32, options: ApplicationViewSwitchingOptions, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
@@ -1369,9 +1369,9 @@ pub const IApplicationViewSwitcherStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryShowAsViewModeAsync(self: *@This(), viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryShowAsViewModeAsyncWithViewModeWithViewModePreferences(self: *@This(), viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryShowAsViewModeAsync(@ptrCast(self), viewId, viewMode, viewModePreferences, &_r);
+        const _c = self.vtable.TryShowAsViewModeAsyncWithViewModeWithViewModePreferences(@ptrCast(self), viewId, viewMode, viewModePreferences, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1388,7 +1388,7 @@ pub const IApplicationViewSwitcherStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryShowAsViewModeAsync: *const fn(self: *anyopaque, viewId: i32, viewMode: ApplicationViewMode, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryShowAsViewModeAsync: *const fn(self: *anyopaque, viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryShowAsViewModeAsyncWithViewModeWithViewModePreferences: *const fn(self: *anyopaque, viewId: i32, viewMode: ApplicationViewMode, viewModePreferences: *ViewModePreferences, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IApplicationViewTitleBar = extern struct {
@@ -1881,9 +1881,9 @@ pub const IProjectionManagerStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestStartProjectingAsync(self: *@This(), projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement(self: *@This(), projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestStartProjectingAsync(@ptrCast(self), projectionViewId, anchorViewId, selection, prefferedPlacement, &_r);
+        const _c = self.vtable.RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement(@ptrCast(self), projectionViewId, anchorViewId, selection, prefferedPlacement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1907,7 +1907,7 @@ pub const IProjectionManagerStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         StartProjectingAsync: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, displayDeviceInfo: *DeviceInformation, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RequestStartProjectingAsync: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, selection: Rect, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestStartProjectingAsync: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement: *const fn(self: *anyopaque, projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
@@ -2512,9 +2512,9 @@ pub const ProjectionManager = extern struct {
         const factory = @This().IProjectionManagerStatics2Cache.get();
         return try factory.RequestStartProjectingAsync(projectionViewId, anchorViewId, selection);
     }
-    pub fn RequestStartProjectingAsync(projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement(projectionViewId: i32, anchorViewId: i32, selection: Rect, prefferedPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         const factory = @This().IProjectionManagerStatics2Cache.get();
-        return try factory.RequestStartProjectingAsync(projectionViewId, anchorViewId, selection, prefferedPlacement);
+        return try factory.RequestStartProjectingAsyncWithAnchorViewIdWithSelectionWithPrefferedPlacement(projectionViewId, anchorViewId, selection, prefferedPlacement);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
         const factory = @This().IProjectionManagerStatics2Cache.get();

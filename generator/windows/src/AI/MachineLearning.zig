@@ -189,8 +189,8 @@ pub const ILearningModelBinding = extern struct {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.Bind(@ptrCast(self), name, value, props);
+    pub fn BindWithValueWithProps(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.BindWithValueWithProps(@ptrCast(self), name, value, props);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Clear(self: *@This()) core.HResult!void {
@@ -210,7 +210,7 @@ pub const ILearningModelBinding = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, props: *IPropertySet) callconv(.winapi) HRESULT,
+        BindWithValueWithProps: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, props: *IPropertySet) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -661,27 +661,27 @@ pub const ILearningModelStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromStorageFileAsync(self: *@This(), modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
+    pub fn LoadFromStorageFileAsyncWithOperatorProvider(self: *@This(), modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
-        const _c = self.vtable.LoadFromStorageFileAsync(@ptrCast(self), modelFile, operatorProvider, &_r);
+        const _c = self.vtable.LoadFromStorageFileAsyncWithOperatorProvider(@ptrCast(self), modelFile, operatorProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromStreamAsync(self: *@This(), modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
+    pub fn LoadFromStreamAsyncWithOperatorProvider(self: *@This(), modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
         var _r: *IAsyncOperation(LearningModel) = undefined;
-        const _c = self.vtable.LoadFromStreamAsync(@ptrCast(self), modelStream, operatorProvider, &_r);
+        const _c = self.vtable.LoadFromStreamAsyncWithOperatorProvider(@ptrCast(self), modelStream, operatorProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromFilePath(self: *@This(), filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
+    pub fn LoadFromFilePathWithOperatorProvider(self: *@This(), filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
-        const _c = self.vtable.LoadFromFilePath(@ptrCast(self), filePath, operatorProvider, &_r);
+        const _c = self.vtable.LoadFromFilePathWithOperatorProvider(@ptrCast(self), filePath, operatorProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromStream(self: *@This(), modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
+    pub fn LoadFromStreamWithOperatorProvider(self: *@This(), modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         var _r: *LearningModel = undefined;
-        const _c = self.vtable.LoadFromStream(@ptrCast(self), modelStream, operatorProvider, &_r);
+        const _c = self.vtable.LoadFromStreamWithOperatorProvider(@ptrCast(self), modelStream, operatorProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -701,10 +701,10 @@ pub const ILearningModelStatics = extern struct {
         LoadFromStreamAsync: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
         LoadFromFilePath: *const fn(self: *anyopaque, filePath: HSTRING, _r: **LearningModel) callconv(.winapi) HRESULT,
         LoadFromStream: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, _r: **LearningModel) callconv(.winapi) HRESULT,
-        LoadFromStorageFileAsync: *const fn(self: *anyopaque, modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
-        LoadFromStreamAsync: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
-        LoadFromFilePath: *const fn(self: *anyopaque, filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
-        LoadFromStream: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
+        LoadFromStorageFileAsyncWithOperatorProvider: *const fn(self: *anyopaque, modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
+        LoadFromStreamAsyncWithOperatorProvider: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider, _r: **IAsyncOperation(LearningModel)) callconv(.winapi) HRESULT,
+        LoadFromFilePathWithOperatorProvider: *const fn(self: *anyopaque, filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
+        LoadFromStreamWithOperatorProvider: *const fn(self: *anyopaque, modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider, _r: **LearningModel) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapFeatureDescriptor = extern struct {
@@ -2213,21 +2213,21 @@ pub const LearningModel = extern struct {
         const factory = @This().ILearningModelStaticsCache.get();
         return try factory.LoadFromStream(modelStream);
     }
-    pub fn LoadFromStorageFileAsync(modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
+    pub fn LoadFromStorageFileAsyncWithOperatorProvider(modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
         const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStorageFileAsync(modelFile, operatorProvider);
+        return try factory.LoadFromStorageFileAsyncWithOperatorProvider(modelFile, operatorProvider);
     }
-    pub fn LoadFromStreamAsync(modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
+    pub fn LoadFromStreamAsyncWithOperatorProvider(modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
         const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStreamAsync(modelStream, operatorProvider);
+        return try factory.LoadFromStreamAsyncWithOperatorProvider(modelStream, operatorProvider);
     }
-    pub fn LoadFromFilePath(filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
+    pub fn LoadFromFilePathWithOperatorProvider(filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromFilePath(filePath, operatorProvider);
+        return try factory.LoadFromFilePathWithOperatorProvider(filePath, operatorProvider);
     }
-    pub fn LoadFromStream(modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
+    pub fn LoadFromStreamWithOperatorProvider(modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
         const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStream(modelStream, operatorProvider);
+        return try factory.LoadFromStreamWithOperatorProvider(modelStream, operatorProvider);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.LearningModel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2242,9 +2242,9 @@ pub const LearningModelBinding = extern struct {
         const this: *ILearningModelBinding = @ptrCast(self);
         return try this.Bind(name, value);
     }
-    pub fn Bind(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
+    pub fn BindWithValueWithProps(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
         const this: *ILearningModelBinding = @ptrCast(self);
-        return try this.Bind(name, value, props);
+        return try this.BindWithValueWithProps(name, value, props);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         const this: *ILearningModelBinding = @ptrCast(self);

@@ -1,8 +1,8 @@
 pub const IWebAuthenticationBrokerStatics = extern struct {
     vtable: *const VTable,
-    pub fn AuthenticateAsync(self: *@This(), options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
+    pub fn AuthenticateAsyncWithRequestUriWithCallbackUri(self: *@This(), options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
-        const _c = self.vtable.AuthenticateAsync(@ptrCast(self), options, requestUri, callbackUri, &_r);
+        const _c = self.vtable.AuthenticateAsyncWithRequestUriWithCallbackUri(@ptrCast(self), options, requestUri, callbackUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -30,7 +30,7 @@ pub const IWebAuthenticationBrokerStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        AuthenticateAsync: *const fn(self: *anyopaque, options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri, _r: **IAsyncOperation(WebAuthenticationResult)) callconv(.winapi) HRESULT,
+        AuthenticateAsyncWithRequestUriWithCallbackUri: *const fn(self: *anyopaque, options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri, _r: **IAsyncOperation(WebAuthenticationResult)) callconv(.winapi) HRESULT,
         AuthenticateAsync: *const fn(self: *anyopaque, options: WebAuthenticationOptions, requestUri: *Uri, _r: **IAsyncOperation(WebAuthenticationResult)) callconv(.winapi) HRESULT,
         GetCurrentApplicationCallbackUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
     };
@@ -41,12 +41,12 @@ pub const IWebAuthenticationBrokerStatics2 = extern struct {
         const _c = self.vtable.AuthenticateAndContinue(@ptrCast(self), requestUri);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AuthenticateAndContinue(self: *@This(), requestUri: *Uri, callbackUri: *Uri) core.HResult!void {
-        const _c = self.vtable.AuthenticateAndContinue(@ptrCast(self), requestUri, callbackUri);
+    pub fn AuthenticateAndContinueWithCallbackUri(self: *@This(), requestUri: *Uri, callbackUri: *Uri) core.HResult!void {
+        const _c = self.vtable.AuthenticateAndContinueWithCallbackUri(@ptrCast(self), requestUri, callbackUri);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AuthenticateAndContinue(self: *@This(), requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
-        const _c = self.vtable.AuthenticateAndContinue(@ptrCast(self), requestUri, callbackUri, continuationData, options);
+    pub fn AuthenticateAndContinueWithOptions(self: *@This(), requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
+        const _c = self.vtable.AuthenticateAndContinueWithOptions(@ptrCast(self), requestUri, callbackUri, continuationData, options);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn AuthenticateSilentlyAsync(self: *@This(), requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
@@ -55,9 +55,9 @@ pub const IWebAuthenticationBrokerStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AuthenticateSilentlyAsync(self: *@This(), requestUri: *Uri, options: WebAuthenticationOptions) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
+    pub fn AuthenticateSilentlyAsyncWithOptions(self: *@This(), requestUri: *Uri, options: WebAuthenticationOptions) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         var _r: *IAsyncOperation(WebAuthenticationResult) = undefined;
-        const _c = self.vtable.AuthenticateSilentlyAsync(@ptrCast(self), requestUri, options, &_r);
+        const _c = self.vtable.AuthenticateSilentlyAsyncWithOptions(@ptrCast(self), requestUri, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -74,10 +74,10 @@ pub const IWebAuthenticationBrokerStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         AuthenticateAndContinue: *const fn(self: *anyopaque, requestUri: *Uri) callconv(.winapi) HRESULT,
-        AuthenticateAndContinue: *const fn(self: *anyopaque, requestUri: *Uri, callbackUri: *Uri) callconv(.winapi) HRESULT,
-        AuthenticateAndContinue: *const fn(self: *anyopaque, requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) callconv(.winapi) HRESULT,
+        AuthenticateAndContinueWithCallbackUri: *const fn(self: *anyopaque, requestUri: *Uri, callbackUri: *Uri) callconv(.winapi) HRESULT,
+        AuthenticateAndContinueWithOptions: *const fn(self: *anyopaque, requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) callconv(.winapi) HRESULT,
         AuthenticateSilentlyAsync: *const fn(self: *anyopaque, requestUri: *Uri, _r: **IAsyncOperation(WebAuthenticationResult)) callconv(.winapi) HRESULT,
-        AuthenticateSilentlyAsync: *const fn(self: *anyopaque, requestUri: *Uri, options: WebAuthenticationOptions, _r: **IAsyncOperation(WebAuthenticationResult)) callconv(.winapi) HRESULT,
+        AuthenticateSilentlyAsyncWithOptions: *const fn(self: *anyopaque, requestUri: *Uri, options: WebAuthenticationOptions, _r: **IAsyncOperation(WebAuthenticationResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAuthenticationResult = extern struct {
@@ -131,25 +131,25 @@ pub const WebAuthenticationBroker = extern struct {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
         return try factory.AuthenticateAndContinue(requestUri);
     }
-    pub fn AuthenticateAndContinue(requestUri: *Uri, callbackUri: *Uri) core.HResult!void {
+    pub fn AuthenticateAndContinueWithCallbackUri(requestUri: *Uri, callbackUri: *Uri) core.HResult!void {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
-        return try factory.AuthenticateAndContinue(requestUri, callbackUri);
+        return try factory.AuthenticateAndContinueWithCallbackUri(requestUri, callbackUri);
     }
-    pub fn AuthenticateAndContinue(requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
+    pub fn AuthenticateAndContinueWithOptions(requestUri: *Uri, callbackUri: *Uri, continuationData: *ValueSet, options: WebAuthenticationOptions) core.HResult!void {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
-        return try factory.AuthenticateAndContinue(requestUri, callbackUri, continuationData, options);
+        return try factory.AuthenticateAndContinueWithOptions(requestUri, callbackUri, continuationData, options);
     }
     pub fn AuthenticateSilentlyAsync(requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
         return try factory.AuthenticateSilentlyAsync(requestUri);
     }
-    pub fn AuthenticateSilentlyAsync(requestUri: *Uri, options: WebAuthenticationOptions) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
+    pub fn AuthenticateSilentlyAsyncWithOptions(requestUri: *Uri, options: WebAuthenticationOptions) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStatics2Cache.get();
-        return try factory.AuthenticateSilentlyAsync(requestUri, options);
+        return try factory.AuthenticateSilentlyAsyncWithOptions(requestUri, options);
     }
-    pub fn AuthenticateAsync(options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
+    pub fn AuthenticateAsyncWithRequestUriWithCallbackUri(options: WebAuthenticationOptions, requestUri: *Uri, callbackUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStaticsCache.get();
-        return try factory.AuthenticateAsync(options, requestUri, callbackUri);
+        return try factory.AuthenticateAsyncWithRequestUriWithCallbackUri(options, requestUri, callbackUri);
     }
     pub fn AuthenticateAsync(options: WebAuthenticationOptions, requestUri: *Uri) core.HResult!*IAsyncOperation(WebAuthenticationResult) {
         const factory = @This().IWebAuthenticationBrokerStaticsCache.get();

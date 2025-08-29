@@ -3468,9 +3468,9 @@ pub const IMediaCapture = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.StartRecordToCustomSinkAsync(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
+        const _c = self.vtable.StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3480,15 +3480,15 @@ pub const IMediaCapture = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CapturePhotoToStorageFileAsync(self: *@This(), type: *ImageEncodingProperties, file: *IStorageFile) core.HResult!*IAsyncAction {
+    pub fn CapturePhotoToStorageFileAsync(self: *@This(), ty: *ImageEncodingProperties, file: *IStorageFile) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.CapturePhotoToStorageFileAsync(@ptrCast(self), type, file, &_r);
+        const _c = self.vtable.CapturePhotoToStorageFileAsync(@ptrCast(self), ty, file, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CapturePhotoToStreamAsync(self: *@This(), type: *ImageEncodingProperties, stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
+    pub fn CapturePhotoToStreamAsync(self: *@This(), ty: *ImageEncodingProperties, stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.CapturePhotoToStreamAsync(@ptrCast(self), type, stream, &_r);
+        const _c = self.vtable.CapturePhotoToStreamAsync(@ptrCast(self), ty, stream, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3599,10 +3599,10 @@ pub const IMediaCapture = extern struct {
         StartRecordToStorageFileAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StartRecordToStreamAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StartRecordToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        StartRecordToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StopRecordAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        CapturePhotoToStorageFileAsync: *const fn(self: *anyopaque, type: *ImageEncodingProperties, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        CapturePhotoToStreamAsync: *const fn(self: *anyopaque, type: *ImageEncodingProperties, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        CapturePhotoToStorageFileAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, file: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        CapturePhotoToStreamAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, stream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         AddEffectAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, effectActivationID: HSTRING, effectSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ClearEffectsAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SetEncoderProperty: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, propertyId: *Guid, propertyValue: *IInspectable) callconv(.winapi) HRESULT,
@@ -3642,21 +3642,21 @@ pub const IMediaCapture2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PrepareLowLagRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
+    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var _r: *IAsyncOperation(LowLagMediaRecording) = undefined;
-        const _c = self.vtable.PrepareLowLagRecordToCustomSinkAsync(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
+        const _c = self.vtable.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), type: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
+    pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
         var _r: *IAsyncOperation(LowLagPhotoCapture) = undefined;
-        const _c = self.vtable.PrepareLowLagPhotoCaptureAsync(@ptrCast(self), type, &_r);
+        const _c = self.vtable.PrepareLowLagPhotoCaptureAsync(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PrepareLowLagPhotoSequenceCaptureAsync(self: *@This(), type: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoSequenceCapture) {
+    pub fn PrepareLowLagPhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoSequenceCapture) {
         var _r: *IAsyncOperation(LowLagPhotoSequenceCapture) = undefined;
-        const _c = self.vtable.PrepareLowLagPhotoSequenceCaptureAsync(@ptrCast(self), type, &_r);
+        const _c = self.vtable.PrepareLowLagPhotoSequenceCaptureAsync(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3681,17 +3681,17 @@ pub const IMediaCapture2 = extern struct {
         PrepareLowLagRecordToStorageFileAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, file: *IStorageFile, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
         PrepareLowLagRecordToStreamAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, stream: *IRandomAccessStream, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
         PrepareLowLagRecordToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
-        PrepareLowLagRecordToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
-        PrepareLowLagPhotoCaptureAsync: *const fn(self: *anyopaque, type: *ImageEncodingProperties, _r: **IAsyncOperation(LowLagPhotoCapture)) callconv(.winapi) HRESULT,
-        PrepareLowLagPhotoSequenceCaptureAsync: *const fn(self: *anyopaque, type: *ImageEncodingProperties, _r: **IAsyncOperation(LowLagPhotoSequenceCapture)) callconv(.winapi) HRESULT,
+        PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncOperation(LowLagMediaRecording)) callconv(.winapi) HRESULT,
+        PrepareLowLagPhotoCaptureAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, _r: **IAsyncOperation(LowLagPhotoCapture)) callconv(.winapi) HRESULT,
+        PrepareLowLagPhotoSequenceCaptureAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, _r: **IAsyncOperation(LowLagPhotoSequenceCapture)) callconv(.winapi) HRESULT,
         SetEncodingPropertiesAsync: *const fn(self: *anyopaque, mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties, encoderProperties: *MediaPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCapture3 = extern struct {
     vtable: *const VTable,
-    pub fn PrepareVariablePhotoSequenceCaptureAsync(self: *@This(), type: *ImageEncodingProperties) core.HResult!*IAsyncOperation(VariablePhotoSequenceCapture) {
+    pub fn PrepareVariablePhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(VariablePhotoSequenceCapture) {
         var _r: *IAsyncOperation(VariablePhotoSequenceCapture) = undefined;
-        const _c = self.vtable.PrepareVariablePhotoSequenceCaptureAsync(@ptrCast(self), type, &_r);
+        const _c = self.vtable.PrepareVariablePhotoSequenceCaptureAsync(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3727,7 +3727,7 @@ pub const IMediaCapture3 = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        PrepareVariablePhotoSequenceCaptureAsync: *const fn(self: *anyopaque, type: *ImageEncodingProperties, _r: **IAsyncOperation(VariablePhotoSequenceCapture)) callconv(.winapi) HRESULT,
+        PrepareVariablePhotoSequenceCaptureAsync: *const fn(self: *anyopaque, ty: *ImageEncodingProperties, _r: **IAsyncOperation(VariablePhotoSequenceCapture)) callconv(.winapi) HRESULT,
         add_FocusChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(MediaCapture,MediaCaptureFocusChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_FocusChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_PhotoConfirmationCaptured: *const fn(self: *anyopaque, handler: *TypedEventHandler(MediaCapture,PhotoConfirmationCapturedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -3869,15 +3869,15 @@ pub const IMediaCapture5 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrameReaderAsync(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
-        const _c = self.vtable.CreateFrameReaderAsync(@ptrCast(self), inputSource, outputSubtype, &_r);
+        const _c = self.vtable.CreateFrameReaderAsyncWithOutputSubtype(@ptrCast(self), inputSource, outputSubtype, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrameReaderAsync(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var _r: *IAsyncOperation(MediaFrameReader) = undefined;
-        const _c = self.vtable.CreateFrameReaderAsync(@ptrCast(self), inputSource, outputSubtype, outputSize, &_r);
+        const _c = self.vtable.CreateFrameReaderAsyncWithOutputSize(@ptrCast(self), inputSource, outputSubtype, outputSize, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3898,8 +3898,8 @@ pub const IMediaCapture5 = extern struct {
         StopRecordWithResultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(MediaCaptureStopResult)) callconv(.winapi) HRESULT,
         get_FrameSources: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,MediaFrameSource)) callconv(.winapi) HRESULT,
         CreateFrameReaderAsync: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
-        CreateFrameReaderAsync: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: HSTRING, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
-        CreateFrameReaderAsync: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
+        CreateFrameReaderAsyncWithOutputSubtype: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: HSTRING, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
+        CreateFrameReaderAsyncWithOutputSize: *const fn(self: *anyopaque, inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize, _r: **IAsyncOperation(MediaFrameReader)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaCapture6 = extern struct {
@@ -4680,9 +4680,9 @@ pub const IMediaCaptureVideoPreview = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartPreviewToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.StartPreviewToCustomSinkAsync(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
+        const _c = self.vtable.StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(@ptrCast(self), encodingProfile, customSinkActivationId, customSinkSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4706,7 +4706,7 @@ pub const IMediaCaptureVideoPreview = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         StartPreviewAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StartPreviewToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customMediaSink: *IMediaExtension, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        StartPreviewToCustomSinkAsync: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         StopPreviewAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -5129,21 +5129,21 @@ pub const MediaCapture = extern struct {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.StartRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn StartRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
-        return try this.StartRecordToCustomSinkAsync(encodingProfile, customSinkActivationId, customSinkSettings);
+        return try this.StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn StopRecordAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.StopRecordAsync();
     }
-    pub fn CapturePhotoToStorageFileAsync(self: *@This(), type: *ImageEncodingProperties, file: *IStorageFile) core.HResult!*IAsyncAction {
+    pub fn CapturePhotoToStorageFileAsync(self: *@This(), ty: *ImageEncodingProperties, file: *IStorageFile) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
-        return try this.CapturePhotoToStorageFileAsync(type, file);
+        return try this.CapturePhotoToStorageFileAsync(ty, file);
     }
-    pub fn CapturePhotoToStreamAsync(self: *@This(), type: *ImageEncodingProperties, stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
+    pub fn CapturePhotoToStreamAsync(self: *@This(), ty: *ImageEncodingProperties, stream: *IRandomAccessStream) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
-        return try this.CapturePhotoToStreamAsync(type, stream);
+        return try this.CapturePhotoToStreamAsync(ty, stream);
     }
     pub fn AddEffectAsync(self: *@This(), mediaStreamType: MediaStreamType, effectActivationID: HSTRING, effectSettings: *IPropertySet) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
@@ -5225,11 +5225,11 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartPreviewToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn StartPreviewToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartPreviewToCustomSinkAsync(encodingProfile, customSinkActivationId, customSinkSettings);
+        return try this.?.StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn StopPreviewAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
@@ -5255,23 +5255,23 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrepareLowLagRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn PrepareLowLagRecordToCustomSinkAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
+    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrepareLowLagRecordToCustomSinkAsync(encodingProfile, customSinkActivationId, customSinkSettings);
+        return try this.?.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
-    pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), type: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
+    pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
         var this: ?*IMediaCapture2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrepareLowLagPhotoCaptureAsync(type);
+        return try this.?.PrepareLowLagPhotoCaptureAsync(ty);
     }
-    pub fn PrepareLowLagPhotoSequenceCaptureAsync(self: *@This(), type: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoSequenceCapture) {
+    pub fn PrepareLowLagPhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoSequenceCapture) {
         var this: ?*IMediaCapture2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrepareLowLagPhotoSequenceCaptureAsync(type);
+        return try this.?.PrepareLowLagPhotoSequenceCaptureAsync(ty);
     }
     pub fn SetEncodingPropertiesAsync(self: *@This(), mediaStreamType: MediaStreamType, mediaEncodingProperties: *IMediaEncodingProperties, encoderProperties: *MediaPropertySet) core.HResult!*IAsyncAction {
         var this: ?*IMediaCapture2 = undefined;
@@ -5285,11 +5285,11 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn PrepareVariablePhotoSequenceCaptureAsync(self: *@This(), type: *ImageEncodingProperties) core.HResult!*IAsyncOperation(VariablePhotoSequenceCapture) {
+    pub fn PrepareVariablePhotoSequenceCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(VariablePhotoSequenceCapture) {
         var this: ?*IMediaCapture3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrepareVariablePhotoSequenceCaptureAsync(type);
+        return try this.?.PrepareVariablePhotoSequenceCaptureAsync(ty);
     }
     pub fn addFocusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureFocusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture3 = undefined;
@@ -5423,17 +5423,17 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsync(inputSource);
     }
-    pub fn CreateFrameReaderAsync(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtype(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFrameReaderAsync(inputSource, outputSubtype);
+        return try this.?.CreateFrameReaderAsyncWithOutputSubtype(inputSource, outputSubtype);
     }
-    pub fn CreateFrameReaderAsync(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFrameReaderAsync(inputSource, outputSubtype, outputSize);
+        return try this.?.CreateFrameReaderAsyncWithOutputSize(inputSource, outputSubtype, outputSize);
     }
     pub fn addCaptureDeviceExclusiveControlStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureDeviceExclusiveControlStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture6 = undefined;

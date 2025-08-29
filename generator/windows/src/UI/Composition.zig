@@ -70,11 +70,11 @@ pub const CompositionObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetAnimationController(propertyName);
     }
-    pub fn StartAnimation(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
+    pub fn StartAnimationWithAnimationWithAnimationController(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
         var this: ?*ICompositionObject5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAnimation(propertyName, animation, animationController);
+        return try this.?.StartAnimationWithAnimationWithAnimationController(propertyName, animation, animationController);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -295,9 +295,9 @@ pub const CompositionEasingFunction = extern struct {
         const factory = @This().ICompositionEasingFunctionStaticsCache.get();
         return try factory.CreateStepEasingFunction(owner);
     }
-    pub fn CreateStepEasingFunction(owner: *Compositor, stepCount: i32) core.HResult!*StepEasingFunction {
+    pub fn CreateStepEasingFunctionWithStepCount(owner: *Compositor, stepCount: i32) core.HResult!*StepEasingFunction {
         const factory = @This().ICompositionEasingFunctionStaticsCache.get();
-        return try factory.CreateStepEasingFunction(owner, stepCount);
+        return try factory.CreateStepEasingFunctionWithStepCount(owner, stepCount);
     }
     pub fn CreateBackEasingFunction(owner: *Compositor, mode: CompositionEasingFunctionMode, amplitude: f32) core.HResult!*BackEasingFunction {
         const factory = @This().ICompositionEasingFunctionStaticsCache.get();
@@ -487,9 +487,9 @@ pub const KeyFrameAnimation = extern struct {
         const this: *IKeyFrameAnimation = @ptrCast(self);
         return try this.InsertExpressionKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertExpressionKeyFrame(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertExpressionKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertExpressionKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertExpressionKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub fn getDirection(self: *@This()) core.HResult!AnimationDirection {
         var this: ?*IKeyFrameAnimation2 = undefined;
@@ -799,9 +799,9 @@ pub const ColorKeyFrameAnimation = extern struct {
         const this: *IColorKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IColorKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ColorKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1291,11 +1291,11 @@ pub const CompositionDrawingSurface = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Scroll(offset);
     }
-    pub fn Scroll(self: *@This(), offset: PointInt32, scrollRect: RectInt32) core.HResult!void {
+    pub fn ScrollWithScrollRect(self: *@This(), offset: PointInt32, scrollRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Scroll(offset, scrollRect);
+        return try this.?.ScrollWithScrollRect(offset, scrollRect);
     }
     pub fn ScrollWithClip(self: *@This(), offset: PointInt32, clipRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
@@ -1303,11 +1303,11 @@ pub const CompositionDrawingSurface = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollWithClip(offset, clipRect);
     }
-    pub fn ScrollWithClip(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
+    pub fn ScrollWithClipWithClipRectWithScrollRect(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ScrollWithClip(offset, clipRect, scrollRect);
+        return try this.?.ScrollWithClipWithClipRectWithScrollRect(offset, clipRect, scrollRect);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1824,17 +1824,17 @@ pub const CompositionNineGridBrush = extern struct {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
         return try this.SetInsets(inset);
     }
-    pub fn SetInsets(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
+    pub fn SetInsetsWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
-        return try this.SetInsets(left, top, right, bottom);
+        return try this.SetInsetsWithBottom(left, top, right, bottom);
     }
     pub fn SetInsetScales(self: *@This(), scale: f32) core.HResult!void {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
         return try this.SetInsetScales(scale);
     }
-    pub fn SetInsetScales(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
+    pub fn SetInsetScalesWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
-        return try this.SetInsetScales(left, top, right, bottom);
+        return try this.SetInsetScalesWithBottom(left, top, right, bottom);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionNineGridBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2838,9 +2838,9 @@ pub const Compositor = extern struct {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateEffectFactory(graphicsEffect);
     }
-    pub fn CreateEffectFactory(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING)) core.HResult!*CompositionEffectFactory {
+    pub fn CreateEffectFactoryWithAnimatableProperties(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING)) core.HResult!*CompositionEffectFactory {
         const this: *ICompositor = @ptrCast(self);
-        return try this.CreateEffectFactory(graphicsEffect, animatableProperties);
+        return try this.CreateEffectFactoryWithAnimatableProperties(graphicsEffect, animatableProperties);
     }
     pub fn CreateExpressionAnimation(self: *@This()) core.HResult!*ExpressionAnimation {
         const this: *ICompositor = @ptrCast(self);
@@ -4183,8 +4183,8 @@ pub const IColorKeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IColorKeyFrameAnimation";
@@ -4202,7 +4202,7 @@ pub const IColorKeyFrameAnimation = extern struct {
         get_InterpolationColorSpace: *const fn(self: *anyopaque, _r: *CompositionColorSpace) callconv(.winapi) HRESULT,
         put_InterpolationColorSpace: *const fn(self: *anyopaque, value: CompositionColorSpace) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Color) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionAnimation = extern struct {
@@ -4886,16 +4886,16 @@ pub const ICompositionDrawingSurface2 = extern struct {
         const _c = self.vtable.Scroll(@ptrCast(self), offset);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Scroll(self: *@This(), offset: PointInt32, scrollRect: RectInt32) core.HResult!void {
-        const _c = self.vtable.Scroll(@ptrCast(self), offset, scrollRect);
+    pub fn ScrollWithScrollRect(self: *@This(), offset: PointInt32, scrollRect: RectInt32) core.HResult!void {
+        const _c = self.vtable.ScrollWithScrollRect(@ptrCast(self), offset, scrollRect);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ScrollWithClip(self: *@This(), offset: PointInt32, clipRect: RectInt32) core.HResult!void {
         const _c = self.vtable.ScrollWithClip(@ptrCast(self), offset, clipRect);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ScrollWithClip(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
-        const _c = self.vtable.ScrollWithClip(@ptrCast(self), offset, clipRect, scrollRect);
+    pub fn ScrollWithClipWithClipRectWithScrollRect(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
+        const _c = self.vtable.ScrollWithClipWithClipRectWithScrollRect(@ptrCast(self), offset, clipRect, scrollRect);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionDrawingSurface2";
@@ -4913,9 +4913,9 @@ pub const ICompositionDrawingSurface2 = extern struct {
         get_SizeInt32: *const fn(self: *anyopaque, _r: *SizeInt32) callconv(.winapi) HRESULT,
         Resize: *const fn(self: *anyopaque, sizePixels: SizeInt32) callconv(.winapi) HRESULT,
         Scroll: *const fn(self: *anyopaque, offset: PointInt32) callconv(.winapi) HRESULT,
-        Scroll: *const fn(self: *anyopaque, offset: PointInt32, scrollRect: RectInt32) callconv(.winapi) HRESULT,
+        ScrollWithScrollRect: *const fn(self: *anyopaque, offset: PointInt32, scrollRect: RectInt32) callconv(.winapi) HRESULT,
         ScrollWithClip: *const fn(self: *anyopaque, offset: PointInt32, clipRect: RectInt32) callconv(.winapi) HRESULT,
-        ScrollWithClip: *const fn(self: *anyopaque, offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) callconv(.winapi) HRESULT,
+        ScrollWithClipWithClipRectWithScrollRect: *const fn(self: *anyopaque, offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionDrawingSurfaceFactory = extern struct {
@@ -4986,9 +4986,9 @@ pub const ICompositionEasingFunctionStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateStepEasingFunction(self: *@This(), owner: *Compositor, stepCount: i32) core.HResult!*StepEasingFunction {
+    pub fn CreateStepEasingFunctionWithStepCount(self: *@This(), owner: *Compositor, stepCount: i32) core.HResult!*StepEasingFunction {
         var _r: *StepEasingFunction = undefined;
-        const _c = self.vtable.CreateStepEasingFunction(@ptrCast(self), owner, stepCount, &_r);
+        const _c = self.vtable.CreateStepEasingFunctionWithStepCount(@ptrCast(self), owner, stepCount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5049,7 +5049,7 @@ pub const ICompositionEasingFunctionStatics = extern struct {
         CreateCubicBezierEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, controlPoint1: Vector2, controlPoint2: Vector2, _r: **CubicBezierEasingFunction) callconv(.winapi) HRESULT,
         CreateLinearEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, _r: **LinearEasingFunction) callconv(.winapi) HRESULT,
         CreateStepEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, _r: **StepEasingFunction) callconv(.winapi) HRESULT,
-        CreateStepEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, stepCount: i32, _r: **StepEasingFunction) callconv(.winapi) HRESULT,
+        CreateStepEasingFunctionWithStepCount: *const fn(self: *anyopaque, owner: *Compositor, stepCount: i32, _r: **StepEasingFunction) callconv(.winapi) HRESULT,
         CreateBackEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, mode: CompositionEasingFunctionMode, amplitude: f32, _r: **BackEasingFunction) callconv(.winapi) HRESULT,
         CreateBounceEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, mode: CompositionEasingFunctionMode, bounces: i32, bounciness: f32, _r: **BounceEasingFunction) callconv(.winapi) HRESULT,
         CreateCircleEasingFunction: *const fn(self: *anyopaque, owner: *Compositor, mode: CompositionEasingFunctionMode, _r: **CircleEasingFunction) callconv(.winapi) HRESULT,
@@ -5976,16 +5976,16 @@ pub const ICompositionNineGridBrush = extern struct {
         const _c = self.vtable.SetInsets(@ptrCast(self), inset);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetInsets(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
-        const _c = self.vtable.SetInsets(@ptrCast(self), left, top, right, bottom);
+    pub fn SetInsetsWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
+        const _c = self.vtable.SetInsetsWithBottom(@ptrCast(self), left, top, right, bottom);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SetInsetScales(self: *@This(), scale: f32) core.HResult!void {
         const _c = self.vtable.SetInsetScales(@ptrCast(self), scale);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetInsetScales(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
-        const _c = self.vtable.SetInsetScales(@ptrCast(self), left, top, right, bottom);
+    pub fn SetInsetScalesWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
+        const _c = self.vtable.SetInsetScalesWithBottom(@ptrCast(self), left, top, right, bottom);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ICompositionNineGridBrush";
@@ -6021,9 +6021,9 @@ pub const ICompositionNineGridBrush = extern struct {
         get_TopInsetScale: *const fn(self: *anyopaque, _r: *f32) callconv(.winapi) HRESULT,
         put_TopInsetScale: *const fn(self: *anyopaque, value: f32) callconv(.winapi) HRESULT,
         SetInsets: *const fn(self: *anyopaque, inset: f32) callconv(.winapi) HRESULT,
-        SetInsets: *const fn(self: *anyopaque, left: f32, top: f32, right: f32, bottom: f32) callconv(.winapi) HRESULT,
+        SetInsetsWithBottom: *const fn(self: *anyopaque, left: f32, top: f32, right: f32, bottom: f32) callconv(.winapi) HRESULT,
         SetInsetScales: *const fn(self: *anyopaque, scale: f32) callconv(.winapi) HRESULT,
-        SetInsetScales: *const fn(self: *anyopaque, left: f32, top: f32, right: f32, bottom: f32) callconv(.winapi) HRESULT,
+        SetInsetScalesWithBottom: *const fn(self: *anyopaque, left: f32, top: f32, right: f32, bottom: f32) callconv(.winapi) HRESULT,
     };
 };
 pub const ICompositionObject = extern struct {
@@ -7809,9 +7809,9 @@ pub const ICompositor = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateEffectFactory(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING)) core.HResult!*CompositionEffectFactory {
+    pub fn CreateEffectFactoryWithAnimatableProperties(self: *@This(), graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING)) core.HResult!*CompositionEffectFactory {
         var _r: *CompositionEffectFactory = undefined;
-        const _c = self.vtable.CreateEffectFactory(@ptrCast(self), graphicsEffect, animatableProperties, &_r);
+        const _c = self.vtable.CreateEffectFactoryWithAnimatableProperties(@ptrCast(self), graphicsEffect, animatableProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -7935,7 +7935,7 @@ pub const ICompositor = extern struct {
         CreateContainerVisual: *const fn(self: *anyopaque, _r: **ContainerVisual) callconv(.winapi) HRESULT,
         CreateCubicBezierEasingFunction: *const fn(self: *anyopaque, controlPoint1: Vector2, controlPoint2: Vector2, _r: **CubicBezierEasingFunction) callconv(.winapi) HRESULT,
         CreateEffectFactory: *const fn(self: *anyopaque, graphicsEffect: *IGraphicsEffect, _r: **CompositionEffectFactory) callconv(.winapi) HRESULT,
-        CreateEffectFactory: *const fn(self: *anyopaque, graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING), _r: **CompositionEffectFactory) callconv(.winapi) HRESULT,
+        CreateEffectFactoryWithAnimatableProperties: *const fn(self: *anyopaque, graphicsEffect: *IGraphicsEffect, animatableProperties: *IIterable(HSTRING), _r: **CompositionEffectFactory) callconv(.winapi) HRESULT,
         CreateExpressionAnimation: *const fn(self: *anyopaque, _r: **ExpressionAnimation) callconv(.winapi) HRESULT,
         CreateExpressionAnimation: *const fn(self: *anyopaque, expression: HSTRING, _r: **ExpressionAnimation) callconv(.winapi) HRESULT,
         CreateInsetClip: *const fn(self: *anyopaque, _r: **InsetClip) callconv(.winapi) HRESULT,
@@ -9116,8 +9116,8 @@ pub const IKeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertExpressionKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertExpressionKeyFrame(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertExpressionKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertExpressionKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertExpressionKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IKeyFrameAnimation";
@@ -9144,7 +9144,7 @@ pub const IKeyFrameAnimation = extern struct {
         get_StopBehavior: *const fn(self: *anyopaque, _r: *AnimationStopBehavior) callconv(.winapi) HRESULT,
         put_StopBehavior: *const fn(self: *anyopaque, value: AnimationStopBehavior) callconv(.winapi) HRESULT,
         InsertExpressionKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: HSTRING) callconv(.winapi) HRESULT,
-        InsertExpressionKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertExpressionKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IKeyFrameAnimation2 = extern struct {
@@ -9365,8 +9365,8 @@ pub const IPathKeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, path);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, path, easingFunction);
+    pub fn InsertKeyFrameWithPathWithEasingFunction(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithPathWithEasingFunction(@ptrCast(self), normalizedProgressKey, path, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IPathKeyFrameAnimation";
@@ -9382,7 +9382,7 @@ pub const IPathKeyFrameAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, path: *CompositionPath) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithPathWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IPointLight = extern struct {
@@ -9577,8 +9577,8 @@ pub const IQuaternionKeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IQuaternionKeyFrameAnimation";
@@ -9594,7 +9594,7 @@ pub const IQuaternionKeyFrameAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Quaternion) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IRectangleClip = extern struct {
@@ -9766,8 +9766,8 @@ pub const IScalarKeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IScalarKeyFrameAnimation";
@@ -9783,7 +9783,7 @@ pub const IScalarKeyFrameAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: f32) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IScalarNaturalMotionAnimation = extern struct {
@@ -10410,8 +10410,8 @@ pub const IVector2KeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVector2KeyFrameAnimation";
@@ -10427,7 +10427,7 @@ pub const IVector2KeyFrameAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector2) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IVector2NaturalMotionAnimation = extern struct {
@@ -10504,8 +10504,8 @@ pub const IVector3KeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVector3KeyFrameAnimation";
@@ -10521,7 +10521,7 @@ pub const IVector3KeyFrameAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector3) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IVector3NaturalMotionAnimation = extern struct {
@@ -10598,8 +10598,8 @@ pub const IVector4KeyFrameAnimation = extern struct {
         const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) core.HResult!void {
-        const _c = self.vtable.InsertKeyFrame(@ptrCast(self), normalizedProgressKey, value, easingFunction);
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) core.HResult!void {
+        const _c = self.vtable.InsertKeyFrameWithValueWithEasingFunction(@ptrCast(self), normalizedProgressKey, value, easingFunction);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.IVector4KeyFrameAnimation";
@@ -10615,7 +10615,7 @@ pub const IVector4KeyFrameAnimation = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector4) callconv(.winapi) HRESULT,
-        InsertKeyFrame: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
+        InsertKeyFrameWithValueWithEasingFunction: *const fn(self: *anyopaque, normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) callconv(.winapi) HRESULT,
     };
 };
 pub const IVisual = extern struct {
@@ -11271,9 +11271,9 @@ pub const PathKeyFrameAnimation = extern struct {
         const this: *IPathKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, path);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithPathWithEasingFunction(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IPathKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, path, easingFunction);
+        return try this.InsertKeyFrameWithPathWithEasingFunction(normalizedProgressKey, path, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.PathKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11395,9 +11395,9 @@ pub const QuaternionKeyFrameAnimation = extern struct {
         const this: *IQuaternionKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IQuaternionKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.QuaternionKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11511,9 +11511,9 @@ pub const ScalarKeyFrameAnimation = extern struct {
         const this: *IScalarKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IScalarKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ScalarKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11859,9 +11859,9 @@ pub const Vector2KeyFrameAnimation = extern struct {
         const this: *IVector2KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IVector2KeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector2KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11875,9 +11875,9 @@ pub const Vector3KeyFrameAnimation = extern struct {
         const this: *IVector3KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IVector3KeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector3KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11891,9 +11891,9 @@ pub const Vector4KeyFrameAnimation = extern struct {
         const this: *IVector4KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrame(self: *@This(), normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IVector4KeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrame(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector4KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -43,9 +43,9 @@ pub const IJapanesePhoneticAnalyzerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetWords(self: *@This(), input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
+    pub fn GetWordsWithMonoRuby(self: *@This(), input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
         var _r: *IVectorView(JapanesePhoneme) = undefined;
-        const _c = self.vtable.GetWords(@ptrCast(self), input, monoRuby, &_r);
+        const _c = self.vtable.GetWordsWithMonoRuby(@ptrCast(self), input, monoRuby, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -62,7 +62,7 @@ pub const IJapanesePhoneticAnalyzerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetWords: *const fn(self: *anyopaque, input: HSTRING, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
-        GetWords: *const fn(self: *anyopaque, input: HSTRING, monoRuby: bool, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
+        GetWordsWithMonoRuby: *const fn(self: *anyopaque, input: HSTRING, monoRuby: bool, _r: **IVectorView(JapanesePhoneme)) callconv(.winapi) HRESULT,
     };
 };
 pub const JapanesePhoneme = extern struct {
@@ -94,9 +94,9 @@ pub const JapanesePhoneticAnalyzer = extern struct {
         const factory = @This().IJapanesePhoneticAnalyzerStaticsCache.get();
         return try factory.GetWords(input);
     }
-    pub fn GetWords(input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
+    pub fn GetWordsWithMonoRuby(input: HSTRING, monoRuby: bool) core.HResult!*IVectorView(JapanesePhoneme) {
         const factory = @This().IJapanesePhoneticAnalyzerStaticsCache.get();
-        return try factory.GetWords(input, monoRuby);
+        return try factory.GetWordsWithMonoRuby(input, monoRuby);
     }
     pub const NAME: []const u8 = "Windows.Globalization.JapanesePhoneticAnalyzer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

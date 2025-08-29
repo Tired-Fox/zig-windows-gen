@@ -146,17 +146,17 @@ pub const DialDevicePicker = extern struct {
         const this: *IDialDevicePicker = @ptrCast(self);
         return try this.Show(selection);
     }
-    pub fn Show(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
+    pub fn ShowWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
         const this: *IDialDevicePicker = @ptrCast(self);
-        return try this.Show(selection, preferredPlacement);
+        return try this.ShowWithPreferredPlacement(selection, preferredPlacement);
     }
     pub fn PickSingleDialDeviceAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(DialDevice) {
         const this: *IDialDevicePicker = @ptrCast(self);
         return try this.PickSingleDialDeviceAsync(selection);
     }
-    pub fn PickSingleDialDeviceAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(DialDevice) {
+    pub fn PickSingleDialDeviceAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(DialDevice) {
         const this: *IDialDevicePicker = @ptrCast(self);
-        return try this.PickSingleDialDeviceAsync(selection, preferredPlacement);
+        return try this.PickSingleDialDeviceAsyncWithPreferredPlacement(selection, preferredPlacement);
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         const this: *IDialDevicePicker = @ptrCast(self);
@@ -428,8 +428,8 @@ pub const IDialDevicePicker = extern struct {
         const _c = self.vtable.Show(@ptrCast(self), selection);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Show(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
-        const _c = self.vtable.Show(@ptrCast(self), selection, preferredPlacement);
+    pub fn ShowWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!void {
+        const _c = self.vtable.ShowWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn PickSingleDialDeviceAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(DialDevice) {
@@ -438,9 +438,9 @@ pub const IDialDevicePicker = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PickSingleDialDeviceAsync(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(DialDevice) {
+    pub fn PickSingleDialDeviceAsyncWithPreferredPlacement(self: *@This(), selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(DialDevice) {
         var _r: *IAsyncOperation(DialDevice) = undefined;
-        const _c = self.vtable.PickSingleDialDeviceAsync(@ptrCast(self), selection, preferredPlacement, &_r);
+        const _c = self.vtable.PickSingleDialDeviceAsyncWithPreferredPlacement(@ptrCast(self), selection, preferredPlacement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -473,9 +473,9 @@ pub const IDialDevicePicker = extern struct {
         add_DialDevicePickerDismissed: *const fn(self: *anyopaque, handler: *TypedEventHandler(DialDevicePicker,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DialDevicePickerDismissed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         Show: *const fn(self: *anyopaque, selection: Rect) callconv(.winapi) HRESULT,
-        Show: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement) callconv(.winapi) HRESULT,
+        ShowWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement) callconv(.winapi) HRESULT,
         PickSingleDialDeviceAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(DialDevice)) callconv(.winapi) HRESULT,
-        PickSingleDialDeviceAsync: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(DialDevice)) callconv(.winapi) HRESULT,
+        PickSingleDialDeviceAsyncWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(DialDevice)) callconv(.winapi) HRESULT,
         Hide: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SetDisplayStatus: *const fn(self: *anyopaque, device: *DialDevice, status: DialDeviceDisplayStatus) callconv(.winapi) HRESULT,
     };

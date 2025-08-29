@@ -233,11 +233,11 @@ pub const BluetoothDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRfcommServicesForIdAsync(serviceId);
     }
-    pub fn GetRfcommServicesForIdAsync(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
+    pub fn GetRfcommServicesForIdAsyncWithCacheMode(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetRfcommServicesForIdAsync(serviceId, cacheMode);
+        return try this.?.GetRfcommServicesForIdAsyncWithCacheMode(serviceId, cacheMode);
     }
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var this: ?*IBluetoothDevice4 = undefined;
@@ -748,11 +748,11 @@ pub const BluetoothLEDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetGattServicesForUuidAsync(serviceUuid);
     }
-    pub fn GetGattServicesForUuidAsync(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetGattServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetGattServicesForUuidAsync(serviceUuid, cacheMode);
+        return try this.?.GetGattServicesForUuidAsyncWithCacheMode(serviceUuid, cacheMode);
     }
     pub fn getBluetoothDeviceId(self: *@This()) core.HResult!*BluetoothDeviceId {
         var this: ?*IBluetoothLEDevice4 = undefined;
@@ -833,9 +833,9 @@ pub const BluetoothLEDevice = extern struct {
         const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
         return try factory.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
     }
-    pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
         const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress, bluetoothAddressType);
+        return try factory.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress, bluetoothAddressType);
     }
     pub fn GetDeviceSelectorFromAppearance(appearance: *BluetoothLEAppearance) core.HResult!HSTRING {
         const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
@@ -1527,9 +1527,9 @@ pub const IBluetoothDevice3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetRfcommServicesForIdAsync(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
+    pub fn GetRfcommServicesForIdAsyncWithCacheMode(self: *@This(), serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var _r: *IAsyncOperation(RfcommDeviceServicesResult) = undefined;
-        const _c = self.vtable.GetRfcommServicesForIdAsync(@ptrCast(self), serviceId, cacheMode, &_r);
+        const _c = self.vtable.GetRfcommServicesForIdAsyncWithCacheMode(@ptrCast(self), serviceId, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1550,7 +1550,7 @@ pub const IBluetoothDevice3 = extern struct {
         GetRfcommServicesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetRfcommServicesAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetRfcommServicesForIdAsync: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
-        GetRfcommServicesForIdAsync: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
+        GetRfcommServicesForIdAsyncWithCacheMode: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothDevice4 = extern struct {
@@ -2470,9 +2470,9 @@ pub const IBluetoothLEDevice3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetGattServicesForUuidAsync(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetGattServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
-        const _c = self.vtable.GetGattServicesForUuidAsync(@ptrCast(self), serviceUuid, cacheMode, &_r);
+        const _c = self.vtable.GetGattServicesForUuidAsyncWithCacheMode(@ptrCast(self), serviceUuid, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2493,7 +2493,7 @@ pub const IBluetoothLEDevice3 = extern struct {
         GetGattServicesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetGattServicesAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetGattServicesForUuidAsync: *const fn(self: *anyopaque, serviceUuid: *Guid, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
-        GetGattServicesForUuidAsync: *const fn(self: *anyopaque, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
+        GetGattServicesForUuidAsyncWithCacheMode: *const fn(self: *anyopaque, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBluetoothLEDevice4 = extern struct {
@@ -2666,9 +2666,9 @@ pub const IBluetoothLEDeviceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorFromBluetoothAddress(self: *@This(), bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(self: *@This(), bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorFromBluetoothAddress(@ptrCast(self), bluetoothAddress, bluetoothAddressType, &_r);
+        const _c = self.vtable.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(@ptrCast(self), bluetoothAddress, bluetoothAddressType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2700,7 +2700,7 @@ pub const IBluetoothLEDeviceStatics2 = extern struct {
         GetDeviceSelectorFromConnectionStatus: *const fn(self: *anyopaque, connectionStatus: BluetoothConnectionStatus, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorFromDeviceName: *const fn(self: *anyopaque, deviceName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorFromBluetoothAddress: *const fn(self: *anyopaque, bluetoothAddress: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorFromBluetoothAddress: *const fn(self: *anyopaque, bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType: *const fn(self: *anyopaque, bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorFromAppearance: *const fn(self: *anyopaque, appearance: *BluetoothLEAppearance, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromBluetoothAddressAsync: *const fn(self: *anyopaque, bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType, _r: **IAsyncOperation(BluetoothLEDevice)) callconv(.winapi) HRESULT,
     };

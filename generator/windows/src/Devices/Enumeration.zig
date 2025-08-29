@@ -160,9 +160,9 @@ pub const DeviceInformation = extern struct {
         const factory = @This().IDeviceInformationStaticsCache.get();
         return try factory.CreateFromIdAsync(deviceId);
     }
-    pub fn CreateFromIdAsync(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalProperties(deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
         const factory = @This().IDeviceInformationStaticsCache.get();
-        return try factory.CreateFromIdAsync(deviceId, additionalProperties);
+        return try factory.CreateFromIdAsyncWithAdditionalProperties(deviceId, additionalProperties);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(DeviceInformationCollection) {
         const factory = @This().IDeviceInformationStaticsCache.get();
@@ -269,13 +269,13 @@ pub const DeviceInformationCustomPairing = extern struct {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
         return try this.PairAsync(pairingKindsSupported);
     }
-    pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
+    pub fn PairAsyncWithMinProtectionLevel(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
-        return try this.PairAsync(pairingKindsSupported, minProtectionLevel);
+        return try this.PairAsyncWithMinProtectionLevel(pairingKindsSupported, minProtectionLevel);
     }
-    pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
+    pub fn PairAsyncWithDevicePairingSettings(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
-        return try this.PairAsync(pairingKindsSupported, minProtectionLevel, devicePairingSettings);
+        return try this.PairAsyncWithDevicePairingSettings(pairingKindsSupported, minProtectionLevel, devicePairingSettings);
     }
     pub fn addPairingRequested(self: *@This(), handler: *TypedEventHandler(DeviceInformationCustomPairing,DevicePairingRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
@@ -575,17 +575,17 @@ pub const DevicePicker = extern struct {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.Show(selection);
     }
-    pub fn Show(self: *@This(), selection: Rect, placement: Placement) core.HResult!void {
+    pub fn ShowWithPlacement(self: *@This(), selection: Rect, placement: Placement) core.HResult!void {
         const this: *IDevicePicker = @ptrCast(self);
-        return try this.Show(selection, placement);
+        return try this.ShowWithPlacement(selection, placement);
     }
     pub fn PickSingleDeviceAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(DeviceInformation) {
         const this: *IDevicePicker = @ptrCast(self);
         return try this.PickSingleDeviceAsync(selection);
     }
-    pub fn PickSingleDeviceAsync(self: *@This(), selection: Rect, placement: Placement) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn PickSingleDeviceAsyncWithPlacement(self: *@This(), selection: Rect, placement: Placement) core.HResult!*IAsyncOperation(DeviceInformation) {
         const this: *IDevicePicker = @ptrCast(self);
-        return try this.PickSingleDeviceAsync(selection, placement);
+        return try this.PickSingleDeviceAsyncWithPlacement(selection, placement);
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         const this: *IDevicePicker = @ptrCast(self);
@@ -1296,15 +1296,15 @@ pub const IDeviceInformationCustomPairing = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
+    pub fn PairAsyncWithMinProtectionLevel(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
-        const _c = self.vtable.PairAsync(@ptrCast(self), pairingKindsSupported, minProtectionLevel, &_r);
+        const _c = self.vtable.PairAsyncWithMinProtectionLevel(@ptrCast(self), pairingKindsSupported, minProtectionLevel, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PairAsync(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
+    pub fn PairAsyncWithDevicePairingSettings(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var _r: *IAsyncOperation(DevicePairingResult) = undefined;
-        const _c = self.vtable.PairAsync(@ptrCast(self), pairingKindsSupported, minProtectionLevel, devicePairingSettings, &_r);
+        const _c = self.vtable.PairAsyncWithDevicePairingSettings(@ptrCast(self), pairingKindsSupported, minProtectionLevel, devicePairingSettings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1331,8 +1331,8 @@ pub const IDeviceInformationCustomPairing = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         PairAsync: *const fn(self: *anyopaque, pairingKindsSupported: DevicePairingKinds, _r: **IAsyncOperation(DevicePairingResult)) callconv(.winapi) HRESULT,
-        PairAsync: *const fn(self: *anyopaque, pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, _r: **IAsyncOperation(DevicePairingResult)) callconv(.winapi) HRESULT,
-        PairAsync: *const fn(self: *anyopaque, pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings, _r: **IAsyncOperation(DevicePairingResult)) callconv(.winapi) HRESULT,
+        PairAsyncWithMinProtectionLevel: *const fn(self: *anyopaque, pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, _r: **IAsyncOperation(DevicePairingResult)) callconv(.winapi) HRESULT,
+        PairAsyncWithDevicePairingSettings: *const fn(self: *anyopaque, pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings, _r: **IAsyncOperation(DevicePairingResult)) callconv(.winapi) HRESULT,
         add_PairingRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(DeviceInformationCustomPairing,DevicePairingRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_PairingRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -1512,9 +1512,9 @@ pub const IDeviceInformationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromIdAsync(self: *@This(), deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn CreateFromIdAsyncWithAdditionalProperties(self: *@This(), deviceId: HSTRING, additionalProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
-        const _c = self.vtable.CreateFromIdAsync(@ptrCast(self), deviceId, additionalProperties, &_r);
+        const _c = self.vtable.CreateFromIdAsyncWithAdditionalProperties(@ptrCast(self), deviceId, additionalProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1579,7 +1579,7 @@ pub const IDeviceInformationStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
-        CreateFromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
+        CreateFromIdAsyncWithAdditionalProperties: *const fn(self: *anyopaque, deviceId: HSTRING, additionalProperties: *IIterable(HSTRING), _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, deviceClass: DeviceClass, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, aqsFilter: HSTRING, _r: **IAsyncOperation(DeviceInformationCollection)) callconv(.winapi) HRESULT,
@@ -1957,8 +1957,8 @@ pub const IDevicePicker = extern struct {
         const _c = self.vtable.Show(@ptrCast(self), selection);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Show(self: *@This(), selection: Rect, placement: Placement) core.HResult!void {
-        const _c = self.vtable.Show(@ptrCast(self), selection, placement);
+    pub fn ShowWithPlacement(self: *@This(), selection: Rect, placement: Placement) core.HResult!void {
+        const _c = self.vtable.ShowWithPlacement(@ptrCast(self), selection, placement);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn PickSingleDeviceAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(DeviceInformation) {
@@ -1967,9 +1967,9 @@ pub const IDevicePicker = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PickSingleDeviceAsync(self: *@This(), selection: Rect, placement: Placement) core.HResult!*IAsyncOperation(DeviceInformation) {
+    pub fn PickSingleDeviceAsyncWithPlacement(self: *@This(), selection: Rect, placement: Placement) core.HResult!*IAsyncOperation(DeviceInformation) {
         var _r: *IAsyncOperation(DeviceInformation) = undefined;
-        const _c = self.vtable.PickSingleDeviceAsync(@ptrCast(self), selection, placement, &_r);
+        const _c = self.vtable.PickSingleDeviceAsyncWithPlacement(@ptrCast(self), selection, placement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2003,9 +2003,9 @@ pub const IDevicePicker = extern struct {
         add_DevicePickerDismissed: *const fn(self: *anyopaque, handler: *TypedEventHandler(DevicePicker,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DevicePickerDismissed: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         Show: *const fn(self: *anyopaque, selection: Rect) callconv(.winapi) HRESULT,
-        Show: *const fn(self: *anyopaque, selection: Rect, placement: Placement) callconv(.winapi) HRESULT,
+        ShowWithPlacement: *const fn(self: *anyopaque, selection: Rect, placement: Placement) callconv(.winapi) HRESULT,
         PickSingleDeviceAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
-        PickSingleDeviceAsync: *const fn(self: *anyopaque, selection: Rect, placement: Placement, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
+        PickSingleDeviceAsyncWithPlacement: *const fn(self: *anyopaque, selection: Rect, placement: Placement, _r: **IAsyncOperation(DeviceInformation)) callconv(.winapi) HRESULT,
         Hide: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SetDisplayStatus: *const fn(self: *anyopaque, device: *DeviceInformation, status: HSTRING, options: DevicePickerDisplayStatusOptions) callconv(.winapi) HRESULT,
     };

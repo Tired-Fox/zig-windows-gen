@@ -578,9 +578,9 @@ pub const IWebAuthenticationCoreManagerHelper = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestTokenWithUIElementHostingAsync(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         var _r: *IAsyncOperation(WebTokenRequestResult) = undefined;
-        const _c = self.vtable.RequestTokenWithUIElementHostingAsync(@ptrCast(self), request, webAccount, uiElement, &_r);
+        const _c = self.vtable.RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(@ptrCast(self), request, webAccount, uiElement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -597,7 +597,7 @@ pub const IWebAuthenticationCoreManagerHelper = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestTokenWithUIElementHostingAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, uiElement: *UIElement, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
-        RequestTokenWithUIElementHostingAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
+        RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const StoreConfiguration = extern struct {
@@ -906,9 +906,9 @@ pub const WebAuthenticationCoreManagerHelper = extern struct {
         const factory = @This().IWebAuthenticationCoreManagerHelperCache.get();
         return try factory.RequestTokenWithUIElementHostingAsync(request, uiElement);
     }
-    pub fn RequestTokenWithUIElementHostingAsync(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         const factory = @This().IWebAuthenticationCoreManagerHelperCache.get();
-        return try factory.RequestTokenWithUIElementHostingAsync(request, webAccount, uiElement);
+        return try factory.RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(request, webAccount, uiElement);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.WebAuthenticationCoreManagerHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

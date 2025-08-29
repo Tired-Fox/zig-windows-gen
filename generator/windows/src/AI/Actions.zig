@@ -74,11 +74,11 @@ pub const ActionEntityFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRemoteFileEntity(sourceId, fileKind, sourceUri, fileId, contentType, driveId, accountId, extension);
     }
-    pub fn CreateTextEntity(self: *@This(), text: HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
+    pub fn CreateTextEntityWithTextFormat(self: *@This(), text: HSTRING, textFormat: ActionEntityTextFormat) core.HResult!*TextActionEntity {
         var this: ?*IActionEntityFactory3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateTextEntity(text, textFormat);
+        return try this.?.CreateTextEntityWithTextFormat(text, textFormat);
     }
     pub fn CreateStreamingTextActionEntityWriter(self: *@This(), textFormat: ActionEntityTextFormat) core.HResult!*StreamingTextActionEntityWriter {
         var this: ?*IActionEntityFactory3 = undefined;

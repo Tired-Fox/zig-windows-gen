@@ -62,9 +62,9 @@ pub const IPhoneTrigger = extern struct {
 };
 pub const IPhoneTriggerFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), type: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
+    pub fn Create(self: *@This(), ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
         var _r: *PhoneTrigger = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), type, oneShot, &_r);
+        const _c = self.vtable.Create(@ptrCast(self), ty, oneShot, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -80,7 +80,7 @@ pub const IPhoneTriggerFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, type: PhoneTriggerType, oneShot: bool, _r: **PhoneTrigger) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, ty: PhoneTriggerType, oneShot: bool, _r: **PhoneTrigger) callconv(.winapi) HRESULT,
     };
 };
 pub const PhoneTrigger = extern struct {
@@ -96,9 +96,9 @@ pub const PhoneTrigger = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(type: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
+    pub fn Create(ty: PhoneTriggerType, oneShot: bool) core.HResult!*PhoneTrigger {
         const factory = @This().IPhoneTriggerFactoryCache.get();
-        return try factory.Create(type, oneShot);
+        return try factory.Create(ty, oneShot);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Background.PhoneTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1373,9 +1373,9 @@ pub const DeviceServicingTrigger = extern struct {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId, expectedDuration);
     }
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithExpectedDurationWithArguments(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
-        return try this.RequestAsync(deviceId, expectedDuration, arguments);
+        return try this.RequestAsyncWithExpectedDurationWithArguments(deviceId, expectedDuration, arguments);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1403,9 +1403,9 @@ pub const DeviceUseTrigger = extern struct {
         const this: *IDeviceUseTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId);
     }
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceUseTrigger = @ptrCast(self);
-        return try this.RequestAsync(deviceId, arguments);
+        return try this.RequestAsyncWithArguments(deviceId, arguments);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3212,9 +3212,9 @@ pub const IDeviceServicingTrigger = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithExpectedDurationWithArguments(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
-        const _c = self.vtable.RequestAsync(@ptrCast(self), deviceId, expectedDuration, arguments, &_r);
+        const _c = self.vtable.RequestAsyncWithExpectedDurationWithArguments(@ptrCast(self), deviceId, expectedDuration, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3231,7 +3231,7 @@ pub const IDeviceServicingTrigger = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAsync: *const fn(self: *anyopaque, deviceId: HSTRING, expectedDuration: TimeSpan, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
-        RequestAsync: *const fn(self: *anyopaque, deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
+        RequestAsyncWithExpectedDurationWithArguments: *const fn(self: *anyopaque, deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceUseTrigger = extern struct {
@@ -3242,9 +3242,9 @@ pub const IDeviceUseTrigger = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAsync(self: *@This(), deviceId: HSTRING, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         var _r: *IAsyncOperation(DeviceTriggerResult) = undefined;
-        const _c = self.vtable.RequestAsync(@ptrCast(self), deviceId, arguments, &_r);
+        const _c = self.vtable.RequestAsyncWithArguments(@ptrCast(self), deviceId, arguments, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3261,7 +3261,7 @@ pub const IDeviceUseTrigger = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
-        RequestAsync: *const fn(self: *anyopaque, deviceId: HSTRING, arguments: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
+        RequestAsyncWithArguments: *const fn(self: *anyopaque, deviceId: HSTRING, arguments: HSTRING, _r: **IAsyncOperation(DeviceTriggerResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDeviceWatcherTrigger = extern struct {

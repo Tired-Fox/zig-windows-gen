@@ -217,9 +217,9 @@ pub const BitmapDecoder = extern struct {
         const factory = @This().IBitmapDecoderStaticsCache.get();
         return try factory.CreateAsync(stream);
     }
-    pub fn CreateAsync(decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
+    pub fn CreateAsyncWithStream(decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
         const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.CreateAsync(decoderId, stream);
+        return try factory.CreateAsyncWithStream(decoderId, stream);
     }
     pub fn getHeifDecoderId() core.HResult!*Guid {
         const factory = @This().IBitmapDecoderStatics2Cache.get();
@@ -340,9 +340,9 @@ pub const BitmapEncoder = extern struct {
         const factory = @This().IBitmapEncoderStaticsCache.get();
         return try factory.CreateAsync(encoderId, stream);
     }
-    pub fn CreateAsync(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
+    pub fn CreateAsyncWithStreamWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
         const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.CreateAsync(encoderId, stream, encodingOptions);
+        return try factory.CreateAsyncWithStreamWithEncodingOptions(encoderId, stream, encodingOptions);
     }
     pub fn CreateForTranscodingAsync(stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder) core.HResult!*IAsyncOperation(BitmapEncoder) {
         const factory = @This().IBitmapEncoderStaticsCache.get();
@@ -629,9 +629,9 @@ pub const BitmapTypedValue = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(value: *IInspectable, type: PropertyType) core.HResult!*BitmapTypedValue {
+    pub fn Create(value: *IInspectable, ty: PropertyType) core.HResult!*BitmapTypedValue {
         const factory = @This().IBitmapTypedValueFactoryCache.get();
-        return try factory.Create(value, type);
+        return try factory.Create(value, ty);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapTypedValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -829,9 +829,9 @@ pub const IBitmapDecoderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsync(self: *@This(), decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
+    pub fn CreateAsyncWithStream(self: *@This(), decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
         var _r: *IAsyncOperation(BitmapDecoder) = undefined;
-        const _c = self.vtable.CreateAsync(@ptrCast(self), decoderId, stream, &_r);
+        const _c = self.vtable.CreateAsyncWithStream(@ptrCast(self), decoderId, stream, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -856,7 +856,7 @@ pub const IBitmapDecoderStatics = extern struct {
         get_IcoDecoderId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         GetDecoderInformationEnumerator: *const fn(self: *anyopaque, _r: **IVectorView(BitmapCodecInformation)) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapDecoder)) callconv(.winapi) HRESULT,
-        CreateAsync: *const fn(self: *anyopaque, decoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapDecoder)) callconv(.winapi) HRESULT,
+        CreateAsyncWithStream: *const fn(self: *anyopaque, decoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapDecoder)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapDecoderStatics2 = extern struct {
@@ -1045,9 +1045,9 @@ pub const IBitmapEncoderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsync(self: *@This(), encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
+    pub fn CreateAsyncWithStreamWithEncodingOptions(self: *@This(), encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
         var _r: *IAsyncOperation(BitmapEncoder) = undefined;
-        const _c = self.vtable.CreateAsync(@ptrCast(self), encoderId, stream, encodingOptions, &_r);
+        const _c = self.vtable.CreateAsyncWithStreamWithEncodingOptions(@ptrCast(self), encoderId, stream, encodingOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1083,7 +1083,7 @@ pub const IBitmapEncoderStatics = extern struct {
         get_JpegXREncoderId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         GetEncoderInformationEnumerator: *const fn(self: *anyopaque, _r: **IVectorView(BitmapCodecInformation)) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
-        CreateAsync: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
+        CreateAsyncWithStreamWithEncodingOptions: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
         CreateForTranscodingAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
         CreateForInPlacePropertyEncodingAsync: *const fn(self: *anyopaque, bitmapDecoder: *BitmapDecoder, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
     };
@@ -1435,9 +1435,9 @@ pub const IBitmapTypedValue = extern struct {
 };
 pub const IBitmapTypedValueFactory = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), value: *IInspectable, type: PropertyType) core.HResult!*BitmapTypedValue {
+    pub fn Create(self: *@This(), value: *IInspectable, ty: PropertyType) core.HResult!*BitmapTypedValue {
         var _r: *BitmapTypedValue = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), value, type, &_r);
+        const _c = self.vtable.Create(@ptrCast(self), value, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1453,7 +1453,7 @@ pub const IBitmapTypedValueFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, value: *IInspectable, type: PropertyType, _r: **BitmapTypedValue) callconv(.winapi) HRESULT,
+        Create: *const fn(self: *anyopaque, value: *IInspectable, ty: PropertyType, _r: **BitmapTypedValue) callconv(.winapi) HRESULT,
     };
 };
 pub const IPixelDataProvider = extern struct {
@@ -1627,9 +1627,9 @@ pub const ISoftwareBitmapStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Convert(self: *@This(), source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn ConvertWithFormatWithAlpha(self: *@This(), source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
-        const _c = self.vtable.Convert(@ptrCast(self), source, format, alpha, &_r);
+        const _c = self.vtable.ConvertWithFormatWithAlpha(@ptrCast(self), source, format, alpha, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1639,9 +1639,9 @@ pub const ISoftwareBitmapStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCopyFromBuffer(self: *@This(), source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(self: *@This(), source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
-        const _c = self.vtable.CreateCopyFromBuffer(@ptrCast(self), source, format, width, height, alpha, &_r);
+        const _c = self.vtable.CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(@ptrCast(self), source, format, width, height, alpha, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1651,9 +1651,9 @@ pub const ISoftwareBitmapStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCopyFromSurfaceAsync(self: *@This(), surface: *IDirect3DSurface, alpha: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn CreateCopyFromSurfaceAsyncWithAlpha(self: *@This(), surface: *IDirect3DSurface, alpha: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var _r: *IAsyncOperation(SoftwareBitmap) = undefined;
-        const _c = self.vtable.CreateCopyFromSurfaceAsync(@ptrCast(self), surface, alpha, &_r);
+        const _c = self.vtable.CreateCopyFromSurfaceAsyncWithAlpha(@ptrCast(self), surface, alpha, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1671,11 +1671,11 @@ pub const ISoftwareBitmapStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Copy: *const fn(self: *anyopaque, source: *SoftwareBitmap, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
         Convert: *const fn(self: *anyopaque, source: *SoftwareBitmap, format: BitmapPixelFormat, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
-        Convert: *const fn(self: *anyopaque, source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
+        ConvertWithFormatWithAlpha: *const fn(self: *anyopaque, source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
         CreateCopyFromBuffer: *const fn(self: *anyopaque, source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
-        CreateCopyFromBuffer: *const fn(self: *anyopaque, source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
+        CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha: *const fn(self: *anyopaque, source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
         CreateCopyFromSurfaceAsync: *const fn(self: *anyopaque, surface: *IDirect3DSurface, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
-        CreateCopyFromSurfaceAsync: *const fn(self: *anyopaque, surface: *IDirect3DSurface, alpha: BitmapAlphaMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
+        CreateCopyFromSurfaceAsyncWithAlpha: *const fn(self: *anyopaque, surface: *IDirect3DSurface, alpha: BitmapAlphaMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
     };
 };
 pub const ImageStream = extern struct {
@@ -1880,25 +1880,25 @@ pub const SoftwareBitmap = extern struct {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
         return try factory.Convert(source, format);
     }
-    pub fn Convert(source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn ConvertWithFormatWithAlpha(source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.Convert(source, format, alpha);
+        return try factory.ConvertWithFormatWithAlpha(source, format, alpha);
     }
     pub fn CreateCopyFromBuffer(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
         return try factory.CreateCopyFromBuffer(source, format, width, height);
     }
-    pub fn CreateCopyFromBuffer(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromBuffer(source, format, width, height, alpha);
+        return try factory.CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(source, format, width, height, alpha);
     }
     pub fn CreateCopyFromSurfaceAsync(surface: *IDirect3DSurface) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
         return try factory.CreateCopyFromSurfaceAsync(surface);
     }
-    pub fn CreateCopyFromSurfaceAsync(surface: *IDirect3DSurface, alpha: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn CreateCopyFromSurfaceAsyncWithAlpha(surface: *IDirect3DSurface, alpha: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromSurfaceAsync(surface, alpha);
+        return try factory.CreateCopyFromSurfaceAsyncWithAlpha(surface, alpha);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.SoftwareBitmap";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

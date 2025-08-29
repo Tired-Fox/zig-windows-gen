@@ -767,9 +767,9 @@ pub const IUserDataTaskStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateListAsync(self: *@This(), name: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn CreateListAsyncWithUserDataAccountId(self: *@This(), name: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         var _r: *IAsyncOperation(UserDataTaskList) = undefined;
-        const _c = self.vtable.CreateListAsync(@ptrCast(self), name, userDataAccountId, &_r);
+        const _c = self.vtable.CreateListAsyncWithUserDataAccountId(@ptrCast(self), name, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -798,7 +798,7 @@ pub const IUserDataTaskStore = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateListAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
-        CreateListAsync: *const fn(self: *anyopaque, name: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
+        CreateListAsyncWithUserDataAccountId: *const fn(self: *anyopaque, name: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
         FindListsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UserDataTaskList))) callconv(.winapi) HRESULT,
         GetListAsync: *const fn(self: *anyopaque, taskListId: HSTRING, _r: **IAsyncOperation(UserDataTaskList)) callconv(.winapi) HRESULT,
     };
@@ -1364,9 +1364,9 @@ pub const UserDataTaskStore = extern struct {
         const this: *IUserDataTaskStore = @ptrCast(self);
         return try this.CreateListAsync(name);
     }
-    pub fn CreateListAsync(self: *@This(), name: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
+    pub fn CreateListAsyncWithUserDataAccountId(self: *@This(), name: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(UserDataTaskList) {
         const this: *IUserDataTaskStore = @ptrCast(self);
-        return try this.CreateListAsync(name, userDataAccountId);
+        return try this.CreateListAsyncWithUserDataAccountId(name, userDataAccountId);
     }
     pub fn FindListsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(UserDataTaskList)) {
         const this: *IUserDataTaskStore = @ptrCast(self);

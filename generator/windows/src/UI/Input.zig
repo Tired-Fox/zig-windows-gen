@@ -2363,15 +2363,15 @@ pub const IPointerPointStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCurrentPoint(self: *@This(), pointerId: u32, transform: *IPointerPointTransform) core.HResult!*PointerPoint {
+    pub fn GetCurrentPointWithTransform(self: *@This(), pointerId: u32, transform: *IPointerPointTransform) core.HResult!*PointerPoint {
         var _r: *PointerPoint = undefined;
-        const _c = self.vtable.GetCurrentPoint(@ptrCast(self), pointerId, transform, &_r);
+        const _c = self.vtable.GetCurrentPointWithTransform(@ptrCast(self), pointerId, transform, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetIntermediatePoints(self: *@This(), pointerId: u32, transform: *IPointerPointTransform) core.HResult!*IVector(PointerPoint) {
+    pub fn GetIntermediatePointsWithTransform(self: *@This(), pointerId: u32, transform: *IPointerPointTransform) core.HResult!*IVector(PointerPoint) {
         var _r: *IVector(PointerPoint) = undefined;
-        const _c = self.vtable.GetIntermediatePoints(@ptrCast(self), pointerId, transform, &_r);
+        const _c = self.vtable.GetIntermediatePointsWithTransform(@ptrCast(self), pointerId, transform, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2389,8 +2389,8 @@ pub const IPointerPointStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentPoint: *const fn(self: *anyopaque, pointerId: u32, _r: **PointerPoint) callconv(.winapi) HRESULT,
         GetIntermediatePoints: *const fn(self: *anyopaque, pointerId: u32, _r: **IVector(PointerPoint)) callconv(.winapi) HRESULT,
-        GetCurrentPoint: *const fn(self: *anyopaque, pointerId: u32, transform: *IPointerPointTransform, _r: **PointerPoint) callconv(.winapi) HRESULT,
-        GetIntermediatePoints: *const fn(self: *anyopaque, pointerId: u32, transform: *IPointerPointTransform, _r: **IVector(PointerPoint)) callconv(.winapi) HRESULT,
+        GetCurrentPointWithTransform: *const fn(self: *anyopaque, pointerId: u32, transform: *IPointerPointTransform, _r: **PointerPoint) callconv(.winapi) HRESULT,
+        GetIntermediatePointsWithTransform: *const fn(self: *anyopaque, pointerId: u32, transform: *IPointerPointTransform, _r: **IVector(PointerPoint)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPointerPointTransform = extern struct {
@@ -2822,9 +2822,9 @@ pub const IRadialControllerConfiguration = extern struct {
         const _c = self.vtable.ResetToDefaultMenuItems(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TrySelectDefaultMenuItem(self: *@This(), type: RadialControllerSystemMenuItemKind) core.HResult!bool {
+    pub fn TrySelectDefaultMenuItem(self: *@This(), ty: RadialControllerSystemMenuItemKind) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.TrySelectDefaultMenuItem(@ptrCast(self), type, &_r);
+        const _c = self.vtable.TrySelectDefaultMenuItem(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2842,7 +2842,7 @@ pub const IRadialControllerConfiguration = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetDefaultMenuItems: *const fn(self: *anyopaque, buttons: *IIterable(RadialControllerSystemMenuItemKind)) callconv(.winapi) HRESULT,
         ResetToDefaultMenuItems: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        TrySelectDefaultMenuItem: *const fn(self: *anyopaque, type: RadialControllerSystemMenuItemKind, _r: *bool) callconv(.winapi) HRESULT,
+        TrySelectDefaultMenuItem: *const fn(self: *anyopaque, ty: RadialControllerSystemMenuItemKind, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IRadialControllerConfiguration2 = extern struct {
@@ -3140,9 +3140,9 @@ pub const IRadialControllerMenuItemStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromFontGlyph(self: *@This(), displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri(self: *@This(), displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
         var _r: *RadialControllerMenuItem = undefined;
-        const _c = self.vtable.CreateFromFontGlyph(@ptrCast(self), displayText, glyph, fontFamily, fontUri, &_r);
+        const _c = self.vtable.CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri(@ptrCast(self), displayText, glyph, fontFamily, fontUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3159,7 +3159,7 @@ pub const IRadialControllerMenuItemStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromFontGlyph: *const fn(self: *anyopaque, displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
-        CreateFromFontGlyph: *const fn(self: *anyopaque, displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
+        CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri: *const fn(self: *anyopaque, displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **RadialControllerMenuItem) callconv(.winapi) HRESULT,
     };
 };
 pub const IRadialControllerRotationChangedEventArgs = extern struct {
@@ -4355,13 +4355,13 @@ pub const PointerPoint = extern struct {
         const factory = @This().IPointerPointStaticsCache.get();
         return try factory.GetIntermediatePoints(pointerId);
     }
-    pub fn GetCurrentPoint(pointerId: u32, transform: *IPointerPointTransform) core.HResult!*PointerPoint {
+    pub fn GetCurrentPointWithTransform(pointerId: u32, transform: *IPointerPointTransform) core.HResult!*PointerPoint {
         const factory = @This().IPointerPointStaticsCache.get();
-        return try factory.GetCurrentPoint(pointerId, transform);
+        return try factory.GetCurrentPointWithTransform(pointerId, transform);
     }
-    pub fn GetIntermediatePoints(pointerId: u32, transform: *IPointerPointTransform) core.HResult!*IVector(PointerPoint) {
+    pub fn GetIntermediatePointsWithTransform(pointerId: u32, transform: *IPointerPointTransform) core.HResult!*IVector(PointerPoint) {
         const factory = @This().IPointerPointStaticsCache.get();
-        return try factory.GetIntermediatePoints(pointerId, transform);
+        return try factory.GetIntermediatePointsWithTransform(pointerId, transform);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.PointerPoint";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4733,9 +4733,9 @@ pub const RadialControllerConfiguration = extern struct {
         const this: *IRadialControllerConfiguration = @ptrCast(self);
         return try this.ResetToDefaultMenuItems();
     }
-    pub fn TrySelectDefaultMenuItem(self: *@This(), type: RadialControllerSystemMenuItemKind) core.HResult!bool {
+    pub fn TrySelectDefaultMenuItem(self: *@This(), ty: RadialControllerSystemMenuItemKind) core.HResult!bool {
         const this: *IRadialControllerConfiguration = @ptrCast(self);
-        return try this.TrySelectDefaultMenuItem(type);
+        return try this.TrySelectDefaultMenuItem(ty);
     }
     pub fn putActiveControllerWhenMenuIsSuppressed(self: *@This(), value: *RadialController) core.HResult!void {
         var this: ?*IRadialControllerConfiguration2 = undefined;
@@ -4885,9 +4885,9 @@ pub const RadialControllerMenuItem = extern struct {
         const factory = @This().IRadialControllerMenuItemStatics2Cache.get();
         return try factory.CreateFromFontGlyph(displayText, glyph, fontFamily);
     }
-    pub fn CreateFromFontGlyph(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
+    pub fn CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri(displayText: HSTRING, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*RadialControllerMenuItem {
         const factory = @This().IRadialControllerMenuItemStatics2Cache.get();
-        return try factory.CreateFromFontGlyph(displayText, glyph, fontFamily, fontUri);
+        return try factory.CreateFromFontGlyphWithGlyphWithFontFamilyWithFontUri(displayText, glyph, fontFamily, fontUri);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.RadialControllerMenuItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

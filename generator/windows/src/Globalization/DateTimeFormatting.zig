@@ -74,11 +74,11 @@ pub const DateTimeFormatter = extern struct {
         const this: *IDateTimeFormatter = @ptrCast(self);
         return try this.getResolvedGeographicRegion();
     }
-    pub fn Format(self: *@This(), datetime: DateTime, timeZoneId: HSTRING) core.HResult!HSTRING {
+    pub fn FormatWithTimeZoneId(self: *@This(), datetime: DateTime, timeZoneId: HSTRING) core.HResult!HSTRING {
         var this: ?*IDateTimeFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDateTimeFormatter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Format(datetime, timeZoneId);
+        return try this.?.FormatWithTimeZoneId(datetime, timeZoneId);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

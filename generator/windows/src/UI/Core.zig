@@ -900,9 +900,9 @@ pub const CoreCursor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn CreateCursor(type: CoreCursorType, id: u32) core.HResult!*CoreCursor {
+    pub fn CreateCursor(ty: CoreCursorType, id: u32) core.HResult!*CoreCursor {
         const factory = @This().ICoreCursorFactoryCache.get();
-        return try factory.CreateCursor(type, id);
+        return try factory.CreateCursor(ty, id);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreCursor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1237,9 +1237,9 @@ pub const CoreIndependentInputSourceController = extern struct {
         const this: *ICoreIndependentInputSourceController = @ptrCast(self);
         return try this.SetControlledInput(inputTypes);
     }
-    pub fn SetControlledInput(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
+    pub fn SetControlledInputWithExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
         const this: *ICoreIndependentInputSourceController = @ptrCast(self);
-        return try this.SetControlledInput(inputTypes, required, excluded);
+        return try this.SetControlledInputWithExcluded(inputTypes, required, excluded);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -2097,9 +2097,9 @@ pub const ICoreCursor = extern struct {
 };
 pub const ICoreCursorFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateCursor(self: *@This(), type: CoreCursorType, id: u32) core.HResult!*CoreCursor {
+    pub fn CreateCursor(self: *@This(), ty: CoreCursorType, id: u32) core.HResult!*CoreCursor {
         var _r: *CoreCursor = undefined;
-        const _c = self.vtable.CreateCursor(@ptrCast(self), type, id, &_r);
+        const _c = self.vtable.CreateCursor(@ptrCast(self), ty, id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2115,7 +2115,7 @@ pub const ICoreCursorFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateCursor: *const fn(self: *anyopaque, type: CoreCursorType, id: u32, _r: **CoreCursor) callconv(.winapi) HRESULT,
+        CreateCursor: *const fn(self: *anyopaque, ty: CoreCursorType, id: u32, _r: **CoreCursor) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreDispatcher = extern struct {
@@ -2269,8 +2269,8 @@ pub const ICoreIndependentInputSourceController = extern struct {
         const _c = self.vtable.SetControlledInput(@ptrCast(self), inputTypes);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetControlledInput(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
-        const _c = self.vtable.SetControlledInput(@ptrCast(self), inputTypes, required, excluded);
+    pub fn SetControlledInputWithExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
+        const _c = self.vtable.SetControlledInputWithExcluded(@ptrCast(self), inputTypes, required, excluded);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.ICoreIndependentInputSourceController";
@@ -2291,7 +2291,7 @@ pub const ICoreIndependentInputSourceController = extern struct {
         put_IsPalmRejectionEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Source: *const fn(self: *anyopaque, _r: **CoreIndependentInputSource) callconv(.winapi) HRESULT,
         SetControlledInput: *const fn(self: *anyopaque, inputTypes: CoreInputDeviceTypes) callconv(.winapi) HRESULT,
-        SetControlledInput: *const fn(self: *anyopaque, inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) callconv(.winapi) HRESULT,
+        SetControlledInputWithExcluded: *const fn(self: *anyopaque, inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreIndependentInputSourceControllerStatics = extern struct {
@@ -3562,9 +3562,9 @@ pub const ITouchHitTestingEventArgs = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn EvaluateProximity(self: *@This(), controlVertices: [*]Point) core.HResult!CoreProximityEvaluation {
+    pub fn EvaluateProximityWithControlVertices(self: *@This(), controlVertices: [*]Point) core.HResult!CoreProximityEvaluation {
         var _r: CoreProximityEvaluation = undefined;
-        const _c = self.vtable.EvaluateProximity(@ptrCast(self), controlVertices, &_r);
+        const _c = self.vtable.EvaluateProximityWithControlVertices(@ptrCast(self), controlVertices, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3585,7 +3585,7 @@ pub const ITouchHitTestingEventArgs = extern struct {
         get_Point: *const fn(self: *anyopaque, _r: *Point) callconv(.winapi) HRESULT,
         get_BoundingBox: *const fn(self: *anyopaque, _r: *Rect) callconv(.winapi) HRESULT,
         EvaluateProximity: *const fn(self: *anyopaque, controlBoundingBox: Rect, _r: *CoreProximityEvaluation) callconv(.winapi) HRESULT,
-        EvaluateProximity: *const fn(self: *anyopaque, controlVertices: [*]Point, _r: *CoreProximityEvaluation) callconv(.winapi) HRESULT,
+        EvaluateProximityWithControlVertices: *const fn(self: *anyopaque, controlVertices: [*]Point, _r: *CoreProximityEvaluation) callconv(.winapi) HRESULT,
     };
 };
 pub const IVisibilityChangedEventArgs = extern struct {
@@ -3904,9 +3904,9 @@ pub const TouchHitTestingEventArgs = extern struct {
         const this: *ITouchHitTestingEventArgs = @ptrCast(self);
         return try this.EvaluateProximity(controlBoundingBox);
     }
-    pub fn EvaluateProximity(self: *@This(), controlVertices: [*]Point) core.HResult!CoreProximityEvaluation {
+    pub fn EvaluateProximityWithControlVertices(self: *@This(), controlVertices: [*]Point) core.HResult!CoreProximityEvaluation {
         const this: *ITouchHitTestingEventArgs = @ptrCast(self);
-        return try this.EvaluateProximity(controlVertices);
+        return try this.EvaluateProximityWithControlVertices(controlVertices);
     }
     pub fn getHandled(self: *@This()) core.HResult!bool {
         var this: ?*ICoreWindowEventArgs = undefined;

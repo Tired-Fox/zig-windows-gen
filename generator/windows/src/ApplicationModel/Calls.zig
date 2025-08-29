@@ -3804,11 +3804,11 @@ pub const VoipCallCoordinator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewAppInitiatedCall(context, contactName, contactNumber, serviceName, media);
     }
-    pub fn RequestNewIncomingCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewIncomingCallWithContactNameWithContactNumberWithContactImageWithServiceNameWithBrandingImageWithCallDetailsWithRingtoneWithMediaWithRingTimeoutWithContactRemoteId(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestNewIncomingCall(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId);
+        return try this.?.RequestNewIncomingCallWithContactNameWithContactNumberWithContactImageWithServiceNameWithBrandingImageWithCallDetailsWithRingtoneWithMediaWithRingTimeoutWithContactRemoteId(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId);
     }
     pub fn ReserveCallResourcesAsync(self: *@This()) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var this: ?*IVoipCallCoordinator4 = undefined;

@@ -186,11 +186,11 @@ pub const GameListEntry = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetLauncherExecutableFileAsync(executableFile);
     }
-    pub fn SetLauncherExecutableFileAsync(self: *@This(), executableFile: *IStorageFile, launchParams: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IGameListEntry2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGameListEntry2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetLauncherExecutableFileAsync(executableFile, launchParams);
+        return try this.?.SetLauncherExecutableFileAsyncWithLaunchParams(executableFile, launchParams);
     }
     pub fn getTitleId(self: *@This()) core.HResult!HSTRING {
         var this: ?*IGameListEntry2 = undefined;
@@ -490,9 +490,9 @@ pub const IGameListEntry2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetLauncherExecutableFileAsync(self: *@This(), executableFile: *IStorageFile, launchParams: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SetLauncherExecutableFileAsyncWithLaunchParams(self: *@This(), executableFile: *IStorageFile, launchParams: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SetLauncherExecutableFileAsync(@ptrCast(self), executableFile, launchParams, &_r);
+        const _c = self.vtable.SetLauncherExecutableFileAsyncWithLaunchParams(@ptrCast(self), executableFile, launchParams, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -530,7 +530,7 @@ pub const IGameListEntry2 = extern struct {
         get_LauncherExecutable: *const fn(self: *anyopaque, _r: **IStorageFile) callconv(.winapi) HRESULT,
         get_LaunchParameters: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         SetLauncherExecutableFileAsync: *const fn(self: *anyopaque, executableFile: *IStorageFile, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SetLauncherExecutableFileAsync: *const fn(self: *anyopaque, executableFile: *IStorageFile, launchParams: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SetLauncherExecutableFileAsyncWithLaunchParams: *const fn(self: *anyopaque, executableFile: *IStorageFile, launchParams: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_TitleId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         SetTitleIdAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_GameModeConfiguration: *const fn(self: *anyopaque, _r: **GameModeConfiguration) callconv(.winapi) HRESULT,

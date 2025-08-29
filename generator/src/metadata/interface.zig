@@ -3,6 +3,8 @@ const ty = @import("./type.zig");
 
 const metadata = @import("../metadata.zig");
 const replaceAll = @import("../root.zig").replaceAll;
+const noreserved = metadata.noreserved;
+const generateMethodNameMap = metadata.generateMethodNameMap;
 const TypeDef = metadata.TypeDef;
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
@@ -25,12 +27,23 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
     try writer.print("{s}vtable: *const VTable,\n", .{ offset });
 
+    var nameMap: ?[]const []const u8 = null;
+    defer {
+        if (nameMap) |m| {
+            for (m) |n| allocator.free(n);
+            allocator.free(m);
+        }
+    }
     if (typedef.Methods) |methods| {
-        for (methods) |method| {
+        nameMap = try generateMethodNameMap(allocator, methods);
+    }
+
+    if (typedef.Methods) |methods| {
+        for (methods, 0..) |method, m| {
             if (method.Static) continue;
             if (std.mem.eql(u8, method.Name, ".ctor")) continue;
 
-            const mname = try replaceAll(allocator, method.Name, "_", "");
+            const mname = try replaceAll(allocator, nameMap.?[m], "_", "");
             defer allocator.free(mname);
 
             try writer.print("{s}pub fn {s}(self: *@This()", .{ offset, mname });
@@ -38,7 +51,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                 for (parameters) |param| {
                     if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                         defer t.deinit(allocator);
-                        try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                        try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
                     }
                 }
             }
@@ -56,10 +69,10 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                 try writer.print("        var _r: {f} = undefined;\n", .{ rt.asParam() });
             }
 
-            try writer.print("{s}    const _c = self.vtable.{s}(@ptrCast(self)", .{ offset, method.Name });
+            try writer.print("{s}    const _c = self.vtable.{s}(@ptrCast(self)", .{ offset, nameMap.?[m] });
             if (method.Parameters) |parameters| {
                 for (parameters) |param| {
-                    try writer.print(", {s}", .{ param.Name });
+                    try writer.print(", {s}", .{ noreserved(param.Name) });
                 }
             }
             if (return_type != null) try writer.writeAll(", &_r");
@@ -100,18 +113,18 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}    GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,\n", .{ offset });
 
     if (typedef.Methods) |methods| {
-        for (methods) |method| {
+        for (methods, 0..) |method, m| {
             // Ignore static methods as they cannot be used
             // with how the bindings are set up
             if (method.Static) continue;
             if (std.mem.eql(u8, method.Name, ".ctor")) continue;
 
-            try writer.print("{s}    {s}: *const fn(self: *anyopaque", .{ offset, method.Name });
+            try writer.print("{s}    {s}: *const fn(self: *anyopaque", .{ offset, nameMap.?[m] });
             if (method.Parameters) |parameters| {
                 for (parameters) |param| {
                     if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                         defer t.deinit(allocator);
-                        try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                        try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
                     }
                 }
             }

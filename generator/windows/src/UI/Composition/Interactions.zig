@@ -1802,17 +1802,17 @@ pub const InteractionTracker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConfigureVector2PositionInertiaModifiers(modifiers);
     }
-    pub fn TryUpdatePosition(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
+    pub fn TryUpdatePositionWithOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var this: ?*IInteractionTracker5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePosition(value, option);
+        return try this.?.TryUpdatePositionWithOption(value, option);
     }
-    pub fn TryUpdatePositionBy(self: *@This(), amount: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
+    pub fn TryUpdatePositionByWithOption(self: *@This(), amount: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
         var this: ?*IInteractionTracker4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePositionBy(amount, option);
+        return try this.?.TryUpdatePositionByWithOption(amount, option);
     }
     pub fn getIsInertiaFromImpulse(self: *@This()) core.HResult!bool {
         var this: ?*IInteractionTracker4 = undefined;
@@ -1820,11 +1820,11 @@ pub const InteractionTracker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInertiaFromImpulse();
     }
-    pub fn TryUpdatePosition(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
+    pub fn TryUpdatePositionWithPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
         var this: ?*IInteractionTracker5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePosition(value, option, posUpdateOption);
+        return try this.?.TryUpdatePositionWithPosUpdateOption(value, option, posUpdateOption);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

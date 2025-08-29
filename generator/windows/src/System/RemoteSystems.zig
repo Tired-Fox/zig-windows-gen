@@ -1001,9 +1001,9 @@ pub const IRemoteSystemSessionControllerFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateController(self: *@This(), displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
+    pub fn CreateControllerWithOptions(self: *@This(), displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
         var _r: *RemoteSystemSessionController = undefined;
-        const _c = self.vtable.CreateController(@ptrCast(self), displayName, options, &_r);
+        const _c = self.vtable.CreateControllerWithOptions(@ptrCast(self), displayName, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1020,7 +1020,7 @@ pub const IRemoteSystemSessionControllerFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateController: *const fn(self: *anyopaque, displayName: HSTRING, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
-        CreateController: *const fn(self: *anyopaque, displayName: HSTRING, options: *RemoteSystemSessionOptions, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
+        CreateControllerWithOptions: *const fn(self: *anyopaque, displayName: HSTRING, options: *RemoteSystemSessionOptions, _r: **RemoteSystemSessionController) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemSessionCreationResult = extern struct {
@@ -1346,9 +1346,9 @@ pub const IRemoteSystemSessionMessageChannelFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn CreateWithChannelNameWithReliability(self: *@This(), session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
         var _r: *RemoteSystemSessionMessageChannel = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), session, channelName, reliability, &_r);
+        const _c = self.vtable.CreateWithChannelNameWithReliability(@ptrCast(self), session, channelName, reliability, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1365,7 +1365,7 @@ pub const IRemoteSystemSessionMessageChannelFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: HSTRING, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
+        CreateWithChannelNameWithReliability: *const fn(self: *anyopaque, session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability, _r: **RemoteSystemSessionMessageChannel) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemSessionOptions = extern struct {
@@ -1784,9 +1784,9 @@ pub const IRemoteSystemStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcherForUser(self: *@This(), user: *User, filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
+    pub fn CreateWatcherForUserWithFilters(self: *@This(), user: *User, filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
         var _r: *RemoteSystemWatcher = undefined;
-        const _c = self.vtable.CreateWatcherForUser(@ptrCast(self), user, filters, &_r);
+        const _c = self.vtable.CreateWatcherForUserWithFilters(@ptrCast(self), user, filters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1803,7 +1803,7 @@ pub const IRemoteSystemStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateWatcherForUser: *const fn(self: *anyopaque, user: *User, _r: **RemoteSystemWatcher) callconv(.winapi) HRESULT,
-        CreateWatcherForUser: *const fn(self: *anyopaque, user: *User, filters: *IIterable(IRemoteSystemFilter), _r: **RemoteSystemWatcher) callconv(.winapi) HRESULT,
+        CreateWatcherForUserWithFilters: *const fn(self: *anyopaque, user: *User, filters: *IIterable(IRemoteSystemFilter), _r: **RemoteSystemWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IRemoteSystemStatusTypeFilter = extern struct {
@@ -2185,9 +2185,9 @@ pub const RemoteSystem = extern struct {
         const factory = @This().IRemoteSystemStatics3Cache.get();
         return try factory.CreateWatcherForUser(user);
     }
-    pub fn CreateWatcherForUser(user: *User, filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
+    pub fn CreateWatcherForUserWithFilters(user: *User, filters: *IIterable(IRemoteSystemFilter)) core.HResult!*RemoteSystemWatcher {
         const factory = @This().IRemoteSystemStatics3Cache.get();
-        return try factory.CreateWatcherForUser(user, filters);
+        return try factory.CreateWatcherForUserWithFilters(user, filters);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2580,9 +2580,9 @@ pub const RemoteSystemSessionController = extern struct {
         const factory = @This().IRemoteSystemSessionControllerFactoryCache.get();
         return try factory.CreateController(displayName);
     }
-    pub fn CreateController(displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
+    pub fn CreateControllerWithOptions(displayName: HSTRING, options: *RemoteSystemSessionOptions) core.HResult!*RemoteSystemSessionController {
         const factory = @This().IRemoteSystemSessionControllerFactoryCache.get();
-        return try factory.CreateController(displayName, options);
+        return try factory.CreateControllerWithOptions(displayName, options);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemSessionController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2789,9 +2789,9 @@ pub const RemoteSystemSessionMessageChannel = extern struct {
         const factory = @This().IRemoteSystemSessionMessageChannelFactoryCache.get();
         return try factory.Create(session, channelName);
     }
-    pub fn Create(session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
+    pub fn CreateWithChannelNameWithReliability(session: *RemoteSystemSession, channelName: HSTRING, reliability: RemoteSystemSessionMessageChannelReliability) core.HResult!*RemoteSystemSessionMessageChannel {
         const factory = @This().IRemoteSystemSessionMessageChannelFactoryCache.get();
-        return try factory.Create(session, channelName, reliability);
+        return try factory.CreateWithChannelNameWithReliability(session, channelName, reliability);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteSystems.RemoteSystemSessionMessageChannel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -3670,9 +3670,9 @@ pub const CalendarViewDayItemChangingEventArgs = extern struct {
         const this: *ICalendarViewDayItemChangingEventArgs = @ptrCast(self);
         return try this.RegisterUpdateCallback(callback);
     }
-    pub fn RegisterUpdateCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
+    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
         const this: *ICalendarViewDayItemChangingEventArgs = @ptrCast(self);
-        return try this.RegisterUpdateCallback(callbackPhase, callback);
+        return try this.RegisterUpdateCallbackWithCallback(callbackPhase, callback);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CalendarViewDayItemChangingEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5108,9 +5108,9 @@ pub const ContainerContentChangingEventArgs = extern struct {
         const this: *IContainerContentChangingEventArgs = @ptrCast(self);
         return try this.RegisterUpdateCallback(callback);
     }
-    pub fn RegisterUpdateCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
+    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
         const this: *IContainerContentChangingEventArgs = @ptrCast(self);
-        return try this.RegisterUpdateCallback(callbackPhase, callback);
+        return try this.RegisterUpdateCallbackWithCallback(callbackPhase, callback);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -6138,11 +6138,11 @@ pub const ControlTemplate = extern struct {
 };
 pub const DataTemplateSelector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn SelectTemplate(self: *@This(), item: *IInspectable, container: *DependencyObject) core.HResult!*DataTemplate {
+    pub fn SelectTemplateWithContainer(self: *@This(), item: *IInspectable, container: *DependencyObject) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelector2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTemplateSelector2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SelectTemplate(item, container);
+        return try this.?.SelectTemplateWithContainer(item, container);
     }
     pub fn SelectTemplate(self: *@This(), item: *IInspectable) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelector2 = undefined;
@@ -6150,11 +6150,11 @@ pub const DataTemplateSelector = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectTemplate(item);
     }
-    pub fn SelectTemplateCore(self: *@This(), item: *IInspectable, container: *DependencyObject) core.HResult!*DataTemplate {
+    pub fn SelectTemplateCoreWithContainer(self: *@This(), item: *IInspectable, container: *DependencyObject) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelectorOverrides2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataTemplateSelectorOverrides2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SelectTemplateCore(item, container);
+        return try this.?.SelectTemplateCoreWithContainer(item, container);
     }
     pub fn SelectTemplateCore(self: *@This(), item: *IInspectable) core.HResult!*DataTemplate {
         var this: ?*IDataTemplateSelectorOverrides2 = undefined;
@@ -6625,11 +6625,11 @@ pub const DatePickerFlyoutItem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCustomProperty(name);
     }
-    pub fn GetIndexedProperty(self: *@This(), name: HSTRING, type: TypeName) core.HResult!*ICustomProperty {
+    pub fn GetIndexedProperty(self: *@This(), name: HSTRING, ty: TypeName) core.HResult!*ICustomProperty {
         var this: ?*ICustomPropertyProvider = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICustomPropertyProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIndexedProperty(name, type);
+        return try this.?.GetIndexedProperty(name, ty);
     }
     pub fn GetStringRepresentation(self: *@This()) core.HResult!HSTRING {
         var this: ?*ICustomPropertyProvider = undefined;
@@ -7372,11 +7372,11 @@ pub const Frame = extern struct {
         const this: *IFrame = @ptrCast(self);
         return try this.GoForward();
     }
-    pub fn Navigate(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable) core.HResult!bool {
+    pub fn NavigateWithParameter(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable) core.HResult!bool {
         var this: ?*INavigate = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigate.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Navigate(sourcePageType, parameter);
+        return try this.?.NavigateWithParameter(sourcePageType, parameter);
     }
     pub fn GetNavigationState(self: *@This()) core.HResult!HSTRING {
         const this: *IFrame = @ptrCast(self);
@@ -7400,11 +7400,11 @@ pub const Frame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getForwardStack();
     }
-    pub fn Navigate(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, infoOverride: *NavigationTransitionInfo) core.HResult!bool {
+    pub fn NavigateWithInfoOverride(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, infoOverride: *NavigationTransitionInfo) core.HResult!bool {
         var this: ?*INavigate = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INavigate.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Navigate(sourcePageType, parameter, infoOverride);
+        return try this.?.NavigateWithInfoOverride(sourcePageType, parameter, infoOverride);
     }
     pub fn GoBack(self: *@This(), transitionInfoOverride: *NavigationTransitionInfo) core.HResult!void {
         var this: ?*IFrame3 = undefined;
@@ -7412,11 +7412,11 @@ pub const Frame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GoBack(transitionInfoOverride);
     }
-    pub fn SetNavigationState(self: *@This(), navigationState: HSTRING, suppressNavigate: bool) core.HResult!void {
+    pub fn SetNavigationStateWithSuppressNavigate(self: *@This(), navigationState: HSTRING, suppressNavigate: bool) core.HResult!void {
         var this: ?*IFrame4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetNavigationState(navigationState, suppressNavigate);
+        return try this.?.SetNavigationStateWithSuppressNavigate(navigationState, suppressNavigate);
     }
     pub fn getIsNavigationStackEnabled(self: *@This()) core.HResult!bool {
         var this: ?*IFrame5 = undefined;
@@ -7781,9 +7781,9 @@ pub const ListViewBase = extern struct {
         const this: *IListViewBase = @ptrCast(self);
         return try this.LoadMoreItemsAsync();
     }
-    pub fn ScrollIntoView(self: *@This(), item: *IInspectable, alignment: ScrollIntoViewAlignment) core.HResult!void {
+    pub fn ScrollIntoViewWithAlignment(self: *@This(), item: *IInspectable, alignment: ScrollIntoViewAlignment) core.HResult!void {
         const this: *IListViewBase = @ptrCast(self);
-        return try this.ScrollIntoView(item, alignment);
+        return try this.ScrollIntoViewWithAlignment(item, alignment);
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
         const this: *IListViewBase = @ptrCast(self);
@@ -12645,8 +12645,8 @@ pub const ICalendarViewDayItemChangingEventArgs = extern struct {
         const _c = self.vtable.RegisterUpdateCallback(@ptrCast(self), callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterUpdateCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
-        const _c = self.vtable.RegisterUpdateCallback(@ptrCast(self), callbackPhase, callback);
+    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
+        const _c = self.vtable.RegisterUpdateCallbackWithCallback(@ptrCast(self), callbackPhase, callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ICalendarViewDayItemChangingEventArgs";
@@ -12665,7 +12665,7 @@ pub const ICalendarViewDayItemChangingEventArgs = extern struct {
         get_Item: *const fn(self: *anyopaque, _r: **CalendarViewDayItem) callconv(.winapi) HRESULT,
         get_Phase: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         RegisterUpdateCallback: *const fn(self: *anyopaque, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) callconv(.winapi) HRESULT,
-        RegisterUpdateCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) callconv(.winapi) HRESULT,
+        RegisterUpdateCallbackWithCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarViewDayItemFactory = extern struct {
@@ -15336,8 +15336,8 @@ pub const IContainerContentChangingEventArgs = extern struct {
         const _c = self.vtable.RegisterUpdateCallback(@ptrCast(self), callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterUpdateCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
-        const _c = self.vtable.RegisterUpdateCallback(@ptrCast(self), callbackPhase, callback);
+    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
+        const _c = self.vtable.RegisterUpdateCallbackWithCallback(@ptrCast(self), callbackPhase, callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.IContainerContentChangingEventArgs";
@@ -15360,7 +15360,7 @@ pub const IContainerContentChangingEventArgs = extern struct {
         get_Handled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Handled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         RegisterUpdateCallback: *const fn(self: *anyopaque, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) callconv(.winapi) HRESULT,
-        RegisterUpdateCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) callconv(.winapi) HRESULT,
+        RegisterUpdateCallbackWithCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContentControl = extern struct {
@@ -26050,8 +26050,8 @@ pub const IListViewBase = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ScrollIntoView(self: *@This(), item: *IInspectable, alignment: ScrollIntoViewAlignment) core.HResult!void {
-        const _c = self.vtable.ScrollIntoView(@ptrCast(self), item, alignment);
+    pub fn ScrollIntoViewWithAlignment(self: *@This(), item: *IInspectable, alignment: ScrollIntoViewAlignment) core.HResult!void {
+        const _c = self.vtable.ScrollIntoViewWithAlignment(@ptrCast(self), item, alignment);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getHeader(self: *@This()) core.HResult!*IInspectable {
@@ -26120,7 +26120,7 @@ pub const IListViewBase = extern struct {
         ScrollIntoView: *const fn(self: *anyopaque, item: *IInspectable) callconv(.winapi) HRESULT,
         SelectAll: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         LoadMoreItemsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(LoadMoreItemsResult)) callconv(.winapi) HRESULT,
-        ScrollIntoView: *const fn(self: *anyopaque, item: *IInspectable, alignment: ScrollIntoViewAlignment) callconv(.winapi) HRESULT,
+        ScrollIntoViewWithAlignment: *const fn(self: *anyopaque, item: *IInspectable, alignment: ScrollIntoViewAlignment) callconv(.winapi) HRESULT,
         get_Header: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         put_Header: *const fn(self: *anyopaque, value: *IInspectable) callconv(.winapi) HRESULT,
         get_HeaderTemplate: *const fn(self: *anyopaque, _r: **DataTemplate) callconv(.winapi) HRESULT,
@@ -27200,9 +27200,9 @@ pub const IMediaElement = extern struct {
         const _c = self.vtable.Pause(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CanPlayType(self: *@This(), type: HSTRING) core.HResult!MediaCanPlayResponse {
+    pub fn CanPlayType(self: *@This(), ty: HSTRING) core.HResult!MediaCanPlayResponse {
         var _r: MediaCanPlayResponse = undefined;
-        const _c = self.vtable.CanPlayType(@ptrCast(self), type, &_r);
+        const _c = self.vtable.CanPlayType(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -27319,7 +27319,7 @@ pub const IMediaElement = extern struct {
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Play: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Pause: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        CanPlayType: *const fn(self: *anyopaque, type: HSTRING, _r: *MediaCanPlayResponse) callconv(.winapi) HRESULT,
+        CanPlayType: *const fn(self: *anyopaque, ty: HSTRING, _r: *MediaCanPlayResponse) callconv(.winapi) HRESULT,
         SetSource: *const fn(self: *anyopaque, stream: *IRandomAccessStream, mimeType: HSTRING) callconv(.winapi) HRESULT,
         GetAudioStreamLanguage: *const fn(self: *anyopaque, index: *IReference(i32), _r: *HSTRING) callconv(.winapi) HRESULT,
         AddAudioEffect: *const fn(self: *anyopaque, effectID: HSTRING, effectOptional: bool, effectConfiguration: *IPropertySet) callconv(.winapi) HRESULT,
@@ -38009,9 +38009,9 @@ pub const IScrollViewer2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeView(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
+    pub fn ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.ChangeView(@ptrCast(self), horizontalOffset, verticalOffset, zoomFactor, disableAnimation, &_r);
+        const _c = self.vtable.ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation(@ptrCast(self), horizontalOffset, verticalOffset, zoomFactor, disableAnimation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -38036,7 +38036,7 @@ pub const IScrollViewer2 = extern struct {
         add_ViewChanging: *const fn(self: *anyopaque, handler: *EventHandler(ScrollViewerViewChangingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ViewChanging: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         ChangeView: *const fn(self: *anyopaque, horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), _r: *bool) callconv(.winapi) HRESULT,
-        ChangeView: *const fn(self: *anyopaque, horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool, _r: *bool) callconv(.winapi) HRESULT,
+        ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation: *const fn(self: *anyopaque, horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IScrollViewer3 = extern struct {
@@ -51171,9 +51171,9 @@ pub const MediaElement = extern struct {
         const this: *IMediaElement = @ptrCast(self);
         return try this.Pause();
     }
-    pub fn CanPlayType(self: *@This(), type: HSTRING) core.HResult!MediaCanPlayResponse {
+    pub fn CanPlayType(self: *@This(), ty: HSTRING) core.HResult!MediaCanPlayResponse {
         const this: *IMediaElement = @ptrCast(self);
-        return try this.CanPlayType(type);
+        return try this.CanPlayType(ty);
     }
     pub fn SetSource(self: *@This(), stream: *IRandomAccessStream, mimeType: HSTRING) core.HResult!void {
         const this: *IMediaElement = @ptrCast(self);
@@ -57501,11 +57501,11 @@ pub const ScrollViewer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ChangeView(horizontalOffset, verticalOffset, zoomFactor);
     }
-    pub fn ChangeView(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
+    pub fn ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
         var this: ?*IScrollViewer2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IScrollViewer2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ChangeView(horizontalOffset, verticalOffset, zoomFactor, disableAnimation);
+        return try this.?.ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation(horizontalOffset, verticalOffset, zoomFactor, disableAnimation);
     }
     pub fn addDirectManipulationStarted(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IScrollViewer3 = undefined;

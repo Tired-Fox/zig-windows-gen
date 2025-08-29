@@ -2944,8 +2944,8 @@ pub const IMediaPlayer5 = extern struct {
         const _c = self.vtable.CopyFrameToVideoSurface(@ptrCast(self), destination);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CopyFrameToVideoSurface(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!void {
-        const _c = self.vtable.CopyFrameToVideoSurface(@ptrCast(self), destination, targetRectangle);
+    pub fn CopyFrameToVideoSurfaceWithTargetRectangle(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!void {
+        const _c = self.vtable.CopyFrameToVideoSurfaceWithTargetRectangle(@ptrCast(self), destination, targetRectangle);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn CopyFrameToStereoscopicVideoSurfaces(self: *@This(), destinationLeftEye: *IDirect3DSurface, destinationRightEye: *IDirect3DSurface) core.HResult!void {
@@ -2969,7 +2969,7 @@ pub const IMediaPlayer5 = extern struct {
         get_IsVideoFrameServerEnabled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_IsVideoFrameServerEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         CopyFrameToVideoSurface: *const fn(self: *anyopaque, destination: *IDirect3DSurface) callconv(.winapi) HRESULT,
-        CopyFrameToVideoSurface: *const fn(self: *anyopaque, destination: *IDirect3DSurface, targetRectangle: Rect) callconv(.winapi) HRESULT,
+        CopyFrameToVideoSurfaceWithTargetRectangle: *const fn(self: *anyopaque, destination: *IDirect3DSurface, targetRectangle: Rect) callconv(.winapi) HRESULT,
         CopyFrameToStereoscopicVideoSurfaces: *const fn(self: *anyopaque, destinationLeftEye: *IDirect3DSurface, destinationRightEye: *IDirect3DSurface) callconv(.winapi) HRESULT,
     };
 };
@@ -2991,9 +2991,9 @@ pub const IMediaPlayer6 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderSubtitlesToSurface(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!bool {
+    pub fn RenderSubtitlesToSurfaceWithTargetRectangle(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.RenderSubtitlesToSurface(@ptrCast(self), destination, targetRectangle, &_r);
+        const _c = self.vtable.RenderSubtitlesToSurfaceWithTargetRectangle(@ptrCast(self), destination, targetRectangle, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3012,7 +3012,7 @@ pub const IMediaPlayer6 = extern struct {
         add_SubtitleFrameChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(MediaPlayer,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_SubtitleFrameChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         RenderSubtitlesToSurface: *const fn(self: *anyopaque, destination: *IDirect3DSurface, _r: *bool) callconv(.winapi) HRESULT,
-        RenderSubtitlesToSurface: *const fn(self: *anyopaque, destination: *IDirect3DSurface, targetRectangle: Rect, _r: *bool) callconv(.winapi) HRESULT,
+        RenderSubtitlesToSurfaceWithTargetRectangle: *const fn(self: *anyopaque, destination: *IDirect3DSurface, targetRectangle: Rect, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaPlayer7 = extern struct {
@@ -5359,11 +5359,11 @@ pub const MediaPlayer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyFrameToVideoSurface(destination);
     }
-    pub fn CopyFrameToVideoSurface(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!void {
+    pub fn CopyFrameToVideoSurfaceWithTargetRectangle(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyFrameToVideoSurface(destination, targetRectangle);
+        return try this.?.CopyFrameToVideoSurfaceWithTargetRectangle(destination, targetRectangle);
     }
     pub fn CopyFrameToStereoscopicVideoSurfaces(self: *@This(), destinationLeftEye: *IDirect3DSurface, destinationRightEye: *IDirect3DSurface) core.HResult!void {
         var this: ?*IMediaPlayer5 = undefined;
@@ -5389,11 +5389,11 @@ pub const MediaPlayer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RenderSubtitlesToSurface(destination);
     }
-    pub fn RenderSubtitlesToSurface(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!bool {
+    pub fn RenderSubtitlesToSurfaceWithTargetRectangle(self: *@This(), destination: *IDirect3DSurface, targetRectangle: Rect) core.HResult!bool {
         var this: ?*IMediaPlayer6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaPlayer6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RenderSubtitlesToSurface(destination, targetRectangle);
+        return try this.?.RenderSubtitlesToSurfaceWithTargetRectangle(destination, targetRectangle);
     }
     pub fn getAudioStateMonitor(self: *@This()) core.HResult!*AudioStateMonitor {
         var this: ?*IMediaPlayer7 = undefined;

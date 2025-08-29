@@ -545,9 +545,9 @@ pub const IPaymentMediator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SubmitPaymentRequestAsync(self: *@This(), paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler) core.HResult!*IAsyncOperation(PaymentRequestSubmitResult) {
+    pub fn SubmitPaymentRequestAsyncWithChangeHandler(self: *@This(), paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler) core.HResult!*IAsyncOperation(PaymentRequestSubmitResult) {
         var _r: *IAsyncOperation(PaymentRequestSubmitResult) = undefined;
-        const _c = self.vtable.SubmitPaymentRequestAsync(@ptrCast(self), paymentRequest, changeHandler, &_r);
+        const _c = self.vtable.SubmitPaymentRequestAsyncWithChangeHandler(@ptrCast(self), paymentRequest, changeHandler, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -565,7 +565,7 @@ pub const IPaymentMediator = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetSupportedMethodIdsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
         SubmitPaymentRequestAsync: *const fn(self: *anyopaque, paymentRequest: *PaymentRequest, _r: **IAsyncOperation(PaymentRequestSubmitResult)) callconv(.winapi) HRESULT,
-        SubmitPaymentRequestAsync: *const fn(self: *anyopaque, paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler, _r: **IAsyncOperation(PaymentRequestSubmitResult)) callconv(.winapi) HRESULT,
+        SubmitPaymentRequestAsyncWithChangeHandler: *const fn(self: *anyopaque, paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler, _r: **IAsyncOperation(PaymentRequestSubmitResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPaymentMediator2 = extern struct {
@@ -1615,9 +1615,9 @@ pub const PaymentMediator = extern struct {
         const this: *IPaymentMediator = @ptrCast(self);
         return try this.SubmitPaymentRequestAsync(paymentRequest);
     }
-    pub fn SubmitPaymentRequestAsync(self: *@This(), paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler) core.HResult!*IAsyncOperation(PaymentRequestSubmitResult) {
+    pub fn SubmitPaymentRequestAsyncWithChangeHandler(self: *@This(), paymentRequest: *PaymentRequest, changeHandler: *PaymentRequestChangedHandler) core.HResult!*IAsyncOperation(PaymentRequestSubmitResult) {
         const this: *IPaymentMediator = @ptrCast(self);
-        return try this.SubmitPaymentRequestAsync(paymentRequest, changeHandler);
+        return try this.SubmitPaymentRequestAsyncWithChangeHandler(paymentRequest, changeHandler);
     }
     pub fn CanMakePaymentAsync(self: *@This(), paymentRequest: *PaymentRequest) core.HResult!*IAsyncOperation(PaymentCanMakePaymentResult) {
         var this: ?*IPaymentMediator2 = undefined;

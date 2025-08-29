@@ -11,9 +11,9 @@ pub const IOnlineIdAuthenticator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AuthenticateUserAsync(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
+    pub fn AuthenticateUserAsyncWithCredentialPromptType(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
         var _r: *UserAuthenticationOperation = undefined;
-        const _c = self.vtable.AuthenticateUserAsync(@ptrCast(self), requests, credentialPromptType, &_r);
+        const _c = self.vtable.AuthenticateUserAsyncWithCredentialPromptType(@ptrCast(self), requests, credentialPromptType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -58,7 +58,7 @@ pub const IOnlineIdAuthenticator = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         AuthenticateUserAsync: *const fn(self: *anyopaque, request: *OnlineIdServiceTicketRequest, _r: **UserAuthenticationOperation) callconv(.winapi) HRESULT,
-        AuthenticateUserAsync: *const fn(self: *anyopaque, requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType, _r: **UserAuthenticationOperation) callconv(.winapi) HRESULT,
+        AuthenticateUserAsyncWithCredentialPromptType: *const fn(self: *anyopaque, requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType, _r: **UserAuthenticationOperation) callconv(.winapi) HRESULT,
         SignOutUserAsync: *const fn(self: *anyopaque, _r: **SignOutUserOperation) callconv(.winapi) HRESULT,
         put_ApplicationId: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
         get_ApplicationId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
@@ -380,9 +380,9 @@ pub const OnlineIdAuthenticator = extern struct {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
         return try this.AuthenticateUserAsync(request);
     }
-    pub fn AuthenticateUserAsync(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
+    pub fn AuthenticateUserAsyncWithCredentialPromptType(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
-        return try this.AuthenticateUserAsync(requests, credentialPromptType);
+        return try this.AuthenticateUserAsyncWithCredentialPromptType(requests, credentialPromptType);
     }
     pub fn SignOutUserAsync(self: *@This()) core.HResult!*SignOutUserOperation {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);

@@ -4,6 +4,7 @@ const ty = @import("./type.zig");
 const metadata = @import("../metadata.zig");
 const replaceAll = @import("../root.zig").replaceAll;
 const TypeDef = metadata.TypeDef;
+const noreserved = metadata.noreserved;
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
     // At this piont the kind should have already been determined;
@@ -52,7 +53,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         for (parameters) |param| {
             if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                 defer t.deinit(allocator);
-                try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
             }
         }
     }
@@ -73,7 +74,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         for (parameters) |param| {
             if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                 defer t.deinit(allocator);
-                try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
             }
         }
     }
@@ -129,7 +130,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         for (parameters) |param| {
             if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                 defer t.deinit(allocator);
-                try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
             }
         }
     }
@@ -140,7 +141,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}    this._cb(this._context", .{ offset });
     if (invoke.Parameters) |parameters| {
         for (parameters) |param| {
-            try writer.print(", {s}", .{ param.Name });
+            try writer.print(", {s}", .{ noreserved(param.Name) });
         }
     }
     try writer.writeAll(");\n");
@@ -178,7 +179,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         for (parameters) |param| {
             if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                 defer t.deinit(allocator);
-                try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
             }
         }
     }

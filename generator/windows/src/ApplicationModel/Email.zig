@@ -340,9 +340,9 @@ pub const EmailFolder = extern struct {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.TryMoveAsync(newParentFolder);
     }
-    pub fn TryMoveAsync(self: *@This(), newParentFolder: *EmailFolder, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveAsyncWithNewFolderName(self: *@This(), newParentFolder: *EmailFolder, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailFolder = @ptrCast(self);
-        return try this.TryMoveAsync(newParentFolder, newFolderName);
+        return try this.TryMoveAsyncWithNewFolderName(newParentFolder, newFolderName);
     }
     pub fn TrySaveAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailFolder = @ptrCast(self);
@@ -687,9 +687,9 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryMoveFolderAsync(folderId, newParentFolderId);
     }
-    pub fn TryMoveFolderAsync(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
-        return try this.TryMoveFolderAsync(folderId, newParentFolderId, newFolderName);
+        return try this.TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(folderId, newParentFolderId, newFolderName);
     }
     pub fn DeleteMessageAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
@@ -739,9 +739,9 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.removeMailboxChanged(token);
     }
-    pub fn SendMessageAsync(self: *@This(), message: *EmailMessage, smartSend: bool) core.HResult!*IAsyncAction {
+    pub fn SendMessageAsyncWithSmartSend(self: *@This(), message: *EmailMessage, smartSend: bool) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
-        return try this.SendMessageAsync(message, smartSend);
+        return try this.SendMessageAsyncWithSmartSend(message, smartSend);
     }
     pub fn TrySetAutoReplySettingsAsync(self: *@This(), autoReplySettings: *EmailMailboxAutoReplySettings) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
@@ -1860,17 +1860,17 @@ pub const EmailMessage = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putMeetingInfo(value);
     }
-    pub fn GetBodyStream(self: *@This(), type: EmailMessageBodyKind) core.HResult!*IRandomAccessStreamReference {
+    pub fn GetBodyStream(self: *@This(), ty: EmailMessageBodyKind) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetBodyStream(type);
+        return try this.?.GetBodyStream(ty);
     }
-    pub fn SetBodyStream(self: *@This(), type: EmailMessageBodyKind, stream: *IRandomAccessStreamReference) core.HResult!void {
+    pub fn SetBodyStream(self: *@This(), ty: EmailMessageBodyKind, stream: *IRandomAccessStreamReference) core.HResult!void {
         var this: ?*IEmailMessage2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IEmailMessage2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetBodyStream(type, stream);
+        return try this.?.SetBodyStream(ty, stream);
     }
     pub fn getSmimeData(self: *@This()) core.HResult!*IRandomAccessStreamReference {
         var this: ?*IEmailMessage3 = undefined;
@@ -2232,9 +2232,9 @@ pub const EmailStore = extern struct {
         const this: *IEmailStore = @ptrCast(self);
         return try this.CreateMailboxAsync(accountName, accountAddress);
     }
-    pub fn CreateMailboxAsync(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         const this: *IEmailStore = @ptrCast(self);
-        return try this.CreateMailboxAsync(accountName, accountAddress, userDataAccountId);
+        return try this.CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(accountName, accountAddress, userDataAccountId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailStore";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2742,9 +2742,9 @@ pub const IEmailFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveAsync(self: *@This(), newParentFolder: *EmailFolder, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveAsyncWithNewFolderName(self: *@This(), newParentFolder: *EmailFolder, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryMoveAsync(@ptrCast(self), newParentFolder, newFolderName, &_r);
+        const _c = self.vtable.TryMoveAsyncWithNewFolderName(@ptrCast(self), newParentFolder, newFolderName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2794,7 +2794,7 @@ pub const IEmailFolder = extern struct {
         GetMessageReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMessageCountsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(EmailItemCounts)) callconv(.winapi) HRESULT,
         TryMoveAsync: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryMoveAsync: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryMoveAsyncWithNewFolderName: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TrySaveAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         SaveMessageAsync: *const fn(self: *anyopaque, message: *EmailMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -3299,9 +3299,9 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveFolderAsync(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryMoveFolderAsync(@ptrCast(self), folderId, newParentFolderId, newFolderName, &_r);
+        const _c = self.vtable.TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(@ptrCast(self), folderId, newParentFolderId, newFolderName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3375,9 +3375,9 @@ pub const IEmailMailbox = extern struct {
         const _c = self.vtable.remove_MailboxChanged(@ptrCast(self), token);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SendMessageAsync(self: *@This(), message: *EmailMessage, smartSend: bool) core.HResult!*IAsyncAction {
+    pub fn SendMessageAsyncWithSmartSend(self: *@This(), message: *EmailMessage, smartSend: bool) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SendMessageAsync(@ptrCast(self), message, smartSend, &_r);
+        const _c = self.vtable.SendMessageAsyncWithSmartSend(@ptrCast(self), message, smartSend, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3439,7 +3439,7 @@ pub const IEmailMailbox = extern struct {
         ChangeMessageFlagStateAsync: *const fn(self: *anyopaque, messageId: HSTRING, flagState: EmailFlagState, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         TryMoveMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, newParentFolderId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryMoveFolderAsync: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryMoveFolderAsync: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         DeleteMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         MarkFolderSyncEnabledAsync: *const fn(self: *anyopaque, folderId: HSTRING, isSyncEnabled: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, message: *EmailMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -3452,7 +3452,7 @@ pub const IEmailMailbox = extern struct {
         TryProposeNewTimeForMeetingAsync: *const fn(self: *anyopaque, meeting: *EmailMessage, newStartTime: DateTime, newDuration: TimeSpan, subject: HSTRING, comment: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_MailboxChanged: *const fn(self: *anyopaque, pHandler: *TypedEventHandler(EmailMailbox,EmailMailboxChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_MailboxChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
-        SendMessageAsync: *const fn(self: *anyopaque, message: *EmailMessage, smartSend: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SendMessageAsyncWithSmartSend: *const fn(self: *anyopaque, message: *EmailMessage, smartSend: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         TrySetAutoReplySettingsAsync: *const fn(self: *anyopaque, autoReplySettings: *EmailMailboxAutoReplySettings, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryGetAutoReplySettingsAsync: *const fn(self: *anyopaque, requestedFormat: EmailMailboxAutoReplyMessageResponseKind, _r: **IAsyncOperation(EmailMailboxAutoReplySettings)) callconv(.winapi) HRESULT,
     };
@@ -4957,14 +4957,14 @@ pub const IEmailMessage2 = extern struct {
         const _c = self.vtable.put_MeetingInfo(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetBodyStream(self: *@This(), type: EmailMessageBodyKind) core.HResult!*IRandomAccessStreamReference {
+    pub fn GetBodyStream(self: *@This(), ty: EmailMessageBodyKind) core.HResult!*IRandomAccessStreamReference {
         var _r: *IRandomAccessStreamReference = undefined;
-        const _c = self.vtable.GetBodyStream(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetBodyStream(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SetBodyStream(self: *@This(), type: EmailMessageBodyKind, stream: *IRandomAccessStreamReference) core.HResult!void {
-        const _c = self.vtable.SetBodyStream(@ptrCast(self), type, stream);
+    pub fn SetBodyStream(self: *@This(), ty: EmailMessageBodyKind, stream: *IRandomAccessStreamReference) core.HResult!void {
+        const _c = self.vtable.SetBodyStream(@ptrCast(self), ty, stream);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.IEmailMessage2";
@@ -5022,8 +5022,8 @@ pub const IEmailMessage2 = extern struct {
         put_SentTime: *const fn(self: *anyopaque, value: *IReference(DateTime)) callconv(.winapi) HRESULT,
         get_MeetingInfo: *const fn(self: *anyopaque, _r: **EmailMeetingInfo) callconv(.winapi) HRESULT,
         put_MeetingInfo: *const fn(self: *anyopaque, value: *EmailMeetingInfo) callconv(.winapi) HRESULT,
-        GetBodyStream: *const fn(self: *anyopaque, type: EmailMessageBodyKind, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
-        SetBodyStream: *const fn(self: *anyopaque, type: EmailMessageBodyKind, stream: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
+        GetBodyStream: *const fn(self: *anyopaque, ty: EmailMessageBodyKind, _r: **IRandomAccessStreamReference) callconv(.winapi) HRESULT,
+        SetBodyStream: *const fn(self: *anyopaque, ty: EmailMessageBodyKind, stream: *IRandomAccessStreamReference) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailMessage3 = extern struct {
@@ -5490,9 +5490,9 @@ pub const IEmailStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMailboxAsync(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         var _r: *IAsyncOperation(EmailMailbox) = undefined;
-        const _c = self.vtable.CreateMailboxAsync(@ptrCast(self), accountName, accountAddress, userDataAccountId, &_r);
+        const _c = self.vtable.CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(@ptrCast(self), accountName, accountAddress, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5518,7 +5518,7 @@ pub const IEmailStore = extern struct {
         GetFolderAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
         GetMessageAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
         CreateMailboxAsync: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
-        CreateMailboxAsync: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
+        CreateMailboxAsyncWithAccountAddressWithUserDataAccountId: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailStoreNotificationTriggerDetails = extern struct {

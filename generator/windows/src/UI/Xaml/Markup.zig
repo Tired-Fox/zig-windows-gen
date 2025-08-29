@@ -242,9 +242,9 @@ pub const IXamlBindingHelperStatics = extern struct {
         const _c = self.vtable.ResumeRendering(@ptrCast(self), target);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ConvertValue(self: *@This(), type: TypeName, value: *IInspectable) core.HResult!*IInspectable {
+    pub fn ConvertValue(self: *@This(), ty: TypeName, value: *IInspectable) core.HResult!*IInspectable {
         var _r: *IInspectable = undefined;
-        const _c = self.vtable.ConvertValue(@ptrCast(self), type, value, &_r);
+        const _c = self.vtable.ConvertValue(@ptrCast(self), ty, value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -333,7 +333,7 @@ pub const IXamlBindingHelperStatics = extern struct {
         SetDataTemplateComponent: *const fn(self: *anyopaque, element: *DependencyObject, value: *IDataTemplateComponent) callconv(.winapi) HRESULT,
         SuspendRendering: *const fn(self: *anyopaque, target: *UIElement) callconv(.winapi) HRESULT,
         ResumeRendering: *const fn(self: *anyopaque, target: *UIElement) callconv(.winapi) HRESULT,
-        ConvertValue: *const fn(self: *anyopaque, type: TypeName, value: *IInspectable, _r: **IInspectable) callconv(.winapi) HRESULT,
+        ConvertValue: *const fn(self: *anyopaque, ty: TypeName, value: *IInspectable, _r: **IInspectable) callconv(.winapi) HRESULT,
         SetPropertyFromString: *const fn(self: *anyopaque, dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: HSTRING) callconv(.winapi) HRESULT,
         SetPropertyFromBoolean: *const fn(self: *anyopaque, dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: bool) callconv(.winapi) HRESULT,
         SetPropertyFromChar16: *const fn(self: *anyopaque, dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: u16) callconv(.winapi) HRESULT,
@@ -462,15 +462,15 @@ pub const IXamlMember = extern struct {
 };
 pub const IXamlMetadataProvider = extern struct {
     vtable: *const VTable,
-    pub fn GetXamlType(self: *@This(), type: TypeName) core.HResult!*IXamlType {
+    pub fn GetXamlType(self: *@This(), ty: TypeName) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
-        const _c = self.vtable.GetXamlType(@ptrCast(self), type, &_r);
+        const _c = self.vtable.GetXamlType(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetXamlType(self: *@This(), fullName: HSTRING) core.HResult!*IXamlType {
+    pub fn GetXamlTypeWithFullName(self: *@This(), fullName: HSTRING) core.HResult!*IXamlType {
         var _r: *IXamlType = undefined;
-        const _c = self.vtable.GetXamlType(@ptrCast(self), fullName, &_r);
+        const _c = self.vtable.GetXamlTypeWithFullName(@ptrCast(self), fullName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -492,8 +492,8 @@ pub const IXamlMetadataProvider = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetXamlType: *const fn(self: *anyopaque, type: TypeName, _r: **IXamlType) callconv(.winapi) HRESULT,
-        GetXamlType: *const fn(self: *anyopaque, fullName: HSTRING, _r: **IXamlType) callconv(.winapi) HRESULT,
+        GetXamlType: *const fn(self: *anyopaque, ty: TypeName, _r: **IXamlType) callconv(.winapi) HRESULT,
+        GetXamlTypeWithFullName: *const fn(self: *anyopaque, fullName: HSTRING, _r: **IXamlType) callconv(.winapi) HRESULT,
         GetXmlnsDefinitions: *const fn(self: *anyopaque, _r: *[*]XmlnsDefinition) callconv(.winapi) HRESULT,
     };
 };
@@ -775,9 +775,9 @@ pub const XamlBindingHelper = extern struct {
         const factory = @This().IXamlBindingHelperStaticsCache.get();
         return try factory.ResumeRendering(target);
     }
-    pub fn ConvertValue(type: TypeName, value: *IInspectable) core.HResult!*IInspectable {
+    pub fn ConvertValue(ty: TypeName, value: *IInspectable) core.HResult!*IInspectable {
         const factory = @This().IXamlBindingHelperStaticsCache.get();
-        return try factory.ConvertValue(type, value);
+        return try factory.ConvertValue(ty, value);
     }
     pub fn SetPropertyFromString(dependencyObject: *IInspectable, propertyToSet: *DependencyProperty, value: HSTRING) core.HResult!void {
         const factory = @This().IXamlBindingHelperStaticsCache.get();

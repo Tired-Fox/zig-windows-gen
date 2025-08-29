@@ -188,15 +188,15 @@ pub const IWebAccountManagerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddWebAccountForUserAsync(self: *@This(), user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
+    pub fn AddWebAccountForUserAsyncWithWebAccountIdWithWebAccountUserNameWithPropsWithScope(self: *@This(), user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
-        const _c = self.vtable.AddWebAccountForUserAsync(@ptrCast(self), user, webAccountId, webAccountUserName, props, scope, &_r);
+        const _c = self.vtable.AddWebAccountForUserAsyncWithWebAccountIdWithWebAccountUserNameWithPropsWithScope(@ptrCast(self), user, webAccountId, webAccountUserName, props, scope, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddWebAccountForUserAsync(self: *@This(), user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, perUserWebAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
+    pub fn AddWebAccountForUserAsyncWithWebAccountUserNameWithPropsWithScopeWithPerUserWebAccountId(self: *@This(), user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, perUserWebAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         var _r: *IAsyncOperation(WebAccount) = undefined;
-        const _c = self.vtable.AddWebAccountForUserAsync(@ptrCast(self), user, webAccountId, webAccountUserName, props, scope, perUserWebAccountId, &_r);
+        const _c = self.vtable.AddWebAccountForUserAsyncWithWebAccountUserNameWithPropsWithScopeWithPerUserWebAccountId(@ptrCast(self), user, webAccountId, webAccountUserName, props, scope, perUserWebAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -214,8 +214,8 @@ pub const IWebAccountManagerStatics3 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllProviderWebAccountsForUserAsync: *const fn(self: *anyopaque, user: *User, _r: **IAsyncOperation(IVectorView(WebAccount))) callconv(.winapi) HRESULT,
         AddWebAccountForUserAsync: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
-        AddWebAccountForUserAsync: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
-        AddWebAccountForUserAsync: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, perUserWebAccountId: HSTRING, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
+        AddWebAccountForUserAsyncWithWebAccountIdWithWebAccountUserNameWithPropsWithScope: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
+        AddWebAccountForUserAsyncWithWebAccountUserNameWithPropsWithScopeWithPerUserWebAccountId: *const fn(self: *anyopaque, user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, perUserWebAccountId: HSTRING, _r: **IAsyncOperation(WebAccount)) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccountManagerStatics4 = extern struct {
@@ -877,13 +877,13 @@ pub const WebAccountManager = extern struct {
         const factory = @This().IWebAccountManagerStatics3Cache.get();
         return try factory.AddWebAccountForUserAsync(user, webAccountId, webAccountUserName, props);
     }
-    pub fn AddWebAccountForUserAsync(user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
+    pub fn AddWebAccountForUserAsyncWithWebAccountIdWithWebAccountUserNameWithPropsWithScope(user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
         const factory = @This().IWebAccountManagerStatics3Cache.get();
-        return try factory.AddWebAccountForUserAsync(user, webAccountId, webAccountUserName, props, scope);
+        return try factory.AddWebAccountForUserAsyncWithWebAccountIdWithWebAccountUserNameWithPropsWithScope(user, webAccountId, webAccountUserName, props, scope);
     }
-    pub fn AddWebAccountForUserAsync(user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, perUserWebAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
+    pub fn AddWebAccountForUserAsyncWithWebAccountUserNameWithPropsWithScopeWithPerUserWebAccountId(user: *User, webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope, perUserWebAccountId: HSTRING) core.HResult!*IAsyncOperation(WebAccount) {
         const factory = @This().IWebAccountManagerStatics3Cache.get();
-        return try factory.AddWebAccountForUserAsync(user, webAccountId, webAccountUserName, props, scope, perUserWebAccountId);
+        return try factory.AddWebAccountForUserAsyncWithWebAccountUserNameWithPropsWithScopeWithPerUserWebAccountId(user, webAccountId, webAccountUserName, props, scope, perUserWebAccountId);
     }
     pub fn AddWebAccountAsync(webAccountId: HSTRING, webAccountUserName: HSTRING, props: *IMapView(HSTRING,HSTRING), scope: WebAccountScope) core.HResult!*IAsyncOperation(WebAccount) {
         const factory = @This().IWebAccountScopeManagerStaticsCache.get();

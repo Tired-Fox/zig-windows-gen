@@ -1969,11 +1969,11 @@ pub const PrintWorkflowPdlConverter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ConvertPdlAsync(printTicket, inputStream, outputStream);
     }
-    pub fn ConvertPdlAsync(self: *@This(), printTicket: *WorkflowPrintTicket, inputStream: *IInputStream, outputStream: *IOutputStream, hostBasedProcessingOperations: PdlConversionHostBasedProcessingOperations) core.HResult!*IAsyncAction {
+    pub fn ConvertPdlAsyncWithInputStreamWithOutputStreamWithHostBasedProcessingOperations(self: *@This(), printTicket: *WorkflowPrintTicket, inputStream: *IInputStream, outputStream: *IOutputStream, hostBasedProcessingOperations: PdlConversionHostBasedProcessingOperations) core.HResult!*IAsyncAction {
         var this: ?*IPrintWorkflowPdlConverter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlConverter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConvertPdlAsync(printTicket, inputStream, outputStream, hostBasedProcessingOperations);
+        return try this.?.ConvertPdlAsyncWithInputStreamWithOutputStreamWithHostBasedProcessingOperations(printTicket, inputStream, outputStream, hostBasedProcessingOperations);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.Workflow.PrintWorkflowPdlConverter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2047,17 +2047,17 @@ pub const PrintWorkflowPdlModificationRequestedEventArgs = extern struct {
         const this: *IPrintWorkflowPdlModificationRequestedEventArgs = @ptrCast(self);
         return try this.GetDeferral();
     }
-    pub fn CreateJobOnPrinterWithAttributes(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING, operationAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesWithJobAttributesMergePolicyWithOperationAttributesMergePolicy(self: *@This(), jobAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), targetContentType: HSTRING, operationAttributes: *IIterable(IKeyValuePair(HSTRING,IppAttributeValue)), jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var this: ?*IPrintWorkflowPdlModificationRequestedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlModificationRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateJobOnPrinterWithAttributes(jobAttributes, targetContentType, operationAttributes, jobAttributesMergePolicy, operationAttributesMergePolicy);
+        return try this.?.CreateJobOnPrinterWithAttributesWithJobAttributesMergePolicyWithOperationAttributesMergePolicy(jobAttributes, targetContentType, operationAttributes, jobAttributesMergePolicy, operationAttributesMergePolicy);
     }
-    pub fn CreateJobOnPrinterWithAttributesBuffer(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
+    pub fn CreateJobOnPrinterWithAttributesBufferWithJobAttributesMergePolicyWithOperationAttributesMergePolicy(self: *@This(), jobAttributesBuffer: *IBuffer, targetContentType: HSTRING, operationAttributesBuffer: *IBuffer, jobAttributesMergePolicy: PrintWorkflowAttributesMergePolicy, operationAttributesMergePolicy: PrintWorkflowAttributesMergePolicy) core.HResult!*PrintWorkflowPdlTargetStream {
         var this: ?*IPrintWorkflowPdlModificationRequestedEventArgs2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintWorkflowPdlModificationRequestedEventArgs2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateJobOnPrinterWithAttributesBuffer(jobAttributesBuffer, targetContentType, operationAttributesBuffer, jobAttributesMergePolicy, operationAttributesMergePolicy);
+        return try this.?.CreateJobOnPrinterWithAttributesBufferWithJobAttributesMergePolicyWithOperationAttributesMergePolicy(jobAttributesBuffer, targetContentType, operationAttributesBuffer, jobAttributesMergePolicy, operationAttributesMergePolicy);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.Workflow.PrintWorkflowPdlModificationRequestedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

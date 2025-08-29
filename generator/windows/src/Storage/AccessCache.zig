@@ -130,9 +130,9 @@ pub const IStorageItemAccessList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Add(self: *@This(), file: *IStorageItem, metadata: HSTRING) core.HResult!HSTRING {
+    pub fn AddWithMetadata(self: *@This(), file: *IStorageItem, metadata: HSTRING) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.Add(@ptrCast(self), file, metadata, &_r);
+        const _c = self.vtable.AddWithMetadata(@ptrCast(self), file, metadata, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -140,8 +140,8 @@ pub const IStorageItemAccessList = extern struct {
         const _c = self.vtable.AddOrReplace(@ptrCast(self), token, file);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddOrReplace(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING) core.HResult!void {
-        const _c = self.vtable.AddOrReplace(@ptrCast(self), token, file, metadata);
+    pub fn AddOrReplaceWithFileWithMetadata(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING) core.HResult!void {
+        const _c = self.vtable.AddOrReplaceWithFileWithMetadata(@ptrCast(self), token, file, metadata);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn GetItemAsync(self: *@This(), token: HSTRING) core.HResult!*IAsyncOperation(IStorageItem) {
@@ -162,21 +162,21 @@ pub const IStorageItemAccessList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
+    pub fn GetItemAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
         var _r: *IAsyncOperation(IStorageItem) = undefined;
-        const _c = self.vtable.GetItemAsync(@ptrCast(self), token, options, &_r);
+        const _c = self.vtable.GetItemAsyncWithOptions(@ptrCast(self), token, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFileAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn GetFileAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.GetFileAsync(@ptrCast(self), token, options, &_r);
+        const _c = self.vtable.GetFileAsyncWithOptions(@ptrCast(self), token, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFolderAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn GetFolderAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
         var _r: *IAsyncOperation(StorageFolder) = undefined;
-        const _c = self.vtable.GetFolderAsync(@ptrCast(self), token, options, &_r);
+        const _c = self.vtable.GetFolderAsyncWithOptions(@ptrCast(self), token, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -225,15 +225,15 @@ pub const IStorageItemAccessList = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Add: *const fn(self: *anyopaque, file: *IStorageItem, _r: *HSTRING) callconv(.winapi) HRESULT,
-        Add: *const fn(self: *anyopaque, file: *IStorageItem, metadata: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        AddWithMetadata: *const fn(self: *anyopaque, file: *IStorageItem, metadata: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
         AddOrReplace: *const fn(self: *anyopaque, token: HSTRING, file: *IStorageItem) callconv(.winapi) HRESULT,
-        AddOrReplace: *const fn(self: *anyopaque, token: HSTRING, file: *IStorageItem, metadata: HSTRING) callconv(.winapi) HRESULT,
+        AddOrReplaceWithFileWithMetadata: *const fn(self: *anyopaque, token: HSTRING, file: *IStorageItem, metadata: HSTRING) callconv(.winapi) HRESULT,
         GetItemAsync: *const fn(self: *anyopaque, token: HSTRING, _r: **IAsyncOperation(IStorageItem)) callconv(.winapi) HRESULT,
         GetFileAsync: *const fn(self: *anyopaque, token: HSTRING, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
         GetFolderAsync: *const fn(self: *anyopaque, token: HSTRING, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
-        GetItemAsync: *const fn(self: *anyopaque, token: HSTRING, options: AccessCacheOptions, _r: **IAsyncOperation(IStorageItem)) callconv(.winapi) HRESULT,
-        GetFileAsync: *const fn(self: *anyopaque, token: HSTRING, options: AccessCacheOptions, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        GetFolderAsync: *const fn(self: *anyopaque, token: HSTRING, options: AccessCacheOptions, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
+        GetItemAsyncWithOptions: *const fn(self: *anyopaque, token: HSTRING, options: AccessCacheOptions, _r: **IAsyncOperation(IStorageItem)) callconv(.winapi) HRESULT,
+        GetFileAsyncWithOptions: *const fn(self: *anyopaque, token: HSTRING, options: AccessCacheOptions, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        GetFolderAsyncWithOptions: *const fn(self: *anyopaque, token: HSTRING, options: AccessCacheOptions, _r: **IAsyncOperation(StorageFolder)) callconv(.winapi) HRESULT,
         Remove: *const fn(self: *anyopaque, token: HSTRING) callconv(.winapi) HRESULT,
         ContainsItem: *const fn(self: *anyopaque, token: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -346,17 +346,17 @@ pub const StorageItemAccessList = extern struct {
         const this: *IStorageItemAccessList = @ptrCast(self);
         return try this.Add(file);
     }
-    pub fn Add(self: *@This(), file: *IStorageItem, metadata: HSTRING) core.HResult!HSTRING {
+    pub fn AddWithMetadata(self: *@This(), file: *IStorageItem, metadata: HSTRING) core.HResult!HSTRING {
         const this: *IStorageItemAccessList = @ptrCast(self);
-        return try this.Add(file, metadata);
+        return try this.AddWithMetadata(file, metadata);
     }
     pub fn AddOrReplace(self: *@This(), token: HSTRING, file: *IStorageItem) core.HResult!void {
         const this: *IStorageItemAccessList = @ptrCast(self);
         return try this.AddOrReplace(token, file);
     }
-    pub fn AddOrReplace(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING) core.HResult!void {
+    pub fn AddOrReplaceWithFileWithMetadata(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING) core.HResult!void {
         const this: *IStorageItemAccessList = @ptrCast(self);
-        return try this.AddOrReplace(token, file, metadata);
+        return try this.AddOrReplaceWithFileWithMetadata(token, file, metadata);
     }
     pub fn GetItemAsync(self: *@This(), token: HSTRING) core.HResult!*IAsyncOperation(IStorageItem) {
         const this: *IStorageItemAccessList = @ptrCast(self);
@@ -370,17 +370,17 @@ pub const StorageItemAccessList = extern struct {
         const this: *IStorageItemAccessList = @ptrCast(self);
         return try this.GetFolderAsync(token);
     }
-    pub fn GetItemAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
+    pub fn GetItemAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
         const this: *IStorageItemAccessList = @ptrCast(self);
-        return try this.GetItemAsync(token, options);
+        return try this.GetItemAsyncWithOptions(token, options);
     }
-    pub fn GetFileAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn GetFileAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IStorageItemAccessList = @ptrCast(self);
-        return try this.GetFileAsync(token, options);
+        return try this.GetFileAsyncWithOptions(token, options);
     }
-    pub fn GetFolderAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn GetFolderAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
         const this: *IStorageItemAccessList = @ptrCast(self);
-        return try this.GetFolderAsync(token, options);
+        return try this.GetFolderAsyncWithOptions(token, options);
     }
     pub fn Remove(self: *@This(), token: HSTRING) core.HResult!void {
         const this: *IStorageItemAccessList = @ptrCast(self);
@@ -428,11 +428,11 @@ pub const StorageItemMostRecentlyUsedList = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Add(file);
     }
-    pub fn Add(self: *@This(), file: *IStorageItem, metadata: HSTRING) core.HResult!HSTRING {
+    pub fn AddWithMetadata(self: *@This(), file: *IStorageItem, metadata: HSTRING) core.HResult!HSTRING {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Add(file, metadata);
+        return try this.?.AddWithMetadata(file, metadata);
     }
     pub fn AddOrReplace(self: *@This(), token: HSTRING, file: *IStorageItem) core.HResult!void {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
@@ -440,11 +440,11 @@ pub const StorageItemMostRecentlyUsedList = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddOrReplace(token, file);
     }
-    pub fn AddOrReplace(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING) core.HResult!void {
+    pub fn AddOrReplaceWithFileWithMetadata(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING) core.HResult!void {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddOrReplace(token, file, metadata);
+        return try this.?.AddOrReplaceWithFileWithMetadata(token, file, metadata);
     }
     pub fn GetItemAsync(self: *@This(), token: HSTRING) core.HResult!*IAsyncOperation(IStorageItem) {
         var this: ?*IStorageItemAccessList = undefined;
@@ -464,23 +464,23 @@ pub const StorageItemMostRecentlyUsedList = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFolderAsync(token);
     }
-    pub fn GetItemAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
+    pub fn GetItemAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(IStorageItem) {
         var this: ?*IStorageItemAccessList = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetItemAsync(token, options);
+        return try this.?.GetItemAsyncWithOptions(token, options);
     }
-    pub fn GetFileAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn GetFileAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageItemAccessList = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetFileAsync(token, options);
+        return try this.?.GetFileAsyncWithOptions(token, options);
     }
-    pub fn GetFolderAsync(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
+    pub fn GetFolderAsyncWithOptions(self: *@This(), token: HSTRING, options: AccessCacheOptions) core.HResult!*IAsyncOperation(StorageFolder) {
         var this: ?*IStorageItemAccessList = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemAccessList.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetFolderAsync(token, options);
+        return try this.?.GetFolderAsyncWithOptions(token, options);
     }
     pub fn Remove(self: *@This(), token: HSTRING) core.HResult!void {
         var this: ?*IStorageItemAccessList = undefined;
@@ -518,17 +518,17 @@ pub const StorageItemMostRecentlyUsedList = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getMaximumItemsAllowed();
     }
-    pub fn Add(self: *@This(), file: *IStorageItem, metadata: HSTRING, visibility: RecentStorageItemVisibility) core.HResult!HSTRING {
+    pub fn AddWithVisibility(self: *@This(), file: *IStorageItem, metadata: HSTRING, visibility: RecentStorageItemVisibility) core.HResult!HSTRING {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Add(file, metadata, visibility);
+        return try this.?.AddWithVisibility(file, metadata, visibility);
     }
-    pub fn AddOrReplace(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING, visibility: RecentStorageItemVisibility) core.HResult!void {
+    pub fn AddOrReplaceWithMetadataWithVisibility(self: *@This(), token: HSTRING, file: *IStorageItem, metadata: HSTRING, visibility: RecentStorageItemVisibility) core.HResult!void {
         var this: ?*IStorageItemMostRecentlyUsedList2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemMostRecentlyUsedList2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddOrReplace(token, file, metadata, visibility);
+        return try this.?.AddOrReplaceWithMetadataWithVisibility(token, file, metadata, visibility);
     }
     pub const NAME: []const u8 = "Windows.Storage.AccessCache.StorageItemMostRecentlyUsedList";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -88,17 +88,17 @@ pub const DnssdServiceInstance = extern struct {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.RegisterStreamSocketListenerAsync(socket);
     }
-    pub fn RegisterStreamSocketListenerAsync(self: *@This(), socket: *StreamSocketListener, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
+    pub fn RegisterStreamSocketListenerAsyncWithAdapter(self: *@This(), socket: *StreamSocketListener, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
         const this: *IDnssdServiceInstance = @ptrCast(self);
-        return try this.RegisterStreamSocketListenerAsync(socket, adapter);
+        return try this.RegisterStreamSocketListenerAsyncWithAdapter(socket, adapter);
     }
     pub fn RegisterDatagramSocketAsync(self: *@This(), socket: *DatagramSocket) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
         const this: *IDnssdServiceInstance = @ptrCast(self);
         return try this.RegisterDatagramSocketAsync(socket);
     }
-    pub fn RegisterDatagramSocketAsync(self: *@This(), socket: *DatagramSocket, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
+    pub fn RegisterDatagramSocketAsyncWithAdapter(self: *@This(), socket: *DatagramSocket, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
         const this: *IDnssdServiceInstance = @ptrCast(self);
-        return try this.RegisterDatagramSocketAsync(socket, adapter);
+        return try this.RegisterDatagramSocketAsyncWithAdapter(socket, adapter);
     }
     pub fn ToString(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStringable = undefined;
@@ -303,9 +303,9 @@ pub const IDnssdServiceInstance = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RegisterStreamSocketListenerAsync(self: *@This(), socket: *StreamSocketListener, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
+    pub fn RegisterStreamSocketListenerAsyncWithAdapter(self: *@This(), socket: *StreamSocketListener, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
         var _r: *IAsyncOperation(DnssdRegistrationResult) = undefined;
-        const _c = self.vtable.RegisterStreamSocketListenerAsync(@ptrCast(self), socket, adapter, &_r);
+        const _c = self.vtable.RegisterStreamSocketListenerAsyncWithAdapter(@ptrCast(self), socket, adapter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -315,9 +315,9 @@ pub const IDnssdServiceInstance = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RegisterDatagramSocketAsync(self: *@This(), socket: *DatagramSocket, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
+    pub fn RegisterDatagramSocketAsyncWithAdapter(self: *@This(), socket: *DatagramSocket, adapter: *NetworkAdapter) core.HResult!*IAsyncOperation(DnssdRegistrationResult) {
         var _r: *IAsyncOperation(DnssdRegistrationResult) = undefined;
-        const _c = self.vtable.RegisterDatagramSocketAsync(@ptrCast(self), socket, adapter, &_r);
+        const _c = self.vtable.RegisterDatagramSocketAsyncWithAdapter(@ptrCast(self), socket, adapter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -345,9 +345,9 @@ pub const IDnssdServiceInstance = extern struct {
         put_Weight: *const fn(self: *anyopaque, value: u16) callconv(.winapi) HRESULT,
         get_TextAttributes: *const fn(self: *anyopaque, _r: **IMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
         RegisterStreamSocketListenerAsync: *const fn(self: *anyopaque, socket: *StreamSocketListener, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
-        RegisterStreamSocketListenerAsync: *const fn(self: *anyopaque, socket: *StreamSocketListener, adapter: *NetworkAdapter, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
+        RegisterStreamSocketListenerAsyncWithAdapter: *const fn(self: *anyopaque, socket: *StreamSocketListener, adapter: *NetworkAdapter, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
         RegisterDatagramSocketAsync: *const fn(self: *anyopaque, socket: *DatagramSocket, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
-        RegisterDatagramSocketAsync: *const fn(self: *anyopaque, socket: *DatagramSocket, adapter: *NetworkAdapter, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
+        RegisterDatagramSocketAsyncWithAdapter: *const fn(self: *anyopaque, socket: *DatagramSocket, adapter: *NetworkAdapter, _r: **IAsyncOperation(DnssdRegistrationResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IDnssdServiceInstanceFactory = extern struct {

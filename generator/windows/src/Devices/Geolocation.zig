@@ -97,13 +97,13 @@ pub const GeoboundingBox = extern struct {
         const factory = @This().IGeoboundingBoxStaticsCache.get();
         return try factory.TryCompute(positions);
     }
-    pub fn TryCompute(positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem) core.HResult!*GeoboundingBox {
+    pub fn TryComputeWithAltitudeRefSystem(positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem) core.HResult!*GeoboundingBox {
         const factory = @This().IGeoboundingBoxStaticsCache.get();
-        return try factory.TryCompute(positions, altitudeRefSystem);
+        return try factory.TryComputeWithAltitudeRefSystem(positions, altitudeRefSystem);
     }
-    pub fn TryCompute(positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
+    pub fn TryComputeWithSpatialReferenceId(positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
         const factory = @This().IGeoboundingBoxStaticsCache.get();
-        return try factory.TryCompute(positions, altitudeRefSystem, spatialReferenceId);
+        return try factory.TryComputeWithSpatialReferenceId(positions, altitudeRefSystem, spatialReferenceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.GeoboundingBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -369,9 +369,9 @@ pub const Geolocator = extern struct {
         const factory = @This().IGeolocatorStaticsCache.get();
         return try factory.GetGeopositionHistoryAsync(startTime);
     }
-    pub fn GetGeopositionHistoryAsync(startTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Geoposition)) {
+    pub fn GetGeopositionHistoryAsyncWithDuration(startTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Geoposition)) {
         const factory = @This().IGeolocatorStaticsCache.get();
-        return try factory.GetGeopositionHistoryAsync(startTime, duration);
+        return try factory.GetGeopositionHistoryAsyncWithDuration(startTime, duration);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geolocator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -734,15 +734,15 @@ pub const IGeoboundingBoxStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCompute(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem) core.HResult!*GeoboundingBox {
+    pub fn TryComputeWithAltitudeRefSystem(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
-        const _c = self.vtable.TryCompute(@ptrCast(self), positions, altitudeRefSystem, &_r);
+        const _c = self.vtable.TryComputeWithAltitudeRefSystem(@ptrCast(self), positions, altitudeRefSystem, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCompute(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
+    pub fn TryComputeWithSpatialReferenceId(self: *@This(), positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32) core.HResult!*GeoboundingBox {
         var _r: *GeoboundingBox = undefined;
-        const _c = self.vtable.TryCompute(@ptrCast(self), positions, altitudeRefSystem, spatialReferenceId, &_r);
+        const _c = self.vtable.TryComputeWithSpatialReferenceId(@ptrCast(self), positions, altitudeRefSystem, spatialReferenceId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -759,8 +759,8 @@ pub const IGeoboundingBoxStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryCompute: *const fn(self: *anyopaque, positions: *IIterable(BasicGeoposition), _r: **GeoboundingBox) callconv(.winapi) HRESULT,
-        TryCompute: *const fn(self: *anyopaque, positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, _r: **GeoboundingBox) callconv(.winapi) HRESULT,
-        TryCompute: *const fn(self: *anyopaque, positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32, _r: **GeoboundingBox) callconv(.winapi) HRESULT,
+        TryComputeWithAltitudeRefSystem: *const fn(self: *anyopaque, positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, _r: **GeoboundingBox) callconv(.winapi) HRESULT,
+        TryComputeWithSpatialReferenceId: *const fn(self: *anyopaque, positions: *IIterable(BasicGeoposition), altitudeRefSystem: AltitudeReferenceSystem, spatialReferenceId: u32, _r: **GeoboundingBox) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeocircle = extern struct {
@@ -1200,9 +1200,9 @@ pub const IGeolocatorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetGeopositionHistoryAsync(self: *@This(), startTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Geoposition)) {
+    pub fn GetGeopositionHistoryAsyncWithDuration(self: *@This(), startTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Geoposition)) {
         var _r: *IAsyncOperation(IVectorView(Geoposition)) = undefined;
-        const _c = self.vtable.GetGeopositionHistoryAsync(@ptrCast(self), startTime, duration, &_r);
+        const _c = self.vtable.GetGeopositionHistoryAsyncWithDuration(@ptrCast(self), startTime, duration, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1220,7 +1220,7 @@ pub const IGeolocatorStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GeolocationAccessStatus)) callconv(.winapi) HRESULT,
         GetGeopositionHistoryAsync: *const fn(self: *anyopaque, startTime: DateTime, _r: **IAsyncOperation(IVectorView(Geoposition))) callconv(.winapi) HRESULT,
-        GetGeopositionHistoryAsync: *const fn(self: *anyopaque, startTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(Geoposition))) callconv(.winapi) HRESULT,
+        GetGeopositionHistoryAsyncWithDuration: *const fn(self: *anyopaque, startTime: DateTime, duration: TimeSpan, _r: **IAsyncOperation(IVectorView(Geoposition))) callconv(.winapi) HRESULT,
     };
 };
 pub const IGeolocatorStatics2 = extern struct {

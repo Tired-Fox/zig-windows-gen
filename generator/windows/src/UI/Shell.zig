@@ -261,9 +261,9 @@ pub const IWindowTabIconStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromFontGlyph(self: *@This(), glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyphWithFontFamilyWithFontUri(self: *@This(), glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
         var _r: *WindowTabIcon = undefined;
-        const _c = self.vtable.CreateFromFontGlyph(@ptrCast(self), glyph, fontFamily, fontUri, &_r);
+        const _c = self.vtable.CreateFromFontGlyphWithFontFamilyWithFontUri(@ptrCast(self), glyph, fontFamily, fontUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -286,7 +286,7 @@ pub const IWindowTabIconStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromFontGlyph: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
-        CreateFromFontGlyph: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
+        CreateFromFontGlyphWithFontFamilyWithFontUri: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
         CreateFromImage: *const fn(self: *anyopaque, image: *IRandomAccessStreamReference, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
     };
 };
@@ -727,9 +727,9 @@ pub const WindowTabIcon = extern struct {
         const factory = @This().IWindowTabIconStaticsCache.get();
         return try factory.CreateFromFontGlyph(glyph, fontFamily);
     }
-    pub fn CreateFromFontGlyph(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyphWithFontFamilyWithFontUri(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
         const factory = @This().IWindowTabIconStaticsCache.get();
-        return try factory.CreateFromFontGlyph(glyph, fontFamily, fontUri);
+        return try factory.CreateFromFontGlyphWithFontFamilyWithFontUri(glyph, fontFamily, fontUri);
     }
     pub fn CreateFromImage(image: *IRandomAccessStreamReference) core.HResult!*WindowTabIcon {
         const factory = @This().IWindowTabIconStaticsCache.get();

@@ -181,8 +181,8 @@ pub const ISimpleHapticsController = extern struct {
         const _c = self.vtable.SendHapticFeedback(@ptrCast(self), feedback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SendHapticFeedback(self: *@This(), feedback: *SimpleHapticsControllerFeedback, intensity: f64) core.HResult!void {
-        const _c = self.vtable.SendHapticFeedback(@ptrCast(self), feedback, intensity);
+    pub fn SendHapticFeedbackWithIntensity(self: *@This(), feedback: *SimpleHapticsControllerFeedback, intensity: f64) core.HResult!void {
+        const _c = self.vtable.SendHapticFeedbackWithIntensity(@ptrCast(self), feedback, intensity);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SendHapticFeedbackForDuration(self: *@This(), feedback: *SimpleHapticsControllerFeedback, intensity: f64, playDuration: TimeSpan) core.HResult!void {
@@ -213,7 +213,7 @@ pub const ISimpleHapticsController = extern struct {
         get_IsReplayPauseIntervalSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         StopFeedback: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SendHapticFeedback: *const fn(self: *anyopaque, feedback: *SimpleHapticsControllerFeedback) callconv(.winapi) HRESULT,
-        SendHapticFeedback: *const fn(self: *anyopaque, feedback: *SimpleHapticsControllerFeedback, intensity: f64) callconv(.winapi) HRESULT,
+        SendHapticFeedbackWithIntensity: *const fn(self: *anyopaque, feedback: *SimpleHapticsControllerFeedback, intensity: f64) callconv(.winapi) HRESULT,
         SendHapticFeedbackForDuration: *const fn(self: *anyopaque, feedback: *SimpleHapticsControllerFeedback, intensity: f64, playDuration: TimeSpan) callconv(.winapi) HRESULT,
         SendHapticFeedbackForPlayCount: *const fn(self: *anyopaque, feedback: *SimpleHapticsControllerFeedback, intensity: f64, playCount: i32, replayPauseInterval: TimeSpan) callconv(.winapi) HRESULT,
     };
@@ -433,9 +433,9 @@ pub const SimpleHapticsController = extern struct {
         const this: *ISimpleHapticsController = @ptrCast(self);
         return try this.SendHapticFeedback(feedback);
     }
-    pub fn SendHapticFeedback(self: *@This(), feedback: *SimpleHapticsControllerFeedback, intensity: f64) core.HResult!void {
+    pub fn SendHapticFeedbackWithIntensity(self: *@This(), feedback: *SimpleHapticsControllerFeedback, intensity: f64) core.HResult!void {
         const this: *ISimpleHapticsController = @ptrCast(self);
-        return try this.SendHapticFeedback(feedback, intensity);
+        return try this.SendHapticFeedbackWithIntensity(feedback, intensity);
     }
     pub fn SendHapticFeedbackForDuration(self: *@This(), feedback: *SimpleHapticsControllerFeedback, intensity: f64, playDuration: TimeSpan) core.HResult!void {
         const this: *ISimpleHapticsController = @ptrCast(self);

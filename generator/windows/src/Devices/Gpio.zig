@@ -153,9 +153,9 @@ pub const GpioController = extern struct {
         const this: *IGpioController = @ptrCast(self);
         return try this.OpenPin(pinNumber);
     }
-    pub fn OpenPin(self: *@This(), pinNumber: i32, sharingMode: GpioSharingMode) core.HResult!*GpioPin {
+    pub fn OpenPinWithSharingMode(self: *@This(), pinNumber: i32, sharingMode: GpioSharingMode) core.HResult!*GpioPin {
         const this: *IGpioController = @ptrCast(self);
-        return try this.OpenPin(pinNumber, sharingMode);
+        return try this.OpenPinWithSharingMode(pinNumber, sharingMode);
     }
     pub fn TryOpenPin(self: *@This(), pinNumber: i32, sharingMode: GpioSharingMode, pin: *GpioPin, openStatus: GpioOpenStatus) core.HResult!bool {
         const this: *IGpioController = @ptrCast(self);
@@ -515,9 +515,9 @@ pub const IGpioController = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn OpenPin(self: *@This(), pinNumber: i32, sharingMode: GpioSharingMode) core.HResult!*GpioPin {
+    pub fn OpenPinWithSharingMode(self: *@This(), pinNumber: i32, sharingMode: GpioSharingMode) core.HResult!*GpioPin {
         var _r: *GpioPin = undefined;
-        const _c = self.vtable.OpenPin(@ptrCast(self), pinNumber, sharingMode, &_r);
+        const _c = self.vtable.OpenPinWithSharingMode(@ptrCast(self), pinNumber, sharingMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -541,7 +541,7 @@ pub const IGpioController = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_PinCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         OpenPin: *const fn(self: *anyopaque, pinNumber: i32, _r: **GpioPin) callconv(.winapi) HRESULT,
-        OpenPin: *const fn(self: *anyopaque, pinNumber: i32, sharingMode: GpioSharingMode, _r: **GpioPin) callconv(.winapi) HRESULT,
+        OpenPinWithSharingMode: *const fn(self: *anyopaque, pinNumber: i32, sharingMode: GpioSharingMode, _r: **GpioPin) callconv(.winapi) HRESULT,
         TryOpenPin: *const fn(self: *anyopaque, pinNumber: i32, sharingMode: GpioSharingMode, pin: *GpioPin, openStatus: GpioOpenStatus, _r: *bool) callconv(.winapi) HRESULT,
     };
 };

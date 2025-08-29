@@ -1479,11 +1479,11 @@ pub const PrintCustomItemListOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItem(itemId, displayName);
     }
-    pub fn AddItem(self: *@This(), itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
+    pub fn AddItemWithDescriptionWithIcon(self: *@This(), itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddItem(itemId, displayName, description, icon);
+        return try this.?.AddItemWithDescriptionWithIcon(itemId, displayName, description, icon);
     }
     pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;

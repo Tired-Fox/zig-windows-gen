@@ -319,9 +319,9 @@ pub const GuidanceNavigator = extern struct {
         const this: *IGuidanceNavigator = @ptrCast(self);
         return try this.UpdateUserLocation(userLocation);
     }
-    pub fn UpdateUserLocation(self: *@This(), userLocation: *Geocoordinate, positionOverride: BasicGeoposition) core.HResult!void {
+    pub fn UpdateUserLocationWithPositionOverride(self: *@This(), userLocation: *Geocoordinate, positionOverride: BasicGeoposition) core.HResult!void {
         const this: *IGuidanceNavigator = @ptrCast(self);
-        return try this.UpdateUserLocation(userLocation, positionOverride);
+        return try this.UpdateUserLocationWithPositionOverride(userLocation, positionOverride);
     }
     pub fn addAudioNotificationRequested(self: *@This(), value: *TypedEventHandler(GuidanceNavigator,GuidanceAudioNotificationRequestedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IGuidanceNavigator2 = undefined;
@@ -958,8 +958,8 @@ pub const IGuidanceNavigator = extern struct {
         const _c = self.vtable.UpdateUserLocation(@ptrCast(self), userLocation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn UpdateUserLocation(self: *@This(), userLocation: *Geocoordinate, positionOverride: BasicGeoposition) core.HResult!void {
-        const _c = self.vtable.UpdateUserLocation(@ptrCast(self), userLocation, positionOverride);
+    pub fn UpdateUserLocationWithPositionOverride(self: *@This(), userLocation: *Geocoordinate, positionOverride: BasicGeoposition) core.HResult!void {
+        const _c = self.vtable.UpdateUserLocationWithPositionOverride(@ptrCast(self), userLocation, positionOverride);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.Guidance.IGuidanceNavigator";
@@ -1001,7 +1001,7 @@ pub const IGuidanceNavigator = extern struct {
         remove_UserLocationRestored: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         SetGuidanceVoice: *const fn(self: *anyopaque, voiceId: i32, voiceFolder: HSTRING) callconv(.winapi) HRESULT,
         UpdateUserLocation: *const fn(self: *anyopaque, userLocation: *Geocoordinate) callconv(.winapi) HRESULT,
-        UpdateUserLocation: *const fn(self: *anyopaque, userLocation: *Geocoordinate, positionOverride: BasicGeoposition) callconv(.winapi) HRESULT,
+        UpdateUserLocationWithPositionOverride: *const fn(self: *anyopaque, userLocation: *Geocoordinate, positionOverride: BasicGeoposition) callconv(.winapi) HRESULT,
     };
 };
 pub const IGuidanceNavigator2 = extern struct {

@@ -1673,21 +1673,21 @@ pub const IMapControl = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetViewAsync(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevel(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TrySetViewAsync(@ptrCast(self), center, zoomLevel, &_r);
+        const _c = self.vtable.TrySetViewAsyncWithZoomLevel(@ptrCast(self), center, zoomLevel, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetViewAsync(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TrySetViewAsync(@ptrCast(self), center, zoomLevel, heading, desiredPitch, &_r);
+        const _c = self.vtable.TrySetViewAsyncWithDesiredPitch(@ptrCast(self), center, zoomLevel, heading, desiredPitch, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetViewAsync(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TrySetViewAsync(@ptrCast(self), center, zoomLevel, heading, desiredPitch, animation, &_r);
+        const _c = self.vtable.TrySetViewAsyncWithAnimation(@ptrCast(self), center, zoomLevel, heading, desiredPitch, animation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1759,9 +1759,9 @@ pub const IMapControl = extern struct {
         IsLocationInView: *const fn(self: *anyopaque, location: *Geopoint, isInView: bool) callconv(.winapi) HRESULT,
         TrySetViewBoundsAsync: *const fn(self: *anyopaque, bounds: *GeoboundingBox, margin: *IReference(Thickness), animation: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TrySetViewAsync: *const fn(self: *anyopaque, center: *Geopoint, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySetViewAsync: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySetViewAsync: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySetViewAsync: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySetViewAsyncWithZoomLevel: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySetViewAsyncWithDesiredPitch: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySetViewAsyncWithAnimation: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControl2 = extern struct {
@@ -2012,9 +2012,9 @@ pub const IMapControl2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetSceneAsync(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetSceneAsyncWithAnimationKind(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TrySetSceneAsync(@ptrCast(self), scene, animationKind, &_r);
+        const _c = self.vtable.TrySetSceneAsyncWithAnimationKind(@ptrCast(self), scene, animationKind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2078,7 +2078,7 @@ pub const IMapControl2 = extern struct {
         TryZoomOutAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryZoomToAsync: *const fn(self: *anyopaque, zoomLevel: f64, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TrySetSceneAsync: *const fn(self: *anyopaque, scene: *MapScene, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySetSceneAsync: *const fn(self: *anyopaque, scene: *MapScene, animationKind: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySetSceneAsyncWithAnimationKind: *const fn(self: *anyopaque, scene: *MapScene, animationKind: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControl3 = extern struct {
@@ -2274,9 +2274,9 @@ pub const IMapControl6 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetLocationFromOffset(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
+    pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.TryGetLocationFromOffset(@ptrCast(self), offset, desiredReferenceSystem, location, &_r);
+        const _c = self.vtable.TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(@ptrCast(self), offset, desiredReferenceSystem, location, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2295,7 +2295,7 @@ pub const IMapControl6 = extern struct {
         get_Layers: *const fn(self: *anyopaque, _r: **IVector(MapLayer)) callconv(.winapi) HRESULT,
         put_Layers: *const fn(self: *anyopaque, value: *IVector(MapLayer)) callconv(.winapi) HRESULT,
         TryGetLocationFromOffset: *const fn(self: *anyopaque, offset: Point, location: *Geopoint, _r: *bool) callconv(.winapi) HRESULT,
-        TryGetLocationFromOffset: *const fn(self: *anyopaque, offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint, _r: *bool) callconv(.winapi) HRESULT,
+        TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation: *const fn(self: *anyopaque, offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControl7 = extern struct {
@@ -4047,9 +4047,9 @@ pub const IMapModel3DStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrom3MFAsync(self: *@This(), source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption) core.HResult!*IAsyncOperation(MapModel3D) {
+    pub fn CreateFrom3MFAsyncWithShadingOption(self: *@This(), source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption) core.HResult!*IAsyncOperation(MapModel3D) {
         var _r: *IAsyncOperation(MapModel3D) = undefined;
-        const _c = self.vtable.CreateFrom3MFAsync(@ptrCast(self), source, shadingOption, &_r);
+        const _c = self.vtable.CreateFrom3MFAsyncWithShadingOption(@ptrCast(self), source, shadingOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4066,7 +4066,7 @@ pub const IMapModel3DStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFrom3MFAsync: *const fn(self: *anyopaque, source: *IRandomAccessStreamReference, _r: **IAsyncOperation(MapModel3D)) callconv(.winapi) HRESULT,
-        CreateFrom3MFAsync: *const fn(self: *anyopaque, source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption, _r: **IAsyncOperation(MapModel3D)) callconv(.winapi) HRESULT,
+        CreateFrom3MFAsyncWithShadingOption: *const fn(self: *anyopaque, source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption, _r: **IAsyncOperation(MapModel3D)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapPolygon = extern struct {
@@ -4442,9 +4442,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromBoundingBox(self: *@This(), bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromBoundingBoxWithPitchInDegrees(self: *@This(), bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromBoundingBox(@ptrCast(self), bounds, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromBoundingBoxWithPitchInDegrees(@ptrCast(self), bounds, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4460,9 +4460,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromLocation(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationWithPitchInDegrees(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromLocation(@ptrCast(self), location, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromLocationWithPitchInDegrees(@ptrCast(self), location, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4472,9 +4472,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromLocationAndRadius(self: *@This(), location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(self: *@This(), location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromLocationAndRadius(@ptrCast(self), location, radiusInMeters, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(@ptrCast(self), location, radiusInMeters, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4484,9 +4484,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromLocations(self: *@This(), locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationsWithPitchInDegrees(self: *@This(), locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromLocations(@ptrCast(self), locations, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromLocationsWithPitchInDegrees(@ptrCast(self), locations, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4503,14 +4503,14 @@ pub const IMapSceneStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromBoundingBox: *const fn(self: *anyopaque, bounds: *GeoboundingBox, _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromBoundingBox: *const fn(self: *anyopaque, bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromBoundingBoxWithPitchInDegrees: *const fn(self: *anyopaque, bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromCamera: *const fn(self: *anyopaque, camera: *MapCamera, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromLocation: *const fn(self: *anyopaque, location: *Geopoint, _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromLocation: *const fn(self: *anyopaque, location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromLocationWithPitchInDegrees: *const fn(self: *anyopaque, location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromLocationAndRadius: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromLocationAndRadius: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromLocations: *const fn(self: *anyopaque, locations: *IIterable(Geopoint), _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromLocations: *const fn(self: *anyopaque, locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromLocationsWithPitchInDegrees: *const fn(self: *anyopaque, locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapStyleSheet = extern struct {
@@ -5999,9 +5999,9 @@ pub const IStreetsidePanoramaStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindNearbyAsync(self: *@This(), location: *Geopoint, radiusInMeters: f64) core.HResult!*IAsyncOperation(StreetsidePanorama) {
+    pub fn FindNearbyAsyncWithRadiusInMeters(self: *@This(), location: *Geopoint, radiusInMeters: f64) core.HResult!*IAsyncOperation(StreetsidePanorama) {
         var _r: *IAsyncOperation(StreetsidePanorama) = undefined;
-        const _c = self.vtable.FindNearbyAsync(@ptrCast(self), location, radiusInMeters, &_r);
+        const _c = self.vtable.FindNearbyAsyncWithRadiusInMeters(@ptrCast(self), location, radiusInMeters, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6018,7 +6018,7 @@ pub const IStreetsidePanoramaStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindNearbyAsync: *const fn(self: *anyopaque, location: *Geopoint, _r: **IAsyncOperation(StreetsidePanorama)) callconv(.winapi) HRESULT,
-        FindNearbyAsync: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, _r: **IAsyncOperation(StreetsidePanorama)) callconv(.winapi) HRESULT,
+        FindNearbyAsyncWithRadiusInMeters: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, _r: **IAsyncOperation(StreetsidePanorama)) callconv(.winapi) HRESULT,
     };
 };
 pub const LocalMapTileDataSource = extern struct {
@@ -6639,17 +6639,17 @@ pub const MapControl = extern struct {
         const this: *IMapControl = @ptrCast(self);
         return try this.TrySetViewAsync(center);
     }
-    pub fn TrySetViewAsync(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevel(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsync(center, zoomLevel);
+        return try this.TrySetViewAsyncWithZoomLevel(center, zoomLevel);
     }
-    pub fn TrySetViewAsync(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsync(center, zoomLevel, heading, desiredPitch);
+        return try this.TrySetViewAsyncWithDesiredPitch(center, zoomLevel, heading, desiredPitch);
     }
-    pub fn TrySetViewAsync(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsync(center, zoomLevel, heading, desiredPitch, animation);
+        return try this.TrySetViewAsyncWithAnimation(center, zoomLevel, heading, desiredPitch, animation);
     }
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
@@ -6939,11 +6939,11 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TrySetSceneAsync(scene);
     }
-    pub fn TrySetSceneAsync(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetSceneAsyncWithAnimationKind(self: *@This(), scene: *MapScene, animationKind: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMapControl2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TrySetSceneAsync(scene, animationKind);
+        return try this.?.TrySetSceneAsyncWithAnimationKind(scene, animationKind);
     }
     pub fn addMapRightTapped(self: *@This(), handler: *TypedEventHandler(MapControl,MapRightTappedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMapControl3 = undefined;
@@ -7035,17 +7035,17 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapContextRequested(token);
     }
-    pub fn FindMapElementsAtOffset(self: *@This(), offset: Point, radius: f64) core.HResult!*IVectorView(MapElement) {
+    pub fn FindMapElementsAtOffsetWithRadius(self: *@This(), offset: Point, radius: f64) core.HResult!*IVectorView(MapElement) {
         var this: ?*IMapControl5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FindMapElementsAtOffset(offset, radius);
+        return try this.?.FindMapElementsAtOffsetWithRadius(offset, radius);
     }
-    pub fn GetLocationFromOffset(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
+    pub fn GetLocationFromOffsetWithDesiredReferenceSystemWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetLocationFromOffset(offset, desiredReferenceSystem, location);
+        return try this.?.GetLocationFromOffsetWithDesiredReferenceSystemWithLocation(offset, desiredReferenceSystem, location);
     }
     pub fn StartContinuousPan(self: *@This(), horizontalPixelsPerSecond: f64, verticalPixelsPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
@@ -7089,11 +7089,11 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetLocationFromOffset(offset, location);
     }
-    pub fn TryGetLocationFromOffset(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
+    pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryGetLocationFromOffset(offset, desiredReferenceSystem, location);
+        return try this.?.TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(offset, desiredReferenceSystem, location);
     }
     pub fn getRegion(self: *@This()) core.HResult!HSTRING {
         var this: ?*IMapControl7 = undefined;
@@ -7935,9 +7935,9 @@ pub const MapModel3D = extern struct {
         const factory = @This().IMapModel3DStaticsCache.get();
         return try factory.CreateFrom3MFAsync(source);
     }
-    pub fn CreateFrom3MFAsync(source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption) core.HResult!*IAsyncOperation(MapModel3D) {
+    pub fn CreateFrom3MFAsyncWithShadingOption(source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption) core.HResult!*IAsyncOperation(MapModel3D) {
         const factory = @This().IMapModel3DStaticsCache.get();
-        return try factory.CreateFrom3MFAsync(source, shadingOption);
+        return try factory.CreateFrom3MFAsyncWithShadingOption(source, shadingOption);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapModel3D {
         const factory = @This().IMapModel3DFactoryCache.get();
@@ -8177,9 +8177,9 @@ pub const MapScene = extern struct {
         const factory = @This().IMapSceneStaticsCache.get();
         return try factory.CreateFromBoundingBox(bounds);
     }
-    pub fn CreateFromBoundingBox(bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromBoundingBoxWithPitchInDegrees(bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromBoundingBox(bounds, headingInDegrees, pitchInDegrees);
+        return try factory.CreateFromBoundingBoxWithPitchInDegrees(bounds, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateFromCamera(camera: *MapCamera) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
@@ -8189,25 +8189,25 @@ pub const MapScene = extern struct {
         const factory = @This().IMapSceneStaticsCache.get();
         return try factory.CreateFromLocation(location);
     }
-    pub fn CreateFromLocation(location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationWithPitchInDegrees(location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocation(location, headingInDegrees, pitchInDegrees);
+        return try factory.CreateFromLocationWithPitchInDegrees(location, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateFromLocationAndRadius(location: *Geopoint, radiusInMeters: f64) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
         return try factory.CreateFromLocationAndRadius(location, radiusInMeters);
     }
-    pub fn CreateFromLocationAndRadius(location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocationAndRadius(location, radiusInMeters, headingInDegrees, pitchInDegrees);
+        return try factory.CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(location, radiusInMeters, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateFromLocations(locations: *IIterable(Geopoint)) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
         return try factory.CreateFromLocations(locations);
     }
-    pub fn CreateFromLocations(locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationsWithPitchInDegrees(locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocations(locations, headingInDegrees, pitchInDegrees);
+        return try factory.CreateFromLocationsWithPitchInDegrees(locations, headingInDegrees, pitchInDegrees);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapScene";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9105,9 +9105,9 @@ pub const StreetsidePanorama = extern struct {
         const factory = @This().IStreetsidePanoramaStaticsCache.get();
         return try factory.FindNearbyAsync(location);
     }
-    pub fn FindNearbyAsync(location: *Geopoint, radiusInMeters: f64) core.HResult!*IAsyncOperation(StreetsidePanorama) {
+    pub fn FindNearbyAsyncWithRadiusInMeters(location: *Geopoint, radiusInMeters: f64) core.HResult!*IAsyncOperation(StreetsidePanorama) {
         const factory = @This().IStreetsidePanoramaStaticsCache.get();
-        return try factory.FindNearbyAsync(location, radiusInMeters);
+        return try factory.FindNearbyAsyncWithRadiusInMeters(location, radiusInMeters);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.StreetsidePanorama";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

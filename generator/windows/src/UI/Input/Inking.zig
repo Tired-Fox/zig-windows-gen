@@ -2343,11 +2343,11 @@ pub const InkManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetDefaultRecognizer(recognizer);
     }
-    pub fn RecognizeAsync(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
+    pub fn RecognizeAsyncWithRecognitionTarget(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
         var this: ?*IInkRecognizerContainer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RecognizeAsync(strokeCollection, recognitionTarget);
+        return try this.?.RecognizeAsyncWithRecognitionTarget(strokeCollection, recognitionTarget);
     }
     pub fn GetRecognizers(self: *@This()) core.HResult!*IVectorView(InkRecognizer) {
         var this: ?*IInkRecognizerContainer = undefined;
@@ -2987,11 +2987,11 @@ pub const InkStrokeBuilder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStrokeFromInkPoints(inkPoints, transform);
     }
-    pub fn CreateStrokeFromInkPoints(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2, strokeStartedTime: *IReference(DateTime), strokeDuration: *IReference(TimeSpan)) core.HResult!*InkStroke {
+    pub fn CreateStrokeFromInkPointsWithStrokeStartedTimeWithStrokeDuration(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2, strokeStartedTime: *IReference(DateTime), strokeDuration: *IReference(TimeSpan)) core.HResult!*InkStroke {
         var this: ?*IInkStrokeBuilder3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeBuilder3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateStrokeFromInkPoints(inkPoints, transform, strokeStartedTime, strokeDuration);
+        return try this.?.CreateStrokeFromInkPointsWithStrokeStartedTimeWithStrokeDuration(inkPoints, transform, strokeStartedTime, strokeDuration);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3079,11 +3079,11 @@ pub const InkStrokeContainer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn SaveAsync(self: *@This(), outputStream: *IOutputStream, inkPersistenceFormat: InkPersistenceFormat) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
+    pub fn SaveAsyncWithInkPersistenceFormat(self: *@This(), outputStream: *IOutputStream, inkPersistenceFormat: InkPersistenceFormat) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IInkStrokeContainer3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SaveAsync(outputStream, inkPersistenceFormat);
+        return try this.?.SaveAsyncWithInkPersistenceFormat(outputStream, inkPersistenceFormat);
     }
     pub fn GetStrokeById(self: *@This(), id: u32) core.HResult!*InkStroke {
         var this: ?*IInkStrokeContainer3 = undefined;

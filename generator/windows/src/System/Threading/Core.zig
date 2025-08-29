@@ -92,9 +92,9 @@ pub const ISignalNotifierStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AttachToEvent(self: *@This(), name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
+    pub fn AttachToEventWithHandlerWithTimeout(self: *@This(), name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
-        const _c = self.vtable.AttachToEvent(@ptrCast(self), name, handler, timeout, &_r);
+        const _c = self.vtable.AttachToEventWithHandlerWithTimeout(@ptrCast(self), name, handler, timeout, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -104,9 +104,9 @@ pub const ISignalNotifierStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AttachToSemaphore(self: *@This(), name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
+    pub fn AttachToSemaphoreWithHandlerWithTimeout(self: *@This(), name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         var _r: *SignalNotifier = undefined;
-        const _c = self.vtable.AttachToSemaphore(@ptrCast(self), name, handler, timeout, &_r);
+        const _c = self.vtable.AttachToSemaphoreWithHandlerWithTimeout(@ptrCast(self), name, handler, timeout, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -123,9 +123,9 @@ pub const ISignalNotifierStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         AttachToEvent: *const fn(self: *anyopaque, name: HSTRING, handler: *SignalHandler, _r: **SignalNotifier) callconv(.winapi) HRESULT,
-        AttachToEvent: *const fn(self: *anyopaque, name: HSTRING, handler: *SignalHandler, timeout: TimeSpan, _r: **SignalNotifier) callconv(.winapi) HRESULT,
+        AttachToEventWithHandlerWithTimeout: *const fn(self: *anyopaque, name: HSTRING, handler: *SignalHandler, timeout: TimeSpan, _r: **SignalNotifier) callconv(.winapi) HRESULT,
         AttachToSemaphore: *const fn(self: *anyopaque, name: HSTRING, handler: *SignalHandler, _r: **SignalNotifier) callconv(.winapi) HRESULT,
-        AttachToSemaphore: *const fn(self: *anyopaque, name: HSTRING, handler: *SignalHandler, timeout: TimeSpan, _r: **SignalNotifier) callconv(.winapi) HRESULT,
+        AttachToSemaphoreWithHandlerWithTimeout: *const fn(self: *anyopaque, name: HSTRING, handler: *SignalHandler, timeout: TimeSpan, _r: **SignalNotifier) callconv(.winapi) HRESULT,
     };
 };
 pub const PreallocatedWorkItem = extern struct {
@@ -260,17 +260,17 @@ pub const SignalNotifier = extern struct {
         const factory = @This().ISignalNotifierStaticsCache.get();
         return try factory.AttachToEvent(name, handler);
     }
-    pub fn AttachToEvent(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
+    pub fn AttachToEventWithHandlerWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         const factory = @This().ISignalNotifierStaticsCache.get();
-        return try factory.AttachToEvent(name, handler, timeout);
+        return try factory.AttachToEventWithHandlerWithTimeout(name, handler, timeout);
     }
     pub fn AttachToSemaphore(name: HSTRING, handler: *SignalHandler) core.HResult!*SignalNotifier {
         const factory = @This().ISignalNotifierStaticsCache.get();
         return try factory.AttachToSemaphore(name, handler);
     }
-    pub fn AttachToSemaphore(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
+    pub fn AttachToSemaphoreWithHandlerWithTimeout(name: HSTRING, handler: *SignalHandler, timeout: TimeSpan) core.HResult!*SignalNotifier {
         const factory = @This().ISignalNotifierStaticsCache.get();
-        return try factory.AttachToSemaphore(name, handler, timeout);
+        return try factory.AttachToSemaphoreWithHandlerWithTimeout(name, handler, timeout);
     }
     pub const NAME: []const u8 = "Windows.System.Threading.Core.SignalNotifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

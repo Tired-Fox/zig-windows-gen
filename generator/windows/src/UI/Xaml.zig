@@ -298,9 +298,9 @@ pub const Application = extern struct {
         const factory = @This().IApplicationStaticsCache.get();
         return try factory.LoadComponent(component, resourceLocator);
     }
-    pub fn LoadComponent(component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) core.HResult!void {
+    pub fn LoadComponentWithResourceLocatorWithComponentResourceLocation(component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) core.HResult!void {
         const factory = @This().IApplicationStaticsCache.get();
-        return try factory.LoadComponent(component, resourceLocator, componentResourceLocation);
+        return try factory.LoadComponentWithResourceLocatorWithComponentResourceLocation(component, resourceLocator, componentResourceLocation);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Application {
         const factory = @This().IApplicationFactoryCache.get();
@@ -3872,17 +3872,17 @@ pub const DragUI = extern struct {
         const this: *IDragUI = @ptrCast(self);
         return try this.SetContentFromBitmapImage(bitmapImage);
     }
-    pub fn SetContentFromBitmapImage(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
+    pub fn SetContentFromBitmapImageWithAnchorPoint(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
         const this: *IDragUI = @ptrCast(self);
-        return try this.SetContentFromBitmapImage(bitmapImage, anchorPoint);
+        return try this.SetContentFromBitmapImageWithAnchorPoint(bitmapImage, anchorPoint);
     }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const this: *IDragUI = @ptrCast(self);
         return try this.SetContentFromSoftwareBitmap(softwareBitmap);
     }
-    pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+    pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
         const this: *IDragUI = @ptrCast(self);
-        return try this.SetContentFromSoftwareBitmap(softwareBitmap, anchorPoint);
+        return try this.SetContentFromSoftwareBitmapWithAnchorPoint(softwareBitmap, anchorPoint);
     }
     pub fn SetContentFromDataPackage(self: *@This()) core.HResult!void {
         const this: *IDragUI = @ptrCast(self);
@@ -3936,17 +3936,17 @@ pub const DragUIOverride = extern struct {
         const this: *IDragUIOverride = @ptrCast(self);
         return try this.SetContentFromBitmapImage(bitmapImage);
     }
-    pub fn SetContentFromBitmapImage(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
+    pub fn SetContentFromBitmapImageWithAnchorPoint(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
         const this: *IDragUIOverride = @ptrCast(self);
-        return try this.SetContentFromBitmapImage(bitmapImage, anchorPoint);
+        return try this.SetContentFromBitmapImageWithAnchorPoint(bitmapImage, anchorPoint);
     }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const this: *IDragUIOverride = @ptrCast(self);
         return try this.SetContentFromSoftwareBitmap(softwareBitmap);
     }
-    pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+    pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
         const this: *IDragUIOverride = @ptrCast(self);
-        return try this.SetContentFromSoftwareBitmap(softwareBitmap, anchorPoint);
+        return try this.SetContentFromSoftwareBitmapWithAnchorPoint(softwareBitmap, anchorPoint);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.DragUIOverride";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4552,9 +4552,9 @@ pub const GridLengthHelper = extern struct {
         const factory = @This().IGridLengthHelperStaticsCache.get();
         return try factory.FromPixels(pixels);
     }
-    pub fn FromValueAndType(value: f64, type: GridUnitType) core.HResult!GridLength {
+    pub fn FromValueAndType(value: f64, ty: GridUnitType) core.HResult!GridLength {
         const factory = @This().IGridLengthHelperStaticsCache.get();
-        return try factory.FromValueAndType(value, type);
+        return try factory.FromValueAndType(value, ty);
     }
     pub fn GetIsAbsolute(target: GridLength) core.HResult!bool {
         const factory = @This().IGridLengthHelperStaticsCache.get();
@@ -5000,8 +5000,8 @@ pub const IApplicationStatics = extern struct {
         const _c = self.vtable.LoadComponent(@ptrCast(self), component, resourceLocator);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn LoadComponent(self: *@This(), component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) core.HResult!void {
-        const _c = self.vtable.LoadComponent(@ptrCast(self), component, resourceLocator, componentResourceLocation);
+    pub fn LoadComponentWithResourceLocatorWithComponentResourceLocation(self: *@This(), component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) core.HResult!void {
+        const _c = self.vtable.LoadComponentWithResourceLocatorWithComponentResourceLocation(@ptrCast(self), component, resourceLocator, componentResourceLocation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.IApplicationStatics";
@@ -5019,7 +5019,7 @@ pub const IApplicationStatics = extern struct {
         get_Current: *const fn(self: *anyopaque, _r: **Application) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque, callback: *ApplicationInitializationCallback) callconv(.winapi) HRESULT,
         LoadComponent: *const fn(self: *anyopaque, component: *IInspectable, resourceLocator: *Uri) callconv(.winapi) HRESULT,
-        LoadComponent: *const fn(self: *anyopaque, component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) callconv(.winapi) HRESULT,
+        LoadComponentWithResourceLocatorWithComponentResourceLocation: *const fn(self: *anyopaque, component: *IInspectable, resourceLocator: *Uri, componentResourceLocation: ComponentResourceLocation) callconv(.winapi) HRESULT,
     };
 };
 pub const IBindingFailedEventArgs = extern struct {
@@ -6610,16 +6610,16 @@ pub const IDragUI = extern struct {
         const _c = self.vtable.SetContentFromBitmapImage(@ptrCast(self), bitmapImage);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetContentFromBitmapImage(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
-        const _c = self.vtable.SetContentFromBitmapImage(@ptrCast(self), bitmapImage, anchorPoint);
+    pub fn SetContentFromBitmapImageWithAnchorPoint(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
+        const _c = self.vtable.SetContentFromBitmapImageWithAnchorPoint(@ptrCast(self), bitmapImage, anchorPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
-        const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap, anchorPoint);
+    pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+        const _c = self.vtable.SetContentFromSoftwareBitmapWithAnchorPoint(@ptrCast(self), softwareBitmap, anchorPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SetContentFromDataPackage(self: *@This()) core.HResult!void {
@@ -6639,9 +6639,9 @@ pub const IDragUI = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetContentFromBitmapImage: *const fn(self: *anyopaque, bitmapImage: *BitmapImage) callconv(.winapi) HRESULT,
-        SetContentFromBitmapImage: *const fn(self: *anyopaque, bitmapImage: *BitmapImage, anchorPoint: Point) callconv(.winapi) HRESULT,
+        SetContentFromBitmapImageWithAnchorPoint: *const fn(self: *anyopaque, bitmapImage: *BitmapImage, anchorPoint: Point) callconv(.winapi) HRESULT,
         SetContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap) callconv(.winapi) HRESULT,
-        SetContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
+        SetContentFromSoftwareBitmapWithAnchorPoint: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
         SetContentFromDataPackage: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -6695,16 +6695,16 @@ pub const IDragUIOverride = extern struct {
         const _c = self.vtable.SetContentFromBitmapImage(@ptrCast(self), bitmapImage);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetContentFromBitmapImage(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
-        const _c = self.vtable.SetContentFromBitmapImage(@ptrCast(self), bitmapImage, anchorPoint);
+    pub fn SetContentFromBitmapImageWithAnchorPoint(self: *@This(), bitmapImage: *BitmapImage, anchorPoint: Point) core.HResult!void {
+        const _c = self.vtable.SetContentFromBitmapImageWithAnchorPoint(@ptrCast(self), bitmapImage, anchorPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap) core.HResult!void {
         const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetContentFromSoftwareBitmap(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
-        const _c = self.vtable.SetContentFromSoftwareBitmap(@ptrCast(self), softwareBitmap, anchorPoint);
+    pub fn SetContentFromSoftwareBitmapWithAnchorPoint(self: *@This(), softwareBitmap: *SoftwareBitmap, anchorPoint: Point) core.HResult!void {
+        const _c = self.vtable.SetContentFromSoftwareBitmapWithAnchorPoint(@ptrCast(self), softwareBitmap, anchorPoint);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.IDragUIOverride";
@@ -6729,9 +6729,9 @@ pub const IDragUIOverride = extern struct {
         put_IsGlyphVisible: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         SetContentFromBitmapImage: *const fn(self: *anyopaque, bitmapImage: *BitmapImage) callconv(.winapi) HRESULT,
-        SetContentFromBitmapImage: *const fn(self: *anyopaque, bitmapImage: *BitmapImage, anchorPoint: Point) callconv(.winapi) HRESULT,
+        SetContentFromBitmapImageWithAnchorPoint: *const fn(self: *anyopaque, bitmapImage: *BitmapImage, anchorPoint: Point) callconv(.winapi) HRESULT,
         SetContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap) callconv(.winapi) HRESULT,
-        SetContentFromSoftwareBitmap: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
+        SetContentFromSoftwareBitmapWithAnchorPoint: *const fn(self: *anyopaque, softwareBitmap: *SoftwareBitmap, anchorPoint: Point) callconv(.winapi) HRESULT,
     };
 };
 pub const IDropCompletedEventArgs = extern struct {
@@ -8224,9 +8224,9 @@ pub const IGridLengthHelperStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FromValueAndType(self: *@This(), value: f64, type: GridUnitType) core.HResult!GridLength {
+    pub fn FromValueAndType(self: *@This(), value: f64, ty: GridUnitType) core.HResult!GridLength {
         var _r: GridLength = undefined;
-        const _c = self.vtable.FromValueAndType(@ptrCast(self), value, type, &_r);
+        const _c = self.vtable.FromValueAndType(@ptrCast(self), value, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -8268,7 +8268,7 @@ pub const IGridLengthHelperStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Auto: *const fn(self: *anyopaque, _r: *GridLength) callconv(.winapi) HRESULT,
         FromPixels: *const fn(self: *anyopaque, pixels: f64, _r: *GridLength) callconv(.winapi) HRESULT,
-        FromValueAndType: *const fn(self: *anyopaque, value: f64, type: GridUnitType, _r: *GridLength) callconv(.winapi) HRESULT,
+        FromValueAndType: *const fn(self: *anyopaque, value: f64, ty: GridUnitType, _r: *GridLength) callconv(.winapi) HRESULT,
         GetIsAbsolute: *const fn(self: *anyopaque, target: GridLength, _r: *bool) callconv(.winapi) HRESULT,
         GetIsAuto: *const fn(self: *anyopaque, target: GridLength, _r: *bool) callconv(.winapi) HRESULT,
         GetIsStar: *const fn(self: *anyopaque, target: GridLength, _r: *bool) callconv(.winapi) HRESULT,
@@ -8399,15 +8399,15 @@ pub const IPropertyMetadataFactory = extern struct {
 };
 pub const IPropertyMetadataStatics = extern struct {
     vtable: *const VTable,
-    pub fn Create(self: *@This(), defaultValue: *IInspectable) core.HResult!*PropertyMetadata {
+    pub fn CreateWithDefaultValue(self: *@This(), defaultValue: *IInspectable) core.HResult!*PropertyMetadata {
         var _r: *PropertyMetadata = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), defaultValue, &_r);
+        const _c = self.vtable.CreateWithDefaultValue(@ptrCast(self), defaultValue, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), defaultValue: *IInspectable, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
+    pub fn CreateWithPropertyChangedCallback(self: *@This(), defaultValue: *IInspectable, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
         var _r: *PropertyMetadata = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), defaultValue, propertyChangedCallback, &_r);
+        const _c = self.vtable.CreateWithPropertyChangedCallback(@ptrCast(self), defaultValue, propertyChangedCallback, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -8417,9 +8417,9 @@ pub const IPropertyMetadataStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), createDefaultValueCallback: *CreateDefaultValueCallback, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
+    pub fn CreateWithPropertyChangedCallback(self: *@This(), createDefaultValueCallback: *CreateDefaultValueCallback, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
         var _r: *PropertyMetadata = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), createDefaultValueCallback, propertyChangedCallback, &_r);
+        const _c = self.vtable.CreateWithPropertyChangedCallback(@ptrCast(self), createDefaultValueCallback, propertyChangedCallback, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -8435,10 +8435,10 @@ pub const IPropertyMetadataStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, defaultValue: *IInspectable, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, defaultValue: *IInspectable, propertyChangedCallback: *PropertyChangedCallback, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
+        CreateWithDefaultValue: *const fn(self: *anyopaque, defaultValue: *IInspectable, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
+        CreateWithPropertyChangedCallback: *const fn(self: *anyopaque, defaultValue: *IInspectable, propertyChangedCallback: *PropertyChangedCallback, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, createDefaultValueCallback: *CreateDefaultValueCallback, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, createDefaultValueCallback: *CreateDefaultValueCallback, propertyChangedCallback: *PropertyChangedCallback, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
+        CreateWithPropertyChangedCallback: *const fn(self: *anyopaque, createDefaultValueCallback: *CreateDefaultValueCallback, propertyChangedCallback: *PropertyChangedCallback, _r: **PropertyMetadata) callconv(.winapi) HRESULT,
     };
 };
 pub const IPropertyPath = extern struct {
@@ -8583,9 +8583,9 @@ pub const IRectHelperStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Union(self: *@This(), target: Rect, rect: Rect) core.HResult!Rect {
+    pub fn UnionWithRect(self: *@This(), target: Rect, rect: Rect) core.HResult!Rect {
         var _r: Rect = undefined;
-        const _c = self.vtable.Union(@ptrCast(self), target, rect, &_r);
+        const _c = self.vtable.UnionWithRect(@ptrCast(self), target, rect, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -8614,7 +8614,7 @@ pub const IRectHelperStatics = extern struct {
         Equals: *const fn(self: *anyopaque, target: Rect, value: Rect, _r: *bool) callconv(.winapi) HRESULT,
         Intersect: *const fn(self: *anyopaque, target: Rect, rect: Rect, _r: *Rect) callconv(.winapi) HRESULT,
         Union: *const fn(self: *anyopaque, target: Rect, point: Point, _r: *Rect) callconv(.winapi) HRESULT,
-        Union: *const fn(self: *anyopaque, target: Rect, rect: Rect, _r: *Rect) callconv(.winapi) HRESULT,
+        UnionWithRect: *const fn(self: *anyopaque, target: Rect, rect: Rect, _r: *Rect) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceDictionary = extern struct {
@@ -12691,21 +12691,21 @@ pub const PropertyMetadata = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn Create(defaultValue: *IInspectable) core.HResult!*PropertyMetadata {
+    pub fn CreateWithDefaultValue(defaultValue: *IInspectable) core.HResult!*PropertyMetadata {
         const factory = @This().IPropertyMetadataStaticsCache.get();
-        return try factory.Create(defaultValue);
+        return try factory.CreateWithDefaultValue(defaultValue);
     }
-    pub fn Create(defaultValue: *IInspectable, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
+    pub fn CreateWithPropertyChangedCallback(defaultValue: *IInspectable, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
         const factory = @This().IPropertyMetadataStaticsCache.get();
-        return try factory.Create(defaultValue, propertyChangedCallback);
+        return try factory.CreateWithPropertyChangedCallback(defaultValue, propertyChangedCallback);
     }
     pub fn Create(createDefaultValueCallback: *CreateDefaultValueCallback) core.HResult!*PropertyMetadata {
         const factory = @This().IPropertyMetadataStaticsCache.get();
         return try factory.Create(createDefaultValueCallback);
     }
-    pub fn Create(createDefaultValueCallback: *CreateDefaultValueCallback, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
+    pub fn CreateWithPropertyChangedCallback(createDefaultValueCallback: *CreateDefaultValueCallback, propertyChangedCallback: *PropertyChangedCallback) core.HResult!*PropertyMetadata {
         const factory = @This().IPropertyMetadataStaticsCache.get();
-        return try factory.Create(createDefaultValueCallback, propertyChangedCallback);
+        return try factory.CreateWithPropertyChangedCallback(createDefaultValueCallback, propertyChangedCallback);
     }
     pub fn CreateInstanceWithDefaultValue(defaultValue: *IInspectable, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyMetadata {
         const factory = @This().IPropertyMetadataFactoryCache.get();
@@ -12800,9 +12800,9 @@ pub const RectHelper = extern struct {
         const factory = @This().IRectHelperStaticsCache.get();
         return try factory.Union(target, point);
     }
-    pub fn Union(target: Rect, rect: Rect) core.HResult!Rect {
+    pub fn UnionWithRect(target: Rect, rect: Rect) core.HResult!Rect {
         const factory = @This().IRectHelperStaticsCache.get();
-        return try factory.Union(target, rect);
+        return try factory.UnionWithRect(target, rect);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.RectHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

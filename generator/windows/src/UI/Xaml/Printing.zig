@@ -334,8 +334,8 @@ pub const IPrintDocument = extern struct {
         const _c = self.vtable.AddPagesComplete(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetPreviewPageCount(self: *@This(), count: i32, type: PreviewPageCountType) core.HResult!void {
-        const _c = self.vtable.SetPreviewPageCount(@ptrCast(self), count, type);
+    pub fn SetPreviewPageCount(self: *@This(), count: i32, ty: PreviewPageCountType) core.HResult!void {
+        const _c = self.vtable.SetPreviewPageCount(@ptrCast(self), count, ty);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SetPreviewPage(self: *@This(), pageNumber: i32, pageVisual: *UIElement) core.HResult!void {
@@ -367,7 +367,7 @@ pub const IPrintDocument = extern struct {
         remove_AddPages: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         AddPage: *const fn(self: *anyopaque, pageVisual: *UIElement) callconv(.winapi) HRESULT,
         AddPagesComplete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        SetPreviewPageCount: *const fn(self: *anyopaque, count: i32, type: PreviewPageCountType) callconv(.winapi) HRESULT,
+        SetPreviewPageCount: *const fn(self: *anyopaque, count: i32, ty: PreviewPageCountType) callconv(.winapi) HRESULT,
         SetPreviewPage: *const fn(self: *anyopaque, pageNumber: i32, pageVisual: *UIElement) callconv(.winapi) HRESULT,
         InvalidatePreview: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
@@ -571,9 +571,9 @@ pub const PrintDocument = extern struct {
         const this: *IPrintDocument = @ptrCast(self);
         return try this.AddPagesComplete();
     }
-    pub fn SetPreviewPageCount(self: *@This(), count: i32, type: PreviewPageCountType) core.HResult!void {
+    pub fn SetPreviewPageCount(self: *@This(), count: i32, ty: PreviewPageCountType) core.HResult!void {
         const this: *IPrintDocument = @ptrCast(self);
-        return try this.SetPreviewPageCount(count, type);
+        return try this.SetPreviewPageCount(count, ty);
     }
     pub fn SetPreviewPage(self: *@This(), pageNumber: i32, pageVisual: *UIElement) core.HResult!void {
         const this: *IPrintDocument = @ptrCast(self);

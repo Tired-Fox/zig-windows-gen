@@ -108,9 +108,9 @@ pub const CoreAutomationRemoteOperationContext = extern struct {
         const this: *ICoreAutomationRemoteOperationContext = @ptrCast(self);
         return try this.SetOperand(id, operand);
     }
-    pub fn SetOperand(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
+    pub fn SetOperandWithOperandWithOperandInterfaceId(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
         const this: *ICoreAutomationRemoteOperationContext = @ptrCast(self);
-        return try this.SetOperand(id, operand, operandInterfaceId);
+        return try this.SetOperandWithOperandWithOperandInterfaceId(id, operand, operandInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.CoreAutomationRemoteOperationContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -298,8 +298,8 @@ pub const ICoreAutomationRemoteOperationContext = extern struct {
         const _c = self.vtable.SetOperand(@ptrCast(self), id, operand);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetOperand(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
-        const _c = self.vtable.SetOperand(@ptrCast(self), id, operand, operandInterfaceId);
+    pub fn SetOperandWithOperandWithOperandInterfaceId(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
+        const _c = self.vtable.SetOperandWithOperandWithOperandInterfaceId(@ptrCast(self), id, operand, operandInterfaceId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.ICoreAutomationRemoteOperationContext";
@@ -316,7 +316,7 @@ pub const ICoreAutomationRemoteOperationContext = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetOperand: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, _r: **IInspectable) callconv(.winapi) HRESULT,
         SetOperand: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, operand: *IInspectable) callconv(.winapi) HRESULT,
-        SetOperand: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) callconv(.winapi) HRESULT,
+        SetOperandWithOperandWithOperandInterfaceId: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreAutomationRemoteOperationExtensionProvider = extern struct {

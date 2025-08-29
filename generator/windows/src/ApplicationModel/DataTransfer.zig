@@ -243,9 +243,9 @@ pub const DataPackage = extern struct {
         const this: *IDataPackage = @ptrCast(self);
         return try this.SetStorageItems(value);
     }
-    pub fn SetStorageItems(self: *@This(), value: *IIterable(IStorageItem), readOnly: bool) core.HResult!void {
+    pub fn SetStorageItemsWithReadOnly(self: *@This(), value: *IIterable(IStorageItem), readOnly: bool) core.HResult!void {
         const this: *IDataPackage = @ptrCast(self);
-        return try this.SetStorageItems(value, readOnly);
+        return try this.SetStorageItemsWithReadOnly(value, readOnly);
     }
     pub fn SetApplicationLink(self: *@This(), value: *Uri) core.HResult!void {
         var this: ?*IDataPackage2 = undefined;
@@ -1317,8 +1317,8 @@ pub const IDataPackage = extern struct {
         const _c = self.vtable.SetStorageItems(@ptrCast(self), value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetStorageItems(self: *@This(), value: *IIterable(IStorageItem), readOnly: bool) core.HResult!void {
-        const _c = self.vtable.SetStorageItems(@ptrCast(self), value, readOnly);
+    pub fn SetStorageItemsWithReadOnly(self: *@This(), value: *IIterable(IStorageItem), readOnly: bool) core.HResult!void {
+        const _c = self.vtable.SetStorageItemsWithReadOnly(@ptrCast(self), value, readOnly);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.IDataPackage";
@@ -1350,7 +1350,7 @@ pub const IDataPackage = extern struct {
         SetRtf: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
         SetBitmap: *const fn(self: *anyopaque, value: *RandomAccessStreamReference) callconv(.winapi) HRESULT,
         SetStorageItems: *const fn(self: *anyopaque, value: *IIterable(IStorageItem)) callconv(.winapi) HRESULT,
-        SetStorageItems: *const fn(self: *anyopaque, value: *IIterable(IStorageItem), readOnly: bool) callconv(.winapi) HRESULT,
+        SetStorageItemsWithReadOnly: *const fn(self: *anyopaque, value: *IIterable(IStorageItem), readOnly: bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IDataPackage2 = extern struct {

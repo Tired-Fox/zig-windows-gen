@@ -442,9 +442,9 @@ pub const IMediaProtectionServiceRequest = extern struct {
 };
 pub const IProtectionCapabilities = extern struct {
     vtable: *const VTable,
-    pub fn IsTypeSupported(self: *@This(), type: HSTRING, keySystem: HSTRING) core.HResult!ProtectionCapabilityResult {
+    pub fn IsTypeSupported(self: *@This(), ty: HSTRING, keySystem: HSTRING) core.HResult!ProtectionCapabilityResult {
         var _r: ProtectionCapabilityResult = undefined;
-        const _c = self.vtable.IsTypeSupported(@ptrCast(self), type, keySystem, &_r);
+        const _c = self.vtable.IsTypeSupported(@ptrCast(self), ty, keySystem, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -460,7 +460,7 @@ pub const IProtectionCapabilities = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        IsTypeSupported: *const fn(self: *anyopaque, type: HSTRING, keySystem: HSTRING, _r: *ProtectionCapabilityResult) callconv(.winapi) HRESULT,
+        IsTypeSupported: *const fn(self: *anyopaque, ty: HSTRING, keySystem: HSTRING, _r: *ProtectionCapabilityResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IRevocationAndRenewalInformation = extern struct {
@@ -668,9 +668,9 @@ pub const MediaProtectionServiceCompletion = extern struct {
 };
 pub const ProtectionCapabilities = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn IsTypeSupported(self: *@This(), type: HSTRING, keySystem: HSTRING) core.HResult!ProtectionCapabilityResult {
+    pub fn IsTypeSupported(self: *@This(), ty: HSTRING, keySystem: HSTRING) core.HResult!ProtectionCapabilityResult {
         const this: *IProtectionCapabilities = @ptrCast(self);
-        return try this.IsTypeSupported(type, keySystem);
+        return try this.IsTypeSupported(ty, keySystem);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

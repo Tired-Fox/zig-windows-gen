@@ -750,9 +750,9 @@ pub const DisplayState = extern struct {
         const this: *IDisplayState = @ptrCast(self);
         return try this.ConnectTarget(target);
     }
-    pub fn ConnectTarget(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!*DisplayPath {
+    pub fn ConnectTargetWithView(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!*DisplayPath {
         const this: *IDisplayState = @ptrCast(self);
-        return try this.ConnectTarget(target, view);
+        return try this.ConnectTargetWithView(target, view);
     }
     pub fn CanConnectTargetToView(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!bool {
         const this: *IDisplayState = @ptrCast(self);
@@ -2342,9 +2342,9 @@ pub const IDisplayState = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectTarget(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!*DisplayPath {
+    pub fn ConnectTargetWithView(self: *@This(), target: *DisplayTarget, view: *DisplayView) core.HResult!*DisplayPath {
         var _r: *DisplayPath = undefined;
-        const _c = self.vtable.ConnectTarget(@ptrCast(self), target, view, &_r);
+        const _c = self.vtable.ConnectTargetWithView(@ptrCast(self), target, view, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2406,7 +2406,7 @@ pub const IDisplayState = extern struct {
         get_Views: *const fn(self: *anyopaque, _r: **IVectorView(DisplayView)) callconv(.winapi) HRESULT,
         get_Properties: *const fn(self: *anyopaque, _r: **IMap(Guid,IInspectable)) callconv(.winapi) HRESULT,
         ConnectTarget: *const fn(self: *anyopaque, target: *DisplayTarget, _r: **DisplayPath) callconv(.winapi) HRESULT,
-        ConnectTarget: *const fn(self: *anyopaque, target: *DisplayTarget, view: *DisplayView, _r: **DisplayPath) callconv(.winapi) HRESULT,
+        ConnectTargetWithView: *const fn(self: *anyopaque, target: *DisplayTarget, view: *DisplayView, _r: **DisplayPath) callconv(.winapi) HRESULT,
         CanConnectTargetToView: *const fn(self: *anyopaque, target: *DisplayTarget, view: *DisplayView, _r: *bool) callconv(.winapi) HRESULT,
         GetViewForTarget: *const fn(self: *anyopaque, target: *DisplayTarget, _r: **DisplayView) callconv(.winapi) HRESULT,
         GetPathForTarget: *const fn(self: *anyopaque, target: *DisplayTarget, _r: **DisplayPath) callconv(.winapi) HRESULT,

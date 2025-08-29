@@ -437,9 +437,9 @@ pub const IStoreContext = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
-        const _c = self.vtable.RequestPurchaseAsync(@ptrCast(self), storeId, storePurchaseProperties, &_r);
+        const _c = self.vtable.RequestPurchaseAsyncWithStorePurchaseProperties(@ptrCast(self), storeId, storePurchaseProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -495,7 +495,7 @@ pub const IStoreContext = extern struct {
         GetConsumableBalanceRemainingAsync: *const fn(self: *anyopaque, productStoreId: HSTRING, _r: **IAsyncOperation(StoreConsumableResult)) callconv(.winapi) HRESULT,
         AcquireStoreLicenseForOptionalPackageAsync: *const fn(self: *anyopaque, optionalPackage: *Package, _r: **IAsyncOperation(StoreAcquireLicenseResult)) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, storeId: HSTRING, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseAsync: *const fn(self: *anyopaque, storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
         GetAppAndOptionalStorePackageUpdatesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(StorePackageUpdate))) callconv(.winapi) HRESULT,
         RequestDownloadStorePackageUpdatesAsync: *const fn(self: *anyopaque, storePackageUpdates: *IIterable(StorePackageUpdate), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
         RequestDownloadAndInstallStorePackageUpdatesAsync: *const fn(self: *anyopaque, storePackageUpdates: *IIterable(StorePackageUpdate), _r: **IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus)) callconv(.winapi) HRESULT,
@@ -2296,9 +2296,9 @@ pub const StoreContext = extern struct {
         const this: *IStoreContext = @ptrCast(self);
         return try this.RequestPurchaseAsync(storeId);
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storeId: HSTRING, storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         const this: *IStoreContext = @ptrCast(self);
-        return try this.RequestPurchaseAsync(storeId, storePurchaseProperties);
+        return try this.RequestPurchaseAsyncWithStorePurchaseProperties(storeId, storePurchaseProperties);
     }
     pub fn GetAppAndOptionalStorePackageUpdatesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StorePackageUpdate)) {
         const this: *IStoreContext = @ptrCast(self);
@@ -2354,11 +2354,11 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanAcquireStoreLicenseAsync(productStoreId);
     }
-    pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetStoreProductsAsyncWithStoreIdsWithStoreProductOptions(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetStoreProductsAsync(productKinds, storeIds, storeProductOptions);
+        return try this.?.GetStoreProductsAsyncWithStoreIdsWithStoreProductOptions(productKinds, storeIds, storeProductOptions);
     }
     pub fn GetAssociatedStoreQueueItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var this: ?*IStoreContext3 = undefined;
@@ -2372,11 +2372,11 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetStoreQueueItemsAsync(storeIds);
     }
-    pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
+    pub fn RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(self: *@This(), storeIds: *IIterable(HSTRING), storePackageInstallOptions: *StorePackageInstallOptions) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestDownloadAndInstallStorePackagesAsync(storeIds, storePackageInstallOptions);
+        return try this.?.RequestDownloadAndInstallStorePackagesAsyncWithStorePackageInstallOptions(storeIds, storePackageInstallOptions);
     }
     pub fn DownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
         var this: ?*IStoreContext3 = undefined;

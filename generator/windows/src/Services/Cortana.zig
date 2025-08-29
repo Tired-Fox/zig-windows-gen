@@ -12,25 +12,25 @@ pub const CortanaActionableInsights = extern struct {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsForImageAsync(imageStream);
     }
-    pub fn ShowInsightsForImageAsync(self: *@This(), imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForImageAsyncWithOptions(self: *@This(), imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
-        return try this.ShowInsightsForImageAsync(imageStream, options);
+        return try this.ShowInsightsForImageAsyncWithOptions(imageStream, options);
     }
     pub fn ShowInsightsForTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsForTextAsync(text);
     }
-    pub fn ShowInsightsForTextAsync(self: *@This(), text: HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForTextAsyncWithOptions(self: *@This(), text: HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
-        return try this.ShowInsightsForTextAsync(text, options);
+        return try this.ShowInsightsForTextAsyncWithOptions(text, options);
     }
     pub fn ShowInsightsAsync(self: *@This(), datapackage: *DataPackage) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
         return try this.ShowInsightsAsync(datapackage);
     }
-    pub fn ShowInsightsAsync(self: *@This(), datapackage: *DataPackage, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsAsyncWithOptions(self: *@This(), datapackage: *DataPackage, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         const this: *ICortanaActionableInsights = @ptrCast(self);
-        return try this.ShowInsightsAsync(datapackage, options);
+        return try this.ShowInsightsAsyncWithOptions(datapackage, options);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -152,9 +152,9 @@ pub const ICortanaActionableInsights = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowInsightsForImageAsync(self: *@This(), imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForImageAsyncWithOptions(self: *@This(), imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ShowInsightsForImageAsync(@ptrCast(self), imageStream, options, &_r);
+        const _c = self.vtable.ShowInsightsForImageAsyncWithOptions(@ptrCast(self), imageStream, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -164,9 +164,9 @@ pub const ICortanaActionableInsights = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowInsightsForTextAsync(self: *@This(), text: HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsForTextAsyncWithOptions(self: *@This(), text: HSTRING, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ShowInsightsForTextAsync(@ptrCast(self), text, options, &_r);
+        const _c = self.vtable.ShowInsightsForTextAsyncWithOptions(@ptrCast(self), text, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -176,9 +176,9 @@ pub const ICortanaActionableInsights = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowInsightsAsync(self: *@This(), datapackage: *DataPackage, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
+    pub fn ShowInsightsAsyncWithOptions(self: *@This(), datapackage: *DataPackage, options: *CortanaActionableInsightsOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ShowInsightsAsync(@ptrCast(self), datapackage, options, &_r);
+        const _c = self.vtable.ShowInsightsAsyncWithOptions(@ptrCast(self), datapackage, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -197,11 +197,11 @@ pub const ICortanaActionableInsights = extern struct {
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
         IsAvailableAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         ShowInsightsForImageAsync: *const fn(self: *anyopaque, imageStream: *IRandomAccessStreamReference, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowInsightsForImageAsync: *const fn(self: *anyopaque, imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowInsightsForImageAsyncWithOptions: *const fn(self: *anyopaque, imageStream: *IRandomAccessStreamReference, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowInsightsForTextAsync: *const fn(self: *anyopaque, text: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowInsightsForTextAsync: *const fn(self: *anyopaque, text: HSTRING, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowInsightsForTextAsyncWithOptions: *const fn(self: *anyopaque, text: HSTRING, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowInsightsAsync: *const fn(self: *anyopaque, datapackage: *DataPackage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowInsightsAsync: *const fn(self: *anyopaque, datapackage: *DataPackage, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowInsightsAsyncWithOptions: *const fn(self: *anyopaque, datapackage: *DataPackage, options: *CortanaActionableInsightsOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const ICortanaActionableInsightsOptions = extern struct {

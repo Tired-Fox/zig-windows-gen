@@ -44,9 +44,9 @@ pub const GattCharacteristic = extern struct {
         const this: *IGattCharacteristic = @ptrCast(self);
         return try this.WriteValueAsync(value);
     }
-    pub fn WriteValueAsync(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattCommunicationStatus) {
+    pub fn WriteValueAsyncWithWriteOption(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattCommunicationStatus) {
         const this: *IGattCharacteristic = @ptrCast(self);
-        return try this.WriteValueAsync(value, writeOption);
+        return try this.WriteValueAsyncWithWriteOption(value, writeOption);
     }
     pub fn ReadClientCharacteristicConfigurationDescriptorAsync(self: *@This()) core.HResult!*IAsyncOperation(GattReadClientCharacteristicConfigurationDescriptorResult) {
         const this: *IGattCharacteristic = @ptrCast(self);
@@ -94,11 +94,11 @@ pub const GattCharacteristic = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescriptorsForUuidAsync(descriptorUuid);
     }
-    pub fn GetDescriptorsForUuidAsync(self: *@This(), descriptorUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
+    pub fn GetDescriptorsForUuidAsyncWithCacheMode(self: *@This(), descriptorUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetDescriptorsForUuidAsync(descriptorUuid, cacheMode);
+        return try this.?.GetDescriptorsForUuidAsyncWithCacheMode(descriptorUuid, cacheMode);
     }
     pub fn WriteValueWithResultAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattCharacteristic3 = undefined;
@@ -106,11 +106,11 @@ pub const GattCharacteristic = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.WriteValueWithResultAsync(value);
     }
-    pub fn WriteValueWithResultAsync(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattWriteResult) {
+    pub fn WriteValueWithResultAsyncWithWriteOption(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattCharacteristic3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.WriteValueWithResultAsync(value, writeOption);
+        return try this.?.WriteValueWithResultAsyncWithWriteOption(value, writeOption);
     }
     pub fn WriteClientCharacteristicConfigurationDescriptorWithResultAsync(self: *@This(), clientCharacteristicConfigurationDescriptorValue: GattClientCharacteristicConfigurationDescriptorValue) core.HResult!*IAsyncOperation(GattWriteResult) {
         var this: ?*IGattCharacteristic3 = undefined;
@@ -739,11 +739,11 @@ pub const GattDeviceService = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCharacteristicsForUuidAsync(characteristicUuid);
     }
-    pub fn GetCharacteristicsForUuidAsync(self: *@This(), characteristicUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
+    pub fn GetCharacteristicsForUuidAsyncWithCacheMode(self: *@This(), characteristicUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCharacteristicsForUuidAsync(characteristicUuid, cacheMode);
+        return try this.?.GetCharacteristicsForUuidAsyncWithCacheMode(characteristicUuid, cacheMode);
     }
     pub fn GetIncludedServicesAsync(self: *@This()) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
@@ -763,11 +763,11 @@ pub const GattDeviceService = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesForUuidAsync(serviceUuid);
     }
-    pub fn GetIncludedServicesForUuidAsync(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetIncludedServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIncludedServicesForUuidAsync(serviceUuid, cacheMode);
+        return try this.?.GetIncludedServicesForUuidAsyncWithCacheMode(serviceUuid, cacheMode);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -796,17 +796,17 @@ pub const GattDeviceService = extern struct {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
         return try factory.GetDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceId(bluetoothDeviceId, cacheMode);
+        return try factory.GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(bluetoothDeviceId, cacheMode);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid) core.HResult!HSTRING {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
         return try factory.GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId, serviceUuid);
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode(bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         const factory = @This().IGattDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceIdAndUuid(bluetoothDeviceId, serviceUuid, cacheMode);
+        return try factory.GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode(bluetoothDeviceId, serviceUuid, cacheMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.GenericAttributeProfile.GattDeviceService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -906,9 +906,9 @@ pub const GattLocalCharacteristic = extern struct {
         const this: *IGattLocalCharacteristic = @ptrCast(self);
         return try this.NotifyValueAsync(value);
     }
-    pub fn NotifyValueAsync(self: *@This(), value: *IBuffer, subscribedClient: *GattSubscribedClient) core.HResult!*IAsyncOperation(GattClientNotificationResult) {
+    pub fn NotifyValueAsyncWithSubscribedClient(self: *@This(), value: *IBuffer, subscribedClient: *GattSubscribedClient) core.HResult!*IAsyncOperation(GattClientNotificationResult) {
         const this: *IGattLocalCharacteristic = @ptrCast(self);
-        return try this.NotifyValueAsync(value, subscribedClient);
+        return try this.NotifyValueAsyncWithSubscribedClient(value, subscribedClient);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.GenericAttributeProfile.GattLocalCharacteristic";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2037,9 +2037,9 @@ pub const IGattCharacteristic = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WriteValueAsync(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattCommunicationStatus) {
+    pub fn WriteValueAsyncWithWriteOption(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattCommunicationStatus) {
         var _r: *IAsyncOperation(GattCommunicationStatus) = undefined;
-        const _c = self.vtable.WriteValueAsync(@ptrCast(self), value, writeOption, &_r);
+        const _c = self.vtable.WriteValueAsyncWithWriteOption(@ptrCast(self), value, writeOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2088,7 +2088,7 @@ pub const IGattCharacteristic = extern struct {
         ReadValueAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattReadResult)) callconv(.winapi) HRESULT,
         ReadValueAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattReadResult)) callconv(.winapi) HRESULT,
         WriteValueAsync: *const fn(self: *anyopaque, value: *IBuffer, _r: **IAsyncOperation(GattCommunicationStatus)) callconv(.winapi) HRESULT,
-        WriteValueAsync: *const fn(self: *anyopaque, value: *IBuffer, writeOption: GattWriteOption, _r: **IAsyncOperation(GattCommunicationStatus)) callconv(.winapi) HRESULT,
+        WriteValueAsyncWithWriteOption: *const fn(self: *anyopaque, value: *IBuffer, writeOption: GattWriteOption, _r: **IAsyncOperation(GattCommunicationStatus)) callconv(.winapi) HRESULT,
         ReadClientCharacteristicConfigurationDescriptorAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattReadClientCharacteristicConfigurationDescriptorResult)) callconv(.winapi) HRESULT,
         WriteClientCharacteristicConfigurationDescriptorAsync: *const fn(self: *anyopaque, clientCharacteristicConfigurationDescriptorValue: GattClientCharacteristicConfigurationDescriptorValue, _r: **IAsyncOperation(GattCommunicationStatus)) callconv(.winapi) HRESULT,
         add_ValueChanged: *const fn(self: *anyopaque, valueChangedHandler: *TypedEventHandler(GattCharacteristic,GattValueChangedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -2145,9 +2145,9 @@ pub const IGattCharacteristic3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDescriptorsForUuidAsync(self: *@This(), descriptorUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
+    pub fn GetDescriptorsForUuidAsyncWithCacheMode(self: *@This(), descriptorUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var _r: *IAsyncOperation(GattDescriptorsResult) = undefined;
-        const _c = self.vtable.GetDescriptorsForUuidAsync(@ptrCast(self), descriptorUuid, cacheMode, &_r);
+        const _c = self.vtable.GetDescriptorsForUuidAsyncWithCacheMode(@ptrCast(self), descriptorUuid, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2157,9 +2157,9 @@ pub const IGattCharacteristic3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn WriteValueWithResultAsync(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattWriteResult) {
+    pub fn WriteValueWithResultAsyncWithWriteOption(self: *@This(), value: *IBuffer, writeOption: GattWriteOption) core.HResult!*IAsyncOperation(GattWriteResult) {
         var _r: *IAsyncOperation(GattWriteResult) = undefined;
-        const _c = self.vtable.WriteValueWithResultAsync(@ptrCast(self), value, writeOption, &_r);
+        const _c = self.vtable.WriteValueWithResultAsyncWithWriteOption(@ptrCast(self), value, writeOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2184,9 +2184,9 @@ pub const IGattCharacteristic3 = extern struct {
         GetDescriptorsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattDescriptorsResult)) callconv(.winapi) HRESULT,
         GetDescriptorsAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDescriptorsResult)) callconv(.winapi) HRESULT,
         GetDescriptorsForUuidAsync: *const fn(self: *anyopaque, descriptorUuid: *Guid, _r: **IAsyncOperation(GattDescriptorsResult)) callconv(.winapi) HRESULT,
-        GetDescriptorsForUuidAsync: *const fn(self: *anyopaque, descriptorUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDescriptorsResult)) callconv(.winapi) HRESULT,
+        GetDescriptorsForUuidAsyncWithCacheMode: *const fn(self: *anyopaque, descriptorUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDescriptorsResult)) callconv(.winapi) HRESULT,
         WriteValueWithResultAsync: *const fn(self: *anyopaque, value: *IBuffer, _r: **IAsyncOperation(GattWriteResult)) callconv(.winapi) HRESULT,
-        WriteValueWithResultAsync: *const fn(self: *anyopaque, value: *IBuffer, writeOption: GattWriteOption, _r: **IAsyncOperation(GattWriteResult)) callconv(.winapi) HRESULT,
+        WriteValueWithResultAsyncWithWriteOption: *const fn(self: *anyopaque, value: *IBuffer, writeOption: GattWriteOption, _r: **IAsyncOperation(GattWriteResult)) callconv(.winapi) HRESULT,
         WriteClientCharacteristicConfigurationDescriptorWithResultAsync: *const fn(self: *anyopaque, clientCharacteristicConfigurationDescriptorValue: GattClientCharacteristicConfigurationDescriptorValue, _r: **IAsyncOperation(GattWriteResult)) callconv(.winapi) HRESULT,
     };
 };
@@ -3258,9 +3258,9 @@ pub const IGattDeviceService3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCharacteristicsForUuidAsync(self: *@This(), characteristicUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
+    pub fn GetCharacteristicsForUuidAsyncWithCacheMode(self: *@This(), characteristicUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var _r: *IAsyncOperation(GattCharacteristicsResult) = undefined;
-        const _c = self.vtable.GetCharacteristicsForUuidAsync(@ptrCast(self), characteristicUuid, cacheMode, &_r);
+        const _c = self.vtable.GetCharacteristicsForUuidAsyncWithCacheMode(@ptrCast(self), characteristicUuid, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3282,9 +3282,9 @@ pub const IGattDeviceService3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetIncludedServicesForUuidAsync(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetIncludedServicesForUuidAsyncWithCacheMode(self: *@This(), serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
-        const _c = self.vtable.GetIncludedServicesForUuidAsync(@ptrCast(self), serviceUuid, cacheMode, &_r);
+        const _c = self.vtable.GetIncludedServicesForUuidAsyncWithCacheMode(@ptrCast(self), serviceUuid, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3308,11 +3308,11 @@ pub const IGattDeviceService3 = extern struct {
         GetCharacteristicsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattCharacteristicsResult)) callconv(.winapi) HRESULT,
         GetCharacteristicsAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattCharacteristicsResult)) callconv(.winapi) HRESULT,
         GetCharacteristicsForUuidAsync: *const fn(self: *anyopaque, characteristicUuid: *Guid, _r: **IAsyncOperation(GattCharacteristicsResult)) callconv(.winapi) HRESULT,
-        GetCharacteristicsForUuidAsync: *const fn(self: *anyopaque, characteristicUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattCharacteristicsResult)) callconv(.winapi) HRESULT,
+        GetCharacteristicsForUuidAsyncWithCacheMode: *const fn(self: *anyopaque, characteristicUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattCharacteristicsResult)) callconv(.winapi) HRESULT,
         GetIncludedServicesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetIncludedServicesAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetIncludedServicesForUuidAsync: *const fn(self: *anyopaque, serviceUuid: *Guid, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
-        GetIncludedServicesForUuidAsync: *const fn(self: *anyopaque, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
+        GetIncludedServicesForUuidAsyncWithCacheMode: *const fn(self: *anyopaque, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGattDeviceServiceStatics = extern struct {
@@ -3373,9 +3373,9 @@ pub const IGattDeviceServiceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceId(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceId(@ptrCast(self), bluetoothDeviceId, cacheMode, &_r);
+        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceIdWithCacheMode(@ptrCast(self), bluetoothDeviceId, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3385,9 +3385,9 @@ pub const IGattDeviceServiceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuid(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode(self: *@This(), bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceIdAndUuid(@ptrCast(self), bluetoothDeviceId, serviceUuid, cacheMode, &_r);
+        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode(@ptrCast(self), bluetoothDeviceId, serviceUuid, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3405,9 +3405,9 @@ pub const IGattDeviceServiceStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, sharingMode: GattSharingMode, _r: **IAsyncOperation(GattDeviceService)) callconv(.winapi) HRESULT,
         GetDeviceSelectorForBluetoothDeviceId: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceId: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorForBluetoothDeviceIdAndUuid: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceIdAndUuid: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceIdAndUuidWithServiceUuidWithCacheMode: *const fn(self: *anyopaque, bluetoothDeviceId: *BluetoothDeviceId, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IGattDeviceServicesResult = extern struct {
@@ -3545,9 +3545,9 @@ pub const IGattLocalCharacteristic = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn NotifyValueAsync(self: *@This(), value: *IBuffer, subscribedClient: *GattSubscribedClient) core.HResult!*IAsyncOperation(GattClientNotificationResult) {
+    pub fn NotifyValueAsyncWithSubscribedClient(self: *@This(), value: *IBuffer, subscribedClient: *GattSubscribedClient) core.HResult!*IAsyncOperation(GattClientNotificationResult) {
         var _r: *IAsyncOperation(GattClientNotificationResult) = undefined;
-        const _c = self.vtable.NotifyValueAsync(@ptrCast(self), value, subscribedClient, &_r);
+        const _c = self.vtable.NotifyValueAsyncWithSubscribedClient(@ptrCast(self), value, subscribedClient, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3580,7 +3580,7 @@ pub const IGattLocalCharacteristic = extern struct {
         add_WriteRequested: *const fn(self: *anyopaque, handler: *TypedEventHandler(GattLocalCharacteristic,GattWriteRequestedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_WriteRequested: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         NotifyValueAsync: *const fn(self: *anyopaque, value: *IBuffer, _r: **IAsyncOperation(IVectorView(GattClientNotificationResult))) callconv(.winapi) HRESULT,
-        NotifyValueAsync: *const fn(self: *anyopaque, value: *IBuffer, subscribedClient: *GattSubscribedClient, _r: **IAsyncOperation(GattClientNotificationResult)) callconv(.winapi) HRESULT,
+        NotifyValueAsyncWithSubscribedClient: *const fn(self: *anyopaque, value: *IBuffer, subscribedClient: *GattSubscribedClient, _r: **IAsyncOperation(GattClientNotificationResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IGattLocalCharacteristicParameters = extern struct {

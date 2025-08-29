@@ -95,13 +95,13 @@ pub const AutomationAnnotation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutomationAnnotation.IID)));
     }
-    pub fn CreateInstance(type: AnnotationType) core.HResult!*AutomationAnnotation {
+    pub fn CreateInstance(ty: AnnotationType) core.HResult!*AutomationAnnotation {
         const factory = @This().IAutomationAnnotationFactoryCache.get();
-        return try factory.CreateInstance(type);
+        return try factory.CreateInstance(ty);
     }
-    pub fn CreateWithElementParameter(type: AnnotationType, element: *UIElement) core.HResult!*AutomationAnnotation {
+    pub fn CreateWithElementParameter(ty: AnnotationType, element: *UIElement) core.HResult!*AutomationAnnotation {
         const factory = @This().IAutomationAnnotationFactoryCache.get();
-        return try factory.CreateWithElementParameter(type, element);
+        return try factory.CreateWithElementParameter(ty, element);
     }
     pub fn getTypeProperty() core.HResult!*DependencyProperty {
         const factory = @This().IAutomationAnnotationStaticsCache.get();
@@ -981,15 +981,15 @@ pub const IAutomationAnnotation = extern struct {
 };
 pub const IAutomationAnnotationFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateInstance(self: *@This(), type: AnnotationType) core.HResult!*AutomationAnnotation {
+    pub fn CreateInstance(self: *@This(), ty: AnnotationType) core.HResult!*AutomationAnnotation {
         var _r: *AutomationAnnotation = undefined;
-        const _c = self.vtable.CreateInstance(@ptrCast(self), type, &_r);
+        const _c = self.vtable.CreateInstance(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWithElementParameter(self: *@This(), type: AnnotationType, element: *UIElement) core.HResult!*AutomationAnnotation {
+    pub fn CreateWithElementParameter(self: *@This(), ty: AnnotationType, element: *UIElement) core.HResult!*AutomationAnnotation {
         var _r: *AutomationAnnotation = undefined;
-        const _c = self.vtable.CreateWithElementParameter(@ptrCast(self), type, element, &_r);
+        const _c = self.vtable.CreateWithElementParameter(@ptrCast(self), ty, element, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1005,8 +1005,8 @@ pub const IAutomationAnnotationFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateInstance: *const fn(self: *anyopaque, type: AnnotationType, _r: **AutomationAnnotation) callconv(.winapi) HRESULT,
-        CreateWithElementParameter: *const fn(self: *anyopaque, type: AnnotationType, element: *UIElement, _r: **AutomationAnnotation) callconv(.winapi) HRESULT,
+        CreateInstance: *const fn(self: *anyopaque, ty: AnnotationType, _r: **AutomationAnnotation) callconv(.winapi) HRESULT,
+        CreateWithElementParameter: *const fn(self: *anyopaque, ty: AnnotationType, element: *UIElement, _r: **AutomationAnnotation) callconv(.winapi) HRESULT,
     };
 };
 pub const IAutomationAnnotationStatics = extern struct {

@@ -174,13 +174,13 @@ pub const HolographicCameraRenderingParameters = extern struct {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
         return try this.SetFocusPoint(coordinateSystem, position);
     }
-    pub fn SetFocusPoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
+    pub fn SetFocusPointWithPositionWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
-        return try this.SetFocusPoint(coordinateSystem, position, normal);
+        return try this.SetFocusPointWithPositionWithNormal(coordinateSystem, position, normal);
     }
-    pub fn SetFocusPoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
+    pub fn SetFocusPointWithNormalWithLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
-        return try this.SetFocusPoint(coordinateSystem, position, normal, linearVelocity);
+        return try this.SetFocusPointWithNormalWithLinearVelocity(coordinateSystem, position, normal, linearVelocity);
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
@@ -1135,12 +1135,12 @@ pub const IHolographicCameraRenderingParameters = extern struct {
         const _c = self.vtable.SetFocusPoint(@ptrCast(self), coordinateSystem, position);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetFocusPoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
-        const _c = self.vtable.SetFocusPoint(@ptrCast(self), coordinateSystem, position, normal);
+    pub fn SetFocusPointWithPositionWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
+        const _c = self.vtable.SetFocusPointWithPositionWithNormal(@ptrCast(self), coordinateSystem, position, normal);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetFocusPoint(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
-        const _c = self.vtable.SetFocusPoint(@ptrCast(self), coordinateSystem, position, normal, linearVelocity);
+    pub fn SetFocusPointWithNormalWithLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
+        const _c = self.vtable.SetFocusPointWithNormalWithLinearVelocity(@ptrCast(self), coordinateSystem, position, normal, linearVelocity);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
@@ -1168,8 +1168,8 @@ pub const IHolographicCameraRenderingParameters = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetFocusPoint: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3) callconv(.winapi) HRESULT,
-        SetFocusPoint: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) callconv(.winapi) HRESULT,
-        SetFocusPoint: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) callconv(.winapi) HRESULT,
+        SetFocusPointWithPositionWithNormal: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) callconv(.winapi) HRESULT,
+        SetFocusPointWithNormalWithLinearVelocity: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) callconv(.winapi) HRESULT,
         get_Direct3D11Device: *const fn(self: *anyopaque, _r: **IDirect3DDevice) callconv(.winapi) HRESULT,
         get_Direct3D11BackBuffer: *const fn(self: *anyopaque, _r: **IDirect3DSurface) callconv(.winapi) HRESULT,
     };

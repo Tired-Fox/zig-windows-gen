@@ -11,9 +11,9 @@ pub const BackgroundDownloader = extern struct {
         const this: *IBackgroundDownloader = @ptrCast(self);
         return try this.CreateDownload(uri, resultFile);
     }
-    pub fn CreateDownload(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
+    pub fn CreateDownloadWithResultFileWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
         const this: *IBackgroundDownloader = @ptrCast(self);
-        return try this.CreateDownload(uri, resultFile, requestBodyFile);
+        return try this.CreateDownloadWithResultFileWithRequestBodyFile(uri, resultFile, requestBodyFile);
     }
     pub fn CreateDownloadAsync(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyStream: *IInputStream) core.HResult!*IAsyncOperation(DownloadOperation) {
         const this: *IBackgroundDownloader = @ptrCast(self);
@@ -384,13 +384,13 @@ pub const BackgroundUploader = extern struct {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUploadAsync(uri, parts);
     }
-    pub fn CreateUploadAsync(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithPartsWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);
-        return try this.CreateUploadAsync(uri, parts, subType);
+        return try this.CreateUploadAsyncWithPartsWithSubType(uri, parts, subType);
     }
-    pub fn CreateUploadAsync(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubTypeWithBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);
-        return try this.CreateUploadAsync(uri, parts, subType, boundary);
+        return try this.CreateUploadAsyncWithSubTypeWithBoundary(uri, parts, subType, boundary);
     }
     pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
@@ -766,9 +766,9 @@ pub const IBackgroundDownloader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDownload(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
+    pub fn CreateDownloadWithResultFileWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
         var _r: *DownloadOperation = undefined;
-        const _c = self.vtable.CreateDownload(@ptrCast(self), uri, resultFile, requestBodyFile, &_r);
+        const _c = self.vtable.CreateDownloadWithResultFileWithRequestBodyFile(@ptrCast(self), uri, resultFile, requestBodyFile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -791,7 +791,7 @@ pub const IBackgroundDownloader = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateDownload: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, _r: **DownloadOperation) callconv(.winapi) HRESULT,
-        CreateDownload: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile, _r: **DownloadOperation) callconv(.winapi) HRESULT,
+        CreateDownloadWithResultFileWithRequestBodyFile: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile, _r: **DownloadOperation) callconv(.winapi) HRESULT,
         CreateDownloadAsync: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, requestBodyStream: *IInputStream, _r: **IAsyncOperation(DownloadOperation)) callconv(.winapi) HRESULT,
     };
 };
@@ -1436,15 +1436,15 @@ pub const IBackgroundUploader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUploadAsync(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithPartsWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
-        const _c = self.vtable.CreateUploadAsync(@ptrCast(self), uri, parts, subType, &_r);
+        const _c = self.vtable.CreateUploadAsyncWithPartsWithSubType(@ptrCast(self), uri, parts, subType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUploadAsync(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubTypeWithBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
-        const _c = self.vtable.CreateUploadAsync(@ptrCast(self), uri, parts, subType, boundary, &_r);
+        const _c = self.vtable.CreateUploadAsyncWithSubTypeWithBoundary(@ptrCast(self), uri, parts, subType, boundary, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1463,8 +1463,8 @@ pub const IBackgroundUploader = extern struct {
         CreateUpload: *const fn(self: *anyopaque, uri: *Uri, sourceFile: *IStorageFile, _r: **UploadOperation) callconv(.winapi) HRESULT,
         CreateUploadFromStreamAsync: *const fn(self: *anyopaque, uri: *Uri, sourceStream: *IInputStream, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
         CreateUploadAsync: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
-        CreateUploadAsync: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
-        CreateUploadAsync: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
+        CreateUploadAsyncWithPartsWithSubType: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
+        CreateUploadAsyncWithSubTypeWithBoundary: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundUploader2 = extern struct {

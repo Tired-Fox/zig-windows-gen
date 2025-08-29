@@ -6,9 +6,9 @@ pub const IPlatformTelemetryClientStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Register(self: *@This(), id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
+    pub fn RegisterWithSettings(self: *@This(), id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
         var _r: *PlatformTelemetryRegistrationResult = undefined;
-        const _c = self.vtable.Register(@ptrCast(self), id, settings, &_r);
+        const _c = self.vtable.RegisterWithSettings(@ptrCast(self), id, settings, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -25,7 +25,7 @@ pub const IPlatformTelemetryClientStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Register: *const fn(self: *anyopaque, id: HSTRING, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
-        Register: *const fn(self: *anyopaque, id: HSTRING, settings: *PlatformTelemetryRegistrationSettings, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
+        RegisterWithSettings: *const fn(self: *anyopaque, id: HSTRING, settings: *PlatformTelemetryRegistrationSettings, _r: **PlatformTelemetryRegistrationResult) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlatformTelemetryRegistrationResult = extern struct {
@@ -100,9 +100,9 @@ pub const PlatformTelemetryClient = extern struct {
         const factory = @This().IPlatformTelemetryClientStaticsCache.get();
         return try factory.Register(id);
     }
-    pub fn Register(id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
+    pub fn RegisterWithSettings(id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
         const factory = @This().IPlatformTelemetryClientStaticsCache.get();
-        return try factory.Register(id, settings);
+        return try factory.RegisterWithSettings(id, settings);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.Telemetry.PlatformTelemetryClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

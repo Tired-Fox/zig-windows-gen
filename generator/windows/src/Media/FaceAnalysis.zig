@@ -16,9 +16,9 @@ pub const FaceDetector = extern struct {
         const this: *IFaceDetector = @ptrCast(self);
         return try this.DetectFacesAsync(image);
     }
-    pub fn DetectFacesAsync(self: *@This(), image: *SoftwareBitmap, searchArea: BitmapBounds) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
+    pub fn DetectFacesAsyncWithSearchArea(self: *@This(), image: *SoftwareBitmap, searchArea: BitmapBounds) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         const this: *IFaceDetector = @ptrCast(self);
-        return try this.DetectFacesAsync(image, searchArea);
+        return try this.DetectFacesAsyncWithSearchArea(image, searchArea);
     }
     pub fn getMinDetectableFaceSize(self: *@This()) core.HResult!BitmapSize {
         const this: *IFaceDetector = @ptrCast(self);
@@ -141,9 +141,9 @@ pub const IFaceDetector = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DetectFacesAsync(self: *@This(), image: *SoftwareBitmap, searchArea: BitmapBounds) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
+    pub fn DetectFacesAsyncWithSearchArea(self: *@This(), image: *SoftwareBitmap, searchArea: BitmapBounds) core.HResult!*IAsyncOperation(IVector(DetectedFace)) {
         var _r: *IAsyncOperation(IVector(DetectedFace)) = undefined;
-        const _c = self.vtable.DetectFacesAsync(@ptrCast(self), image, searchArea, &_r);
+        const _c = self.vtable.DetectFacesAsyncWithSearchArea(@ptrCast(self), image, searchArea, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -180,7 +180,7 @@ pub const IFaceDetector = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         DetectFacesAsync: *const fn(self: *anyopaque, image: *SoftwareBitmap, _r: **IAsyncOperation(IVector(DetectedFace))) callconv(.winapi) HRESULT,
-        DetectFacesAsync: *const fn(self: *anyopaque, image: *SoftwareBitmap, searchArea: BitmapBounds, _r: **IAsyncOperation(IVector(DetectedFace))) callconv(.winapi) HRESULT,
+        DetectFacesAsyncWithSearchArea: *const fn(self: *anyopaque, image: *SoftwareBitmap, searchArea: BitmapBounds, _r: **IAsyncOperation(IVector(DetectedFace))) callconv(.winapi) HRESULT,
         get_MinDetectableFaceSize: *const fn(self: *anyopaque, _r: *BitmapSize) callconv(.winapi) HRESULT,
         put_MinDetectableFaceSize: *const fn(self: *anyopaque, value: BitmapSize) callconv(.winapi) HRESULT,
         get_MaxDetectableFaceSize: *const fn(self: *anyopaque, _r: *BitmapSize) callconv(.winapi) HRESULT,

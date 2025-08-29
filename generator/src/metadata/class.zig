@@ -3,6 +3,9 @@ const ty = @import("./type.zig");
 
 const metadata = @import("../metadata.zig");
 const replaceAll = @import("../root.zig").replaceAll;
+const noreserved = metadata.noreserved;
+const generateMethodNameMap = metadata.generateMethodNameMap;
+const generateMethodNameMapSig = metadata.generateMethodNameMapSig;
 const TypeDef = metadata.TypeDef;
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
@@ -31,11 +34,17 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         }
     }
 
+
     if (typedef.Methods) |methods| {
-        for (methods) |method| {
+        const nameMap = try generateMethodNameMap(allocator, methods);
+        defer {
+            for (nameMap) |n| allocator.free(n);
+            allocator.free(nameMap);
+        }
+        for (methods, 0..) |method, m| {
             if (method.Static or std.mem.eql(u8, method.Name, ".ctor")) continue;
 
-            const mname = try replaceAll(allocator, method.Name, "_", "");
+            const mname = try replaceAll(allocator, nameMap[m], "_", "");
             defer allocator.free(mname);
 
             try writer.print("    pub fn {s}(self: *@This()", .{ mname });
@@ -43,7 +52,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                 for (parameters) |param| {
                     if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
                         defer t.deinit(allocator);
-                        try writer.print(", {s}: {f}", .{ param.Name, t.asParam() });
+                        try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
                     }
                 }
             }
@@ -69,9 +78,9 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                     try writer.print("        return try this.?.{s}(", .{ mname });
                 }
                 if (method.Parameters) |parameters| {
-                    try writer.print("{s}", .{ parameters[0].Name });
+                    try writer.print("{s}", .{ noreserved(parameters[0].Name) });
                     for (1..parameters.len) |i| {
-                        try writer.print(", {s}", .{ parameters[i].Name });
+                        try writer.print(", {s}", .{ noreserved(parameters[i].Name) });
                     }
                 }
                 try writer.writeAll(");\n");
@@ -79,10 +88,10 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                 if (return_type) |rt| {
                     try writer.print("        var _r: {f} = undefined;\n", .{ rt.asParam() });
                 }
-                try writer.print("        _c = self.vtable.{s}(@ptrCast(self)", .{ method.Name });
+                try writer.print("        _c = self.vtable.{s}(@ptrCast(self)", .{ nameMap[m] });
                 if (method.Parameters) |parameters| {
                     for (parameters) |param| {
-                        try writer.print(", {s}", .{ param.Name });
+                        try writer.print(", {s}", .{ noreserved(param.Name) });
                     }
                 }
                 if (return_type != null) try writer.writeAll("&_r");
@@ -167,21 +176,27 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
 fn serializeFactoryMethods(allocator: std.mem.Allocator, ctx: *metadata.Context, factory: metadata.Interface, writer: *std.io.Writer) !void {
     if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
-        for (methods) |method| {
-            const mname = try replaceAll(allocator, method.Name, "_", "");
+        const nameMap = try generateMethodNameMapSig(allocator, methods);
+        defer {
+            for (nameMap) |n| allocator.free(n);
+            allocator.free(nameMap);
+        }
+
+        for (methods, 0..) |method, m| {
+            const mname = try replaceAll(allocator, nameMap[m], "_", "");
             defer allocator.free(mname);
 
             try writer.print("    pub fn {s}(", .{ mname });
             if (method.Parameters) |parameters| {
                 if (try ty.winToZig(allocator, ctx, &parameters[0].Type)) |t| {
                     defer t.deinit(allocator);
-                    try writer.print("{s}: {f}", .{ parameters[0].Name, t.asParam() });
+                    try writer.print("{s}: {f}", .{ noreserved(parameters[0].Name), t.asParam() });
                 }
 
                 for (1..parameters.len) |i| {
                     if (try ty.winToZig(allocator, ctx, &parameters[i].Type)) |t| {
                         defer t.deinit(allocator);
-                        try writer.print(", {s}: {f}", .{ parameters[i].Name, t.asParam() });
+                        try writer.print(", {s}: {f}", .{ noreserved(parameters[i].Name), t.asParam() });
                     }
                 }
             }
@@ -198,9 +213,9 @@ fn serializeFactoryMethods(allocator: std.mem.Allocator, ctx: *metadata.Context,
             try writer.print("        const factory = @This().{s}Cache.get();\n", .{ factory.Name });
             try writer.print("        return try factory.{s}(", .{ mname });
             if (method.Parameters) |parameters| {
-                try writer.print("{s}", .{ parameters[0].Name });
+                try writer.print("{s}", .{ noreserved(parameters[0].Name) });
                 for (1..parameters.len) |i| {
-                    try writer.print(", {s}", .{ parameters[i].Name });
+                    try writer.print(", {s}", .{ noreserved(parameters[i].Name) });
                 }
             }
             try writer.writeAll(");\n    }\n");

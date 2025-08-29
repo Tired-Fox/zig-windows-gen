@@ -42,13 +42,13 @@ pub const HdmiDisplayInformation = extern struct {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
         return try this.RequestSetCurrentDisplayModeAsync(mode);
     }
-    pub fn RequestSetCurrentDisplayModeAsync(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrOption(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption) core.HResult!*IAsyncOperation(bool) {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
-        return try this.RequestSetCurrentDisplayModeAsync(mode, hdrOption);
+        return try this.RequestSetCurrentDisplayModeAsyncWithHdrOption(mode, hdrOption);
     }
-    pub fn RequestSetCurrentDisplayModeAsync(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
-        return try this.RequestSetCurrentDisplayModeAsync(mode, hdrOption, hdrMetadata);
+        return try this.RequestSetCurrentDisplayModeAsyncWithHdrMetadata(mode, hdrOption, hdrMetadata);
     }
     pub fn addDisplayModesChanged(self: *@This(), value: *TypedEventHandler(HdmiDisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
@@ -162,15 +162,15 @@ pub const IHdmiDisplayInformation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestSetCurrentDisplayModeAsync(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrOption(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestSetCurrentDisplayModeAsync(@ptrCast(self), mode, hdrOption, &_r);
+        const _c = self.vtable.RequestSetCurrentDisplayModeAsyncWithHdrOption(@ptrCast(self), mode, hdrOption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestSetCurrentDisplayModeAsync(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestSetCurrentDisplayModeAsync(@ptrCast(self), mode, hdrOption, hdrMetadata, &_r);
+        const _c = self.vtable.RequestSetCurrentDisplayModeAsyncWithHdrMetadata(@ptrCast(self), mode, hdrOption, hdrMetadata, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -200,8 +200,8 @@ pub const IHdmiDisplayInformation = extern struct {
         GetCurrentDisplayMode: *const fn(self: *anyopaque, _r: **HdmiDisplayMode) callconv(.winapi) HRESULT,
         SetDefaultDisplayModeAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RequestSetCurrentDisplayModeAsync: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestSetCurrentDisplayModeAsync: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestSetCurrentDisplayModeAsync: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestSetCurrentDisplayModeAsyncWithHdrOption: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestSetCurrentDisplayModeAsyncWithHdrMetadata: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_DisplayModesChanged: *const fn(self: *anyopaque, value: *TypedEventHandler(HdmiDisplayInformation,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DisplayModesChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };

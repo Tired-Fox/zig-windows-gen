@@ -296,9 +296,9 @@ pub const ISyndicationContent = extern struct {
 };
 pub const ISyndicationContentFactory = extern struct {
     vtable: *const VTable,
-    pub fn CreateSyndicationContent(self: *@This(), text: HSTRING, type: SyndicationTextType) core.HResult!*SyndicationContent {
+    pub fn CreateSyndicationContent(self: *@This(), text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
         var _r: *SyndicationContent = undefined;
-        const _c = self.vtable.CreateSyndicationContent(@ptrCast(self), text, type, &_r);
+        const _c = self.vtable.CreateSyndicationContent(@ptrCast(self), text, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -320,7 +320,7 @@ pub const ISyndicationContentFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        CreateSyndicationContent: *const fn(self: *anyopaque, text: HSTRING, type: SyndicationTextType, _r: **SyndicationContent) callconv(.winapi) HRESULT,
+        CreateSyndicationContent: *const fn(self: *anyopaque, text: HSTRING, ty: SyndicationTextType, _r: **SyndicationContent) callconv(.winapi) HRESULT,
         CreateSyndicationContentWithSourceUri: *const fn(self: *anyopaque, sourceUri: *Uri, _r: **SyndicationContent) callconv(.winapi) HRESULT,
     };
 };
@@ -1230,9 +1230,9 @@ pub const ISyndicationTextFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateSyndicationTextEx(self: *@This(), text: HSTRING, type: SyndicationTextType) core.HResult!*SyndicationText {
+    pub fn CreateSyndicationTextEx(self: *@This(), text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
         var _r: *SyndicationText = undefined;
-        const _c = self.vtable.CreateSyndicationTextEx(@ptrCast(self), text, type, &_r);
+        const _c = self.vtable.CreateSyndicationTextEx(@ptrCast(self), text, ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1249,7 +1249,7 @@ pub const ISyndicationTextFactory = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateSyndicationText: *const fn(self: *anyopaque, text: HSTRING, _r: **SyndicationText) callconv(.winapi) HRESULT,
-        CreateSyndicationTextEx: *const fn(self: *anyopaque, text: HSTRING, type: SyndicationTextType, _r: **SyndicationText) callconv(.winapi) HRESULT,
+        CreateSyndicationTextEx: *const fn(self: *anyopaque, text: HSTRING, ty: SyndicationTextType, _r: **SyndicationText) callconv(.winapi) HRESULT,
     };
 };
 pub const RetrievalProgress = extern struct {
@@ -1628,9 +1628,9 @@ pub const SyndicationContent = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationContent.IID)));
     }
-    pub fn CreateSyndicationContent(text: HSTRING, type: SyndicationTextType) core.HResult!*SyndicationContent {
+    pub fn CreateSyndicationContent(text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
         const factory = @This().ISyndicationContentFactoryCache.get();
-        return try factory.CreateSyndicationContent(text, type);
+        return try factory.CreateSyndicationContent(text, ty);
     }
     pub fn CreateSyndicationContentWithSourceUri(sourceUri: *Uri) core.HResult!*SyndicationContent {
         const factory = @This().ISyndicationContentFactoryCache.get();
@@ -2684,9 +2684,9 @@ pub const SyndicationText = extern struct {
         const factory = @This().ISyndicationTextFactoryCache.get();
         return try factory.CreateSyndicationText(text);
     }
-    pub fn CreateSyndicationTextEx(text: HSTRING, type: SyndicationTextType) core.HResult!*SyndicationText {
+    pub fn CreateSyndicationTextEx(text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
         const factory = @This().ISyndicationTextFactoryCache.get();
-        return try factory.CreateSyndicationTextEx(text, type);
+        return try factory.CreateSyndicationTextEx(text, ty);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationText";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

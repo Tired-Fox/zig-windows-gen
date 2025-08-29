@@ -193,9 +193,9 @@ pub const HidDevice = extern struct {
         const factory = @This().IHidDeviceStaticsCache.get();
         return try factory.GetDeviceSelector(usagePage, usageId);
     }
-    pub fn GetDeviceSelector(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithVendorIdWithProductId(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
         const factory = @This().IHidDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(usagePage, usageId, vendorId, productId);
+        return try factory.GetDeviceSelectorWithVendorIdWithProductId(usagePage, usageId, vendorId, productId);
     }
     pub fn FromIdAsync(deviceId: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
         const factory = @This().IHidDeviceStaticsCache.get();
@@ -789,9 +789,9 @@ pub const IHidDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithVendorIdWithProductId(self: *@This(), usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), usagePage, usageId, vendorId, productId, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithVendorIdWithProductId(@ptrCast(self), usagePage, usageId, vendorId, productId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -814,7 +814,7 @@ pub const IHidDeviceStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, vendorId: u16, productId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithVendorIdWithProductId: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, vendorId: u16, productId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, accessMode: FileAccessMode, _r: **IAsyncOperation(HidDevice)) callconv(.winapi) HRESULT,
     };
 };

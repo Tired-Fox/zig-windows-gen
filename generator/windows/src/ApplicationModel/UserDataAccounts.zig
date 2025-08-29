@@ -668,11 +668,11 @@ pub const UserDataAccountStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateAccountAsync(userDisplayName);
     }
-    pub fn CreateAccountAsync(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsyncWithPackageRelativeAppId(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateAccountAsync(userDisplayName, packageRelativeAppId);
+        return try this.?.CreateAccountAsyncWithPackageRelativeAppId(userDisplayName, packageRelativeAppId);
     }
     pub fn addStoreChanged(self: *@This(), handler: *TypedEventHandler(UserDataAccountStore,UserDataAccountStoreChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IUserDataAccountStore2 = undefined;
@@ -686,11 +686,11 @@ pub const UserDataAccountStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
-    pub fn CreateAccountAsync(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsyncWithEnterpriseId(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateAccountAsync(userDisplayName, packageRelativeAppId, enterpriseId);
+        return try this.?.CreateAccountAsyncWithEnterpriseId(userDisplayName, packageRelativeAppId, enterpriseId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.UserDataAccountStore";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

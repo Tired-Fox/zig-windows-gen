@@ -237,9 +237,9 @@ pub const ITextConversionGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
-        const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, maxCandidates, &_r);
+        const _c = self.vtable.GetCandidatesAsyncWithMaxCandidates(@ptrCast(self), input, maxCandidates, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -258,7 +258,7 @@ pub const ITextConversionGenerator = extern struct {
         get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_LanguageAvailableButNotInstalled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsyncWithMaxCandidates: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextConversionGeneratorFactory = extern struct {
@@ -334,9 +334,9 @@ pub const ITextPredictionGenerator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var _r: *IAsyncOperation(IVectorView(HSTRING)) = undefined;
-        const _c = self.vtable.GetCandidatesAsync(@ptrCast(self), input, maxCandidates, &_r);
+        const _c = self.vtable.GetCandidatesAsyncWithMaxCandidates(@ptrCast(self), input, maxCandidates, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -355,7 +355,7 @@ pub const ITextPredictionGenerator = extern struct {
         get_ResolvedLanguage: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_LanguageAvailableButNotInstalled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
-        GetCandidatesAsync: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
+        GetCandidatesAsyncWithMaxCandidates: *const fn(self: *anyopaque, input: HSTRING, maxCandidates: u32, _r: **IAsyncOperation(IVectorView(HSTRING))) callconv(.winapi) HRESULT,
     };
 };
 pub const ITextPredictionGenerator2 = extern struct {
@@ -918,9 +918,9 @@ pub const TextConversionGenerator = extern struct {
         const this: *ITextConversionGenerator = @ptrCast(self);
         return try this.GetCandidatesAsync(input);
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         const this: *ITextConversionGenerator = @ptrCast(self);
-        return try this.GetCandidatesAsync(input, maxCandidates);
+        return try this.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -968,17 +968,17 @@ pub const TextPredictionGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCandidatesAsync(input);
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCandidatesAsync(input, maxCandidates);
+        return try this.?.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
     }
-    pub fn GetCandidatesAsync(self: *@This(), input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithPreviousStrings(self: *@This(), input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCandidatesAsync(input, maxCandidates, predictionOptions, previousStrings);
+        return try this.?.GetCandidatesAsyncWithPreviousStrings(input, maxCandidates, predictionOptions, previousStrings);
     }
     pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;

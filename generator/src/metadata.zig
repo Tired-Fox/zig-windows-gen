@@ -368,72 +368,180 @@ pub const Context = struct {
     definitions: *const Definitions,
 };
 
+pub fn noreserved(name: []const u8) []const u8 {
+    if (std.mem.eql(u8, name, "type")) {
+        return "ty";
+    }
+    return name;
+}
+
 // Caller must free the hashmap and the values inside the hashmap
-pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const TypeSignature.Method) ![]const []const u8 {
-    var buckets: std.StringHashMapUnmanaged(std.ArrayListUnmanaged(usize)) = undefined;
+pub fn generateMethodNameMapSig(allocator: std.mem.Allocator, methods: []const TypeSignature.Method) ![]const []const u8 {
+    var buckets: std.StringHashMap(std.ArrayList(usize)) = .init(allocator);
     defer {
         var it = buckets.valueIterator();
-        while (it.next()) |n| {
-            n.deinit(allocator);
-        }
-        buckets.deinit(allocator);
+        while (it.next()) |n| n.deinit(allocator);
+        buckets.deinit();
     }
 
-    for (methods, 0..) |*method, i| {
-        if (buckets.getPtr(method.Name)) |bucket| {
-            try bucket.append(allocator, i);
+    for (methods, 0..) |*method, m| {
+        const entry = try buckets.getOrPut(method.Name);
+        if (entry.found_existing) {
+            try entry.value_ptr.append(allocator, m);
         } else {
-            var n: std.ArrayListUnmanaged(usize) = .empty;
-            try n.append(allocator, i);
-            try buckets.put(allocator, method.Name, n);
+            var list: std.ArrayList(usize) = .empty;
+            try list.append(allocator, m);
+            entry.value_ptr.* = list;
+
         }
     }
 
     var map: [][]const u8 = try allocator.alloc([]const u8, methods.len);
 
     var it = buckets.iterator();
-    while (it.next()) |entry| {
-        const items = entry.value_ptr.items;
-        if (items.len == 1) {
-            const e = items[0];
-            map[e] = try allocator.dupe(u8, methods[e].Name);
-            continue;
-        }
+    while (it.next()) |bucket| {
+        var items = bucket.value_ptr.items;
 
-        var base: usize = 0;
-        for (1..items.len) |i| {
-            const bp = if (methods[items[base]].Parameters) |p| p.len else 0;
-            const ip = if (methods[items[i]].Parameters) |p| p.len else 0;
+        std.sort.heap(usize, items, .{ methods }, sortMethodBucketSig);
 
-            if (ip < bp) base = i;
-        }
+        const base = methods[items[0]];
+        map[items[0]] = try allocator.dupe(u8, base.Name);
 
-        map[items[base]] = try allocator.dupe(u8, methods[items[base]].Name);
-        const baseMethod = methods[items[base]];
-        for (0..items.len) |i| {
-            if (i == base) continue;
-            const method = methods[items[i]];
-            if (method.Parameters) |parameters| {
-                if (baseMethod.Parameters == null or baseMethod.Parameters.?.len < parameters.len) {
-                    const start = if (baseMethod.Parameters) |p| p.len else 0;
+        if (items.len > 1) {
+            for (items[1..]) |m| {
+                const method = methods[m];
 
-                    var buffer: std.io.Writer.Allocating = .init(allocator);
-                    const writer = &buffer.writer;
-                    try writer.writeAll(method.Name);
+                // TODO: Resolution algorithm
+                var buffer: std.io.Writer.Allocating = .init(allocator);
+                const writer = &buffer.writer;
+                try writer.writeAll(method.Name);
 
-                    for (parameters[start..]) |param| {
-                        try writer.print("With{c}{s}", .{ std.ascii.toUpper(param.Name[0]), param.Name[1..] });
+                const bpc = if (base.Parameters) |p| p.len else 0;
+                const cpc = if (method.Parameters) |p| p.len else 0;
+                if (cpc > bpc) {
+                    for (method.Parameters.?[cpc-|bpc..]) |param| {
+                        const name = noreserved(param.Name);
+                        try writer.print("With{c}{s}", .{ std.ascii.toUpper(name[0]), name[1..] });
+                    }
+                } else if (cpc == bpc) {
+                    var checkReturnType = true;
+                    if (base.Parameters) |bp| {
+                        for (bp, method.Parameters.?) |a, b| {
+                            if (!std.mem.eql(u8, a.Type.Name, b.Type.Name)) {
+                                try writer.print("With{c}{s}", .{ std.ascii.toUpper(b.Name[0]), b.Name[1..] });
+                                checkReturnType = false;
+                                break;
+                            }
+                        }
                     }
 
-                    map[items[i]] = try buffer.toOwnedSlice();
+                    if (checkReturnType) {
+                        if (!std.mem.eql(u8, base.ReturnType.Name, method.ReturnType.Name)) {
+                            try writer.print("As{s}", .{ method.ReturnType.Name });
+                        } else {
+                            return error.ComplexNameResolution;
+                        }
+                    }
                 } else {
-                    return error.ComplexMethodHash;
+                    std.debug.print("{s}: P{d} vs P{d}\n", .{ method.Name, bpc, cpc });
+                    return error.ComplexNameResolution;
                 }
-            } else {
-                return error.ComplexMethodHash;
+
+                map[m] = try buffer.toOwnedSlice();
             }
         }
     }
 
     return map;
+}
+
+pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const Method) ![]const []const u8 {
+    var buckets: std.StringHashMap(std.ArrayList(usize)) = .init(allocator);
+    defer {
+        var it = buckets.valueIterator();
+        while (it.next()) |n| n.deinit(allocator);
+        buckets.deinit();
+    }
+
+    for (methods, 0..) |*method, m| {
+        const entry = try buckets.getOrPut(method.Name);
+        if (entry.found_existing) {
+            try entry.value_ptr.append(allocator, m);
+        } else {
+            var list: std.ArrayList(usize) = .empty;
+            try list.append(allocator, m);
+            entry.value_ptr.* = list;
+
+        }
+    }
+
+    var map: [][]const u8 = try allocator.alloc([]const u8, methods.len);
+
+    var it = buckets.iterator();
+    while (it.next()) |bucket| {
+        var items = bucket.value_ptr.items;
+
+        std.sort.heap(usize, items, .{ methods }, sortMethodBucket);
+
+        const base = methods[items[0]];
+        map[items[0]] = try allocator.dupe(u8, base.Name);
+
+        if (items.len > 1) {
+            for (items[1..]) |m| {
+                const method = methods[m];
+
+                // TODO: Resolution algorithm
+                var buffer: std.io.Writer.Allocating = .init(allocator);
+                const writer = &buffer.writer;
+                try writer.writeAll(method.Name);
+
+                const bpc = if (base.Parameters) |p| p.len else 0;
+                const cpc = if (method.Parameters) |p| p.len else 0;
+                if (cpc > bpc) {
+                    for (method.Parameters.?[cpc-|bpc..]) |param| {
+                        const name = noreserved(param.Name);
+                        try writer.print("With{c}{s}", .{ std.ascii.toUpper(name[0]), name[1..] });
+                    }
+                } else if (cpc == bpc) {
+                    var checkReturnType = true;
+                    if (base.Parameters) |bp| {
+                        for (bp, method.Parameters.?) |a, b| {
+                            if (!std.mem.eql(u8, a.Type.Name, b.Type.Name)) {
+                                try writer.print("With{c}{s}", .{ std.ascii.toUpper(b.Name[0]), b.Name[1..] });
+                                checkReturnType = false;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (checkReturnType) {
+                        if (!std.mem.eql(u8, base.ReturnType.Name, method.ReturnType.Name)) {
+                            try writer.print("As{s}", .{ method.ReturnType.Name });
+                        } else {
+                            return error.ComplexNameResolution;
+                        }
+                    }
+                } else {
+                    std.debug.print("{s}: P{d} vs P{d}\n", .{ method.Name, bpc, cpc });
+                    return error.ComplexNameResolution;
+                }
+
+                map[m] = try buffer.toOwnedSlice();
+            }
+        }
+    }
+
+    return map;
+}
+
+fn sortMethodBucket(context: std.meta.Tuple(&.{ []const Method }), lhs: usize, rhs: usize) bool {
+    const lpc = if (context[0][lhs].Parameters) |p| p.len else 0;
+    const rpc = if (context[0][rhs].Parameters) |p| p.len else 0;
+    return lpc < rpc;
+}
+
+fn sortMethodBucketSig(context: std.meta.Tuple(&.{ []const TypeSignature.Method }), lhs: usize, rhs: usize) bool {
+    const lpc = if (context[0][lhs].Parameters) |p| p.len else 0;
+    const rpc = if (context[0][rhs].Parameters) |p| p.len else 0;
+    return lpc < rpc;
 }

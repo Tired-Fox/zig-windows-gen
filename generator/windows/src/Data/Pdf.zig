@@ -43,9 +43,9 @@ pub const IPdfDocumentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromFileAsync(self: *@This(), file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromFileAsyncWithPassword(self: *@This(), file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         var _r: *IAsyncOperation(PdfDocument) = undefined;
-        const _c = self.vtable.LoadFromFileAsync(@ptrCast(self), file, password, &_r);
+        const _c = self.vtable.LoadFromFileAsyncWithPassword(@ptrCast(self), file, password, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -55,9 +55,9 @@ pub const IPdfDocumentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LoadFromStreamAsync(self: *@This(), inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromStreamAsyncWithPassword(self: *@This(), inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         var _r: *IAsyncOperation(PdfDocument) = undefined;
-        const _c = self.vtable.LoadFromStreamAsync(@ptrCast(self), inputStream, password, &_r);
+        const _c = self.vtable.LoadFromStreamAsyncWithPassword(@ptrCast(self), inputStream, password, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -74,9 +74,9 @@ pub const IPdfDocumentStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LoadFromFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
-        LoadFromFileAsync: *const fn(self: *anyopaque, file: *IStorageFile, password: HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
+        LoadFromFileAsyncWithPassword: *const fn(self: *anyopaque, file: *IStorageFile, password: HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
         LoadFromStreamAsync: *const fn(self: *anyopaque, inputStream: *IRandomAccessStream, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
-        LoadFromStreamAsync: *const fn(self: *anyopaque, inputStream: *IRandomAccessStream, password: HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
+        LoadFromStreamAsyncWithPassword: *const fn(self: *anyopaque, inputStream: *IRandomAccessStream, password: HSTRING, _r: **IAsyncOperation(PdfDocument)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPdfPage = extern struct {
@@ -87,9 +87,9 @@ pub const IPdfPage = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderToStreamAsync(self: *@This(), outputStream: *IRandomAccessStream, options: *PdfPageRenderOptions) core.HResult!*IAsyncAction {
+    pub fn RenderToStreamAsyncWithOptions(self: *@This(), outputStream: *IRandomAccessStream, options: *PdfPageRenderOptions) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.RenderToStreamAsync(@ptrCast(self), outputStream, options, &_r);
+        const _c = self.vtable.RenderToStreamAsyncWithOptions(@ptrCast(self), outputStream, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -142,7 +142,7 @@ pub const IPdfPage = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RenderToStreamAsync: *const fn(self: *anyopaque, outputStream: *IRandomAccessStream, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RenderToStreamAsync: *const fn(self: *anyopaque, outputStream: *IRandomAccessStream, options: *PdfPageRenderOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RenderToStreamAsyncWithOptions: *const fn(self: *anyopaque, outputStream: *IRandomAccessStream, options: *PdfPageRenderOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         PreparePageAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         get_Index: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_Size: *const fn(self: *anyopaque, _r: *Size) callconv(.winapi) HRESULT,
@@ -311,17 +311,17 @@ pub const PdfDocument = extern struct {
         const factory = @This().IPdfDocumentStaticsCache.get();
         return try factory.LoadFromFileAsync(file);
     }
-    pub fn LoadFromFileAsync(file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromFileAsyncWithPassword(file: *IStorageFile, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         const factory = @This().IPdfDocumentStaticsCache.get();
-        return try factory.LoadFromFileAsync(file, password);
+        return try factory.LoadFromFileAsyncWithPassword(file, password);
     }
     pub fn LoadFromStreamAsync(inputStream: *IRandomAccessStream) core.HResult!*IAsyncOperation(PdfDocument) {
         const factory = @This().IPdfDocumentStaticsCache.get();
         return try factory.LoadFromStreamAsync(inputStream);
     }
-    pub fn LoadFromStreamAsync(inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
+    pub fn LoadFromStreamAsyncWithPassword(inputStream: *IRandomAccessStream, password: HSTRING) core.HResult!*IAsyncOperation(PdfDocument) {
         const factory = @This().IPdfDocumentStaticsCache.get();
-        return try factory.LoadFromStreamAsync(inputStream, password);
+        return try factory.LoadFromStreamAsyncWithPassword(inputStream, password);
     }
     pub const NAME: []const u8 = "Windows.Data.Pdf.PdfDocument";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -336,9 +336,9 @@ pub const PdfPage = extern struct {
         const this: *IPdfPage = @ptrCast(self);
         return try this.RenderToStreamAsync(outputStream);
     }
-    pub fn RenderToStreamAsync(self: *@This(), outputStream: *IRandomAccessStream, options: *PdfPageRenderOptions) core.HResult!*IAsyncAction {
+    pub fn RenderToStreamAsyncWithOptions(self: *@This(), outputStream: *IRandomAccessStream, options: *PdfPageRenderOptions) core.HResult!*IAsyncAction {
         const this: *IPdfPage = @ptrCast(self);
-        return try this.RenderToStreamAsync(outputStream, options);
+        return try this.RenderToStreamAsyncWithOptions(outputStream, options);
     }
     pub fn PreparePageAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IPdfPage = @ptrCast(self);
