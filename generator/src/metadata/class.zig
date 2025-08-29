@@ -167,14 +167,8 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
 fn serializeFactoryMethods(allocator: std.mem.Allocator, ctx: *metadata.Context, factory: metadata.Interface, writer: *std.io.Writer) !void {
     if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
-        const methodMap = try metadata.generateMethodNameMap(allocator, methods);
-        defer {
-            for (methodMap) |m| allocator.free(m);
-            allocator.free(methodMap);
-        }
-
-        for (methods, 0..) |method, m| {
-            const mname = try replaceAll(allocator, methodMap[m], "_", "");
+        for (methods) |method| {
+            const mname = try replaceAll(allocator, method.Name, "_", "");
             defer allocator.free(mname);
 
             try writer.print("    pub fn {s}(", .{ mname });

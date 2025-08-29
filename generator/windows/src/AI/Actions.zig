@@ -1591,3 +1591,5 @@ const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;
 const ActionCatalog = @import("./Hosting.zig").ActionCatalog;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
+pub const Hosting = @import("./Actions/Hosting.zig");
+pub const Provider = @import("./Actions/Provider.zig");

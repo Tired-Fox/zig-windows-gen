@@ -64,3 +64,16 @@ pub fn WindowsGetString(string: ?HSTRING) ?[]const u16 {
     }
     return null;
 }
+pub const ApplicationModel = @import("./ApplicationModel.zig");
+pub const Devices = @import("./Devices.zig");
+pub const Foundation = @import("./Foundation.zig");
+pub const Globalization = @import("./Globalization.zig");
+pub const Graphics = @import("./Graphics.zig");
+pub const Management = @import("./Management.zig");
+pub const Media = @import("./Media.zig");
+pub const Networking = @import("./Networking.zig");
+pub const Perception = @import("./Perception.zig");
+pub const Storage = @import("./Storage.zig");
+pub const System = @import("./System.zig");
+pub const UI = @import("./UI.zig");
+pub const Web = @import("./Web.zig");
