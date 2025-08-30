@@ -21,22 +21,16 @@ pub const AppInstallItem = extern struct {
         return try this.GetCurrentStatus();
     }
     pub fn Cancel(self: *@This()) core.HResult!void {
-        var this: ?*IAppInstallItem2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Cancel();
+        const this: *IAppInstallItem = @ptrCast(self);
+        return try this.Cancel();
     }
     pub fn Pause(self: *@This()) core.HResult!void {
-        var this: ?*IAppInstallItem2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Pause();
+        const this: *IAppInstallItem = @ptrCast(self);
+        return try this.Pause();
     }
     pub fn Restart(self: *@This()) core.HResult!void {
-        var this: ?*IAppInstallItem2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Restart();
+        const this: *IAppInstallItem = @ptrCast(self);
+        return try this.Restart();
     }
     pub fn addCompleted(self: *@This(), handler: *TypedEventHandler(AppInstallItem,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IAppInstallItem = @ptrCast(self);
@@ -54,23 +48,23 @@ pub const AppInstallItem = extern struct {
         const this: *IAppInstallItem = @ptrCast(self);
         return try this.removeStatusChanged(token);
     }
-    pub fn Cancel(self: *@This(), correlationVector: HSTRING) core.HResult!void {
+    pub fn CancelWithCorrelationVector(self: *@This(), correlationVector: HSTRING) core.HResult!void {
         var this: ?*IAppInstallItem2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Cancel(correlationVector);
+        return try this.?.CancelWithCorrelationVector(correlationVector);
     }
-    pub fn Pause(self: *@This(), correlationVector: HSTRING) core.HResult!void {
+    pub fn PauseWithCorrelationVector(self: *@This(), correlationVector: HSTRING) core.HResult!void {
         var this: ?*IAppInstallItem2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Pause(correlationVector);
+        return try this.?.PauseWithCorrelationVector(correlationVector);
     }
-    pub fn Restart(self: *@This(), correlationVector: HSTRING) core.HResult!void {
+    pub fn RestartWithCorrelationVector(self: *@This(), correlationVector: HSTRING) core.HResult!void {
         var this: ?*IAppInstallItem2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallItem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Restart(correlationVector);
+        return try this.?.RestartWithCorrelationVector(correlationVector);
     }
     pub fn getChildren(self: *@This()) core.HResult!*IVectorView(AppInstallItem) {
         var this: ?*IAppInstallItem3 = undefined;
@@ -169,22 +163,16 @@ pub const AppInstallManager = extern struct {
         return try this.getAppInstallItems();
     }
     pub fn Cancel(self: *@This(), productId: HSTRING) core.HResult!void {
-        var this: ?*IAppInstallManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Cancel(productId);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.Cancel(productId);
     }
     pub fn Pause(self: *@This(), productId: HSTRING) core.HResult!void {
-        var this: ?*IAppInstallManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Pause(productId);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.Pause(productId);
     }
     pub fn Restart(self: *@This(), productId: HSTRING) core.HResult!void {
-        var this: ?*IAppInstallManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Restart(productId);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.Restart(productId);
     }
     pub fn addItemCompleted(self: *@This(), handler: *TypedEventHandler(AppInstallManager,AppInstallManagerItemEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IAppInstallManager = @ptrCast(self);
@@ -223,44 +211,34 @@ pub const AppInstallManager = extern struct {
         return try this.GetIsApplicableAsync(productId, skuId);
     }
     pub fn StartAppInstallAsync(self: *@This(), productId: HSTRING, skuId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool) core.HResult!*IAsyncOperation(AppInstallItem) {
-        var this: ?*IAppInstallManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAppInstallAsync(productId, skuId, repair, forceUseOfNonRemovableStorage);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.StartAppInstallAsync(productId, skuId, repair, forceUseOfNonRemovableStorage);
     }
     pub fn UpdateAppByPackageFamilyNameAsync(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
-        var this: ?*IAppInstallManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.UpdateAppByPackageFamilyNameAsync(packageFamilyName);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.UpdateAppByPackageFamilyNameAsync(packageFamilyName);
     }
     pub fn SearchForUpdatesAsync(self: *@This(), productId: HSTRING, skuId: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForUpdatesAsync(productId, skuId);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.SearchForUpdatesAsync(productId, skuId);
     }
     pub fn SearchForAllUpdatesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForAllUpdatesAsync();
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.SearchForAllUpdatesAsync();
     }
     pub fn IsStoreBlockedByPolicyAsync(self: *@This(), storeClientName: HSTRING, storeClientPublisher: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IAppInstallManager = @ptrCast(self);
         return try this.IsStoreBlockedByPolicyAsync(storeClientName, storeClientPublisher);
     }
     pub fn GetIsAppAllowedToInstallAsync(self: *@This(), productId: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*IAppInstallManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIsAppAllowedToInstallAsync(productId);
+        const this: *IAppInstallManager = @ptrCast(self);
+        return try this.GetIsAppAllowedToInstallAsync(productId);
     }
-    pub fn StartAppInstallAsyncWithForceUseOfNonRemovableStorageWithCatalogIdWithBundleIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: HSTRING, bundleId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
+    pub fn StartAppInstallAsyncWithCatalogIdWithBundleIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: HSTRING, bundleId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAppInstallAsyncWithForceUseOfNonRemovableStorageWithCatalogIdWithBundleIdWithCorrelationVector(productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector);
+        return try this.?.StartAppInstallAsyncWithCatalogIdWithBundleIdWithCorrelationVector(productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector);
     }
     pub fn UpdateAppByPackageFamilyNameAsyncWithCorrelationVector(self: *@This(), packageFamilyName: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
@@ -269,22 +247,22 @@ pub const AppInstallManager = extern struct {
         return try this.?.UpdateAppByPackageFamilyNameAsyncWithCorrelationVector(packageFamilyName, correlationVector);
     }
     pub fn SearchForUpdatesAsyncWithCatalogIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForUpdatesAsyncWithCatalogIdWithCorrelationVector(productId, skuId, catalogId, correlationVector);
-    }
-    pub fn SearchForAllUpdatesAsync(self: *@This(), correlationVector: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForAllUpdatesAsync(correlationVector);
-    }
-    pub fn GetIsAppAllowedToInstallAsyncWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIsAppAllowedToInstallAsyncWithCorrelationVector(productId, skuId, catalogId, correlationVector);
+        return try this.?.SearchForUpdatesAsyncWithCatalogIdWithCorrelationVector(productId, skuId, catalogId, correlationVector);
+    }
+    pub fn SearchForAllUpdatesAsyncWithCorrelationVector(self: *@This(), correlationVector: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+        var this: ?*IAppInstallManager2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.SearchForAllUpdatesAsyncWithCorrelationVector(correlationVector);
+    }
+    pub fn GetIsAppAllowedToInstallAsyncWithSkuIdWithCatalogIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(bool) {
+        var this: ?*IAppInstallManager2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetIsAppAllowedToInstallAsyncWithSkuIdWithCatalogIdWithCorrelationVector(productId, skuId, catalogId, correlationVector);
     }
     pub fn CancelWithCorrelationVector(self: *@This(), productId: HSTRING, correlationVector: HSTRING) core.HResult!void {
         var this: ?*IAppInstallManager2 = undefined;
@@ -304,17 +282,17 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RestartWithCorrelationVector(productId, correlationVector);
     }
-    pub fn StartProductInstallAsyncWithClientIdWithRepairWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(self: *@This(), productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
+    pub fn StartProductInstallAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(self: *@This(), productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+        var this: ?*IAppInstallManager3 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartProductInstallAsyncWithClientIdWithRepairWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
+        return try this.?.StartProductInstallAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
     }
-    pub fn StartProductInstallForUserAsyncWithFlightIdWithClientIdWithRepairWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(self: *@This(), user: *User, productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
+    pub fn StartProductInstallForUserAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(self: *@This(), user: *User, productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+        var this: ?*IAppInstallManager3 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartProductInstallForUserAsyncWithFlightIdWithClientIdWithRepairWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(user, productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
+        return try this.?.StartProductInstallForUserAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(user, productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
     }
     pub fn UpdateAppByPackageFamilyNameForUserAsync(self: *@This(), user: *User, packageFamilyName: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager3 = undefined;
@@ -323,14 +301,14 @@ pub const AppInstallManager = extern struct {
         return try this.?.UpdateAppByPackageFamilyNameForUserAsync(user, packageFamilyName, correlationVector);
     }
     pub fn SearchForUpdatesForUserAsync(self: *@This(), user: *User, productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
+        var this: ?*IAppInstallManager3 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SearchForUpdatesForUserAsync(user, productId, skuId, catalogId, correlationVector);
     }
     pub fn SearchForAllUpdatesForUserAsync(self: *@This(), user: *User, correlationVector: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
-        var this: ?*IAppInstallManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
+        var this: ?*IAppInstallManager3 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SearchForAllUpdatesForUserAsync(user, correlationVector);
     }
@@ -376,11 +354,11 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppInstallItemsWithGroupSupport();
     }
-    pub fn SearchForAllUpdatesAsync(self: *@This(), correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+    pub fn SearchForAllUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(self: *@This(), correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForAllUpdatesAsync(correlationVector, clientId, updateOptions);
+        return try this.?.SearchForAllUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(correlationVector, clientId, updateOptions);
     }
     pub fn SearchForAllUpdatesForUserAsyncWithClientIdWithUpdateOptions(self: *@This(), user: *User, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
@@ -388,17 +366,17 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SearchForAllUpdatesForUserAsyncWithClientIdWithUpdateOptions(user, correlationVector, clientId, updateOptions);
     }
-    pub fn SearchForUpdatesAsyncWithClientIdWithUpdateOptions(self: *@This(), productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
+    pub fn SearchForUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(self: *@This(), productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForUpdatesAsyncWithClientIdWithUpdateOptions(productId, skuId, correlationVector, clientId, updateOptions);
+        return try this.?.SearchForUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(productId, skuId, correlationVector, clientId, updateOptions);
     }
-    pub fn SearchForUpdatesForUserAsyncWithProductIdWithSkuIdWithCorrelationVectorWithClientIdWithUpdateOptions(self: *@This(), user: *User, productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
+    pub fn SearchForUpdatesForUserAsyncWithUpdateOptions(self: *@This(), user: *User, productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForUpdatesForUserAsyncWithProductIdWithSkuIdWithCorrelationVectorWithClientIdWithUpdateOptions(user, productId, skuId, correlationVector, clientId, updateOptions);
+        return try this.?.SearchForUpdatesForUserAsyncWithUpdateOptions(user, productId, skuId, correlationVector, clientId, updateOptions);
     }
     pub fn StartProductInstallAsync(self: *@This(), productId: HSTRING, flightId: HSTRING, clientId: HSTRING, correlationVector: HSTRING, installOptions: *AppInstallOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
@@ -1949,7 +1927,6 @@ pub const IGetEntitlementResult2 = extern struct {
     };
 };
 const IUnknown = @import("../../../root.zig").IUnknown;
-const User = @import("../../../System.zig").User;
 const IActivationFactory = @import("../../../Foundation.zig").IActivationFactory;
 const Guid = @import("../../../root.zig").Guid;
 const IVectorView = @import("../../../Foundation/Collections.zig").IVectorView;
@@ -1963,4 +1940,5 @@ const FactoryCache = @import("../../../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../../../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../../../root.zig").TrustLevel;
 const TypedEventHandler = @import("../../../Foundation.zig").TypedEventHandler;
+const User = @import("../../../System.zig").User;
 const HSTRING = @import("../../../root.zig").HSTRING;

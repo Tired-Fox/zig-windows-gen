@@ -16,9 +16,9 @@ pub const Certificate = extern struct {
         const this: *ICertificate = @ptrCast(self);
         return try this.GetHashValue();
     }
-    pub fn GetHashValue(self: *@This(), hashAlgorithmName: HSTRING) core.HResult![*]u8 {
+    pub fn GetHashValueWithHashAlgorithmName(self: *@This(), hashAlgorithmName: HSTRING) core.HResult![*]u8 {
         const this: *ICertificate = @ptrCast(self);
-        return try this.GetHashValue(hashAlgorithmName);
+        return try this.GetHashValueWithHashAlgorithmName(hashAlgorithmName);
     }
     pub fn GetCertificateBlob(self: *@This()) core.HResult!*IBuffer {
         const this: *ICertificate = @ptrCast(self);
@@ -134,9 +134,9 @@ pub const CertificateChain = extern struct {
         const this: *ICertificateChain = @ptrCast(self);
         return try this.Validate();
     }
-    pub fn Validate(self: *@This(), parameter: *ChainValidationParameters) core.HResult!ChainValidationResult {
+    pub fn ValidateWithParameter(self: *@This(), parameter: *ChainValidationParameters) core.HResult!ChainValidationResult {
         const this: *ICertificateChain = @ptrCast(self);
-        return try this.Validate(parameter);
+        return try this.ValidateWithParameter(parameter);
     }
     pub fn GetCertificates(self: *@This(), includeRoot: bool) core.HResult!*IVectorView(Certificate) {
         const this: *ICertificateChain = @ptrCast(self);
@@ -3248,16 +3248,12 @@ pub const UserCertificateEnrollmentManager = extern struct {
         return try this.InstallCertificateAsync(certificate, installOption);
     }
     pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
-        var this: ?*IUserCertificateEnrollmentManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserCertificateEnrollmentManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
+        const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
+        return try this.ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
-    pub fn ImportPfxDataAsyncWithInstallOptionWithFriendlyNameWithKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
-        var this: ?*IUserCertificateEnrollmentManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserCertificateEnrollmentManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ImportPfxDataAsyncWithInstallOptionWithFriendlyNameWithKeyStorageProvider(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
+    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+        const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
+        return try this.ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
     pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var this: ?*IUserCertificateEnrollmentManager2 = undefined;

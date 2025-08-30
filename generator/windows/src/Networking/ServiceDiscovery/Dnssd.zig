@@ -122,7 +122,7 @@ pub const DnssdServiceInstance = extern struct {
 };
 pub const DnssdServiceInstanceCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*DnssdServiceInstance {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -130,16 +130,16 @@ pub const DnssdServiceInstanceCollection = extern struct {
         const this: *IVectorView = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *DnssdServiceInstance, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVectorView = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]DnssdServiceInstance) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(DnssdServiceInstance) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(DnssdServiceInstance) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

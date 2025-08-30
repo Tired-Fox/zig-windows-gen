@@ -63,10 +63,8 @@ pub const ActionEntityFactory = extern struct {
         return try this.CreatePhotoEntity(path);
     }
     pub fn CreateTextEntity(self: *@This(), text: HSTRING) core.HResult!*TextActionEntity {
-        var this: ?*IActionEntityFactory3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IActionEntityFactory3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateTextEntity(text);
+        const this: *IActionEntityFactory2 = @ptrCast(self);
+        return try this.CreateTextEntity(text);
     }
     pub fn CreateRemoteFileEntity(self: *@This(), sourceId: HSTRING, fileKind: RemoteFileKind, sourceUri: *Uri, fileId: HSTRING, contentType: HSTRING, driveId: HSTRING, accountId: HSTRING, extension: HSTRING) core.HResult!*RemoteFileActionEntity {
         var this: ?*IActionEntityFactory3 = undefined;

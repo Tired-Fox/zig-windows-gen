@@ -3687,7 +3687,7 @@ pub const MediaItemDisplayProperties = extern struct {
 };
 pub const MediaPlaybackAudioTrackList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*AudioTrack {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -3695,16 +3695,16 @@ pub const MediaPlaybackAudioTrackList = extern struct {
         const this: *IVectorView = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *AudioTrack, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVectorView = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]AudioTrack) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(AudioTrack) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(AudioTrack) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -4813,7 +4813,7 @@ pub const MediaPlaybackState = enum(i32) {
 };
 pub const MediaPlaybackTimedMetadataTrackList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*TimedMetadataTrack {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -4821,16 +4821,16 @@ pub const MediaPlaybackTimedMetadataTrackList = extern struct {
         const this: *IVectorView = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *TimedMetadataTrack, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVectorView = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]TimedMetadataTrack) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(TimedMetadataTrack) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(TimedMetadataTrack) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -4867,7 +4867,7 @@ pub const MediaPlaybackTimedMetadataTrackList = extern struct {
 };
 pub const MediaPlaybackVideoTrackList = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*VideoTrack {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -4875,16 +4875,16 @@ pub const MediaPlaybackVideoTrackList = extern struct {
         const this: *IVectorView = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *VideoTrack, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVectorView = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]VideoTrack) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(VideoTrack) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(VideoTrack) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -5575,8 +5575,8 @@ pub const PlaybackMediaMarkerSequence = extern struct {
         const this: *IPlaybackMediaMarkerSequence = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(PlaybackMediaMarker) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(PlaybackMediaMarker) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

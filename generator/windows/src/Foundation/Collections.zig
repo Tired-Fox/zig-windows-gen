@@ -577,62 +577,62 @@ pub fn MapChangedEventHandler(K: type, V: type) type {
 }
 pub const PropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
-        var this: ?*IObservableMap = undefined;
+    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
+        var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IObservableMap = undefined;
+        var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapChanged(token);
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*IInspectable {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *IInspectable) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -653,7 +653,7 @@ pub const PropertySet = extern struct {
 };
 pub const StringMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!HSTRING {
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
         const this: *IMap = @ptrCast(self);
         return try this.Lookup(key);
     }
@@ -661,19 +661,19 @@ pub const StringMap = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
         const this: *IMap = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: HSTRING) core.HResult!bool {
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
         const this: *IMap = @ptrCast(self);
         return try this.Remove(key);
     }
@@ -681,20 +681,20 @@ pub const StringMap = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(HSTRING,HSTRING)) core.HResult!EventRegistrationToken {
-        var this: ?*IObservableMap = undefined;
+    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
+        var this: ?*IObservableMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IObservableMap = undefined;
+        var this: ?*IObservableMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapChanged(token);
@@ -715,62 +715,62 @@ pub const StringMap = extern struct {
 };
 pub const ValueSet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
-        var this: ?*IObservableMap = undefined;
+    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
+        var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        var this: ?*IObservableMap = undefined;
+        var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapChanged(token);
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*IInspectable {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *IInspectable) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

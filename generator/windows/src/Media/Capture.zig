@@ -2212,9 +2212,9 @@ pub const AdvancedPhotoCapture = extern struct {
         const this: *IAdvancedPhotoCapture = @ptrCast(self);
         return try this.CaptureAsync();
     }
-    pub fn CaptureAsync(self: *@This(), context: *IInspectable) core.HResult!*IAsyncOperation(AdvancedCapturedPhoto) {
+    pub fn CaptureAsyncWithContext(self: *@This(), context: *IInspectable) core.HResult!*IAsyncOperation(AdvancedCapturedPhoto) {
         const this: *IAdvancedPhotoCapture = @ptrCast(self);
-        return try this.CaptureAsync(context);
+        return try this.CaptureAsyncWithContext(context);
     }
     pub fn addOptionalReferencePhotoCaptured(self: *@This(), handler: *TypedEventHandler(AdvancedPhotoCapture,OptionalReferencePhotoCapturedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IAdvancedPhotoCapture = @ptrCast(self);
@@ -2433,6 +2433,12 @@ pub const CapturedFrame = extern struct {
         const this: *ICapturedFrame = @ptrCast(self);
         return try this.getHeight();
     }
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getContentType();
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -2487,18 +2493,6 @@ pub const CapturedFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -2511,11 +2505,17 @@ pub const CapturedFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub fn getSoftwareBitmap(self: *@This()) core.HResult!*SoftwareBitmap {
         var this: ?*ICapturedFrameWithSoftwareBitmap = undefined;
@@ -5113,9 +5113,9 @@ pub const MediaCapture = extern struct {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.InitializeAsync();
     }
-    pub fn InitializeAsync(self: *@This(), mediaCaptureInitializationSettings: *MediaCaptureInitializationSettings) core.HResult!*IAsyncAction {
+    pub fn InitializeAsyncWithMediaCaptureInitializationSettings(self: *@This(), mediaCaptureInitializationSettings: *MediaCaptureInitializationSettings) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
-        return try this.InitializeAsync(mediaCaptureInitializationSettings);
+        return try this.InitializeAsyncWithMediaCaptureInitializationSettings(mediaCaptureInitializationSettings);
     }
     pub fn StartRecordToStorageFileAsync(self: *@This(), encodingProfile: *MediaEncodingProfile, file: *IStorageFile) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
@@ -5129,9 +5129,9 @@ pub const MediaCapture = extern struct {
         const this: *IMediaCapture = @ptrCast(self);
         return try this.StartRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartRecordToCustomSinkAsyncWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
-        return try this.StartRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
+        return try this.StartRecordToCustomSinkAsyncWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn StopRecordAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IMediaCapture = @ptrCast(self);
@@ -5225,11 +5225,11 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartPreviewToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
+    pub fn StartPreviewToCustomSinkAsyncWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCaptureVideoPreview.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartPreviewToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
+        return try this.?.StartPreviewToCustomSinkAsyncWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn StopPreviewAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IMediaCaptureVideoPreview = undefined;
@@ -5255,11 +5255,11 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrepareLowLagRecordToCustomSinkAsync(encodingProfile, customMediaSink);
     }
-    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
+    pub fn PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkSettings(self: *@This(), encodingProfile: *MediaEncodingProfile, customSinkActivationId: HSTRING, customSinkSettings: *IPropertySet) core.HResult!*IAsyncOperation(LowLagMediaRecording) {
         var this: ?*IMediaCapture2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkActivationIdWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
+        return try this.?.PrepareLowLagRecordToCustomSinkAsyncWithCustomSinkSettings(encodingProfile, customSinkActivationId, customSinkSettings);
     }
     pub fn PrepareLowLagPhotoCaptureAsync(self: *@This(), ty: *ImageEncodingProperties) core.HResult!*IAsyncOperation(LowLagPhotoCapture) {
         var this: ?*IMediaCapture2 = undefined;
@@ -5363,11 +5363,11 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPreviewFrameAsync();
     }
-    pub fn GetPreviewFrameAsync(self: *@This(), destination: *VideoFrame) core.HResult!*IAsyncOperation(VideoFrame) {
+    pub fn GetPreviewFrameAsyncWithDestination(self: *@This(), destination: *VideoFrame) core.HResult!*IAsyncOperation(VideoFrame) {
         var this: ?*IMediaCapture4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetPreviewFrameAsync(destination);
+        return try this.?.GetPreviewFrameAsyncWithDestination(destination);
     }
     pub fn addThermalStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture4 = undefined;
@@ -5429,11 +5429,11 @@ pub const MediaCapture = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsyncWithOutputSubtype(inputSource, outputSubtype);
     }
-    pub fn CreateFrameReaderAsyncWithOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
+    pub fn CreateFrameReaderAsyncWithOutputSubtypeWithOutputSize(self: *@This(), inputSource: *MediaFrameSource, outputSubtype: HSTRING, outputSize: BitmapSize) core.HResult!*IAsyncOperation(MediaFrameReader) {
         var this: ?*IMediaCapture5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMediaCapture5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFrameReaderAsyncWithOutputSize(inputSource, outputSubtype, outputSize);
+        return try this.?.CreateFrameReaderAsyncWithOutputSubtypeWithOutputSize(inputSource, outputSubtype, outputSize);
     }
     pub fn addCaptureDeviceExclusiveControlStatusChanged(self: *@This(), handler: *TypedEventHandler(MediaCapture,MediaCaptureDeviceExclusiveControlStatusChangedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IMediaCapture6 = undefined;

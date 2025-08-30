@@ -2248,10 +2248,26 @@ pub const InkManager = extern struct {
         return try this.SetDefaultDrawingAttributes(drawingAttributes);
     }
     pub fn RecognizeAsync(self: *@This(), recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
+        const this: *IInkManager = @ptrCast(self);
+        return try this.RecognizeAsync(recognitionTarget);
+    }
+    pub fn SetDefaultRecognizer(self: *@This(), recognizer: *InkRecognizer) core.HResult!void {
         var this: ?*IInkRecognizerContainer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RecognizeAsync(recognitionTarget);
+        return try this.?.SetDefaultRecognizer(recognizer);
+    }
+    pub fn RecognizeAsyncWithRecognitionTarget(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
+        var this: ?*IInkRecognizerContainer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.RecognizeAsyncWithRecognitionTarget(strokeCollection, recognitionTarget);
+    }
+    pub fn GetRecognizers(self: *@This()) core.HResult!*IVectorView(InkRecognizer) {
+        var this: ?*IInkRecognizerContainer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetRecognizers();
     }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
@@ -2336,24 +2352,6 @@ pub const InkManager = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRecognitionResults();
-    }
-    pub fn SetDefaultRecognizer(self: *@This(), recognizer: *InkRecognizer) core.HResult!void {
-        var this: ?*IInkRecognizerContainer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetDefaultRecognizer(recognizer);
-    }
-    pub fn RecognizeAsyncWithRecognitionTarget(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
-        var this: ?*IInkRecognizerContainer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RecognizeAsyncWithRecognitionTarget(strokeCollection, recognitionTarget);
-    }
-    pub fn GetRecognizers(self: *@This()) core.HResult!*IVectorView(InkRecognizer) {
-        var this: ?*IInkRecognizerContainer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetRecognizers();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2982,8 +2980,8 @@ pub const InkStrokeBuilder = extern struct {
         return try this.SetDefaultDrawingAttributes(drawingAttributes);
     }
     pub fn CreateStrokeFromInkPoints(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2) core.HResult!*InkStroke {
-        var this: ?*IInkStrokeBuilder3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeBuilder3.IID, @ptrCast(&this));
+        var this: ?*IInkStrokeBuilder2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeBuilder2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStrokeFromInkPoints(inkPoints, transform);
     }
@@ -3050,10 +3048,8 @@ pub const InkStrokeContainer = extern struct {
         return try this.LoadAsync(inputStream);
     }
     pub fn SaveAsync(self: *@This(), outputStream: *IOutputStream) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
-        var this: ?*IInkStrokeContainer3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SaveAsync(outputStream);
+        const this: *IInkStrokeContainer = @ptrCast(self);
+        return try this.SaveAsync(outputStream);
     }
     pub fn UpdateRecognitionResults(self: *@This(), recognitionResults: *IVectorView(InkRecognitionResult)) core.HResult!void {
         const this: *IInkStrokeContainer = @ptrCast(self);

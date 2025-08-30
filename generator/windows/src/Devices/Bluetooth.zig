@@ -221,11 +221,11 @@ pub const BluetoothDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRfcommServicesAsync();
     }
-    pub fn GetRfcommServicesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
+    pub fn GetRfcommServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetRfcommServicesAsync(cacheMode);
+        return try this.?.GetRfcommServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetRfcommServicesForIdAsync(self: *@This(), serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var this: ?*IBluetoothDevice3 = undefined;
@@ -736,11 +736,11 @@ pub const BluetoothLEDevice = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetGattServicesAsync();
     }
-    pub fn GetGattServicesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetGattServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBluetoothLEDevice3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetGattServicesAsync(cacheMode);
+        return try this.?.GetGattServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetGattServicesForUuidAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IBluetoothLEDevice3 = undefined;
@@ -2915,8 +2915,8 @@ const RfcommServiceId = @import("./Rfcomm.zig").RfcommServiceId;
 const GattDeviceService = @import("./GenericAttributeProfile.zig").GattDeviceService;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const Radio = @import("./Radios.zig").Radio;
-const IClosable = @import("../Foundation.zig").IClosable;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
+const IClosable = @import("../Foundation.zig").IClosable;
 const HSTRING = @import("../root.zig").HSTRING;
 const GattDeviceServicesResult = @import("./GenericAttributeProfile.zig").GattDeviceServicesResult;
 const IInspectable = @import("../Foundation.zig").IInspectable;

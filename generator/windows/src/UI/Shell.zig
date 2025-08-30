@@ -602,80 +602,80 @@ pub const WindowTabCollection = extern struct {
         const this: *IWindowTabCollection = @ptrCast(self);
         return try this.MoveTab(tab, index);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*WindowTab {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(WindowTab) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *WindowTab, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *WindowTab) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *WindowTab) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *WindowTab) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]WindowTab) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]WindowTab) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(WindowTab) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -917,9 +917,9 @@ pub const FocusSessionManager = extern struct {
         const this: *IFocusSessionManager = @ptrCast(self);
         return try this.TryStartFocusSession();
     }
-    pub fn TryStartFocusSession(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
+    pub fn TryStartFocusSessionWithEndTime(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
         const this: *IFocusSessionManager = @ptrCast(self);
-        return try this.TryStartFocusSession(endTime);
+        return try this.TryStartFocusSessionWithEndTime(endTime);
     }
     pub fn DeactivateFocus(self: *@This()) core.HResult!void {
         const this: *IFocusSessionManager = @ptrCast(self);

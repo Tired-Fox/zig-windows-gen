@@ -33,10 +33,8 @@ pub const DateTimeFormatter = extern struct {
         return try this.getTemplate();
     }
     pub fn Format(self: *@This(), value: DateTime) core.HResult!HSTRING {
-        var this: ?*IDateTimeFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDateTimeFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Format(value);
+        const this: *IDateTimeFormatter = @ptrCast(self);
+        return try this.Format(value);
     }
     pub fn getIncludeYear(self: *@This()) core.HResult!YearFormat {
         const this: *IDateTimeFormatter = @ptrCast(self);

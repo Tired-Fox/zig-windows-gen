@@ -174,9 +174,9 @@ pub const HolographicCameraRenderingParameters = extern struct {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
         return try this.SetFocusPoint(coordinateSystem, position);
     }
-    pub fn SetFocusPointWithPositionWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
+    pub fn SetFocusPointWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
-        return try this.SetFocusPointWithPositionWithNormal(coordinateSystem, position, normal);
+        return try this.SetFocusPointWithNormal(coordinateSystem, position, normal);
     }
     pub fn SetFocusPointWithNormalWithLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
@@ -340,9 +340,9 @@ pub const HolographicFrame = extern struct {
         const this: *IHolographicFrame = @ptrCast(self);
         return try this.PresentUsingCurrentPrediction();
     }
-    pub fn PresentUsingCurrentPrediction(self: *@This(), waitBehavior: HolographicFramePresentWaitBehavior) core.HResult!HolographicFramePresentResult {
+    pub fn PresentUsingCurrentPredictionWithWaitBehavior(self: *@This(), waitBehavior: HolographicFramePresentWaitBehavior) core.HResult!HolographicFramePresentResult {
         const this: *IHolographicFrame = @ptrCast(self);
-        return try this.PresentUsingCurrentPrediction(waitBehavior);
+        return try this.PresentUsingCurrentPredictionWithWaitBehavior(waitBehavior);
     }
     pub fn WaitForFrameToFinish(self: *@This()) core.HResult!void {
         const this: *IHolographicFrame = @ptrCast(self);

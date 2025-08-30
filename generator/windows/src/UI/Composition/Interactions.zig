@@ -48,8 +48,8 @@ pub const CompositionInteractionSourceCollection = extern struct {
         const this: *ICompositionInteractionSourceCollection = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(ICompositionInteractionSource) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(ICompositionInteractionSource) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1753,16 +1753,12 @@ pub const InteractionTracker = extern struct {
         return try this.ConfigureScaleInertiaModifiers(modifiers);
     }
     pub fn TryUpdatePosition(self: *@This(), value: Vector3) core.HResult!i32 {
-        var this: ?*IInteractionTracker5 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePosition(value);
+        const this: *IInteractionTracker = @ptrCast(self);
+        return try this.TryUpdatePosition(value);
     }
     pub fn TryUpdatePositionBy(self: *@This(), amount: Vector3) core.HResult!i32 {
-        var this: ?*IInteractionTracker4 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePositionBy(amount);
+        const this: *IInteractionTracker = @ptrCast(self);
+        return try this.TryUpdatePositionBy(amount);
     }
     pub fn TryUpdatePositionWithAnimation(self: *@This(), animation: *CompositionAnimation) core.HResult!i32 {
         const this: *IInteractionTracker = @ptrCast(self);
@@ -1803,8 +1799,8 @@ pub const InteractionTracker = extern struct {
         return try this.?.ConfigureVector2PositionInertiaModifiers(modifiers);
     }
     pub fn TryUpdatePositionWithOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption) core.HResult!i32 {
-        var this: ?*IInteractionTracker5 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
+        var this: ?*IInteractionTracker4 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryUpdatePositionWithOption(value, option);
     }
@@ -1820,11 +1816,11 @@ pub const InteractionTracker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInertiaFromImpulse();
     }
-    pub fn TryUpdatePositionWithPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
+    pub fn TryUpdatePositionWithOptionWithPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
         var this: ?*IInteractionTracker5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePositionWithPosUpdateOption(value, option, posUpdateOption);
+        return try this.?.TryUpdatePositionWithOptionWithPosUpdateOption(value, option, posUpdateOption);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

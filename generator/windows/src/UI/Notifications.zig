@@ -113,9 +113,9 @@ pub const BadgeUpdateManagerForUser = extern struct {
         const this: *IBadgeUpdateManagerForUser = @ptrCast(self);
         return try this.CreateBadgeUpdaterForApplication();
     }
-    pub fn CreateBadgeUpdaterForApplication(self: *@This(), applicationId: HSTRING) core.HResult!*BadgeUpdater {
+    pub fn CreateBadgeUpdaterForApplicationWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*BadgeUpdater {
         const this: *IBadgeUpdateManagerForUser = @ptrCast(self);
-        return try this.CreateBadgeUpdaterForApplication(applicationId);
+        return try this.CreateBadgeUpdaterForApplicationWithApplicationId(applicationId);
     }
     pub fn CreateBadgeUpdaterForSecondaryTile(self: *@This(), tileId: HSTRING) core.HResult!*BadgeUpdater {
         const this: *IBadgeUpdateManagerForUser = @ptrCast(self);
@@ -145,9 +145,9 @@ pub const BadgeUpdater = extern struct {
         const this: *IBadgeUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdate(badgeContent, requestedInterval);
     }
-    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateWithRequestedInterval(self: *@This(), badgeContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *IBadgeUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdateWithStartTimeWithRequestedInterval(badgeContent, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateWithRequestedInterval(badgeContent, startTime, requestedInterval);
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
         const this: *IBadgeUpdater = @ptrCast(self);
@@ -3291,9 +3291,9 @@ pub const TileFlyoutUpdater = extern struct {
         const this: *ITileFlyoutUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdate(tileFlyoutContent, requestedInterval);
     }
-    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateWithRequestedInterval(self: *@This(), tileFlyoutContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *ITileFlyoutUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdateWithStartTimeWithRequestedInterval(tileFlyoutContent, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateWithRequestedInterval(tileFlyoutContent, startTime, requestedInterval);
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
         const this: *ITileFlyoutUpdater = @ptrCast(self);
@@ -3561,9 +3561,9 @@ pub const TileUpdater = extern struct {
         const this: *ITileUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdate(tileContent, requestedInterval);
     }
-    pub fn StartPeriodicUpdateWithStartTimeWithRequestedInterval(self: *@This(), tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateWithRequestedInterval(self: *@This(), tileContent: *Uri, startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *ITileUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdateWithStartTimeWithRequestedInterval(tileContent, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateWithRequestedInterval(tileContent, startTime, requestedInterval);
     }
     pub fn StopPeriodicUpdate(self: *@This()) core.HResult!void {
         const this: *ITileUpdater = @ptrCast(self);
@@ -3573,9 +3573,9 @@ pub const TileUpdater = extern struct {
         const this: *ITileUpdater = @ptrCast(self);
         return try this.StartPeriodicUpdateBatch(tileContents, requestedInterval);
     }
-    pub fn StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval(self: *@This(), tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
+    pub fn StartPeriodicUpdateBatchWithRequestedInterval(self: *@This(), tileContents: *IIterable(Uri), startTime: DateTime, requestedInterval: PeriodicUpdateRecurrence) core.HResult!void {
         const this: *ITileUpdater = @ptrCast(self);
-        return try this.StartPeriodicUpdateBatchWithStartTimeWithRequestedInterval(tileContents, startTime, requestedInterval);
+        return try this.StartPeriodicUpdateBatchWithRequestedInterval(tileContents, startTime, requestedInterval);
     }
     pub fn EnableNotificationQueueForSquare150x150(self: *@This(), enable: bool) core.HResult!void {
         var this: ?*ITileUpdater2 = undefined;
@@ -3906,11 +3906,11 @@ pub const ToastNotificationHistory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetHistory();
     }
-    pub fn GetHistory(self: *@This(), applicationId: HSTRING) core.HResult!*IVectorView(ToastNotification) {
+    pub fn GetHistoryWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IVectorView(ToastNotification) {
         var this: ?*IToastNotificationHistory2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationHistory2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetHistory(applicationId);
+        return try this.?.GetHistoryWithApplicationId(applicationId);
     }
     pub fn RemoveGroup(self: *@This(), group: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
@@ -3920,9 +3920,9 @@ pub const ToastNotificationHistory = extern struct {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.RemoveGroupWithApplicationId(group, applicationId);
     }
-    pub fn RemoveWithApplicationId(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
+    pub fn RemoveWithGroupWithApplicationId(self: *@This(), tag: HSTRING, group: HSTRING, applicationId: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
-        return try this.RemoveWithApplicationId(tag, group, applicationId);
+        return try this.RemoveWithGroupWithApplicationId(tag, group, applicationId);
     }
     pub fn RemoveWithGroup(self: *@This(), tag: HSTRING, group: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
@@ -3936,9 +3936,9 @@ pub const ToastNotificationHistory = extern struct {
         const this: *IToastNotificationHistory = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn Clear(self: *@This(), applicationId: HSTRING) core.HResult!void {
+    pub fn ClearWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!void {
         const this: *IToastNotificationHistory = @ptrCast(self);
-        return try this.Clear(applicationId);
+        return try this.ClearWithApplicationId(applicationId);
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.ToastNotificationHistory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4010,9 +4010,9 @@ pub const ToastNotificationManagerForUser = extern struct {
         const this: *IToastNotificationManagerForUser = @ptrCast(self);
         return try this.CreateToastNotifier();
     }
-    pub fn CreateToastNotifier(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotifier {
+    pub fn CreateToastNotifierWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*ToastNotifier {
         const this: *IToastNotificationManagerForUser = @ptrCast(self);
-        return try this.CreateToastNotifier(applicationId);
+        return try this.CreateToastNotifierWithApplicationId(applicationId);
     }
     pub fn getHistory(self: *@This()) core.HResult!*ToastNotificationHistory {
         const this: *IToastNotificationManagerForUser = @ptrCast(self);
@@ -4040,11 +4040,11 @@ pub const ToastNotificationManagerForUser = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetToastCollectionManager();
     }
-    pub fn GetToastCollectionManager(self: *@This(), appId: HSTRING) core.HResult!*ToastCollectionManager {
+    pub fn GetToastCollectionManagerWithAppId(self: *@This(), appId: HSTRING) core.HResult!*ToastCollectionManager {
         var this: ?*IToastNotificationManagerForUser2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotificationManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetToastCollectionManager(appId);
+        return try this.?.GetToastCollectionManagerWithAppId(appId);
     }
     pub fn getNotificationMode(self: *@This()) core.HResult!ToastNotificationMode {
         var this: ?*IToastNotificationManagerForUser3 = undefined;
@@ -4105,11 +4105,11 @@ pub const ToastNotifier = extern struct {
         const this: *IToastNotifier = @ptrCast(self);
         return try this.GetScheduledToastNotifications();
     }
-    pub fn UpdateWithTagWithGroup(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
+    pub fn UpdateWithGroup(self: *@This(), data: *NotificationData, tag: HSTRING, group: HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IToastNotifier2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.UpdateWithTagWithGroup(data, tag, group);
+        return try this.?.UpdateWithGroup(data, tag, group);
     }
     pub fn Update(self: *@This(), data: *NotificationData, tag: HSTRING) core.HResult!NotificationUpdateResult {
         var this: ?*IToastNotifier2 = undefined;

@@ -1008,7 +1008,7 @@ pub const SceneComponent = extern struct {
 };
 pub const SceneComponentCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*SceneComponent {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -1016,19 +1016,19 @@ pub const SceneComponentCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(SceneComponent) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *SceneComponent, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *SceneComponent) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *SceneComponent) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -1036,7 +1036,7 @@ pub const SceneComponentCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *SceneComponent) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -1048,16 +1048,16 @@ pub const SceneComponentCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]SceneComponent) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]SceneComponent) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(SceneComponent) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(SceneComponent) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1129,50 +1129,50 @@ pub const SceneMesh = extern struct {
 };
 pub const SceneMeshMaterialAttributeMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!SceneAttributeSemantic {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,SceneAttributeSemantic) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: SceneAttributeSemantic) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,SceneAttributeSemantic)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,SceneAttributeSemantic)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1465,7 +1465,7 @@ pub const SceneNode = extern struct {
 };
 pub const SceneNodeCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*SceneNode {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -1473,19 +1473,19 @@ pub const SceneNodeCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(SceneNode) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *SceneNode, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *SceneNode) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *SceneNode) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -1493,7 +1493,7 @@ pub const SceneNodeCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *SceneNode) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -1505,16 +1505,16 @@ pub const SceneNodeCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]SceneNode) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]SceneNode) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(SceneNode) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(SceneNode) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

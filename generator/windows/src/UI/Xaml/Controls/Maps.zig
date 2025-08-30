@@ -6612,16 +6612,12 @@ pub const MapControl = extern struct {
         return try this.removeZoomLevelChanged(token);
     }
     pub fn FindMapElementsAtOffset(self: *@This(), offset: Point) core.HResult!*IVectorView(MapElement) {
-        var this: ?*IMapControl5 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FindMapElementsAtOffset(offset);
+        const this: *IMapControl = @ptrCast(self);
+        return try this.FindMapElementsAtOffset(offset);
     }
     pub fn GetLocationFromOffset(self: *@This(), offset: Point, location: *Geopoint) core.HResult!void {
-        var this: ?*IMapControl5 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetLocationFromOffset(offset, location);
+        const this: *IMapControl = @ptrCast(self);
+        return try this.GetLocationFromOffset(offset, location);
     }
     pub fn GetOffsetFromLocation(self: *@This(), location: *Geopoint, offset: Point) core.HResult!void {
         const this: *IMapControl = @ptrCast(self);
@@ -6643,13 +6639,13 @@ pub const MapControl = extern struct {
         const this: *IMapControl = @ptrCast(self);
         return try this.TrySetViewAsyncWithZoomLevel(center, zoomLevel);
     }
-    pub fn TrySetViewAsyncWithDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsyncWithDesiredPitch(center, zoomLevel, heading, desiredPitch);
+        return try this.TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitch(center, zoomLevel, heading, desiredPitch);
     }
-    pub fn TrySetViewAsyncWithAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitchWithAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsyncWithAnimation(center, zoomLevel, heading, desiredPitch, animation);
+        return try this.TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitchWithAnimation(center, zoomLevel, heading, desiredPitch, animation);
     }
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
@@ -7041,11 +7037,11 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindMapElementsAtOffsetWithRadius(offset, radius);
     }
-    pub fn GetLocationFromOffsetWithDesiredReferenceSystemWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
+    pub fn GetLocationFromOffsetWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetLocationFromOffsetWithDesiredReferenceSystemWithLocation(offset, desiredReferenceSystem, location);
+        return try this.?.GetLocationFromOffsetWithLocation(offset, desiredReferenceSystem, location);
     }
     pub fn StartContinuousPan(self: *@This(), horizontalPixelsPerSecond: f64, verticalPixelsPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
@@ -7089,11 +7085,11 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetLocationFromOffset(offset, location);
     }
-    pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
+    pub fn TryGetLocationFromOffsetWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(offset, desiredReferenceSystem, location);
+        return try this.?.TryGetLocationFromOffsetWithLocation(offset, desiredReferenceSystem, location);
     }
     pub fn getRegion(self: *@This()) core.HResult!HSTRING {
         var this: ?*IMapControl7 = undefined;

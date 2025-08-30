@@ -5,22 +5,20 @@ pub const BarcodeScannerDisableScannerRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerDisableScannerRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerDisableScannerRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerDisableScannerRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerDisableScannerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerDisableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerDisableScannerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerDisableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerDisableScannerRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -51,22 +49,20 @@ pub const BarcodeScannerEnableScannerRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerEnableScannerRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerEnableScannerRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerEnableScannerRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerEnableScannerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerEnableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerEnableScannerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerEnableScannerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerEnableScannerRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -151,22 +147,20 @@ pub const BarcodeScannerGetSymbologyAttributesRequest = extern struct {
         return try this.ReportCompletedAsync(attributes);
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerGetSymbologyAttributesRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerGetSymbologyAttributesRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerGetSymbologyAttributesRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerGetSymbologyAttributesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerGetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerGetSymbologyAttributesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerGetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerGetSymbologyAttributesRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -197,22 +191,20 @@ pub const BarcodeScannerHideVideoPreviewRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerHideVideoPreviewRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerHideVideoPreviewRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerHideVideoPreviewRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerHideVideoPreviewRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerHideVideoPreviewRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerHideVideoPreviewRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerHideVideoPreviewRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerHideVideoPreviewRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -290,9 +282,9 @@ pub const BarcodeScannerProviderConnection = extern struct {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
         return try this.ReportErrorAsync(errorData);
     }
-    pub fn ReportErrorAsyncWithScanReport(self: *@This(), errorData: *UnifiedPosErrorData, isRetriable: bool, scanReport: *BarcodeScannerReport) core.HResult!*IAsyncAction {
+    pub fn ReportErrorAsyncWithIsRetriableWithScanReport(self: *@This(), errorData: *UnifiedPosErrorData, isRetriable: bool, scanReport: *BarcodeScannerReport) core.HResult!*IAsyncAction {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
-        return try this.ReportErrorAsyncWithScanReport(errorData, isRetriable, scanReport);
+        return try this.ReportErrorAsyncWithIsRetriableWithScanReport(errorData, isRetriable, scanReport);
     }
     pub fn addEnableScannerRequested(self: *@This(), handler: *TypedEventHandler(BarcodeScannerProviderConnection,BarcodeScannerEnableScannerRequestEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IBarcodeScannerProviderConnection = @ptrCast(self);
@@ -364,17 +356,17 @@ pub const BarcodeScannerProviderConnection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFrameReaderAsync();
     }
-    pub fn CreateFrameReaderAsync(self: *@This(), preferredFormat: BitmapPixelFormat) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
+    pub fn CreateFrameReaderAsyncWithPreferredFormat(self: *@This(), preferredFormat: BitmapPixelFormat) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
         var this: ?*IBarcodeScannerProviderConnection2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFrameReaderAsync(preferredFormat);
+        return try this.?.CreateFrameReaderAsyncWithPreferredFormat(preferredFormat);
     }
-    pub fn CreateFrameReaderAsync(self: *@This(), preferredFormat: BitmapPixelFormat, preferredSize: BitmapSize) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
+    pub fn CreateFrameReaderAsyncWithPreferredFormatWithPreferredSize(self: *@This(), preferredFormat: BitmapPixelFormat, preferredSize: BitmapSize) core.HResult!*IAsyncOperation(BarcodeScannerFrameReader) {
         var this: ?*IBarcodeScannerProviderConnection2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerProviderConnection2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFrameReaderAsync(preferredFormat, preferredSize);
+        return try this.?.CreateFrameReaderAsyncWithPreferredFormatWithPreferredSize(preferredFormat, preferredSize);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -411,22 +403,20 @@ pub const BarcodeScannerSetActiveSymbologiesRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerSetActiveSymbologiesRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetActiveSymbologiesRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerSetActiveSymbologiesRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetActiveSymbologiesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetActiveSymbologiesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetActiveSymbologiesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetActiveSymbologiesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerSetActiveSymbologiesRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -465,22 +455,20 @@ pub const BarcodeScannerSetSymbologyAttributesRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerSetSymbologyAttributesRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetSymbologyAttributesRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerSetSymbologyAttributesRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetSymbologyAttributesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerSetSymbologyAttributesRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerSetSymbologyAttributesRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerSetSymbologyAttributesRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -511,22 +499,20 @@ pub const BarcodeScannerStartSoftwareTriggerRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerStartSoftwareTriggerRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStartSoftwareTriggerRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerStartSoftwareTriggerRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStartSoftwareTriggerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStartSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStartSoftwareTriggerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStartSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerStartSoftwareTriggerRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -557,22 +543,20 @@ pub const BarcodeScannerStopSoftwareTriggerRequest = extern struct {
         return try this.ReportCompletedAsync();
     }
     pub fn ReportFailedAsync(self: *@This()) core.HResult!*IAsyncAction {
-        var this: ?*IBarcodeScannerStopSoftwareTriggerRequest2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStopSoftwareTriggerRequest2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync();
+        const this: *IBarcodeScannerStopSoftwareTriggerRequest = @ptrCast(self);
+        return try this.ReportFailedAsync();
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReason(self: *@This(), reason: i32) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStopSoftwareTriggerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStopSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason);
+        return try this.?.ReportFailedAsyncWithReason(reason);
     }
-    pub fn ReportFailedAsync(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ReportFailedAsyncWithReasonWithFailedReasonDescription(self: *@This(), reason: i32, failedReasonDescription: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IBarcodeScannerStopSoftwareTriggerRequest2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBarcodeScannerStopSoftwareTriggerRequest2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportFailedAsync(reason, failedReasonDescription);
+        return try this.?.ReportFailedAsyncWithReasonWithFailedReasonDescription(reason, failedReasonDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.Provider.BarcodeScannerStopSoftwareTriggerRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1877,8 +1861,8 @@ const FactoryCache = @import("../../core.zig").FactoryCache;
 const UnifiedPosErrorData = @import("../PointOfService.zig").UnifiedPosErrorData;
 const TrustLevel = @import("../../root.zig").TrustLevel;
 const BitmapPixelFormat = @import("../../Graphics/Imaging.zig").BitmapPixelFormat;
-const IClosable = @import("../../Foundation.zig").IClosable;
 const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
+const IClosable = @import("../../Foundation.zig").IClosable;
 const BarcodeSymbologyAttributes = @import("../PointOfService.zig").BarcodeSymbologyAttributes;
 const HSTRING = @import("../../root.zig").HSTRING;
 const IInspectable = @import("../../Foundation.zig").IInspectable;

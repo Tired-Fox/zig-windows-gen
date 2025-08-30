@@ -472,7 +472,7 @@ pub const BitmapCache = extern struct {
 };
 pub const BrushCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*Brush {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -480,19 +480,19 @@ pub const BrushCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Brush) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *Brush, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *Brush) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *Brush) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -500,7 +500,7 @@ pub const BrushCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *Brush) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -512,16 +512,16 @@ pub const BrushCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]Brush) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]Brush) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Brush) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Brush) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -774,7 +774,7 @@ pub const CompositionTarget = extern struct {
 };
 pub const DoubleCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!f64 {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -782,19 +782,19 @@ pub const DoubleCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(f64) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: f64, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: f64) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: f64) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -802,7 +802,7 @@ pub const DoubleCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: f64) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -814,16 +814,16 @@ pub const DoubleCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]f64) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]f64) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(f64) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(f64) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -973,7 +973,7 @@ pub const FontFamily = extern struct {
 };
 pub const GeometryCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*Geometry {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -981,19 +981,19 @@ pub const GeometryCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Geometry) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *Geometry, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *Geometry) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *Geometry) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -1001,7 +1001,7 @@ pub const GeometryCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *Geometry) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -1013,16 +1013,16 @@ pub const GeometryCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]Geometry) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]Geometry) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Geometry) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Geometry) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1195,7 +1195,7 @@ pub const GradientStop = extern struct {
 };
 pub const GradientStopCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*GradientStop {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -1203,19 +1203,19 @@ pub const GradientStopCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(GradientStop) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *GradientStop, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *GradientStop) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *GradientStop) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -1223,7 +1223,7 @@ pub const GradientStopCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *GradientStop) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -1235,16 +1235,16 @@ pub const GradientStopCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]GradientStop) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]GradientStop) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(GradientStop) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(GradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -6236,7 +6236,7 @@ pub const PathFigure = extern struct {
 };
 pub const PathFigureCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*PathFigure {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -6244,19 +6244,19 @@ pub const PathFigureCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(PathFigure) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *PathFigure, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *PathFigure) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *PathFigure) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -6264,7 +6264,7 @@ pub const PathFigureCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *PathFigure) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -6276,16 +6276,16 @@ pub const PathFigureCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]PathFigure) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]PathFigure) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(PathFigure) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(PathFigure) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -6347,7 +6347,7 @@ pub const PathGeometry = extern struct {
 };
 pub const PathSegmentCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*PathSegment {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -6355,19 +6355,19 @@ pub const PathSegmentCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(PathSegment) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *PathSegment, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *PathSegment) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *PathSegment) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -6375,7 +6375,7 @@ pub const PathSegmentCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *PathSegment) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -6387,16 +6387,16 @@ pub const PathSegmentCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]PathSegment) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]PathSegment) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(PathSegment) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(PathSegment) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -6597,7 +6597,7 @@ pub const PlaneProjection = extern struct {
 };
 pub const PointCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!Point {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -6605,19 +6605,19 @@ pub const PointCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Point) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: Point, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: Point) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: Point) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -6625,7 +6625,7 @@ pub const PointCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: Point) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -6637,16 +6637,16 @@ pub const PointCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]Point) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]Point) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Point) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Point) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7380,7 +7380,7 @@ pub const TimelineMarker = extern struct {
 };
 pub const TimelineMarkerCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*TimelineMarker {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -7388,19 +7388,19 @@ pub const TimelineMarkerCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(TimelineMarker) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *TimelineMarker, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *TimelineMarker) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *TimelineMarker) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -7408,7 +7408,7 @@ pub const TimelineMarkerCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *TimelineMarker) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -7420,16 +7420,16 @@ pub const TimelineMarkerCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]TimelineMarker) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]TimelineMarker) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(TimelineMarker) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(TimelineMarker) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -7561,7 +7561,7 @@ pub const TimelineMarkerRoutedEventHandler = extern struct {
 };
 pub const TransformCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*Transform {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -7569,19 +7569,19 @@ pub const TransformCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Transform) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *Transform, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *Transform) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *Transform) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -7589,7 +7589,7 @@ pub const TransformCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *Transform) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -7601,16 +7601,16 @@ pub const TransformCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]Transform) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]Transform) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Transform) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Transform) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

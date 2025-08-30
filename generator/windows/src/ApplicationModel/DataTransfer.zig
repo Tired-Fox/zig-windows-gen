@@ -349,50 +349,50 @@ pub const DataPackagePropertySet = extern struct {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.putApplicationListingUri(value);
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*IInspectable {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *IInspectable) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -561,32 +561,32 @@ pub const DataPackagePropertySetView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromRoamingClipboard();
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*IInspectable {
-        var this: ?*IMapView = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMapView = undefined;
+        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMapView = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
-        var this: ?*IMapView = undefined;
+    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
+        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -627,9 +627,9 @@ pub const DataPackageView = extern struct {
         const this: *IDataPackageView = @ptrCast(self);
         return try this.GetTextAsync();
     }
-    pub fn GetTextAsync(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetTextAsyncWithFormatId(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
         const this: *IDataPackageView = @ptrCast(self);
-        return try this.GetTextAsync(formatId);
+        return try this.GetTextAsyncWithFormatId(formatId);
     }
     pub fn GetUriAsync(self: *@This()) core.HResult!*IAsyncOperation(Uri) {
         const this: *IDataPackageView = @ptrCast(self);
@@ -673,11 +673,11 @@ pub const DataPackageView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAccessAsync();
     }
-    pub fn RequestAccessAsync(self: *@This(), enterpriseId: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var this: ?*IDataPackageView3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDataPackageView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestAccessAsync(enterpriseId);
+        return try this.?.RequestAccessAsyncWithEnterpriseId(enterpriseId);
     }
     pub fn UnlockAndAssumeEnterpriseIdentity(self: *@This()) core.HResult!ProtectionPolicyEvaluationResult {
         var this: ?*IDataPackageView3 = undefined;

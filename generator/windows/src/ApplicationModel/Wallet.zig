@@ -1214,9 +1214,9 @@ pub const WalletItemStore = extern struct {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.GetItemsAsync();
     }
-    pub fn GetItemsAsync(self: *@This(), kind: WalletItemKind) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
+    pub fn GetItemsAsyncWithKind(self: *@This(), kind: WalletItemKind) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
         const this: *IWalletItemStore = @ptrCast(self);
-        return try this.GetItemsAsync(kind);
+        return try this.GetItemsAsyncWithKind(kind);
     }
     pub fn ImportItemAsync(self: *@This(), stream: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(WalletItem) {
         const this: *IWalletItemStore = @ptrCast(self);
@@ -1230,9 +1230,9 @@ pub const WalletItemStore = extern struct {
         const this: *IWalletItemStore = @ptrCast(self);
         return try this.ShowAsync();
     }
-    pub fn ShowAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAsyncWithId(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
         const this: *IWalletItemStore = @ptrCast(self);
-        return try this.ShowAsync(id);
+        return try this.ShowAsyncWithId(id);
     }
     pub fn UpdateAsync(self: *@This(), item: *WalletItem) core.HResult!*IAsyncAction {
         const this: *IWalletItemStore = @ptrCast(self);

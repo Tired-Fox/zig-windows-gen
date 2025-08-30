@@ -8,6 +8,60 @@ pub const CurrencyFormatter = extern struct {
         const this: *ICurrencyFormatter = @ptrCast(self);
         return try this.putCurrency(value);
     }
+    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+        var this: ?*INumberParser = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ParseInt(text);
+    }
+    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+        var this: ?*INumberParser = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ParseUInt(text);
+    }
+    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+        var this: ?*INumberParser = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ParseDouble(text);
+    }
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatInt(value);
+    }
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatUInt(value);
+    }
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatDouble(value);
+    }
+    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatWithValue(value);
+    }
+    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatWithValue(value);
+    }
+    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Format(value);
+    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
@@ -91,60 +145,6 @@ pub const CurrencyFormatter = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
-    }
-    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatWithValue(value);
-    }
-    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatWithValue(value);
-    }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Format(value);
-    }
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatInt(value);
-    }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatUInt(value);
-    }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatDouble(value);
-    }
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
-        var this: ?*INumberParser = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ParseInt(text);
-    }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
-        var this: ?*INumberParser = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ParseUInt(text);
-    }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
-        var this: ?*INumberParser = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ParseDouble(text);
     }
     pub fn getMode(self: *@This()) core.HResult!CurrencyFormatterMode {
         var this: ?*ICurrencyFormatter2 = undefined;

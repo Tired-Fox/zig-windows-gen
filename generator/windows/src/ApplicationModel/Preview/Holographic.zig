@@ -21,9 +21,9 @@ pub const HolographicKeyboardPlacementOverridePreview = extern struct {
         const this: *IHolographicKeyboardPlacementOverridePreview = @ptrCast(self);
         return try this.SetPlacementOverride(coordinateSystem, topCenterPosition, normal);
     }
-    pub fn SetPlacementOverrideWithTopCenterPositionWithNormalWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3, maxSize: Vector2) core.HResult!void {
+    pub fn SetPlacementOverrideWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3, maxSize: Vector2) core.HResult!void {
         const this: *IHolographicKeyboardPlacementOverridePreview = @ptrCast(self);
-        return try this.SetPlacementOverrideWithTopCenterPositionWithNormalWithMaxSize(coordinateSystem, topCenterPosition, normal, maxSize);
+        return try this.SetPlacementOverrideWithMaxSize(coordinateSystem, topCenterPosition, normal, maxSize);
     }
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
         const this: *IHolographicKeyboardPlacementOverridePreview = @ptrCast(self);

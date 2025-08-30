@@ -986,9 +986,9 @@ pub const XboxLiveEndpointPairTemplate = extern struct {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
         return try this.CreateEndpointPairForPortsAsync(deviceAddress, initiatorPort, acceptorPort);
     }
-    pub fn CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
+    pub fn CreateEndpointPairForPortsAsyncWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);
-        return try this.CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(deviceAddress, initiatorPort, acceptorPort, behaviors);
+        return try this.CreateEndpointPairForPortsAsyncWithBehaviors(deviceAddress, initiatorPort, acceptorPort, behaviors);
     }
     pub fn getName(self: *@This()) core.HResult!HSTRING {
         const this: *IXboxLiveEndpointPairTemplate = @ptrCast(self);

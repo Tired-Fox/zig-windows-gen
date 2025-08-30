@@ -6,10 +6,8 @@ pub const AddContactResult = enum(i32) {
 pub const ContactPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn AddContactWithContact(self: *@This(), id: HSTRING, contact: *Contact) core.HResult!AddContactResult {
-        var this: ?*IContactPickerUI2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactPickerUI2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddContactWithContact(id, contact);
+        const this: *IContactPickerUI = @ptrCast(self);
+        return try this.AddContactWithContact(id, contact);
     }
     pub fn RemoveContact(self: *@This(), id: HSTRING) core.HResult!void {
         const this: *IContactPickerUI = @ptrCast(self);

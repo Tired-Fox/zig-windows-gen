@@ -102,9 +102,9 @@ pub const ChatConversation = extern struct {
         const this: *IChatConversation = @ptrCast(self);
         return try this.MarkMessagesAsReadAsync();
     }
-    pub fn MarkMessagesAsReadAsync(self: *@This(), value: DateTime) core.HResult!*IAsyncAction {
+    pub fn MarkMessagesAsReadAsyncWithValue(self: *@This(), value: DateTime) core.HResult!*IAsyncAction {
         const this: *IChatConversation = @ptrCast(self);
-        return try this.MarkMessagesAsReadAsync(value);
+        return try this.MarkMessagesAsReadAsyncWithValue(value);
     }
     pub fn SaveAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IChatConversation = @ptrCast(self);
@@ -156,9 +156,9 @@ pub const ChatConversationReader = extern struct {
         const this: *IChatConversationReader = @ptrCast(self);
         return try this.ReadBatchAsync();
     }
-    pub fn ReadBatchAsync(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatConversation)) {
+    pub fn ReadBatchAsyncWithCount(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatConversation)) {
         const this: *IChatConversationReader = @ptrCast(self);
-        return try this.ReadBatchAsync(count);
+        return try this.ReadBatchAsyncWithCount(count);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatConversationReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -780,16 +780,14 @@ pub const ChatMessageOperatorKind = enum(i32) {
 pub const ChatMessageReader = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn ReadBatchAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
-        var this: ?*IChatMessageReader2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageReader2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadBatchAsync();
+        const this: *IChatMessageReader = @ptrCast(self);
+        return try this.ReadBatchAsync();
     }
-    pub fn ReadBatchAsync(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
+    pub fn ReadBatchAsyncWithCount(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatMessage)) {
         var this: ?*IChatMessageReader2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageReader2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadBatchAsync(count);
+        return try this.?.ReadBatchAsyncWithCount(count);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -835,9 +833,9 @@ pub const ChatMessageStore = extern struct {
         const this: *IChatMessageStore = @ptrCast(self);
         return try this.GetMessageReader();
     }
-    pub fn GetMessageReader(self: *@This(), recentTimeLimit: TimeSpan) core.HResult!*ChatMessageReader {
+    pub fn GetMessageReaderWithRecentTimeLimit(self: *@This(), recentTimeLimit: TimeSpan) core.HResult!*ChatMessageReader {
         const this: *IChatMessageStore = @ptrCast(self);
-        return try this.GetMessageReader(recentTimeLimit);
+        return try this.GetMessageReaderWithRecentTimeLimit(recentTimeLimit);
     }
     pub fn MarkMessageReadAsync(self: *@This(), localChatMessageId: HSTRING) core.HResult!*IAsyncAction {
         const this: *IChatMessageStore = @ptrCast(self);
@@ -893,11 +891,11 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetConversationReader();
     }
-    pub fn GetConversationReader(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*ChatConversationReader {
+    pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*ChatConversationReader {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetConversationReader(transportIds);
+        return try this.?.GetConversationReaderWithTransportIds(transportIds);
     }
     pub fn GetMessageByRemoteIdAsync(self: *@This(), transportId: HSTRING, remoteId: HSTRING) core.HResult!*IAsyncOperation(ChatMessage) {
         var this: ?*IChatMessageStore2 = undefined;
@@ -911,11 +909,11 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetUnseenCountAsync();
     }
-    pub fn GetUnseenCountAsync(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(i32) {
+    pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(i32) {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetUnseenCountAsync(transportIds);
+        return try this.?.GetUnseenCountAsyncWithTransportIds(transportIds);
     }
     pub fn MarkAsSeenAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IChatMessageStore2 = undefined;
@@ -923,11 +921,11 @@ pub const ChatMessageStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MarkAsSeenAsync();
     }
-    pub fn MarkAsSeenAsync(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         var this: ?*IChatMessageStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IChatMessageStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.MarkAsSeenAsync(transportIds);
+        return try this.?.MarkAsSeenAsyncWithTransportIds(transportIds);
     }
     pub fn GetSearchReader(self: *@This(), value: *ChatQueryOptions) core.HResult!*ChatSearchReader {
         var this: ?*IChatMessageStore2 = undefined;
@@ -1202,9 +1200,9 @@ pub const ChatSearchReader = extern struct {
         const this: *IChatSearchReader = @ptrCast(self);
         return try this.ReadBatchAsync();
     }
-    pub fn ReadBatchAsync(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(IChatItem)) {
+    pub fn ReadBatchAsyncWithCount(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(IChatItem)) {
         const this: *IChatSearchReader = @ptrCast(self);
-        return try this.ReadBatchAsync(count);
+        return try this.ReadBatchAsyncWithCount(count);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatSearchReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

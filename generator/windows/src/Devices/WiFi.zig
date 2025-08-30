@@ -575,22 +575,16 @@ pub const WiFiAdapter = extern struct {
         return try this.removeAvailableNetworksChanged(eventCookie);
     }
     pub fn ConnectAsync(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
-        var this: ?*IWiFiAdapter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsync(availableNetwork, reconnectionKind);
+        const this: *IWiFiAdapter = @ptrCast(self);
+        return try this.ConnectAsync(availableNetwork, reconnectionKind);
     }
-    pub fn ConnectAsyncWithReconnectionKindWithPasswordCredential(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
-        var this: ?*IWiFiAdapter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithReconnectionKindWithPasswordCredential(availableNetwork, reconnectionKind, passwordCredential);
+    pub fn ConnectAsyncWithPasswordCredential(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
+        const this: *IWiFiAdapter = @ptrCast(self);
+        return try this.ConnectAsyncWithPasswordCredential(availableNetwork, reconnectionKind, passwordCredential);
     }
     pub fn ConnectAsyncWithPasswordCredentialWithSsid(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
-        var this: ?*IWiFiAdapter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithPasswordCredentialWithSsid(availableNetwork, reconnectionKind, passwordCredential, ssid);
+        const this: *IWiFiAdapter = @ptrCast(self);
+        return try this.ConnectAsyncWithPasswordCredentialWithSsid(availableNetwork, reconnectionKind, passwordCredential, ssid);
     }
     pub fn Disconnect(self: *@This()) core.HResult!void {
         const this: *IWiFiAdapter = @ptrCast(self);
@@ -602,11 +596,11 @@ pub const WiFiAdapter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetWpsConfigurationAsync(availableNetwork);
     }
-    pub fn ConnectAsyncWithSsidWithConnectionMethod(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
+    pub fn ConnectAsyncWithPasswordCredentialWithSsidWithConnectionMethod(self: *@This(), availableNetwork: *WiFiAvailableNetwork, reconnectionKind: WiFiReconnectionKind, passwordCredential: *PasswordCredential, ssid: HSTRING, connectionMethod: WiFiConnectionMethod) core.HResult!*IAsyncOperation(WiFiConnectionResult) {
         var this: ?*IWiFiAdapter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWiFiAdapter2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithSsidWithConnectionMethod(availableNetwork, reconnectionKind, passwordCredential, ssid, connectionMethod);
+        return try this.?.ConnectAsyncWithPasswordCredentialWithSsidWithConnectionMethod(availableNetwork, reconnectionKind, passwordCredential, ssid, connectionMethod);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

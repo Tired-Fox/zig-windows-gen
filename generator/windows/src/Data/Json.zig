@@ -456,80 +456,80 @@ pub const JsonArray = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetObject();
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*IJsonValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(IJsonValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *IJsonValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *IJsonValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *IJsonValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *IJsonValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]IJsonValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]IJsonValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IJsonValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -586,44 +586,32 @@ pub const JsonErrorStatus = enum(i32) {
 pub const JsonObject = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn GetNamedValue(self: *@This(), name: HSTRING) core.HResult!*JsonValue {
-        var this: ?*IJsonObjectWithDefaultValues = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedValue(name);
+        const this: *IJsonObject = @ptrCast(self);
+        return try this.GetNamedValue(name);
     }
     pub fn SetNamedValue(self: *@This(), name: HSTRING, value: *IJsonValue) core.HResult!void {
         const this: *IJsonObject = @ptrCast(self);
         return try this.SetNamedValue(name, value);
     }
     pub fn GetNamedObject(self: *@This(), name: HSTRING) core.HResult!*JsonObject {
-        var this: ?*IJsonObjectWithDefaultValues = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedObject(name);
+        const this: *IJsonObject = @ptrCast(self);
+        return try this.GetNamedObject(name);
     }
     pub fn GetNamedArray(self: *@This(), name: HSTRING) core.HResult!*JsonArray {
-        var this: ?*IJsonObjectWithDefaultValues = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedArray(name);
+        const this: *IJsonObject = @ptrCast(self);
+        return try this.GetNamedArray(name);
     }
     pub fn GetNamedString(self: *@This(), name: HSTRING) core.HResult!HSTRING {
-        var this: ?*IJsonObjectWithDefaultValues = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedString(name);
+        const this: *IJsonObject = @ptrCast(self);
+        return try this.GetNamedString(name);
     }
     pub fn GetNamedNumber(self: *@This(), name: HSTRING) core.HResult!f64 {
-        var this: ?*IJsonObjectWithDefaultValues = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedNumber(name);
+        const this: *IJsonObject = @ptrCast(self);
+        return try this.GetNamedNumber(name);
     }
     pub fn GetNamedBoolean(self: *@This(), name: HSTRING) core.HResult!bool {
-        var this: ?*IJsonObjectWithDefaultValues = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJsonObjectWithDefaultValues.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetNamedBoolean(name);
+        const this: *IJsonObject = @ptrCast(self);
+        return try this.GetNamedBoolean(name);
     }
     pub fn getValueType(self: *@This()) core.HResult!JsonValueType {
         var this: ?*IJsonValue = undefined;
@@ -667,50 +655,50 @@ pub const JsonObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetObject();
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*IJsonValue {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IJsonValue) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *IJsonValue) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IJsonValue)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,IJsonValue)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

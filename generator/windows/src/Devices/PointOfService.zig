@@ -1437,17 +1437,17 @@ pub const ClaimedLineDisplay = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStoreStorageFileBitmapAsync(bitmap);
     }
-    pub fn TryStoreStorageFileBitmapAsyncWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
+    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryStoreStorageFileBitmapAsyncWithVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
+        return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
-    pub fn TryStoreStorageFileBitmapAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
+    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryStoreStorageFileBitmapAsyncWithWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
+        return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,ClaimedLineDisplayClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedLineDisplay3 = undefined;
@@ -8275,8 +8275,10 @@ pub const IUnifiedPosErrorDataFactory = extern struct {
 pub const JournalPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn PrintWithPrintOptions(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
-        const this: *IPosPrinterJob = @ptrCast(self);
-        return try this.PrintWithPrintOptions(data, printOptions);
+        var this: ?*IJournalPrintJob = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IJournalPrintJob.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.PrintWithPrintOptions(data, printOptions);
     }
     pub fn FeedPaperByLine(self: *@This(), lineCount: i32) core.HResult!void {
         var this: ?*IJournalPrintJob = undefined;
@@ -8294,9 +8296,9 @@ pub const JournalPrintJob = extern struct {
         const this: *IPosPrinterJob = @ptrCast(self);
         return try this.Print(data);
     }
-    pub fn PrintLine(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
         const this: *IPosPrinterJob = @ptrCast(self);
-        return try this.PrintLine(data);
+        return try this.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         const this: *IPosPrinterJob = @ptrCast(self);
@@ -8921,9 +8923,9 @@ pub const LineDisplayWindow = extern struct {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.TryDisplayTextAsyncWithDisplayAttribute(text, displayAttribute);
     }
-    pub fn TryDisplayTextAsyncWithStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttributeWithStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
-        return try this.TryDisplayTextAsyncWithStartPosition(text, displayAttribute, startPosition);
+        return try this.TryDisplayTextAsyncWithDisplayAttributeWithStartPosition(text, displayAttribute, startPosition);
     }
     pub fn TryDisplayTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
@@ -8967,17 +8969,17 @@ pub const LineDisplayWindow = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsync(bitmap);
     }
-    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
+        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
-    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
+        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsync(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
@@ -8985,11 +8987,11 @@ pub const LineDisplayWindow = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtPointAsync(bitmap, offsetInPixels);
     }
-    pub fn TryDisplayStorageFileBitmapAtPointAsyncWithOffsetInPixelsWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryDisplayStorageFileBitmapAtPointAsyncWithOffsetInPixelsWithWidthInPixels(bitmap, offsetInPixels, widthInPixels);
+        return try this.?.TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(bitmap, offsetInPixels, widthInPixels);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -9901,9 +9903,9 @@ pub const ReceiptPrintJob = extern struct {
         const this: *IReceiptPrintJob = @ptrCast(self);
         return try this.MarkFeed(kind);
     }
-    pub fn CutPaper(self: *@This(), percentage: f64) core.HResult!void {
+    pub fn CutPaperWithPercentage(self: *@This(), percentage: f64) core.HResult!void {
         const this: *IReceiptPrintJob = @ptrCast(self);
-        return try this.CutPaper(percentage);
+        return try this.CutPaperWithPercentage(percentage);
     }
     pub fn CutPaper(self: *@This()) core.HResult!void {
         const this: *IReceiptPrintJob = @ptrCast(self);
@@ -9916,8 +9918,8 @@ pub const ReceiptPrintJob = extern struct {
         return try this.?.StampPaper();
     }
     pub fn PrintWithPrintOptions(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
-        var this: ?*IPosPrinterJob = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
+        var this: ?*IReceiptPrintJob2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptPrintJob2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
@@ -9957,11 +9959,11 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetBitmap(bitmapNumber, bitmap, alignment);
     }
-    pub fn SetBitmapWithBitmapWithAlignmentWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
+    pub fn SetBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetBitmapWithBitmapWithAlignmentWithWidth(bitmapNumber, bitmap, alignment, width);
+        return try this.?.SetBitmapWithWidth(bitmapNumber, bitmap, alignment, width);
     }
     pub fn SetCustomAlignedBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
@@ -9969,11 +9971,11 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetCustomAlignedBitmap(bitmapNumber, bitmap, alignmentDistance);
     }
-    pub fn SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
+    pub fn SetCustomAlignedBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth(bitmapNumber, bitmap, alignmentDistance, width);
+        return try this.?.SetCustomAlignedBitmapWithWidth(bitmapNumber, bitmap, alignmentDistance, width);
     }
     pub fn PrintSavedBitmap(self: *@This(), bitmapNumber: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
@@ -10005,11 +10007,11 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintBitmap(bitmap, alignment);
     }
-    pub fn PrintBitmapWithAlignmentWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
+    pub fn PrintBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrintBitmapWithAlignmentWithWidth(bitmap, alignment, width);
+        return try this.?.PrintBitmapWithWidth(bitmap, alignment, width);
     }
     pub fn PrintCustomAlignedBitmap(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
@@ -10017,11 +10019,11 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintCustomAlignedBitmap(bitmap, alignmentDistance);
     }
-    pub fn PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
+    pub fn PrintCustomAlignedBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         var this: ?*IReceiptOrSlipJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IReceiptOrSlipJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth(bitmap, alignmentDistance, width);
+        return try this.?.PrintCustomAlignedBitmapWithWidth(bitmap, alignmentDistance, width);
     }
     pub fn Print(self: *@This(), data: HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
@@ -10029,11 +10031,11 @@ pub const ReceiptPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Print(data);
     }
-    pub fn PrintLine(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrintLine(data);
+        return try this.?.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
@@ -10248,8 +10250,8 @@ pub const SizeUInt32 = extern struct {
 pub const SlipPrintJob = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn PrintWithPrintOptions(self: *@This(), data: HSTRING, printOptions: *PosPrinterPrintOptions) core.HResult!void {
-        var this: ?*IPosPrinterJob = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
+        var this: ?*ISlipPrintJob = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISlipPrintJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PrintWithPrintOptions(data, printOptions);
     }
@@ -10281,17 +10283,17 @@ pub const SlipPrintJob = extern struct {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.SetBitmap(bitmapNumber, bitmap, alignment);
     }
-    pub fn SetBitmapWithBitmapWithAlignmentWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
+    pub fn SetBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
-        return try this.SetBitmapWithBitmapWithAlignmentWithWidth(bitmapNumber, bitmap, alignment, width);
+        return try this.SetBitmapWithWidth(bitmapNumber, bitmap, alignment, width);
     }
     pub fn SetCustomAlignedBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.SetCustomAlignedBitmap(bitmapNumber, bitmap, alignmentDistance);
     }
-    pub fn SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
+    pub fn SetCustomAlignedBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
-        return try this.SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth(bitmapNumber, bitmap, alignmentDistance, width);
+        return try this.SetCustomAlignedBitmapWithWidth(bitmapNumber, bitmap, alignmentDistance, width);
     }
     pub fn PrintSavedBitmap(self: *@This(), bitmapNumber: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
@@ -10313,17 +10315,17 @@ pub const SlipPrintJob = extern struct {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.PrintBitmap(bitmap, alignment);
     }
-    pub fn PrintBitmapWithAlignmentWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
+    pub fn PrintBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
-        return try this.PrintBitmapWithAlignmentWithWidth(bitmap, alignment, width);
+        return try this.PrintBitmapWithWidth(bitmap, alignment, width);
     }
     pub fn PrintCustomAlignedBitmap(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
         return try this.PrintCustomAlignedBitmap(bitmap, alignmentDistance);
     }
-    pub fn PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
+    pub fn PrintCustomAlignedBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
         const this: *IReceiptOrSlipJob = @ptrCast(self);
-        return try this.PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth(bitmap, alignmentDistance, width);
+        return try this.PrintCustomAlignedBitmapWithWidth(bitmap, alignmentDistance, width);
     }
     pub fn Print(self: *@This(), data: HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
@@ -10331,11 +10333,11 @@ pub const SlipPrintJob = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Print(data);
     }
-    pub fn PrintLine(self: *@This(), data: HSTRING) core.HResult!void {
+    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPosPrinterJob.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PrintLine(data);
+        return try this.?.PrintLineWithData(data);
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
         var this: ?*IPosPrinterJob = undefined;

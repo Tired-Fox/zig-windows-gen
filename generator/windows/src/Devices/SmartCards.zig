@@ -1816,11 +1816,11 @@ pub const SmartCardCryptogramGenerator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsync();
     }
-    pub fn GetAllCryptogramMaterialPackageCharacteristicsAsync(self: *@This(), storageKeyName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
+    pub fn GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(self: *@This(), storageKeyName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialPackageCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardCryptogramGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsync(storageKeyName);
+        return try this.?.GetAllCryptogramMaterialPackageCharacteristicsAsyncWithStorageKeyName(storageKeyName);
     }
     pub fn GetAllCryptogramMaterialCharacteristicsAsync(self: *@This(), promptingBehavior: SmartCardUnlockPromptingBehavior, materialPackageName: HSTRING) core.HResult!*IAsyncOperation(SmartCardCryptogramGetAllCryptogramMaterialCharacteristicsResult) {
         var this: ?*ISmartCardCryptogramGenerator2 = undefined;
@@ -2334,10 +2334,8 @@ pub const SmartCardEmulatorApduReceivedEventArgs = extern struct {
         return try this.getConnectionProperties();
     }
     pub fn TryRespondAsync(self: *@This(), responseApdu: *IBuffer) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*ISmartCardEmulatorApduReceivedEventArgs2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulatorApduReceivedEventArgs2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryRespondAsync(responseApdu);
+        const this: *ISmartCardEmulatorApduReceivedEventArgs = @ptrCast(self);
+        return try this.TryRespondAsync(responseApdu);
     }
     pub fn getAutomaticResponseStatus(self: *@This()) core.HResult!SmartCardAutomaticResponseStatus {
         const this: *ISmartCardEmulatorApduReceivedEventArgs = @ptrCast(self);
@@ -2349,11 +2347,11 @@ pub const SmartCardEmulatorApduReceivedEventArgs = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryRespondWithCryptogramsAsync(responseTemplate, cryptogramPlacementSteps);
     }
-    pub fn TryRespondWithCryptogramsAsyncWithCryptogramPlacementStepsWithNextState(self: *@This(), responseTemplate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep), nextState: *IReference(u32)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
+    pub fn TryRespondWithCryptogramsAsyncWithNextState(self: *@This(), responseTemplate: *IBuffer, cryptogramPlacementSteps: *IIterable(SmartCardCryptogramPlacementStep), nextState: *IReference(u32)) core.HResult!*IAsyncOperation(SmartCardCryptogramGeneratorOperationStatus) {
         var this: ?*ISmartCardEmulatorApduReceivedEventArgsWithCryptograms = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ISmartCardEmulatorApduReceivedEventArgsWithCryptograms.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryRespondWithCryptogramsAsyncWithCryptogramPlacementStepsWithNextState(responseTemplate, cryptogramPlacementSteps, nextState);
+        return try this.?.TryRespondWithCryptogramsAsyncWithNextState(responseTemplate, cryptogramPlacementSteps, nextState);
     }
     pub fn getState(self: *@This()) core.HResult!u32 {
         var this: ?*ISmartCardEmulatorApduReceivedEventArgs2 = undefined;
@@ -3239,9 +3237,9 @@ pub const SmartCardChallengeContext = extern struct {
         const this: *ISmartCardChallengeContext = @ptrCast(self);
         return try this.ProvisionAsync(response, formatCard);
     }
-    pub fn ProvisionAsyncWithFormatCardWithNewCardId(self: *@This(), response: *IBuffer, formatCard: bool, newCardId: *Guid) core.HResult!*IAsyncAction {
+    pub fn ProvisionAsyncWithNewCardId(self: *@This(), response: *IBuffer, formatCard: bool, newCardId: *Guid) core.HResult!*IAsyncAction {
         const this: *ISmartCardChallengeContext = @ptrCast(self);
-        return try this.ProvisionAsyncWithFormatCardWithNewCardId(response, formatCard, newCardId);
+        return try this.ProvisionAsyncWithNewCardId(response, formatCard, newCardId);
     }
     pub fn ChangeAdministrativeKeyAsync(self: *@This(), response: *IBuffer, newAdministrativeKey: *IBuffer) core.HResult!*IAsyncAction {
         const this: *ISmartCardChallengeContext = @ptrCast(self);

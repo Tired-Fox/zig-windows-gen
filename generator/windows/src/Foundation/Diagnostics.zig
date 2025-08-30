@@ -1611,11 +1611,11 @@ pub const LoggingActivity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StopActivityWithFields(stopEventName, fields);
     }
-    pub fn StopActivityWithOptions(self: *@This(), stopEventName: HSTRING, fields: *LoggingFields, options: *LoggingOptions) core.HResult!void {
+    pub fn StopActivityWithFieldsWithOptions(self: *@This(), stopEventName: HSTRING, fields: *LoggingFields, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingActivity2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingActivity2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StopActivityWithOptions(stopEventName, fields, options);
+        return try this.?.StopActivityWithFieldsWithOptions(stopEventName, fields, options);
     }
     pub fn IsEnabled(self: *@This()) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
@@ -1623,17 +1623,17 @@ pub const LoggingActivity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabled();
     }
-    pub fn IsEnabled(self: *@This(), level: LoggingLevel) core.HResult!bool {
+    pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsEnabled(level);
+        return try this.?.IsEnabledWithLevel(level);
     }
-    pub fn IsEnabled(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
+    pub fn IsEnabledWithLevelWithKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsEnabled(level, keywords);
+        return try this.?.IsEnabledWithLevelWithKeywords(level, keywords);
     }
     pub fn LogEvent(self: *@This(), eventName: HSTRING) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
@@ -1647,17 +1647,17 @@ pub const LoggingActivity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFields(eventName, fields);
     }
-    pub fn LogEventWithLevel(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
+    pub fn LogEventWithFieldsWithLevel(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.LogEventWithLevel(eventName, fields, level);
+        return try this.?.LogEventWithFieldsWithLevel(eventName, fields, level);
     }
-    pub fn LogEventWithOptions(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
+    pub fn LogEventWithFieldsWithLevelWithOptions(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.LogEventWithOptions(eventName, fields, level, options);
+        return try this.?.LogEventWithFieldsWithLevelWithOptions(eventName, fields, level, options);
     }
     pub fn StartActivity(self: *@This(), startEventName: HSTRING) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
@@ -1671,17 +1671,17 @@ pub const LoggingActivity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFields(startEventName, fields);
     }
-    pub fn StartActivityWithLevel(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
+    pub fn StartActivityWithFieldsWithLevel(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartActivityWithLevel(startEventName, fields, level);
+        return try this.?.StartActivityWithFieldsWithLevel(startEventName, fields, level);
     }
-    pub fn StartActivityWithOptions(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
+    pub fn StartActivityWithFieldsWithLevelWithOptions(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartActivityWithOptions(startEventName, fields, level, options);
+        return try this.?.StartActivityWithFieldsWithLevelWithOptions(startEventName, fields, level, options);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1727,9 +1727,9 @@ pub const LoggingChannel = extern struct {
         const this: *ILoggingChannel = @ptrCast(self);
         return try this.LogValuePair(value1, value2);
     }
-    pub fn LogValuePairWithValue2WithLevel(self: *@This(), value1: HSTRING, value2: i32, level: LoggingLevel) core.HResult!void {
+    pub fn LogValuePairWithLevel(self: *@This(), value1: HSTRING, value2: i32, level: LoggingLevel) core.HResult!void {
         const this: *ILoggingChannel = @ptrCast(self);
-        return try this.LogValuePairWithValue2WithLevel(value1, value2, level);
+        return try this.LogValuePairWithLevel(value1, value2, level);
     }
     pub fn addLoggingEnabled(self: *@This(), handler: *TypedEventHandler(ILoggingChannel,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *ILoggingChannel = @ptrCast(self);
@@ -1757,17 +1757,17 @@ pub const LoggingChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsEnabled();
     }
-    pub fn IsEnabled(self: *@This(), level: LoggingLevel) core.HResult!bool {
+    pub fn IsEnabledWithLevel(self: *@This(), level: LoggingLevel) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsEnabled(level);
+        return try this.?.IsEnabledWithLevel(level);
     }
-    pub fn IsEnabled(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
+    pub fn IsEnabledWithLevelWithKeywords(self: *@This(), level: LoggingLevel, keywords: i64) core.HResult!bool {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IsEnabled(level, keywords);
+        return try this.?.IsEnabledWithLevelWithKeywords(level, keywords);
     }
     pub fn LogEvent(self: *@This(), eventName: HSTRING) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
@@ -1781,17 +1781,17 @@ pub const LoggingChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.LogEventWithFields(eventName, fields);
     }
-    pub fn LogEventWithLevel(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
+    pub fn LogEventWithFieldsWithLevel(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.LogEventWithLevel(eventName, fields, level);
+        return try this.?.LogEventWithFieldsWithLevel(eventName, fields, level);
     }
-    pub fn LogEventWithOptions(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
+    pub fn LogEventWithFieldsWithLevelWithOptions(self: *@This(), eventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!void {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.LogEventWithOptions(eventName, fields, level, options);
+        return try this.?.LogEventWithFieldsWithLevelWithOptions(eventName, fields, level, options);
     }
     pub fn StartActivity(self: *@This(), startEventName: HSTRING) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
@@ -1805,17 +1805,17 @@ pub const LoggingChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StartActivityWithFields(startEventName, fields);
     }
-    pub fn StartActivityWithLevel(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
+    pub fn StartActivityWithFieldsWithLevel(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartActivityWithLevel(startEventName, fields, level);
+        return try this.?.StartActivityWithFieldsWithLevel(startEventName, fields, level);
     }
-    pub fn StartActivityWithOptions(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
+    pub fn StartActivityWithFieldsWithLevelWithOptions(self: *@This(), startEventName: HSTRING, fields: *LoggingFields, level: LoggingLevel, options: *LoggingOptions) core.HResult!*LoggingActivity {
         var this: ?*ILoggingTarget = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILoggingTarget.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartActivityWithOptions(startEventName, fields, level, options);
+        return try this.?.StartActivityWithFieldsWithLevelWithOptions(startEventName, fields, level, options);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1916,17 +1916,17 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddEmptyWithFormat(name, format);
     }
-    pub fn AddEmptyWithTags(self: *@This(), name: HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
+    pub fn AddEmptyWithFormatWithTags(self: *@This(), name: HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddEmptyWithTags(name, format, tags);
+        return try this.AddEmptyWithFormatWithTags(name, format, tags);
     }
     pub fn AddUInt8(self: *@This(), name: HSTRING, value: u8) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt8(name, value);
     }
-    pub fn AddUInt8WithValueWithFormat(self: *@This(), name: HSTRING, value: u8, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt8WithFormat(self: *@This(), name: HSTRING, value: u8, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt8WithValueWithFormat(name, value, format);
+        return try this.AddUInt8WithFormat(name, value, format);
     }
     pub fn AddUInt8WithFormatWithTags(self: *@This(), name: HSTRING, value: u8, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -1936,9 +1936,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt8Array(name, value);
     }
-    pub fn AddUInt8ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]u8, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt8ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]u8, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt8ArrayWithValueWithFormat(name, value, format);
+        return try this.AddUInt8ArrayWithFormat(name, value, format);
     }
     pub fn AddUInt8ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]u8, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -1948,9 +1948,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddInt16(name, value);
     }
-    pub fn AddInt16WithValueWithFormat(self: *@This(), name: HSTRING, value: i16, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddInt16WithFormat(self: *@This(), name: HSTRING, value: i16, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddInt16WithValueWithFormat(name, value, format);
+        return try this.AddInt16WithFormat(name, value, format);
     }
     pub fn AddInt16WithFormatWithTags(self: *@This(), name: HSTRING, value: i16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -1960,9 +1960,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddInt16Array(name, value);
     }
-    pub fn AddInt16ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]i16, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddInt16ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]i16, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddInt16ArrayWithValueWithFormat(name, value, format);
+        return try this.AddInt16ArrayWithFormat(name, value, format);
     }
     pub fn AddInt16ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]i16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -1972,9 +1972,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt16(name, value);
     }
-    pub fn AddUInt16WithValueWithFormat(self: *@This(), name: HSTRING, value: u16, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt16WithFormat(self: *@This(), name: HSTRING, value: u16, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt16WithValueWithFormat(name, value, format);
+        return try this.AddUInt16WithFormat(name, value, format);
     }
     pub fn AddUInt16WithFormatWithTags(self: *@This(), name: HSTRING, value: u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -1984,9 +1984,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt16Array(name, value);
     }
-    pub fn AddUInt16ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]u16, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt16ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]u16, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt16ArrayWithValueWithFormat(name, value, format);
+        return try this.AddUInt16ArrayWithFormat(name, value, format);
     }
     pub fn AddUInt16ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -1996,9 +1996,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddInt32(name, value);
     }
-    pub fn AddInt32WithValueWithFormat(self: *@This(), name: HSTRING, value: i32, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddInt32WithFormat(self: *@This(), name: HSTRING, value: i32, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddInt32WithValueWithFormat(name, value, format);
+        return try this.AddInt32WithFormat(name, value, format);
     }
     pub fn AddInt32WithFormatWithTags(self: *@This(), name: HSTRING, value: i32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2008,9 +2008,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddInt32Array(name, value);
     }
-    pub fn AddInt32ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]i32, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddInt32ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]i32, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddInt32ArrayWithValueWithFormat(name, value, format);
+        return try this.AddInt32ArrayWithFormat(name, value, format);
     }
     pub fn AddInt32ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]i32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2020,9 +2020,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt32(name, value);
     }
-    pub fn AddUInt32WithValueWithFormat(self: *@This(), name: HSTRING, value: u32, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt32WithFormat(self: *@This(), name: HSTRING, value: u32, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt32WithValueWithFormat(name, value, format);
+        return try this.AddUInt32WithFormat(name, value, format);
     }
     pub fn AddUInt32WithFormatWithTags(self: *@This(), name: HSTRING, value: u32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2032,9 +2032,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt32Array(name, value);
     }
-    pub fn AddUInt32ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]u32, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt32ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]u32, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt32ArrayWithValueWithFormat(name, value, format);
+        return try this.AddUInt32ArrayWithFormat(name, value, format);
     }
     pub fn AddUInt32ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]u32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2044,9 +2044,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddInt64(name, value);
     }
-    pub fn AddInt64WithValueWithFormat(self: *@This(), name: HSTRING, value: i64, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddInt64WithFormat(self: *@This(), name: HSTRING, value: i64, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddInt64WithValueWithFormat(name, value, format);
+        return try this.AddInt64WithFormat(name, value, format);
     }
     pub fn AddInt64WithFormatWithTags(self: *@This(), name: HSTRING, value: i64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2056,9 +2056,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddInt64Array(name, value);
     }
-    pub fn AddInt64ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]i64, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddInt64ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]i64, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddInt64ArrayWithValueWithFormat(name, value, format);
+        return try this.AddInt64ArrayWithFormat(name, value, format);
     }
     pub fn AddInt64ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]i64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2068,9 +2068,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt64(name, value);
     }
-    pub fn AddUInt64WithValueWithFormat(self: *@This(), name: HSTRING, value: u64, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt64WithFormat(self: *@This(), name: HSTRING, value: u64, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt64WithValueWithFormat(name, value, format);
+        return try this.AddUInt64WithFormat(name, value, format);
     }
     pub fn AddUInt64WithFormatWithTags(self: *@This(), name: HSTRING, value: u64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2080,9 +2080,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddUInt64Array(name, value);
     }
-    pub fn AddUInt64ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]u64, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddUInt64ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]u64, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddUInt64ArrayWithValueWithFormat(name, value, format);
+        return try this.AddUInt64ArrayWithFormat(name, value, format);
     }
     pub fn AddUInt64ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]u64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2092,9 +2092,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddSingle(name, value);
     }
-    pub fn AddSingleWithValueWithFormat(self: *@This(), name: HSTRING, value: f32, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddSingleWithFormat(self: *@This(), name: HSTRING, value: f32, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddSingleWithValueWithFormat(name, value, format);
+        return try this.AddSingleWithFormat(name, value, format);
     }
     pub fn AddSingleWithFormatWithTags(self: *@This(), name: HSTRING, value: f32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2104,9 +2104,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddSingleArray(name, value);
     }
-    pub fn AddSingleArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]f32, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddSingleArrayWithFormat(self: *@This(), name: HSTRING, value: [*]f32, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddSingleArrayWithValueWithFormat(name, value, format);
+        return try this.AddSingleArrayWithFormat(name, value, format);
     }
     pub fn AddSingleArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]f32, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2116,9 +2116,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddDouble(name, value);
     }
-    pub fn AddDoubleWithValueWithFormat(self: *@This(), name: HSTRING, value: f64, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddDoubleWithFormat(self: *@This(), name: HSTRING, value: f64, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddDoubleWithValueWithFormat(name, value, format);
+        return try this.AddDoubleWithFormat(name, value, format);
     }
     pub fn AddDoubleWithFormatWithTags(self: *@This(), name: HSTRING, value: f64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2128,9 +2128,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddDoubleArray(name, value);
     }
-    pub fn AddDoubleArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]f64, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddDoubleArrayWithFormat(self: *@This(), name: HSTRING, value: [*]f64, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddDoubleArrayWithValueWithFormat(name, value, format);
+        return try this.AddDoubleArrayWithFormat(name, value, format);
     }
     pub fn AddDoubleArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]f64, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2140,9 +2140,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddChar16(name, value);
     }
-    pub fn AddChar16WithValueWithFormat(self: *@This(), name: HSTRING, value: u16, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddChar16WithFormat(self: *@This(), name: HSTRING, value: u16, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddChar16WithValueWithFormat(name, value, format);
+        return try this.AddChar16WithFormat(name, value, format);
     }
     pub fn AddChar16WithFormatWithTags(self: *@This(), name: HSTRING, value: u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2152,9 +2152,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddChar16Array(name, value);
     }
-    pub fn AddChar16ArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]u16, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddChar16ArrayWithFormat(self: *@This(), name: HSTRING, value: [*]u16, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddChar16ArrayWithValueWithFormat(name, value, format);
+        return try this.AddChar16ArrayWithFormat(name, value, format);
     }
     pub fn AddChar16ArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]u16, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2164,9 +2164,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddBoolean(name, value);
     }
-    pub fn AddBooleanWithValueWithFormat(self: *@This(), name: HSTRING, value: bool, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddBooleanWithFormat(self: *@This(), name: HSTRING, value: bool, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddBooleanWithValueWithFormat(name, value, format);
+        return try this.AddBooleanWithFormat(name, value, format);
     }
     pub fn AddBooleanWithFormatWithTags(self: *@This(), name: HSTRING, value: bool, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2176,9 +2176,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddBooleanArray(name, value);
     }
-    pub fn AddBooleanArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]bool, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddBooleanArrayWithFormat(self: *@This(), name: HSTRING, value: [*]bool, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddBooleanArrayWithValueWithFormat(name, value, format);
+        return try this.AddBooleanArrayWithFormat(name, value, format);
     }
     pub fn AddBooleanArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]bool, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2188,9 +2188,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddString(name, value);
     }
-    pub fn AddStringWithValueWithFormat(self: *@This(), name: HSTRING, value: HSTRING, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddStringWithFormat(self: *@This(), name: HSTRING, value: HSTRING, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddStringWithValueWithFormat(name, value, format);
+        return try this.AddStringWithFormat(name, value, format);
     }
     pub fn AddStringWithFormatWithTags(self: *@This(), name: HSTRING, value: HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2200,9 +2200,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddStringArray(name, value);
     }
-    pub fn AddStringArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]HSTRING, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddStringArrayWithFormat(self: *@This(), name: HSTRING, value: [*]HSTRING, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddStringArrayWithValueWithFormat(name, value, format);
+        return try this.AddStringArrayWithFormat(name, value, format);
     }
     pub fn AddStringArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]HSTRING, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2212,9 +2212,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddGuid(name, value);
     }
-    pub fn AddGuidWithValueWithFormat(self: *@This(), name: HSTRING, value: *Guid, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddGuidWithFormat(self: *@This(), name: HSTRING, value: *Guid, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddGuidWithValueWithFormat(name, value, format);
+        return try this.AddGuidWithFormat(name, value, format);
     }
     pub fn AddGuidWithFormatWithTags(self: *@This(), name: HSTRING, value: *Guid, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2224,9 +2224,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddGuidArray(name, value);
     }
-    pub fn AddGuidArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]Guid, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddGuidArrayWithFormat(self: *@This(), name: HSTRING, value: [*]Guid, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddGuidArrayWithValueWithFormat(name, value, format);
+        return try this.AddGuidArrayWithFormat(name, value, format);
     }
     pub fn AddGuidArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]Guid, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2236,9 +2236,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddDateTime(name, value);
     }
-    pub fn AddDateTimeWithValueWithFormat(self: *@This(), name: HSTRING, value: DateTime, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddDateTimeWithFormat(self: *@This(), name: HSTRING, value: DateTime, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddDateTimeWithValueWithFormat(name, value, format);
+        return try this.AddDateTimeWithFormat(name, value, format);
     }
     pub fn AddDateTimeWithFormatWithTags(self: *@This(), name: HSTRING, value: DateTime, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2248,9 +2248,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddDateTimeArray(name, value);
     }
-    pub fn AddDateTimeArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]DateTime, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddDateTimeArrayWithFormat(self: *@This(), name: HSTRING, value: [*]DateTime, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddDateTimeArrayWithValueWithFormat(name, value, format);
+        return try this.AddDateTimeArrayWithFormat(name, value, format);
     }
     pub fn AddDateTimeArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]DateTime, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2260,9 +2260,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddTimeSpan(name, value);
     }
-    pub fn AddTimeSpanWithValueWithFormat(self: *@This(), name: HSTRING, value: TimeSpan, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddTimeSpanWithFormat(self: *@This(), name: HSTRING, value: TimeSpan, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddTimeSpanWithValueWithFormat(name, value, format);
+        return try this.AddTimeSpanWithFormat(name, value, format);
     }
     pub fn AddTimeSpanWithFormatWithTags(self: *@This(), name: HSTRING, value: TimeSpan, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2272,9 +2272,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddTimeSpanArray(name, value);
     }
-    pub fn AddTimeSpanArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]TimeSpan, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddTimeSpanArrayWithFormat(self: *@This(), name: HSTRING, value: [*]TimeSpan, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddTimeSpanArrayWithValueWithFormat(name, value, format);
+        return try this.AddTimeSpanArrayWithFormat(name, value, format);
     }
     pub fn AddTimeSpanArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]TimeSpan, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2284,9 +2284,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddPoint(name, value);
     }
-    pub fn AddPointWithValueWithFormat(self: *@This(), name: HSTRING, value: Point, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddPointWithFormat(self: *@This(), name: HSTRING, value: Point, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddPointWithValueWithFormat(name, value, format);
+        return try this.AddPointWithFormat(name, value, format);
     }
     pub fn AddPointWithFormatWithTags(self: *@This(), name: HSTRING, value: Point, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2296,9 +2296,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddPointArray(name, value);
     }
-    pub fn AddPointArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]Point, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddPointArrayWithFormat(self: *@This(), name: HSTRING, value: [*]Point, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddPointArrayWithValueWithFormat(name, value, format);
+        return try this.AddPointArrayWithFormat(name, value, format);
     }
     pub fn AddPointArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]Point, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2308,9 +2308,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddSize(name, value);
     }
-    pub fn AddSizeWithValueWithFormat(self: *@This(), name: HSTRING, value: Size, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddSizeWithFormat(self: *@This(), name: HSTRING, value: Size, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddSizeWithValueWithFormat(name, value, format);
+        return try this.AddSizeWithFormat(name, value, format);
     }
     pub fn AddSizeWithFormatWithTags(self: *@This(), name: HSTRING, value: Size, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2320,9 +2320,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddSizeArray(name, value);
     }
-    pub fn AddSizeArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]Size, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddSizeArrayWithFormat(self: *@This(), name: HSTRING, value: [*]Size, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddSizeArrayWithValueWithFormat(name, value, format);
+        return try this.AddSizeArrayWithFormat(name, value, format);
     }
     pub fn AddSizeArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]Size, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2332,9 +2332,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddRect(name, value);
     }
-    pub fn AddRectWithValueWithFormat(self: *@This(), name: HSTRING, value: Rect, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddRectWithFormat(self: *@This(), name: HSTRING, value: Rect, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddRectWithValueWithFormat(name, value, format);
+        return try this.AddRectWithFormat(name, value, format);
     }
     pub fn AddRectWithFormatWithTags(self: *@This(), name: HSTRING, value: Rect, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2344,9 +2344,9 @@ pub const LoggingFields = extern struct {
         const this: *ILoggingFields = @ptrCast(self);
         return try this.AddRectArray(name, value);
     }
-    pub fn AddRectArrayWithValueWithFormat(self: *@This(), name: HSTRING, value: [*]Rect, format: LoggingFieldFormat) core.HResult!void {
+    pub fn AddRectArrayWithFormat(self: *@This(), name: HSTRING, value: [*]Rect, format: LoggingFieldFormat) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
-        return try this.AddRectArrayWithValueWithFormat(name, value, format);
+        return try this.AddRectArrayWithFormat(name, value, format);
     }
     pub fn AddRectArrayWithFormatWithTags(self: *@This(), name: HSTRING, value: [*]Rect, format: LoggingFieldFormat, tags: i32) core.HResult!void {
         const this: *ILoggingFields = @ptrCast(self);
@@ -2543,8 +2543,8 @@ const DateTime = @import("../Foundation.zig").DateTime;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const Rect = @import("../Foundation.zig").Rect;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const IClosable = @import("../Foundation.zig").IClosable;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
+const IClosable = @import("../Foundation.zig").IClosable;
 const HSTRING = @import("../root.zig").HSTRING;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const AsyncStatus = @import("../Foundation.zig").AsyncStatus;

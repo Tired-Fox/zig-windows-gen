@@ -304,9 +304,9 @@ pub const Geolocator = extern struct {
         const this: *IGeolocator = @ptrCast(self);
         return try this.GetGeopositionAsync();
     }
-    pub fn GetGeopositionAsync(self: *@This(), maximumAge: TimeSpan, timeout: TimeSpan) core.HResult!*IAsyncOperation(Geoposition) {
+    pub fn GetGeopositionAsyncWithMaximumAgeWithTimeout(self: *@This(), maximumAge: TimeSpan, timeout: TimeSpan) core.HResult!*IAsyncOperation(Geoposition) {
         const this: *IGeolocator = @ptrCast(self);
-        return try this.GetGeopositionAsync(maximumAge, timeout);
+        return try this.GetGeopositionAsyncWithMaximumAgeWithTimeout(maximumAge, timeout);
     }
     pub fn addPositionChanged(self: *@This(), handler: *TypedEventHandler(Geolocator,PositionChangedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IGeolocator = @ptrCast(self);

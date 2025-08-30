@@ -29,6 +29,7 @@ pub const Type = enum {
 pub const Interface = struct {
     Name: []const u8,
     Namespace: []const u8,
+    GenericArguments: ?[]const TypeReference = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
         try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });

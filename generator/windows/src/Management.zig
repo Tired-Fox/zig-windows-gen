@@ -316,9 +316,9 @@ pub const MdmSession = extern struct {
         const this: *IMdmSession = @ptrCast(self);
         return try this.StartAsync();
     }
-    pub fn StartAsync(self: *@This(), alerts: *IIterable(MdmAlert)) core.HResult!*IAsyncAction {
+    pub fn StartAsyncWithAlerts(self: *@This(), alerts: *IIterable(MdmAlert)) core.HResult!*IAsyncAction {
         const this: *IMdmSession = @ptrCast(self);
-        return try this.StartAsync(alerts);
+        return try this.StartAsyncWithAlerts(alerts);
     }
     pub const NAME: []const u8 = "Windows.Management.MdmSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

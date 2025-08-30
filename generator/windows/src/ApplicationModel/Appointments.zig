@@ -325,9 +325,9 @@ pub const AppointmentCalendar = extern struct {
         const this: *IAppointmentCalendar = @ptrCast(self);
         return try this.FindAppointmentsAsync(rangeStart, rangeLength);
     }
-    pub fn FindAppointmentsAsyncWithRangeLengthWithOptions(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan, options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
+    pub fn FindAppointmentsAsyncWithOptions(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan, options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         const this: *IAppointmentCalendar = @ptrCast(self);
-        return try this.FindAppointmentsAsyncWithRangeLengthWithOptions(rangeStart, rangeLength, options);
+        return try this.FindAppointmentsAsyncWithOptions(rangeStart, rangeLength, options);
     }
     pub fn FindExceptionsFromMasterAsync(self: *@This(), masterLocalId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppointmentException)) {
         const this: *IAppointmentCalendar = @ptrCast(self);
@@ -337,9 +337,9 @@ pub const AppointmentCalendar = extern struct {
         const this: *IAppointmentCalendar = @ptrCast(self);
         return try this.FindAllInstancesAsync(masterLocalId, rangeStart, rangeLength);
     }
-    pub fn FindAllInstancesAsyncWithRangeStartWithRangeLengthWithPOptions(self: *@This(), masterLocalId: HSTRING, rangeStart: DateTime, rangeLength: TimeSpan, pOptions: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
+    pub fn FindAllInstancesAsyncWithPOptions(self: *@This(), masterLocalId: HSTRING, rangeStart: DateTime, rangeLength: TimeSpan, pOptions: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         const this: *IAppointmentCalendar = @ptrCast(self);
-        return try this.FindAllInstancesAsyncWithRangeStartWithRangeLengthWithPOptions(masterLocalId, rangeStart, rangeLength, pOptions);
+        return try this.FindAllInstancesAsyncWithPOptions(masterLocalId, rangeStart, rangeLength, pOptions);
     }
     pub fn GetAppointmentAsync(self: *@This(), localId: HSTRING) core.HResult!*IAsyncOperation(Appointment) {
         const this: *IAppointmentCalendar = @ptrCast(self);
@@ -353,9 +353,9 @@ pub const AppointmentCalendar = extern struct {
         const this: *IAppointmentCalendar = @ptrCast(self);
         return try this.FindUnexpandedAppointmentsAsync();
     }
-    pub fn FindUnexpandedAppointmentsAsync(self: *@This(), options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
+    pub fn FindUnexpandedAppointmentsAsyncWithOptions(self: *@This(), options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         const this: *IAppointmentCalendar = @ptrCast(self);
-        return try this.FindUnexpandedAppointmentsAsync(options);
+        return try this.FindUnexpandedAppointmentsAsyncWithOptions(options);
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IAppointmentCalendar = @ptrCast(self);
@@ -793,29 +793,29 @@ pub const AppointmentManagerForUser = extern struct {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
         return try this.ShowAddAppointmentAsync(appointment, selection);
     }
-    pub fn ShowAddAppointmentAsyncWithSelectionWithPreferredPlacement(self: *@This(), appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowAddAppointmentAsyncWithPreferredPlacement(self: *@This(), appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
-        return try this.ShowAddAppointmentAsyncWithSelectionWithPreferredPlacement(appointment, selection, preferredPlacement);
+        return try this.ShowAddAppointmentAsyncWithPreferredPlacement(appointment, selection, preferredPlacement);
     }
     pub fn ShowReplaceAppointmentAsync(self: *@This(), appointmentId: HSTRING, appointment: *Appointment, selection: Rect) core.HResult!*IAsyncOperation(HSTRING) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
         return try this.ShowReplaceAppointmentAsync(appointmentId, appointment, selection);
     }
-    pub fn ShowReplaceAppointmentAsyncWithAppointmentWithSelectionWithPreferredPlacement(self: *@This(), appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowReplaceAppointmentAsyncWithPreferredPlacement(self: *@This(), appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(HSTRING) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
-        return try this.ShowReplaceAppointmentAsyncWithAppointmentWithSelectionWithPreferredPlacement(appointmentId, appointment, selection, preferredPlacement);
+        return try this.ShowReplaceAppointmentAsyncWithPreferredPlacement(appointmentId, appointment, selection, preferredPlacement);
     }
-    pub fn ShowReplaceAppointmentAsyncWithSelectionWithPreferredPlacementWithInstanceStartDate(self: *@This(), appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(self: *@This(), appointmentId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
-        return try this.ShowReplaceAppointmentAsyncWithSelectionWithPreferredPlacementWithInstanceStartDate(appointmentId, appointment, selection, preferredPlacement, instanceStartDate);
+        return try this.ShowReplaceAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(appointmentId, appointment, selection, preferredPlacement, instanceStartDate);
     }
     pub fn ShowRemoveAppointmentAsync(self: *@This(), appointmentId: HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
         return try this.ShowRemoveAppointmentAsync(appointmentId, selection);
     }
-    pub fn ShowRemoveAppointmentAsyncWithSelectionWithPreferredPlacement(self: *@This(), appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
+    pub fn ShowRemoveAppointmentAsyncWithPreferredPlacement(self: *@This(), appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement) core.HResult!*IAsyncOperation(bool) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
-        return try this.ShowRemoveAppointmentAsyncWithSelectionWithPreferredPlacement(appointmentId, selection, preferredPlacement);
+        return try this.ShowRemoveAppointmentAsyncWithPreferredPlacement(appointmentId, selection, preferredPlacement);
     }
     pub fn ShowRemoveAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(self: *@This(), appointmentId: HSTRING, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(bool) {
         const this: *IAppointmentManagerForUser = @ptrCast(self);
@@ -1132,10 +1132,8 @@ pub const AppointmentStore = extern struct {
         return try this.getChangeTracker();
     }
     pub fn CreateAppointmentCalendarAsync(self: *@This(), name: HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
-        var this: ?*IAppointmentStore2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppointmentStore2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateAppointmentCalendarAsync(name);
+        const this: *IAppointmentStore = @ptrCast(self);
+        return try this.CreateAppointmentCalendarAsync(name);
     }
     pub fn GetAppointmentCalendarAsync(self: *@This(), calendarId: HSTRING) core.HResult!*IAsyncOperation(AppointmentCalendar) {
         const this: *IAppointmentStore = @ptrCast(self);
@@ -1153,17 +1151,17 @@ pub const AppointmentStore = extern struct {
         const this: *IAppointmentStore = @ptrCast(self);
         return try this.FindAppointmentCalendarsAsync();
     }
-    pub fn FindAppointmentCalendarsAsync(self: *@This(), options: FindAppointmentCalendarsOptions) core.HResult!*IAsyncOperation(IVectorView(AppointmentCalendar)) {
+    pub fn FindAppointmentCalendarsAsyncWithOptions(self: *@This(), options: FindAppointmentCalendarsOptions) core.HResult!*IAsyncOperation(IVectorView(AppointmentCalendar)) {
         const this: *IAppointmentStore = @ptrCast(self);
-        return try this.FindAppointmentCalendarsAsync(options);
+        return try this.FindAppointmentCalendarsAsyncWithOptions(options);
     }
     pub fn FindAppointmentsAsync(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         const this: *IAppointmentStore = @ptrCast(self);
         return try this.FindAppointmentsAsync(rangeStart, rangeLength);
     }
-    pub fn FindAppointmentsAsyncWithRangeLengthWithOptions(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan, options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
+    pub fn FindAppointmentsAsyncWithOptions(self: *@This(), rangeStart: DateTime, rangeLength: TimeSpan, options: *FindAppointmentsOptions) core.HResult!*IAsyncOperation(IVectorView(Appointment)) {
         const this: *IAppointmentStore = @ptrCast(self);
-        return try this.FindAppointmentsAsyncWithRangeLengthWithOptions(rangeStart, rangeLength, options);
+        return try this.FindAppointmentsAsyncWithOptions(rangeStart, rangeLength, options);
     }
     pub fn FindConflictAsync(self: *@This(), appointment: *Appointment) core.HResult!*IAsyncOperation(AppointmentConflictResult) {
         const this: *IAppointmentStore = @ptrCast(self);
@@ -1185,9 +1183,9 @@ pub const AppointmentStore = extern struct {
         const this: *IAppointmentStore = @ptrCast(self);
         return try this.ShowReplaceAppointmentAsync(localId, appointment, selection);
     }
-    pub fn ShowReplaceAppointmentAsyncWithSelectionWithPreferredPlacementWithInstanceStartDate(self: *@This(), localId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn ShowReplaceAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(self: *@This(), localId: HSTRING, appointment: *Appointment, selection: Rect, preferredPlacement: Placement, instanceStartDate: DateTime) core.HResult!*IAsyncOperation(HSTRING) {
         const this: *IAppointmentStore = @ptrCast(self);
-        return try this.ShowReplaceAppointmentAsyncWithSelectionWithPreferredPlacementWithInstanceStartDate(localId, appointment, selection, preferredPlacement, instanceStartDate);
+        return try this.ShowReplaceAppointmentAsyncWithPreferredPlacementWithInstanceStartDate(localId, appointment, selection, preferredPlacement, instanceStartDate);
     }
     pub fn ShowRemoveAppointmentAsync(self: *@This(), localId: HSTRING, selection: Rect) core.HResult!*IAsyncOperation(bool) {
         const this: *IAppointmentStore = @ptrCast(self);

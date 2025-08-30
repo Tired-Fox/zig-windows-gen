@@ -1186,33 +1186,33 @@ pub const IsolatedWindowsEnvironment = extern struct {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.StartProcessSilentlyAsync(hostExePath, arguments, activator);
     }
-    pub fn StartProcessSilentlyAsyncWithArgumentsWithActivatorWithTelemetryParameters(self: *@This(), hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
+    pub fn StartProcessSilentlyAsyncWithTelemetryParameters(self: *@This(), hostExePath: HSTRING, arguments: HSTRING, activator: IsolatedWindowsEnvironmentActivator, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentStartProcessResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
-        return try this.StartProcessSilentlyAsyncWithArgumentsWithActivatorWithTelemetryParameters(hostExePath, arguments, activator, telemetryParameters);
+        return try this.StartProcessSilentlyAsyncWithTelemetryParameters(hostExePath, arguments, activator, telemetryParameters);
     }
     pub fn ShareFolderAsync(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.ShareFolderAsync(hostFolder, requestOptions);
     }
-    pub fn ShareFolderAsyncWithRequestOptionsWithTelemetryParameters(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
+    pub fn ShareFolderAsyncWithTelemetryParameters(self: *@This(), hostFolder: HSTRING, requestOptions: *IsolatedWindowsEnvironmentShareFolderRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFolderResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
-        return try this.ShareFolderAsyncWithRequestOptionsWithTelemetryParameters(hostFolder, requestOptions, telemetryParameters);
+        return try this.ShareFolderAsyncWithTelemetryParameters(hostFolder, requestOptions, telemetryParameters);
     }
     pub fn LaunchFileWithUIAsync(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.LaunchFileWithUIAsync(appExePath, argumentsTemplate, filePath);
     }
-    pub fn LaunchFileWithUIAsyncWithArgumentsTemplateWithFilePathWithTelemetryParameters(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
+    pub fn LaunchFileWithUIAsyncWithTelemetryParameters(self: *@This(), appExePath: HSTRING, argumentsTemplate: HSTRING, filePath: HSTRING, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentLaunchFileResult) {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
-        return try this.LaunchFileWithUIAsyncWithArgumentsTemplateWithFilePathWithTelemetryParameters(appExePath, argumentsTemplate, filePath, telemetryParameters);
+        return try this.LaunchFileWithUIAsyncWithTelemetryParameters(appExePath, argumentsTemplate, filePath, telemetryParameters);
     }
     pub fn TerminateAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
         return try this.TerminateAsync();
     }
-    pub fn TerminateAsync(self: *@This(), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncAction {
+    pub fn TerminateAsyncWithTelemetryParameters(self: *@This(), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncAction {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
-        return try this.TerminateAsync(telemetryParameters);
+        return try this.TerminateAsyncWithTelemetryParameters(telemetryParameters);
     }
     pub fn RegisterMessageReceiver(self: *@This(), receiverId: *Guid, messageReceivedCallback: *MessageReceivedCallback) core.HResult!void {
         const this: *IIsolatedWindowsEnvironment = @ptrCast(self);
@@ -1228,11 +1228,11 @@ pub const IsolatedWindowsEnvironment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PostMessageToReceiverAsync(receiverId, message);
     }
-    pub fn PostMessageToReceiverAsyncWithMessageWithTelemetryParameters(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
+    pub fn PostMessageToReceiverAsyncWithTelemetryParameters(self: *@This(), receiverId: *Guid, message: *IIterable(IInspectable), telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentPostMessageResult) {
         var this: ?*IIsolatedWindowsEnvironment2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PostMessageToReceiverAsyncWithMessageWithTelemetryParameters(receiverId, message, telemetryParameters);
+        return try this.?.PostMessageToReceiverAsyncWithTelemetryParameters(receiverId, message, telemetryParameters);
     }
     pub fn GetUserInfo(self: *@This()) core.HResult!*IsolatedWindowsEnvironmentUserInfo {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
@@ -1246,11 +1246,11 @@ pub const IsolatedWindowsEnvironment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShareFileAsync(filePath, options);
     }
-    pub fn ShareFileAsyncWithOptionsWithTelemetryParameters(self: *@This(), filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
+    pub fn ShareFileAsyncWithTelemetryParameters(self: *@This(), filePath: HSTRING, options: *IsolatedWindowsEnvironmentShareFileRequestOptions, telemetryParameters: *IsolatedWindowsEnvironmentTelemetryParameters) core.HResult!*IAsyncOperation(IsolatedWindowsEnvironmentShareFileResult) {
         var this: ?*IIsolatedWindowsEnvironment3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIsolatedWindowsEnvironment3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ShareFileAsyncWithOptionsWithTelemetryParameters(filePath, options, telemetryParameters);
+        return try this.?.ShareFileAsyncWithTelemetryParameters(filePath, options, telemetryParameters);
     }
     pub fn ChangePriority(self: *@This(), Priority: IsolatedWindowsEnvironmentCreationPriority) core.HResult!void {
         var this: ?*IIsolatedWindowsEnvironment4 = undefined;

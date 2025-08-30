@@ -1017,32 +1017,32 @@ pub const LampArrayEffectPlaylist = extern struct {
         const this: *ILampArrayEffectPlaylist = @ptrCast(self);
         return try this.putRepetitionMode(value);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*ILampArrayEffect {
-        var this: ?*IVectorView = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVectorView(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVectorView = undefined;
+        var this: ?*IVectorView(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *ILampArrayEffect, index: u32) core.HResult!bool {
-        var this: ?*IVectorView = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVectorView(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]ILampArrayEffect) core.HResult!u32 {
-        var this: ?*IVectorView = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVectorView(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(ILampArrayEffect) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

@@ -2121,9 +2121,9 @@ pub const StoreAvailability = extern struct {
         const this: *IStoreAvailability = @ptrCast(self);
         return try this.RequestPurchaseAsync();
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         const this: *IStoreAvailability = @ptrCast(self);
-        return try this.RequestPurchaseAsync(storePurchaseProperties);
+        return try this.RequestPurchaseAsyncWithStorePurchaseProperties(storePurchaseProperties);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StoreAvailability";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2259,10 +2259,8 @@ pub const StoreContext = extern struct {
         return try this.GetStoreProductForCurrentAppAsync();
     }
     pub fn GetStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
-        var this: ?*IStoreContext3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetStoreProductsAsync(productKinds, storeIds);
+        const this: *IStoreContext = @ptrCast(self);
+        return try this.GetStoreProductsAsync(productKinds, storeIds);
     }
     pub fn GetAssociatedStoreProductsAsync(self: *@This(), productKinds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         const this: *IStoreContext = @ptrCast(self);
@@ -2313,10 +2311,8 @@ pub const StoreContext = extern struct {
         return try this.RequestDownloadAndInstallStorePackageUpdatesAsync(storePackageUpdates);
     }
     pub fn RequestDownloadAndInstallStorePackagesAsync(self: *@This(), storeIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(StorePackageUpdateResult,StorePackageUpdateStatus) {
-        var this: ?*IStoreContext3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestDownloadAndInstallStorePackagesAsync(storeIds);
+        const this: *IStoreContext = @ptrCast(self);
+        return try this.RequestDownloadAndInstallStorePackagesAsync(storeIds);
     }
     pub fn FindStoreProductForPackageAsync(self: *@This(), productKinds: *IIterable(HSTRING), package: *Package) core.HResult!*IAsyncOperation(StoreProductResult) {
         var this: ?*IStoreContext2 = undefined;
@@ -2354,11 +2350,11 @@ pub const StoreContext = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CanAcquireStoreLicenseAsync(productStoreId);
     }
-    pub fn GetStoreProductsAsyncWithStoreIdsWithStoreProductOptions(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
+    pub fn GetStoreProductsAsyncWithStoreProductOptions(self: *@This(), productKinds: *IIterable(HSTRING), storeIds: *IIterable(HSTRING), storeProductOptions: *StoreProductOptions) core.HResult!*IAsyncOperation(StoreProductQueryResult) {
         var this: ?*IStoreContext3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStoreContext3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetStoreProductsAsyncWithStoreIdsWithStoreProductOptions(productKinds, storeIds, storeProductOptions);
+        return try this.?.GetStoreProductsAsyncWithStoreProductOptions(productKinds, storeIds, storeProductOptions);
     }
     pub fn GetAssociatedStoreQueueItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StoreQueueItem)) {
         var this: ?*IStoreContext3 = undefined;
@@ -2751,9 +2747,9 @@ pub const StoreProduct = extern struct {
         const this: *IStoreProduct = @ptrCast(self);
         return try this.RequestPurchaseAsync();
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         const this: *IStoreProduct = @ptrCast(self);
-        return try this.RequestPurchaseAsync(storePurchaseProperties);
+        return try this.RequestPurchaseAsyncWithStorePurchaseProperties(storePurchaseProperties);
     }
     pub fn getInAppOfferToken(self: *@This()) core.HResult!HSTRING {
         const this: *IStoreProduct = @ptrCast(self);
@@ -3155,9 +3151,9 @@ pub const StoreSku = extern struct {
         const this: *IStoreSku = @ptrCast(self);
         return try this.RequestPurchaseAsync();
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         const this: *IStoreSku = @ptrCast(self);
-        return try this.RequestPurchaseAsync(storePurchaseProperties);
+        return try this.RequestPurchaseAsyncWithStorePurchaseProperties(storePurchaseProperties);
     }
     pub fn getIsSubscription(self: *@This()) core.HResult!bool {
         const this: *IStoreSku = @ptrCast(self);

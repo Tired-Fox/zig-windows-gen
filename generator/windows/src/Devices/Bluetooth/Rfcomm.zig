@@ -439,9 +439,9 @@ pub const RfcommDeviceService = extern struct {
         const this: *IRfcommDeviceService = @ptrCast(self);
         return try this.GetSdpRawAttributesAsync();
     }
-    pub fn GetSdpRawAttributesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(IMapView(u32,IBuffer)) {
+    pub fn GetSdpRawAttributesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(IMapView(u32,IBuffer)) {
         const this: *IRfcommDeviceService = @ptrCast(self);
-        return try this.GetSdpRawAttributesAsync(cacheMode);
+        return try this.GetSdpRawAttributesAsyncWithCacheMode(cacheMode);
     }
     pub fn getDevice(self: *@This()) core.HResult!*BluetoothDevice {
         var this: ?*IRfcommDeviceService2 = undefined;
@@ -585,10 +585,8 @@ pub const RfcommServiceProvider = extern struct {
         return try this.getSdpRawAttributes();
     }
     pub fn StartAdvertising(self: *@This(), listener: *StreamSocketListener) core.HResult!void {
-        var this: ?*IRfcommServiceProvider2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRfcommServiceProvider2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAdvertising(listener);
+        const this: *IRfcommServiceProvider = @ptrCast(self);
+        return try this.StartAdvertising(listener);
     }
     pub fn StopAdvertising(self: *@This()) core.HResult!void {
         const this: *IRfcommServiceProvider = @ptrCast(self);

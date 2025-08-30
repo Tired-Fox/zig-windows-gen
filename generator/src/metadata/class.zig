@@ -24,81 +24,85 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             try ctx.requirements.add("Windows", "IUnknown");
         }
 
+        var all_interface_methods: std.ArrayList(metadata.TypeSignature.Method) = .empty;
+        defer all_interface_methods.deinit(allocator);
+
         for (interfaces) |interface| {
-            try ctx.requirements.add(interface.Namespace, interface.Name);
             if (ctx.definitions.getMethods(interface.Namespace, interface.Name)) |methods| {
-                for (methods) |method| {
-                    try method_to_interface.put(allocator, method.Name, interface.Name);
-                }
+                try all_interface_methods.appendSlice(allocator, methods);
             }
         }
-    }
 
-    if (typedef.Methods) |methods| {
-        const nameMap = try generateMethodNameMap(allocator, methods);
+        const nameMap = try generateMethodNameMapSig(allocator, all_interface_methods.items);
         defer {
             for (nameMap) |n| allocator.free(n);
             allocator.free(nameMap);
         }
-        for (methods, 0..) |method, m| {
-            if (method.Static or std.mem.eql(u8, method.Name, ".ctor")) continue;
 
-            const mname = try replaceAll(allocator, nameMap[m], "_", "");
-            defer allocator.free(mname);
+        var idx: usize = 0;
+        for (interfaces) |interface| {
 
-            try writer.print("    pub fn {s}(self: *@This()", .{mname});
-            if (method.Parameters) |parameters| {
-                for (parameters) |param| {
-                    if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
-                        defer t.deinit(allocator);
-                        try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
+            try ctx.requirements.add(interface.Namespace, interface.Name);
+            if (ctx.definitions.getMethods(interface.Namespace, interface.Name)) |methods| {
+                for (methods) |method| {
+                    defer idx +|= 1;
+
+                    const mname = try replaceAll(allocator, nameMap[idx], "_", "");
+                    defer allocator.free(mname);
+
+                    try writer.print("    pub fn {s}(self: *@This()", .{mname});
+                    if (method.Parameters) |parameters| {
+                        for (parameters) |param| {
+                            if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
+                                defer t.deinit(allocator);
+                                try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
+                            }
+                        }
                     }
+
+                    const return_type = try ty.winToZig(allocator, ctx, &method.ReturnType);
+                    defer if (return_type) |rt| rt.deinit(allocator);
+
+                    if (return_type) |rt| {
+                        try writer.print(") core.HResult!{f} {{\n", .{rt.asParam()});
+                    } else {
+                        try writer.writeAll(") core.HResult!void {\n");
+                    }
+
+                    if (typedef.DefaultInterface != null and std.mem.eql(u8, typedef.DefaultInterface.?.Name, interface.Name)) {
+                        try writer.print("        const this: *{s} = @ptrCast(self);\n", .{interface.Name});
+                        try writer.print("        return try this.{s}(", .{mname});
+                    } else {
+                        try writer.print("        var this: ?*{s}", .{interface.Name});
+                        if (interface.GenericArguments) |ga| {
+                            try writer.writeAll("(");
+                            if (try ty.winToZig(allocator, ctx, &ga[0])) |t| {
+                                defer t.deinit(allocator);
+                                try writer.print("{f}", .{ t.asValue() });
+                            }
+                            for (1..ga.len) |i| {
+                                if (try ty.winToZig(allocator, ctx, &ga[i])) |t| {
+                                    defer t.deinit(allocator);
+                                    try writer.print(",{f}", .{ t.asValue() });
+                                }
+                            }
+
+                            try writer.writeAll(")");
+                        }
+                        try writer.writeAll(" = undefined;\n");
+                        try writer.print("        const _c = IUnknown.QueryInterface(@ptrCast(self), &{s}.IID, @ptrCast(&this));\n", .{interface.Name});
+                        try writer.writeAll("        if (this == null or _c != 0) return core.hresultToError(_c).err;\n");
+                        try writer.print("        return try this.?.{s}(", .{mname});
+                    }
+                    if (method.Parameters) |parameters| {
+                        try writer.print("{s}", .{noreserved(parameters[0].Name)});
+                        for (1..parameters.len) |i| {
+                            try writer.print(", {s}", .{noreserved(parameters[i].Name)});
+                        }
+                    }
+                    try writer.writeAll(");\n    }\n");
                 }
             }
-
-            const return_type = try ty.winToZig(allocator, ctx, &method.ReturnType);
-            defer if (return_type) |rt| rt.deinit(allocator);
-
-            if (return_type) |rt| {
-                try writer.print(") core.HResult!{f} {{\n", .{rt.asParam()});
-            } else {
-                try writer.writeAll(") core.HResult!void {\n");
-            }
-
-            const interface_method = method_to_interface.get(method.Name);
-            if (interface_method) |interface| {
-                if (typedef.DefaultInterface != null and std.mem.eql(u8, typedef.DefaultInterface.?.Name, interface)) {
-                    try writer.print("        const this: *{s} = @ptrCast(self);\n", .{interface});
-                    try writer.print("        return try this.{s}(", .{mname});
-                } else {
-                    try writer.print("        var this: ?*{s} = undefined;\n", .{interface});
-                    try writer.print("        const _c = IUnknown.QueryInterface(@ptrCast(self), &{s}.IID, @ptrCast(&this));\n", .{interface});
-                    try writer.writeAll("        if (this == null or _c != 0) return core.hresultToError(_c).err;\n");
-                    try writer.print("        return try this.?.{s}(", .{mname});
-                }
-                if (method.Parameters) |parameters| {
-                    try writer.print("{s}", .{noreserved(parameters[0].Name)});
-                    for (1..parameters.len) |i| {
-                        try writer.print(", {s}", .{noreserved(parameters[i].Name)});
-                    }
-                }
-                try writer.writeAll(");\n");
-            } else {
-                if (return_type) |rt| {
-                    try writer.print("        var _r: {f} = undefined;\n", .{rt.asParam()});
-                }
-                try writer.print("        _c = self.vtable.{s}(@ptrCast(self)", .{nameMap[m]});
-                if (method.Parameters) |parameters| {
-                    for (parameters) |param| {
-                        try writer.print(", {s}", .{noreserved(param.Name)});
-                    }
-                }
-                if (return_type != null) try writer.writeAll("&_r");
-                try writer.writeAll(");\n");
-                try writer.writeAll("        if (_c != 0) return core.hresultToError(_c).err;\n");
-                if (return_type != null) try writer.writeAll("        return _r;\n");
-            }
-            try writer.writeAll("    }\n");
         }
     }
 

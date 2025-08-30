@@ -1012,9 +1012,9 @@ pub const UserDataTaskList = extern struct {
         const this: *IUserDataTaskList = @ptrCast(self);
         return try this.GetTaskReader();
     }
-    pub fn GetTaskReader(self: *@This(), options: *UserDataTaskQueryOptions) core.HResult!*UserDataTaskReader {
+    pub fn GetTaskReaderWithOptions(self: *@This(), options: *UserDataTaskQueryOptions) core.HResult!*UserDataTaskReader {
         const this: *IUserDataTaskList = @ptrCast(self);
-        return try this.GetTaskReader(options);
+        return try this.GetTaskReaderWithOptions(options);
     }
     pub fn GetTaskAsync(self: *@This(), userDataTask: HSTRING) core.HResult!*IAsyncOperation(UserDataTask) {
         const this: *IUserDataTaskList = @ptrCast(self);

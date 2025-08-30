@@ -4,9 +4,9 @@ pub const HolographicKeyboard = extern struct {
         const this: *IHolographicKeyboard = @ptrCast(self);
         return try this.SetPlacementOverride(coordinateSystem, topCenterPosition, orientation);
     }
-    pub fn SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
+    pub fn SetPlacementOverrideWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
         const this: *IHolographicKeyboard = @ptrCast(self);
-        return try this.SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(coordinateSystem, topCenterPosition, orientation, maxSize);
+        return try this.SetPlacementOverrideWithMaxSize(coordinateSystem, topCenterPosition, orientation, maxSize);
     }
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
         const this: *IHolographicKeyboard = @ptrCast(self);

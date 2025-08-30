@@ -2478,11 +2478,11 @@ pub const Printing3DModel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryPartialRepairAsync();
     }
-    pub fn TryPartialRepairAsync(self: *@This(), maxWaitTime: TimeSpan) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryPartialRepairAsyncWithMaxWaitTime(self: *@This(), maxWaitTime: TimeSpan) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IPrinting3DModel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryPartialRepairAsync(maxWaitTime);
+        return try this.?.TryPartialRepairAsyncWithMaxWaitTime(maxWaitTime);
     }
     pub fn TryReduceFacesAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
@@ -2490,17 +2490,17 @@ pub const Printing3DModel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryReduceFacesAsync();
     }
-    pub fn TryReduceFacesAsync(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
+    pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryReduceFacesAsync(printing3DFaceReductionOptions);
+        return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(printing3DFaceReductionOptions);
     }
-    pub fn TryReduceFacesAsync(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
+    pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsWithMaxWait(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryReduceFacesAsync(printing3DFaceReductionOptions, maxWait);
+        return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsWithMaxWait(printing3DFaceReductionOptions, maxWait);
     }
     pub fn RepairWithProgressAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;

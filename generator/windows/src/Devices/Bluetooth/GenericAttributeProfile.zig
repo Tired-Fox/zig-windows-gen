@@ -36,9 +36,9 @@ pub const GattCharacteristic = extern struct {
         const this: *IGattCharacteristic = @ptrCast(self);
         return try this.ReadValueAsync();
     }
-    pub fn ReadValueAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattReadResult) {
+    pub fn ReadValueAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattReadResult) {
         const this: *IGattCharacteristic = @ptrCast(self);
-        return try this.ReadValueAsync(cacheMode);
+        return try this.ReadValueAsyncWithCacheMode(cacheMode);
     }
     pub fn WriteValueAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncOperation(GattCommunicationStatus) {
         const this: *IGattCharacteristic = @ptrCast(self);
@@ -82,11 +82,11 @@ pub const GattCharacteristic = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetDescriptorsAsync();
     }
-    pub fn GetDescriptorsAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
+    pub fn GetDescriptorsAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattCharacteristic3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetDescriptorsAsync(cacheMode);
+        return try this.?.GetDescriptorsAsyncWithCacheMode(cacheMode);
     }
     pub fn GetDescriptorsForUuidAsync(self: *@This(), descriptorUuid: *Guid) core.HResult!*IAsyncOperation(GattDescriptorsResult) {
         var this: ?*IGattCharacteristic3 = undefined;
@@ -558,9 +558,9 @@ pub const GattDescriptor = extern struct {
         const this: *IGattDescriptor = @ptrCast(self);
         return try this.ReadValueAsync();
     }
-    pub fn ReadValueAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattReadResult) {
+    pub fn ReadValueAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattReadResult) {
         const this: *IGattDescriptor = @ptrCast(self);
-        return try this.ReadValueAsync(cacheMode);
+        return try this.ReadValueAsyncWithCacheMode(cacheMode);
     }
     pub fn WriteValueAsync(self: *@This(), value: *IBuffer) core.HResult!*IAsyncOperation(GattCommunicationStatus) {
         const this: *IGattDescriptor = @ptrCast(self);
@@ -727,11 +727,11 @@ pub const GattDeviceService = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetCharacteristicsAsync();
     }
-    pub fn GetCharacteristicsAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
+    pub fn GetCharacteristicsAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCharacteristicsAsync(cacheMode);
+        return try this.?.GetCharacteristicsAsyncWithCacheMode(cacheMode);
     }
     pub fn GetCharacteristicsForUuidAsync(self: *@This(), characteristicUuid: *Guid) core.HResult!*IAsyncOperation(GattCharacteristicsResult) {
         var this: ?*IGattDeviceService3 = undefined;
@@ -751,11 +751,11 @@ pub const GattDeviceService = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIncludedServicesAsync();
     }
-    pub fn GetIncludedServicesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetIncludedServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IGattDeviceService3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIncludedServicesAsync(cacheMode);
+        return try this.?.GetIncludedServicesAsyncWithCacheMode(cacheMode);
     }
     pub fn GetIncludedServicesForUuidAsync(self: *@This(), serviceUuid: *Guid) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var this: ?*IGattDeviceService3 = undefined;
@@ -1530,9 +1530,9 @@ pub const GattServiceProvider = extern struct {
         const this: *IGattServiceProvider = @ptrCast(self);
         return try this.StartAdvertising();
     }
-    pub fn StartAdvertising(self: *@This(), parameters: *GattServiceProviderAdvertisingParameters) core.HResult!void {
+    pub fn StartAdvertisingWithParameters(self: *@This(), parameters: *GattServiceProviderAdvertisingParameters) core.HResult!void {
         const this: *IGattServiceProvider = @ptrCast(self);
-        return try this.StartAdvertising(parameters);
+        return try this.StartAdvertisingWithParameters(parameters);
     }
     pub fn StopAdvertising(self: *@This()) core.HResult!void {
         const this: *IGattServiceProvider = @ptrCast(self);

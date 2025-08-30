@@ -600,15 +600,15 @@ pub const SignOutUserOperation = extern struct {
 };
 pub const UserAuthenticationOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(UserIdentity)) core.HResult!void {
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(UserIdentity) {
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.getCompleted();
     }
-    pub fn GetResults(self: *@This()) core.HResult!*UserIdentity {
+    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.GetResults();
     }

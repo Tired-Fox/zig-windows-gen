@@ -211,17 +211,17 @@ pub const MediaTranscoder = extern struct {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.AddAudioEffect(activatableClassId);
     }
-    pub fn AddAudioEffectWithConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddAudioEffectWithEffectRequiredWithConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
-        return try this.AddAudioEffectWithConfiguration(activatableClassId, effectRequired, configuration);
+        return try this.AddAudioEffectWithEffectRequiredWithConfiguration(activatableClassId, effectRequired, configuration);
     }
     pub fn AddVideoEffect(self: *@This(), activatableClassId: HSTRING) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
         return try this.AddVideoEffect(activatableClassId);
     }
-    pub fn AddVideoEffectWithConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
+    pub fn AddVideoEffectWithEffectRequiredWithConfiguration(self: *@This(), activatableClassId: HSTRING, effectRequired: bool, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);
-        return try this.AddVideoEffectWithConfiguration(activatableClassId, effectRequired, configuration);
+        return try this.AddVideoEffectWithEffectRequiredWithConfiguration(activatableClassId, effectRequired, configuration);
     }
     pub fn ClearEffects(self: *@This()) core.HResult!void {
         const this: *IMediaTranscoder = @ptrCast(self);

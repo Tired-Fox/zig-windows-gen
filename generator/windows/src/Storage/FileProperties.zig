@@ -18,11 +18,11 @@ pub const BasicProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SavePropertiesAsync(propertiesToSave);
+        return try this.?.SavePropertiesAsyncWithPropertiesToSave(propertiesToSave);
     }
     pub fn SavePropertiesAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
@@ -68,11 +68,11 @@ pub const DocumentProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SavePropertiesAsync(propertiesToSave);
+        return try this.?.SavePropertiesAsyncWithPropertiesToSave(propertiesToSave);
     }
     pub fn SavePropertiesAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
@@ -887,11 +887,11 @@ pub const ImageProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SavePropertiesAsync(propertiesToSave);
+        return try this.?.SavePropertiesAsyncWithPropertiesToSave(propertiesToSave);
     }
     pub fn SavePropertiesAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
@@ -1013,11 +1013,11 @@ pub const MusicProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SavePropertiesAsync(propertiesToSave);
+        return try this.?.SavePropertiesAsyncWithPropertiesToSave(propertiesToSave);
     }
     pub fn SavePropertiesAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
@@ -1074,11 +1074,11 @@ pub const StorageItemContentProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SavePropertiesAsync(propertiesToSave);
+        return try this.?.SavePropertiesAsyncWithPropertiesToSave(propertiesToSave);
     }
     pub fn SavePropertiesAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
@@ -1094,6 +1094,12 @@ pub const StorageItemContentProperties = extern struct {
 };
 pub const StorageItemThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getContentType();
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -1148,18 +1154,6 @@ pub const StorageItemThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -1172,11 +1166,17 @@ pub const StorageItemThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub fn getOriginalWidth(self: *@This()) core.HResult!u32 {
         var this: ?*IThumbnailProperties = undefined;
@@ -1324,11 +1324,11 @@ pub const VideoProperties = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RetrievePropertiesAsync(propertiesToRetrieve);
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemExtraProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SavePropertiesAsync(propertiesToSave);
+        return try this.?.SavePropertiesAsyncWithPropertiesToSave(propertiesToSave);
     }
     pub fn SavePropertiesAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStorageItemExtraProperties = undefined;

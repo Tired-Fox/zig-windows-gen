@@ -297,9 +297,9 @@ pub const SearchSuggestionManager = extern struct {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.SetQueryWithLanguage(queryText, language);
     }
-    pub fn SetQueryWithLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
+    pub fn SetQueryWithLanguageWithLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
-        return try this.SetQueryWithLinguisticDetails(queryText, language, linguisticDetails);
+        return try this.SetQueryWithLanguageWithLinguisticDetails(queryText, language, linguisticDetails);
     }
     pub fn getSuggestions(self: *@This()) core.HResult!*IObservableVector(SearchSuggestion) {
         const this: *ISearchSuggestionManager = @ptrCast(self);

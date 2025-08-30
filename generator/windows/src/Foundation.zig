@@ -2621,35 +2621,35 @@ pub const WwwFormUrlDecoder = extern struct {
         const this: *IWwwFormUrlDecoderRuntimeClass = @ptrCast(self);
         return try this.GetFirstValueByName(name);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IWwwFormUrlDecoderEntry) {
-        var this: ?*IIterable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.First();
-    }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*IWwwFormUrlDecoderEntry {
-        var this: ?*IVectorView = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVectorView = undefined;
+        var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *IWwwFormUrlDecoderEntry, index: u32) core.HResult!bool {
-        var this: ?*IVectorView = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]IWwwFormUrlDecoderEntry) core.HResult!u32 {
-        var this: ?*IVectorView = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVectorView(IWwwFormUrlDecoderEntry) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
+    }
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IWwwFormUrlDecoderEntry) = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.First();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

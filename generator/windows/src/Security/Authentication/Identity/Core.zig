@@ -321,9 +321,9 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.DenySessionAsync(authenticationSessionInfo);
     }
-    pub fn DenySessionAsyncWithSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn DenySessionAsyncWithSessionIdWithSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
-        return try this.DenySessionAsyncWithSessionAuthenticationType(userAccountId, sessionId, sessionAuthenticationType);
+        return try this.DenySessionAsyncWithSessionIdWithSessionAuthenticationType(userAccountId, sessionId, sessionAuthenticationType);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

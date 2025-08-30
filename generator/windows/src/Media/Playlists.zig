@@ -79,9 +79,9 @@ pub const Playlist = extern struct {
         const this: *IPlaylist = @ptrCast(self);
         return try this.SaveAsAsync(saveLocation, desiredName, option);
     }
-    pub fn SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn SaveAsAsyncWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
         const this: *IPlaylist = @ptrCast(self);
-        return try this.SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(saveLocation, desiredName, option, playlistFormat);
+        return try this.SaveAsAsyncWithPlaylistFormat(saveLocation, desiredName, option, playlistFormat);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

@@ -264,9 +264,9 @@ pub const ApplicationTrigger = extern struct {
         const this: *IApplicationTrigger = @ptrCast(self);
         return try this.RequestAsync();
     }
-    pub fn RequestAsync(self: *@This(), arguments: *ValueSet) core.HResult!*IAsyncOperation(ApplicationTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), arguments: *ValueSet) core.HResult!*IAsyncOperation(ApplicationTriggerResult) {
         const this: *IApplicationTrigger = @ptrCast(self);
-        return try this.RequestAsync(arguments);
+        return try this.RequestAsyncWithArguments(arguments);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -408,10 +408,8 @@ pub const BackgroundTaskBuilder = extern struct {
         return try this.getName();
     }
     pub fn Register(self: *@This()) core.HResult!*BackgroundTaskRegistration {
-        var this: ?*IBackgroundTaskBuilder6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Register();
+        const this: *IBackgroundTaskBuilder = @ptrCast(self);
+        return try this.Register();
     }
     pub fn putCancelOnConditionLoss(self: *@This(), value: bool) core.HResult!void {
         var this: ?*IBackgroundTaskBuilder2 = undefined;
@@ -473,11 +471,11 @@ pub const BackgroundTaskBuilder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Validate();
     }
-    pub fn Register(self: *@This(), taskName: HSTRING) core.HResult!*BackgroundTaskRegistration {
+    pub fn RegisterWithTaskName(self: *@This(), taskName: HSTRING) core.HResult!*BackgroundTaskRegistration {
         var this: ?*IBackgroundTaskBuilder6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBackgroundTaskBuilder6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Register(taskName);
+        return try this.?.RegisterWithTaskName(taskName);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1373,9 +1371,9 @@ pub const DeviceServicingTrigger = extern struct {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
         return try this.RequestAsync(deviceId, expectedDuration);
     }
-    pub fn RequestAsyncWithExpectedDurationWithArguments(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), deviceId: HSTRING, expectedDuration: TimeSpan, arguments: HSTRING) core.HResult!*IAsyncOperation(DeviceTriggerResult) {
         const this: *IDeviceServicingTrigger = @ptrCast(self);
-        return try this.RequestAsyncWithExpectedDurationWithArguments(deviceId, expectedDuration, arguments);
+        return try this.RequestAsyncWithArguments(deviceId, expectedDuration, arguments);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -4251,9 +4249,9 @@ pub const MediaProcessingTrigger = extern struct {
         const this: *IMediaProcessingTrigger = @ptrCast(self);
         return try this.RequestAsync();
     }
-    pub fn RequestAsync(self: *@This(), arguments: *ValueSet) core.HResult!*IAsyncOperation(MediaProcessingTriggerResult) {
+    pub fn RequestAsyncWithArguments(self: *@This(), arguments: *ValueSet) core.HResult!*IAsyncOperation(MediaProcessingTriggerResult) {
         const this: *IMediaProcessingTrigger = @ptrCast(self);
-        return try this.RequestAsync(arguments);
+        return try this.RequestAsyncWithArguments(arguments);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

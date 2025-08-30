@@ -1052,11 +1052,11 @@ pub const WebAccountProviderGetTokenSilentOperation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReportUserInteractionRequired();
     }
-    pub fn ReportUserInteractionRequired(self: *@This(), value: *WebProviderError) core.HResult!void {
+    pub fn ReportUserInteractionRequiredWithValue(self: *@This(), value: *WebProviderError) core.HResult!void {
         var this: ?*IWebAccountProviderSilentReportOperation = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebAccountProviderSilentReportOperation.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReportUserInteractionRequired(value);
+        return try this.?.ReportUserInteractionRequiredWithValue(value);
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         var this: ?*IWebAccountProviderBaseReportOperation = undefined;

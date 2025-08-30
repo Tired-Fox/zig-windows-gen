@@ -128,33 +128,33 @@ pub const HidDevice = extern struct {
         const this: *IHidDevice = @ptrCast(self);
         return try this.GetInputReportAsync();
     }
-    pub fn GetInputReportAsync(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidInputReport) {
+    pub fn GetInputReportAsyncWithReportId(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidInputReport) {
         const this: *IHidDevice = @ptrCast(self);
-        return try this.GetInputReportAsync(reportId);
+        return try this.GetInputReportAsyncWithReportId(reportId);
     }
     pub fn GetFeatureReportAsync(self: *@This()) core.HResult!*IAsyncOperation(HidFeatureReport) {
         const this: *IHidDevice = @ptrCast(self);
         return try this.GetFeatureReportAsync();
     }
-    pub fn GetFeatureReportAsync(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidFeatureReport) {
+    pub fn GetFeatureReportAsyncWithReportId(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidFeatureReport) {
         const this: *IHidDevice = @ptrCast(self);
-        return try this.GetFeatureReportAsync(reportId);
+        return try this.GetFeatureReportAsyncWithReportId(reportId);
     }
     pub fn CreateOutputReport(self: *@This()) core.HResult!*HidOutputReport {
         const this: *IHidDevice = @ptrCast(self);
         return try this.CreateOutputReport();
     }
-    pub fn CreateOutputReport(self: *@This(), reportId: u16) core.HResult!*HidOutputReport {
+    pub fn CreateOutputReportWithReportId(self: *@This(), reportId: u16) core.HResult!*HidOutputReport {
         const this: *IHidDevice = @ptrCast(self);
-        return try this.CreateOutputReport(reportId);
+        return try this.CreateOutputReportWithReportId(reportId);
     }
     pub fn CreateFeatureReport(self: *@This()) core.HResult!*HidFeatureReport {
         const this: *IHidDevice = @ptrCast(self);
         return try this.CreateFeatureReport();
     }
-    pub fn CreateFeatureReport(self: *@This(), reportId: u16) core.HResult!*HidFeatureReport {
+    pub fn CreateFeatureReportWithReportId(self: *@This(), reportId: u16) core.HResult!*HidFeatureReport {
         const this: *IHidDevice = @ptrCast(self);
-        return try this.CreateFeatureReport(reportId);
+        return try this.CreateFeatureReportWithReportId(reportId);
     }
     pub fn SendOutputReportAsync(self: *@This(), outputReport: *HidOutputReport) core.HResult!*IAsyncOperation(u32) {
         const this: *IHidDevice = @ptrCast(self);
@@ -1254,6 +1254,6 @@ const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const IClosable = @import("../Foundation.zig").IClosable;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
+const IClosable = @import("../Foundation.zig").IClosable;
 const HSTRING = @import("../root.zig").HSTRING;

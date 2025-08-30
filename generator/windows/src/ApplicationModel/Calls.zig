@@ -3744,11 +3744,9 @@ pub const VoipCallControlDeviceKind = enum(i32) {
 };
 pub const VoipCallCoordinator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn ReserveCallResourcesAsync(self: *@This(), taskEntryPoint: HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
-        var this: ?*IVoipCallCoordinator4 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReserveCallResourcesAsync(taskEntryPoint);
+    pub fn ReserveCallResourcesAsyncWithTaskEntryPoint(self: *@This(), taskEntryPoint: HSTRING) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
+        const this: *IVoipCallCoordinator = @ptrCast(self);
+        return try this.ReserveCallResourcesAsyncWithTaskEntryPoint(taskEntryPoint);
     }
     pub fn addMuteStateChanged(self: *@This(), muteChangeHandler: *TypedEventHandler(VoipCallCoordinator,MuteChangeEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IVoipCallCoordinator = @ptrCast(self);
@@ -3759,10 +3757,8 @@ pub const VoipCallCoordinator = extern struct {
         return try this.removeMuteStateChanged(token);
     }
     pub fn RequestNewIncomingCall(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan) core.HResult!*VoipPhoneCall {
-        var this: ?*IVoipCallCoordinator3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestNewIncomingCall(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout);
+        const this: *IVoipCallCoordinator = @ptrCast(self);
+        return try this.RequestNewIncomingCall(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout);
     }
     pub fn RequestNewOutgoingCall(self: *@This(), context: HSTRING, contactName: HSTRING, serviceName: HSTRING, media: VoipPhoneCallMedia) core.HResult!*VoipPhoneCall {
         const this: *IVoipCallCoordinator = @ptrCast(self);
@@ -3804,11 +3800,11 @@ pub const VoipCallCoordinator = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestNewAppInitiatedCall(context, contactName, contactNumber, serviceName, media);
     }
-    pub fn RequestNewIncomingCallWithContactNameWithContactNumberWithContactImageWithServiceNameWithBrandingImageWithCallDetailsWithRingtoneWithMediaWithRingTimeoutWithContactRemoteId(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING) core.HResult!*VoipPhoneCall {
+    pub fn RequestNewIncomingCallWithContactRemoteId(self: *@This(), context: HSTRING, contactName: HSTRING, contactNumber: HSTRING, contactImage: *Uri, serviceName: HSTRING, brandingImage: *Uri, callDetails: HSTRING, ringtone: *Uri, media: VoipPhoneCallMedia, ringTimeout: TimeSpan, contactRemoteId: HSTRING) core.HResult!*VoipPhoneCall {
         var this: ?*IVoipCallCoordinator3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipCallCoordinator3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestNewIncomingCallWithContactNameWithContactNumberWithContactImageWithServiceNameWithBrandingImageWithCallDetailsWithRingtoneWithMediaWithRingTimeoutWithContactRemoteId(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId);
+        return try this.?.RequestNewIncomingCallWithContactRemoteId(context, contactName, contactNumber, contactImage, serviceName, brandingImage, callDetails, ringtone, media, ringTimeout, contactRemoteId);
     }
     pub fn ReserveCallResourcesAsync(self: *@This()) core.HResult!*IAsyncOperation(VoipPhoneCallResourceReservationStatus) {
         var this: ?*IVoipCallCoordinator4 = undefined;
@@ -3910,10 +3906,8 @@ pub const VoipPhoneCall = extern struct {
         return try this.NotifyCallHeld();
     }
     pub fn NotifyCallActive(self: *@This()) core.HResult!void {
-        var this: ?*IVoipPhoneCall4 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.NotifyCallActive();
+        const this: *IVoipPhoneCall = @ptrCast(self);
+        return try this.NotifyCallActive();
     }
     pub fn NotifyCallEnded(self: *@This()) core.HResult!void {
         const this: *IVoipPhoneCall = @ptrCast(self);
@@ -3965,11 +3959,11 @@ pub const VoipPhoneCall = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsUsingAssociatedDevicesList();
     }
-    pub fn NotifyCallActive(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!void {
+    pub fn NotifyCallActiveWithAssociatedDeviceIds(self: *@This(), associatedDeviceIds: *IIterable(HSTRING)) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVoipPhoneCall4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.NotifyCallActive(associatedDeviceIds);
+        return try this.?.NotifyCallActiveWithAssociatedDeviceIds(associatedDeviceIds);
     }
     pub fn AddAssociatedCallControlDevice(self: *@This(), deviceId: HSTRING) core.HResult!void {
         var this: ?*IVoipPhoneCall4 = undefined;
@@ -4878,9 +4872,9 @@ pub const PhoneCallHistoryStore = extern struct {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);
         return try this.GetEntryReader();
     }
-    pub fn GetEntryReader(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
+    pub fn GetEntryReaderWithQueryOptions(self: *@This(), queryOptions: *PhoneCallHistoryEntryQueryOptions) core.HResult!*PhoneCallHistoryEntryReader {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);
-        return try this.GetEntryReader(queryOptions);
+        return try this.GetEntryReaderWithQueryOptions(queryOptions);
     }
     pub fn SaveEntryAsync(self: *@This(), callHistoryEntry: *PhoneCallHistoryEntry) core.HResult!*IAsyncAction {
         const this: *IPhoneCallHistoryStore = @ptrCast(self);

@@ -235,7 +235,7 @@ pub const DeviceInformation = extern struct {
 };
 pub const DeviceInformationCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*DeviceInformation {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -243,16 +243,16 @@ pub const DeviceInformationCollection = extern struct {
         const this: *IVectorView = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *DeviceInformation, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVectorView = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]DeviceInformation) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(DeviceInformation) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(DeviceInformation) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -273,9 +273,9 @@ pub const DeviceInformationCustomPairing = extern struct {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
         return try this.PairAsyncWithMinProtectionLevel(pairingKindsSupported, minProtectionLevel);
     }
-    pub fn PairAsyncWithDevicePairingSettings(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
+    pub fn PairAsyncWithMinProtectionLevelWithDevicePairingSettings(self: *@This(), pairingKindsSupported: DevicePairingKinds, minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
-        return try this.PairAsyncWithDevicePairingSettings(pairingKindsSupported, minProtectionLevel, devicePairingSettings);
+        return try this.PairAsyncWithMinProtectionLevelWithDevicePairingSettings(pairingKindsSupported, minProtectionLevel, devicePairingSettings);
     }
     pub fn addPairingRequested(self: *@This(), handler: *TypedEventHandler(DeviceInformationCustomPairing,DevicePairingRequestedEventArgs)) core.HResult!EventRegistrationToken {
         const this: *IDeviceInformationCustomPairing = @ptrCast(self);
@@ -332,16 +332,12 @@ pub const DeviceInformationPairing = extern struct {
         return try this.getCanPair();
     }
     pub fn PairAsync(self: *@This()) core.HResult!*IAsyncOperation(DevicePairingResult) {
-        var this: ?*IDeviceInformationPairing2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PairAsync();
+        const this: *IDeviceInformationPairing = @ptrCast(self);
+        return try this.PairAsync();
     }
-    pub fn PairAsync(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
-        var this: ?*IDeviceInformationPairing2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PairAsync(minProtectionLevel);
+    pub fn PairAsyncWithMinProtectionLevel(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel) core.HResult!*IAsyncOperation(DevicePairingResult) {
+        const this: *IDeviceInformationPairing = @ptrCast(self);
+        return try this.PairAsyncWithMinProtectionLevel(minProtectionLevel);
     }
     pub fn getProtectionLevel(self: *@This()) core.HResult!DevicePairingProtectionLevel {
         var this: ?*IDeviceInformationPairing2 = undefined;
@@ -355,11 +351,11 @@ pub const DeviceInformationPairing = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCustom();
     }
-    pub fn PairAsync(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
+    pub fn PairAsyncWithMinProtectionLevelWithDevicePairingSettings(self: *@This(), minProtectionLevel: DevicePairingProtectionLevel, devicePairingSettings: *IDevicePairingSettings) core.HResult!*IAsyncOperation(DevicePairingResult) {
         var this: ?*IDeviceInformationPairing2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDeviceInformationPairing2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.PairAsync(minProtectionLevel, devicePairingSettings);
+        return try this.?.PairAsyncWithMinProtectionLevelWithDevicePairingSettings(minProtectionLevel, devicePairingSettings);
     }
     pub fn UnpairAsync(self: *@This()) core.HResult!*IAsyncOperation(DeviceUnpairingResult) {
         var this: ?*IDeviceInformationPairing2 = undefined;
@@ -449,9 +445,9 @@ pub const DevicePairingRequestedEventArgs = extern struct {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
         return try this.Accept();
     }
-    pub fn Accept(self: *@This(), pin: HSTRING) core.HResult!void {
+    pub fn AcceptWithPin(self: *@This(), pin: HSTRING) core.HResult!void {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
-        return try this.Accept(pin);
+        return try this.AcceptWithPin(pin);
     }
     pub fn GetDeferral(self: *@This()) core.HResult!*Deferral {
         const this: *IDevicePairingRequestedEventArgs = @ptrCast(self);
@@ -709,6 +705,12 @@ pub const DeviceSelectedEventArgs = extern struct {
 };
 pub const DeviceThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getContentType();
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -763,18 +765,6 @@ pub const DeviceThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -787,11 +777,17 @@ pub const DeviceThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.DeviceThumbnail";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

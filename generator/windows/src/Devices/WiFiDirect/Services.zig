@@ -664,9 +664,9 @@ pub const WiFiDirectService = extern struct {
         const this: *IWiFiDirectService = @ptrCast(self);
         return try this.ConnectAsync();
     }
-    pub fn ConnectAsync(self: *@This(), pin: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
+    pub fn ConnectAsyncWithPin(self: *@This(), pin: HSTRING) core.HResult!*IAsyncOperation(WiFiDirectServiceSession) {
         const this: *IWiFiDirectService = @ptrCast(self);
-        return try this.ConnectAsync(pin);
+        return try this.ConnectAsyncWithPin(pin);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

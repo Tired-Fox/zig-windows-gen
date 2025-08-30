@@ -2109,49 +2109,49 @@ pub const MediaExtensionManager = extern struct {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterSchemeHandler(activatableClassId, scheme);
     }
-    pub fn RegisterSchemeHandlerWithSchemeWithConfiguration(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterSchemeHandlerWithConfiguration(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterSchemeHandlerWithSchemeWithConfiguration(activatableClassId, scheme, configuration);
+        return try this.RegisterSchemeHandlerWithConfiguration(activatableClassId, scheme, configuration);
     }
     pub fn RegisterByteStreamHandler(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterByteStreamHandler(activatableClassId, fileExtension, mimeType);
     }
-    pub fn RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterByteStreamHandlerWithConfiguration(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(activatableClassId, fileExtension, mimeType, configuration);
+        return try this.RegisterByteStreamHandlerWithConfiguration(activatableClassId, fileExtension, mimeType, configuration);
     }
     pub fn RegisterAudioDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterAudioDecoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterAudioDecoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterAudioDecoderWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterAudioEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterAudioEncoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterAudioEncoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterAudioEncoderWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterVideoDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterVideoDecoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterVideoDecoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterVideoDecoderWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterVideoEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
         return try this.RegisterVideoEncoder(activatableClassId, inputSubtype, outputSubtype);
     }
-    pub fn RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+    pub fn RegisterVideoEncoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
         const this: *IMediaExtensionManager = @ptrCast(self);
-        return try this.RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
+        return try this.RegisterVideoEncoderWithConfiguration(activatableClassId, inputSubtype, outputSubtype, configuration);
     }
     pub fn RegisterMediaExtensionForAppService(self: *@This(), extension: *IMediaExtension, connection: *AppServiceConnection) core.HResult!void {
         var this: ?*IMediaExtensionManager2 = undefined;
@@ -2892,10 +2892,8 @@ pub const VideoFrame = extern struct {
         return try this.getSoftwareBitmap();
     }
     pub fn CopyToAsync(self: *@This(), frame: *VideoFrame) core.HResult!*IAsyncAction {
-        var this: ?*IVideoFrame2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoFrame2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyToAsync(frame);
+        const this: *IVideoFrame = @ptrCast(self);
+        return try this.CopyToAsync(frame);
     }
     pub fn getDirect3DSurface(self: *@This()) core.HResult!*IDirect3DSurface {
         const this: *IVideoFrame = @ptrCast(self);
@@ -2973,11 +2971,11 @@ pub const VideoFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn CopyToAsyncWithDestinationBounds(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
+    pub fn CopyToAsyncWithSourceBoundsWithDestinationBounds(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
         var this: ?*IVideoFrame2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyToAsyncWithDestinationBounds(frame, sourceBounds, destinationBounds);
+        return try this.?.CopyToAsyncWithSourceBoundsWithDestinationBounds(frame, sourceBounds, destinationBounds);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

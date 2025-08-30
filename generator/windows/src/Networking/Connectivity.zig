@@ -313,9 +313,9 @@ pub const ConnectionProfile = extern struct {
         const this: *IConnectionProfile = @ptrCast(self);
         return try this.GetLocalUsage(StartTime, EndTime);
     }
-    pub fn GetLocalUsageWithEndTimeWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
+    pub fn GetLocalUsageWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
         const this: *IConnectionProfile = @ptrCast(self);
-        return try this.GetLocalUsageWithEndTimeWithStates(StartTime, EndTime, States);
+        return try this.GetLocalUsageWithStates(StartTime, EndTime, States);
     }
     pub fn getNetworkSecuritySettings(self: *@This()) core.HResult!*NetworkSecuritySettings {
         const this: *IConnectionProfile = @ptrCast(self);

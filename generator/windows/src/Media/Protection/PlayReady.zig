@@ -2424,7 +2424,7 @@ pub const PlayReadyDomain = extern struct {
 };
 pub const PlayReadyDomainIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyDomain) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
         const this: *IIterable = @ptrCast(self);
         return try this.First();
     }
@@ -2444,7 +2444,7 @@ pub const PlayReadyDomainIterable = extern struct {
 };
 pub const PlayReadyDomainIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!*IPlayReadyDomain {
+    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
         const this: *IIterator = @ptrCast(self);
         return try this.getCurrent();
     }
@@ -2456,7 +2456,7 @@ pub const PlayReadyDomainIterator = extern struct {
         const this: *IIterator = @ptrCast(self);
         return try this.MoveNext();
     }
-    pub fn GetMany(self: *@This(), items: [*]IPlayReadyDomain) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IIterator = @ptrCast(self);
         return try this.GetMany(items);
     }
@@ -2961,7 +2961,7 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
 };
 pub const PlayReadyLicenseIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyLicense) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
         const this: *IIterable = @ptrCast(self);
         return try this.First();
     }
@@ -2986,7 +2986,7 @@ pub const PlayReadyLicenseIterable = extern struct {
 };
 pub const PlayReadyLicenseIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!*IPlayReadyLicense {
+    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
         const this: *IIterator = @ptrCast(self);
         return try this.getCurrent();
     }
@@ -2998,7 +2998,7 @@ pub const PlayReadyLicenseIterator = extern struct {
         const this: *IIterator = @ptrCast(self);
         return try this.MoveNext();
     }
-    pub fn GetMany(self: *@This(), items: [*]IPlayReadyLicense) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IIterator = @ptrCast(self);
         return try this.GetMany(items);
     }
@@ -3225,7 +3225,7 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
 };
 pub const PlayReadySecureStopIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadySecureStopServiceRequest) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
         const this: *IIterable = @ptrCast(self);
         return try this.First();
     }
@@ -3245,7 +3245,7 @@ pub const PlayReadySecureStopIterable = extern struct {
 };
 pub const PlayReadySecureStopIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!*IPlayReadySecureStopServiceRequest {
+    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
         const this: *IIterator = @ptrCast(self);
         return try this.getCurrent();
     }
@@ -3257,7 +3257,7 @@ pub const PlayReadySecureStopIterator = extern struct {
         const this: *IIterator = @ptrCast(self);
         return try this.MoveNext();
     }
-    pub fn GetMany(self: *@This(), items: [*]IPlayReadySecureStopServiceRequest) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IIterator = @ptrCast(self);
         return try this.GetMany(items);
     }

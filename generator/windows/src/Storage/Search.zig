@@ -57,11 +57,11 @@ pub const ContentIndexer = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateQueryWithSortOrderWithSearchFilterLanguage(searchFilter, propertiesToRetrieve, sortOrder, searchFilterLanguage);
     }
-    pub fn CreateQueryWithPropertiesToRetrieveWithSortOrder(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
+    pub fn CreateQueryWithSortOrder(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING), sortOrder: *IIterable(SortEntry)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentIndexerQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateQueryWithPropertiesToRetrieveWithSortOrder(searchFilter, propertiesToRetrieve, sortOrder);
+        return try this.?.CreateQueryWithSortOrder(searchFilter, propertiesToRetrieve, sortOrder);
     }
     pub fn CreateQuery(self: *@This(), searchFilter: HSTRING, propertiesToRetrieve: *IIterable(HSTRING)) core.HResult!*ContentIndexerQuery {
         var this: ?*IContentIndexerQueryOperations = undefined;
@@ -97,17 +97,17 @@ pub const ContentIndexerQuery = extern struct {
         const this: *IContentIndexerQuery = @ptrCast(self);
         return try this.GetPropertiesAsync();
     }
-    pub fn GetPropertiesAsync(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) {
+    pub fn GetPropertiesAsyncWithStartIndexWithMaxItems(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IMapView(HSTRING,IInspectable))) {
         const this: *IContentIndexerQuery = @ptrCast(self);
-        return try this.GetPropertiesAsync(startIndex, maxItems);
+        return try this.GetPropertiesAsyncWithStartIndexWithMaxItems(startIndex, maxItems);
     }
     pub fn GetAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IIndexableContent)) {
         const this: *IContentIndexerQuery = @ptrCast(self);
         return try this.GetAsync();
     }
-    pub fn GetAsync(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IIndexableContent)) {
+    pub fn GetAsyncWithStartIndexWithMaxItems(self: *@This(), startIndex: u32, maxItems: u32) core.HResult!*IAsyncOperation(IVectorView(IIndexableContent)) {
         const this: *IContentIndexerQuery = @ptrCast(self);
-        return try this.GetAsync(startIndex, maxItems);
+        return try this.GetAsyncWithStartIndexWithMaxItems(startIndex, maxItems);
     }
     pub fn getQueryFolder(self: *@This()) core.HResult!*StorageFolder {
         const this: *IContentIndexerQuery = @ptrCast(self);
@@ -1142,7 +1142,7 @@ pub const SortEntry = extern struct {
 };
 pub const SortEntryVector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!SortEntry {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -1150,19 +1150,19 @@ pub const SortEntryVector = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(SortEntry) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: SortEntry, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: SortEntry) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: SortEntry) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -1170,7 +1170,7 @@ pub const SortEntryVector = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: SortEntry) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -1182,16 +1182,16 @@ pub const SortEntryVector = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]SortEntry) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]SortEntry) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(SortEntry) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(SortEntry) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1204,9 +1204,9 @@ pub const SortEntryVector = extern struct {
 };
 pub const StorageFileQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetFilesAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
+    pub fn GetFilesAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
         const this: *IStorageFileQueryResult = @ptrCast(self);
-        return try this.GetFilesAsync(startIndex, maxNumberOfItems);
+        return try this.GetFilesAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetFilesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
         const this: *IStorageFileQueryResult = @ptrCast(self);
@@ -1280,9 +1280,9 @@ pub const StorageFileQueryResult = extern struct {
 };
 pub const StorageFolderQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetFoldersAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
+    pub fn GetFoldersAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
         const this: *IStorageFolderQueryResult = @ptrCast(self);
-        return try this.GetFoldersAsync(startIndex, maxNumberOfItems);
+        return try this.GetFoldersAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetFoldersAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
         const this: *IStorageFolderQueryResult = @ptrCast(self);
@@ -1350,9 +1350,9 @@ pub const StorageFolderQueryResult = extern struct {
 };
 pub const StorageItemQueryResult = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetItemsAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItem)) {
+    pub fn GetItemsAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItem)) {
         const this: *IStorageItemQueryResult = @ptrCast(self);
-        return try this.GetItemsAsync(startIndex, maxNumberOfItems);
+        return try this.GetItemsAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IStorageItem)) {
         const this: *IStorageItemQueryResult = @ptrCast(self);

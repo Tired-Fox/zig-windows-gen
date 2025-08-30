@@ -1250,9 +1250,9 @@ pub const RenderTargetBitmap = extern struct {
         const this: *IRenderTargetBitmap = @ptrCast(self);
         return try this.RenderAsync(element);
     }
-    pub fn RenderAsyncWithScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
+    pub fn RenderAsyncWithScaledWidthWithScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
         const this: *IRenderTargetBitmap = @ptrCast(self);
-        return try this.RenderAsyncWithScaledHeight(element, scaledWidth, scaledHeight);
+        return try this.RenderAsyncWithScaledWidthWithScaledHeight(element, scaledWidth, scaledHeight);
     }
     pub fn GetPixelsAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IRenderTargetBitmap = @ptrCast(self);

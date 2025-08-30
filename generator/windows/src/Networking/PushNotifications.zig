@@ -459,9 +459,9 @@ pub const PushNotificationChannelManagerForUser = extern struct {
         const this: *IPushNotificationChannelManagerForUser = @ptrCast(self);
         return try this.CreatePushNotificationChannelForApplicationAsync();
     }
-    pub fn CreatePushNotificationChannelForApplicationAsync(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
+    pub fn CreatePushNotificationChannelForApplicationAsyncWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         const this: *IPushNotificationChannelManagerForUser = @ptrCast(self);
-        return try this.CreatePushNotificationChannelForApplicationAsync(applicationId);
+        return try this.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId);
     }
     pub fn CreatePushNotificationChannelForSecondaryTileAsync(self: *@This(), tileId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         const this: *IPushNotificationChannelManagerForUser = @ptrCast(self);
@@ -477,11 +477,11 @@ pub const PushNotificationChannelManagerForUser = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync(appServerKey, channelId);
     }
-    pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithChannelIdWithAppId(self: *@This(), appServerKey: *IBuffer, channelId: HSTRING, appId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
+    pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId(self: *@This(), appServerKey: *IBuffer, channelId: HSTRING, appId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var this: ?*IPushNotificationChannelManagerForUser2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPushNotificationChannelManagerForUser2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithChannelIdWithAppId(appServerKey, channelId, appId);
+        return try this.?.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId(appServerKey, channelId, appId);
     }
     pub const NAME: []const u8 = "Windows.Networking.PushNotifications.PushNotificationChannelManagerForUser";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -100,15 +100,15 @@ pub const DeleteSmsMessagesOperation = extern struct {
 };
 pub const GetSmsDeviceOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(SmsDevice)) core.HResult!void {
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(SmsDevice) {
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.getCompleted();
     }
-    pub fn GetResults(self: *@This()) core.HResult!*SmsDevice {
+    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.GetResults();
     }
@@ -150,15 +150,15 @@ pub const GetSmsDeviceOperation = extern struct {
 };
 pub const GetSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(ISmsMessage)) core.HResult!void {
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(ISmsMessage) {
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.getCompleted();
     }
-    pub fn GetResults(self: *@This()) core.HResult!*ISmsMessage {
+    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.GetResults();
     }
@@ -200,23 +200,23 @@ pub const GetSmsMessageOperation = extern struct {
 };
 pub const GetSmsMessagesOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
+    pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(TResult,TProgress)) core.HResult!void {
         const this: *IAsyncOperationWithProgress = @ptrCast(self);
         return try this.putProgress(handler);
     }
-    pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32) {
+    pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(TResult,TProgress) {
         const this: *IAsyncOperationWithProgress = @ptrCast(self);
         return try this.getProgress();
     }
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress)) core.HResult!void {
         const this: *IAsyncOperationWithProgress = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32) {
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(TResult,TProgress) {
         const this: *IAsyncOperationWithProgress = @ptrCast(self);
         return try this.getCompleted();
     }
-    pub fn GetResults(self: *@This()) core.HResult!*IVectorView(ISmsMessage) {
+    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
         const this: *IAsyncOperationWithProgress = @ptrCast(self);
         return try this.GetResults();
     }

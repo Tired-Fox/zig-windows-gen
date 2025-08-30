@@ -912,9 +912,9 @@ pub const SearchPane = extern struct {
         const this: *ISearchPane = @ptrCast(self);
         return try this.Show();
     }
-    pub fn Show(self: *@This(), query: HSTRING) core.HResult!void {
+    pub fn ShowWithQuery(self: *@This(), query: HSTRING) core.HResult!void {
         const this: *ISearchPane = @ptrCast(self);
-        return try this.Show(query);
+        return try this.ShowWithQuery(query);
     }
     pub fn putShowOnKeyboardInput(self: *@This(), value: bool) core.HResult!void {
         const this: *ISearchPane = @ptrCast(self);

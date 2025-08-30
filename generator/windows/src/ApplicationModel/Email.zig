@@ -206,9 +206,9 @@ pub const EmailConversation = extern struct {
         const this: *IEmailConversation = @ptrCast(self);
         return try this.FindMessagesAsync();
     }
-    pub fn FindMessagesAsync(self: *@This(), count: u32) core.HResult!*IAsyncOperation(IVectorView(EmailMessage)) {
+    pub fn FindMessagesAsyncWithCount(self: *@This(), count: u32) core.HResult!*IAsyncOperation(IVectorView(EmailMessage)) {
         const this: *IEmailConversation = @ptrCast(self);
-        return try this.FindMessagesAsync(count);
+        return try this.FindMessagesAsyncWithCount(count);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailConversation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -316,9 +316,9 @@ pub const EmailFolder = extern struct {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.GetConversationReader();
     }
-    pub fn GetConversationReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
+    pub fn GetConversationReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
         const this: *IEmailFolder = @ptrCast(self);
-        return try this.GetConversationReader(options);
+        return try this.GetConversationReaderWithOptions(options);
     }
     pub fn GetMessageAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMessage) {
         const this: *IEmailFolder = @ptrCast(self);
@@ -328,9 +328,9 @@ pub const EmailFolder = extern struct {
         const this: *IEmailFolder = @ptrCast(self);
         return try this.GetMessageReader();
     }
-    pub fn GetMessageReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
+    pub fn GetMessageReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
         const this: *IEmailFolder = @ptrCast(self);
-        return try this.GetMessageReader(options);
+        return try this.GetMessageReaderWithOptions(options);
     }
     pub fn GetMessageCountsAsync(self: *@This()) core.HResult!*IAsyncOperation(EmailItemCounts) {
         const this: *IEmailFolder = @ptrCast(self);
@@ -627,17 +627,17 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.GetConversationReader();
     }
-    pub fn GetConversationReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
+    pub fn GetConversationReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
         const this: *IEmailMailbox = @ptrCast(self);
-        return try this.GetConversationReader(options);
+        return try this.GetConversationReaderWithOptions(options);
     }
     pub fn GetMessageReader(self: *@This()) core.HResult!*EmailMessageReader {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.GetMessageReader();
     }
-    pub fn GetMessageReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
+    pub fn GetMessageReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
         const this: *IEmailMailbox = @ptrCast(self);
-        return try this.GetMessageReader(options);
+        return try this.GetMessageReaderWithOptions(options);
     }
     pub fn DeleteAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
@@ -687,9 +687,9 @@ pub const EmailMailbox = extern struct {
         const this: *IEmailMailbox = @ptrCast(self);
         return try this.TryMoveFolderAsync(folderId, newParentFolderId);
     }
-    pub fn TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsyncWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *IEmailMailbox = @ptrCast(self);
-        return try this.TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(folderId, newParentFolderId, newFolderName);
+        return try this.TryMoveFolderAsyncWithNewFolderName(folderId, newParentFolderId, newFolderName);
     }
     pub fn DeleteMessageAsync(self: *@This(), messageId: HSTRING) core.HResult!*IAsyncAction {
         const this: *IEmailMailbox = @ptrCast(self);
@@ -2200,17 +2200,17 @@ pub const EmailStore = extern struct {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetConversationReader();
     }
-    pub fn GetConversationReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
+    pub fn GetConversationReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
         const this: *IEmailStore = @ptrCast(self);
-        return try this.GetConversationReader(options);
+        return try this.GetConversationReaderWithOptions(options);
     }
     pub fn GetMessageReader(self: *@This()) core.HResult!*EmailMessageReader {
         const this: *IEmailStore = @ptrCast(self);
         return try this.GetMessageReader();
     }
-    pub fn GetMessageReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
+    pub fn GetMessageReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
         const this: *IEmailStore = @ptrCast(self);
-        return try this.GetMessageReader(options);
+        return try this.GetMessageReaderWithOptions(options);
     }
     pub fn GetMailboxAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         const this: *IEmailStore = @ptrCast(self);
@@ -2232,9 +2232,9 @@ pub const EmailStore = extern struct {
         const this: *IEmailStore = @ptrCast(self);
         return try this.CreateMailboxAsync(accountName, accountAddress);
     }
-    pub fn CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsyncWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         const this: *IEmailStore = @ptrCast(self);
-        return try this.CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(accountName, accountAddress, userDataAccountId);
+        return try this.CreateMailboxAsyncWithUserDataAccountId(accountName, accountAddress, userDataAccountId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailStore";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

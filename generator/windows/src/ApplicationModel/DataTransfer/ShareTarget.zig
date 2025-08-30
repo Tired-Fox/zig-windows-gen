@@ -247,9 +247,9 @@ pub const ShareOperation = extern struct {
         const this: *IShareOperation = @ptrCast(self);
         return try this.ReportSubmittedBackgroundTask();
     }
-    pub fn ReportCompleted(self: *@This(), quicklink: *QuickLink) core.HResult!void {
+    pub fn ReportCompletedWithQuicklink(self: *@This(), quicklink: *QuickLink) core.HResult!void {
         const this: *IShareOperation = @ptrCast(self);
-        return try this.ReportCompleted(quicklink);
+        return try this.ReportCompletedWithQuicklink(quicklink);
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
         const this: *IShareOperation = @ptrCast(self);

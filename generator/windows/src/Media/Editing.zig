@@ -917,9 +917,9 @@ pub const MediaComposition = extern struct {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.RenderToFileAsyncWithTrimmingPreference(destination, trimmingPreference);
     }
-    pub fn RenderToFileAsyncWithEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithTrimmingPreferenceWithEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         const this: *IMediaComposition = @ptrCast(self);
-        return try this.RenderToFileAsyncWithEncodingProfile(destination, trimmingPreference, encodingProfile);
+        return try this.RenderToFileAsyncWithTrimmingPreferenceWithEncodingProfile(destination, trimmingPreference, encodingProfile);
     }
     pub fn CreateDefaultEncodingProfile(self: *@This()) core.HResult!*MediaEncodingProfile {
         const this: *IMediaComposition = @ptrCast(self);
@@ -929,9 +929,9 @@ pub const MediaComposition = extern struct {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.GenerateMediaStreamSource();
     }
-    pub fn GenerateMediaStreamSource(self: *@This(), encodingProfile: *MediaEncodingProfile) core.HResult!*MediaStreamSource {
+    pub fn GenerateMediaStreamSourceWithEncodingProfile(self: *@This(), encodingProfile: *MediaEncodingProfile) core.HResult!*MediaStreamSource {
         const this: *IMediaComposition = @ptrCast(self);
-        return try this.GenerateMediaStreamSource(encodingProfile);
+        return try this.GenerateMediaStreamSourceWithEncodingProfile(encodingProfile);
     }
     pub fn GeneratePreviewMediaStreamSource(self: *@This(), scaledWidth: i32, scaledHeight: i32) core.HResult!*MediaStreamSource {
         const this: *IMediaComposition = @ptrCast(self);

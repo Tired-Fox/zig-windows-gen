@@ -11,9 +11,9 @@ pub const BackgroundDownloader = extern struct {
         const this: *IBackgroundDownloader = @ptrCast(self);
         return try this.CreateDownload(uri, resultFile);
     }
-    pub fn CreateDownloadWithResultFileWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
+    pub fn CreateDownloadWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
         const this: *IBackgroundDownloader = @ptrCast(self);
-        return try this.CreateDownloadWithResultFileWithRequestBodyFile(uri, resultFile, requestBodyFile);
+        return try this.CreateDownloadWithRequestBodyFile(uri, resultFile, requestBodyFile);
     }
     pub fn CreateDownloadAsync(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyStream: *IInputStream) core.HResult!*IAsyncOperation(DownloadOperation) {
         const this: *IBackgroundDownloader = @ptrCast(self);
@@ -384,9 +384,9 @@ pub const BackgroundUploader = extern struct {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUploadAsync(uri, parts);
     }
-    pub fn CreateUploadAsyncWithPartsWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);
-        return try this.CreateUploadAsyncWithPartsWithSubType(uri, parts, subType);
+        return try this.CreateUploadAsyncWithSubType(uri, parts, subType);
     }
     pub fn CreateUploadAsyncWithSubTypeWithBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);

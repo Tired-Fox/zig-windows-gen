@@ -128,11 +128,11 @@ pub const CoreInputView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryShow();
     }
-    pub fn TryShow(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
+    pub fn TryShowWithTy(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreInputView3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryShow(ty);
+        return try this.?.TryShowWithTy(ty);
     }
     pub fn TryHide(self: *@This()) core.HResult!bool {
         var this: ?*ICoreInputView3 = undefined;

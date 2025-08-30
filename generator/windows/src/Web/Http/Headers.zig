@@ -40,80 +40,80 @@ pub const HttpCacheDirectiveHeaderValueCollection = extern struct {
         const this: *IHttpCacheDirectiveHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpNameValueHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpNameValueHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpNameValueHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpNameValueHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpNameValueHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpNameValueHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpNameValueHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpNameValueHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpNameValueHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpNameValueHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -187,80 +187,80 @@ pub const HttpChallengeHeaderValueCollection = extern struct {
         const this: *IHttpChallengeHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpChallengeHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpChallengeHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpChallengeHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpChallengeHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpChallengeHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpChallengeHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpChallengeHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpChallengeHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpChallengeHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpChallengeHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -322,80 +322,80 @@ pub const HttpConnectionOptionHeaderValueCollection = extern struct {
         const this: *IHttpConnectionOptionHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpConnectionOptionHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpConnectionOptionHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpConnectionOptionHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpConnectionOptionHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpConnectionOptionHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpConnectionOptionHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpConnectionOptionHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpConnectionOptionHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpConnectionOptionHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpConnectionOptionHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -457,80 +457,80 @@ pub const HttpContentCodingHeaderValueCollection = extern struct {
         const this: *IHttpContentCodingHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpContentCodingHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpContentCodingHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpContentCodingHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpContentCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpContentCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpContentCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpContentCodingHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpContentCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpContentCodingHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpContentCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -600,80 +600,80 @@ pub const HttpContentCodingWithQualityHeaderValueCollection = extern struct {
         const this: *IHttpContentCodingWithQualityHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpContentCodingWithQualityHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpContentCodingWithQualityHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpContentCodingWithQualityHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpContentCodingWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpContentCodingWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpContentCodingWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpContentCodingWithQualityHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpContentCodingWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpContentCodingWithQualityHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpContentCodingWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -847,50 +847,50 @@ pub const HttpContentHeaderCollection = extern struct {
         const this: *IHttpContentHeaderCollection = @ptrCast(self);
         return try this.TryAppendWithoutValidation(name, value);
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!HSTRING {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1031,80 +1031,80 @@ pub const HttpCookiePairHeaderValueCollection = extern struct {
         const this: *IHttpCookiePairHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpCookiePairHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpCookiePairHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpCookiePairHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpCookiePairHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpCookiePairHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpCookiePairHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpCookiePairHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpCookiePairHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpCookiePairHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpCookiePairHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1263,80 +1263,80 @@ pub const HttpExpectationHeaderValueCollection = extern struct {
         const this: *IHttpExpectationHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpExpectationHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpExpectationHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpExpectationHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpExpectationHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpExpectationHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpExpectationHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpExpectationHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpExpectationHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpExpectationHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpExpectationHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1363,80 +1363,80 @@ pub const HttpLanguageHeaderValueCollection = extern struct {
         const this: *IHttpLanguageHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*Language {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Language) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *Language, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *Language) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *Language) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *Language) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]Language) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]Language) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Language) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Language) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1506,80 +1506,80 @@ pub const HttpLanguageRangeWithQualityHeaderValueCollection = extern struct {
         const this: *IHttpLanguageRangeWithQualityHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpLanguageRangeWithQualityHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpLanguageRangeWithQualityHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpLanguageRangeWithQualityHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpLanguageRangeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpLanguageRangeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpLanguageRangeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpLanguageRangeWithQualityHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpLanguageRangeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpLanguageRangeWithQualityHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpLanguageRangeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1720,80 +1720,80 @@ pub const HttpMediaTypeWithQualityHeaderValueCollection = extern struct {
         const this: *IHttpMediaTypeWithQualityHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpMediaTypeWithQualityHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpMediaTypeWithQualityHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpMediaTypeWithQualityHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpMediaTypeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpMediaTypeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpMediaTypeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpMediaTypeWithQualityHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpMediaTypeWithQualityHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpMediaTypeWithQualityHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpMediaTypeWithQualityHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1820,80 +1820,80 @@ pub const HttpMethodHeaderValueCollection = extern struct {
         const this: *IHttpMethodHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpMethod {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpMethod) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpMethod, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpMethod) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpMethod) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpMethod) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpMethod) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpMethod) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpMethod) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpMethod) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2053,80 +2053,80 @@ pub const HttpProductInfoHeaderValueCollection = extern struct {
         const this: *IHttpProductInfoHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpProductInfoHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpProductInfoHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpProductInfoHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpProductInfoHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpProductInfoHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpProductInfoHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpProductInfoHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpProductInfoHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpProductInfoHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpProductInfoHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2261,50 +2261,50 @@ pub const HttpRequestHeaderCollection = extern struct {
         const this: *IHttpRequestHeaderCollection = @ptrCast(self);
         return try this.TryAppendWithoutValidation(name, value);
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!HSTRING {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2387,50 +2387,50 @@ pub const HttpResponseHeaderCollection = extern struct {
         const this: *IHttpResponseHeaderCollection = @ptrCast(self);
         return try this.TryAppendWithoutValidation(name, value);
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!HSTRING {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2496,80 +2496,80 @@ pub const HttpTransferCodingHeaderValueCollection = extern struct {
         const this: *IHttpTransferCodingHeaderValueCollection = @ptrCast(self);
         return try this.TryParseAdd(input);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*HttpTransferCodingHeaderValue {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HttpTransferCodingHeaderValue) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *HttpTransferCodingHeaderValue, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *HttpTransferCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *HttpTransferCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *HttpTransferCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HttpTransferCodingHeaderValue) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HttpTransferCodingHeaderValue) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HttpTransferCodingHeaderValue) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HttpTransferCodingHeaderValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

@@ -46,9 +46,9 @@ pub const HdmiDisplayInformation = extern struct {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
         return try this.RequestSetCurrentDisplayModeAsyncWithHdrOption(mode, hdrOption);
     }
-    pub fn RequestSetCurrentDisplayModeAsyncWithHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrOptionWithHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
-        return try this.RequestSetCurrentDisplayModeAsyncWithHdrMetadata(mode, hdrOption, hdrMetadata);
+        return try this.RequestSetCurrentDisplayModeAsyncWithHdrOptionWithHdrMetadata(mode, hdrOption, hdrMetadata);
     }
     pub fn addDisplayModesChanged(self: *@This(), value: *TypedEventHandler(HdmiDisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IHdmiDisplayInformation = @ptrCast(self);

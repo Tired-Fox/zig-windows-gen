@@ -295,10 +295,8 @@ pub const FlyoutBase = extern struct {
         return try this.removeOpening(token);
     }
     pub fn ShowAt(self: *@This(), placementTarget: *FrameworkElement) core.HResult!void {
-        var this: ?*IFlyoutBase5 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFlyoutBase5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ShowAt(placementTarget);
+        const this: *IFlyoutBase = @ptrCast(self);
+        return try this.ShowAt(placementTarget);
     }
     pub fn Hide(self: *@This()) core.HResult!void {
         const this: *IFlyoutBase = @ptrCast(self);

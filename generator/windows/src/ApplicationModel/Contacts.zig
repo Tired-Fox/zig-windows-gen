@@ -602,9 +602,9 @@ pub const ContactAnnotationStore = extern struct {
         const this: *IContactAnnotationStore = @ptrCast(self);
         return try this.CreateAnnotationListAsync();
     }
-    pub fn CreateAnnotationListAsync(self: *@This(), userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
+    pub fn CreateAnnotationListAsyncWithUserDataAccountId(self: *@This(), userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
         const this: *IContactAnnotationStore = @ptrCast(self);
-        return try this.CreateAnnotationListAsync(userDataAccountId);
+        return try this.CreateAnnotationListAsyncWithUserDataAccountId(userDataAccountId);
     }
     pub fn GetAnnotationListAsync(self: *@This(), annotationListId: HSTRING) core.HResult!*IAsyncOperation(ContactAnnotationList) {
         const this: *IContactAnnotationStore = @ptrCast(self);
@@ -1003,9 +1003,9 @@ pub const ContactFieldFactory = extern struct {
         const this: *IContactFieldFactory = @ptrCast(self);
         return try this.CreateField(value, ty);
     }
-    pub fn CreateFieldWithTyWithCategory(self: *@This(), value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
+    pub fn CreateFieldWithCategory(self: *@This(), value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
-        return try this.CreateFieldWithTyWithCategory(value, ty, category);
+        return try this.CreateFieldWithCategory(value, ty, category);
     }
     pub fn CreateFieldWithTyWithCategory(self: *@This(), name: HSTRING, value: HSTRING, ty: ContactFieldType, category: ContactFieldCategory) core.HResult!*ContactField {
         const this: *IContactFieldFactory = @ptrCast(self);
@@ -1023,11 +1023,11 @@ pub const ContactFieldFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateLocationWithCategory(unstructuredAddress, category);
     }
-    pub fn CreateLocationWithPostalCode(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
+    pub fn CreateLocationWithCategoryWithStreetWithCityWithRegionWithCountryWithPostalCode(self: *@This(), unstructuredAddress: HSTRING, category: ContactFieldCategory, street: HSTRING, city: HSTRING, region: HSTRING, country: HSTRING, postalCode: HSTRING) core.HResult!*ContactLocationField {
         var this: ?*IContactLocationFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactLocationFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateLocationWithPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
+        return try this.?.CreateLocationWithCategoryWithStreetWithCityWithRegionWithCountryWithPostalCode(unstructuredAddress, category, street, city, region, country, postalCode);
     }
     pub fn CreateInstantMessage(self: *@This(), userName: HSTRING) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
@@ -1041,11 +1041,11 @@ pub const ContactFieldFactory = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateInstantMessageWithCategory(userName, category);
     }
-    pub fn CreateInstantMessageWithVerb(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
+    pub fn CreateInstantMessageWithCategoryWithServiceWithDisplayTextWithVerb(self: *@This(), userName: HSTRING, category: ContactFieldCategory, service: HSTRING, displayText: HSTRING, verb: *Uri) core.HResult!*ContactInstantMessageField {
         var this: ?*IContactInstantMessageFieldFactory = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactInstantMessageFieldFactory.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateInstantMessageWithVerb(userName, category, service, displayText, verb);
+        return try this.?.CreateInstantMessageWithCategoryWithServiceWithDisplayTextWithVerb(userName, category, service, displayText, verb);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1382,9 +1382,9 @@ pub const ContactList = extern struct {
         const this: *IContactList = @ptrCast(self);
         return try this.GetContactReader();
     }
-    pub fn GetContactReader(self: *@This(), options: *ContactQueryOptions) core.HResult!*ContactReader {
+    pub fn GetContactReaderWithOptions(self: *@This(), options: *ContactQueryOptions) core.HResult!*ContactReader {
         const this: *IContactList = @ptrCast(self);
-        return try this.GetContactReader(options);
+        return try this.GetContactReaderWithOptions(options);
     }
     pub fn SaveContactAsync(self: *@This(), contact: *Contact) core.HResult!*IAsyncAction {
         const this: *IContactList = @ptrCast(self);
@@ -2392,9 +2392,9 @@ pub const ContactStore = extern struct {
         const this: *IContactStore = @ptrCast(self);
         return try this.FindContactsAsync();
     }
-    pub fn FindContactsAsync(self: *@This(), searchText: HSTRING) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
+    pub fn FindContactsAsyncWithSearchText(self: *@This(), searchText: HSTRING) core.HResult!*IAsyncOperation(IVectorView(Contact)) {
         const this: *IContactStore = @ptrCast(self);
-        return try this.FindContactsAsync(searchText);
+        return try this.FindContactsAsyncWithSearchText(searchText);
     }
     pub fn GetContactAsync(self: *@This(), contactId: HSTRING) core.HResult!*IAsyncOperation(Contact) {
         const this: *IContactStore = @ptrCast(self);
@@ -2454,11 +2454,11 @@ pub const ContactStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetContactReader();
     }
-    pub fn GetContactReader(self: *@This(), options: *ContactQueryOptions) core.HResult!*ContactReader {
+    pub fn GetContactReaderWithOptions(self: *@This(), options: *ContactQueryOptions) core.HResult!*ContactReader {
         var this: ?*IContactStore2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IContactStore2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetContactReader(options);
+        return try this.?.GetContactReaderWithOptions(options);
     }
     pub fn CreateContactListAsyncWithUserDataAccountId(self: *@This(), displayName: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(ContactList) {
         var this: ?*IContactStore2 = undefined;

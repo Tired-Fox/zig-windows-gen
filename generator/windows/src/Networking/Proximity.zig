@@ -1203,17 +1203,17 @@ pub const ProximityDevice = extern struct {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishMessage(messageType, message);
     }
-    pub fn PublishMessageWithMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: HSTRING, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
-        return try this.PublishMessageWithMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
+        return try this.PublishMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
     }
     pub fn PublishBinaryMessage(self: *@This(), messageType: HSTRING, message: *IBuffer) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
         return try this.PublishBinaryMessage(messageType, message);
     }
-    pub fn PublishBinaryMessageWithMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
+    pub fn PublishBinaryMessageWithMessageTransmittedHandler(self: *@This(), messageType: HSTRING, message: *IBuffer, messageTransmittedHandler: *MessageTransmittedHandler) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);
-        return try this.PublishBinaryMessageWithMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
+        return try this.PublishBinaryMessageWithMessageTransmittedHandler(messageType, message, messageTransmittedHandler);
     }
     pub fn PublishUriMessage(self: *@This(), message: *Uri) core.HResult!i64 {
         const this: *IProximityDevice = @ptrCast(self);

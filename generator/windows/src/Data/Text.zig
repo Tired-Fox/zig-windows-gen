@@ -963,22 +963,18 @@ pub const TextPredictionGenerator = extern struct {
         return try this.getLanguageAvailableButNotInstalled();
     }
     pub fn GetCandidatesAsync(self: *@This(), input: HSTRING) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var this: ?*ITextPredictionGenerator2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCandidatesAsync(input);
+        const this: *ITextPredictionGenerator = @ptrCast(self);
+        return try this.GetCandidatesAsync(input);
     }
     pub fn GetCandidatesAsyncWithMaxCandidates(self: *@This(), input: HSTRING, maxCandidates: u32) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        var this: ?*ITextPredictionGenerator2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
+        const this: *ITextPredictionGenerator = @ptrCast(self);
+        return try this.GetCandidatesAsyncWithMaxCandidates(input, maxCandidates);
     }
-    pub fn GetCandidatesAsyncWithPreviousStrings(self: *@This(), input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
+    pub fn GetCandidatesAsyncWithMaxCandidatesWithPredictionOptionsWithPreviousStrings(self: *@This(), input: HSTRING, maxCandidates: u32, predictionOptions: TextPredictionOptions, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITextPredictionGenerator2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetCandidatesAsyncWithPreviousStrings(input, maxCandidates, predictionOptions, previousStrings);
+        return try this.?.GetCandidatesAsyncWithMaxCandidatesWithPredictionOptionsWithPreviousStrings(input, maxCandidates, predictionOptions, previousStrings);
     }
     pub fn GetNextWordCandidatesAsync(self: *@This(), maxCandidates: u32, previousStrings: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
         var this: ?*ITextPredictionGenerator2 = undefined;

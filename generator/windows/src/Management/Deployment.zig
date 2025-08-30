@@ -634,9 +634,9 @@ pub const SharedPackageContainerManager = extern struct {
         const this: *ISharedPackageContainerManager = @ptrCast(self);
         return try this.FindContainers();
     }
-    pub fn FindContainers(self: *@This(), options: *FindSharedPackageContainerOptions) core.HResult!*IVector(SharedPackageContainer) {
+    pub fn FindContainersWithOptions(self: *@This(), options: *FindSharedPackageContainerOptions) core.HResult!*IVector(SharedPackageContainer) {
         const this: *ISharedPackageContainerManager = @ptrCast(self);
-        return try this.FindContainers(options);
+        return try this.FindContainersWithOptions(options);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3049,32 +3049,24 @@ pub const PackageInstallState = enum(i32) {
 pub const PackageManager = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn AddPackageAsync(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddPackageAsync(packageUri, dependencyPackageUris, deploymentOptions);
+        const this: *IPackageManager = @ptrCast(self);
+        return try this.AddPackageAsync(packageUri, dependencyPackageUris, deploymentOptions);
     }
     pub fn UpdatePackageAsync(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         const this: *IPackageManager = @ptrCast(self);
         return try this.UpdatePackageAsync(packageUri, dependencyPackageUris, deploymentOptions);
     }
     pub fn RemovePackageAsync(self: *@This(), packageFullName: HSTRING) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RemovePackageAsync(packageFullName);
+        const this: *IPackageManager = @ptrCast(self);
+        return try this.RemovePackageAsync(packageFullName);
     }
     pub fn StagePackageAsync(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StagePackageAsync(packageUri, dependencyPackageUris);
+        const this: *IPackageManager = @ptrCast(self);
+        return try this.StagePackageAsync(packageUri, dependencyPackageUris);
     }
     pub fn RegisterPackageAsync(self: *@This(), manifestUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager3.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RegisterPackageAsync(manifestUri, dependencyPackageUris, deploymentOptions);
+        const this: *IPackageManager = @ptrCast(self);
+        return try this.RegisterPackageAsync(manifestUri, dependencyPackageUris, deploymentOptions);
     }
     pub fn FindPackages(self: *@This()) core.HResult!*IIterable(Package) {
         const this: *IPackageManager = @ptrCast(self);
@@ -3084,13 +3076,13 @@ pub const PackageManager = extern struct {
         const this: *IPackageManager = @ptrCast(self);
         return try this.FindPackagesForUser(userSecurityId);
     }
-    pub fn FindPackages(self: *@This(), packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IIterable(Package) {
+    pub fn FindPackagesWithPackageNameWithPackagePublisher(self: *@This(), packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IIterable(Package) {
         const this: *IPackageManager = @ptrCast(self);
-        return try this.FindPackages(packageName, packagePublisher);
+        return try this.FindPackagesWithPackageNameWithPackagePublisher(packageName, packagePublisher);
     }
-    pub fn FindPackagesForUserWithPackagePublisher(self: *@This(), userSecurityId: HSTRING, packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IIterable(Package) {
+    pub fn FindPackagesForUserWithPackageNameWithPackagePublisher(self: *@This(), userSecurityId: HSTRING, packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IIterable(Package) {
         const this: *IPackageManager = @ptrCast(self);
-        return try this.FindPackagesForUserWithPackagePublisher(userSecurityId, packageName, packagePublisher);
+        return try this.FindPackagesForUserWithPackageNameWithPackagePublisher(userSecurityId, packageName, packagePublisher);
     }
     pub fn FindUsers(self: *@This(), packageFullName: HSTRING) core.HResult!*IIterable(PackageUserInformation) {
         const this: *IPackageManager = @ptrCast(self);
@@ -3108,9 +3100,9 @@ pub const PackageManager = extern struct {
         const this: *IPackageManager = @ptrCast(self);
         return try this.CleanupPackageForUserAsync(packageName, userSecurityId);
     }
-    pub fn FindPackages(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IIterable(Package) {
+    pub fn FindPackagesWithPackageFamilyName(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IIterable(Package) {
         const this: *IPackageManager = @ptrCast(self);
-        return try this.FindPackages(packageFamilyName);
+        return try this.FindPackagesWithPackageFamilyName(packageFamilyName);
     }
     pub fn FindPackagesForUserWithPackageFamilyName(self: *@This(), userSecurityId: HSTRING, packageFamilyName: HSTRING) core.HResult!*IIterable(Package) {
         const this: *IPackageManager = @ptrCast(self);
@@ -3126,11 +3118,11 @@ pub const PackageManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemovePackageAsyncWithRemovalOptions(packageFullName, removalOptions);
     }
-    pub fn StagePackageAsyncWithDependencyPackageUrisWithDeploymentOptions(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
+    pub fn StagePackageAsyncWithDeploymentOptions(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+        var this: ?*IPackageManager2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StagePackageAsyncWithDependencyPackageUrisWithDeploymentOptions(packageUri, dependencyPackageUris, deploymentOptions);
+        return try this.?.StagePackageAsyncWithDeploymentOptions(packageUri, dependencyPackageUris, deploymentOptions);
     }
     pub fn RegisterPackageByFullNameAsync(self: *@This(), mainPackageFullName: HSTRING, dependencyPackageFullNames: *IIterable(HSTRING), deploymentOptions: DeploymentOptions) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager2 = undefined;
@@ -3150,11 +3142,11 @@ pub const PackageManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindPackagesForUserWithPackageTypes(userSecurityId, packageTypes);
     }
-    pub fn FindPackagesWithPackageTypesWithPackageTypes(self: *@This(), packageName: HSTRING, packagePublisher: HSTRING, packageTypes: PackageTypes) core.HResult!*IIterable(Package) {
+    pub fn FindPackagesWithPackageTypesWithPackagePublisherWithPackageTypes(self: *@This(), packageName: HSTRING, packagePublisher: HSTRING, packageTypes: PackageTypes) core.HResult!*IIterable(Package) {
         var this: ?*IPackageManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FindPackagesWithPackageTypesWithPackageTypes(packageName, packagePublisher, packageTypes);
+        return try this.?.FindPackagesWithPackageTypesWithPackagePublisherWithPackageTypes(packageName, packagePublisher, packageTypes);
     }
     pub fn FindPackagesForUserWithPackageTypesWithPackagePublisherWithPackageTypes(self: *@This(), userSecurityId: HSTRING, packageName: HSTRING, packagePublisher: HSTRING, packageTypes: PackageTypes) core.HResult!*IIterable(Package) {
         var this: ?*IPackageManager2 = undefined;
@@ -3168,15 +3160,15 @@ pub const PackageManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindPackagesWithPackageTypesWithPackageTypes(packageFamilyName, packageTypes);
     }
-    pub fn FindPackagesForUserWithPackageTypesWithPackageFamilyNameWithPackageTypes(self: *@This(), userSecurityId: HSTRING, packageFamilyName: HSTRING, packageTypes: PackageTypes) core.HResult!*IIterable(Package) {
+    pub fn FindPackagesForUserWithPackageTypesWithPackageTypes(self: *@This(), userSecurityId: HSTRING, packageFamilyName: HSTRING, packageTypes: PackageTypes) core.HResult!*IIterable(Package) {
         var this: ?*IPackageManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FindPackagesForUserWithPackageTypesWithPackageFamilyNameWithPackageTypes(userSecurityId, packageFamilyName, packageTypes);
+        return try this.?.FindPackagesForUserWithPackageTypesWithPackageTypes(userSecurityId, packageFamilyName, packageTypes);
     }
     pub fn StageUserDataAsync(self: *@This(), packageFullName: HSTRING) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager3 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager3.IID, @ptrCast(&this));
+        var this: ?*IPackageManager2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StageUserDataAsync(packageFullName);
     }
@@ -3186,11 +3178,11 @@ pub const PackageManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddPackageVolumeAsync(packageStorePath);
     }
-    pub fn AddPackageAsyncWithDependencyPackageUrisWithDeploymentOptionsWithTargetVolume(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
+    pub fn AddPackageAsyncWithTargetVolume(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+        var this: ?*IPackageManager3 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddPackageAsyncWithDependencyPackageUrisWithDeploymentOptionsWithTargetVolume(packageUri, dependencyPackageUris, deploymentOptions, targetVolume);
+        return try this.?.AddPackageAsyncWithTargetVolume(packageUri, dependencyPackageUris, deploymentOptions, targetVolume);
     }
     pub fn ClearPackageStatus(self: *@This(), packageFullName: HSTRING, status: PackageStatus) core.HResult!void {
         var this: ?*IPackageManager3 = undefined;
@@ -3198,11 +3190,11 @@ pub const PackageManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ClearPackageStatus(packageFullName, status);
     }
-    pub fn RegisterPackageAsyncWithDependencyPackageUrisWithDeploymentOptionsWithAppDataVolume(self: *@This(), manifestUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, appDataVolume: *PackageVolume) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+    pub fn RegisterPackageAsyncWithAppDataVolume(self: *@This(), manifestUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, appDataVolume: *PackageVolume) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RegisterPackageAsyncWithDependencyPackageUrisWithDeploymentOptionsWithAppDataVolume(manifestUri, dependencyPackageUris, deploymentOptions, appDataVolume);
+        return try this.?.RegisterPackageAsyncWithAppDataVolume(manifestUri, dependencyPackageUris, deploymentOptions, appDataVolume);
     }
     pub fn FindPackageVolume(self: *@This(), volumeName: HSTRING) core.HResult!*PackageVolume {
         var this: ?*IPackageManager3 = undefined;
@@ -3259,8 +3251,8 @@ pub const PackageManager = extern struct {
         return try this.?.SetPackageVolumeOnlineAsync(packageVolume);
     }
     pub fn StagePackageAsyncWithDeploymentOptionsWithTargetVolume(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
+        var this: ?*IPackageManager3 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.StagePackageAsyncWithDeploymentOptionsWithTargetVolume(packageUri, dependencyPackageUris, deploymentOptions, targetVolume);
     }
@@ -3277,16 +3269,16 @@ pub const PackageManager = extern struct {
         return try this.?.GetPackageVolumesAsync();
     }
     pub fn AddPackageAsyncWithTargetVolumeWithOptionalPackageFamilyNamesWithExternalPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), externalPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
+        var this: ?*IPackageManager5 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddPackageAsyncWithTargetVolumeWithOptionalPackageFamilyNamesWithExternalPackageUris(packageUri, dependencyPackageUris, deploymentOptions, targetVolume, optionalPackageFamilyNames, externalPackageUris);
     }
-    pub fn StagePackageAsyncWithOptionalPackageFamilyNamesWithExternalPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), externalPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager6 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
+    pub fn StagePackageAsyncWithDeploymentOptionsWithTargetVolumeWithOptionalPackageFamilyNamesWithExternalPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), externalPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+        var this: ?*IPackageManager5 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StagePackageAsyncWithOptionalPackageFamilyNamesWithExternalPackageUris(packageUri, dependencyPackageUris, deploymentOptions, targetVolume, optionalPackageFamilyNames, externalPackageUris);
+        return try this.?.StagePackageAsyncWithDeploymentOptionsWithTargetVolumeWithOptionalPackageFamilyNamesWithExternalPackageUris(packageUri, dependencyPackageUris, deploymentOptions, targetVolume, optionalPackageFamilyNames, externalPackageUris);
     }
     pub fn RegisterPackageByFamilyNameAsync(self: *@This(), mainPackageFamilyName: HSTRING, dependencyPackageFamilyNames: *IIterable(HSTRING), deploymentOptions: DeploymentOptions, appDataVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager5 = undefined;
@@ -3301,8 +3293,8 @@ pub const PackageManager = extern struct {
         return try this.?.getDebugSettings();
     }
     pub fn ProvisionPackageForAllUsersAsync(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager10 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager10.IID, @ptrCast(&this));
+        var this: ?*IPackageManager6 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ProvisionPackageForAllUsersAsync(packageFamilyName);
     }
@@ -3318,29 +3310,29 @@ pub const PackageManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAddPackageByAppInstallerFileAsync(appInstallerFileUri, options, targetVolume);
     }
-    pub fn AddPackageAsyncWithOptionalPackageFamilyNamesWithPackageUrisToInstallWithRelatedPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), options: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), packageUrisToInstall: *IIterable(Uri), relatedPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+    pub fn AddPackageAsyncWithTargetVolumeWithOptionalPackageFamilyNamesWithPackageUrisToInstallWithRelatedPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), options: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), packageUrisToInstall: *IIterable(Uri), relatedPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddPackageAsyncWithOptionalPackageFamilyNamesWithPackageUrisToInstallWithRelatedPackageUris(packageUri, dependencyPackageUris, options, targetVolume, optionalPackageFamilyNames, packageUrisToInstall, relatedPackageUris);
+        return try this.?.AddPackageAsyncWithTargetVolumeWithOptionalPackageFamilyNamesWithPackageUrisToInstallWithRelatedPackageUris(packageUri, dependencyPackageUris, options, targetVolume, optionalPackageFamilyNames, packageUrisToInstall, relatedPackageUris);
     }
-    pub fn StagePackageAsyncWithPackageUrisToInstallWithRelatedPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), options: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), packageUrisToInstall: *IIterable(Uri), relatedPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+    pub fn StagePackageAsyncWithOptionsWithTargetVolumeWithOptionalPackageFamilyNamesWithPackageUrisToInstallWithRelatedPackageUris(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), options: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), packageUrisToInstall: *IIterable(Uri), relatedPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StagePackageAsyncWithPackageUrisToInstallWithRelatedPackageUris(packageUri, dependencyPackageUris, options, targetVolume, optionalPackageFamilyNames, packageUrisToInstall, relatedPackageUris);
+        return try this.?.StagePackageAsyncWithOptionsWithTargetVolumeWithOptionalPackageFamilyNamesWithPackageUrisToInstallWithRelatedPackageUris(packageUri, dependencyPackageUris, options, targetVolume, optionalPackageFamilyNames, packageUrisToInstall, relatedPackageUris);
     }
     pub fn RequestAddPackageAsync(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), relatedPackageUris: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
-        var this: ?*IPackageManager7 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager7.IID, @ptrCast(&this));
+        var this: ?*IPackageManager6 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestAddPackageAsync(packageUri, dependencyPackageUris, deploymentOptions, targetVolume, optionalPackageFamilyNames, relatedPackageUris);
     }
-    pub fn RequestAddPackageAsyncWithDependencyPackageUrisWithDeploymentOptionsWithTargetVolumeWithOptionalPackageFamilyNamesWithRelatedPackageUrisWithPackageUrisToInstall(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), relatedPackageUris: *IIterable(Uri), packageUrisToInstall: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
+    pub fn RequestAddPackageAsyncWithPackageUrisToInstall(self: *@This(), packageUri: *Uri, dependencyPackageUris: *IIterable(Uri), deploymentOptions: DeploymentOptions, targetVolume: *PackageVolume, optionalPackageFamilyNames: *IIterable(HSTRING), relatedPackageUris: *IIterable(Uri), packageUrisToInstall: *IIterable(Uri)) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPackageManager7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestAddPackageAsyncWithDependencyPackageUrisWithDeploymentOptionsWithTargetVolumeWithOptionalPackageFamilyNamesWithRelatedPackageUrisWithPackageUrisToInstall(packageUri, dependencyPackageUris, deploymentOptions, targetVolume, optionalPackageFamilyNames, relatedPackageUris, packageUrisToInstall);
+        return try this.?.RequestAddPackageAsyncWithPackageUrisToInstall(packageUri, dependencyPackageUris, deploymentOptions, targetVolume, optionalPackageFamilyNames, relatedPackageUris, packageUrisToInstall);
     }
     pub fn DeprovisionPackageForAllUsersAsync(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperationWithProgress(DeploymentResult,DeploymentProgress) {
         var this: ?*IPackageManager8 = undefined;
@@ -3446,9 +3438,9 @@ pub const PackageManagerDebugSettings = extern struct {
         const this: *IPackageManagerDebugSettings = @ptrCast(self);
         return try this.SetContentGroupStateAsync(package, contentGroupName, state);
     }
-    pub fn SetContentGroupStateAsyncWithContentGroupNameWithStateWithCompletionPercentage(self: *@This(), package: *Package, contentGroupName: HSTRING, state: PackageContentGroupState, completionPercentage: f64) core.HResult!*IAsyncAction {
+    pub fn SetContentGroupStateAsyncWithCompletionPercentage(self: *@This(), package: *Package, contentGroupName: HSTRING, state: PackageContentGroupState, completionPercentage: f64) core.HResult!*IAsyncAction {
         const this: *IPackageManagerDebugSettings = @ptrCast(self);
-        return try this.SetContentGroupStateAsyncWithContentGroupNameWithStateWithCompletionPercentage(package, contentGroupName, state, completionPercentage);
+        return try this.SetContentGroupStateAsyncWithCompletionPercentage(package, contentGroupName, state, completionPercentage);
     }
     pub const NAME: []const u8 = "Windows.Management.Deployment.PackageManagerDebugSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3529,21 +3521,21 @@ pub const PackageVolume = extern struct {
         const this: *IPackageVolume = @ptrCast(self);
         return try this.FindPackages();
     }
-    pub fn FindPackages(self: *@This(), packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IVector(Package) {
+    pub fn FindPackagesWithPackageNameWithPackagePublisher(self: *@This(), packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
-        return try this.FindPackages(packageName, packagePublisher);
+        return try this.FindPackagesWithPackageNameWithPackagePublisher(packageName, packagePublisher);
     }
-    pub fn FindPackages(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IVector(Package) {
+    pub fn FindPackagesWithPackageFamilyName(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
-        return try this.FindPackages(packageFamilyName);
+        return try this.FindPackagesWithPackageFamilyName(packageFamilyName);
     }
     pub fn FindPackagesWithPackageTypes(self: *@This(), packageTypes: PackageTypes) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
         return try this.FindPackagesWithPackageTypes(packageTypes);
     }
-    pub fn FindPackagesWithPackageTypesWithPackagePublisher(self: *@This(), packageTypes: PackageTypes, packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IVector(Package) {
+    pub fn FindPackagesWithPackageTypesWithPackageNameWithPackagePublisher(self: *@This(), packageTypes: PackageTypes, packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
-        return try this.FindPackagesWithPackageTypesWithPackagePublisher(packageTypes, packageName, packagePublisher);
+        return try this.FindPackagesWithPackageTypesWithPackageNameWithPackagePublisher(packageTypes, packageName, packagePublisher);
     }
     pub fn FindPackagesWithPackageTypesWithPackageFamilyName(self: *@This(), packageTypes: PackageTypes, packageFamilyName: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
@@ -3557,9 +3549,9 @@ pub const PackageVolume = extern struct {
         const this: *IPackageVolume = @ptrCast(self);
         return try this.FindPackagesForUser(userSecurityId);
     }
-    pub fn FindPackagesForUserWithPackagePublisher(self: *@This(), userSecurityId: HSTRING, packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IVector(Package) {
+    pub fn FindPackagesForUserWithPackageNameWithPackagePublisher(self: *@This(), userSecurityId: HSTRING, packageName: HSTRING, packagePublisher: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
-        return try this.FindPackagesForUserWithPackagePublisher(userSecurityId, packageName, packagePublisher);
+        return try this.FindPackagesForUserWithPackageNameWithPackagePublisher(userSecurityId, packageName, packagePublisher);
     }
     pub fn FindPackagesForUserWithPackageFamilyName(self: *@This(), userSecurityId: HSTRING, packageFamilyName: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
@@ -3573,9 +3565,9 @@ pub const PackageVolume = extern struct {
         const this: *IPackageVolume = @ptrCast(self);
         return try this.FindPackagesForUserWithPackageTypesWithPackageNameWithPackagePublisher(userSecurityId, packageTypes, packageName, packagePublisher);
     }
-    pub fn FindPackagesForUserWithPackageTypesWithPackageTypesWithPackageFamilyName(self: *@This(), userSecurityId: HSTRING, packageTypes: PackageTypes, packageFamilyName: HSTRING) core.HResult!*IVector(Package) {
+    pub fn FindPackagesForUserWithPackageTypesWithPackageFamilyName(self: *@This(), userSecurityId: HSTRING, packageTypes: PackageTypes, packageFamilyName: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);
-        return try this.FindPackagesForUserWithPackageTypesWithPackageTypesWithPackageFamilyName(userSecurityId, packageTypes, packageFamilyName);
+        return try this.FindPackagesForUserWithPackageTypesWithPackageFamilyName(userSecurityId, packageTypes, packageFamilyName);
     }
     pub fn FindPackageForUser(self: *@This(), userSecurityId: HSTRING, packageFullName: HSTRING) core.HResult!*IVector(Package) {
         const this: *IPackageVolume = @ptrCast(self);

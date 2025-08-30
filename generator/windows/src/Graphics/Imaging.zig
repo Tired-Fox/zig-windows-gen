@@ -154,11 +154,11 @@ pub const BitmapDecoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPixelDataAsync();
     }
-    pub fn GetPixelDataAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
+    pub fn GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
         var this: ?*IBitmapFrame = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetPixelDataAsync(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.?.GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub fn GetSoftwareBitmapAsync(self: *@This()) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
@@ -166,17 +166,17 @@ pub const BitmapDecoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSoftwareBitmapAsync();
     }
-    pub fn GetSoftwareBitmapAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsync(pixelFormat, alphaMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(pixelFormat, alphaMode);
     }
-    pub fn GetSoftwareBitmapAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsync(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -287,9 +287,9 @@ pub const BitmapEncoder = extern struct {
         const this: *IBitmapEncoder = @ptrCast(self);
         return try this.GoToNextFrameAsync();
     }
-    pub fn GoToNextFrameAsync(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
+    pub fn GoToNextFrameAsyncWithEncodingOptions(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         const this: *IBitmapEncoder = @ptrCast(self);
-        return try this.GoToNextFrameAsync(encodingOptions);
+        return try this.GoToNextFrameAsyncWithEncodingOptions(encodingOptions);
     }
     pub fn FlushAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *IBitmapEncoder = @ptrCast(self);
@@ -411,9 +411,9 @@ pub const BitmapFrame = extern struct {
         const this: *IBitmapFrame = @ptrCast(self);
         return try this.GetPixelDataAsync();
     }
-    pub fn GetPixelDataAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
+    pub fn GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
         const this: *IBitmapFrame = @ptrCast(self);
-        return try this.GetPixelDataAsync(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub fn GetSoftwareBitmapAsync(self: *@This()) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
@@ -421,17 +421,17 @@ pub const BitmapFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSoftwareBitmapAsync();
     }
-    pub fn GetSoftwareBitmapAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsync(pixelFormat, alphaMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(pixelFormat, alphaMode);
     }
-    pub fn GetSoftwareBitmapAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsync(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -494,7 +494,7 @@ pub const BitmapPropertiesView = extern struct {
 };
 pub const BitmapPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*BitmapTypedValue {
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
         const this: *IMap = @ptrCast(self);
         return try this.Lookup(key);
     }
@@ -502,19 +502,19 @@ pub const BitmapPropertySet = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,BitmapTypedValue) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
         const this: *IMap = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *BitmapTypedValue) core.HResult!bool {
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
         const this: *IMap = @ptrCast(self);
         return try this.Remove(key);
     }
@@ -522,8 +522,8 @@ pub const BitmapPropertySet = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,BitmapTypedValue)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1680,6 +1680,12 @@ pub const ISoftwareBitmapStatics = extern struct {
 };
 pub const ImageStream = extern struct {
     vtable: *const IInspectable.VTable,
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getContentType();
+    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -1734,18 +1740,6 @@ pub const ImageStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -1758,11 +1752,17 @@ pub const ImageStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.ImageStream";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

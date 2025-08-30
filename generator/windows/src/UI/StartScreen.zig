@@ -1261,9 +1261,9 @@ pub const SecondaryTile = extern struct {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.RequestCreateAsync();
     }
-    pub fn RequestCreateAsync(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestCreateAsyncWithInvocationPoint(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);
-        return try this.RequestCreateAsync(invocationPoint);
+        return try this.RequestCreateAsyncWithInvocationPoint(invocationPoint);
     }
     pub fn RequestCreateForSelectionAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);
@@ -1277,9 +1277,9 @@ pub const SecondaryTile = extern struct {
         const this: *ISecondaryTile = @ptrCast(self);
         return try this.RequestDeleteAsync();
     }
-    pub fn RequestDeleteAsync(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestDeleteAsyncWithInvocationPoint(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);
-        return try this.RequestDeleteAsync(invocationPoint);
+        return try this.RequestDeleteAsyncWithInvocationPoint(invocationPoint);
     }
     pub fn RequestDeleteForSelectionAsync(self: *@This(), selection: Rect) core.HResult!*IAsyncOperation(bool) {
         const this: *ISecondaryTile = @ptrCast(self);

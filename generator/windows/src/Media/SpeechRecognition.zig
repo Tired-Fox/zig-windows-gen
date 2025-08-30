@@ -996,9 +996,9 @@ pub const SpeechContinuousRecognitionSession = extern struct {
         const this: *ISpeechContinuousRecognitionSession = @ptrCast(self);
         return try this.StartAsync();
     }
-    pub fn StartAsync(self: *@This(), mode: SpeechContinuousRecognitionMode) core.HResult!*IAsyncAction {
+    pub fn StartAsyncWithMode(self: *@This(), mode: SpeechContinuousRecognitionMode) core.HResult!*IAsyncAction {
         const this: *ISpeechContinuousRecognitionSession = @ptrCast(self);
-        return try this.StartAsync(mode);
+        return try this.StartAsyncWithMode(mode);
     }
     pub fn StopAsync(self: *@This()) core.HResult!*IAsyncAction {
         const this: *ISpeechContinuousRecognitionSession = @ptrCast(self);

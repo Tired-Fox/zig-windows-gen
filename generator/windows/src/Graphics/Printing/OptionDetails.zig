@@ -1474,8 +1474,8 @@ pub const PrintCustomItemListOptionDetails = extern struct {
         return try this.?.getItems();
     }
     pub fn AddItem(self: *@This(), itemId: HSTRING, displayName: HSTRING) core.HResult!void {
-        var this: ?*IPrintCustomItemListOptionDetails2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails2.IID, @ptrCast(&this));
+        var this: ?*IPrintCustomItemListOptionDetails = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItem(itemId, displayName);
     }

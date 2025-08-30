@@ -232,17 +232,17 @@ pub const CryptographicKey = extern struct {
         const this: *ICryptographicKey = @ptrCast(self);
         return try this.Export();
     }
-    pub fn Export(self: *@This(), BlobType: CryptographicPrivateKeyBlobType) core.HResult!*IBuffer {
+    pub fn ExportWithBlobType(self: *@This(), BlobType: CryptographicPrivateKeyBlobType) core.HResult!*IBuffer {
         const this: *ICryptographicKey = @ptrCast(self);
-        return try this.Export(BlobType);
+        return try this.ExportWithBlobType(BlobType);
     }
     pub fn ExportPublicKey(self: *@This()) core.HResult!*IBuffer {
         const this: *ICryptographicKey = @ptrCast(self);
         return try this.ExportPublicKey();
     }
-    pub fn ExportPublicKey(self: *@This(), BlobType: CryptographicPublicKeyBlobType) core.HResult!*IBuffer {
+    pub fn ExportPublicKeyWithBlobType(self: *@This(), BlobType: CryptographicPublicKeyBlobType) core.HResult!*IBuffer {
         const this: *ICryptographicKey = @ptrCast(self);
-        return try this.ExportPublicKey(BlobType);
+        return try this.ExportPublicKeyWithBlobType(BlobType);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.CryptographicKey";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

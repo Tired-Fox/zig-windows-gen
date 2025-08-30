@@ -190,11 +190,11 @@ pub const ESim = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Discover();
     }
-    pub fn Discover(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*ESimDiscoverResult {
+    pub fn DiscoverWithServerAddressWithMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*ESimDiscoverResult {
         var this: ?*IESim2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Discover(serverAddress, matchingId);
+        return try this.?.DiscoverWithServerAddressWithMatchingId(serverAddress, matchingId);
     }
     pub fn DiscoverAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
@@ -202,11 +202,11 @@ pub const ESim = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DiscoverAsync();
     }
-    pub fn DiscoverAsync(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
+    pub fn DiscoverAsyncWithServerAddressWithMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.DiscoverAsync(serverAddress, matchingId);
+        return try this.?.DiscoverAsyncWithServerAddressWithMatchingId(serverAddress, matchingId);
     }
     pub fn getSlotIndex(self: *@This()) core.HResult!*IReference(i32) {
         var this: ?*IESim3 = undefined;
@@ -477,9 +477,9 @@ pub const ESimProfileMetadata = extern struct {
         const this: *IESimProfileMetadata = @ptrCast(self);
         return try this.ConfirmInstallAsync();
     }
-    pub fn ConfirmInstallAsync(self: *@This(), confirmationCode: HSTRING) core.HResult!*IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) {
+    pub fn ConfirmInstallAsyncWithConfirmationCode(self: *@This(), confirmationCode: HSTRING) core.HResult!*IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) {
         const this: *IESimProfileMetadata = @ptrCast(self);
-        return try this.ConfirmInstallAsync(confirmationCode);
+        return try this.ConfirmInstallAsyncWithConfirmationCode(confirmationCode);
     }
     pub fn PostponeInstallAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimOperationResult) {
         const this: *IESimProfileMetadata = @ptrCast(self);
@@ -6484,14 +6484,14 @@ pub const MobileBroadbandModem = extern struct {
         return try this.getCurrentNetwork();
     }
     pub fn GetIsPassthroughEnabledAsync(self: *@This()) core.HResult!*IAsyncOperation(bool) {
-        var this: ?*IMobileBroadbandModem4 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
+        var this: ?*IMobileBroadbandModem2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetIsPassthroughEnabledAsync();
     }
     pub fn SetIsPassthroughEnabledAsync(self: *@This(), value: bool) core.HResult!*IAsyncOperation(MobileBroadbandModemStatus) {
-        var this: ?*IMobileBroadbandModem4 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
+        var this: ?*IMobileBroadbandModem2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetIsPassthroughEnabledAsync(value);
     }
@@ -6525,11 +6525,11 @@ pub const MobileBroadbandModem = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetIsPassthroughEnabledAsyncWithSlotindex(value, slotindex);
     }
-    pub fn GetIsPassthroughEnabledAsync(self: *@This(), slotindex: i32) core.HResult!*IAsyncOperation(bool) {
+    pub fn GetIsPassthroughEnabledAsyncWithSlotindex(self: *@This(), slotindex: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IMobileBroadbandModem4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMobileBroadbandModem4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIsPassthroughEnabledAsync(slotindex);
+        return try this.?.GetIsPassthroughEnabledAsyncWithSlotindex(slotindex);
     }
     pub fn SetIsPassthroughEnabled(self: *@This(), value: bool, slotindex: i32) core.HResult!MobileBroadbandModemStatus {
         var this: ?*IMobileBroadbandModem4 = undefined;
@@ -7366,10 +7366,8 @@ pub const NetworkOperatorTetheringManager = extern struct {
         return try this.ConfigureAccessPointAsync(configuration);
     }
     pub fn StartTetheringAsync(self: *@This()) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
-        var this: ?*INetworkOperatorTetheringManager2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringManager2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartTetheringAsync();
+        const this: *INetworkOperatorTetheringManager = @ptrCast(self);
+        return try this.StartTetheringAsync();
     }
     pub fn StopTetheringAsync(self: *@This()) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         const this: *INetworkOperatorTetheringManager = @ptrCast(self);
@@ -7381,11 +7379,11 @@ pub const NetworkOperatorTetheringManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetTetheringClients();
     }
-    pub fn StartTetheringAsync(self: *@This(), configuration: *NetworkOperatorTetheringSessionAccessPointConfiguration) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
+    pub fn StartTetheringAsyncWithConfiguration(self: *@This(), configuration: *NetworkOperatorTetheringSessionAccessPointConfiguration) core.HResult!*IAsyncOperation(NetworkOperatorTetheringOperationResult) {
         var this: ?*INetworkOperatorTetheringManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INetworkOperatorTetheringManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartTetheringAsync(configuration);
+        return try this.?.StartTetheringAsyncWithConfiguration(configuration);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

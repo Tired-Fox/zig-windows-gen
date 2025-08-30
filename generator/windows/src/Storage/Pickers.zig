@@ -1,6 +1,6 @@
 pub const FileExtensionVector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!HSTRING {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -8,19 +8,19 @@ pub const FileExtensionVector = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: HSTRING, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: HSTRING) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: HSTRING) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -28,7 +28,7 @@ pub const FileExtensionVector = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: HSTRING) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -40,16 +40,16 @@ pub const FileExtensionVector = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]HSTRING) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]HSTRING) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(HSTRING) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -80,9 +80,11 @@ pub const FileOpenPicker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.PickMultipleFilesAndContinue();
     }
-    pub fn PickSingleFileAsync(self: *@This(), pickerOperationId: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
-        const this: *IFileOpenPicker = @ptrCast(self);
-        return try this.PickSingleFileAsync(pickerOperationId);
+    pub fn PickSingleFileAsyncWithPickerOperationId(self: *@This(), pickerOperationId: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
+        var this: ?*IFileOpenPickerWithOperationId = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IFileOpenPickerWithOperationId.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.PickSingleFileAsyncWithPickerOperationId(pickerOperationId);
     }
     pub fn getViewMode(self: *@This()) core.HResult!PickerViewMode {
         const this: *IFileOpenPicker = @ptrCast(self);
@@ -160,7 +162,7 @@ pub const FileOpenPicker = extern struct {
 };
 pub const FilePickerFileTypesOrderedMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*IVector(HSTRING) {
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
         const this: *IMap = @ptrCast(self);
         return try this.Lookup(key);
     }
@@ -168,19 +170,19 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IVector(HSTRING)) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
         const this: *IMap = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *IVector(HSTRING)) core.HResult!bool {
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
         const this: *IMap = @ptrCast(self);
         return try this.Remove(key);
     }
@@ -188,8 +190,8 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IVector(HSTRING))) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,IVector(HSTRING))) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -202,7 +204,7 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
 };
 pub const FilePickerSelectedFilesArray = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*StorageFile {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -210,16 +212,16 @@ pub const FilePickerSelectedFilesArray = extern struct {
         const this: *IVectorView = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *StorageFile, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVectorView = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]StorageFile) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVectorView = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(StorageFile) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(StorageFile) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

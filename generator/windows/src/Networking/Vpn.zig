@@ -2449,11 +2449,11 @@ pub const VpnChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCustomPromptAsync(customPromptElement);
     }
-    pub fn RequestCredentialsAsyncWithCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
+    pub fn RequestCredentialsAsyncWithCredOptionsWithCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestCredentialsAsyncWithCertificate(credType, credOptions, certificate);
+        return try this.?.RequestCredentialsAsyncWithCredOptionsWithCertificate(credType, credOptions, certificate);
     }
     pub fn RequestCredentialsAsyncWithCredOptions(self: *@This(), credType: VpnCredentialType, credOptions: u32) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
@@ -2473,11 +2473,11 @@ pub const VpnChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TerminateConnection(message);
     }
-    pub fn StartWithTrafficFilterWithAssignedClientIpv6ListWithVpnInterfaceIdWithAssignedRoutesWithAssignedNamespaceWithMtuSizeWithMaxFrameSizeWithReservedWithMainOuterTunnelTransportWithOptionalOuterTunnelTransportWithAssignedTrafficFilters(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
-        var this: ?*IVpnChannel4 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel4.IID, @ptrCast(&this));
+    pub fn StartWithTrafficFilterWithAssignedTrafficFilters(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
+        var this: ?*IVpnChannel2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartWithTrafficFilterWithAssignedClientIpv6ListWithVpnInterfaceIdWithAssignedRoutesWithAssignedNamespaceWithMtuSizeWithMaxFrameSizeWithReservedWithMainOuterTunnelTransportWithOptionalOuterTunnelTransportWithAssignedTrafficFilters(assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
+        return try this.?.StartWithTrafficFilterWithAssignedTrafficFilters(assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
     }
     pub fn AddAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
@@ -3769,8 +3769,8 @@ pub const VpnPacketBufferList = extern struct {
         const this: *IVpnPacketBufferList = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(VpnPacketBuffer) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(VpnPacketBuffer) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

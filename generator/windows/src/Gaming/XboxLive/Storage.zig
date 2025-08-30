@@ -52,9 +52,9 @@ pub const GameSaveBlobInfoQuery = extern struct {
         const this: *IGameSaveBlobInfoQuery = @ptrCast(self);
         return try this.GetBlobInfoAsync();
     }
-    pub fn GetBlobInfoAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
+    pub fn GetBlobInfoAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
         const this: *IGameSaveBlobInfoQuery = @ptrCast(self);
-        return try this.GetBlobInfoAsync(startIndex, maxNumberOfItems);
+        return try this.GetBlobInfoAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         const this: *IGameSaveBlobInfoQuery = @ptrCast(self);
@@ -152,9 +152,9 @@ pub const GameSaveContainerInfoQuery = extern struct {
         const this: *IGameSaveContainerInfoQuery = @ptrCast(self);
         return try this.GetContainerInfoAsync();
     }
-    pub fn GetContainerInfoAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
+    pub fn GetContainerInfoAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
         const this: *IGameSaveContainerInfoQuery = @ptrCast(self);
-        return try this.GetContainerInfoAsync(startIndex, maxNumberOfItems);
+        return try this.GetContainerInfoAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         const this: *IGameSaveContainerInfoQuery = @ptrCast(self);
@@ -213,9 +213,9 @@ pub const GameSaveProvider = extern struct {
         const this: *IGameSaveProvider = @ptrCast(self);
         return try this.CreateContainerInfoQuery();
     }
-    pub fn CreateContainerInfoQuery(self: *@This(), containerNamePrefix: HSTRING) core.HResult!*GameSaveContainerInfoQuery {
+    pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: HSTRING) core.HResult!*GameSaveContainerInfoQuery {
         const this: *IGameSaveProvider = @ptrCast(self);
-        return try this.CreateContainerInfoQuery(containerNamePrefix);
+        return try this.CreateContainerInfoQueryWithContainerNamePrefix(containerNamePrefix);
     }
     pub fn GetRemainingBytesInQuotaAsync(self: *@This()) core.HResult!*IAsyncOperation(i64) {
         const this: *IGameSaveProvider = @ptrCast(self);

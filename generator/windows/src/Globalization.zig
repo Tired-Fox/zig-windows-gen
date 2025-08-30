@@ -214,9 +214,9 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.EraAsString();
     }
-    pub fn EraAsString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn EraAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
-        return try this.EraAsString(idealLength);
+        return try this.EraAsStringWithIdealLength(idealLength);
     }
     pub fn getFirstYearInThisEra(self: *@This()) core.HResult!i32 {
         const this: *ICalendar = @ptrCast(self);
@@ -282,17 +282,17 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsString();
     }
-    pub fn MonthAsString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn MonthAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
-        return try this.MonthAsString(idealLength);
+        return try this.MonthAsStringWithIdealLength(idealLength);
     }
     pub fn MonthAsSoloString(self: *@This()) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.MonthAsSoloString();
     }
-    pub fn MonthAsSoloString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn MonthAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
-        return try this.MonthAsSoloString(idealLength);
+        return try this.MonthAsSoloStringWithIdealLength(idealLength);
     }
     pub fn MonthAsNumericString(self: *@This()) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
@@ -346,17 +346,17 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayOfWeekAsString();
     }
-    pub fn DayOfWeekAsString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn DayOfWeekAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
-        return try this.DayOfWeekAsString(idealLength);
+        return try this.DayOfWeekAsStringWithIdealLength(idealLength);
     }
     pub fn DayOfWeekAsSoloString(self: *@This()) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
         return try this.DayOfWeekAsSoloString();
     }
-    pub fn DayOfWeekAsSoloString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn DayOfWeekAsSoloStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
-        return try this.DayOfWeekAsSoloString(idealLength);
+        return try this.DayOfWeekAsSoloStringWithIdealLength(idealLength);
     }
     pub fn getFirstPeriodInThisDay(self: *@This()) core.HResult!i32 {
         const this: *ICalendar = @ptrCast(self);
@@ -386,9 +386,9 @@ pub const Calendar = extern struct {
         const this: *ICalendar = @ptrCast(self);
         return try this.PeriodAsString();
     }
-    pub fn PeriodAsString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn PeriodAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         const this: *ICalendar = @ptrCast(self);
-        return try this.PeriodAsString(idealLength);
+        return try this.PeriodAsStringWithIdealLength(idealLength);
     }
     pub fn getFirstHourInThisPeriod(self: *@This()) core.HResult!i32 {
         const this: *ICalendar = @ptrCast(self);
@@ -544,11 +544,11 @@ pub const Calendar = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TimeZoneAsString();
     }
-    pub fn TimeZoneAsString(self: *@This(), idealLength: i32) core.HResult!HSTRING {
+    pub fn TimeZoneAsStringWithIdealLength(self: *@This(), idealLength: i32) core.HResult!HSTRING {
         var this: ?*ITimeZoneOnCalendar = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ITimeZoneOnCalendar.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TimeZoneAsString(idealLength);
+        return try this.?.TimeZoneAsStringWithIdealLength(idealLength);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

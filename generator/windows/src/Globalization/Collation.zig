@@ -20,32 +20,32 @@ pub const CharacterGroupings = extern struct {
         const this: *ICharacterGroupings = @ptrCast(self);
         return try this.Lookup(text);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*CharacterGrouping {
-        var this: ?*IVectorView = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVectorView(CharacterGrouping) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVectorView = undefined;
+        var this: ?*IVectorView(CharacterGrouping) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: *CharacterGrouping, index: u32) core.HResult!bool {
-        var this: ?*IVectorView = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVectorView(CharacterGrouping) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]CharacterGrouping) core.HResult!u32 {
-        var this: ?*IVectorView = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVectorView(CharacterGrouping) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(CharacterGrouping) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(CharacterGrouping) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

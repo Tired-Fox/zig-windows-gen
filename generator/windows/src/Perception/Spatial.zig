@@ -1581,33 +1581,33 @@ pub const SpatialLocator = extern struct {
         const this: *ISpatialLocator = @ptrCast(self);
         return try this.CreateAttachedFrameOfReferenceAtCurrentHeading();
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeading(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePosition(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateAttachedFrameOfReferenceAtCurrentHeading(relativePosition);
+        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePosition(relativePosition);
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeading(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateAttachedFrameOfReferenceAtCurrentHeading(relativePosition, relativeOrientation);
+        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientation(relativePosition, relativeOrientation);
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeading(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateAttachedFrameOfReferenceAtCurrentHeading(relativePosition, relativeOrientation, relativeHeadingInRadians);
+        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
     }
     pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This()) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
         return try this.CreateStationaryFrameOfReferenceAtCurrentLocation();
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePosition(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateStationaryFrameOfReferenceAtCurrentLocation(relativePosition);
+        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePosition(relativePosition);
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateStationaryFrameOfReferenceAtCurrentLocation(relativePosition, relativeOrientation);
+        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientation(relativePosition, relativeOrientation);
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateStationaryFrameOfReferenceAtCurrentLocation(relativePosition, relativeOrientation, relativeHeadingInRadians);
+        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));

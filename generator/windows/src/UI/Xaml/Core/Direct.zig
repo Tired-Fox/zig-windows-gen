@@ -565,9 +565,9 @@ pub const XamlDirect = extern struct {
         const this: *IXamlDirect = @ptrCast(self);
         return try this.AddEventHandler(xamlDirectObject, eventIndex, handler);
     }
-    pub fn AddEventHandlerWithEventIndexWithHandlerWithHandledEventsToo(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) core.HResult!void {
+    pub fn AddEventHandlerWithHandledEventsToo(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) core.HResult!void {
         const this: *IXamlDirect = @ptrCast(self);
-        return try this.AddEventHandlerWithEventIndexWithHandlerWithHandledEventsToo(xamlDirectObject, eventIndex, handler, handledEventsToo);
+        return try this.AddEventHandlerWithHandledEventsToo(xamlDirectObject, eventIndex, handler, handledEventsToo);
     }
     pub fn RemoveEventHandler(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) core.HResult!void {
         const this: *IXamlDirect = @ptrCast(self);

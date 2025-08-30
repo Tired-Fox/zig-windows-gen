@@ -322,10 +322,8 @@ pub const DatagramSocket = extern struct {
         return try this.ConnectAsync(endpointPair);
     }
     pub fn BindServiceNameAsync(self: *@This(), localServiceName: HSTRING) core.HResult!*IAsyncAction {
-        var this: ?*IDatagramSocket2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.BindServiceNameAsync(localServiceName);
+        const this: *IDatagramSocket = @ptrCast(self);
+        return try this.BindServiceNameAsync(localServiceName);
     }
     pub fn BindEndpointAsync(self: *@This(), localHostName: *HostName, localServiceName: HSTRING) core.HResult!*IAsyncAction {
         const this: *IDatagramSocket = @ptrCast(self);
@@ -393,11 +391,11 @@ pub const DatagramSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
-    pub fn TransferOwnershipWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
+    pub fn TransferOwnershipWithDataWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TransferOwnershipWithKeepAliveTime(socketId, data, keepAliveTime);
+        return try this.?.TransferOwnershipWithDataWithKeepAliveTime(socketId, data, keepAliveTime);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2858,11 +2856,11 @@ pub const MessageWebSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(eventCookie);
     }
-    pub fn Close(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+        var this: ?*IWebSocket = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close(code, reason);
+        return try this.?.CloseWithCodeWithReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -3132,11 +3130,9 @@ pub const ServerMessageWebSocket = extern struct {
         const this: *IServerMessageWebSocket = @ptrCast(self);
         return try this.removeClosed(token);
     }
-    pub fn Close(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close(code, reason);
+    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+        const this: *IServerMessageWebSocket = @ptrCast(self);
+        return try this.CloseWithCodeWithReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -3208,11 +3204,9 @@ pub const ServerStreamWebSocket = extern struct {
         const this: *IServerStreamWebSocket = @ptrCast(self);
         return try this.removeClosed(token);
     }
-    pub fn Close(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close(code, reason);
+    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+        const this: *IServerStreamWebSocket = @ptrCast(self);
+        return try this.CloseWithCodeWithReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -3434,28 +3428,20 @@ pub const StreamSocket = extern struct {
         return try this.getOutputStream();
     }
     pub fn ConnectAsync(self: *@This(), endpointPair: *EndpointPair) core.HResult!*IAsyncAction {
-        var this: ?*IStreamSocket2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsync(endpointPair);
+        const this: *IStreamSocket = @ptrCast(self);
+        return try this.ConnectAsync(endpointPair);
     }
     pub fn ConnectAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
-        var this: ?*IStreamSocket2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithRemoteServiceName(remoteHostName, remoteServiceName);
+        const this: *IStreamSocket = @ptrCast(self);
+        return try this.ConnectAsyncWithRemoteServiceName(remoteHostName, remoteServiceName);
     }
     pub fn ConnectAsyncWithProtectionLevel(self: *@This(), endpointPair: *EndpointPair, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
-        var this: ?*IStreamSocket2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithProtectionLevel(endpointPair, protectionLevel);
+        const this: *IStreamSocket = @ptrCast(self);
+        return try this.ConnectAsyncWithProtectionLevel(endpointPair, protectionLevel);
     }
-    pub fn ConnectAsyncWithProtectionLevel(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
-        var this: ?*IStreamSocket2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithProtectionLevel(remoteHostName, remoteServiceName, protectionLevel);
+    pub fn ConnectAsyncWithRemoteServiceNameWithProtectionLevel(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
+        const this: *IStreamSocket = @ptrCast(self);
+        return try this.ConnectAsyncWithRemoteServiceNameWithProtectionLevel(remoteHostName, remoteServiceName, protectionLevel);
     }
     pub fn UpgradeToSslAsync(self: *@This(), protectionLevel: SocketProtectionLevel, validationHostName: *HostName) core.HResult!*IAsyncAction {
         const this: *IStreamSocket = @ptrCast(self);
@@ -3467,11 +3453,11 @@ pub const StreamSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ConnectAsyncWithAdapter(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteServiceNameWithProtectionLevelWithAdapter(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocket2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithAdapter(remoteHostName, remoteServiceName, protectionLevel, adapter);
+        return try this.?.ConnectAsyncWithRemoteServiceNameWithProtectionLevelWithAdapter(remoteHostName, remoteServiceName, protectionLevel, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocket3 = undefined;
@@ -3503,11 +3489,11 @@ pub const StreamSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
-    pub fn TransferOwnershipWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
+    pub fn TransferOwnershipWithDataWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TransferOwnershipWithKeepAliveTime(socketId, data, keepAliveTime);
+        return try this.?.TransferOwnershipWithDataWithKeepAliveTime(socketId, data, keepAliveTime);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3705,10 +3691,8 @@ pub const StreamSocketListener = extern struct {
         return try this.getInformation();
     }
     pub fn BindServiceNameAsync(self: *@This(), localServiceName: HSTRING) core.HResult!*IAsyncAction {
-        var this: ?*IStreamSocketListener2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.BindServiceNameAsync(localServiceName);
+        const this: *IStreamSocketListener = @ptrCast(self);
+        return try this.BindServiceNameAsync(localServiceName);
     }
     pub fn BindEndpointAsync(self: *@This(), localHostName: *HostName, localServiceName: HSTRING) core.HResult!*IAsyncAction {
         const this: *IStreamSocketListener = @ptrCast(self);
@@ -3734,11 +3718,11 @@ pub const StreamSocketListener = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BindServiceNameAsyncWithProtectionLevel(localServiceName, protectionLevel);
     }
-    pub fn BindServiceNameAsyncWithAdapter(self: *@This(), localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
+    pub fn BindServiceNameAsyncWithProtectionLevelWithAdapter(self: *@This(), localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.BindServiceNameAsyncWithAdapter(localServiceName, protectionLevel, adapter);
+        return try this.?.BindServiceNameAsyncWithProtectionLevelWithAdapter(localServiceName, protectionLevel, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener3 = undefined;
@@ -3916,11 +3900,11 @@ pub const StreamWebSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(eventCookie);
     }
-    pub fn Close(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+        var this: ?*IWebSocket = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close(code, reason);
+        return try this.?.CloseWithCodeWithReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -4207,5 +4191,5 @@ const PasswordCredential = @import("../Security/Credentials.zig").PasswordCreden
 const DataReader = @import("../Storage/Streams.zig").DataReader;
 const IBackgroundTask = @import("../ApplicationModel/Background.zig").IBackgroundTask;
 const IOutputStream = @import("../Storage/Streams.zig").IOutputStream;
-const core = @import("../root.zig").core;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
+const core = @import("../root.zig").core;

@@ -977,11 +977,11 @@ pub const CoreDispatcher = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ShouldYield();
     }
-    pub fn ShouldYield(self: *@This(), priority: CoreDispatcherPriority) core.HResult!bool {
+    pub fn ShouldYieldWithPriority(self: *@This(), priority: CoreDispatcherPriority) core.HResult!bool {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICoreDispatcherWithTaskPriority.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ShouldYield(priority);
+        return try this.?.ShouldYieldWithPriority(priority);
     }
     pub fn StopProcessEvents(self: *@This()) core.HResult!void {
         var this: ?*ICoreDispatcherWithTaskPriority = undefined;
@@ -1237,9 +1237,9 @@ pub const CoreIndependentInputSourceController = extern struct {
         const this: *ICoreIndependentInputSourceController = @ptrCast(self);
         return try this.SetControlledInput(inputTypes);
     }
-    pub fn SetControlledInputWithExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
+    pub fn SetControlledInputWithRequiredWithExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
         const this: *ICoreIndependentInputSourceController = @ptrCast(self);
-        return try this.SetControlledInputWithExcluded(inputTypes, required, excluded);
+        return try this.SetControlledInputWithRequiredWithExcluded(inputTypes, required, excluded);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;

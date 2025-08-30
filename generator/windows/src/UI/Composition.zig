@@ -13,10 +13,8 @@ pub const CompositionObject = extern struct {
         return try this.getProperties();
     }
     pub fn StartAnimation(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation) core.HResult!void {
-        var this: ?*ICompositionObject5 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject5.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAnimation(propertyName, animation);
+        const this: *ICompositionObject = @ptrCast(self);
+        return try this.StartAnimation(propertyName, animation);
     }
     pub fn StopAnimation(self: *@This(), propertyName: HSTRING) core.HResult!void {
         const this: *ICompositionObject = @ptrCast(self);
@@ -70,11 +68,11 @@ pub const CompositionObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetAnimationController(propertyName);
     }
-    pub fn StartAnimationWithAnimationWithAnimationController(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
+    pub fn StartAnimationWithAnimationController(self: *@This(), propertyName: HSTRING, animation: *CompositionAnimation, animationController: *AnimationController) core.HResult!void {
         var this: ?*ICompositionObject5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionObject5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAnimationWithAnimationWithAnimationController(propertyName, animation, animationController);
+        return try this.?.StartAnimationWithAnimationController(propertyName, animation, animationController);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -487,9 +485,9 @@ pub const KeyFrameAnimation = extern struct {
         const this: *IKeyFrameAnimation = @ptrCast(self);
         return try this.InsertExpressionKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertExpressionKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertExpressionKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: HSTRING, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertExpressionKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertExpressionKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub fn getDirection(self: *@This()) core.HResult!AnimationDirection {
         var this: ?*IKeyFrameAnimation2 = undefined;
@@ -799,9 +797,9 @@ pub const ColorKeyFrameAnimation = extern struct {
         const this: *IColorKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Color, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IColorKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ColorKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -827,8 +825,8 @@ pub const CompositionAnimationGroup = extern struct {
         const this: *ICompositionAnimationGroup = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(CompositionAnimation) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(CompositionAnimation) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -1066,80 +1064,80 @@ pub const CompositionColorGradientStop = extern struct {
 };
 pub const CompositionColorGradientStopCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(CompositionColorGradientStop) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*CompositionColorGradientStop {
-        var this: ?*IVector = undefined;
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(CompositionColorGradientStop) {
-        var this: ?*IVector = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *CompositionColorGradientStop, index: u32) core.HResult!bool {
-        var this: ?*IVector = undefined;
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *CompositionColorGradientStop) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *CompositionColorGradientStop) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *CompositionColorGradientStop) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IVector = undefined;
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]CompositionColorGradientStop) core.HResult!u32 {
-        var this: ?*IVector = undefined;
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]CompositionColorGradientStop) core.HResult!void {
-        var this: ?*IVector = undefined;
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
+        var this: ?*IVector(CompositionColorGradientStop) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ReplaceAll(items);
@@ -1303,11 +1301,11 @@ pub const CompositionDrawingSurface = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.ScrollWithClip(offset, clipRect);
     }
-    pub fn ScrollWithClipWithClipRectWithScrollRect(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
+    pub fn ScrollWithClipWithScrollRect(self: *@This(), offset: PointInt32, clipRect: RectInt32, scrollRect: RectInt32) core.HResult!void {
         var this: ?*ICompositionDrawingSurface2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositionDrawingSurface2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ScrollWithClipWithClipRectWithScrollRect(offset, clipRect, scrollRect);
+        return try this.?.ScrollWithClipWithScrollRect(offset, clipRect, scrollRect);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1824,17 +1822,17 @@ pub const CompositionNineGridBrush = extern struct {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
         return try this.SetInsets(inset);
     }
-    pub fn SetInsetsWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
+    pub fn SetInsetsWithTopWithRightWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
-        return try this.SetInsetsWithBottom(left, top, right, bottom);
+        return try this.SetInsetsWithTopWithRightWithBottom(left, top, right, bottom);
     }
     pub fn SetInsetScales(self: *@This(), scale: f32) core.HResult!void {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
         return try this.SetInsetScales(scale);
     }
-    pub fn SetInsetScalesWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
+    pub fn SetInsetScalesWithTopWithRightWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!void {
         const this: *ICompositionNineGridBrush = @ptrCast(self);
-        return try this.SetInsetScalesWithBottom(left, top, right, bottom);
+        return try this.SetInsetScalesWithTopWithRightWithBottom(left, top, right, bottom);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.CompositionNineGridBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1976,8 +1974,8 @@ pub const CompositionProjectedShadowCasterCollection = extern struct {
         const this: *ICompositionProjectedShadowCasterCollection = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(CompositionProjectedShadowCaster) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(CompositionProjectedShadowCaster) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2030,8 +2028,8 @@ pub const CompositionProjectedShadowReceiverUnorderedCollection = extern struct 
         const this: *ICompositionProjectedShadowReceiverUnorderedCollection = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(CompositionProjectedShadowReceiver) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(CompositionProjectedShadowReceiver) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2264,7 +2262,7 @@ pub const CompositionShadow = extern struct {
 };
 pub const CompositionShapeCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!*CompositionShape {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -2272,19 +2270,19 @@ pub const CompositionShapeCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(CompositionShape) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: *CompositionShape, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: *CompositionShape) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: *CompositionShape) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -2292,7 +2290,7 @@ pub const CompositionShapeCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: *CompositionShape) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -2304,16 +2302,16 @@ pub const CompositionShapeCollection = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]CompositionShape) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]CompositionShape) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(CompositionShape) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(CompositionShape) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2438,7 +2436,7 @@ pub const CompositionStrokeCap = enum(i32) {
 };
 pub const CompositionStrokeDashArray = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!f32 {
+    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetAt(index);
     }
@@ -2446,19 +2444,19 @@ pub const CompositionStrokeDashArray = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(f32) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
         const this: *IVector = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: f32, index: u32) core.HResult!bool {
+    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
         const this: *IVector = @ptrCast(self);
         return try this.IndexOf(value, index);
     }
-    pub fn SetAt(self: *@This(), index: u32, value: f32) core.HResult!void {
+    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.SetAt(index, value);
     }
-    pub fn InsertAt(self: *@This(), index: u32, value: f32) core.HResult!void {
+    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.InsertAt(index, value);
     }
@@ -2466,7 +2464,7 @@ pub const CompositionStrokeDashArray = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: f32) core.HResult!void {
+    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.Append(value);
     }
@@ -2478,16 +2476,16 @@ pub const CompositionStrokeDashArray = extern struct {
         const this: *IVector = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]f32) core.HResult!u32 {
+    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
         const this: *IVector = @ptrCast(self);
         return try this.GetMany(startIndex, items);
     }
-    pub fn ReplaceAll(self: *@This(), items: [*]f32) core.HResult!void {
+    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
         const this: *IVector = @ptrCast(self);
         return try this.ReplaceAll(items);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(f32) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(f32) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -2822,9 +2820,9 @@ pub const Compositor = extern struct {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateColorBrush();
     }
-    pub fn CreateColorBrush(self: *@This(), color: Color) core.HResult!*CompositionColorBrush {
+    pub fn CreateColorBrushWithColor(self: *@This(), color: Color) core.HResult!*CompositionColorBrush {
         const this: *ICompositor = @ptrCast(self);
-        return try this.CreateColorBrush(color);
+        return try this.CreateColorBrushWithColor(color);
     }
     pub fn CreateContainerVisual(self: *@This()) core.HResult!*ContainerVisual {
         const this: *ICompositor = @ptrCast(self);
@@ -2846,17 +2844,17 @@ pub const Compositor = extern struct {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateExpressionAnimation();
     }
-    pub fn CreateExpressionAnimation(self: *@This(), expression: HSTRING) core.HResult!*ExpressionAnimation {
+    pub fn CreateExpressionAnimationWithExpression(self: *@This(), expression: HSTRING) core.HResult!*ExpressionAnimation {
         const this: *ICompositor = @ptrCast(self);
-        return try this.CreateExpressionAnimation(expression);
+        return try this.CreateExpressionAnimationWithExpression(expression);
     }
     pub fn CreateInsetClip(self: *@This()) core.HResult!*InsetClip {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateInsetClip();
     }
-    pub fn CreateInsetClip(self: *@This(), leftInset: f32, topInset: f32, rightInset: f32, bottomInset: f32) core.HResult!*InsetClip {
+    pub fn CreateInsetClipWithLeftInsetWithTopInsetWithRightInsetWithBottomInset(self: *@This(), leftInset: f32, topInset: f32, rightInset: f32, bottomInset: f32) core.HResult!*InsetClip {
         const this: *ICompositor = @ptrCast(self);
-        return try this.CreateInsetClip(leftInset, topInset, rightInset, bottomInset);
+        return try this.CreateInsetClipWithLeftInsetWithTopInsetWithRightInsetWithBottomInset(leftInset, topInset, rightInset, bottomInset);
     }
     pub fn CreateLinearEasingFunction(self: *@This()) core.HResult!*LinearEasingFunction {
         const this: *ICompositor = @ptrCast(self);
@@ -2886,9 +2884,9 @@ pub const Compositor = extern struct {
         const this: *ICompositor = @ptrCast(self);
         return try this.CreateSurfaceBrush();
     }
-    pub fn CreateSurfaceBrush(self: *@This(), surface: *ICompositionSurface) core.HResult!*CompositionSurfaceBrush {
+    pub fn CreateSurfaceBrushWithSurface(self: *@This(), surface: *ICompositionSurface) core.HResult!*CompositionSurfaceBrush {
         const this: *ICompositor = @ptrCast(self);
-        return try this.CreateSurfaceBrush(surface);
+        return try this.CreateSurfaceBrushWithSurface(surface);
     }
     pub fn CreateTargetForCurrentView(self: *@This()) core.HResult!*CompositionTarget {
         const this: *ICompositor = @ptrCast(self);
@@ -2982,11 +2980,11 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStepEasingFunction();
     }
-    pub fn CreateStepEasingFunction(self: *@This(), stepCount: i32) core.HResult!*StepEasingFunction {
+    pub fn CreateStepEasingFunctionWithStepCount(self: *@This(), stepCount: i32) core.HResult!*StepEasingFunction {
         var this: ?*ICompositor2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateStepEasingFunction(stepCount);
+        return try this.?.CreateStepEasingFunctionWithStepCount(stepCount);
     }
     pub fn CreateHostBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var this: ?*ICompositor3 = undefined;
@@ -3000,11 +2998,11 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateColorGradientStop();
     }
-    pub fn CreateColorGradientStop(self: *@This(), offset: f32, color: Color) core.HResult!*CompositionColorGradientStop {
+    pub fn CreateColorGradientStopWithOffsetWithColor(self: *@This(), offset: f32, color: Color) core.HResult!*CompositionColorGradientStop {
         var this: ?*ICompositor4 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor4.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateColorGradientStop(offset, color);
+        return try this.?.CreateColorGradientStopWithOffsetWithColor(offset, color);
     }
     pub fn CreateLinearGradientBrush(self: *@This()) core.HResult!*CompositionLinearGradientBrush {
         var this: ?*ICompositor4 = undefined;
@@ -3096,11 +3094,11 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreatePathGeometry();
     }
-    pub fn CreatePathGeometry(self: *@This(), path: *CompositionPath) core.HResult!*CompositionPathGeometry {
+    pub fn CreatePathGeometryWithPath(self: *@This(), path: *CompositionPath) core.HResult!*CompositionPathGeometry {
         var this: ?*ICompositor5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreatePathGeometry(path);
+        return try this.?.CreatePathGeometryWithPath(path);
     }
     pub fn CreatePathKeyFrameAnimation(self: *@This()) core.HResult!*PathKeyFrameAnimation {
         var this: ?*ICompositor5 = undefined;
@@ -3132,11 +3130,11 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateSpriteShape();
     }
-    pub fn CreateSpriteShape(self: *@This(), geometry: *CompositionGeometry) core.HResult!*CompositionSpriteShape {
+    pub fn CreateSpriteShapeWithGeometry(self: *@This(), geometry: *CompositionGeometry) core.HResult!*CompositionSpriteShape {
         var this: ?*ICompositor5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateSpriteShape(geometry);
+        return try this.?.CreateSpriteShapeWithGeometry(geometry);
     }
     pub fn CreateViewBox(self: *@This()) core.HResult!*CompositionViewBox {
         var this: ?*ICompositor5 = undefined;
@@ -3156,11 +3154,11 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateGeometricClip();
     }
-    pub fn CreateGeometricClip(self: *@This(), geometry: *CompositionGeometry) core.HResult!*CompositionGeometricClip {
+    pub fn CreateGeometricClipWithGeometry(self: *@This(), geometry: *CompositionGeometry) core.HResult!*CompositionGeometricClip {
         var this: ?*ICompositor6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateGeometricClip(geometry);
+        return try this.?.CreateGeometricClipWithGeometry(geometry);
     }
     pub fn CreateRedirectVisual(self: *@This()) core.HResult!*RedirectVisual {
         var this: ?*ICompositor6 = undefined;
@@ -3168,11 +3166,11 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRedirectVisual();
     }
-    pub fn CreateRedirectVisual(self: *@This(), source: *Visual) core.HResult!*RedirectVisual {
+    pub fn CreateRedirectVisualWithSource(self: *@This(), source: *Visual) core.HResult!*RedirectVisual {
         var this: ?*ICompositor6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateRedirectVisual(source);
+        return try this.?.CreateRedirectVisualWithSource(source);
     }
     pub fn CreateBooleanKeyFrameAnimation(self: *@This()) core.HResult!*BooleanKeyFrameAnimation {
         var this: ?*ICompositor6 = undefined;
@@ -3228,17 +3226,17 @@ pub const Compositor = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateRectangleClip();
     }
-    pub fn CreateRectangleClip(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!*RectangleClip {
+    pub fn CreateRectangleClipWithLeftWithTopWithRightWithBottom(self: *@This(), left: f32, top: f32, right: f32, bottom: f32) core.HResult!*RectangleClip {
         var this: ?*ICompositor7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateRectangleClip(left, top, right, bottom);
+        return try this.?.CreateRectangleClipWithLeftWithTopWithRightWithBottom(left, top, right, bottom);
     }
-    pub fn CreateRectangleClip(self: *@This(), left: f32, top: f32, right: f32, bottom: f32, topLeftRadius: Vector2, topRightRadius: Vector2, bottomRightRadius: Vector2, bottomLeftRadius: Vector2) core.HResult!*RectangleClip {
+    pub fn CreateRectangleClipWithLeftWithTopWithRightWithBottomWithTopLeftRadiusWithTopRightRadiusWithBottomRightRadiusWithBottomLeftRadius(self: *@This(), left: f32, top: f32, right: f32, bottom: f32, topLeftRadius: Vector2, topRightRadius: Vector2, bottomRightRadius: Vector2, bottomLeftRadius: Vector2) core.HResult!*RectangleClip {
         var this: ?*ICompositor7 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICompositor7.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateRectangleClip(left, top, right, bottom, topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
+        return try this.?.CreateRectangleClipWithLeftWithTopWithRightWithBottomWithTopLeftRadiusWithTopRightRadiusWithBottomRightRadiusWithBottomLeftRadius(left, top, right, bottom, topLeftRadius, topRightRadius, bottomRightRadius, bottomLeftRadius);
     }
     pub fn TryCreateBlurredWallpaperBackdropBrush(self: *@This()) core.HResult!*CompositionBackdropBrush {
         var this: ?*ICompositorWithBlurredWallpaperBackdropBrush = undefined;
@@ -11089,50 +11087,50 @@ pub const IVisualUnorderedCollection = extern struct {
 };
 pub const ImplicitAnimationCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,ICompositionAnimationBase)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,ICompositionAnimationBase)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
     }
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!*ICompositionAnimationBase {
-        var this: ?*IMap = undefined;
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,ICompositionAnimationBase) {
-        var this: ?*IMap = undefined;
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: *ICompositionAnimationBase) core.HResult!bool {
-        var this: ?*IMap = undefined;
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
-        var this: ?*IMap = undefined;
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        var this: ?*IMap = undefined;
+        var this: ?*IMap(HSTRING,ICompositionAnimationBase) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
@@ -11145,7 +11143,7 @@ pub const ImplicitAnimationCollection = extern struct {
 };
 pub const InitialValueExpressionCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: HSTRING) core.HResult!HSTRING {
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
         const this: *IMap = @ptrCast(self);
         return try this.Lookup(key);
     }
@@ -11153,19 +11151,19 @@ pub const InitialValueExpressionCollection = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: HSTRING) core.HResult!bool {
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
         const this: *IMap = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: HSTRING, value: HSTRING) core.HResult!bool {
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: HSTRING) core.HResult!void {
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
         const this: *IMap = @ptrCast(self);
         return try this.Remove(key);
     }
@@ -11173,8 +11171,8 @@ pub const InitialValueExpressionCollection = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -11271,9 +11269,9 @@ pub const PathKeyFrameAnimation = extern struct {
         const this: *IPathKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, path);
     }
-    pub fn InsertKeyFrameWithPathWithEasingFunction(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, path: *CompositionPath, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IPathKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithPathWithEasingFunction(normalizedProgressKey, path, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, path, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.PathKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11395,9 +11393,9 @@ pub const QuaternionKeyFrameAnimation = extern struct {
         const this: *IQuaternionKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Quaternion, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IQuaternionKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.QuaternionKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11511,9 +11509,9 @@ pub const ScalarKeyFrameAnimation = extern struct {
         const this: *IScalarKeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: f32, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IScalarKeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.ScalarKeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11859,9 +11857,9 @@ pub const Vector2KeyFrameAnimation = extern struct {
         const this: *IVector2KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector2, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IVector2KeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector2KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11875,9 +11873,9 @@ pub const Vector3KeyFrameAnimation = extern struct {
         const this: *IVector3KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector3, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IVector3KeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector3KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11891,9 +11889,9 @@ pub const Vector4KeyFrameAnimation = extern struct {
         const this: *IVector4KeyFrameAnimation = @ptrCast(self);
         return try this.InsertKeyFrame(normalizedProgressKey, value);
     }
-    pub fn InsertKeyFrameWithValueWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) core.HResult!void {
+    pub fn InsertKeyFrameWithEasingFunction(self: *@This(), normalizedProgressKey: f32, value: Vector4, easingFunction: *CompositionEasingFunction) core.HResult!void {
         const this: *IVector4KeyFrameAnimation = @ptrCast(self);
-        return try this.InsertKeyFrameWithValueWithEasingFunction(normalizedProgressKey, value, easingFunction);
+        return try this.InsertKeyFrameWithEasingFunction(normalizedProgressKey, value, easingFunction);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Vector4KeyFrameAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -11931,8 +11929,8 @@ pub const VisualCollection = extern struct {
         const this: *IVisualCollection = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Visual) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Visual) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();
@@ -11961,8 +11959,8 @@ pub const VisualUnorderedCollection = extern struct {
         const this: *IVisualUnorderedCollection = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(Visual) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(Visual) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

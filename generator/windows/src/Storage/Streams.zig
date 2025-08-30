@@ -172,15 +172,15 @@ pub const DataReader = extern struct {
 };
 pub const DataReaderLoadOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(u32)) core.HResult!void {
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(u32) {
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.getCompleted();
     }
-    pub fn GetResults(self: *@This()) core.HResult!u32 {
+    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.GetResults();
     }
@@ -254,9 +254,9 @@ pub const DataWriter = extern struct {
         const this: *IDataWriter = @ptrCast(self);
         return try this.WriteBuffer(buffer);
     }
-    pub fn WriteBufferWithCount(self: *@This(), buffer: *IBuffer, start: u32, count: u32) core.HResult!void {
+    pub fn WriteBufferWithStartWithCount(self: *@This(), buffer: *IBuffer, start: u32, count: u32) core.HResult!void {
         const this: *IDataWriter = @ptrCast(self);
-        return try this.WriteBufferWithCount(buffer, start, count);
+        return try this.WriteBufferWithStartWithCount(buffer, start, count);
     }
     pub fn WriteBoolean(self: *@This(), value: bool) core.HResult!void {
         const this: *IDataWriter = @ptrCast(self);
@@ -357,15 +357,15 @@ pub const DataWriter = extern struct {
 };
 pub const DataWriterStoreOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(u32)) core.HResult!void {
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(u32) {
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.getCompleted();
     }
-    pub fn GetResults(self: *@This()) core.HResult!u32 {
+    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
         const this: *IAsyncOperation = @ptrCast(self);
         return try this.GetResults();
     }
@@ -490,18 +490,6 @@ pub const FileRandomAccessStream = extern struct {
         const this: *IRandomAccessStream = @ptrCast(self);
         return try this.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -513,6 +501,18 @@ pub const FileRandomAccessStream = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1497,18 +1497,6 @@ pub const InMemoryRandomAccessStream = extern struct {
         const this: *IRandomAccessStream = @ptrCast(self);
         return try this.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -1520,6 +1508,18 @@ pub const InMemoryRandomAccessStream = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -1639,18 +1639,6 @@ pub const RandomAccessStreamOverStream = extern struct {
         const this: *IRandomAccessStream = @ptrCast(self);
         return try this.getCanWrite();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
-    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -1662,6 +1650,18 @@ pub const RandomAccessStreamOverStream = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
+    }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
     }
     pub const NAME: []const u8 = "Windows.Storage.Streams.RandomAccessStreamOverStream";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

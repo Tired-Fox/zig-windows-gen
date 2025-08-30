@@ -6060,7 +6060,7 @@ pub const MediaStreamSample = extern struct {
 };
 pub const MediaStreamSamplePropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: *Guid) core.HResult!*IInspectable {
+    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
         const this: *IMap = @ptrCast(self);
         return try this.Lookup(key);
     }
@@ -6068,19 +6068,19 @@ pub const MediaStreamSamplePropertySet = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: *Guid) core.HResult!bool {
+    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.HasKey(key);
     }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
         const this: *IMap = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: *Guid, value: *IInspectable) core.HResult!bool {
+    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
         const this: *IMap = @ptrCast(self);
         return try this.Insert(key, value);
     }
-    pub fn Remove(self: *@This(), key: *Guid) core.HResult!void {
+    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
         const this: *IMap = @ptrCast(self);
         return try this.Remove(key);
     }
@@ -6088,8 +6088,8 @@ pub const MediaStreamSamplePropertySet = extern struct {
         const this: *IMap = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(Guid,IInspectable)) {
-        var this: ?*IIterable = undefined;
+    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+        var this: ?*IIterable(IKeyValuePair(Guid,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.First();

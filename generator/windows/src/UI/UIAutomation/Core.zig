@@ -108,9 +108,9 @@ pub const CoreAutomationRemoteOperationContext = extern struct {
         const this: *ICoreAutomationRemoteOperationContext = @ptrCast(self);
         return try this.SetOperand(id, operand);
     }
-    pub fn SetOperandWithOperandWithOperandInterfaceId(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
+    pub fn SetOperandWithOperandInterfaceId(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
         const this: *ICoreAutomationRemoteOperationContext = @ptrCast(self);
-        return try this.SetOperandWithOperandWithOperandInterfaceId(id, operand, operandInterfaceId);
+        return try this.SetOperandWithOperandInterfaceId(id, operand, operandInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.CoreAutomationRemoteOperationContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
