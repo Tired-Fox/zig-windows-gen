@@ -125,12 +125,12 @@ pub const PerceptionTimestampHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromHistoricalTargetTime(targetTime: DateTime) core.HResult!*PerceptionTimestamp {
-        const factory = @This().IPerceptionTimestampHelperStaticsCache.get();
-        return try factory.FromHistoricalTargetTime(targetTime);
+        const _f = @This().IPerceptionTimestampHelperStaticsCache.get();
+        return try _f.FromHistoricalTargetTime(targetTime);
     }
     pub fn FromSystemRelativeTargetTime(targetTime: TimeSpan) core.HResult!*PerceptionTimestamp {
-        const factory = @This().IPerceptionTimestampHelperStatics2Cache.get();
-        return try factory.FromSystemRelativeTargetTime(targetTime);
+        const _f = @This().IPerceptionTimestampHelperStatics2Cache.get();
+        return try _f.FromSystemRelativeTargetTime(targetTime);
     }
     pub const NAME: []const u8 = "Windows.Perception.PerceptionTimestampHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -91,8 +91,8 @@ pub const AudioStreamDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(encodingProperties: *AudioEncodingProperties) core.HResult!*AudioStreamDescriptor {
-        const factory = @This().IAudioStreamDescriptorFactoryCache.get();
-        return try factory.Create(encodingProperties);
+        const _f = @This().IAudioStreamDescriptorFactoryCache.get();
+        return try _f.Create(encodingProperties);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.AudioStreamDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -322,209 +322,209 @@ pub const CodecSubtypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_VideoFormatDV25() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDV25();
+    pub fn getVideoFormatDV25() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDV25();
     }
-    pub fn get_VideoFormatDV50() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDV50();
+    pub fn getVideoFormatDV50() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDV50();
     }
-    pub fn get_VideoFormatDvc() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDvc();
+    pub fn getVideoFormatDvc() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDvc();
     }
-    pub fn get_VideoFormatDvh1() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDvh1();
+    pub fn getVideoFormatDvh1() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDvh1();
     }
-    pub fn get_VideoFormatDvhD() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDvhD();
+    pub fn getVideoFormatDvhD() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDvhD();
     }
-    pub fn get_VideoFormatDvsd() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDvsd();
+    pub fn getVideoFormatDvsd() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDvsd();
     }
-    pub fn get_VideoFormatDvsl() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatDvsl();
+    pub fn getVideoFormatDvsl() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatDvsl();
     }
-    pub fn get_VideoFormatH263() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatH263();
+    pub fn getVideoFormatH263() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatH263();
     }
-    pub fn get_VideoFormatH264() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatH264();
+    pub fn getVideoFormatH264() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatH264();
     }
-    pub fn get_VideoFormatH265() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatH265();
+    pub fn getVideoFormatH265() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatH265();
     }
-    pub fn get_VideoFormatH264ES() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatH264ES();
+    pub fn getVideoFormatH264ES() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatH264ES();
     }
-    pub fn get_VideoFormatHevc() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatHevc();
+    pub fn getVideoFormatHevc() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatHevc();
     }
-    pub fn get_VideoFormatHevcES() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatHevcES();
+    pub fn getVideoFormatHevcES() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatHevcES();
     }
-    pub fn get_VideoFormatM4S2() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatM4S2();
+    pub fn getVideoFormatM4S2() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatM4S2();
     }
-    pub fn get_VideoFormatMjpg() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMjpg();
+    pub fn getVideoFormatMjpg() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMjpg();
     }
-    pub fn get_VideoFormatMP43() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMP43();
+    pub fn getVideoFormatMP43() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMP43();
     }
-    pub fn get_VideoFormatMP4S() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMP4S();
+    pub fn getVideoFormatMP4S() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMP4S();
     }
-    pub fn get_VideoFormatMP4V() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMP4V();
+    pub fn getVideoFormatMP4V() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMP4V();
     }
-    pub fn get_VideoFormatMpeg2() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMpeg2();
+    pub fn getVideoFormatMpeg2() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMpeg2();
     }
-    pub fn get_VideoFormatVP80() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatVP80();
+    pub fn getVideoFormatVP80() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatVP80();
     }
-    pub fn get_VideoFormatVP90() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatVP90();
+    pub fn getVideoFormatVP90() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatVP90();
     }
-    pub fn get_VideoFormatMpg1() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMpg1();
+    pub fn getVideoFormatMpg1() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMpg1();
     }
-    pub fn get_VideoFormatMss1() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMss1();
+    pub fn getVideoFormatMss1() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMss1();
     }
-    pub fn get_VideoFormatMss2() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatMss2();
+    pub fn getVideoFormatMss2() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatMss2();
     }
-    pub fn get_VideoFormatWmv1() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatWmv1();
+    pub fn getVideoFormatWmv1() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatWmv1();
     }
-    pub fn get_VideoFormatWmv2() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatWmv2();
+    pub fn getVideoFormatWmv2() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatWmv2();
     }
-    pub fn get_VideoFormatWmv3() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatWmv3();
+    pub fn getVideoFormatWmv3() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatWmv3();
     }
-    pub fn get_VideoFormatWvc1() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormatWvc1();
+    pub fn getVideoFormatWvc1() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormatWvc1();
     }
-    pub fn get_VideoFormat420O() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getVideoFormat420O();
+    pub fn getVideoFormat420O() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getVideoFormat420O();
     }
-    pub fn get_AudioFormatAac() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatAac();
+    pub fn getAudioFormatAac() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatAac();
     }
-    pub fn get_AudioFormatAdts() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatAdts();
+    pub fn getAudioFormatAdts() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatAdts();
     }
-    pub fn get_AudioFormatAlac() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatAlac();
+    pub fn getAudioFormatAlac() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatAlac();
     }
-    pub fn get_AudioFormatAmrNB() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatAmrNB();
+    pub fn getAudioFormatAmrNB() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatAmrNB();
     }
-    pub fn get_AudioFormatAmrWB() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatAmrWB();
+    pub fn getAudioFormatAmrWB() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatAmrWB();
     }
-    pub fn get_AudioFormatAmrWP() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatAmrWP();
+    pub fn getAudioFormatAmrWP() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatAmrWP();
     }
-    pub fn get_AudioFormatDolbyAC3() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatDolbyAC3();
+    pub fn getAudioFormatDolbyAC3() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatDolbyAC3();
     }
-    pub fn get_AudioFormatDolbyAC3Spdif() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatDolbyAC3Spdif();
+    pub fn getAudioFormatDolbyAC3Spdif() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatDolbyAC3Spdif();
     }
-    pub fn get_AudioFormatDolbyDDPlus() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatDolbyDDPlus();
+    pub fn getAudioFormatDolbyDDPlus() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatDolbyDDPlus();
     }
-    pub fn get_AudioFormatDrm() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatDrm();
+    pub fn getAudioFormatDrm() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatDrm();
     }
-    pub fn get_AudioFormatDts() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatDts();
+    pub fn getAudioFormatDts() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatDts();
     }
-    pub fn get_AudioFormatFlac() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatFlac();
+    pub fn getAudioFormatFlac() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatFlac();
     }
-    pub fn get_AudioFormatFloat() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatFloat();
+    pub fn getAudioFormatFloat() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatFloat();
     }
-    pub fn get_AudioFormatMP3() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatMP3();
+    pub fn getAudioFormatMP3() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatMP3();
     }
-    pub fn get_AudioFormatMPeg() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatMPeg();
+    pub fn getAudioFormatMPeg() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatMPeg();
     }
-    pub fn get_AudioFormatMsp1() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatMsp1();
+    pub fn getAudioFormatMsp1() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatMsp1();
     }
-    pub fn get_AudioFormatOpus() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatOpus();
+    pub fn getAudioFormatOpus() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatOpus();
     }
-    pub fn get_AudioFormatPcm() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatPcm();
+    pub fn getAudioFormatPcm() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatPcm();
     }
-    pub fn get_AudioFormatWmaSpdif() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatWmaSpdif();
+    pub fn getAudioFormatWmaSpdif() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatWmaSpdif();
     }
-    pub fn get_AudioFormatWMAudioLossless() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatWMAudioLossless();
+    pub fn getAudioFormatWMAudioLossless() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatWMAudioLossless();
     }
-    pub fn get_AudioFormatWMAudioV8() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatWMAudioV8();
+    pub fn getAudioFormatWMAudioV8() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatWMAudioV8();
     }
-    pub fn get_AudioFormatWMAudioV9() core.HResult!HSTRING {
-        const factory = @This().ICodecSubtypesStaticsCache.get();
-        return try factory.getAudioFormatWMAudioV9();
+    pub fn getAudioFormatWMAudioV9() core.HResult!HSTRING {
+        const _f = @This().ICodecSubtypesStaticsCache.get();
+        return try _f.getAudioFormatWMAudioV9();
     }
     pub const NAME: []const u8 = "Windows.Media.Core.CodecSubtypes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4888,15 +4888,15 @@ pub const ITimedTextSourceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromStreamWithIndexWithDefaultLanguage(self: *@This(), stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
-        const _c = self.vtable.CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage(@ptrCast(self), stream, indexStream, defaultLanguage, &_r);
+        const _c = self.vtable.CreateFromStreamWithIndexWithDefaultLanguage(@ptrCast(self), stream, indexStream, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromUriWithIndexWithIndexUriWithDefaultLanguage(self: *@This(), uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
+    pub fn CreateFromUriWithIndexWithDefaultLanguage(self: *@This(), uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
         var _r: *TimedTextSource = undefined;
-        const _c = self.vtable.CreateFromUriWithIndexWithIndexUriWithDefaultLanguage(@ptrCast(self), uri, indexUri, defaultLanguage, &_r);
+        const _c = self.vtable.CreateFromUriWithIndexWithDefaultLanguage(@ptrCast(self), uri, indexUri, defaultLanguage, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4914,8 +4914,8 @@ pub const ITimedTextSourceStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromStreamWithIndex: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, _r: **TimedTextSource) callconv(.winapi) HRESULT,
         CreateFromUriWithIndex: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromStreamWithIndexWithIndexStreamWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
-        CreateFromUriWithIndexWithIndexUriWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromStreamWithIndexWithDefaultLanguage: *const fn(self: *anyopaque, stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
+        CreateFromUriWithIndexWithDefaultLanguage: *const fn(self: *anyopaque, uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING, _r: **TimedTextSource) callconv(.winapi) HRESULT,
     };
 };
 pub const ITimedTextStyle = extern struct {
@@ -5597,17 +5597,17 @@ pub const LowLightFusion = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SupportedBitmapPixelFormats() core.HResult!*IVectorView(BitmapPixelFormat) {
-        const factory = @This().ILowLightFusionStaticsCache.get();
-        return try factory.getSupportedBitmapPixelFormats();
+    pub fn getSupportedBitmapPixelFormats() core.HResult!*IVectorView(BitmapPixelFormat) {
+        const _f = @This().ILowLightFusionStaticsCache.get();
+        return try _f.getSupportedBitmapPixelFormats();
     }
-    pub fn get_MaxSupportedFrameCount() core.HResult!i32 {
-        const factory = @This().ILowLightFusionStaticsCache.get();
-        return try factory.getMaxSupportedFrameCount();
+    pub fn getMaxSupportedFrameCount() core.HResult!i32 {
+        const _f = @This().ILowLightFusionStaticsCache.get();
+        return try _f.getMaxSupportedFrameCount();
     }
     pub fn FuseAsync(frameSet: *IIterable(SoftwareBitmap)) core.HResult!*IAsyncOperationWithProgress(LowLightFusionResult,f64) {
-        const factory = @This().ILowLightFusionStaticsCache.get();
-        return try factory.FuseAsync(frameSet);
+        const _f = @This().ILowLightFusionStaticsCache.get();
+        return try _f.FuseAsync(frameSet);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.LowLightFusion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5839,48 +5839,48 @@ pub const MediaSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromMediaBinder(binder: *MediaBinder) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStatics2Cache.get();
-        return try factory.CreateFromMediaBinder(binder);
+        const _f = @This().IMediaSourceStatics2Cache.get();
+        return try _f.CreateFromMediaBinder(binder);
     }
     pub fn CreateFromAdaptiveMediaSource(mediaSource: *AdaptiveMediaSource) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromAdaptiveMediaSource(mediaSource);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromAdaptiveMediaSource(mediaSource);
     }
     pub fn CreateFromMediaStreamSource(mediaSource: *MediaStreamSource) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromMediaStreamSource(mediaSource);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromMediaStreamSource(mediaSource);
     }
     pub fn CreateFromMseStreamSource(mediaSource: *MseStreamSource) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromMseStreamSource(mediaSource);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromMseStreamSource(mediaSource);
     }
     pub fn CreateFromIMediaSource(mediaSource: *IMediaSource) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromIMediaSource(mediaSource);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromIMediaSource(mediaSource);
     }
     pub fn CreateFromStorageFile(file: *IStorageFile) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromStorageFile(file);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromStorageFile(file);
     }
     pub fn CreateFromStream(stream: *IRandomAccessStream, contentType: HSTRING) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromStream(stream, contentType);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromStream(stream, contentType);
     }
     pub fn CreateFromStreamReference(stream: *IRandomAccessStreamReference, contentType: HSTRING) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromStreamReference(stream, contentType);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromStreamReference(stream, contentType);
     }
     pub fn CreateFromUri(uri: *Uri) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStaticsCache.get();
-        return try factory.CreateFromUri(uri);
+        const _f = @This().IMediaSourceStaticsCache.get();
+        return try _f.CreateFromUri(uri);
     }
     pub fn CreateFromDownloadOperation(downloadOperation: *DownloadOperation) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStatics4Cache.get();
-        return try factory.CreateFromDownloadOperation(downloadOperation);
+        const _f = @This().IMediaSourceStatics4Cache.get();
+        return try _f.CreateFromDownloadOperation(downloadOperation);
     }
     pub fn CreateFromMediaFrameSource(frameSource: *MediaFrameSource) core.HResult!*MediaSource {
-        const factory = @This().IMediaSourceStatics3Cache.get();
-        return try factory.CreateFromMediaFrameSource(frameSource);
+        const _f = @This().IMediaSourceStatics3Cache.get();
+        return try _f.CreateFromMediaFrameSource(frameSource);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.MediaSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5910,8 +5910,8 @@ pub const MediaSourceAppServiceConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(appServiceConnection: *AppServiceConnection) core.HResult!*MediaSourceAppServiceConnection {
-        const factory = @This().IMediaSourceAppServiceConnectionFactoryCache.get();
-        return try factory.Create(appServiceConnection);
+        const _f = @This().IMediaSourceAppServiceConnectionFactoryCache.get();
+        return try _f.Create(appServiceConnection);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.MediaSourceAppServiceConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6039,16 +6039,16 @@ pub const MediaStreamSample = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromBuffer(buffer: *IBuffer, timestamp: TimeSpan) core.HResult!*MediaStreamSample {
-        const factory = @This().IMediaStreamSampleStaticsCache.get();
-        return try factory.CreateFromBuffer(buffer, timestamp);
+        const _f = @This().IMediaStreamSampleStaticsCache.get();
+        return try _f.CreateFromBuffer(buffer, timestamp);
     }
     pub fn CreateFromStreamAsync(stream: *IInputStream, count: u32, timestamp: TimeSpan) core.HResult!*IAsyncOperation(MediaStreamSample) {
-        const factory = @This().IMediaStreamSampleStaticsCache.get();
-        return try factory.CreateFromStreamAsync(stream, count, timestamp);
+        const _f = @This().IMediaStreamSampleStaticsCache.get();
+        return try _f.CreateFromStreamAsync(stream, count, timestamp);
     }
     pub fn CreateFromDirect3D11Surface(surface: *IDirect3DSurface, timestamp: TimeSpan) core.HResult!*MediaStreamSample {
-        const factory = @This().IMediaStreamSampleStatics2Cache.get();
-        return try factory.CreateFromDirect3D11Surface(surface, timestamp);
+        const _f = @This().IMediaStreamSampleStatics2Cache.get();
+        return try _f.CreateFromDirect3D11Surface(surface, timestamp);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.MediaStreamSample";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6060,35 +6060,19 @@ pub const MediaStreamSample = extern struct {
 };
 pub const MediaStreamSamplePropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        const this: *IMap = @ptrCast(self);
-        return try this.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMap = @ptrCast(self);
+        const this: *IMap(Guid,IInspectable) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        const this: *IMap = @ptrCast(self);
-        return try this.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
-        const this: *IMap = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(Guid,IInspectable) {
+        const this: *IMap(Guid,IInspectable) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        const this: *IMap = @ptrCast(self);
-        return try this.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        const this: *IMap = @ptrCast(self);
-        return try this.Remove(key);
-    }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IMap = @ptrCast(self);
+        const this: *IMap(Guid,IInspectable) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(Guid,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(Guid,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -6278,12 +6262,12 @@ pub const MediaStreamSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromDescriptor(descriptor: *IMediaStreamDescriptor) core.HResult!*MediaStreamSource {
-        const factory = @This().IMediaStreamSourceFactoryCache.get();
-        return try factory.CreateFromDescriptor(descriptor);
+        const _f = @This().IMediaStreamSourceFactoryCache.get();
+        return try _f.CreateFromDescriptor(descriptor);
     }
     pub fn CreateFromDescriptors(descriptor: *IMediaStreamDescriptor, descriptor2: *IMediaStreamDescriptor) core.HResult!*MediaStreamSource {
-        const factory = @This().IMediaStreamSourceFactoryCache.get();
-        return try factory.CreateFromDescriptors(descriptor, descriptor2);
+        const _f = @This().IMediaStreamSourceFactoryCache.get();
+        return try _f.CreateFromDescriptors(descriptor, descriptor2);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.MediaStreamSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6721,8 +6705,8 @@ pub const MseStreamSource = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMseStreamSource.IID)));
     }
     pub fn IsContentTypeSupported(contentType: HSTRING) core.HResult!bool {
-        const factory = @This().IMseStreamSourceStaticsCache.get();
-        return try factory.IsContentTypeSupported(contentType);
+        const _f = @This().IMseStreamSourceStaticsCache.get();
+        return try _f.IsContentTypeSupported(contentType);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.MseStreamSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7041,8 +7025,8 @@ pub const TimedMetadataStreamDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(encodingProperties: *TimedMetadataEncodingProperties) core.HResult!*TimedMetadataStreamDescriptor {
-        const factory = @This().ITimedMetadataStreamDescriptorFactoryCache.get();
-        return try factory.Create(encodingProperties);
+        const _f = @This().ITimedMetadataStreamDescriptorFactoryCache.get();
+        return try _f.Create(encodingProperties);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.TimedMetadataStreamDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7147,8 +7131,8 @@ pub const TimedMetadataTrack = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: HSTRING, language: HSTRING, kind: TimedMetadataKind) core.HResult!*TimedMetadataTrack {
-        const factory = @This().ITimedMetadataTrackFactoryCache.get();
-        return try factory.Create(id, language, kind);
+        const _f = @This().ITimedMetadataTrackFactoryCache.get();
+        return try _f.Create(id, language, kind);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.TimedMetadataTrack";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7568,36 +7552,36 @@ pub const TimedTextSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromStreamWithIndex(stream: *IRandomAccessStream, indexStream: *IRandomAccessStream) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStatics2Cache.get();
-        return try factory.CreateFromStreamWithIndex(stream, indexStream);
+        const _f = @This().ITimedTextSourceStatics2Cache.get();
+        return try _f.CreateFromStreamWithIndex(stream, indexStream);
     }
     pub fn CreateFromUriWithIndex(uri: *Uri, indexUri: *Uri) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStatics2Cache.get();
-        return try factory.CreateFromUriWithIndex(uri, indexUri);
+        const _f = @This().ITimedTextSourceStatics2Cache.get();
+        return try _f.CreateFromUriWithIndex(uri, indexUri);
     }
     pub fn CreateFromStreamWithIndexWithDefaultLanguage(stream: *IRandomAccessStream, indexStream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStatics2Cache.get();
-        return try factory.CreateFromStreamWithIndexWithDefaultLanguage(stream, indexStream, defaultLanguage);
+        const _f = @This().ITimedTextSourceStatics2Cache.get();
+        return try _f.CreateFromStreamWithIndexWithDefaultLanguage(stream, indexStream, defaultLanguage);
     }
     pub fn CreateFromUriWithIndexWithDefaultLanguage(uri: *Uri, indexUri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStatics2Cache.get();
-        return try factory.CreateFromUriWithIndexWithDefaultLanguage(uri, indexUri, defaultLanguage);
+        const _f = @This().ITimedTextSourceStatics2Cache.get();
+        return try _f.CreateFromUriWithIndexWithDefaultLanguage(uri, indexUri, defaultLanguage);
     }
     pub fn CreateFromStream(stream: *IRandomAccessStream) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStaticsCache.get();
-        return try factory.CreateFromStream(stream);
+        const _f = @This().ITimedTextSourceStaticsCache.get();
+        return try _f.CreateFromStream(stream);
     }
     pub fn CreateFromUri(uri: *Uri) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStaticsCache.get();
-        return try factory.CreateFromUri(uri);
+        const _f = @This().ITimedTextSourceStaticsCache.get();
+        return try _f.CreateFromUri(uri);
     }
     pub fn CreateFromStreamWithDefaultLanguage(stream: *IRandomAccessStream, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStaticsCache.get();
-        return try factory.CreateFromStreamWithDefaultLanguage(stream, defaultLanguage);
+        const _f = @This().ITimedTextSourceStaticsCache.get();
+        return try _f.CreateFromStreamWithDefaultLanguage(stream, defaultLanguage);
     }
     pub fn CreateFromUriWithDefaultLanguage(uri: *Uri, defaultLanguage: HSTRING) core.HResult!*TimedTextSource {
-        const factory = @This().ITimedTextSourceStaticsCache.get();
-        return try factory.CreateFromUriWithDefaultLanguage(uri, defaultLanguage);
+        const _f = @This().ITimedTextSourceStaticsCache.get();
+        return try _f.CreateFromUriWithDefaultLanguage(uri, defaultLanguage);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.TimedTextSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8013,8 +7997,8 @@ pub const VideoStreamDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(encodingProperties: *VideoEncodingProperties) core.HResult!*VideoStreamDescriptor {
-        const factory = @This().IVideoStreamDescriptorFactoryCache.get();
-        return try factory.Create(encodingProperties);
+        const _f = @This().IVideoStreamDescriptorFactoryCache.get();
+        return try _f.Create(encodingProperties);
     }
     pub const NAME: []const u8 = "Windows.Media.Core.VideoStreamDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

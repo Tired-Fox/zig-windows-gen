@@ -124,9 +124,9 @@ pub const UserNotificationListener = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*UserNotificationListener {
-        const factory = @This().IUserNotificationListenerStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*UserNotificationListener {
+        const _f = @This().IUserNotificationListenerStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.UI.Notifications.Management.UserNotificationListener";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

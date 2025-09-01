@@ -201,9 +201,9 @@ pub const SmbiosInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SerialNumber() core.HResult!HSTRING {
-        const factory = @This().ISmbiosInformationStaticsCache.get();
-        return try factory.getSerialNumber();
+    pub fn getSerialNumber() core.HResult!HSTRING {
+        const _f = @This().ISmbiosInformationStaticsCache.get();
+        return try _f.getSerialNumber();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SystemManufacturers.SmbiosInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -250,17 +250,17 @@ pub const SystemSupportInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LocalSystemEdition() core.HResult!HSTRING {
-        const factory = @This().ISystemSupportInfoStaticsCache.get();
-        return try factory.getLocalSystemEdition();
+    pub fn getLocalSystemEdition() core.HResult!HSTRING {
+        const _f = @This().ISystemSupportInfoStaticsCache.get();
+        return try _f.getLocalSystemEdition();
     }
-    pub fn get_OemSupportInfo() core.HResult!*OemSupportInfo {
-        const factory = @This().ISystemSupportInfoStaticsCache.get();
-        return try factory.getOemSupportInfo();
+    pub fn getOemSupportInfo() core.HResult!*OemSupportInfo {
+        const _f = @This().ISystemSupportInfoStaticsCache.get();
+        return try _f.getOemSupportInfo();
     }
-    pub fn get_LocalDeviceInfo() core.HResult!*SystemSupportDeviceInfo {
-        const factory = @This().ISystemSupportInfoStatics2Cache.get();
-        return try factory.getLocalDeviceInfo();
+    pub fn getLocalDeviceInfo() core.HResult!*SystemSupportDeviceInfo {
+        const _f = @This().ISystemSupportInfoStatics2Cache.get();
+        return try _f.getLocalDeviceInfo();
     }
     pub const NAME: []const u8 = "Windows.System.Profile.SystemManufacturers.SystemSupportInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

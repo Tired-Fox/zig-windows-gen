@@ -153,12 +153,12 @@ pub const RemoteTextConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler) core.HResult!*RemoteTextConnection {
-        const factory = @This().IRemoteTextConnectionFactoryCache.get();
-        return try factory.CreateInstance(connectionId, pduForwarder);
+        const _f = @This().IRemoteTextConnectionFactoryCache.get();
+        return try _f.CreateInstance(connectionId, pduForwarder);
     }
     pub fn CreateInstanceWithOptions(connectionId: *Guid, pduForwarder: *RemoteTextConnectionDataHandler, options: RemoteTextConnectionOptions) core.HResult!*RemoteTextConnection {
-        const factory = @This().IRemoteTextConnectionFactory2Cache.get();
-        return try factory.CreateInstance(connectionId, pduForwarder, options);
+        const _f = @This().IRemoteTextConnectionFactory2Cache.get();
+        return try _f.CreateInstance(connectionId, pduForwarder, options);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Input.RemoteTextConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

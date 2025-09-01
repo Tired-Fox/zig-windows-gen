@@ -76,11 +76,11 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CopyAsyncWithDesiredNewName(destinationFolder, desiredNewName);
     }
-    pub fn CopyAsyncWithDesiredNewNameWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn CopyAsyncWithDesiredNewNameAndOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncOperation(StorageFile) {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyAsyncWithDesiredNewNameWithOption(destinationFolder, desiredNewName, option);
+        return try this.?.CopyAsyncWithDesiredNewNameAndOption(destinationFolder, desiredNewName, option);
     }
     pub fn CopyAndReplaceAsync(self: *@This(), fileToReplace: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
@@ -100,29 +100,17 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MoveAsyncWithDesiredNewName(destinationFolder, desiredNewName);
     }
-    pub fn MoveAsyncWithDesiredNewNameWithOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
+    pub fn MoveAsyncWithDesiredNewNameAndOption(self: *@This(), destinationFolder: *IStorageFolder, desiredNewName: HSTRING, option: NameCollisionOption) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.MoveAsyncWithDesiredNewNameWithOption(destinationFolder, desiredNewName, option);
+        return try this.?.MoveAsyncWithDesiredNewNameAndOption(destinationFolder, desiredNewName, option);
     }
     pub fn MoveAndReplaceAsync(self: *@This(), fileToReplace: *IStorageFile) core.HResult!*IAsyncAction {
         var this: ?*IStorageFile = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFile.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.MoveAndReplaceAsync(fileToReplace);
-    }
-    pub fn OpenSequentialReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IInputStream) {
-        var this: ?*IInputStreamReference = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStreamReference.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.OpenSequentialReadAsync();
-    }
-    pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
-        var this: ?*IRandomAccessStreamReference = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStreamReference.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.OpenReadAsync();
     }
     pub fn RenameAsync(self: *@This(), desiredName: HSTRING) core.HResult!*IAsyncAction {
         var this: ?*IStorageItem = undefined;
@@ -184,6 +172,18 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.IsOfType(ty);
     }
+    pub fn OpenReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IRandomAccessStreamWithContentType) {
+        var this: ?*IRandomAccessStreamReference = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStreamReference.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.OpenReadAsync();
+    }
+    pub fn OpenSequentialReadAsync(self: *@This()) core.HResult!*IAsyncOperation(IInputStream) {
+        var this: ?*IInputStreamReference = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStreamReference.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.OpenSequentialReadAsync();
+    }
     pub fn GetThumbnailAsync(self: *@This(), mode: ThumbnailMode) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
@@ -196,11 +196,11 @@ pub const FileInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetThumbnailAsyncWithRequestedSizeWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSizeAndOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsyncWithRequestedSizeWithOptions(mode, requestedSize, options);
+        return try this.?.GetThumbnailAsyncWithRequestedSizeAndOptions(mode, requestedSize, options);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStorageItemProperties = undefined;
@@ -270,25 +270,25 @@ pub const FileInformation = extern struct {
 };
 pub const FileInformationFactory = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetItemsAsyncWithStartIndexWithMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
+    pub fn GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
-        return try this.GetItemsAsyncWithStartIndexWithMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
+        return try this.GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
     }
     pub fn GetItemsAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
         return try this.GetItemsAsync();
     }
-    pub fn GetFilesAsyncWithStartIndexWithMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FileInformation)) {
+    pub fn GetFilesAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FileInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
-        return try this.GetFilesAsyncWithStartIndexWithMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
+        return try this.GetFilesAsyncWithStartIndexAndMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
     }
     pub fn GetFilesAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(FileInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
         return try this.GetFilesAsync();
     }
-    pub fn GetFoldersAsyncWithStartIndexWithMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FolderInformation)) {
+    pub fn GetFoldersAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FolderInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
-        return try this.GetFoldersAsyncWithStartIndexWithMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
+        return try this.GetFoldersAsyncWithStartIndexAndMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
     }
     pub fn GetFoldersAsync(self: *@This()) core.HResult!*IAsyncOperation(IVectorView(FolderInformation)) {
         const this: *IFileInformationFactory = @ptrCast(self);
@@ -310,20 +310,20 @@ pub const FileInformationFactory = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithMode(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode) core.HResult!*FileInformationFactory {
-        const factory = @This().IFileInformationFactoryFactoryCache.get();
-        return try factory.CreateWithMode(queryResult, mode);
+        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        return try _f.CreateWithMode(queryResult, mode);
     }
     pub fn CreateWithModeAndSize(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode, requestedThumbnailSize: u32) core.HResult!*FileInformationFactory {
-        const factory = @This().IFileInformationFactoryFactoryCache.get();
-        return try factory.CreateWithModeAndSize(queryResult, mode, requestedThumbnailSize);
+        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        return try _f.CreateWithModeAndSize(queryResult, mode, requestedThumbnailSize);
     }
     pub fn CreateWithModeAndSizeAndOptions(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode, requestedThumbnailSize: u32, thumbnailOptions: ThumbnailOptions) core.HResult!*FileInformationFactory {
-        const factory = @This().IFileInformationFactoryFactoryCache.get();
-        return try factory.CreateWithModeAndSizeAndOptions(queryResult, mode, requestedThumbnailSize, thumbnailOptions);
+        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        return try _f.CreateWithModeAndSizeAndOptions(queryResult, mode, requestedThumbnailSize, thumbnailOptions);
     }
     pub fn CreateWithModeAndSizeAndOptionsAndFlags(queryResult: *IStorageQueryResultBase, mode: ThumbnailMode, requestedThumbnailSize: u32, thumbnailOptions: ThumbnailOptions, delayLoad: bool) core.HResult!*FileInformationFactory {
-        const factory = @This().IFileInformationFactoryFactoryCache.get();
-        return try factory.CreateWithModeAndSizeAndOptionsAndFlags(queryResult, mode, requestedThumbnailSize, thumbnailOptions, delayLoad);
+        const _f = @This().IFileInformationFactoryFactoryCache.get();
+        return try _f.CreateWithModeAndSizeAndOptionsAndFlags(queryResult, mode, requestedThumbnailSize, thumbnailOptions, delayLoad);
     }
     pub const NAME: []const u8 = "Windows.Storage.BulkAccess.FileInformationFactory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -506,11 +506,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetThumbnailAsyncWithRequestedSize(mode, requestedSize);
     }
-    pub fn GetThumbnailAsyncWithRequestedSizeWithOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
+    pub fn GetThumbnailAsyncWithRequestedSizeAndOptions(self: *@This(), mode: ThumbnailMode, requestedSize: u32, options: ThumbnailOptions) core.HResult!*IAsyncOperation(StorageItemThumbnail) {
         var this: ?*IStorageItemProperties = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageItemProperties.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetThumbnailAsyncWithRequestedSizeWithOptions(mode, requestedSize, options);
+        return try this.?.GetThumbnailAsyncWithRequestedSizeAndOptions(mode, requestedSize, options);
     }
     pub fn getDisplayName(self: *@This()) core.HResult!HSTRING {
         var this: ?*IStorageItemProperties = undefined;
@@ -590,11 +590,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateItemQueryWithOptions(queryOptions);
     }
-    pub fn GetFilesAsyncWithQueryWithStartIndexWithMaxItemsToRetrieve(self: *@This(), query: CommonFileQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
+    pub fn GetFilesAsyncWithQueryAndStartIndexAndMaxItemsToRetrieve(self: *@This(), query: CommonFileQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
         var this: ?*IStorageFolderQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFolderQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetFilesAsyncWithQueryWithStartIndexWithMaxItemsToRetrieve(query, startIndex, maxItemsToRetrieve);
+        return try this.?.GetFilesAsyncWithQueryAndStartIndexAndMaxItemsToRetrieve(query, startIndex, maxItemsToRetrieve);
     }
     pub fn GetFilesAsyncWithQuery(self: *@This(), query: CommonFileQuery) core.HResult!*IAsyncOperation(IVectorView(StorageFile)) {
         var this: ?*IStorageFolderQueryOperations = undefined;
@@ -602,11 +602,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFilesAsyncWithQuery(query);
     }
-    pub fn GetFoldersAsyncWithQueryWithStartIndexWithMaxItemsToRetrieve(self: *@This(), query: CommonFolderQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
+    pub fn GetFoldersAsyncWithQueryAndStartIndexAndMaxItemsToRetrieve(self: *@This(), query: CommonFolderQuery, startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
         var this: ?*IStorageFolderQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFolderQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetFoldersAsyncWithQueryWithStartIndexWithMaxItemsToRetrieve(query, startIndex, maxItemsToRetrieve);
+        return try this.?.GetFoldersAsyncWithQueryAndStartIndexAndMaxItemsToRetrieve(query, startIndex, maxItemsToRetrieve);
     }
     pub fn GetFoldersAsyncWithQuery(self: *@This(), query: CommonFolderQuery) core.HResult!*IAsyncOperation(IVectorView(StorageFolder)) {
         var this: ?*IStorageFolderQueryOperations = undefined;
@@ -614,11 +614,11 @@ pub const FolderInformation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetFoldersAsyncWithQuery(query);
     }
-    pub fn GetItemsAsyncWithStartIndexWithMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItem)) {
+    pub fn GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItem)) {
         var this: ?*IStorageFolderQueryOperations = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStorageFolderQueryOperations.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetItemsAsyncWithStartIndexWithMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
+        return try this.?.GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(startIndex, maxItemsToRetrieve);
     }
     pub fn AreQueryOptionsSupported(self: *@This(), queryOptions: *QueryOptions) core.HResult!bool {
         var this: ?*IStorageFolderQueryOperations = undefined;
@@ -670,9 +670,9 @@ pub const FolderInformation = extern struct {
 };
 pub const IFileInformationFactory = extern struct {
     vtable: *const VTable,
-    pub fn GetItemsAsync(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
+    pub fn GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(IStorageItemInformation)) {
         var _r: *IAsyncOperation(IVectorView(IStorageItemInformation)) = undefined;
-        const _c = self.vtable.GetItemsAsync(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
+        const _c = self.vtable.GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -682,9 +682,9 @@ pub const IFileInformationFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFilesAsync(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FileInformation)) {
+    pub fn GetFilesAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FileInformation)) {
         var _r: *IAsyncOperation(IVectorView(FileInformation)) = undefined;
-        const _c = self.vtable.GetFilesAsync(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
+        const _c = self.vtable.GetFilesAsyncWithStartIndexAndMaxItemsToRetrieve(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -694,9 +694,9 @@ pub const IFileInformationFactory = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFoldersAsync(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FolderInformation)) {
+    pub fn GetFoldersAsyncWithStartIndexAndMaxItemsToRetrieve(self: *@This(), startIndex: u32, maxItemsToRetrieve: u32) core.HResult!*IAsyncOperation(IVectorView(FolderInformation)) {
         var _r: *IAsyncOperation(IVectorView(FolderInformation)) = undefined;
-        const _c = self.vtable.GetFoldersAsync(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
+        const _c = self.vtable.GetFoldersAsyncWithStartIndexAndMaxItemsToRetrieve(@ptrCast(self), startIndex, maxItemsToRetrieve, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -736,11 +736,11 @@ pub const IFileInformationFactory = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetItemsAsync: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(IStorageItemInformation))) callconv(.winapi) HRESULT,
+        GetItemsAsyncWithStartIndexAndMaxItemsToRetrieve: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(IStorageItemInformation))) callconv(.winapi) HRESULT,
         GetItemsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IStorageItemInformation))) callconv(.winapi) HRESULT,
-        GetFilesAsync: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(FileInformation))) callconv(.winapi) HRESULT,
+        GetFilesAsyncWithStartIndexAndMaxItemsToRetrieve: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(FileInformation))) callconv(.winapi) HRESULT,
         GetFilesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(FileInformation))) callconv(.winapi) HRESULT,
-        GetFoldersAsync: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(FolderInformation))) callconv(.winapi) HRESULT,
+        GetFoldersAsyncWithStartIndexAndMaxItemsToRetrieve: *const fn(self: *anyopaque, startIndex: u32, maxItemsToRetrieve: u32, _r: **IAsyncOperation(IVectorView(FolderInformation))) callconv(.winapi) HRESULT,
         GetFoldersAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(FolderInformation))) callconv(.winapi) HRESULT,
         GetVirtualizedItemsVector: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
         GetVirtualizedFilesVector: *const fn(self: *anyopaque, _r: **IInspectable) callconv(.winapi) HRESULT,
@@ -906,9 +906,9 @@ const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const StorageProvider = @import("../Storage.zig").StorageProvider;
 const HSTRING = @import("../root.zig").HSTRING;
 const FileAccessMode = @import("../Storage.zig").FileAccessMode;
-const StorageItemContentProperties = @import("./FileProperties.zig").StorageItemContentProperties;
-const IInspectable = @import("../Foundation.zig").IInspectable;
 const IStorageItem2 = @import("../Storage.zig").IStorageItem2;
+const IInspectable = @import("../Foundation.zig").IInspectable;
+const StorageItemContentProperties = @import("./FileProperties.zig").StorageItemContentProperties;
 const StorageFolderQueryResult = @import("./Search.zig").StorageFolderQueryResult;
 const StorageStreamTransaction = @import("../Storage.zig").StorageStreamTransaction;
 const IRandomAccessStreamWithContentType = @import("./Streams.zig").IRandomAccessStreamWithContentType;
@@ -924,8 +924,8 @@ const VideoProperties = @import("./FileProperties.zig").VideoProperties;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const StorageDeleteOption = @import("../Storage.zig").StorageDeleteOption;
 const ImageProperties = @import("./FileProperties.zig").ImageProperties;
-const IAsyncAction = @import("../Foundation.zig").IAsyncAction;
 const IStorageFile2 = @import("../Storage.zig").IStorageFile2;
+const IAsyncAction = @import("../Foundation.zig").IAsyncAction;
 const StorageOpenOptions = @import("../Storage.zig").StorageOpenOptions;
 const ThumbnailMode = @import("./FileProperties.zig").ThumbnailMode;
 const StorageFolder = @import("../Storage.zig").StorageFolder;

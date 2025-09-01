@@ -72,16 +72,16 @@ pub const BluetoothAdapter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IBluetoothAdapterStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IBluetoothAdapterStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothAdapter) {
-        const factory = @This().IBluetoothAdapterStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IBluetoothAdapterStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(BluetoothAdapter) {
-        const factory = @This().IBluetoothAdapterStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IBluetoothAdapterStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothAdapter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -121,12 +121,12 @@ pub const BluetoothClassOfDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromRawValue(rawValue: u32) core.HResult!*BluetoothClassOfDevice {
-        const factory = @This().IBluetoothClassOfDeviceStaticsCache.get();
-        return try factory.FromRawValue(rawValue);
+        const _f = @This().IBluetoothClassOfDeviceStaticsCache.get();
+        return try _f.FromRawValue(rawValue);
     }
     pub fn FromParts(majorClass: BluetoothMajorClass, minorClass: BluetoothMinorClass, serviceCapabilities: BluetoothServiceCapabilities) core.HResult!*BluetoothClassOfDevice {
-        const factory = @This().IBluetoothClassOfDeviceStaticsCache.get();
-        return try factory.FromParts(majorClass, minorClass, serviceCapabilities);
+        const _f = @This().IBluetoothClassOfDeviceStaticsCache.get();
+        return try _f.FromParts(majorClass, minorClass, serviceCapabilities);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothClassOfDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -261,40 +261,40 @@ pub const BluetoothDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothDevice) {
-        const factory = @This().IBluetoothDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IBluetoothDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn FromHostNameAsync(hostName: *HostName) core.HResult!*IAsyncOperation(BluetoothDevice) {
-        const factory = @This().IBluetoothDeviceStaticsCache.get();
-        return try factory.FromHostNameAsync(hostName);
+        const _f = @This().IBluetoothDeviceStaticsCache.get();
+        return try _f.FromHostNameAsync(hostName);
     }
     pub fn FromBluetoothAddressAsync(address: u64) core.HResult!*IAsyncOperation(BluetoothDevice) {
-        const factory = @This().IBluetoothDeviceStaticsCache.get();
-        return try factory.FromBluetoothAddressAsync(address);
+        const _f = @This().IBluetoothDeviceStaticsCache.get();
+        return try _f.FromBluetoothAddressAsync(address);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IBluetoothDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IBluetoothDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!HSTRING {
-        const factory = @This().IBluetoothDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromPairingState(pairingState);
+        const _f = @This().IBluetoothDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromPairingState(pairingState);
     }
     pub fn GetDeviceSelectorFromConnectionStatus(connectionStatus: BluetoothConnectionStatus) core.HResult!HSTRING {
-        const factory = @This().IBluetoothDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromConnectionStatus(connectionStatus);
+        const _f = @This().IBluetoothDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromConnectionStatus(connectionStatus);
     }
     pub fn GetDeviceSelectorFromDeviceName(deviceName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IBluetoothDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromDeviceName(deviceName);
+        const _f = @This().IBluetoothDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromDeviceName(deviceName);
     }
     pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64) core.HResult!HSTRING {
-        const factory = @This().IBluetoothDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
+        const _f = @This().IBluetoothDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
     }
     pub fn GetDeviceSelectorFromClassOfDevice(classOfDevice: *BluetoothClassOfDevice) core.HResult!HSTRING {
-        const factory = @This().IBluetoothDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromClassOfDevice(classOfDevice);
+        const _f = @This().IBluetoothDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromClassOfDevice(classOfDevice);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -322,8 +322,8 @@ pub const BluetoothDeviceId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*BluetoothDeviceId {
-        const factory = @This().IBluetoothDeviceIdStaticsCache.get();
-        return try factory.FromId(deviceId);
+        const _f = @This().IBluetoothDeviceIdStaticsCache.get();
+        return try _f.FromId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothDeviceId";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -362,12 +362,12 @@ pub const BluetoothLEAppearance = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromRawValue(rawValue: u16) core.HResult!*BluetoothLEAppearance {
-        const factory = @This().IBluetoothLEAppearanceStaticsCache.get();
-        return try factory.FromRawValue(rawValue);
+        const _f = @This().IBluetoothLEAppearanceStaticsCache.get();
+        return try _f.FromRawValue(rawValue);
     }
     pub fn FromParts(appearanceCategory: u16, appearanceSubCategory: u16) core.HResult!*BluetoothLEAppearance {
-        const factory = @This().IBluetoothLEAppearanceStaticsCache.get();
-        return try factory.FromParts(appearanceCategory, appearanceSubCategory);
+        const _f = @This().IBluetoothLEAppearanceStaticsCache.get();
+        return try _f.FromParts(appearanceCategory, appearanceSubCategory);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothLEAppearance";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -381,93 +381,93 @@ pub const BluetoothLEAppearanceCategories = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Uncategorized() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getUncategorized();
+    pub fn getUncategorized() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getUncategorized();
     }
-    pub fn get_Phone() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getPhone();
+    pub fn getPhone() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getPhone();
     }
-    pub fn get_Computer() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getComputer();
+    pub fn getComputer() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getComputer();
     }
-    pub fn get_Watch() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getWatch();
+    pub fn getWatch() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getWatch();
     }
-    pub fn get_Clock() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getClock();
+    pub fn getClock() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getClock();
     }
-    pub fn get_Display() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getDisplay();
+    pub fn getDisplay() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getDisplay();
     }
-    pub fn get_RemoteControl() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getRemoteControl();
+    pub fn getRemoteControl() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getRemoteControl();
     }
-    pub fn get_EyeGlasses() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getEyeGlasses();
+    pub fn getEyeGlasses() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getEyeGlasses();
     }
-    pub fn get_Tag() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getTag();
+    pub fn getTag() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getTag();
     }
-    pub fn get_Keyring() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getKeyring();
+    pub fn getKeyring() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getKeyring();
     }
-    pub fn get_MediaPlayer() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getMediaPlayer();
+    pub fn getMediaPlayer() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getMediaPlayer();
     }
-    pub fn get_BarcodeScanner() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getBarcodeScanner();
+    pub fn getBarcodeScanner() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getBarcodeScanner();
     }
-    pub fn get_Thermometer() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getThermometer();
+    pub fn getThermometer() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getThermometer();
     }
-    pub fn get_HeartRate() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getHeartRate();
+    pub fn getHeartRate() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getHeartRate();
     }
-    pub fn get_BloodPressure() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getBloodPressure();
+    pub fn getBloodPressure() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getBloodPressure();
     }
-    pub fn get_HumanInterfaceDevice() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getHumanInterfaceDevice();
+    pub fn getHumanInterfaceDevice() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getHumanInterfaceDevice();
     }
-    pub fn get_GlucoseMeter() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getGlucoseMeter();
+    pub fn getGlucoseMeter() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getGlucoseMeter();
     }
-    pub fn get_RunningWalking() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getRunningWalking();
+    pub fn getRunningWalking() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getRunningWalking();
     }
-    pub fn get_Cycling() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getCycling();
+    pub fn getCycling() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getCycling();
     }
-    pub fn get_PulseOximeter() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getPulseOximeter();
+    pub fn getPulseOximeter() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getPulseOximeter();
     }
-    pub fn get_WeightScale() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getWeightScale();
+    pub fn getWeightScale() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getWeightScale();
     }
-    pub fn get_OutdoorSportActivity() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
-        return try factory.getOutdoorSportActivity();
+    pub fn getOutdoorSportActivity() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceCategoriesStaticsCache.get();
+        return try _f.getOutdoorSportActivity();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothLEAppearanceCategories";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -478,117 +478,117 @@ pub const BluetoothLEAppearanceSubcategories = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Generic() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getGeneric();
+    pub fn getGeneric() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getGeneric();
     }
-    pub fn get_SportsWatch() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getSportsWatch();
+    pub fn getSportsWatch() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getSportsWatch();
     }
-    pub fn get_ThermometerEar() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getThermometerEar();
+    pub fn getThermometerEar() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getThermometerEar();
     }
-    pub fn get_HeartRateBelt() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getHeartRateBelt();
+    pub fn getHeartRateBelt() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getHeartRateBelt();
     }
-    pub fn get_BloodPressureArm() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getBloodPressureArm();
+    pub fn getBloodPressureArm() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getBloodPressureArm();
     }
-    pub fn get_BloodPressureWrist() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getBloodPressureWrist();
+    pub fn getBloodPressureWrist() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getBloodPressureWrist();
     }
-    pub fn get_Keyboard() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getKeyboard();
+    pub fn getKeyboard() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getKeyboard();
     }
-    pub fn get_Mouse() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getMouse();
+    pub fn getMouse() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getMouse();
     }
-    pub fn get_Joystick() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getJoystick();
+    pub fn getJoystick() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getJoystick();
     }
-    pub fn get_Gamepad() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getGamepad();
+    pub fn getGamepad() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getGamepad();
     }
-    pub fn get_DigitizerTablet() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getDigitizerTablet();
+    pub fn getDigitizerTablet() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getDigitizerTablet();
     }
-    pub fn get_CardReader() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getCardReader();
+    pub fn getCardReader() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getCardReader();
     }
-    pub fn get_DigitalPen() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getDigitalPen();
+    pub fn getDigitalPen() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getDigitalPen();
     }
-    pub fn get_BarcodeScanner() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getBarcodeScanner();
+    pub fn getBarcodeScanner() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getBarcodeScanner();
     }
-    pub fn get_RunningWalkingInShoe() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getRunningWalkingInShoe();
+    pub fn getRunningWalkingInShoe() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getRunningWalkingInShoe();
     }
-    pub fn get_RunningWalkingOnShoe() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getRunningWalkingOnShoe();
+    pub fn getRunningWalkingOnShoe() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getRunningWalkingOnShoe();
     }
-    pub fn get_RunningWalkingOnHip() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getRunningWalkingOnHip();
+    pub fn getRunningWalkingOnHip() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getRunningWalkingOnHip();
     }
-    pub fn get_CyclingComputer() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getCyclingComputer();
+    pub fn getCyclingComputer() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getCyclingComputer();
     }
-    pub fn get_CyclingSpeedSensor() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getCyclingSpeedSensor();
+    pub fn getCyclingSpeedSensor() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getCyclingSpeedSensor();
     }
-    pub fn get_CyclingCadenceSensor() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getCyclingCadenceSensor();
+    pub fn getCyclingCadenceSensor() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getCyclingCadenceSensor();
     }
-    pub fn get_CyclingPowerSensor() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getCyclingPowerSensor();
+    pub fn getCyclingPowerSensor() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getCyclingPowerSensor();
     }
-    pub fn get_CyclingSpeedCadenceSensor() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getCyclingSpeedCadenceSensor();
+    pub fn getCyclingSpeedCadenceSensor() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getCyclingSpeedCadenceSensor();
     }
-    pub fn get_OximeterFingertip() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getOximeterFingertip();
+    pub fn getOximeterFingertip() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getOximeterFingertip();
     }
-    pub fn get_OximeterWristWorn() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getOximeterWristWorn();
+    pub fn getOximeterWristWorn() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getOximeterWristWorn();
     }
-    pub fn get_LocationDisplay() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getLocationDisplay();
+    pub fn getLocationDisplay() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getLocationDisplay();
     }
-    pub fn get_LocationNavigationDisplay() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getLocationNavigationDisplay();
+    pub fn getLocationNavigationDisplay() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getLocationNavigationDisplay();
     }
-    pub fn get_LocationPod() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getLocationPod();
+    pub fn getLocationPod() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getLocationPod();
     }
-    pub fn get_LocationNavigationPod() core.HResult!u16 {
-        const factory = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
-        return try factory.getLocationNavigationPod();
+    pub fn getLocationNavigationPod() core.HResult!u16 {
+        const _f = @This().IBluetoothLEAppearanceSubcategoriesStaticsCache.get();
+        return try _f.getLocationNavigationPod();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothLEAppearanceSubcategories";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -818,44 +818,44 @@ pub const BluetoothLEDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelectorFromPairingState(pairingState: bool) core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromPairingState(pairingState);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromPairingState(pairingState);
     }
     pub fn GetDeviceSelectorFromConnectionStatus(connectionStatus: BluetoothConnectionStatus) core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromConnectionStatus(connectionStatus);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromConnectionStatus(connectionStatus);
     }
     pub fn GetDeviceSelectorFromDeviceName(deviceName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromDeviceName(deviceName);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromDeviceName(deviceName);
     }
     pub fn GetDeviceSelectorFromBluetoothAddress(bluetoothAddress: u64) core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromBluetoothAddress(bluetoothAddress);
     }
     pub fn GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress, bluetoothAddressType);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromBluetoothAddressWithBluetoothAddressType(bluetoothAddress, bluetoothAddressType);
     }
     pub fn GetDeviceSelectorFromAppearance(appearance: *BluetoothLEAppearance) core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.GetDeviceSelectorFromAppearance(appearance);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.GetDeviceSelectorFromAppearance(appearance);
     }
     pub fn FromBluetoothAddressAsyncWithBluetoothAddressType(bluetoothAddress: u64, bluetoothAddressType: BluetoothAddressType) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
-        const factory = @This().IBluetoothLEDeviceStatics2Cache.get();
-        return try factory.FromBluetoothAddressAsync(bluetoothAddress, bluetoothAddressType);
+        const _f = @This().IBluetoothLEDeviceStatics2Cache.get();
+        return try _f.FromBluetoothAddressAsync(bluetoothAddress, bluetoothAddressType);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
-        const factory = @This().IBluetoothLEDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IBluetoothLEDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn FromBluetoothAddressAsync(bluetoothAddress: u64) core.HResult!*IAsyncOperation(BluetoothLEDevice) {
-        const factory = @This().IBluetoothLEDeviceStaticsCache.get();
-        return try factory.FromBluetoothAddressAsync(bluetoothAddress);
+        const _f = @This().IBluetoothLEDeviceStaticsCache.get();
+        return try _f.FromBluetoothAddressAsync(bluetoothAddress);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IBluetoothLEDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IBluetoothLEDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothLEDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -886,17 +886,17 @@ pub const BluetoothLEPreferredConnectionParameters = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Balanced() core.HResult!*BluetoothLEPreferredConnectionParameters {
-        const factory = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
-        return try factory.getBalanced();
+    pub fn getBalanced() core.HResult!*BluetoothLEPreferredConnectionParameters {
+        const _f = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
+        return try _f.getBalanced();
     }
-    pub fn get_ThroughputOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
-        const factory = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
-        return try factory.getThroughputOptimized();
+    pub fn getThroughputOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
+        const _f = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
+        return try _f.getThroughputOptimized();
     }
-    pub fn get_PowerOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
-        const factory = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
-        return try factory.getPowerOptimized();
+    pub fn getPowerOptimized() core.HResult!*BluetoothLEPreferredConnectionParameters {
+        const _f = @This().IBluetoothLEPreferredConnectionParametersStaticsCache.get();
+        return try _f.getPowerOptimized();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothLEPreferredConnectionParameters";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1080,12 +1080,12 @@ pub const BluetoothUuidHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromShortId(shortId: u32) core.HResult!*Guid {
-        const factory = @This().IBluetoothUuidHelperStaticsCache.get();
-        return try factory.FromShortId(shortId);
+        const _f = @This().IBluetoothUuidHelperStaticsCache.get();
+        return try _f.FromShortId(shortId);
     }
     pub fn TryGetShortId(uuid: *Guid) core.HResult!*IReference(u32) {
-        const factory = @This().IBluetoothUuidHelperStaticsCache.get();
-        return try factory.TryGetShortId(uuid);
+        const _f = @This().IBluetoothUuidHelperStaticsCache.get();
+        return try _f.TryGetShortId(uuid);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.BluetoothUuidHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1515,9 +1515,9 @@ pub const IBluetoothDevice3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetRfcommServicesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
+    pub fn GetRfcommServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(RfcommDeviceServicesResult) {
         var _r: *IAsyncOperation(RfcommDeviceServicesResult) = undefined;
-        const _c = self.vtable.GetRfcommServicesAsync(@ptrCast(self), cacheMode, &_r);
+        const _c = self.vtable.GetRfcommServicesAsyncWithCacheMode(@ptrCast(self), cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1548,7 +1548,7 @@ pub const IBluetoothDevice3 = extern struct {
         get_DeviceAccessInformation: *const fn(self: *anyopaque, _r: **DeviceAccessInformation) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceAccessStatus)) callconv(.winapi) HRESULT,
         GetRfcommServicesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
-        GetRfcommServicesAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
+        GetRfcommServicesAsyncWithCacheMode: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetRfcommServicesForIdAsync: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetRfcommServicesForIdAsyncWithCacheMode: *const fn(self: *anyopaque, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(RfcommDeviceServicesResult)) callconv(.winapi) HRESULT,
     };
@@ -2458,9 +2458,9 @@ pub const IBluetoothLEDevice3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetGattServicesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
+    pub fn GetGattServicesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(GattDeviceServicesResult) {
         var _r: *IAsyncOperation(GattDeviceServicesResult) = undefined;
-        const _c = self.vtable.GetGattServicesAsync(@ptrCast(self), cacheMode, &_r);
+        const _c = self.vtable.GetGattServicesAsyncWithCacheMode(@ptrCast(self), cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2491,7 +2491,7 @@ pub const IBluetoothLEDevice3 = extern struct {
         get_DeviceAccessInformation: *const fn(self: *anyopaque, _r: **DeviceAccessInformation) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(DeviceAccessStatus)) callconv(.winapi) HRESULT,
         GetGattServicesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
-        GetGattServicesAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
+        GetGattServicesAsyncWithCacheMode: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetGattServicesForUuidAsync: *const fn(self: *anyopaque, serviceUuid: *Guid, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
         GetGattServicesForUuidAsyncWithCacheMode: *const fn(self: *anyopaque, serviceUuid: *Guid, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(GattDeviceServicesResult)) callconv(.winapi) HRESULT,
     };
@@ -2911,23 +2911,23 @@ const IBuffer = @import("../Storage/Streams.zig").IBuffer;
 const IReference = @import("../Foundation.zig").IReference;
 const DeviceAccessInformation = @import("./Enumeration.zig").DeviceAccessInformation;
 const FactoryCache = @import("../core.zig").FactoryCache;
-const RfcommServiceId = @import("./Rfcomm.zig").RfcommServiceId;
-const GattDeviceService = @import("./GenericAttributeProfile.zig").GattDeviceService;
+const RfcommServiceId = @import("./Bluetooth/Rfcomm.zig").RfcommServiceId;
+const GattDeviceService = @import("./Bluetooth/GenericAttributeProfile.zig").GattDeviceService;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const Radio = @import("./Radios.zig").Radio;
-const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../root.zig").HSTRING;
-const GattDeviceServicesResult = @import("./GenericAttributeProfile.zig").GattDeviceServicesResult;
+const GattDeviceServicesResult = @import("./Bluetooth/GenericAttributeProfile.zig").GattDeviceServicesResult;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const DeviceInformation = @import("./Enumeration.zig").DeviceInformation;
 const TimeSpan = @import("../Foundation.zig").TimeSpan;
-const RfcommDeviceService = @import("./Rfcomm.zig").RfcommDeviceService;
+const RfcommDeviceService = @import("./Bluetooth/Rfcomm.zig").RfcommDeviceService;
 const HRESULT = @import("../root.zig").HRESULT;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const core = @import("../root.zig").core;
 const HostName = @import("../Networking.zig").HostName;
-const RfcommDeviceServicesResult = @import("./Rfcomm.zig").RfcommDeviceServicesResult;
+const RfcommDeviceServicesResult = @import("./Bluetooth/Rfcomm.zig").RfcommDeviceServicesResult;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const DeviceAccessStatus = @import("./Enumeration.zig").DeviceAccessStatus;
 pub const Advertisement = @import("./Bluetooth/Advertisement.zig");

@@ -24,8 +24,8 @@ pub const AnimationDescription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effect: AnimationEffect, target: AnimationEffectTarget) core.HResult!*AnimationDescription {
-        const factory = @This().IAnimationDescriptionFactoryCache.get();
-        return try factory.CreateInstance(effect, target);
+        const _f = @This().IAnimationDescriptionFactoryCache.get();
+        return try _f.CreateInstance(effect, target);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.AnimationMetrics.AnimationDescription";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

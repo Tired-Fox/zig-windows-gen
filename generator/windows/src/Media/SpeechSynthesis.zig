@@ -336,12 +336,6 @@ pub const SpeechSynthesisStream = extern struct {
         const this: *ISpeechSynthesisStream = @ptrCast(self);
         return try this.getMarkers();
     }
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
-    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -396,6 +390,18 @@ pub const SpeechSynthesisStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
+    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -408,17 +414,11 @@ pub const SpeechSynthesisStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
+        return try this.?.getContentType();
     }
     pub fn getTimedMetadataTracks(self: *@This()) core.HResult!*IVectorView(TimedMetadataTrack) {
         var this: ?*ITimedMetadataTrackProvider = undefined;
@@ -469,17 +469,17 @@ pub const SpeechSynthesizer = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpeechSynthesizer.IID)));
     }
-    pub fn get_AllVoices() core.HResult!*IVectorView(VoiceInformation) {
-        const factory = @This().IInstalledVoicesStaticCache.get();
-        return try factory.getAllVoices();
+    pub fn getAllVoices() core.HResult!*IVectorView(VoiceInformation) {
+        const _f = @This().IInstalledVoicesStaticCache.get();
+        return try _f.getAllVoices();
     }
-    pub fn get_DefaultVoice() core.HResult!*VoiceInformation {
-        const factory = @This().IInstalledVoicesStaticCache.get();
-        return try factory.getDefaultVoice();
+    pub fn getDefaultVoice() core.HResult!*VoiceInformation {
+        const _f = @This().IInstalledVoicesStaticCache.get();
+        return try _f.getDefaultVoice();
     }
     pub fn TrySetDefaultVoiceAsync(voice: *VoiceInformation) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IInstalledVoicesStatic2Cache.get();
-        return try factory.TrySetDefaultVoiceAsync(voice);
+        const _f = @This().IInstalledVoicesStatic2Cache.get();
+        return try _f.TrySetDefaultVoiceAsync(voice);
     }
     pub const NAME: []const u8 = "Windows.Media.SpeechSynthesis.SpeechSynthesizer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

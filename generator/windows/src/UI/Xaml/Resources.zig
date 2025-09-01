@@ -9,17 +9,17 @@ pub const CustomXamlResourceLoader = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*CustomXamlResourceLoader {
-        const factory = @This().ICustomXamlResourceLoaderStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*CustomXamlResourceLoader {
+        const _f = @This().ICustomXamlResourceLoaderStaticsCache.get();
+        return try _f.getCurrent();
     }
-    pub fn put_Current(value: *CustomXamlResourceLoader) core.HResult!void {
-        const factory = @This().ICustomXamlResourceLoaderStaticsCache.get();
-        return try factory.putCurrent(value);
+    pub fn putCurrent(value: *CustomXamlResourceLoader) core.HResult!void {
+        const _f = @This().ICustomXamlResourceLoaderStaticsCache.get();
+        return try _f.putCurrent(value);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomXamlResourceLoader {
-        const factory = @This().ICustomXamlResourceLoaderFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICustomXamlResourceLoaderFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Resources.CustomXamlResourceLoader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

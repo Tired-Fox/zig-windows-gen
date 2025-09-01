@@ -98,9 +98,9 @@ pub const IResourceLoaderStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetForCurrentView(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForCurrentViewWithName(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
-        const _c = self.vtable.GetForCurrentView(@ptrCast(self), name, &_r);
+        const _c = self.vtable.GetForCurrentViewWithName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -110,9 +110,9 @@ pub const IResourceLoaderStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetForViewIndependentUse(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
+    pub fn GetForViewIndependentUseWithName(self: *@This(), name: HSTRING) core.HResult!*ResourceLoader {
         var _r: *ResourceLoader = undefined;
-        const _c = self.vtable.GetForViewIndependentUse(@ptrCast(self), name, &_r);
+        const _c = self.vtable.GetForViewIndependentUseWithName(@ptrCast(self), name, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -129,9 +129,9 @@ pub const IResourceLoaderStatics2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetForCurrentView: *const fn(self: *anyopaque, _r: **ResourceLoader) callconv(.winapi) HRESULT,
-        GetForCurrentView: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
+        GetForCurrentViewWithName: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
         GetForViewIndependentUse: *const fn(self: *anyopaque, _r: **ResourceLoader) callconv(.winapi) HRESULT,
-        GetForViewIndependentUse: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
+        GetForViewIndependentUseWithName: *const fn(self: *anyopaque, name: HSTRING, _r: **ResourceLoader) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceLoaderStatics3 = extern struct {
@@ -200,36 +200,36 @@ pub const ResourceLoader = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IResourceLoader.IID)));
     }
     pub fn CreateResourceLoaderByName(name: HSTRING) core.HResult!*ResourceLoader {
-        const factory = @This().IResourceLoaderFactoryCache.get();
-        return try factory.CreateResourceLoaderByName(name);
+        const _f = @This().IResourceLoaderFactoryCache.get();
+        return try _f.CreateResourceLoaderByName(name);
     }
     pub fn GetForCurrentView() core.HResult!*ResourceLoader {
-        const factory = @This().IResourceLoaderStatics2Cache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IResourceLoaderStatics2Cache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn GetForCurrentViewWithName(name: HSTRING) core.HResult!*ResourceLoader {
-        const factory = @This().IResourceLoaderStatics2Cache.get();
-        return try factory.GetForCurrentViewWithName(name);
+        const _f = @This().IResourceLoaderStatics2Cache.get();
+        return try _f.GetForCurrentViewWithName(name);
     }
     pub fn GetForViewIndependentUse() core.HResult!*ResourceLoader {
-        const factory = @This().IResourceLoaderStatics2Cache.get();
-        return try factory.GetForViewIndependentUse();
+        const _f = @This().IResourceLoaderStatics2Cache.get();
+        return try _f.GetForViewIndependentUse();
     }
     pub fn GetForViewIndependentUseWithName(name: HSTRING) core.HResult!*ResourceLoader {
-        const factory = @This().IResourceLoaderStatics2Cache.get();
-        return try factory.GetForViewIndependentUseWithName(name);
+        const _f = @This().IResourceLoaderStatics2Cache.get();
+        return try _f.GetForViewIndependentUseWithName(name);
     }
     pub fn GetStringForReference(uri: *Uri) core.HResult!HSTRING {
-        const factory = @This().IResourceLoaderStaticsCache.get();
-        return try factory.GetStringForReference(uri);
+        const _f = @This().IResourceLoaderStaticsCache.get();
+        return try _f.GetStringForReference(uri);
     }
     pub fn GetDefaultPriPath(packageFullName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IResourceLoaderStatics4Cache.get();
-        return try factory.GetDefaultPriPath(packageFullName);
+        const _f = @This().IResourceLoaderStatics4Cache.get();
+        return try _f.GetDefaultPriPath(packageFullName);
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*ResourceLoader {
-        const factory = @This().IResourceLoaderStatics3Cache.get();
-        return try factory.GetForUIContext(context);
+        const _f = @This().IResourceLoaderStatics3Cache.get();
+        return try _f.GetForUIContext(context);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.ResourceLoader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

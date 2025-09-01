@@ -1479,11 +1479,11 @@ pub const PrintCustomItemListOptionDetails = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddItem(itemId, displayName);
     }
-    pub fn AddItemWithDescriptionWithIcon(self: *@This(), itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
+    pub fn AddItemWithDescriptionAndIcon(self: *@This(), itemId: HSTRING, displayName: HSTRING, description: HSTRING, icon: *IRandomAccessStreamWithContentType) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrintCustomItemListOptionDetails2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddItemWithDescriptionWithIcon(itemId, displayName, description, icon);
+        return try this.?.AddItemWithDescriptionAndIcon(itemId, displayName, description, icon);
     }
     pub fn putWarningText(self: *@This(), value: HSTRING) core.HResult!void {
         var this: ?*IPrintCustomItemListOptionDetails3 = undefined;
@@ -2309,8 +2309,8 @@ pub const PrintTaskOptionDetails = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFromPrintTaskOptions(printTaskOptions: *PrintTaskOptions) core.HResult!*PrintTaskOptionDetails {
-        const factory = @This().IPrintTaskOptionDetailsStaticCache.get();
-        return try factory.GetFromPrintTaskOptions(printTaskOptions);
+        const _f = @This().IPrintTaskOptionDetailsStaticCache.get();
+        return try _f.GetFromPrintTaskOptions(printTaskOptions);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.OptionDetails.PrintTaskOptionDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -1147,24 +1147,24 @@ pub const UserDataAccountSystemAccessManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddAndShowDeviceAccountsAsync(accounts: *IIterable(DeviceAccountConfiguration)) core.HResult!*IAsyncOperation(IVectorView(HSTRING)) {
-        const factory = @This().IUserDataAccountSystemAccessManagerStaticsCache.get();
-        return try factory.AddAndShowDeviceAccountsAsync(accounts);
+        const _f = @This().IUserDataAccountSystemAccessManagerStaticsCache.get();
+        return try _f.AddAndShowDeviceAccountsAsync(accounts);
     }
     pub fn SuppressLocalAccountWithAccountAsync(userDataAccountId: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
-        return try factory.SuppressLocalAccountWithAccountAsync(userDataAccountId);
+        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        return try _f.SuppressLocalAccountWithAccountAsync(userDataAccountId);
     }
     pub fn CreateDeviceAccountAsync(account: *DeviceAccountConfiguration) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
-        return try factory.CreateDeviceAccountAsync(account);
+        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        return try _f.CreateDeviceAccountAsync(account);
     }
     pub fn DeleteDeviceAccountAsync(accountId: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
-        return try factory.DeleteDeviceAccountAsync(accountId);
+        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        return try _f.DeleteDeviceAccountAsync(accountId);
     }
     pub fn GetDeviceAccountConfigurationAsync(accountId: HSTRING) core.HResult!*IAsyncOperation(DeviceAccountConfiguration) {
-        const factory = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
-        return try factory.GetDeviceAccountConfigurationAsync(accountId);
+        const _f = @This().IUserDataAccountSystemAccessManagerStatics2Cache.get();
+        return try _f.GetDeviceAccountConfigurationAsync(accountId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.SystemAccess.UserDataAccountSystemAccessManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

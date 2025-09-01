@@ -20,8 +20,8 @@ pub const CompositionConditionalValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*CompositionConditionalValue {
-        const factory = @This().ICompositionConditionalValueStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ICompositionConditionalValueStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.CompositionConditionalValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -48,7 +48,7 @@ pub const CompositionInteractionSourceCollection = extern struct {
         const this: *ICompositionInteractionSourceCollection = @ptrCast(self);
         return try this.RemoveAll();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ICompositionInteractionSource) {
         var this: ?*IIterable(ICompositionInteractionSource) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1816,30 +1816,30 @@ pub const InteractionTracker = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsInertiaFromImpulse();
     }
-    pub fn TryUpdatePositionWithOptionWithPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
+    pub fn TryUpdatePositionWithOptionAndPosUpdateOption(self: *@This(), value: Vector3, option: InteractionTrackerClampingOption, posUpdateOption: InteractionTrackerPositionUpdateOption) core.HResult!i32 {
         var this: ?*IInteractionTracker5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInteractionTracker5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryUpdatePositionWithOptionWithPosUpdateOption(value, option, posUpdateOption);
+        return try this.?.TryUpdatePositionWithOptionAndPosUpdateOption(value, option, posUpdateOption);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetBindingMode(boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker, axisMode: InteractionBindingAxisModes) core.HResult!void {
-        const factory = @This().IInteractionTrackerStatics2Cache.get();
-        return try factory.SetBindingMode(boundTracker1, boundTracker2, axisMode);
+        const _f = @This().IInteractionTrackerStatics2Cache.get();
+        return try _f.SetBindingMode(boundTracker1, boundTracker2, axisMode);
     }
     pub fn GetBindingMode(boundTracker1: *InteractionTracker, boundTracker2: *InteractionTracker) core.HResult!InteractionBindingAxisModes {
-        const factory = @This().IInteractionTrackerStatics2Cache.get();
-        return try factory.GetBindingMode(boundTracker1, boundTracker2);
+        const _f = @This().IInteractionTrackerStatics2Cache.get();
+        return try _f.GetBindingMode(boundTracker1, boundTracker2);
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTracker {
-        const factory = @This().IInteractionTrackerStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().IInteractionTrackerStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub fn CreateWithOwner(compositor: *Compositor, owner: *IInteractionTrackerOwner) core.HResult!*InteractionTracker {
-        const factory = @This().IInteractionTrackerStaticsCache.get();
-        return try factory.CreateWithOwner(compositor, owner);
+        const _f = @This().IInteractionTrackerStaticsCache.get();
+        return try _f.CreateWithOwner(compositor, owner);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTracker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1923,8 +1923,8 @@ pub const InteractionTrackerInertiaMotion = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerInertiaMotion {
-        const factory = @This().IInteractionTrackerInertiaMotionStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().IInteractionTrackerInertiaMotionStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaMotion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1955,8 +1955,8 @@ pub const InteractionTrackerInertiaNaturalMotion = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerInertiaNaturalMotion {
-        const factory = @This().IInteractionTrackerInertiaNaturalMotionStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().IInteractionTrackerInertiaNaturalMotionStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaNaturalMotion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1987,8 +1987,8 @@ pub const InteractionTrackerInertiaRestingValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerInertiaRestingValue {
-        const factory = @This().IInteractionTrackerInertiaRestingValueStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().IInteractionTrackerInertiaRestingValueStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerInertiaRestingValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2133,8 +2133,8 @@ pub const InteractionTrackerVector2InertiaNaturalMotion = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*InteractionTrackerVector2InertiaNaturalMotion {
-        const factory = @This().IInteractionTrackerVector2InertiaNaturalMotionStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().IInteractionTrackerVector2InertiaNaturalMotionStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.InteractionTrackerVector2InertiaNaturalMotion";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2301,12 +2301,12 @@ pub const VisualInteractionSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(source: *Visual) core.HResult!*VisualInteractionSource {
-        const factory = @This().IVisualInteractionSourceStaticsCache.get();
-        return try factory.Create(source);
+        const _f = @This().IVisualInteractionSourceStaticsCache.get();
+        return try _f.Create(source);
     }
     pub fn CreateFromIVisualElement(source: *IVisualElement) core.HResult!*VisualInteractionSource {
-        const factory = @This().IVisualInteractionSourceStatics2Cache.get();
-        return try factory.CreateFromIVisualElement(source);
+        const _f = @This().IVisualInteractionSourceStatics2Cache.get();
+        return try _f.CreateFromIVisualElement(source);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Interactions.VisualInteractionSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

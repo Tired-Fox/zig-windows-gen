@@ -23,17 +23,17 @@ pub const BitmapSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PixelWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapSourceStaticsCache.get();
-        return try factory.getPixelWidthProperty();
+    pub fn getPixelWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapSourceStaticsCache.get();
+        return try _f.getPixelWidthProperty();
     }
-    pub fn get_PixelHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapSourceStaticsCache.get();
-        return try factory.getPixelHeightProperty();
+    pub fn getPixelHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapSourceStaticsCache.get();
+        return try _f.getPixelHeightProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BitmapSource {
-        const factory = @This().IBitmapSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBitmapSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.BitmapSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -157,40 +157,40 @@ pub const BitmapImage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBitmapImage.IID)));
     }
     pub fn CreateInstanceWithUriSource(uriSource: *Uri) core.HResult!*BitmapImage {
-        const factory = @This().IBitmapImageFactoryCache.get();
-        return try factory.CreateInstanceWithUriSource(uriSource);
+        const _f = @This().IBitmapImageFactoryCache.get();
+        return try _f.CreateInstanceWithUriSource(uriSource);
     }
-    pub fn get_DecodePixelTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStatics2Cache.get();
-        return try factory.getDecodePixelTypeProperty();
+    pub fn getDecodePixelTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStatics2Cache.get();
+        return try _f.getDecodePixelTypeProperty();
     }
-    pub fn get_CreateOptionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStaticsCache.get();
-        return try factory.getCreateOptionsProperty();
+    pub fn getCreateOptionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStaticsCache.get();
+        return try _f.getCreateOptionsProperty();
     }
-    pub fn get_UriSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStaticsCache.get();
-        return try factory.getUriSourceProperty();
+    pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStaticsCache.get();
+        return try _f.getUriSourceProperty();
     }
-    pub fn get_DecodePixelWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStaticsCache.get();
-        return try factory.getDecodePixelWidthProperty();
+    pub fn getDecodePixelWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStaticsCache.get();
+        return try _f.getDecodePixelWidthProperty();
     }
-    pub fn get_DecodePixelHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStaticsCache.get();
-        return try factory.getDecodePixelHeightProperty();
+    pub fn getDecodePixelHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStaticsCache.get();
+        return try _f.getDecodePixelHeightProperty();
     }
-    pub fn get_IsAnimatedBitmapProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStatics3Cache.get();
-        return try factory.getIsAnimatedBitmapProperty();
+    pub fn getIsAnimatedBitmapProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStatics3Cache.get();
+        return try _f.getIsAnimatedBitmapProperty();
     }
-    pub fn get_IsPlayingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStatics3Cache.get();
-        return try factory.getIsPlayingProperty();
+    pub fn getIsPlayingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStatics3Cache.get();
+        return try _f.getIsPlayingProperty();
     }
-    pub fn get_AutoPlayProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapImageStatics3Cache.get();
-        return try factory.getAutoPlayProperty();
+    pub fn getAutoPlayProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapImageStatics3Cache.get();
+        return try _f.getAutoPlayProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.BitmapImage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -760,9 +760,9 @@ pub const IRenderTargetBitmap = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderAsyncWithScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
+    pub fn RenderAsyncWithScaledWidthAndScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.RenderAsyncWithScaledHeight(@ptrCast(self), element, scaledWidth, scaledHeight, &_r);
+        const _c = self.vtable.RenderAsyncWithScaledWidthAndScaledHeight(@ptrCast(self), element, scaledWidth, scaledHeight, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -787,7 +787,7 @@ pub const IRenderTargetBitmap = extern struct {
         get_PixelWidth: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         get_PixelHeight: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
         RenderAsync: *const fn(self: *anyopaque, element: *UIElement, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RenderAsyncWithScaledHeight: *const fn(self: *anyopaque, element: *UIElement, scaledWidth: i32, scaledHeight: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        RenderAsyncWithScaledWidthAndScaledHeight: *const fn(self: *anyopaque, element: *UIElement, scaledWidth: i32, scaledHeight: i32, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetPixelsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IBuffer)) callconv(.winapi) HRESULT,
     };
 };
@@ -1250,9 +1250,9 @@ pub const RenderTargetBitmap = extern struct {
         const this: *IRenderTargetBitmap = @ptrCast(self);
         return try this.RenderAsync(element);
     }
-    pub fn RenderAsyncWithScaledWidthWithScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
+    pub fn RenderAsyncWithScaledWidthAndScaledHeight(self: *@This(), element: *UIElement, scaledWidth: i32, scaledHeight: i32) core.HResult!*IAsyncAction {
         const this: *IRenderTargetBitmap = @ptrCast(self);
-        return try this.RenderAsyncWithScaledWidthWithScaledHeight(element, scaledWidth, scaledHeight);
+        return try this.RenderAsyncWithScaledWidthAndScaledHeight(element, scaledWidth, scaledHeight);
     }
     pub fn GetPixelsAsync(self: *@This()) core.HResult!*IAsyncOperation(IBuffer) {
         const this: *IRenderTargetBitmap = @ptrCast(self);
@@ -1265,13 +1265,13 @@ pub const RenderTargetBitmap = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRenderTargetBitmap.IID)));
     }
-    pub fn get_PixelWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRenderTargetBitmapStaticsCache.get();
-        return try factory.getPixelWidthProperty();
+    pub fn getPixelWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRenderTargetBitmapStaticsCache.get();
+        return try _f.getPixelWidthProperty();
     }
-    pub fn get_PixelHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRenderTargetBitmapStaticsCache.get();
-        return try factory.getPixelHeightProperty();
+    pub fn getPixelHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRenderTargetBitmapStaticsCache.get();
+        return try _f.getPixelHeightProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.RenderTargetBitmap";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1313,12 +1313,12 @@ pub const SurfaceImageSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithDimensions(pixelWidth: i32, pixelHeight: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SurfaceImageSource {
-        const factory = @This().ISurfaceImageSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDimensions(pixelWidth, pixelHeight, baseInterface, innerInterface);
+        const _f = @This().ISurfaceImageSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDimensions(pixelWidth, pixelHeight, baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithDimensionsAndOpacity(pixelWidth: i32, pixelHeight: i32, isOpaque: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SurfaceImageSource {
-        const factory = @This().ISurfaceImageSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDimensionsAndOpacity(pixelWidth, pixelHeight, isOpaque, baseInterface, innerInterface);
+        const _f = @This().ISurfaceImageSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDimensionsAndOpacity(pixelWidth, pixelHeight, isOpaque, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.SurfaceImageSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1376,25 +1376,25 @@ pub const SvgImageSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_UriSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISvgImageSourceStaticsCache.get();
-        return try factory.getUriSourceProperty();
+    pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISvgImageSourceStaticsCache.get();
+        return try _f.getUriSourceProperty();
     }
-    pub fn get_RasterizePixelWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISvgImageSourceStaticsCache.get();
-        return try factory.getRasterizePixelWidthProperty();
+    pub fn getRasterizePixelWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISvgImageSourceStaticsCache.get();
+        return try _f.getRasterizePixelWidthProperty();
     }
-    pub fn get_RasterizePixelHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISvgImageSourceStaticsCache.get();
-        return try factory.getRasterizePixelHeightProperty();
+    pub fn getRasterizePixelHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISvgImageSourceStaticsCache.get();
+        return try _f.getRasterizePixelHeightProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SvgImageSource {
-        const factory = @This().ISvgImageSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISvgImageSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithUriSource(uriSource: *Uri, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SvgImageSource {
-        const factory = @This().ISvgImageSourceFactoryCache.get();
-        return try factory.CreateInstanceWithUriSource(uriSource, baseInterface, innerInterface);
+        const _f = @This().ISvgImageSourceFactoryCache.get();
+        return try _f.CreateInstanceWithUriSource(uriSource, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.SvgImageSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1436,12 +1436,12 @@ pub const VirtualSurfaceImageSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithDimensions(pixelWidth: i32, pixelHeight: i32) core.HResult!*VirtualSurfaceImageSource {
-        const factory = @This().IVirtualSurfaceImageSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDimensions(pixelWidth, pixelHeight);
+        const _f = @This().IVirtualSurfaceImageSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDimensions(pixelWidth, pixelHeight);
     }
     pub fn CreateInstanceWithDimensionsAndOpacity(pixelWidth: i32, pixelHeight: i32, isOpaque: bool) core.HResult!*VirtualSurfaceImageSource {
-        const factory = @This().IVirtualSurfaceImageSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDimensionsAndOpacity(pixelWidth, pixelHeight, isOpaque);
+        const _f = @This().IVirtualSurfaceImageSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDimensionsAndOpacity(pixelWidth, pixelHeight, isOpaque);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.VirtualSurfaceImageSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1464,8 +1464,8 @@ pub const WriteableBitmap = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithDimensions(pixelWidth: i32, pixelHeight: i32) core.HResult!*WriteableBitmap {
-        const factory = @This().IWriteableBitmapFactoryCache.get();
-        return try factory.CreateInstanceWithDimensions(pixelWidth, pixelHeight);
+        const _f = @This().IWriteableBitmapFactoryCache.get();
+        return try _f.CreateInstanceWithDimensions(pixelWidth, pixelHeight);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.WriteableBitmap";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1486,8 +1486,8 @@ pub const XamlRenderingBackgroundTask = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*XamlRenderingBackgroundTask {
-        const factory = @This().IXamlRenderingBackgroundTaskFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IXamlRenderingBackgroundTaskFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Imaging.XamlRenderingBackgroundTask";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

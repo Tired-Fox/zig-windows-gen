@@ -27,8 +27,8 @@ pub const InputActivationListenerPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForApplicationWindow(window: *AppWindow) core.HResult!*InputActivationListener {
-        const factory = @This().IInputActivationListenerPreviewStaticsCache.get();
-        return try factory.CreateForApplicationWindow(window);
+        const _f = @This().IInputActivationListenerPreviewStaticsCache.get();
+        return try _f.CreateForApplicationWindow(window);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Preview.InputActivationListenerPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

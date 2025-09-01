@@ -168,15 +168,15 @@ pub const IRatedContentRestrictions = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetRestrictionLevelAsync(self: *@This(), RatedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(ContentAccessRestrictionLevel) {
+    pub fn GetRestrictionLevelAsync(self: *@This(), ratedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(ContentAccessRestrictionLevel) {
         var _r: *IAsyncOperation(ContentAccessRestrictionLevel) = undefined;
-        const _c = self.vtable.GetRestrictionLevelAsync(@ptrCast(self), RatedContentDescription, &_r);
+        const _c = self.vtable.GetRestrictionLevelAsync(@ptrCast(self), ratedContentDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestContentAccessAsync(self: *@This(), RatedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestContentAccessAsync(self: *@This(), ratedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestContentAccessAsync(@ptrCast(self), RatedContentDescription, &_r);
+        const _c = self.vtable.RequestContentAccessAsync(@ptrCast(self), ratedContentDescription, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -203,8 +203,8 @@ pub const IRatedContentRestrictions = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetBrowsePolicyAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ContentRestrictionsBrowsePolicy)) callconv(.winapi) HRESULT,
-        GetRestrictionLevelAsync: *const fn(self: *anyopaque, RatedContentDescription: *RatedContentDescription, _r: **IAsyncOperation(ContentAccessRestrictionLevel)) callconv(.winapi) HRESULT,
-        RequestContentAccessAsync: *const fn(self: *anyopaque, RatedContentDescription: *RatedContentDescription, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        GetRestrictionLevelAsync: *const fn(self: *anyopaque, ratedContentDescription: *RatedContentDescription, _r: **IAsyncOperation(ContentAccessRestrictionLevel)) callconv(.winapi) HRESULT,
+        RequestContentAccessAsync: *const fn(self: *anyopaque, ratedContentDescription: *RatedContentDescription, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_RestrictionsChanged: *const fn(self: *anyopaque, handler: *EventHandler(IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_RestrictionsChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };
@@ -286,8 +286,8 @@ pub const RatedContentDescription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: HSTRING, title: HSTRING, category: RatedContentCategory) core.HResult!*RatedContentDescription {
-        const factory = @This().IRatedContentDescriptionFactoryCache.get();
-        return try factory.Create(id, title, category);
+        const _f = @This().IRatedContentDescriptionFactoryCache.get();
+        return try _f.Create(id, title, category);
     }
     pub const NAME: []const u8 = "Windows.Media.ContentRestrictions.RatedContentDescription";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -302,13 +302,13 @@ pub const RatedContentRestrictions = extern struct {
         const this: *IRatedContentRestrictions = @ptrCast(self);
         return try this.GetBrowsePolicyAsync();
     }
-    pub fn GetRestrictionLevelAsync(self: *@This(), RatedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(ContentAccessRestrictionLevel) {
+    pub fn GetRestrictionLevelAsync(self: *@This(), ratedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(ContentAccessRestrictionLevel) {
         const this: *IRatedContentRestrictions = @ptrCast(self);
-        return try this.GetRestrictionLevelAsync(RatedContentDescription);
+        return try this.GetRestrictionLevelAsync(ratedContentDescription);
     }
-    pub fn RequestContentAccessAsync(self: *@This(), RatedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestContentAccessAsync(self: *@This(), ratedContentDescription: *RatedContentDescription) core.HResult!*IAsyncOperation(bool) {
         const this: *IRatedContentRestrictions = @ptrCast(self);
-        return try this.RequestContentAccessAsync(RatedContentDescription);
+        return try this.RequestContentAccessAsync(ratedContentDescription);
     }
     pub fn addRestrictionsChanged(self: *@This(), handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IRatedContentRestrictions = @ptrCast(self);
@@ -326,8 +326,8 @@ pub const RatedContentRestrictions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRatedContentRestrictions.IID)));
     }
     pub fn CreateWithMaxAgeRating(maxAgeRating: u32) core.HResult!*RatedContentRestrictions {
-        const factory = @This().IRatedContentRestrictionsFactoryCache.get();
-        return try factory.CreateWithMaxAgeRating(maxAgeRating);
+        const _f = @This().IRatedContentRestrictionsFactoryCache.get();
+        return try _f.CreateWithMaxAgeRating(maxAgeRating);
     }
     pub const NAME: []const u8 = "Windows.Media.ContentRestrictions.RatedContentRestrictions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

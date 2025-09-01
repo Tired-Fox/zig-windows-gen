@@ -4,12 +4,12 @@ pub const CoreUserActivityManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateUserActivitySessionInBackground(activity: *UserActivity) core.HResult!*UserActivitySession {
-        const factory = @This().ICoreUserActivityManagerStaticsCache.get();
-        return try factory.CreateUserActivitySessionInBackground(activity);
+        const _f = @This().ICoreUserActivityManagerStaticsCache.get();
+        return try _f.CreateUserActivitySessionInBackground(activity);
     }
     pub fn DeleteUserActivitySessionsInTimeRangeAsync(channel: *UserActivityChannel, startTime: DateTime, endTime: DateTime) core.HResult!*IAsyncAction {
-        const factory = @This().ICoreUserActivityManagerStaticsCache.get();
-        return try factory.DeleteUserActivitySessionsInTimeRangeAsync(channel, startTime, endTime);
+        const _f = @This().ICoreUserActivityManagerStaticsCache.get();
+        return try _f.DeleteUserActivitySessionsInTimeRangeAsync(channel, startTime, endTime);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.Core.CoreUserActivityManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -20,8 +20,8 @@ pub const CoreDragDropManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CoreDragDropManager {
-        const factory = @This().ICoreDragDropManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ICoreDragDropManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DragDrop.Core.CoreDragDropManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

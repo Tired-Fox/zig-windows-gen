@@ -166,6 +166,6 @@ const IAsyncOperation = @import("../../Foundation.zig").IAsyncOperation;
 const FactoryCache = @import("../../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../../root.zig").HSTRING;

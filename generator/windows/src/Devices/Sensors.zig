@@ -84,20 +84,20 @@ pub const Accelerometer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Accelerometer) {
-        const factory = @This().IAccelerometerStatics3Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IAccelerometerStatics3Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector(readingType: AccelerometerReadingType) core.HResult!HSTRING {
-        const factory = @This().IAccelerometerStatics3Cache.get();
-        return try factory.GetDeviceSelector(readingType);
+        const _f = @This().IAccelerometerStatics3Cache.get();
+        return try _f.GetDeviceSelector(readingType);
     }
     pub fn GetDefault() core.HResult!*Accelerometer {
-        const factory = @This().IAccelerometerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IAccelerometerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetDefaultWithReadingType(readingType: AccelerometerReadingType) core.HResult!*Accelerometer {
-        const factory = @This().IAccelerometerStatics2Cache.get();
-        return try factory.GetDefault(readingType);
+        const _f = @This().IAccelerometerStatics2Cache.get();
+        return try _f.GetDefault(readingType);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Accelerometer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -243,24 +243,24 @@ pub const ActivitySensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(ActivitySensor) {
-        const factory = @This().IActivitySensorStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IActivitySensorStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IActivitySensorStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IActivitySensorStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ActivitySensor) {
-        const factory = @This().IActivitySensorStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IActivitySensorStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetSystemHistoryAsync(fromTime: DateTime) core.HResult!*IAsyncOperation(IVectorView(ActivitySensorReading)) {
-        const factory = @This().IActivitySensorStaticsCache.get();
-        return try factory.GetSystemHistoryAsync(fromTime);
+        const _f = @This().IActivitySensorStaticsCache.get();
+        return try _f.GetSystemHistoryAsync(fromTime);
     }
     pub fn GetSystemHistoryAsyncWithDuration(fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(ActivitySensorReading)) {
-        const factory = @This().IActivitySensorStaticsCache.get();
-        return try factory.GetSystemHistoryAsyncWithDuration(fromTime, duration);
+        const _f = @This().IActivitySensorStaticsCache.get();
+        return try _f.GetSystemHistoryAsyncWithDuration(fromTime, duration);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.ActivitySensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -407,8 +407,8 @@ pub const Altimeter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*Altimeter {
-        const factory = @This().IAltimeterStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IAltimeterStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Altimeter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -515,16 +515,16 @@ pub const Barometer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Barometer) {
-        const factory = @This().IBarometerStatics2Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IBarometerStatics2Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IBarometerStatics2Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IBarometerStatics2Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDefault() core.HResult!*Barometer {
-        const factory = @This().IBarometerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IBarometerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Barometer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -662,16 +662,16 @@ pub const Compass = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ICompassStatics2Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ICompassStatics2Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Compass) {
-        const factory = @This().ICompassStatics2Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ICompassStatics2Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefault() core.HResult!*Compass {
-        const factory = @This().ICompassStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ICompassStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Compass";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -847,16 +847,16 @@ pub const Gyrometer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*Gyrometer {
-        const factory = @This().IGyrometerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IGyrometerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IGyrometerStatics2Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IGyrometerStatics2Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Gyrometer) {
-        const factory = @This().IGyrometerStatics2Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IGyrometerStatics2Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Gyrometer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1036,20 +1036,20 @@ pub const HingeAngleSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IHingeAngleSensorStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IHingeAngleSensorStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(HingeAngleSensor) {
-        const factory = @This().IHingeAngleSensorStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IHingeAngleSensorStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetRelatedToAdjacentPanelsAsync(firstPanelId: HSTRING, secondPanelId: HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
-        const factory = @This().IHingeAngleSensorStaticsCache.get();
-        return try factory.GetRelatedToAdjacentPanelsAsync(firstPanelId, secondPanelId);
+        const _f = @This().IHingeAngleSensorStaticsCache.get();
+        return try _f.GetRelatedToAdjacentPanelsAsync(firstPanelId, secondPanelId);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(HingeAngleSensor) {
-        const factory = @This().IHingeAngleSensorStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IHingeAngleSensorStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.HingeAngleSensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1192,24 +1192,24 @@ pub const HumanPresenceSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromId(sensorId: HSTRING) core.HResult!*HumanPresenceSensor {
-        const factory = @This().IHumanPresenceSensorStatics2Cache.get();
-        return try factory.FromId(sensorId);
+        const _f = @This().IHumanPresenceSensorStatics2Cache.get();
+        return try _f.FromId(sensorId);
     }
     pub fn GetDefault() core.HResult!*HumanPresenceSensor {
-        const factory = @This().IHumanPresenceSensorStatics2Cache.get();
-        return try factory.GetDefault();
+        const _f = @This().IHumanPresenceSensorStatics2Cache.get();
+        return try _f.GetDefault();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IHumanPresenceSensorStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IHumanPresenceSensorStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(HumanPresenceSensor) {
-        const factory = @This().IHumanPresenceSensorStaticsCache.get();
-        return try factory.FromIdAsync(sensorId);
+        const _f = @This().IHumanPresenceSensorStaticsCache.get();
+        return try _f.FromIdAsync(sensorId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(HumanPresenceSensor) {
-        const factory = @This().IHumanPresenceSensorStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IHumanPresenceSensorStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.HumanPresenceSensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1443,40 +1443,40 @@ pub const HumanPresenceSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentSettingsAsync() core.HResult!*IAsyncOperation(HumanPresenceSettings) {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.GetCurrentSettingsAsync();
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.GetCurrentSettingsAsync();
     }
     pub fn GetCurrentSettings() core.HResult!*HumanPresenceSettings {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.GetCurrentSettings();
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.GetCurrentSettings();
     }
     pub fn UpdateSettingsAsync(settings: *HumanPresenceSettings) core.HResult!*IAsyncAction {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.UpdateSettingsAsync(settings);
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.UpdateSettingsAsync(settings);
     }
     pub fn UpdateSettings(settings: *HumanPresenceSettings) core.HResult!void {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.UpdateSettings(settings);
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.UpdateSettings(settings);
     }
     pub fn GetSupportedFeaturesForSensorIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(HumanPresenceFeatures) {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.GetSupportedFeaturesForSensorIdAsync(sensorId);
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.GetSupportedFeaturesForSensorIdAsync(sensorId);
     }
     pub fn GetSupportedFeaturesForSensorId(sensorId: HSTRING) core.HResult!*HumanPresenceFeatures {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.GetSupportedFeaturesForSensorId(sensorId);
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.GetSupportedFeaturesForSensorId(sensorId);
     }
     pub fn GetSupportedLockOnLeaveTimeouts() core.HResult!*IVectorView(TimeSpan) {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.GetSupportedLockOnLeaveTimeouts();
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.GetSupportedLockOnLeaveTimeouts();
     }
-    pub fn add_SettingsChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.addSettingsChanged(handler);
+    pub fn addSettingsChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.addSettingsChanged(handler);
     }
-    pub fn remove_SettingsChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IHumanPresenceSettingsStaticsCache.get();
-        return try factory.removeSettingsChanged(token);
+    pub fn removeSettingsChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IHumanPresenceSettingsStaticsCache.get();
+        return try _f.removeSettingsChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.HumanPresenceSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7043,24 +7043,24 @@ pub const Inclinometer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*Inclinometer {
-        const factory = @This().IInclinometerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IInclinometerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetDefaultForRelativeReadings() core.HResult!*Inclinometer {
-        const factory = @This().IInclinometerStatics2Cache.get();
-        return try factory.GetDefaultForRelativeReadings();
+        const _f = @This().IInclinometerStatics2Cache.get();
+        return try _f.GetDefaultForRelativeReadings();
     }
     pub fn GetDeviceSelector(readingType: SensorReadingType) core.HResult!HSTRING {
-        const factory = @This().IInclinometerStatics4Cache.get();
-        return try factory.GetDeviceSelector(readingType);
+        const _f = @This().IInclinometerStatics4Cache.get();
+        return try _f.GetDeviceSelector(readingType);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Inclinometer) {
-        const factory = @This().IInclinometerStatics4Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IInclinometerStatics4Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultWithSensorReadingtype(sensorReadingtype: SensorReadingType) core.HResult!*Inclinometer {
-        const factory = @This().IInclinometerStatics3Cache.get();
-        return try factory.GetDefault(sensorReadingtype);
+        const _f = @This().IInclinometerStatics3Cache.get();
+        return try _f.GetDefault(sensorReadingtype);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Inclinometer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7224,16 +7224,16 @@ pub const LightSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ILightSensorStatics2Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ILightSensorStatics2Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LightSensor) {
-        const factory = @This().ILightSensorStatics2Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ILightSensorStatics2Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefault() core.HResult!*LightSensor {
-        const factory = @This().ILightSensorStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ILightSensorStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.LightSensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7417,16 +7417,16 @@ pub const Magnetometer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IMagnetometerStatics2Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IMagnetometerStatics2Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Magnetometer) {
-        const factory = @This().IMagnetometerStatics2Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IMagnetometerStatics2Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefault() core.HResult!*Magnetometer {
-        const factory = @This().IMagnetometerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IMagnetometerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Magnetometer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7633,32 +7633,32 @@ pub const OrientationSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultForRelativeReadings() core.HResult!*OrientationSensor {
-        const factory = @This().IOrientationSensorStatics2Cache.get();
-        return try factory.GetDefaultForRelativeReadings();
+        const _f = @This().IOrientationSensorStatics2Cache.get();
+        return try _f.GetDefaultForRelativeReadings();
     }
     pub fn GetDefaultWithSensorReadingtype(sensorReadingtype: SensorReadingType) core.HResult!*OrientationSensor {
-        const factory = @This().IOrientationSensorStatics3Cache.get();
-        return try factory.GetDefault(sensorReadingtype);
+        const _f = @This().IOrientationSensorStatics3Cache.get();
+        return try _f.GetDefault(sensorReadingtype);
     }
-    pub fn GetDefaultWithSensorReadingTypeWithOptimizationGoal(sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
-        const factory = @This().IOrientationSensorStatics3Cache.get();
-        return try factory.GetDefaultWithOptimizationGoal(sensorReadingType, optimizationGoal);
+    pub fn GetDefaultWithSensorReadingTypeAndOptimizationGoal(sensorReadingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!*OrientationSensor {
+        const _f = @This().IOrientationSensorStatics3Cache.get();
+        return try _f.GetDefaultWithOptimizationGoal(sensorReadingType, optimizationGoal);
     }
     pub fn GetDefault() core.HResult!*OrientationSensor {
-        const factory = @This().IOrientationSensorStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IOrientationSensorStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetDeviceSelector(readingType: SensorReadingType) core.HResult!HSTRING {
-        const factory = @This().IOrientationSensorStatics4Cache.get();
-        return try factory.GetDeviceSelector(readingType);
+        const _f = @This().IOrientationSensorStatics4Cache.get();
+        return try _f.GetDeviceSelector(readingType);
     }
     pub fn GetDeviceSelectorWithOptimizationGoal(readingType: SensorReadingType, optimizationGoal: SensorOptimizationGoal) core.HResult!HSTRING {
-        const factory = @This().IOrientationSensorStatics4Cache.get();
-        return try factory.GetDeviceSelectorWithOptimizationGoal(readingType, optimizationGoal);
+        const _f = @This().IOrientationSensorStatics4Cache.get();
+        return try _f.GetDeviceSelectorWithOptimizationGoal(readingType, optimizationGoal);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(OrientationSensor) {
-        const factory = @This().IOrientationSensorStatics4Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IOrientationSensorStatics4Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.OrientationSensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7760,28 +7760,28 @@ pub const Pedometer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Pedometer) {
-        const factory = @This().IPedometerStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IPedometerStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(Pedometer) {
-        const factory = @This().IPedometerStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IPedometerStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IPedometerStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IPedometerStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetSystemHistoryAsync(fromTime: DateTime) core.HResult!*IAsyncOperation(IVectorView(PedometerReading)) {
-        const factory = @This().IPedometerStaticsCache.get();
-        return try factory.GetSystemHistoryAsync(fromTime);
+        const _f = @This().IPedometerStaticsCache.get();
+        return try _f.GetSystemHistoryAsync(fromTime);
     }
     pub fn GetSystemHistoryAsyncWithDuration(fromTime: DateTime, duration: TimeSpan) core.HResult!*IAsyncOperation(IVectorView(PedometerReading)) {
-        const factory = @This().IPedometerStaticsCache.get();
-        return try factory.GetSystemHistoryAsyncWithDuration(fromTime, duration);
+        const _f = @This().IPedometerStaticsCache.get();
+        return try _f.GetSystemHistoryAsyncWithDuration(fromTime, duration);
     }
     pub fn GetReadingsFromTriggerDetails(triggerDetails: *SensorDataThresholdTriggerDetails) core.HResult!*IVectorView(PedometerReading) {
-        const factory = @This().IPedometerStatics2Cache.get();
-        return try factory.GetReadingsFromTriggerDetails(triggerDetails);
+        const _f = @This().IPedometerStatics2Cache.get();
+        return try _f.GetReadingsFromTriggerDetails(triggerDetails);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Pedometer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7797,8 +7797,8 @@ pub const PedometerDataThreshold = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(sensor: *Pedometer, stepGoal: i32) core.HResult!*PedometerDataThreshold {
-        const factory = @This().IPedometerDataThresholdFactoryCache.get();
-        return try factory.Create(sensor, stepGoal);
+        const _f = @This().IPedometerDataThresholdFactoryCache.get();
+        return try _f.Create(sensor, stepGoal);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.PedometerDataThreshold";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7882,16 +7882,16 @@ pub const ProximitySensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetReadingsFromTriggerDetails(triggerDetails: *SensorDataThresholdTriggerDetails) core.HResult!*IVectorView(ProximitySensorReading) {
-        const factory = @This().IProximitySensorStatics2Cache.get();
-        return try factory.GetReadingsFromTriggerDetails(triggerDetails);
+        const _f = @This().IProximitySensorStatics2Cache.get();
+        return try _f.GetReadingsFromTriggerDetails(triggerDetails);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IProximitySensorStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IProximitySensorStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromId(sensorId: HSTRING) core.HResult!*ProximitySensor {
-        const factory = @This().IProximitySensorStaticsCache.get();
-        return try factory.FromId(sensorId);
+        const _f = @This().IProximitySensorStaticsCache.get();
+        return try _f.FromId(sensorId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.ProximitySensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7907,8 +7907,8 @@ pub const ProximitySensorDataThreshold = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(sensor: *ProximitySensor) core.HResult!*ProximitySensorDataThreshold {
-        const factory = @This().IProximitySensorDataThresholdFactoryCache.get();
-        return try factory.Create(sensor);
+        const _f = @This().IProximitySensorDataThresholdFactoryCache.get();
+        return try _f.Create(sensor);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.ProximitySensorDataThreshold";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8113,16 +8113,16 @@ pub const SimpleOrientationSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SimpleOrientationSensor {
-        const factory = @This().ISimpleOrientationSensorStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ISimpleOrientationSensorStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ISimpleOrientationSensorStatics2Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ISimpleOrientationSensorStatics2Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SimpleOrientationSensor) {
-        const factory = @This().ISimpleOrientationSensorStatics2Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ISimpleOrientationSensorStatics2Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.SimpleOrientationSensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

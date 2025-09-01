@@ -9,48 +9,48 @@ pub const CryptographicBuffer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Compare(object1: *IBuffer, object2: *IBuffer) core.HResult!bool {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.Compare(object1, object2);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.Compare(object1, object2);
     }
     pub fn GenerateRandom(length: u32) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.GenerateRandom(length);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.GenerateRandom(length);
     }
     pub fn GenerateRandomNumber() core.HResult!u32 {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.GenerateRandomNumber();
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.GenerateRandomNumber();
     }
     pub fn CreateFromByteArray(value: [*]u8) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.CreateFromByteArray(value);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.CreateFromByteArray(value);
     }
     pub fn CopyToByteArray(buffer: *IBuffer, value: u8) core.HResult!void {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.CopyToByteArray(buffer, value);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.CopyToByteArray(buffer, value);
     }
     pub fn DecodeFromHexString(value: HSTRING) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.DecodeFromHexString(value);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.DecodeFromHexString(value);
     }
     pub fn EncodeToHexString(buffer: *IBuffer) core.HResult!HSTRING {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.EncodeToHexString(buffer);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.EncodeToHexString(buffer);
     }
     pub fn DecodeFromBase64String(value: HSTRING) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.DecodeFromBase64String(value);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.DecodeFromBase64String(value);
     }
     pub fn EncodeToBase64String(buffer: *IBuffer) core.HResult!HSTRING {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.EncodeToBase64String(buffer);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.EncodeToBase64String(buffer);
     }
     pub fn ConvertStringToBinary(value: HSTRING, encoding: BinaryStringEncoding) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.ConvertStringToBinary(value, encoding);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.ConvertStringToBinary(value, encoding);
     }
     pub fn ConvertBinaryToString(encoding: BinaryStringEncoding, buffer: *IBuffer) core.HResult!HSTRING {
-        const factory = @This().ICryptographicBufferStaticsCache.get();
-        return try factory.ConvertBinaryToString(encoding, buffer);
+        const _f = @This().ICryptographicBufferStaticsCache.get();
+        return try _f.ConvertBinaryToString(encoding, buffer);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.CryptographicBuffer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

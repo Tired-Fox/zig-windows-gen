@@ -586,13 +586,13 @@ pub const PrintDocument = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DocumentSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPrintDocumentStaticsCache.get();
-        return try factory.getDocumentSourceProperty();
+    pub fn getDocumentSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPrintDocumentStaticsCache.get();
+        return try _f.getDocumentSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PrintDocument {
-        const factory = @This().IPrintDocumentFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPrintDocumentFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Printing.PrintDocument";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

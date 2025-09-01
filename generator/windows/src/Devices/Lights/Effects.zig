@@ -737,8 +737,8 @@ pub const LampArrayBitmapEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBitmapEffect {
-        const factory = @This().ILampArrayBitmapEffectFactoryCache.get();
-        return try factory.CreateInstance(lampArray, lampIndexes);
+        const _f = @This().ILampArrayBitmapEffectFactoryCache.get();
+        return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayBitmapEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -845,8 +845,8 @@ pub const LampArrayBlinkEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayBlinkEffect {
-        const factory = @This().ILampArrayBlinkEffectFactoryCache.get();
-        return try factory.CreateInstance(lampArray, lampIndexes);
+        const _f = @This().ILampArrayBlinkEffectFactoryCache.get();
+        return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayBlinkEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -905,8 +905,8 @@ pub const LampArrayColorRampEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayColorRampEffect {
-        const factory = @This().ILampArrayColorRampEffectFactoryCache.get();
-        return try factory.CreateInstance(lampArray, lampIndexes);
+        const _f = @This().ILampArrayColorRampEffectFactoryCache.get();
+        return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayColorRampEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -957,8 +957,8 @@ pub const LampArrayCustomEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArrayCustomEffect {
-        const factory = @This().ILampArrayCustomEffectFactoryCache.get();
-        return try factory.CreateInstance(lampArray, lampIndexes);
+        const _f = @This().ILampArrayCustomEffectFactoryCache.get();
+        return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayCustomEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1017,31 +1017,13 @@ pub const LampArrayEffectPlaylist = extern struct {
         const this: *ILampArrayEffectPlaylist = @ptrCast(self);
         return try this.putRepetitionMode(value);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVectorView(ILampArrayEffect) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVectorView(ILampArrayEffect) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVectorView(ILampArrayEffect) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ILampArrayEffect) {
         var this: ?*IIterable(ILampArrayEffect) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1055,16 +1037,16 @@ pub const LampArrayEffectPlaylist = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ILampArrayEffectPlaylist.IID)));
     }
     pub fn StartAll(value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
-        const factory = @This().ILampArrayEffectPlaylistStaticsCache.get();
-        return try factory.StartAll(value);
+        const _f = @This().ILampArrayEffectPlaylistStaticsCache.get();
+        return try _f.StartAll(value);
     }
     pub fn StopAll(value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
-        const factory = @This().ILampArrayEffectPlaylistStaticsCache.get();
-        return try factory.StopAll(value);
+        const _f = @This().ILampArrayEffectPlaylistStaticsCache.get();
+        return try _f.StopAll(value);
     }
     pub fn PauseAll(value: *IIterable(LampArrayEffectPlaylist)) core.HResult!void {
-        const factory = @This().ILampArrayEffectPlaylistStaticsCache.get();
-        return try factory.PauseAll(value);
+        const _f = @This().ILampArrayEffectPlaylistStaticsCache.get();
+        return try _f.PauseAll(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArrayEffectPlaylist";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1132,8 +1114,8 @@ pub const LampArraySolidEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(lampArray: *LampArray, lampIndexes: [*]i32) core.HResult!*LampArraySolidEffect {
-        const factory = @This().ILampArraySolidEffectFactoryCache.get();
-        return try factory.CreateInstance(lampArray, lampIndexes);
+        const _f = @This().ILampArraySolidEffectFactoryCache.get();
+        return try _f.CreateInstance(lampArray, lampIndexes);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Effects.LampArraySolidEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -13,16 +13,16 @@ pub const CredentialPicker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn PickAsync(options: *CredentialPickerOptions) core.HResult!*IAsyncOperation(CredentialPickerResults) {
-        const factory = @This().ICredentialPickerStaticsCache.get();
-        return try factory.PickAsync(options);
+        const _f = @This().ICredentialPickerStaticsCache.get();
+        return try _f.PickAsync(options);
     }
-    pub fn PickAsyncWithMessage(targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
-        const factory = @This().ICredentialPickerStaticsCache.get();
-        return try factory.PickAsyncWithMessage(targetName, message);
+    pub fn PickAsyncWithTargetNameAndMessage(targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+        const _f = @This().ICredentialPickerStaticsCache.get();
+        return try _f.PickAsyncWithTargetNameAndMessage(targetName, message);
     }
-    pub fn PickAsyncWithMessageWithCaption(targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
-        const factory = @This().ICredentialPickerStaticsCache.get();
-        return try factory.PickAsyncWithMessageWithCaption(targetName, message, caption);
+    pub fn PickAsyncWithTargetNameAndMessageAndCaption(targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+        const _f = @This().ICredentialPickerStaticsCache.get();
+        return try _f.PickAsyncWithTargetNameAndMessageAndCaption(targetName, message, caption);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.UI.CredentialPicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -374,15 +374,15 @@ pub const ICredentialPickerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PickAsyncWithMessage(self: *@This(), targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithTargetNameAndMessage(self: *@This(), targetName: HSTRING, message: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         var _r: *IAsyncOperation(CredentialPickerResults) = undefined;
-        const _c = self.vtable.PickAsyncWithMessage(@ptrCast(self), targetName, message, &_r);
+        const _c = self.vtable.PickAsyncWithTargetNameAndMessage(@ptrCast(self), targetName, message, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PickAsyncWithCaption(self: *@This(), targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
+    pub fn PickAsyncWithTargetNameAndMessageAndCaption(self: *@This(), targetName: HSTRING, message: HSTRING, caption: HSTRING) core.HResult!*IAsyncOperation(CredentialPickerResults) {
         var _r: *IAsyncOperation(CredentialPickerResults) = undefined;
-        const _c = self.vtable.PickAsyncWithCaption(@ptrCast(self), targetName, message, caption, &_r);
+        const _c = self.vtable.PickAsyncWithTargetNameAndMessageAndCaption(@ptrCast(self), targetName, message, caption, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -399,8 +399,8 @@ pub const ICredentialPickerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         PickAsync: *const fn(self: *anyopaque, options: *CredentialPickerOptions, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
-        PickAsyncWithMessage: *const fn(self: *anyopaque, targetName: HSTRING, message: HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
-        PickAsyncWithCaption: *const fn(self: *anyopaque, targetName: HSTRING, message: HSTRING, caption: HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
+        PickAsyncWithTargetNameAndMessage: *const fn(self: *anyopaque, targetName: HSTRING, message: HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
+        PickAsyncWithTargetNameAndMessageAndCaption: *const fn(self: *anyopaque, targetName: HSTRING, message: HSTRING, caption: HSTRING, _r: **IAsyncOperation(CredentialPickerResults)) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserConsentVerifierStatics = extern struct {
@@ -448,12 +448,12 @@ pub const UserConsentVerifier = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CheckAvailabilityAsync() core.HResult!*IAsyncOperation(UserConsentVerifierAvailability) {
-        const factory = @This().IUserConsentVerifierStaticsCache.get();
-        return try factory.CheckAvailabilityAsync();
+        const _f = @This().IUserConsentVerifierStaticsCache.get();
+        return try _f.CheckAvailabilityAsync();
     }
     pub fn RequestVerificationAsync(message: HSTRING) core.HResult!*IAsyncOperation(UserConsentVerificationResult) {
-        const factory = @This().IUserConsentVerifierStaticsCache.get();
-        return try factory.RequestVerificationAsync(message);
+        const _f = @This().IUserConsentVerifierStaticsCache.get();
+        return try _f.RequestVerificationAsync(message);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.UI.UserConsentVerifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

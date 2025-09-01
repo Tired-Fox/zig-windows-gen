@@ -82,16 +82,16 @@ pub const DialDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(appName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IDialDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(appName);
+        const _f = @This().IDialDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector(appName);
     }
     pub fn FromIdAsync(value: HSTRING) core.HResult!*IAsyncOperation(DialDevice) {
-        const factory = @This().IDialDeviceStaticsCache.get();
-        return try factory.FromIdAsync(value);
+        const _f = @This().IDialDeviceStaticsCache.get();
+        return try _f.FromIdAsync(value);
     }
     pub fn DeviceInfoSupportsDialAsync(device: *DeviceInformation) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IDialDeviceStaticsCache.get();
-        return try factory.DeviceInfoSupportsDialAsync(device);
+        const _f = @This().IDialDeviceStaticsCache.get();
+        return try _f.DeviceInfoSupportsDialAsync(device);
     }
     pub const NAME: []const u8 = "Windows.Media.DialProtocol.DialDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -235,9 +235,9 @@ pub const DialReceiverApp = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*DialReceiverApp {
-        const factory = @This().IDialReceiverAppStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*DialReceiverApp {
+        const _f = @This().IDialReceiverAppStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.Media.DialProtocol.DialReceiverApp";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -607,24 +607,24 @@ pub const UserDataAccountManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync(storeAccessType: UserDataAccountStoreAccessType) core.HResult!*IAsyncOperation(UserDataAccountStore) {
-        const factory = @This().IUserDataAccountManagerStaticsCache.get();
-        return try factory.RequestStoreAsync(storeAccessType);
+        const _f = @This().IUserDataAccountManagerStaticsCache.get();
+        return try _f.RequestStoreAsync(storeAccessType);
     }
     pub fn ShowAddAccountAsync(contentKinds: UserDataAccountContentKinds) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserDataAccountManagerStaticsCache.get();
-        return try factory.ShowAddAccountAsync(contentKinds);
+        const _f = @This().IUserDataAccountManagerStaticsCache.get();
+        return try _f.ShowAddAccountAsync(contentKinds);
     }
     pub fn ShowAccountSettingsAsync(id: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IUserDataAccountManagerStaticsCache.get();
-        return try factory.ShowAccountSettingsAsync(id);
+        const _f = @This().IUserDataAccountManagerStaticsCache.get();
+        return try _f.ShowAccountSettingsAsync(id);
     }
     pub fn ShowAccountErrorResolverAsync(id: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IUserDataAccountManagerStaticsCache.get();
-        return try factory.ShowAccountErrorResolverAsync(id);
+        const _f = @This().IUserDataAccountManagerStaticsCache.get();
+        return try _f.ShowAccountErrorResolverAsync(id);
     }
     pub fn GetForUser(user: *User) core.HResult!*UserDataAccountManagerForUser {
-        const factory = @This().IUserDataAccountManagerStatics2Cache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IUserDataAccountManagerStatics2Cache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.UserDataAccountManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -684,11 +684,11 @@ pub const UserDataAccountStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeStoreChanged(token);
     }
-    pub fn CreateAccountAsyncWithPackageRelativeAppIdWithEnterpriseId(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
+    pub fn CreateAccountAsyncWithPackageRelativeAppIdAndEnterpriseId(self: *@This(), userDisplayName: HSTRING, packageRelativeAppId: HSTRING, enterpriseId: HSTRING) core.HResult!*IAsyncOperation(UserDataAccount) {
         var this: ?*IUserDataAccountStore3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IUserDataAccountStore3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateAccountAsyncWithPackageRelativeAppIdWithEnterpriseId(userDisplayName, packageRelativeAppId, enterpriseId);
+        return try this.?.CreateAccountAsyncWithPackageRelativeAppIdAndEnterpriseId(userDisplayName, packageRelativeAppId, enterpriseId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataAccounts.UserDataAccountStore";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

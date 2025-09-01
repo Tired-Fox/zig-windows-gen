@@ -9,8 +9,8 @@ pub const BindingBase = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BindingBase {
-        const factory = @This().IBindingBaseFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBindingBaseFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.BindingBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -125,8 +125,8 @@ pub const Binding = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Binding {
-        const factory = @This().IBindingFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBindingFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.Binding";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -182,8 +182,8 @@ pub const BindingOperations = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetBinding(target: *DependencyObject, dp: *DependencyProperty, binding: *BindingBase) core.HResult!void {
-        const factory = @This().IBindingOperationsStaticsCache.get();
-        return try factory.SetBinding(target, dp, binding);
+        const _f = @This().IBindingOperationsStaticsCache.get();
+        return try _f.SetBinding(target, dp, binding);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.BindingOperations";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -229,21 +229,21 @@ pub const CollectionViewSource = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICollectionViewSource.IID)));
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICollectionViewSourceStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_ViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICollectionViewSourceStaticsCache.get();
-        return try factory.getViewProperty();
+    pub fn getViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        return try _f.getViewProperty();
     }
-    pub fn get_IsSourceGroupedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICollectionViewSourceStaticsCache.get();
-        return try factory.getIsSourceGroupedProperty();
+    pub fn getIsSourceGroupedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        return try _f.getIsSourceGroupedProperty();
     }
-    pub fn get_ItemsPathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICollectionViewSourceStaticsCache.get();
-        return try factory.getItemsPathProperty();
+    pub fn getItemsPathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICollectionViewSourceStaticsCache.get();
+        return try _f.getItemsPathProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.CollectionViewSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -271,12 +271,12 @@ pub const CurrentChangingEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CurrentChangingEventArgs {
-        const factory = @This().ICurrentChangingEventArgsFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICurrentChangingEventArgsFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateWithCancelableParameter(isCancelable: bool, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CurrentChangingEventArgs {
-        const factory = @This().ICurrentChangingEventArgsFactoryCache.get();
-        return try factory.CreateWithCancelableParameter(isCancelable, baseInterface, innerInterface);
+        const _f = @This().ICurrentChangingEventArgsFactoryCache.get();
+        return try _f.CreateWithCancelableParameter(isCancelable, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.CurrentChangingEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1506,8 +1506,8 @@ pub const ItemIndexRange = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(firstIndex: i32, length: u32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemIndexRange {
-        const factory = @This().IItemIndexRangeFactoryCache.get();
-        return try factory.CreateInstance(firstIndex, length, baseInterface, innerInterface);
+        const _f = @This().IItemIndexRangeFactoryCache.get();
+        return try _f.CreateInstance(firstIndex, length, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.ItemIndexRange";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1529,8 +1529,8 @@ pub const PropertyChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(name: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PropertyChangedEventArgs {
-        const factory = @This().IPropertyChangedEventArgsFactoryCache.get();
-        return try factory.CreateInstance(name, baseInterface, innerInterface);
+        const _f = @This().IPropertyChangedEventArgsFactoryCache.get();
+        return try _f.CreateInstance(name, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.PropertyChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1640,8 +1640,8 @@ pub const RelativeSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RelativeSource {
-        const factory = @This().IRelativeSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRelativeSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Data.RelativeSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

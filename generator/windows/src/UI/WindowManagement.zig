@@ -120,16 +120,16 @@ pub const AppWindow = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateAsync() core.HResult!*IAsyncOperation(AppWindow) {
-        const factory = @This().IAppWindowStaticsCache.get();
-        return try factory.TryCreateAsync();
+        const _f = @This().IAppWindowStaticsCache.get();
+        return try _f.TryCreateAsync();
     }
     pub fn ClearAllPersistedState() core.HResult!void {
-        const factory = @This().IAppWindowStaticsCache.get();
-        return try factory.ClearAllPersistedState();
+        const _f = @This().IAppWindowStaticsCache.get();
+        return try _f.ClearAllPersistedState();
     }
     pub fn ClearPersistedState(key: HSTRING) core.HResult!void {
-        const factory = @This().IAppWindowStaticsCache.get();
-        return try factory.ClearPersistedState(key);
+        const _f = @This().IAppWindowStaticsCache.get();
+        return try _f.ClearPersistedState(key);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.AppWindow";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1579,9 +1579,9 @@ pub const IWindowingEnvironmentStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAll(self: *@This(), kind: WindowingEnvironmentKind) core.HResult!*IVectorView(WindowingEnvironment) {
+    pub fn FindAllWithKind(self: *@This(), kind: WindowingEnvironmentKind) core.HResult!*IVectorView(WindowingEnvironment) {
         var _r: *IVectorView(WindowingEnvironment) = undefined;
-        const _c = self.vtable.FindAll(@ptrCast(self), kind, &_r);
+        const _c = self.vtable.FindAllWithKind(@ptrCast(self), kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1598,7 +1598,7 @@ pub const IWindowingEnvironmentStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAll: *const fn(self: *anyopaque, _r: **IVectorView(WindowingEnvironment)) callconv(.winapi) HRESULT,
-        FindAll: *const fn(self: *anyopaque, kind: WindowingEnvironmentKind, _r: **IVectorView(WindowingEnvironment)) callconv(.winapi) HRESULT,
+        FindAllWithKind: *const fn(self: *anyopaque, kind: WindowingEnvironmentKind, _r: **IVectorView(WindowingEnvironment)) callconv(.winapi) HRESULT,
     };
 };
 pub const WindowServices = extern struct {
@@ -1607,8 +1607,8 @@ pub const WindowServices = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAllTopLevelWindowIds() core.HResult!*IVectorView(WindowId) {
-        const factory = @This().IWindowServicesStaticsCache.get();
-        return try factory.FindAllTopLevelWindowIds();
+        const _f = @This().IWindowServicesStaticsCache.get();
+        return try _f.FindAllTopLevelWindowIds();
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.WindowServices";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1640,12 +1640,12 @@ pub const WindowingEnvironment = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAll() core.HResult!*IVectorView(WindowingEnvironment) {
-        const factory = @This().IWindowingEnvironmentStaticsCache.get();
-        return try factory.FindAll();
+        const _f = @This().IWindowingEnvironmentStaticsCache.get();
+        return try _f.FindAll();
     }
     pub fn FindAllWithKind(kind: WindowingEnvironmentKind) core.HResult!*IVectorView(WindowingEnvironment) {
-        const factory = @This().IWindowingEnvironmentStaticsCache.get();
-        return try factory.FindAllWithKind(kind);
+        const _f = @This().IWindowingEnvironmentStaticsCache.get();
+        return try _f.FindAllWithKind(kind);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.WindowingEnvironment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

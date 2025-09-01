@@ -195,12 +195,12 @@ pub const GazeInputSourcePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*GazeInputSourcePreview {
-        const factory = @This().IGazeInputSourcePreviewStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IGazeInputSourcePreviewStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn CreateWatcher() core.HResult!*GazeDeviceWatcherPreview {
-        const factory = @This().IGazeInputSourcePreviewStaticsCache.get();
-        return try factory.CreateWatcher();
+        const _f = @This().IGazeInputSourcePreviewStaticsCache.get();
+        return try _f.CreateWatcher();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.Preview.GazeInputSourcePreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -194,9 +194,9 @@ pub const IPhoneNumberInfoStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryParseWithRegionCodeWithPhoneNumber(self: *@This(), input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
+    pub fn TryParseWithRegionCodeAndPhoneNumber(self: *@This(), input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
         var _r: PhoneNumberParseResult = undefined;
-        const _c = self.vtable.TryParseWithRegionCodeWithPhoneNumber(@ptrCast(self), input, regionCode, phoneNumber, &_r);
+        const _c = self.vtable.TryParseWithRegionCodeAndPhoneNumber(@ptrCast(self), input, regionCode, phoneNumber, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -213,7 +213,7 @@ pub const IPhoneNumberInfoStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryParse: *const fn(self: *anyopaque, input: HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
-        TryParseWithRegionCodeWithPhoneNumber: *const fn(self: *anyopaque, input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
+        TryParseWithRegionCodeAndPhoneNumber: *const fn(self: *anyopaque, input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo, _r: *PhoneNumberParseResult) callconv(.winapi) HRESULT,
     };
 };
 pub const PhoneNumberFormat = enum(i32) {
@@ -252,20 +252,20 @@ pub const PhoneNumberFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPhoneNumberFormatter.IID)));
     }
     pub fn TryCreate(regionCode: HSTRING, phoneNumber: *PhoneNumberFormatter) core.HResult!void {
-        const factory = @This().IPhoneNumberFormatterStaticsCache.get();
-        return try factory.TryCreate(regionCode, phoneNumber);
+        const _f = @This().IPhoneNumberFormatterStaticsCache.get();
+        return try _f.TryCreate(regionCode, phoneNumber);
     }
     pub fn GetCountryCodeForRegion(regionCode: HSTRING) core.HResult!i32 {
-        const factory = @This().IPhoneNumberFormatterStaticsCache.get();
-        return try factory.GetCountryCodeForRegion(regionCode);
+        const _f = @This().IPhoneNumberFormatterStaticsCache.get();
+        return try _f.GetCountryCodeForRegion(regionCode);
     }
     pub fn GetNationalDirectDialingPrefixForRegion(regionCode: HSTRING, stripNonDigit: bool) core.HResult!HSTRING {
-        const factory = @This().IPhoneNumberFormatterStaticsCache.get();
-        return try factory.GetNationalDirectDialingPrefixForRegion(regionCode, stripNonDigit);
+        const _f = @This().IPhoneNumberFormatterStaticsCache.get();
+        return try _f.GetNationalDirectDialingPrefixForRegion(regionCode, stripNonDigit);
     }
     pub fn WrapWithLeftToRightMarkers(number: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IPhoneNumberFormatterStaticsCache.get();
-        return try factory.WrapWithLeftToRightMarkers(number);
+        const _f = @This().IPhoneNumberFormatterStaticsCache.get();
+        return try _f.WrapWithLeftToRightMarkers(number);
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.PhoneNumberFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -319,16 +319,16 @@ pub const PhoneNumberInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(number: HSTRING) core.HResult!*PhoneNumberInfo {
-        const factory = @This().IPhoneNumberInfoFactoryCache.get();
-        return try factory.Create(number);
+        const _f = @This().IPhoneNumberInfoFactoryCache.get();
+        return try _f.Create(number);
     }
     pub fn TryParse(input: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
-        const factory = @This().IPhoneNumberInfoStaticsCache.get();
-        return try factory.TryParse(input, phoneNumber);
+        const _f = @This().IPhoneNumberInfoStaticsCache.get();
+        return try _f.TryParse(input, phoneNumber);
     }
-    pub fn TryParseWithPhoneNumber(input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
-        const factory = @This().IPhoneNumberInfoStaticsCache.get();
-        return try factory.TryParseWithPhoneNumber(input, regionCode, phoneNumber);
+    pub fn TryParseWithRegionCodeAndPhoneNumber(input: HSTRING, regionCode: HSTRING, phoneNumber: *PhoneNumberInfo) core.HResult!PhoneNumberParseResult {
+        const _f = @This().IPhoneNumberInfoStaticsCache.get();
+        return try _f.TryParseWithRegionCodeAndPhoneNumber(input, regionCode, phoneNumber);
     }
     pub const NAME: []const u8 = "Windows.Globalization.PhoneNumberFormatting.PhoneNumberInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

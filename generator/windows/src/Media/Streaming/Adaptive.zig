@@ -156,24 +156,24 @@ pub const AdaptiveMediaSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsContentTypeSupported(contentType: HSTRING) core.HResult!bool {
-        const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
-        return try factory.IsContentTypeSupported(contentType);
+        const _f = @This().IAdaptiveMediaSourceStaticsCache.get();
+        return try _f.IsContentTypeSupported(contentType);
     }
     pub fn CreateFromUriAsync(uri: *Uri) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
-        const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
-        return try factory.CreateFromUriAsync(uri);
+        const _f = @This().IAdaptiveMediaSourceStaticsCache.get();
+        return try _f.CreateFromUriAsync(uri);
     }
     pub fn CreateFromUriAsyncWithHttpClient(uri: *Uri, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
-        const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
-        return try factory.CreateFromUriAsyncWithHttpClient(uri, httpClient);
+        const _f = @This().IAdaptiveMediaSourceStaticsCache.get();
+        return try _f.CreateFromUriAsyncWithHttpClient(uri, httpClient);
     }
     pub fn CreateFromStreamAsync(stream: *IInputStream, uri: *Uri, contentType: HSTRING) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
-        const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
-        return try factory.CreateFromStreamAsync(stream, uri, contentType);
+        const _f = @This().IAdaptiveMediaSourceStaticsCache.get();
+        return try _f.CreateFromStreamAsync(stream, uri, contentType);
     }
     pub fn CreateFromStreamAsyncWithHttpClient(stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
-        const factory = @This().IAdaptiveMediaSourceStaticsCache.get();
-        return try factory.CreateFromStreamAsyncWithHttpClient(stream, uri, contentType, httpClient);
+        const _f = @This().IAdaptiveMediaSourceStaticsCache.get();
+        return try _f.CreateFromStreamAsyncWithHttpClient(stream, uri, contentType, httpClient);
     }
     pub const NAME: []const u8 = "Windows.Media.Streaming.Adaptive.AdaptiveMediaSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1927,9 +1927,9 @@ pub const IAdaptiveMediaSourceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromStreamAsyncWithUriWithContentTypeWithHttpClient(self: *@This(), stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
+    pub fn CreateFromStreamAsyncWithHttpClient(self: *@This(), stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient) core.HResult!*IAsyncOperation(AdaptiveMediaSourceCreationResult) {
         var _r: *IAsyncOperation(AdaptiveMediaSourceCreationResult) = undefined;
-        const _c = self.vtable.CreateFromStreamAsyncWithUriWithContentTypeWithHttpClient(@ptrCast(self), stream, uri, contentType, httpClient, &_r);
+        const _c = self.vtable.CreateFromStreamAsyncWithHttpClient(@ptrCast(self), stream, uri, contentType, httpClient, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1949,7 +1949,7 @@ pub const IAdaptiveMediaSourceStatics = extern struct {
         CreateFromUriAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
         CreateFromUriAsyncWithHttpClient: *const fn(self: *anyopaque, uri: *Uri, httpClient: *HttpClient, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
         CreateFromStreamAsync: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: HSTRING, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
-        CreateFromStreamAsyncWithUriWithContentTypeWithHttpClient: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
+        CreateFromStreamAsyncWithHttpClient: *const fn(self: *anyopaque, stream: *IInputStream, uri: *Uri, contentType: HSTRING, httpClient: *HttpClient, _r: **IAsyncOperation(AdaptiveMediaSourceCreationResult)) callconv(.winapi) HRESULT,
     };
 };
 const IUnknown = @import("../../root.zig").IUnknown;
@@ -1961,8 +1961,8 @@ const IInputStream = @import("../../Storage/Streams.zig").IInputStream;
 const DateTime = @import("../../Foundation.zig").DateTime;
 const FactoryCache = @import("../../core.zig").FactoryCache;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../../root.zig").HSTRING;
 const HttpResponseMessage = @import("../../Web/Http.zig").HttpResponseMessage;
 const IInspectable = @import("../../Foundation.zig").IInspectable;

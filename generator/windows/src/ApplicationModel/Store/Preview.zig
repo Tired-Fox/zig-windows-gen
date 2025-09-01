@@ -24,8 +24,8 @@ pub const DeliveryOptimizationSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentSettings() core.HResult!*DeliveryOptimizationSettings {
-        const factory = @This().IDeliveryOptimizationSettingsStaticsCache.get();
-        return try factory.GetCurrentSettings();
+        const _f = @This().IDeliveryOptimizationSettingsStaticsCache.get();
+        return try _f.GetCurrentSettings();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.DeliveryOptimizationSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -578,9 +578,9 @@ pub const IWebAuthenticationCoreManagerHelper = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+    pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement(self: *@This(), request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
         var _r: *IAsyncOperation(WebTokenRequestResult) = undefined;
-        const _c = self.vtable.RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement(@ptrCast(self), request, webAccount, uiElement, &_r);
+        const _c = self.vtable.RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement(@ptrCast(self), request, webAccount, uiElement, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -597,7 +597,7 @@ pub const IWebAuthenticationCoreManagerHelper = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestTokenWithUIElementHostingAsync: *const fn(self: *anyopaque, request: *WebTokenRequest, uiElement: *UIElement, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
-        RequestTokenWithUIElementHostingAsyncWithWebAccountWithUiElement: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
+        RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement: *const fn(self: *anyopaque, request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement, _r: **IAsyncOperation(WebTokenRequestResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const StoreConfiguration = extern struct {
@@ -606,116 +606,116 @@ pub const StoreConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsPinToDesktopSupported() core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics5Cache.get();
-        return try factory.IsPinToDesktopSupported();
+        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        return try _f.IsPinToDesktopSupported();
     }
     pub fn IsPinToTaskbarSupported() core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics5Cache.get();
-        return try factory.IsPinToTaskbarSupported();
+        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        return try _f.IsPinToTaskbarSupported();
     }
     pub fn IsPinToStartSupported() core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics5Cache.get();
-        return try factory.IsPinToStartSupported();
+        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        return try _f.IsPinToStartSupported();
     }
     pub fn PinToDesktop(appPackageFamilyName: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics5Cache.get();
-        return try factory.PinToDesktop(appPackageFamilyName);
+        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        return try _f.PinToDesktop(appPackageFamilyName);
     }
     pub fn PinToDesktopForUser(user: *User, appPackageFamilyName: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics5Cache.get();
-        return try factory.PinToDesktopForUser(user, appPackageFamilyName);
+        const _f = @This().IStoreConfigurationStatics5Cache.get();
+        return try _f.PinToDesktopForUser(user, appPackageFamilyName);
     }
     pub fn GetStoreWebAccountId() core.HResult!HSTRING {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.GetStoreWebAccountId();
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.GetStoreWebAccountId();
     }
     pub fn GetStoreWebAccountIdForUser(user: *User) core.HResult!HSTRING {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.GetStoreWebAccountIdForUser(user);
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.GetStoreWebAccountIdForUser(user);
     }
     pub fn SetEnterpriseStoreWebAccountId(webAccountId: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.SetEnterpriseStoreWebAccountId(webAccountId);
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.SetEnterpriseStoreWebAccountId(webAccountId);
     }
     pub fn SetEnterpriseStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.SetEnterpriseStoreWebAccountIdForUser(user, webAccountId);
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.SetEnterpriseStoreWebAccountIdForUser(user, webAccountId);
     }
     pub fn GetEnterpriseStoreWebAccountId() core.HResult!HSTRING {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.GetEnterpriseStoreWebAccountId();
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.GetEnterpriseStoreWebAccountId();
     }
     pub fn GetEnterpriseStoreWebAccountIdForUser(user: *User) core.HResult!HSTRING {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.GetEnterpriseStoreWebAccountIdForUser(user);
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.GetEnterpriseStoreWebAccountIdForUser(user);
     }
     pub fn ShouldRestrictToEnterpriseStoreOnly() core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.ShouldRestrictToEnterpriseStoreOnly();
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.ShouldRestrictToEnterpriseStoreOnly();
     }
     pub fn ShouldRestrictToEnterpriseStoreOnlyForUser(user: *User) core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics4Cache.get();
-        return try factory.ShouldRestrictToEnterpriseStoreOnlyForUser(user);
+        const _f = @This().IStoreConfigurationStatics4Cache.get();
+        return try _f.ShouldRestrictToEnterpriseStoreOnlyForUser(user);
     }
     pub fn HasStoreWebAccount() core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.HasStoreWebAccount();
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.HasStoreWebAccount();
     }
     pub fn HasStoreWebAccountForUser(user: *User) core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.HasStoreWebAccountForUser(user);
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.HasStoreWebAccountForUser(user);
     }
     pub fn GetStoreLogDataAsync(options: StoreLogOptions) core.HResult!*IAsyncOperation(IRandomAccessStreamReference) {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.GetStoreLogDataAsync(options);
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.GetStoreLogDataAsync(options);
     }
     pub fn SetStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.SetStoreWebAccountIdForUser(user, webAccountId);
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.SetStoreWebAccountIdForUser(user, webAccountId);
     }
     pub fn IsStoreWebAccountIdForUser(user: *User, webAccountId: HSTRING) core.HResult!bool {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.IsStoreWebAccountIdForUser(user, webAccountId);
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.IsStoreWebAccountIdForUser(user, webAccountId);
     }
     pub fn GetPurchasePromptingPolicyForUser(user: *User) core.HResult!*IReference(u32) {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.GetPurchasePromptingPolicyForUser(user);
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.GetPurchasePromptingPolicyForUser(user);
     }
     pub fn SetPurchasePromptingPolicyForUser(user: *User, value: *IReference(u32)) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics3Cache.get();
-        return try factory.SetPurchasePromptingPolicyForUser(user, value);
+        const _f = @This().IStoreConfigurationStatics3Cache.get();
+        return try _f.SetPurchasePromptingPolicyForUser(user, value);
     }
-    pub fn get_PurchasePromptingPolicy() core.HResult!*IReference(u32) {
-        const factory = @This().IStoreConfigurationStatics2Cache.get();
-        return try factory.getPurchasePromptingPolicy();
+    pub fn getPurchasePromptingPolicy() core.HResult!*IReference(u32) {
+        const _f = @This().IStoreConfigurationStatics2Cache.get();
+        return try _f.getPurchasePromptingPolicy();
     }
-    pub fn put_PurchasePromptingPolicy(value: *IReference(u32)) core.HResult!void {
-        const factory = @This().IStoreConfigurationStatics2Cache.get();
-        return try factory.putPurchasePromptingPolicy(value);
+    pub fn putPurchasePromptingPolicy(value: *IReference(u32)) core.HResult!void {
+        const _f = @This().IStoreConfigurationStatics2Cache.get();
+        return try _f.putPurchasePromptingPolicy(value);
     }
     pub fn SetSystemConfiguration(catalogHardwareManufacturerId: HSTRING, catalogStoreContentModifierId: HSTRING, systemConfigurationExpiration: DateTime, catalogHardwareDescriptor: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStaticsCache.get();
-        return try factory.SetSystemConfiguration(catalogHardwareManufacturerId, catalogStoreContentModifierId, systemConfigurationExpiration, catalogHardwareDescriptor);
+        const _f = @This().IStoreConfigurationStaticsCache.get();
+        return try _f.SetSystemConfiguration(catalogHardwareManufacturerId, catalogStoreContentModifierId, systemConfigurationExpiration, catalogHardwareDescriptor);
     }
     pub fn SetMobileOperatorConfiguration(mobileOperatorId: HSTRING, appDownloadLimitInMegabytes: u32, updateDownloadLimitInMegabytes: u32) core.HResult!void {
-        const factory = @This().IStoreConfigurationStaticsCache.get();
-        return try factory.SetMobileOperatorConfiguration(mobileOperatorId, appDownloadLimitInMegabytes, updateDownloadLimitInMegabytes);
+        const _f = @This().IStoreConfigurationStaticsCache.get();
+        return try _f.SetMobileOperatorConfiguration(mobileOperatorId, appDownloadLimitInMegabytes, updateDownloadLimitInMegabytes);
     }
     pub fn SetStoreWebAccountId(webAccountId: HSTRING) core.HResult!void {
-        const factory = @This().IStoreConfigurationStaticsCache.get();
-        return try factory.SetStoreWebAccountId(webAccountId);
+        const _f = @This().IStoreConfigurationStaticsCache.get();
+        return try _f.SetStoreWebAccountId(webAccountId);
     }
     pub fn IsStoreWebAccountId(webAccountId: HSTRING) core.HResult!bool {
-        const factory = @This().IStoreConfigurationStaticsCache.get();
-        return try factory.IsStoreWebAccountId(webAccountId);
+        const _f = @This().IStoreConfigurationStaticsCache.get();
+        return try _f.IsStoreWebAccountId(webAccountId);
     }
-    pub fn get_HardwareManufacturerInfo() core.HResult!*StoreHardwareManufacturerInfo {
-        const factory = @This().IStoreConfigurationStaticsCache.get();
-        return try factory.getHardwareManufacturerInfo();
+    pub fn getHardwareManufacturerInfo() core.HResult!*StoreHardwareManufacturerInfo {
+        const _f = @This().IStoreConfigurationStaticsCache.get();
+        return try _f.getHardwareManufacturerInfo();
     }
     pub fn FilterUnsupportedSystemFeaturesAsync(systemFeatures: *IIterable(StoreSystemFeature)) core.HResult!*IAsyncOperation(IVectorView(StoreSystemFeature)) {
-        const factory = @This().IStoreConfigurationStaticsCache.get();
-        return try factory.FilterUnsupportedSystemFeaturesAsync(systemFeatures);
+        const _f = @This().IStoreConfigurationStaticsCache.get();
+        return try _f.FilterUnsupportedSystemFeaturesAsync(systemFeatures);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.StoreConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -759,12 +759,12 @@ pub const StorePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestProductPurchaseByProductIdAndSkuIdAsync(productId: HSTRING, skuId: HSTRING) core.HResult!*IAsyncOperation(StorePreviewPurchaseResults) {
-        const factory = @This().IStorePreviewCache.get();
-        return try factory.RequestProductPurchaseByProductIdAndSkuIdAsync(productId, skuId);
+        const _f = @This().IStorePreviewCache.get();
+        return try _f.RequestProductPurchaseByProductIdAndSkuIdAsync(productId, skuId);
     }
     pub fn LoadAddOnProductInfosAsync() core.HResult!*IAsyncOperation(IVectorView(StorePreviewProductInfo)) {
-        const factory = @This().IStorePreviewCache.get();
-        return try factory.LoadAddOnProductInfosAsync();
+        const _f = @This().IStorePreviewCache.get();
+        return try _f.LoadAddOnProductInfosAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.StorePreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -903,12 +903,12 @@ pub const WebAuthenticationCoreManagerHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestTokenWithUIElementHostingAsync(request: *WebTokenRequest, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const factory = @This().IWebAuthenticationCoreManagerHelperCache.get();
-        return try factory.RequestTokenWithUIElementHostingAsync(request, uiElement);
+        const _f = @This().IWebAuthenticationCoreManagerHelperCache.get();
+        return try _f.RequestTokenWithUIElementHostingAsync(request, uiElement);
     }
-    pub fn RequestTokenWithUIElementHostingAsyncWithUiElement(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
-        const factory = @This().IWebAuthenticationCoreManagerHelperCache.get();
-        return try factory.RequestTokenWithUIElementHostingAsyncWithUiElement(request, webAccount, uiElement);
+    pub fn RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement(request: *WebTokenRequest, webAccount: *WebAccount, uiElement: *UIElement) core.HResult!*IAsyncOperation(WebTokenRequestResult) {
+        const _f = @This().IWebAuthenticationCoreManagerHelperCache.get();
+        return try _f.RequestTokenWithUIElementHostingAsyncWithWebAccountAndUiElement(request, webAccount, uiElement);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.Preview.WebAuthenticationCoreManagerHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

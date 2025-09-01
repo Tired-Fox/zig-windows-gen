@@ -4,44 +4,44 @@ pub const GameList = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MergeEntriesAsync(left: *GameListEntry, right: *GameListEntry) core.HResult!*IAsyncOperation(GameListEntry) {
-        const factory = @This().IGameListStatics2Cache.get();
-        return try factory.MergeEntriesAsync(left, right);
+        const _f = @This().IGameListStatics2Cache.get();
+        return try _f.MergeEntriesAsync(left, right);
     }
     pub fn UnmergeEntryAsync(mergedEntry: *GameListEntry) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
-        const factory = @This().IGameListStatics2Cache.get();
-        return try factory.UnmergeEntryAsync(mergedEntry);
+        const _f = @This().IGameListStatics2Cache.get();
+        return try _f.UnmergeEntryAsync(mergedEntry);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FindAllAsyncWithPackageFamilyName(packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.FindAllAsyncWithPackageFamilyName(packageFamilyName);
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.FindAllAsyncWithPackageFamilyName(packageFamilyName);
     }
-    pub fn add_GameAdded(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.addGameAdded(handler);
+    pub fn addGameAdded(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.addGameAdded(handler);
     }
-    pub fn remove_GameAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.removeGameAdded(token);
+    pub fn removeGameAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.removeGameAdded(token);
     }
-    pub fn add_GameRemoved(handler: *GameListRemovedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.addGameRemoved(handler);
+    pub fn addGameRemoved(handler: *GameListRemovedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.addGameRemoved(handler);
     }
-    pub fn remove_GameRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.removeGameRemoved(token);
+    pub fn removeGameRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.removeGameRemoved(token);
     }
-    pub fn add_GameUpdated(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.addGameUpdated(handler);
+    pub fn addGameUpdated(handler: *GameListChangedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.addGameUpdated(handler);
     }
-    pub fn remove_GameUpdated(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGameListStaticsCache.get();
-        return try factory.removeGameUpdated(token);
+    pub fn removeGameUpdated(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGameListStaticsCache.get();
+        return try _f.removeGameUpdated(token);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameList";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -403,8 +403,8 @@ pub const GameModeUserConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameModeUserConfiguration {
-        const factory = @This().IGameModeUserConfigurationStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IGameModeUserConfigurationStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Preview.GamesEnumeration.GameModeUserConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -544,9 +544,9 @@ pub const IGameListStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
+    pub fn FindAllAsyncWithPackageFamilyName(self: *@This(), packageFamilyName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(GameListEntry)) {
         var _r: *IAsyncOperation(IVectorView(GameListEntry)) = undefined;
-        const _c = self.vtable.FindAllAsync(@ptrCast(self), packageFamilyName, &_r);
+        const _c = self.vtable.FindAllAsyncWithPackageFamilyName(@ptrCast(self), packageFamilyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -593,7 +593,7 @@ pub const IGameListStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(GameListEntry))) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, packageFamilyName: HSTRING, _r: **IAsyncOperation(IVectorView(GameListEntry))) callconv(.winapi) HRESULT,
+        FindAllAsyncWithPackageFamilyName: *const fn(self: *anyopaque, packageFamilyName: HSTRING, _r: **IAsyncOperation(IVectorView(GameListEntry))) callconv(.winapi) HRESULT,
         add_GameAdded: *const fn(self: *anyopaque, handler: *GameListChangedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_GameAdded: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         add_GameRemoved: *const fn(self: *anyopaque, handler: *GameListRemovedEventHandler, _r: *EventRegistrationToken) callconv(.winapi) HRESULT,

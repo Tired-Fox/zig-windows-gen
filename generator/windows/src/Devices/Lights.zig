@@ -519,16 +519,16 @@ pub const Lamp = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ILampStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ILampStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Lamp) {
-        const factory = @This().ILampStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ILampStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(Lamp) {
-        const factory = @This().ILampStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().ILampStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.Lamp";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -665,12 +665,12 @@ pub const LampArray = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ILampArrayStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ILampArrayStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LampArray) {
-        const factory = @This().ILampArrayStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ILampArrayStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Lights.LampArray";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

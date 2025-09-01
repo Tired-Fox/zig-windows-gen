@@ -567,16 +567,16 @@ pub const ConnectivityManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AcquireConnectionAsync(cellularApnContext: *CellularApnContext) core.HResult!*IAsyncOperation(ConnectionSession) {
-        const factory = @This().IConnectivityManagerStaticsCache.get();
-        return try factory.AcquireConnectionAsync(cellularApnContext);
+        const _f = @This().IConnectivityManagerStaticsCache.get();
+        return try _f.AcquireConnectionAsync(cellularApnContext);
     }
     pub fn AddHttpRoutePolicy(routePolicy: *RoutePolicy) core.HResult!void {
-        const factory = @This().IConnectivityManagerStaticsCache.get();
-        return try factory.AddHttpRoutePolicy(routePolicy);
+        const _f = @This().IConnectivityManagerStaticsCache.get();
+        return try _f.AddHttpRoutePolicy(routePolicy);
     }
     pub fn RemoveHttpRoutePolicy(routePolicy: *RoutePolicy) core.HResult!void {
-        const factory = @This().IConnectivityManagerStaticsCache.get();
-        return try factory.RemoveHttpRoutePolicy(routePolicy);
+        const _f = @This().IConnectivityManagerStaticsCache.get();
+        return try _f.RemoveHttpRoutePolicy(routePolicy);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.ConnectivityManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -940,9 +940,9 @@ pub const IConnectionProfile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetLocalUsageWithEndTimeWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
+    pub fn GetLocalUsageWithStates(self: *@This(), StartTime: DateTime, EndTime: DateTime, States: RoamingStates) core.HResult!*DataUsage {
         var _r: *DataUsage = undefined;
-        const _c = self.vtable.GetLocalUsageWithEndTimeWithStates(@ptrCast(self), StartTime, EndTime, States, &_r);
+        const _c = self.vtable.GetLocalUsageWithStates(@ptrCast(self), StartTime, EndTime, States, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -971,7 +971,7 @@ pub const IConnectionProfile = extern struct {
         GetDataPlanStatus: *const fn(self: *anyopaque, _r: **DataPlanStatus) callconv(.winapi) HRESULT,
         get_NetworkAdapter: *const fn(self: *anyopaque, _r: **NetworkAdapter) callconv(.winapi) HRESULT,
         GetLocalUsage: *const fn(self: *anyopaque, StartTime: DateTime, EndTime: DateTime, _r: **DataUsage) callconv(.winapi) HRESULT,
-        GetLocalUsageWithEndTimeWithStates: *const fn(self: *anyopaque, StartTime: DateTime, EndTime: DateTime, States: RoamingStates, _r: **DataUsage) callconv(.winapi) HRESULT,
+        GetLocalUsageWithStates: *const fn(self: *anyopaque, StartTime: DateTime, EndTime: DateTime, States: RoamingStates, _r: **DataUsage) callconv(.winapi) HRESULT,
         get_NetworkSecuritySettings: *const fn(self: *anyopaque, _r: **NetworkSecuritySettings) callconv(.winapi) HRESULT,
     };
 };
@@ -2236,40 +2236,40 @@ pub const NetworkInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetConnectionProfiles() core.HResult!*IVectorView(ConnectionProfile) {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.GetConnectionProfiles();
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.GetConnectionProfiles();
     }
     pub fn GetInternetConnectionProfile() core.HResult!*ConnectionProfile {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.GetInternetConnectionProfile();
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.GetInternetConnectionProfile();
     }
     pub fn GetLanIdentifiers() core.HResult!*IVectorView(LanIdentifier) {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.GetLanIdentifiers();
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.GetLanIdentifiers();
     }
     pub fn GetHostNames() core.HResult!*IVectorView(HostName) {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.GetHostNames();
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.GetHostNames();
     }
     pub fn GetProxyConfigurationAsync(uri: *Uri) core.HResult!*IAsyncOperation(ProxyConfiguration) {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.GetProxyConfigurationAsync(uri);
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.GetProxyConfigurationAsync(uri);
     }
     pub fn GetSortedEndpointPairs(destinationList: *IIterable(EndpointPair), sortOptions: HostNameSortOptions) core.HResult!*IVectorView(EndpointPair) {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.GetSortedEndpointPairs(destinationList, sortOptions);
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.GetSortedEndpointPairs(destinationList, sortOptions);
     }
-    pub fn add_NetworkStatusChanged(networkStatusHandler: *NetworkStatusChangedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.addNetworkStatusChanged(networkStatusHandler);
+    pub fn addNetworkStatusChanged(networkStatusHandler: *NetworkStatusChangedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.addNetworkStatusChanged(networkStatusHandler);
     }
-    pub fn remove_NetworkStatusChanged(eventCookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().INetworkInformationStaticsCache.get();
-        return try factory.removeNetworkStatusChanged(eventCookie);
+    pub fn removeNetworkStatusChanged(eventCookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().INetworkInformationStaticsCache.get();
+        return try _f.removeNetworkStatusChanged(eventCookie);
     }
     pub fn FindConnectionProfilesAsync(pProfileFilter: *ConnectionProfileFilter) core.HResult!*IAsyncOperation(IVectorView(ConnectionProfile)) {
-        const factory = @This().INetworkInformationStatics2Cache.get();
-        return try factory.FindConnectionProfilesAsync(pProfileFilter);
+        const _f = @This().INetworkInformationStatics2Cache.get();
+        return try _f.FindConnectionProfilesAsync(pProfileFilter);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.NetworkInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2527,8 +2527,8 @@ pub const RoutePolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateRoutePolicy(connectionProfile: *ConnectionProfile, hostName: *HostName, ty: DomainNameType) core.HResult!*RoutePolicy {
-        const factory = @This().IRoutePolicyFactoryCache.get();
-        return try factory.CreateRoutePolicy(connectionProfile, hostName, ty);
+        const _f = @This().IRoutePolicyFactoryCache.get();
+        return try _f.CreateRoutePolicy(connectionProfile, hostName, ty);
     }
     pub const NAME: []const u8 = "Windows.Networking.Connectivity.RoutePolicy";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

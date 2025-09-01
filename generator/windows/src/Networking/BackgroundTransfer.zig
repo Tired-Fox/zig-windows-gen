@@ -159,24 +159,24 @@ pub const BackgroundDownloader = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundDownloader.IID)));
     }
     pub fn CreateWithCompletionGroup(completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundDownloader {
-        const factory = @This().IBackgroundDownloaderFactoryCache.get();
-        return try factory.CreateWithCompletionGroup(completionGroup);
+        const _f = @This().IBackgroundDownloaderFactoryCache.get();
+        return try _f.CreateWithCompletionGroup(completionGroup);
     }
     pub fn RequestUnconstrainedDownloadsAsync(operations: *IIterable(DownloadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
-        const factory = @This().IBackgroundDownloaderUserConsentCache.get();
-        return try factory.RequestUnconstrainedDownloadsAsync(operations);
+        const _f = @This().IBackgroundDownloaderUserConsentCache.get();
+        return try _f.RequestUnconstrainedDownloadsAsync(operations);
     }
     pub fn GetCurrentDownloadsAsync() core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
-        const factory = @This().IBackgroundDownloaderStaticMethodsCache.get();
-        return try factory.GetCurrentDownloadsAsync();
+        const _f = @This().IBackgroundDownloaderStaticMethodsCache.get();
+        return try _f.GetCurrentDownloadsAsync();
     }
     pub fn GetCurrentDownloadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
-        const factory = @This().IBackgroundDownloaderStaticMethodsCache.get();
-        return try factory.GetCurrentDownloadsAsyncWithGroup(group);
+        const _f = @This().IBackgroundDownloaderStaticMethodsCache.get();
+        return try _f.GetCurrentDownloadsAsyncWithGroup(group);
     }
     pub fn GetCurrentDownloadsForTransferGroupAsync(group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
-        const factory = @This().IBackgroundDownloaderStaticMethods2Cache.get();
-        return try factory.GetCurrentDownloadsForTransferGroupAsync(group);
+        const _f = @This().IBackgroundDownloaderStaticMethods2Cache.get();
+        return try _f.GetCurrentDownloadsForTransferGroupAsync(group);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundDownloader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -259,12 +259,12 @@ pub const BackgroundTransferContentPart = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundTransferContentPart.IID)));
     }
     pub fn CreateWithName(name: HSTRING) core.HResult!*BackgroundTransferContentPart {
-        const factory = @This().IBackgroundTransferContentPartFactoryCache.get();
-        return try factory.CreateWithName(name);
+        const _f = @This().IBackgroundTransferContentPartFactoryCache.get();
+        return try _f.CreateWithName(name);
     }
     pub fn CreateWithNameAndFileName(name: HSTRING, fileName: HSTRING) core.HResult!*BackgroundTransferContentPart {
-        const factory = @This().IBackgroundTransferContentPartFactoryCache.get();
-        return try factory.CreateWithNameAndFileName(name, fileName);
+        const _f = @This().IBackgroundTransferContentPartFactoryCache.get();
+        return try _f.CreateWithNameAndFileName(name, fileName);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -285,8 +285,8 @@ pub const BackgroundTransferError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!WebErrorStatus {
-        const factory = @This().IBackgroundTransferErrorStaticMethodsCache.get();
-        return try factory.GetStatus(hresult);
+        const _f = @This().IBackgroundTransferErrorStaticMethodsCache.get();
+        return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundTransferError";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -314,8 +314,8 @@ pub const BackgroundTransferGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateGroup(name: HSTRING) core.HResult!*BackgroundTransferGroup {
-        const factory = @This().IBackgroundTransferGroupStaticsCache.get();
-        return try factory.CreateGroup(name);
+        const _f = @This().IBackgroundTransferGroupStaticsCache.get();
+        return try _f.CreateGroup(name);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundTransferGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -388,9 +388,9 @@ pub const BackgroundUploader = extern struct {
         const this: *IBackgroundUploader = @ptrCast(self);
         return try this.CreateUploadAsyncWithSubType(uri, parts, subType);
     }
-    pub fn CreateUploadAsyncWithSubTypeWithBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         const this: *IBackgroundUploader = @ptrCast(self);
-        return try this.CreateUploadAsyncWithSubTypeWithBoundary(uri, parts, subType, boundary);
+        return try this.CreateUploadAsyncWithSubTypeAndBoundary(uri, parts, subType, boundary);
     }
     pub fn SetRequestHeader(self: *@This(), headerName: HSTRING, headerValue: HSTRING) core.HResult!void {
         var this: ?*IBackgroundTransferBase = undefined;
@@ -532,24 +532,24 @@ pub const BackgroundUploader = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackgroundUploader.IID)));
     }
     pub fn CreateWithCompletionGroup(completionGroup: *BackgroundTransferCompletionGroup) core.HResult!*BackgroundUploader {
-        const factory = @This().IBackgroundUploaderFactoryCache.get();
-        return try factory.CreateWithCompletionGroup(completionGroup);
+        const _f = @This().IBackgroundUploaderFactoryCache.get();
+        return try _f.CreateWithCompletionGroup(completionGroup);
     }
     pub fn RequestUnconstrainedUploadsAsync(operations: *IIterable(UploadOperation)) core.HResult!*IAsyncOperation(UnconstrainedTransferRequestResult) {
-        const factory = @This().IBackgroundUploaderUserConsentCache.get();
-        return try factory.RequestUnconstrainedUploadsAsync(operations);
+        const _f = @This().IBackgroundUploaderUserConsentCache.get();
+        return try _f.RequestUnconstrainedUploadsAsync(operations);
     }
     pub fn GetCurrentUploadsForTransferGroupAsync(group: *BackgroundTransferGroup) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
-        const factory = @This().IBackgroundUploaderStaticMethods2Cache.get();
-        return try factory.GetCurrentUploadsForTransferGroupAsync(group);
+        const _f = @This().IBackgroundUploaderStaticMethods2Cache.get();
+        return try _f.GetCurrentUploadsForTransferGroupAsync(group);
     }
     pub fn GetCurrentUploadsAsync() core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
-        const factory = @This().IBackgroundUploaderStaticMethodsCache.get();
-        return try factory.GetCurrentUploadsAsync();
+        const _f = @This().IBackgroundUploaderStaticMethodsCache.get();
+        return try _f.GetCurrentUploadsAsync();
     }
     pub fn GetCurrentUploadsAsyncWithGroup(group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
-        const factory = @This().IBackgroundUploaderStaticMethodsCache.get();
-        return try factory.GetCurrentUploadsAsyncWithGroup(group);
+        const _f = @This().IBackgroundUploaderStaticMethodsCache.get();
+        return try _f.GetCurrentUploadsAsyncWithGroup(group);
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.BackgroundUploader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -567,21 +567,21 @@ pub const ContentPrefetcher = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ContentUris() core.HResult!*IVector(Uri) {
-        const factory = @This().IContentPrefetcherCache.get();
-        return try factory.getContentUris();
+    pub fn getContentUris() core.HResult!*IVector(Uri) {
+        const _f = @This().IContentPrefetcherCache.get();
+        return try _f.getContentUris();
     }
-    pub fn put_IndirectContentUri(value: *Uri) core.HResult!void {
-        const factory = @This().IContentPrefetcherCache.get();
-        return try factory.putIndirectContentUri(value);
+    pub fn putIndirectContentUri(value: *Uri) core.HResult!void {
+        const _f = @This().IContentPrefetcherCache.get();
+        return try _f.putIndirectContentUri(value);
     }
-    pub fn get_IndirectContentUri() core.HResult!*Uri {
-        const factory = @This().IContentPrefetcherCache.get();
-        return try factory.getIndirectContentUri();
+    pub fn getIndirectContentUri() core.HResult!*Uri {
+        const _f = @This().IContentPrefetcherCache.get();
+        return try _f.getIndirectContentUri();
     }
-    pub fn get_LastSuccessfulPrefetchTime() core.HResult!*IReference(DateTime) {
-        const factory = @This().IContentPrefetcherTimeCache.get();
-        return try factory.getLastSuccessfulPrefetchTime();
+    pub fn getLastSuccessfulPrefetchTime() core.HResult!*IReference(DateTime) {
+        const _f = @This().IContentPrefetcherTimeCache.get();
+        return try _f.getLastSuccessfulPrefetchTime();
     }
     pub const NAME: []const u8 = "Windows.Networking.BackgroundTransfer.ContentPrefetcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -766,9 +766,9 @@ pub const IBackgroundDownloader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDownloadWithResultFileWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
+    pub fn CreateDownloadWithRequestBodyFile(self: *@This(), uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile) core.HResult!*DownloadOperation {
         var _r: *DownloadOperation = undefined;
-        const _c = self.vtable.CreateDownloadWithResultFileWithRequestBodyFile(@ptrCast(self), uri, resultFile, requestBodyFile, &_r);
+        const _c = self.vtable.CreateDownloadWithRequestBodyFile(@ptrCast(self), uri, resultFile, requestBodyFile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -791,7 +791,7 @@ pub const IBackgroundDownloader = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateDownload: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, _r: **DownloadOperation) callconv(.winapi) HRESULT,
-        CreateDownloadWithResultFileWithRequestBodyFile: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile, _r: **DownloadOperation) callconv(.winapi) HRESULT,
+        CreateDownloadWithRequestBodyFile: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, requestBodyFile: *IStorageFile, _r: **DownloadOperation) callconv(.winapi) HRESULT,
         CreateDownloadAsync: *const fn(self: *anyopaque, uri: *Uri, resultFile: *IStorageFile, requestBodyStream: *IInputStream, _r: **IAsyncOperation(DownloadOperation)) callconv(.winapi) HRESULT,
     };
 };
@@ -925,9 +925,9 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCurrentDownloadsAsync(self: *@This(), group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
+    pub fn GetCurrentDownloadsAsyncWithGroup(self: *@This(), group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(DownloadOperation)) {
         var _r: *IAsyncOperation(IVectorView(DownloadOperation)) = undefined;
-        const _c = self.vtable.GetCurrentDownloadsAsync(@ptrCast(self), group, &_r);
+        const _c = self.vtable.GetCurrentDownloadsAsyncWithGroup(@ptrCast(self), group, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -944,7 +944,7 @@ pub const IBackgroundDownloaderStaticMethods = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentDownloadsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(DownloadOperation))) callconv(.winapi) HRESULT,
-        GetCurrentDownloadsAsync: *const fn(self: *anyopaque, group: HSTRING, _r: **IAsyncOperation(IVectorView(DownloadOperation))) callconv(.winapi) HRESULT,
+        GetCurrentDownloadsAsyncWithGroup: *const fn(self: *anyopaque, group: HSTRING, _r: **IAsyncOperation(IVectorView(DownloadOperation))) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundDownloaderStaticMethods2 = extern struct {
@@ -1436,15 +1436,15 @@ pub const IBackgroundUploader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUploadAsyncWithPartsWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubType(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
-        const _c = self.vtable.CreateUploadAsyncWithPartsWithSubType(@ptrCast(self), uri, parts, subType, &_r);
+        const _c = self.vtable.CreateUploadAsyncWithSubType(@ptrCast(self), uri, parts, subType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateUploadAsyncWithSubTypeWithBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
+    pub fn CreateUploadAsyncWithSubTypeAndBoundary(self: *@This(), uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING) core.HResult!*IAsyncOperation(UploadOperation) {
         var _r: *IAsyncOperation(UploadOperation) = undefined;
-        const _c = self.vtable.CreateUploadAsyncWithSubTypeWithBoundary(@ptrCast(self), uri, parts, subType, boundary, &_r);
+        const _c = self.vtable.CreateUploadAsyncWithSubTypeAndBoundary(@ptrCast(self), uri, parts, subType, boundary, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1463,8 +1463,8 @@ pub const IBackgroundUploader = extern struct {
         CreateUpload: *const fn(self: *anyopaque, uri: *Uri, sourceFile: *IStorageFile, _r: **UploadOperation) callconv(.winapi) HRESULT,
         CreateUploadFromStreamAsync: *const fn(self: *anyopaque, uri: *Uri, sourceStream: *IInputStream, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
         CreateUploadAsync: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
-        CreateUploadAsyncWithPartsWithSubType: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
-        CreateUploadAsyncWithSubTypeWithBoundary: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
+        CreateUploadAsyncWithSubType: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
+        CreateUploadAsyncWithSubTypeAndBoundary: *const fn(self: *anyopaque, uri: *Uri, parts: *IIterable(BackgroundTransferContentPart), subType: HSTRING, boundary: HSTRING, _r: **IAsyncOperation(UploadOperation)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundUploader2 = extern struct {
@@ -1597,9 +1597,9 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetCurrentUploadsAsync(self: *@This(), group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
+    pub fn GetCurrentUploadsAsyncWithGroup(self: *@This(), group: HSTRING) core.HResult!*IAsyncOperation(IVectorView(UploadOperation)) {
         var _r: *IAsyncOperation(IVectorView(UploadOperation)) = undefined;
-        const _c = self.vtable.GetCurrentUploadsAsync(@ptrCast(self), group, &_r);
+        const _c = self.vtable.GetCurrentUploadsAsyncWithGroup(@ptrCast(self), group, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1616,7 +1616,7 @@ pub const IBackgroundUploaderStaticMethods = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetCurrentUploadsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(UploadOperation))) callconv(.winapi) HRESULT,
-        GetCurrentUploadsAsync: *const fn(self: *anyopaque, group: HSTRING, _r: **IAsyncOperation(IVectorView(UploadOperation))) callconv(.winapi) HRESULT,
+        GetCurrentUploadsAsyncWithGroup: *const fn(self: *anyopaque, group: HSTRING, _r: **IAsyncOperation(IVectorView(UploadOperation))) callconv(.winapi) HRESULT,
     };
 };
 pub const IBackgroundUploaderStaticMethods2 = extern struct {

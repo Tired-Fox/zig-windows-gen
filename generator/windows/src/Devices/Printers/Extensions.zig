@@ -181,8 +181,8 @@ pub const PrintExtensionContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromDeviceId(deviceId: HSTRING) core.HResult!*IInspectable {
-        const factory = @This().IPrintExtensionContextStaticCache.get();
-        return try factory.FromDeviceId(deviceId);
+        const _f = @This().IPrintExtensionContextStaticCache.get();
+        return try _f.FromDeviceId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Printers.Extensions.PrintExtensionContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

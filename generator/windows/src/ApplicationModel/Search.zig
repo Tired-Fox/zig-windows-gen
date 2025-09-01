@@ -328,8 +328,8 @@ pub const SearchQueryLinguisticDetails = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(queryTextAlternatives: *IIterable(HSTRING), queryTextCompositionStart: u32, queryTextCompositionLength: u32) core.HResult!*SearchQueryLinguisticDetails {
-        const factory = @This().ISearchQueryLinguisticDetailsFactoryCache.get();
-        return try factory.CreateInstance(queryTextAlternatives, queryTextCompositionStart, queryTextCompositionLength);
+        const _f = @This().ISearchQueryLinguisticDetailsFactoryCache.get();
+        return try _f.CreateInstance(queryTextAlternatives, queryTextCompositionStart, queryTextCompositionLength);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Search.SearchQueryLinguisticDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -506,8 +506,8 @@ pub const ISearchPane = extern struct {
         const _c = self.vtable.Show(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Show(self: *@This(), query: HSTRING) core.HResult!void {
-        const _c = self.vtable.Show(@ptrCast(self), query);
+    pub fn ShowWithQuery(self: *@This(), query: HSTRING) core.HResult!void {
+        const _c = self.vtable.ShowWithQuery(@ptrCast(self), query);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn putShowOnKeyboardInput(self: *@This(), value: bool) core.HResult!void {
@@ -559,7 +559,7 @@ pub const ISearchPane = extern struct {
         remove_ResultSuggestionChosen: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         SetLocalContentSuggestionSettings: *const fn(self: *anyopaque, settings: *LocalContentSuggestionSettings) callconv(.winapi) HRESULT,
         Show: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        Show: *const fn(self: *anyopaque, query: HSTRING) callconv(.winapi) HRESULT,
+        ShowWithQuery: *const fn(self: *anyopaque, query: HSTRING) callconv(.winapi) HRESULT,
         put_ShowOnKeyboardInput: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_ShowOnKeyboardInput: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         TrySetQueryText: *const fn(self: *anyopaque, query: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
@@ -932,12 +932,12 @@ pub const SearchPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn HideThisApplication() core.HResult!void {
-        const factory = @This().ISearchPaneStaticsWithHideThisApplicationCache.get();
-        return try factory.HideThisApplication();
+        const _f = @This().ISearchPaneStaticsWithHideThisApplicationCache.get();
+        return try _f.HideThisApplication();
     }
     pub fn GetForCurrentView() core.HResult!*SearchPane {
-        const factory = @This().ISearchPaneStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ISearchPaneStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Search.SearchPane";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

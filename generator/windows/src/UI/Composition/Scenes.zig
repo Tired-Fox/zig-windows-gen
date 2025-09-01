@@ -1008,55 +1008,27 @@ pub const SceneComponent = extern struct {
 };
 pub const SceneComponentCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneComponent) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(SceneComponent) {
+        const this: *IVector(SceneComponent) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneComponent) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneComponent) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneComponent) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(SceneComponent) {
         var this: ?*IIterable(SceneComponent) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1117,8 +1089,8 @@ pub const SceneMesh = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMesh {
-        const factory = @This().ISceneMeshStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ISceneMeshStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMesh";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1129,41 +1101,17 @@ pub const SceneMesh = extern struct {
 };
 pub const SceneMeshMaterialAttributeMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,SceneAttributeSemantic) {
         var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(HSTRING,SceneAttributeSemantic) = undefined;
@@ -1171,7 +1119,7 @@ pub const SceneMeshMaterialAttributeMap = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,SceneAttributeSemantic)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,SceneAttributeSemantic)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1221,8 +1169,8 @@ pub const SceneMeshRendererComponent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMeshRendererComponent {
-        const factory = @This().ISceneMeshRendererComponentStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ISceneMeshRendererComponentStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMeshRendererComponent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1361,8 +1309,8 @@ pub const SceneMetallicRoughnessMaterial = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneMetallicRoughnessMaterial {
-        const factory = @This().ISceneMetallicRoughnessMaterialStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ISceneMetallicRoughnessMaterialStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneMetallicRoughnessMaterial";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1453,8 +1401,8 @@ pub const SceneNode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneNode {
-        const factory = @This().ISceneNodeStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ISceneNodeStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1465,55 +1413,27 @@ pub const SceneNode = extern struct {
 };
 pub const SceneNodeCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneNode) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(SceneNode) {
+        const this: *IVector(SceneNode) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneNode) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneNode) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(SceneNode) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(SceneNode) {
         var this: ?*IIterable(SceneNode) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1563,8 +1483,8 @@ pub const SceneSurfaceMaterialInput = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneSurfaceMaterialInput {
-        const factory = @This().ISceneSurfaceMaterialInputStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ISceneSurfaceMaterialInputStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneSurfaceMaterialInput";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1587,8 +1507,8 @@ pub const SceneVisual = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(compositor: *Compositor) core.HResult!*SceneVisual {
-        const factory = @This().ISceneVisualStaticsCache.get();
-        return try factory.Create(compositor);
+        const _f = @This().ISceneVisualStaticsCache.get();
+        return try _f.Create(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Scenes.SceneVisual";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -54,9 +54,9 @@ pub const IPnpObjectStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsyncWithRequestedPropertiesWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
+    pub fn FindAllAsyncWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
         var _r: *IAsyncOperation(PnpObjectCollection) = undefined;
-        const _c = self.vtable.FindAllAsyncWithRequestedPropertiesWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
+        const _c = self.vtable.FindAllAsyncWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -66,9 +66,9 @@ pub const IPnpObjectStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateWatcherWithRequestedPropertiesWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
+    pub fn CreateWatcherWithAqsFilter(self: *@This(), ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
         var _r: *PnpObjectWatcher = undefined;
-        const _c = self.vtable.CreateWatcherWithRequestedPropertiesWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
+        const _c = self.vtable.CreateWatcherWithAqsFilter(@ptrCast(self), ty, requestedProperties, aqsFilter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -86,9 +86,9 @@ pub const IPnpObjectStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromIdAsync: *const fn(self: *anyopaque, ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObject)) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
-        FindAllAsyncWithRequestedPropertiesWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
+        FindAllAsyncWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **IAsyncOperation(PnpObjectCollection)) callconv(.winapi) HRESULT,
         CreateWatcher: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
-        CreateWatcherWithRequestedPropertiesWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
+        CreateWatcherWithAqsFilter: *const fn(self: *anyopaque, ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING, _r: **PnpObjectWatcher) callconv(.winapi) HRESULT,
     };
 };
 pub const IPnpObjectUpdate = extern struct {
@@ -243,24 +243,24 @@ pub const PnpObject = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromIdAsync(ty: PnpObjectType, id: HSTRING, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObject) {
-        const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateFromIdAsync(ty, id, requestedProperties);
+        const _f = @This().IPnpObjectStaticsCache.get();
+        return try _f.CreateFromIdAsync(ty, id, requestedProperties);
     }
     pub fn FindAllAsync(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(PnpObjectCollection) {
-        const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.FindAllAsync(ty, requestedProperties);
+        const _f = @This().IPnpObjectStaticsCache.get();
+        return try _f.FindAllAsync(ty, requestedProperties);
     }
     pub fn FindAllAsyncWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*IAsyncOperation(PnpObjectCollection) {
-        const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.FindAllAsyncWithAqsFilter(ty, requestedProperties, aqsFilter);
+        const _f = @This().IPnpObjectStaticsCache.get();
+        return try _f.FindAllAsyncWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
     pub fn CreateWatcher(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING)) core.HResult!*PnpObjectWatcher {
-        const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateWatcher(ty, requestedProperties);
+        const _f = @This().IPnpObjectStaticsCache.get();
+        return try _f.CreateWatcher(ty, requestedProperties);
     }
     pub fn CreateWatcherWithAqsFilter(ty: PnpObjectType, requestedProperties: *IIterable(HSTRING), aqsFilter: HSTRING) core.HResult!*PnpObjectWatcher {
-        const factory = @This().IPnpObjectStaticsCache.get();
-        return try factory.CreateWatcherWithAqsFilter(ty, requestedProperties, aqsFilter);
+        const _f = @This().IPnpObjectStaticsCache.get();
+        return try _f.CreateWatcherWithAqsFilter(ty, requestedProperties, aqsFilter);
     }
     pub const NAME: []const u8 = "Windows.Devices.Enumeration.Pnp.PnpObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -271,23 +271,11 @@ pub const PnpObject = extern struct {
 };
 pub const PnpObjectCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(PnpObject) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(PnpObject) {
         var this: ?*IIterable(PnpObject) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

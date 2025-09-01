@@ -3,25 +3,25 @@ pub const AnnotationPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AnnotationTypeIdProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
-        return try factory.getAnnotationTypeIdProperty();
+    pub fn getAnnotationTypeIdProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAnnotationPatternIdentifiersStaticsCache.get();
+        return try _f.getAnnotationTypeIdProperty();
     }
-    pub fn get_AnnotationTypeNameProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
-        return try factory.getAnnotationTypeNameProperty();
+    pub fn getAnnotationTypeNameProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAnnotationPatternIdentifiersStaticsCache.get();
+        return try _f.getAnnotationTypeNameProperty();
     }
-    pub fn get_AuthorProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
-        return try factory.getAuthorProperty();
+    pub fn getAuthorProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAnnotationPatternIdentifiersStaticsCache.get();
+        return try _f.getAuthorProperty();
     }
-    pub fn get_DateTimeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
-        return try factory.getDateTimeProperty();
+    pub fn getDateTimeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAnnotationPatternIdentifiersStaticsCache.get();
+        return try _f.getDateTimeProperty();
     }
-    pub fn get_TargetProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAnnotationPatternIdentifiersStaticsCache.get();
-        return try factory.getTargetProperty();
+    pub fn getTargetProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAnnotationPatternIdentifiersStaticsCache.get();
+        return try _f.getTargetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.AnnotationPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -96,20 +96,20 @@ pub const AutomationAnnotation = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutomationAnnotation.IID)));
     }
     pub fn CreateInstance(ty: AnnotationType) core.HResult!*AutomationAnnotation {
-        const factory = @This().IAutomationAnnotationFactoryCache.get();
-        return try factory.CreateInstance(ty);
+        const _f = @This().IAutomationAnnotationFactoryCache.get();
+        return try _f.CreateInstance(ty);
     }
     pub fn CreateWithElementParameter(ty: AnnotationType, element: *UIElement) core.HResult!*AutomationAnnotation {
-        const factory = @This().IAutomationAnnotationFactoryCache.get();
-        return try factory.CreateWithElementParameter(ty, element);
+        const _f = @This().IAutomationAnnotationFactoryCache.get();
+        return try _f.CreateWithElementParameter(ty, element);
     }
-    pub fn get_TypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationAnnotationStaticsCache.get();
-        return try factory.getTypeProperty();
+    pub fn getTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationAnnotationStaticsCache.get();
+        return try _f.getTypeProperty();
     }
-    pub fn get_ElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationAnnotationStaticsCache.get();
-        return try factory.getElementProperty();
+    pub fn getElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationAnnotationStaticsCache.get();
+        return try _f.getElementProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.AutomationAnnotation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -143,161 +143,161 @@ pub const AutomationElementIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsPeripheralProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
-        return try factory.getIsPeripheralProperty();
+    pub fn getIsPeripheralProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics5Cache.get();
+        return try _f.getIsPeripheralProperty();
     }
-    pub fn get_IsDataValidForFormProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
-        return try factory.getIsDataValidForFormProperty();
+    pub fn getIsDataValidForFormProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics5Cache.get();
+        return try _f.getIsDataValidForFormProperty();
     }
-    pub fn get_FullDescriptionProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
-        return try factory.getFullDescriptionProperty();
+    pub fn getFullDescriptionProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics5Cache.get();
+        return try _f.getFullDescriptionProperty();
     }
-    pub fn get_DescribedByProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
-        return try factory.getDescribedByProperty();
+    pub fn getDescribedByProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics5Cache.get();
+        return try _f.getDescribedByProperty();
     }
-    pub fn get_FlowsToProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
-        return try factory.getFlowsToProperty();
+    pub fn getFlowsToProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics5Cache.get();
+        return try _f.getFlowsToProperty();
     }
-    pub fn get_FlowsFromProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics5Cache.get();
-        return try factory.getFlowsFromProperty();
+    pub fn getFlowsFromProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics5Cache.get();
+        return try _f.getFlowsFromProperty();
     }
-    pub fn get_PositionInSetProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
-        return try factory.getPositionInSetProperty();
+    pub fn getPositionInSetProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics3Cache.get();
+        return try _f.getPositionInSetProperty();
     }
-    pub fn get_SizeOfSetProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
-        return try factory.getSizeOfSetProperty();
+    pub fn getSizeOfSetProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics3Cache.get();
+        return try _f.getSizeOfSetProperty();
     }
-    pub fn get_LevelProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
-        return try factory.getLevelProperty();
+    pub fn getLevelProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics3Cache.get();
+        return try _f.getLevelProperty();
     }
-    pub fn get_AnnotationsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics3Cache.get();
-        return try factory.getAnnotationsProperty();
+    pub fn getAnnotationsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics3Cache.get();
+        return try _f.getAnnotationsProperty();
     }
-    pub fn get_CultureProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics6Cache.get();
-        return try factory.getCultureProperty();
+    pub fn getCultureProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics6Cache.get();
+        return try _f.getCultureProperty();
     }
-    pub fn get_LandmarkTypeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics4Cache.get();
-        return try factory.getLandmarkTypeProperty();
+    pub fn getLandmarkTypeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics4Cache.get();
+        return try _f.getLandmarkTypeProperty();
     }
-    pub fn get_LocalizedLandmarkTypeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics4Cache.get();
-        return try factory.getLocalizedLandmarkTypeProperty();
+    pub fn getLocalizedLandmarkTypeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics4Cache.get();
+        return try _f.getLocalizedLandmarkTypeProperty();
     }
-    pub fn get_HeadingLevelProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics7Cache.get();
-        return try factory.getHeadingLevelProperty();
+    pub fn getHeadingLevelProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics7Cache.get();
+        return try _f.getHeadingLevelProperty();
     }
-    pub fn get_IsDialogProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics8Cache.get();
-        return try factory.getIsDialogProperty();
+    pub fn getIsDialogProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics8Cache.get();
+        return try _f.getIsDialogProperty();
     }
-    pub fn get_ControlledPeersProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStatics2Cache.get();
-        return try factory.getControlledPeersProperty();
+    pub fn getControlledPeersProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStatics2Cache.get();
+        return try _f.getControlledPeersProperty();
     }
-    pub fn get_AcceleratorKeyProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getAcceleratorKeyProperty();
+    pub fn getAcceleratorKeyProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getAcceleratorKeyProperty();
     }
-    pub fn get_AccessKeyProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getAccessKeyProperty();
+    pub fn getAccessKeyProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getAccessKeyProperty();
     }
-    pub fn get_AutomationIdProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getAutomationIdProperty();
+    pub fn getAutomationIdProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getAutomationIdProperty();
     }
-    pub fn get_BoundingRectangleProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getBoundingRectangleProperty();
+    pub fn getBoundingRectangleProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getBoundingRectangleProperty();
     }
-    pub fn get_ClassNameProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getClassNameProperty();
+    pub fn getClassNameProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getClassNameProperty();
     }
-    pub fn get_ClickablePointProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getClickablePointProperty();
+    pub fn getClickablePointProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getClickablePointProperty();
     }
-    pub fn get_ControlTypeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getControlTypeProperty();
+    pub fn getControlTypeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getControlTypeProperty();
     }
-    pub fn get_HasKeyboardFocusProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getHasKeyboardFocusProperty();
+    pub fn getHasKeyboardFocusProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getHasKeyboardFocusProperty();
     }
-    pub fn get_HelpTextProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getHelpTextProperty();
+    pub fn getHelpTextProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getHelpTextProperty();
     }
-    pub fn get_IsContentElementProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsContentElementProperty();
+    pub fn getIsContentElementProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsContentElementProperty();
     }
-    pub fn get_IsControlElementProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsControlElementProperty();
+    pub fn getIsControlElementProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsControlElementProperty();
     }
-    pub fn get_IsEnabledProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsEnabledProperty();
+    pub fn getIsEnabledProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsEnabledProperty();
     }
-    pub fn get_IsKeyboardFocusableProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsKeyboardFocusableProperty();
+    pub fn getIsKeyboardFocusableProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsKeyboardFocusableProperty();
     }
-    pub fn get_IsOffscreenProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsOffscreenProperty();
+    pub fn getIsOffscreenProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsOffscreenProperty();
     }
-    pub fn get_IsPasswordProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsPasswordProperty();
+    pub fn getIsPasswordProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsPasswordProperty();
     }
-    pub fn get_IsRequiredForFormProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getIsRequiredForFormProperty();
+    pub fn getIsRequiredForFormProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getIsRequiredForFormProperty();
     }
-    pub fn get_ItemStatusProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getItemStatusProperty();
+    pub fn getItemStatusProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getItemStatusProperty();
     }
-    pub fn get_ItemTypeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getItemTypeProperty();
+    pub fn getItemTypeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getItemTypeProperty();
     }
-    pub fn get_LabeledByProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getLabeledByProperty();
+    pub fn getLabeledByProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getLabeledByProperty();
     }
-    pub fn get_LocalizedControlTypeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getLocalizedControlTypeProperty();
+    pub fn getLocalizedControlTypeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getLocalizedControlTypeProperty();
     }
-    pub fn get_NameProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getNameProperty();
+    pub fn getNameProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getNameProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_LiveSettingProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IAutomationElementIdentifiersStaticsCache.get();
-        return try factory.getLiveSettingProperty();
+    pub fn getLiveSettingProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IAutomationElementIdentifiersStaticsCache.get();
+        return try _f.getLiveSettingProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.AutomationElementIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -331,333 +331,333 @@ pub const AutomationProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AutomationControlTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics9Cache.get();
-        return try factory.getAutomationControlTypeProperty();
+    pub fn getAutomationControlTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics9Cache.get();
+        return try _f.getAutomationControlTypeProperty();
     }
     pub fn GetAutomationControlType(element: *UIElement) core.HResult!AutomationControlType {
-        const factory = @This().IAutomationPropertiesStatics9Cache.get();
-        return try factory.GetAutomationControlType(element);
+        const _f = @This().IAutomationPropertiesStatics9Cache.get();
+        return try _f.GetAutomationControlType(element);
     }
     pub fn SetAutomationControlType(element: *UIElement, value: AutomationControlType) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics9Cache.get();
-        return try factory.SetAutomationControlType(element, value);
+        const _f = @This().IAutomationPropertiesStatics9Cache.get();
+        return try _f.SetAutomationControlType(element, value);
     }
-    pub fn get_HeadingLevelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics7Cache.get();
-        return try factory.getHeadingLevelProperty();
+    pub fn getHeadingLevelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics7Cache.get();
+        return try _f.getHeadingLevelProperty();
     }
     pub fn GetHeadingLevel(element: *DependencyObject) core.HResult!AutomationHeadingLevel {
-        const factory = @This().IAutomationPropertiesStatics7Cache.get();
-        return try factory.GetHeadingLevel(element);
+        const _f = @This().IAutomationPropertiesStatics7Cache.get();
+        return try _f.GetHeadingLevel(element);
     }
     pub fn SetHeadingLevel(element: *DependencyObject, value: AutomationHeadingLevel) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics7Cache.get();
-        return try factory.SetHeadingLevel(element, value);
+        const _f = @This().IAutomationPropertiesStatics7Cache.get();
+        return try _f.SetHeadingLevel(element, value);
     }
-    pub fn get_CultureProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics6Cache.get();
-        return try factory.getCultureProperty();
+    pub fn getCultureProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics6Cache.get();
+        return try _f.getCultureProperty();
     }
     pub fn GetCulture(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().IAutomationPropertiesStatics6Cache.get();
-        return try factory.GetCulture(element);
+        const _f = @This().IAutomationPropertiesStatics6Cache.get();
+        return try _f.GetCulture(element);
     }
     pub fn SetCulture(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics6Cache.get();
-        return try factory.SetCulture(element, value);
+        const _f = @This().IAutomationPropertiesStatics6Cache.get();
+        return try _f.SetCulture(element, value);
     }
-    pub fn get_LandmarkTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics4Cache.get();
-        return try factory.getLandmarkTypeProperty();
+    pub fn getLandmarkTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics4Cache.get();
+        return try _f.getLandmarkTypeProperty();
     }
     pub fn GetLandmarkType(element: *DependencyObject) core.HResult!AutomationLandmarkType {
-        const factory = @This().IAutomationPropertiesStatics4Cache.get();
-        return try factory.GetLandmarkType(element);
+        const _f = @This().IAutomationPropertiesStatics4Cache.get();
+        return try _f.GetLandmarkType(element);
     }
     pub fn SetLandmarkType(element: *DependencyObject, value: AutomationLandmarkType) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics4Cache.get();
-        return try factory.SetLandmarkType(element, value);
+        const _f = @This().IAutomationPropertiesStatics4Cache.get();
+        return try _f.SetLandmarkType(element, value);
     }
-    pub fn get_LocalizedLandmarkTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics4Cache.get();
-        return try factory.getLocalizedLandmarkTypeProperty();
+    pub fn getLocalizedLandmarkTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics4Cache.get();
+        return try _f.getLocalizedLandmarkTypeProperty();
     }
     pub fn GetLocalizedLandmarkType(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStatics4Cache.get();
-        return try factory.GetLocalizedLandmarkType(element);
+        const _f = @This().IAutomationPropertiesStatics4Cache.get();
+        return try _f.GetLocalizedLandmarkType(element);
     }
     pub fn SetLocalizedLandmarkType(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics4Cache.get();
-        return try factory.SetLocalizedLandmarkType(element, value);
+        const _f = @This().IAutomationPropertiesStatics4Cache.get();
+        return try _f.SetLocalizedLandmarkType(element, value);
     }
-    pub fn get_AcceleratorKeyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getAcceleratorKeyProperty();
+    pub fn getAcceleratorKeyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getAcceleratorKeyProperty();
     }
     pub fn GetAcceleratorKey(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetAcceleratorKey(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetAcceleratorKey(element);
     }
     pub fn SetAcceleratorKey(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetAcceleratorKey(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetAcceleratorKey(element, value);
     }
-    pub fn get_AccessKeyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getAccessKeyProperty();
+    pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getAccessKeyProperty();
     }
     pub fn GetAccessKey(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetAccessKey(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetAccessKey(element);
     }
     pub fn SetAccessKey(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetAccessKey(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetAccessKey(element, value);
     }
-    pub fn get_AutomationIdProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getAutomationIdProperty();
+    pub fn getAutomationIdProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getAutomationIdProperty();
     }
     pub fn GetAutomationId(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetAutomationId(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetAutomationId(element);
     }
     pub fn SetAutomationId(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetAutomationId(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetAutomationId(element, value);
     }
-    pub fn get_HelpTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getHelpTextProperty();
+    pub fn getHelpTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getHelpTextProperty();
     }
     pub fn GetHelpText(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetHelpText(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetHelpText(element);
     }
     pub fn SetHelpText(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetHelpText(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetHelpText(element, value);
     }
-    pub fn get_IsRequiredForFormProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getIsRequiredForFormProperty();
+    pub fn getIsRequiredForFormProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getIsRequiredForFormProperty();
     }
     pub fn GetIsRequiredForForm(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetIsRequiredForForm(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetIsRequiredForForm(element);
     }
     pub fn SetIsRequiredForForm(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetIsRequiredForForm(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetIsRequiredForForm(element, value);
     }
-    pub fn get_ItemStatusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getItemStatusProperty();
+    pub fn getItemStatusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getItemStatusProperty();
     }
     pub fn GetItemStatus(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetItemStatus(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetItemStatus(element);
     }
     pub fn SetItemStatus(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetItemStatus(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetItemStatus(element, value);
     }
-    pub fn get_ItemTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getItemTypeProperty();
+    pub fn getItemTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getItemTypeProperty();
     }
     pub fn GetItemType(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetItemType(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetItemType(element);
     }
     pub fn SetItemType(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetItemType(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetItemType(element, value);
     }
-    pub fn get_LabeledByProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getLabeledByProperty();
+    pub fn getLabeledByProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getLabeledByProperty();
     }
     pub fn GetLabeledBy(element: *DependencyObject) core.HResult!*UIElement {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetLabeledBy(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetLabeledBy(element);
     }
     pub fn SetLabeledBy(element: *DependencyObject, value: *UIElement) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetLabeledBy(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetLabeledBy(element, value);
     }
-    pub fn get_NameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getNameProperty();
+    pub fn getNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getNameProperty();
     }
     pub fn GetName(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetName(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetName(element);
     }
     pub fn SetName(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetName(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetName(element, value);
     }
-    pub fn get_LiveSettingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.getLiveSettingProperty();
+    pub fn getLiveSettingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.getLiveSettingProperty();
     }
     pub fn GetLiveSetting(element: *DependencyObject) core.HResult!AutomationLiveSetting {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.GetLiveSetting(element);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.GetLiveSetting(element);
     }
     pub fn SetLiveSetting(element: *DependencyObject, value: AutomationLiveSetting) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStaticsCache.get();
-        return try factory.SetLiveSetting(element, value);
+        const _f = @This().IAutomationPropertiesStaticsCache.get();
+        return try _f.SetLiveSetting(element, value);
     }
-    pub fn get_IsPeripheralProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getIsPeripheralProperty();
+    pub fn getIsPeripheralProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getIsPeripheralProperty();
     }
     pub fn GetIsPeripheral(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetIsPeripheral(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetIsPeripheral(element);
     }
     pub fn SetIsPeripheral(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.SetIsPeripheral(element, value);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.SetIsPeripheral(element, value);
     }
-    pub fn get_IsDataValidForFormProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getIsDataValidForFormProperty();
+    pub fn getIsDataValidForFormProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getIsDataValidForFormProperty();
     }
     pub fn GetIsDataValidForForm(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetIsDataValidForForm(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetIsDataValidForForm(element);
     }
     pub fn SetIsDataValidForForm(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.SetIsDataValidForForm(element, value);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.SetIsDataValidForForm(element, value);
     }
-    pub fn get_FullDescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getFullDescriptionProperty();
+    pub fn getFullDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getFullDescriptionProperty();
     }
     pub fn GetFullDescription(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetFullDescription(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetFullDescription(element);
     }
     pub fn SetFullDescription(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.SetFullDescription(element, value);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.SetFullDescription(element, value);
     }
-    pub fn get_LocalizedControlTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getLocalizedControlTypeProperty();
+    pub fn getLocalizedControlTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getLocalizedControlTypeProperty();
     }
     pub fn GetLocalizedControlType(element: *DependencyObject) core.HResult!HSTRING {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetLocalizedControlType(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetLocalizedControlType(element);
     }
     pub fn SetLocalizedControlType(element: *DependencyObject, value: HSTRING) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.SetLocalizedControlType(element, value);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.SetLocalizedControlType(element, value);
     }
-    pub fn get_DescribedByProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getDescribedByProperty();
+    pub fn getDescribedByProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getDescribedByProperty();
     }
     pub fn GetDescribedBy(element: *DependencyObject) core.HResult!*IVector(DependencyObject) {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetDescribedBy(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetDescribedBy(element);
     }
-    pub fn get_FlowsToProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getFlowsToProperty();
+    pub fn getFlowsToProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getFlowsToProperty();
     }
     pub fn GetFlowsTo(element: *DependencyObject) core.HResult!*IVector(DependencyObject) {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetFlowsTo(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetFlowsTo(element);
     }
-    pub fn get_FlowsFromProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.getFlowsFromProperty();
+    pub fn getFlowsFromProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.getFlowsFromProperty();
     }
     pub fn GetFlowsFrom(element: *DependencyObject) core.HResult!*IVector(DependencyObject) {
-        const factory = @This().IAutomationPropertiesStatics5Cache.get();
-        return try factory.GetFlowsFrom(element);
+        const _f = @This().IAutomationPropertiesStatics5Cache.get();
+        return try _f.GetFlowsFrom(element);
     }
-    pub fn get_AccessibilityViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics2Cache.get();
-        return try factory.getAccessibilityViewProperty();
+    pub fn getAccessibilityViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics2Cache.get();
+        return try _f.getAccessibilityViewProperty();
     }
     pub fn GetAccessibilityView(element: *DependencyObject) core.HResult!AccessibilityView {
-        const factory = @This().IAutomationPropertiesStatics2Cache.get();
-        return try factory.GetAccessibilityView(element);
+        const _f = @This().IAutomationPropertiesStatics2Cache.get();
+        return try _f.GetAccessibilityView(element);
     }
     pub fn SetAccessibilityView(element: *DependencyObject, value: AccessibilityView) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics2Cache.get();
-        return try factory.SetAccessibilityView(element, value);
+        const _f = @This().IAutomationPropertiesStatics2Cache.get();
+        return try _f.SetAccessibilityView(element, value);
     }
-    pub fn get_ControlledPeersProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics2Cache.get();
-        return try factory.getControlledPeersProperty();
+    pub fn getControlledPeersProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics2Cache.get();
+        return try _f.getControlledPeersProperty();
     }
     pub fn GetControlledPeers(element: *DependencyObject) core.HResult!*IVector(UIElement) {
-        const factory = @This().IAutomationPropertiesStatics2Cache.get();
-        return try factory.GetControlledPeers(element);
+        const _f = @This().IAutomationPropertiesStatics2Cache.get();
+        return try _f.GetControlledPeers(element);
     }
-    pub fn get_IsDialogProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics8Cache.get();
-        return try factory.getIsDialogProperty();
+    pub fn getIsDialogProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics8Cache.get();
+        return try _f.getIsDialogProperty();
     }
     pub fn GetIsDialog(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IAutomationPropertiesStatics8Cache.get();
-        return try factory.GetIsDialog(element);
+        const _f = @This().IAutomationPropertiesStatics8Cache.get();
+        return try _f.GetIsDialog(element);
     }
     pub fn SetIsDialog(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics8Cache.get();
-        return try factory.SetIsDialog(element, value);
+        const _f = @This().IAutomationPropertiesStatics8Cache.get();
+        return try _f.SetIsDialog(element, value);
     }
-    pub fn get_PositionInSetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.getPositionInSetProperty();
+    pub fn getPositionInSetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.getPositionInSetProperty();
     }
     pub fn GetPositionInSet(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.GetPositionInSet(element);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.GetPositionInSet(element);
     }
     pub fn SetPositionInSet(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.SetPositionInSet(element, value);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.SetPositionInSet(element, value);
     }
-    pub fn get_SizeOfSetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.getSizeOfSetProperty();
+    pub fn getSizeOfSetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.getSizeOfSetProperty();
     }
     pub fn GetSizeOfSet(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.GetSizeOfSet(element);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.GetSizeOfSet(element);
     }
     pub fn SetSizeOfSet(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.SetSizeOfSet(element, value);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.SetSizeOfSet(element, value);
     }
-    pub fn get_LevelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.getLevelProperty();
+    pub fn getLevelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.getLevelProperty();
     }
     pub fn GetLevel(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.GetLevel(element);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.GetLevel(element);
     }
     pub fn SetLevel(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.SetLevel(element, value);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.SetLevel(element, value);
     }
-    pub fn get_AnnotationsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.getAnnotationsProperty();
+    pub fn getAnnotationsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.getAnnotationsProperty();
     }
     pub fn GetAnnotations(element: *DependencyObject) core.HResult!*IVector(AutomationAnnotation) {
-        const factory = @This().IAutomationPropertiesStatics3Cache.get();
-        return try factory.GetAnnotations(element);
+        const _f = @This().IAutomationPropertiesStatics3Cache.get();
+        return try _f.GetAnnotations(element);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.AutomationProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -731,9 +731,9 @@ pub const DockPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DockPositionProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDockPatternIdentifiersStaticsCache.get();
-        return try factory.getDockPositionProperty();
+    pub fn getDockPositionProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDockPatternIdentifiersStaticsCache.get();
+        return try _f.getDockPositionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.DockPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -755,21 +755,21 @@ pub const DragPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DropEffectProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDragPatternIdentifiersStaticsCache.get();
-        return try factory.getDropEffectProperty();
+    pub fn getDropEffectProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDragPatternIdentifiersStaticsCache.get();
+        return try _f.getDropEffectProperty();
     }
-    pub fn get_DropEffectsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDragPatternIdentifiersStaticsCache.get();
-        return try factory.getDropEffectsProperty();
+    pub fn getDropEffectsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDragPatternIdentifiersStaticsCache.get();
+        return try _f.getDropEffectsProperty();
     }
-    pub fn get_GrabbedItemsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDragPatternIdentifiersStaticsCache.get();
-        return try factory.getGrabbedItemsProperty();
+    pub fn getGrabbedItemsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDragPatternIdentifiersStaticsCache.get();
+        return try _f.getGrabbedItemsProperty();
     }
-    pub fn get_IsGrabbedProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDragPatternIdentifiersStaticsCache.get();
-        return try factory.getIsGrabbedProperty();
+    pub fn getIsGrabbedProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDragPatternIdentifiersStaticsCache.get();
+        return try _f.getIsGrabbedProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.DragPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -783,13 +783,13 @@ pub const DropTargetPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DropTargetEffectProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDropTargetPatternIdentifiersStaticsCache.get();
-        return try factory.getDropTargetEffectProperty();
+    pub fn getDropTargetEffectProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDropTargetPatternIdentifiersStaticsCache.get();
+        return try _f.getDropTargetEffectProperty();
     }
-    pub fn get_DropTargetEffectsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IDropTargetPatternIdentifiersStaticsCache.get();
-        return try factory.getDropTargetEffectsProperty();
+    pub fn getDropTargetEffectsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IDropTargetPatternIdentifiersStaticsCache.get();
+        return try _f.getDropTargetEffectsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.DropTargetPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -803,9 +803,9 @@ pub const ExpandCollapsePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ExpandCollapseStateProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IExpandCollapsePatternIdentifiersStaticsCache.get();
-        return try factory.getExpandCollapseStateProperty();
+    pub fn getExpandCollapseStateProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IExpandCollapsePatternIdentifiersStaticsCache.get();
+        return try _f.getExpandCollapseStateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ExpandCollapsePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -825,25 +825,25 @@ pub const GridItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ColumnProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
-        return try factory.getColumnProperty();
+    pub fn getColumnProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridItemPatternIdentifiersStaticsCache.get();
+        return try _f.getColumnProperty();
     }
-    pub fn get_ColumnSpanProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
-        return try factory.getColumnSpanProperty();
+    pub fn getColumnSpanProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridItemPatternIdentifiersStaticsCache.get();
+        return try _f.getColumnSpanProperty();
     }
-    pub fn get_ContainingGridProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
-        return try factory.getContainingGridProperty();
+    pub fn getContainingGridProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridItemPatternIdentifiersStaticsCache.get();
+        return try _f.getContainingGridProperty();
     }
-    pub fn get_RowProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
-        return try factory.getRowProperty();
+    pub fn getRowProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridItemPatternIdentifiersStaticsCache.get();
+        return try _f.getRowProperty();
     }
-    pub fn get_RowSpanProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridItemPatternIdentifiersStaticsCache.get();
-        return try factory.getRowSpanProperty();
+    pub fn getRowSpanProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridItemPatternIdentifiersStaticsCache.get();
+        return try _f.getRowSpanProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.GridItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -857,13 +857,13 @@ pub const GridPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ColumnCountProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridPatternIdentifiersStaticsCache.get();
-        return try factory.getColumnCountProperty();
+    pub fn getColumnCountProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridPatternIdentifiersStaticsCache.get();
+        return try _f.getColumnCountProperty();
     }
-    pub fn get_RowCountProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IGridPatternIdentifiersStaticsCache.get();
-        return try factory.getRowCountProperty();
+    pub fn getRowCountProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IGridPatternIdentifiersStaticsCache.get();
+        return try _f.getRowCountProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.GridPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3251,13 +3251,13 @@ pub const MultipleViewPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CurrentViewProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IMultipleViewPatternIdentifiersStaticsCache.get();
-        return try factory.getCurrentViewProperty();
+    pub fn getCurrentViewProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IMultipleViewPatternIdentifiersStaticsCache.get();
+        return try _f.getCurrentViewProperty();
     }
-    pub fn get_SupportedViewsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IMultipleViewPatternIdentifiersStaticsCache.get();
-        return try factory.getSupportedViewsProperty();
+    pub fn getSupportedViewsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IMultipleViewPatternIdentifiersStaticsCache.get();
+        return try _f.getSupportedViewsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.MultipleViewPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3271,29 +3271,29 @@ pub const RangeValuePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsReadOnlyProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
-        return try factory.getIsReadOnlyProperty();
+    pub fn getIsReadOnlyProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IRangeValuePatternIdentifiersStaticsCache.get();
+        return try _f.getIsReadOnlyProperty();
     }
-    pub fn get_LargeChangeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
-        return try factory.getLargeChangeProperty();
+    pub fn getLargeChangeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IRangeValuePatternIdentifiersStaticsCache.get();
+        return try _f.getLargeChangeProperty();
     }
-    pub fn get_MaximumProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
-        return try factory.getMaximumProperty();
+    pub fn getMaximumProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IRangeValuePatternIdentifiersStaticsCache.get();
+        return try _f.getMaximumProperty();
     }
-    pub fn get_MinimumProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
-        return try factory.getMinimumProperty();
+    pub fn getMinimumProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IRangeValuePatternIdentifiersStaticsCache.get();
+        return try _f.getMinimumProperty();
     }
-    pub fn get_SmallChangeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
-        return try factory.getSmallChangeProperty();
+    pub fn getSmallChangeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IRangeValuePatternIdentifiersStaticsCache.get();
+        return try _f.getSmallChangeProperty();
     }
-    pub fn get_ValueProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IRangeValuePatternIdentifiersStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IRangeValuePatternIdentifiersStaticsCache.get();
+        return try _f.getValueProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.RangeValuePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3319,33 +3319,33 @@ pub const ScrollPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HorizontallyScrollableProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getHorizontallyScrollableProperty();
+    pub fn getHorizontallyScrollableProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getHorizontallyScrollableProperty();
     }
-    pub fn get_HorizontalScrollPercentProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getHorizontalScrollPercentProperty();
+    pub fn getHorizontalScrollPercentProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getHorizontalScrollPercentProperty();
     }
-    pub fn get_HorizontalViewSizeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getHorizontalViewSizeProperty();
+    pub fn getHorizontalViewSizeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getHorizontalViewSizeProperty();
     }
-    pub fn get_NoScroll() core.HResult!f64 {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getNoScroll();
+    pub fn getNoScroll() core.HResult!f64 {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getNoScroll();
     }
-    pub fn get_VerticallyScrollableProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getVerticallyScrollableProperty();
+    pub fn getVerticallyScrollableProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getVerticallyScrollableProperty();
     }
-    pub fn get_VerticalScrollPercentProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getVerticalScrollPercentProperty();
+    pub fn getVerticalScrollPercentProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getVerticalScrollPercentProperty();
     }
-    pub fn get_VerticalViewSizeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IScrollPatternIdentifiersStaticsCache.get();
-        return try factory.getVerticalViewSizeProperty();
+    pub fn getVerticalViewSizeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IScrollPatternIdentifiersStaticsCache.get();
+        return try _f.getVerticalViewSizeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ScrollPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3359,13 +3359,13 @@ pub const SelectionItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsSelectedProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ISelectionItemPatternIdentifiersStaticsCache.get();
-        return try factory.getIsSelectedProperty();
+    pub fn getIsSelectedProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ISelectionItemPatternIdentifiersStaticsCache.get();
+        return try _f.getIsSelectedProperty();
     }
-    pub fn get_SelectionContainerProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ISelectionItemPatternIdentifiersStaticsCache.get();
-        return try factory.getSelectionContainerProperty();
+    pub fn getSelectionContainerProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ISelectionItemPatternIdentifiersStaticsCache.get();
+        return try _f.getSelectionContainerProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.SelectionItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3379,17 +3379,17 @@ pub const SelectionPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CanSelectMultipleProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ISelectionPatternIdentifiersStaticsCache.get();
-        return try factory.getCanSelectMultipleProperty();
+    pub fn getCanSelectMultipleProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ISelectionPatternIdentifiersStaticsCache.get();
+        return try _f.getCanSelectMultipleProperty();
     }
-    pub fn get_IsSelectionRequiredProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ISelectionPatternIdentifiersStaticsCache.get();
-        return try factory.getIsSelectionRequiredProperty();
+    pub fn getIsSelectionRequiredProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ISelectionPatternIdentifiersStaticsCache.get();
+        return try _f.getIsSelectionRequiredProperty();
     }
-    pub fn get_SelectionProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ISelectionPatternIdentifiersStaticsCache.get();
-        return try factory.getSelectionProperty();
+    pub fn getSelectionProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ISelectionPatternIdentifiersStaticsCache.get();
+        return try _f.getSelectionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.SelectionPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3403,9 +3403,9 @@ pub const SpreadsheetItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FormulaProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ISpreadsheetItemPatternIdentifiersStaticsCache.get();
-        return try factory.getFormulaProperty();
+    pub fn getFormulaProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ISpreadsheetItemPatternIdentifiersStaticsCache.get();
+        return try _f.getFormulaProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.SpreadsheetItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3419,33 +3419,33 @@ pub const StylesPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ExtendedPropertiesProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getExtendedPropertiesProperty();
+    pub fn getExtendedPropertiesProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getExtendedPropertiesProperty();
     }
-    pub fn get_FillColorProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getFillColorProperty();
+    pub fn getFillColorProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getFillColorProperty();
     }
-    pub fn get_FillPatternColorProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getFillPatternColorProperty();
+    pub fn getFillPatternColorProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getFillPatternColorProperty();
     }
-    pub fn get_FillPatternStyleProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getFillPatternStyleProperty();
+    pub fn getFillPatternStyleProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getFillPatternStyleProperty();
     }
-    pub fn get_ShapeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getShapeProperty();
+    pub fn getShapeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getShapeProperty();
     }
-    pub fn get_StyleIdProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getStyleIdProperty();
+    pub fn getStyleIdProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getStyleIdProperty();
     }
-    pub fn get_StyleNameProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IStylesPatternIdentifiersStaticsCache.get();
-        return try factory.getStyleNameProperty();
+    pub fn getStyleNameProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IStylesPatternIdentifiersStaticsCache.get();
+        return try _f.getStyleNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.StylesPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3472,13 +3472,13 @@ pub const TableItemPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ColumnHeaderItemsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITableItemPatternIdentifiersStaticsCache.get();
-        return try factory.getColumnHeaderItemsProperty();
+    pub fn getColumnHeaderItemsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITableItemPatternIdentifiersStaticsCache.get();
+        return try _f.getColumnHeaderItemsProperty();
     }
-    pub fn get_RowHeaderItemsProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITableItemPatternIdentifiersStaticsCache.get();
-        return try factory.getRowHeaderItemsProperty();
+    pub fn getRowHeaderItemsProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITableItemPatternIdentifiersStaticsCache.get();
+        return try _f.getRowHeaderItemsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.TableItemPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3492,17 +3492,17 @@ pub const TablePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ColumnHeadersProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITablePatternIdentifiersStaticsCache.get();
-        return try factory.getColumnHeadersProperty();
+    pub fn getColumnHeadersProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITablePatternIdentifiersStaticsCache.get();
+        return try _f.getColumnHeadersProperty();
     }
-    pub fn get_RowHeadersProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITablePatternIdentifiersStaticsCache.get();
-        return try factory.getRowHeadersProperty();
+    pub fn getRowHeadersProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITablePatternIdentifiersStaticsCache.get();
+        return try _f.getRowHeadersProperty();
     }
-    pub fn get_RowOrColumnMajorProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITablePatternIdentifiersStaticsCache.get();
-        return try factory.getRowOrColumnMajorProperty();
+    pub fn getRowOrColumnMajorProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITablePatternIdentifiersStaticsCache.get();
+        return try _f.getRowOrColumnMajorProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.TablePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3516,9 +3516,9 @@ pub const TogglePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ToggleStateProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITogglePatternIdentifiersStaticsCache.get();
-        return try factory.getToggleStateProperty();
+    pub fn getToggleStateProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITogglePatternIdentifiersStaticsCache.get();
+        return try _f.getToggleStateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.TogglePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3537,21 +3537,21 @@ pub const TransformPattern2Identifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CanZoomProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
-        return try factory.getCanZoomProperty();
+    pub fn getCanZoomProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPattern2IdentifiersStaticsCache.get();
+        return try _f.getCanZoomProperty();
     }
-    pub fn get_ZoomLevelProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
-        return try factory.getZoomLevelProperty();
+    pub fn getZoomLevelProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPattern2IdentifiersStaticsCache.get();
+        return try _f.getZoomLevelProperty();
     }
-    pub fn get_MaxZoomProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
-        return try factory.getMaxZoomProperty();
+    pub fn getMaxZoomProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPattern2IdentifiersStaticsCache.get();
+        return try _f.getMaxZoomProperty();
     }
-    pub fn get_MinZoomProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPattern2IdentifiersStaticsCache.get();
-        return try factory.getMinZoomProperty();
+    pub fn getMinZoomProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPattern2IdentifiersStaticsCache.get();
+        return try _f.getMinZoomProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.TransformPattern2Identifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3565,17 +3565,17 @@ pub const TransformPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CanMoveProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPatternIdentifiersStaticsCache.get();
-        return try factory.getCanMoveProperty();
+    pub fn getCanMoveProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPatternIdentifiersStaticsCache.get();
+        return try _f.getCanMoveProperty();
     }
-    pub fn get_CanResizeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPatternIdentifiersStaticsCache.get();
-        return try factory.getCanResizeProperty();
+    pub fn getCanResizeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPatternIdentifiersStaticsCache.get();
+        return try _f.getCanResizeProperty();
     }
-    pub fn get_CanRotateProperty() core.HResult!*AutomationProperty {
-        const factory = @This().ITransformPatternIdentifiersStaticsCache.get();
-        return try factory.getCanRotateProperty();
+    pub fn getCanRotateProperty() core.HResult!*AutomationProperty {
+        const _f = @This().ITransformPatternIdentifiersStaticsCache.get();
+        return try _f.getCanRotateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.TransformPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3589,13 +3589,13 @@ pub const ValuePatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsReadOnlyProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IValuePatternIdentifiersStaticsCache.get();
-        return try factory.getIsReadOnlyProperty();
+    pub fn getIsReadOnlyProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IValuePatternIdentifiersStaticsCache.get();
+        return try _f.getIsReadOnlyProperty();
     }
-    pub fn get_ValueProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IValuePatternIdentifiersStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IValuePatternIdentifiersStaticsCache.get();
+        return try _f.getValueProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.ValuePatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3616,29 +3616,29 @@ pub const WindowPatternIdentifiers = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CanMaximizeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
-        return try factory.getCanMaximizeProperty();
+    pub fn getCanMaximizeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IWindowPatternIdentifiersStaticsCache.get();
+        return try _f.getCanMaximizeProperty();
     }
-    pub fn get_CanMinimizeProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
-        return try factory.getCanMinimizeProperty();
+    pub fn getCanMinimizeProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IWindowPatternIdentifiersStaticsCache.get();
+        return try _f.getCanMinimizeProperty();
     }
-    pub fn get_IsModalProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
-        return try factory.getIsModalProperty();
+    pub fn getIsModalProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IWindowPatternIdentifiersStaticsCache.get();
+        return try _f.getIsModalProperty();
     }
-    pub fn get_IsTopmostProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
-        return try factory.getIsTopmostProperty();
+    pub fn getIsTopmostProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IWindowPatternIdentifiersStaticsCache.get();
+        return try _f.getIsTopmostProperty();
     }
-    pub fn get_WindowInteractionStateProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
-        return try factory.getWindowInteractionStateProperty();
+    pub fn getWindowInteractionStateProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IWindowPatternIdentifiersStaticsCache.get();
+        return try _f.getWindowInteractionStateProperty();
     }
-    pub fn get_WindowVisualStateProperty() core.HResult!*AutomationProperty {
-        const factory = @This().IWindowPatternIdentifiersStaticsCache.get();
-        return try factory.getWindowVisualStateProperty();
+    pub fn getWindowVisualStateProperty() core.HResult!*AutomationProperty {
+        const _f = @This().IWindowPatternIdentifiersStaticsCache.get();
+        return try _f.getWindowVisualStateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Automation.WindowPatternIdentifiers";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3666,17 +3666,17 @@ const IVector = @import("../../Foundation/Collections.zig").IVector;
 const FactoryCache = @import("../../core.zig").FactoryCache;
 const DependencyProperty = @import("../Xaml.zig").DependencyProperty;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const AutomationControlType = @import("./Peers.zig").AutomationControlType;
+const AutomationControlType = @import("./Automation/Peers.zig").AutomationControlType;
 const DependencyObject = @import("../Xaml.zig").DependencyObject;
 const HSTRING = @import("../../root.zig").HSTRING;
-const AutomationHeadingLevel = @import("./Peers.zig").AutomationHeadingLevel;
+const AutomationHeadingLevel = @import("./Automation/Peers.zig").AutomationHeadingLevel;
 const IInspectable = @import("../../Foundation.zig").IInspectable;
-const AutomationLiveSetting = @import("./Peers.zig").AutomationLiveSetting;
+const AutomationLiveSetting = @import("./Automation/Peers.zig").AutomationLiveSetting;
 const UIElement = @import("../Xaml.zig").UIElement;
 const HRESULT = @import("../../root.zig").HRESULT;
 const core = @import("../../root.zig").core;
-const AccessibilityView = @import("./Peers.zig").AccessibilityView;
-const AutomationLandmarkType = @import("./Peers.zig").AutomationLandmarkType;
+const AccessibilityView = @import("./Automation/Peers.zig").AccessibilityView;
+const AutomationLandmarkType = @import("./Automation/Peers.zig").AutomationLandmarkType;
 pub const Peers = @import("./Automation/Peers.zig");
 pub const Provider = @import("./Automation/Provider.zig");
 pub const Text = @import("./Automation/Text.zig");

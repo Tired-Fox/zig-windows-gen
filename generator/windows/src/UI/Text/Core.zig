@@ -469,9 +469,9 @@ pub const CoreTextServicesConstants = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HiddenCharacter() core.HResult!u16 {
-        const factory = @This().ICoreTextServicesStaticsCache.get();
-        return try factory.getHiddenCharacter();
+    pub fn getHiddenCharacter() core.HResult!u16 {
+        const _f = @This().ICoreTextServicesStaticsCache.get();
+        return try _f.getHiddenCharacter();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.Core.CoreTextServicesConstants";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -499,8 +499,8 @@ pub const CoreTextServicesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CoreTextServicesManager {
-        const factory = @This().ICoreTextServicesManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ICoreTextServicesManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.Core.CoreTextServicesManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

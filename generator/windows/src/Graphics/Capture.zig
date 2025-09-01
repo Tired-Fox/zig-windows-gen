@@ -72,12 +72,12 @@ pub const Direct3D11CaptureFramePool = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
-        const factory = @This().IDirect3D11CaptureFramePoolStaticsCache.get();
-        return try factory.Create(device, pixelFormat, numberOfBuffers, size);
+        const _f = @This().IDirect3D11CaptureFramePoolStaticsCache.get();
+        return try _f.Create(device, pixelFormat, numberOfBuffers, size);
     }
     pub fn CreateFreeThreaded(device: *IDirect3DDevice, pixelFormat: DirectXPixelFormat, numberOfBuffers: i32, size: SizeInt32) core.HResult!*Direct3D11CaptureFramePool {
-        const factory = @This().IDirect3D11CaptureFramePoolStatics2Cache.get();
-        return try factory.CreateFreeThreaded(device, pixelFormat, numberOfBuffers, size);
+        const _f = @This().IDirect3D11CaptureFramePoolStatics2Cache.get();
+        return try _f.CreateFreeThreaded(device, pixelFormat, numberOfBuffers, size);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.Direct3D11CaptureFramePool";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -93,8 +93,8 @@ pub const GraphicsCaptureAccess = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAccessAsync(request: GraphicsCaptureAccessKind) core.HResult!*IAsyncOperation(AppCapabilityAccessStatus) {
-        const factory = @This().IGraphicsCaptureAccessStaticsCache.get();
-        return try factory.RequestAccessAsync(request);
+        const _f = @This().IGraphicsCaptureAccessStaticsCache.get();
+        return try _f.RequestAccessAsync(request);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.GraphicsCaptureAccess";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -130,16 +130,16 @@ pub const GraphicsCaptureItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateFromWindowId(windowId: WindowId) core.HResult!*GraphicsCaptureItem {
-        const factory = @This().IGraphicsCaptureItemStatics2Cache.get();
-        return try factory.TryCreateFromWindowId(windowId);
+        const _f = @This().IGraphicsCaptureItemStatics2Cache.get();
+        return try _f.TryCreateFromWindowId(windowId);
     }
     pub fn TryCreateFromDisplayId(displayId: DisplayId) core.HResult!*GraphicsCaptureItem {
-        const factory = @This().IGraphicsCaptureItemStatics2Cache.get();
-        return try factory.TryCreateFromDisplayId(displayId);
+        const _f = @This().IGraphicsCaptureItemStatics2Cache.get();
+        return try _f.TryCreateFromDisplayId(displayId);
     }
     pub fn CreateFromVisual(visual: *Visual) core.HResult!*GraphicsCaptureItem {
-        const factory = @This().IGraphicsCaptureItemStaticsCache.get();
-        return try factory.CreateFromVisual(visual);
+        const _f = @This().IGraphicsCaptureItemStaticsCache.get();
+        return try _f.CreateFromVisual(visual);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.GraphicsCaptureItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -245,8 +245,8 @@ pub const GraphicsCaptureSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IGraphicsCaptureSessionStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().IGraphicsCaptureSessionStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Capture.GraphicsCaptureSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

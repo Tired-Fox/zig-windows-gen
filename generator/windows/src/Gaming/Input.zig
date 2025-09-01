@@ -72,28 +72,28 @@ pub const ArcadeStick = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*ArcadeStick {
-        const factory = @This().IArcadeStickStatics2Cache.get();
-        return try factory.FromGameController(gameController);
+        const _f = @This().IArcadeStickStatics2Cache.get();
+        return try _f.FromGameController(gameController);
     }
-    pub fn add_ArcadeStickAdded(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
-        const factory = @This().IArcadeStickStaticsCache.get();
-        return try factory.addArcadeStickAdded(value);
+    pub fn addArcadeStickAdded(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
+        const _f = @This().IArcadeStickStaticsCache.get();
+        return try _f.addArcadeStickAdded(value);
     }
-    pub fn remove_ArcadeStickAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IArcadeStickStaticsCache.get();
-        return try factory.removeArcadeStickAdded(token);
+    pub fn removeArcadeStickAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IArcadeStickStaticsCache.get();
+        return try _f.removeArcadeStickAdded(token);
     }
-    pub fn add_ArcadeStickRemoved(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
-        const factory = @This().IArcadeStickStaticsCache.get();
-        return try factory.addArcadeStickRemoved(value);
+    pub fn addArcadeStickRemoved(value: *EventHandler(ArcadeStick)) core.HResult!EventRegistrationToken {
+        const _f = @This().IArcadeStickStaticsCache.get();
+        return try _f.addArcadeStickRemoved(value);
     }
-    pub fn remove_ArcadeStickRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IArcadeStickStaticsCache.get();
-        return try factory.removeArcadeStickRemoved(token);
+    pub fn removeArcadeStickRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IArcadeStickStaticsCache.get();
+        return try _f.removeArcadeStickRemoved(token);
     }
-    pub fn get_ArcadeSticks() core.HResult!*IVectorView(ArcadeStick) {
-        const factory = @This().IArcadeStickStaticsCache.get();
-        return try factory.getArcadeSticks();
+    pub fn getArcadeSticks() core.HResult!*IVectorView(ArcadeStick) {
+        const _f = @This().IArcadeStickStaticsCache.get();
+        return try _f.getArcadeSticks();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ArcadeStick";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -199,29 +199,29 @@ pub const FlightStick = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_FlightStickAdded(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
-        const factory = @This().IFlightStickStaticsCache.get();
-        return try factory.addFlightStickAdded(value);
+    pub fn addFlightStickAdded(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
+        const _f = @This().IFlightStickStaticsCache.get();
+        return try _f.addFlightStickAdded(value);
     }
-    pub fn remove_FlightStickAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IFlightStickStaticsCache.get();
-        return try factory.removeFlightStickAdded(token);
+    pub fn removeFlightStickAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IFlightStickStaticsCache.get();
+        return try _f.removeFlightStickAdded(token);
     }
-    pub fn add_FlightStickRemoved(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
-        const factory = @This().IFlightStickStaticsCache.get();
-        return try factory.addFlightStickRemoved(value);
+    pub fn addFlightStickRemoved(value: *EventHandler(FlightStick)) core.HResult!EventRegistrationToken {
+        const _f = @This().IFlightStickStaticsCache.get();
+        return try _f.addFlightStickRemoved(value);
     }
-    pub fn remove_FlightStickRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IFlightStickStaticsCache.get();
-        return try factory.removeFlightStickRemoved(token);
+    pub fn removeFlightStickRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IFlightStickStaticsCache.get();
+        return try _f.removeFlightStickRemoved(token);
     }
-    pub fn get_FlightSticks() core.HResult!*IVectorView(FlightStick) {
-        const factory = @This().IFlightStickStaticsCache.get();
-        return try factory.getFlightSticks();
+    pub fn getFlightSticks() core.HResult!*IVectorView(FlightStick) {
+        const _f = @This().IFlightStickStaticsCache.get();
+        return try _f.getFlightSticks();
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*FlightStick {
-        const factory = @This().IFlightStickStaticsCache.get();
-        return try factory.FromGameController(gameController);
+        const _f = @This().IFlightStickStaticsCache.get();
+        return try _f.FromGameController(gameController);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.FlightStick";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -415,28 +415,28 @@ pub const Gamepad = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*Gamepad {
-        const factory = @This().IGamepadStatics2Cache.get();
-        return try factory.FromGameController(gameController);
+        const _f = @This().IGamepadStatics2Cache.get();
+        return try _f.FromGameController(gameController);
     }
-    pub fn add_GamepadAdded(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
-        const factory = @This().IGamepadStaticsCache.get();
-        return try factory.addGamepadAdded(value);
+    pub fn addGamepadAdded(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
+        const _f = @This().IGamepadStaticsCache.get();
+        return try _f.addGamepadAdded(value);
     }
-    pub fn remove_GamepadAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGamepadStaticsCache.get();
-        return try factory.removeGamepadAdded(token);
+    pub fn removeGamepadAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGamepadStaticsCache.get();
+        return try _f.removeGamepadAdded(token);
     }
-    pub fn add_GamepadRemoved(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
-        const factory = @This().IGamepadStaticsCache.get();
-        return try factory.addGamepadRemoved(value);
+    pub fn addGamepadRemoved(value: *EventHandler(Gamepad)) core.HResult!EventRegistrationToken {
+        const _f = @This().IGamepadStaticsCache.get();
+        return try _f.addGamepadRemoved(value);
     }
-    pub fn remove_GamepadRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGamepadStaticsCache.get();
-        return try factory.removeGamepadRemoved(token);
+    pub fn removeGamepadRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGamepadStaticsCache.get();
+        return try _f.removeGamepadRemoved(token);
     }
-    pub fn get_Gamepads() core.HResult!*IVectorView(Gamepad) {
-        const factory = @This().IGamepadStaticsCache.get();
-        return try factory.getGamepads();
+    pub fn getGamepads() core.HResult!*IVectorView(Gamepad) {
+        const _f = @This().IGamepadStaticsCache.get();
+        return try _f.getGamepads();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Gamepad";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1482,28 +1482,28 @@ pub const RacingWheel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*RacingWheel {
-        const factory = @This().IRacingWheelStatics2Cache.get();
-        return try factory.FromGameController(gameController);
+        const _f = @This().IRacingWheelStatics2Cache.get();
+        return try _f.FromGameController(gameController);
     }
-    pub fn add_RacingWheelAdded(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
-        const factory = @This().IRacingWheelStaticsCache.get();
-        return try factory.addRacingWheelAdded(value);
+    pub fn addRacingWheelAdded(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
+        const _f = @This().IRacingWheelStaticsCache.get();
+        return try _f.addRacingWheelAdded(value);
     }
-    pub fn remove_RacingWheelAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IRacingWheelStaticsCache.get();
-        return try factory.removeRacingWheelAdded(token);
+    pub fn removeRacingWheelAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IRacingWheelStaticsCache.get();
+        return try _f.removeRacingWheelAdded(token);
     }
-    pub fn add_RacingWheelRemoved(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
-        const factory = @This().IRacingWheelStaticsCache.get();
-        return try factory.addRacingWheelRemoved(value);
+    pub fn addRacingWheelRemoved(value: *EventHandler(RacingWheel)) core.HResult!EventRegistrationToken {
+        const _f = @This().IRacingWheelStaticsCache.get();
+        return try _f.addRacingWheelRemoved(value);
     }
-    pub fn remove_RacingWheelRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IRacingWheelStaticsCache.get();
-        return try factory.removeRacingWheelRemoved(token);
+    pub fn removeRacingWheelRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IRacingWheelStaticsCache.get();
+        return try _f.removeRacingWheelRemoved(token);
     }
-    pub fn get_RacingWheels() core.HResult!*IVectorView(RacingWheel) {
-        const factory = @This().IRacingWheelStaticsCache.get();
-        return try factory.getRacingWheels();
+    pub fn getRacingWheels() core.HResult!*IVectorView(RacingWheel) {
+        const _f = @This().IRacingWheelStaticsCache.get();
+        return try _f.getRacingWheels();
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.RacingWheel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1667,29 +1667,29 @@ pub const RawGameController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_RawGameControllerAdded(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
-        const factory = @This().IRawGameControllerStaticsCache.get();
-        return try factory.addRawGameControllerAdded(value);
+    pub fn addRawGameControllerAdded(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
+        const _f = @This().IRawGameControllerStaticsCache.get();
+        return try _f.addRawGameControllerAdded(value);
     }
-    pub fn remove_RawGameControllerAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IRawGameControllerStaticsCache.get();
-        return try factory.removeRawGameControllerAdded(token);
+    pub fn removeRawGameControllerAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IRawGameControllerStaticsCache.get();
+        return try _f.removeRawGameControllerAdded(token);
     }
-    pub fn add_RawGameControllerRemoved(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
-        const factory = @This().IRawGameControllerStaticsCache.get();
-        return try factory.addRawGameControllerRemoved(value);
+    pub fn addRawGameControllerRemoved(value: *EventHandler(RawGameController)) core.HResult!EventRegistrationToken {
+        const _f = @This().IRawGameControllerStaticsCache.get();
+        return try _f.addRawGameControllerRemoved(value);
     }
-    pub fn remove_RawGameControllerRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IRawGameControllerStaticsCache.get();
-        return try factory.removeRawGameControllerRemoved(token);
+    pub fn removeRawGameControllerRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IRawGameControllerStaticsCache.get();
+        return try _f.removeRawGameControllerRemoved(token);
     }
-    pub fn get_RawGameControllers() core.HResult!*IVectorView(RawGameController) {
-        const factory = @This().IRawGameControllerStaticsCache.get();
-        return try factory.getRawGameControllers();
+    pub fn getRawGameControllers() core.HResult!*IVectorView(RawGameController) {
+        const _f = @This().IRawGameControllerStaticsCache.get();
+        return try _f.getRawGameControllers();
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*RawGameController {
-        const factory = @This().IRawGameControllerStaticsCache.get();
-        return try factory.FromGameController(gameController);
+        const _f = @This().IRawGameControllerStaticsCache.get();
+        return try _f.FromGameController(gameController);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.RawGameController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1786,29 +1786,29 @@ pub const UINavigationController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_UINavigationControllerAdded(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
-        const factory = @This().IUINavigationControllerStaticsCache.get();
-        return try factory.addUINavigationControllerAdded(value);
+    pub fn addUINavigationControllerAdded(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
+        const _f = @This().IUINavigationControllerStaticsCache.get();
+        return try _f.addUINavigationControllerAdded(value);
     }
-    pub fn remove_UINavigationControllerAdded(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IUINavigationControllerStaticsCache.get();
-        return try factory.removeUINavigationControllerAdded(token);
+    pub fn removeUINavigationControllerAdded(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IUINavigationControllerStaticsCache.get();
+        return try _f.removeUINavigationControllerAdded(token);
     }
-    pub fn add_UINavigationControllerRemoved(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
-        const factory = @This().IUINavigationControllerStaticsCache.get();
-        return try factory.addUINavigationControllerRemoved(value);
+    pub fn addUINavigationControllerRemoved(value: *EventHandler(UINavigationController)) core.HResult!EventRegistrationToken {
+        const _f = @This().IUINavigationControllerStaticsCache.get();
+        return try _f.addUINavigationControllerRemoved(value);
     }
-    pub fn remove_UINavigationControllerRemoved(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IUINavigationControllerStaticsCache.get();
-        return try factory.removeUINavigationControllerRemoved(token);
+    pub fn removeUINavigationControllerRemoved(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IUINavigationControllerStaticsCache.get();
+        return try _f.removeUINavigationControllerRemoved(token);
     }
-    pub fn get_UINavigationControllers() core.HResult!*IVectorView(UINavigationController) {
-        const factory = @This().IUINavigationControllerStaticsCache.get();
-        return try factory.getUINavigationControllers();
+    pub fn getUINavigationControllers() core.HResult!*IVectorView(UINavigationController) {
+        const _f = @This().IUINavigationControllerStaticsCache.get();
+        return try _f.getUINavigationControllers();
     }
     pub fn FromGameController(gameController: *IGameController) core.HResult!*UINavigationController {
-        const factory = @This().IUINavigationControllerStatics2Cache.get();
-        return try factory.FromGameController(gameController);
+        const _f = @This().IUINavigationControllerStatics2Cache.get();
+        return try _f.FromGameController(gameController);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.UINavigationController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1833,7 +1833,7 @@ const TrustLevel = @import("../root.zig").TrustLevel;
 const UserChangedEventArgs = @import("../System.zig").UserChangedEventArgs;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../root.zig").HSTRING;
-const ForceFeedbackMotor = @import("./ForceFeedback.zig").ForceFeedbackMotor;
+const ForceFeedbackMotor = @import("./Input/ForceFeedback.zig").ForceFeedbackMotor;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const EventHandler = @import("../Foundation.zig").EventHandler;
 const HRESULT = @import("../root.zig").HRESULT;

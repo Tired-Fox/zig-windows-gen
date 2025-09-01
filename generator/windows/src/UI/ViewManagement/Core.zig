@@ -20,12 +20,12 @@ pub const CoreFrameworkInputView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*CoreFrameworkInputView {
-        const factory = @This().ICoreFrameworkInputViewStaticsCache.get();
-        return try factory.GetForUIContext(context);
+        const _f = @This().ICoreFrameworkInputViewStaticsCache.get();
+        return try _f.GetForUIContext(context);
     }
     pub fn GetForCurrentView() core.HResult!*CoreFrameworkInputView {
-        const factory = @This().ICoreFrameworkInputViewStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ICoreFrameworkInputViewStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.CoreFrameworkInputView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -198,12 +198,12 @@ pub const CoreInputView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*CoreInputView {
-        const factory = @This().ICoreInputViewStatics2Cache.get();
-        return try factory.GetForUIContext(context);
+        const _f = @This().ICoreInputViewStatics2Cache.get();
+        return try _f.GetForUIContext(context);
     }
     pub fn GetForCurrentView() core.HResult!*CoreInputView {
-        const factory = @This().ICoreInputViewStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ICoreInputViewStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.CoreInputView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -591,9 +591,9 @@ pub const ICoreInputView3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryShow(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
+    pub fn TryShowWithTy(self: *@This(), ty: CoreInputViewKind) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.TryShow(@ptrCast(self), ty, &_r);
+        const _c = self.vtable.TryShowWithTy(@ptrCast(self), ty, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -616,7 +616,7 @@ pub const ICoreInputView3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryShow: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        TryShow: *const fn(self: *anyopaque, ty: CoreInputViewKind, _r: *bool) callconv(.winapi) HRESULT,
+        TryShowWithTy: *const fn(self: *anyopaque, ty: CoreInputViewKind, _r: *bool) callconv(.winapi) HRESULT,
         TryHide: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
@@ -1050,8 +1050,8 @@ pub const UISettingsController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestDefaultAsync() core.HResult!*IAsyncOperation(UISettingsController) {
-        const factory = @This().IUISettingsControllerStaticsCache.get();
-        return try factory.RequestDefaultAsync();
+        const _f = @This().IUISettingsControllerStaticsCache.get();
+        return try _f.RequestDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.UI.ViewManagement.Core.UISettingsController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

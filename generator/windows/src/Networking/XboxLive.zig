@@ -352,9 +352,9 @@ pub const IXboxLiveEndpointPairTemplate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
+    pub fn CreateEndpointPairForPortsAsyncWithBehaviors(self: *@This(), deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors) core.HResult!*IAsyncOperation(XboxLiveEndpointPairCreationResult) {
         var _r: *IAsyncOperation(XboxLiveEndpointPairCreationResult) = undefined;
-        const _c = self.vtable.CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors(@ptrCast(self), deviceAddress, initiatorPort, acceptorPort, behaviors, &_r);
+        const _c = self.vtable.CreateEndpointPairForPortsAsyncWithBehaviors(@ptrCast(self), deviceAddress, initiatorPort, acceptorPort, behaviors, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -417,7 +417,7 @@ pub const IXboxLiveEndpointPairTemplate = extern struct {
         CreateEndpointPairAsync: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
         CreateEndpointPairAsyncWithBehaviors: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
         CreateEndpointPairForPortsAsync: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
-        CreateEndpointPairForPortsAsyncWithInitiatorPortWithAcceptorPortWithBehaviors: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
+        CreateEndpointPairForPortsAsyncWithBehaviors: *const fn(self: *anyopaque, deviceAddress: *XboxLiveDeviceAddress, initiatorPort: HSTRING, acceptorPort: HSTRING, behaviors: XboxLiveEndpointPairCreationBehaviors, _r: **IAsyncOperation(XboxLiveEndpointPairCreationResult)) callconv(.winapi) HRESULT,
         get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_SocketKind: *const fn(self: *anyopaque, _r: *XboxLiveSocketKind) callconv(.winapi) HRESULT,
         get_InitiatorBoundPortRangeLower: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
@@ -806,24 +806,24 @@ pub const XboxLiveDeviceAddress = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromSnapshotBase64(base64: HSTRING) core.HResult!*XboxLiveDeviceAddress {
-        const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
-        return try factory.CreateFromSnapshotBase64(base64);
+        const _f = @This().IXboxLiveDeviceAddressStaticsCache.get();
+        return try _f.CreateFromSnapshotBase64(base64);
     }
     pub fn CreateFromSnapshotBuffer(buffer: *IBuffer) core.HResult!*XboxLiveDeviceAddress {
-        const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
-        return try factory.CreateFromSnapshotBuffer(buffer);
+        const _f = @This().IXboxLiveDeviceAddressStaticsCache.get();
+        return try _f.CreateFromSnapshotBuffer(buffer);
     }
     pub fn CreateFromSnapshotBytes(buffer: [*]u8) core.HResult!*XboxLiveDeviceAddress {
-        const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
-        return try factory.CreateFromSnapshotBytes(buffer);
+        const _f = @This().IXboxLiveDeviceAddressStaticsCache.get();
+        return try _f.CreateFromSnapshotBytes(buffer);
     }
     pub fn GetLocal() core.HResult!*XboxLiveDeviceAddress {
-        const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
-        return try factory.GetLocal();
+        const _f = @This().IXboxLiveDeviceAddressStaticsCache.get();
+        return try _f.GetLocal();
     }
-    pub fn get_MaxSnapshotBytesSize() core.HResult!u32 {
-        const factory = @This().IXboxLiveDeviceAddressStaticsCache.get();
-        return try factory.getMaxSnapshotBytesSize();
+    pub fn getMaxSnapshotBytesSize() core.HResult!u32 {
+        const _f = @This().IXboxLiveDeviceAddressStaticsCache.get();
+        return try _f.getMaxSnapshotBytesSize();
     }
     pub const NAME: []const u8 = "Windows.Networking.XboxLive.XboxLiveDeviceAddress";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -886,12 +886,12 @@ pub const XboxLiveEndpointPair = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindEndpointPairBySocketAddressBytes(localSocketAddress: [*]u8, remoteSocketAddress: [*]u8) core.HResult!*XboxLiveEndpointPair {
-        const factory = @This().IXboxLiveEndpointPairStaticsCache.get();
-        return try factory.FindEndpointPairBySocketAddressBytes(localSocketAddress, remoteSocketAddress);
+        const _f = @This().IXboxLiveEndpointPairStaticsCache.get();
+        return try _f.FindEndpointPairBySocketAddressBytes(localSocketAddress, remoteSocketAddress);
     }
     pub fn FindEndpointPairByHostNamesAndPorts(localHostName: *HostName, localPort: HSTRING, remoteHostName: *HostName, remotePort: HSTRING) core.HResult!*XboxLiveEndpointPair {
-        const factory = @This().IXboxLiveEndpointPairStaticsCache.get();
-        return try factory.FindEndpointPairByHostNamesAndPorts(localHostName, localPort, remoteHostName, remotePort);
+        const _f = @This().IXboxLiveEndpointPairStaticsCache.get();
+        return try _f.FindEndpointPairByHostNamesAndPorts(localHostName, localPort, remoteHostName, remotePort);
     }
     pub const NAME: []const u8 = "Windows.Networking.XboxLive.XboxLiveEndpointPair";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1022,12 +1022,12 @@ pub const XboxLiveEndpointPairTemplate = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetTemplateByName(name: HSTRING) core.HResult!*XboxLiveEndpointPairTemplate {
-        const factory = @This().IXboxLiveEndpointPairTemplateStaticsCache.get();
-        return try factory.GetTemplateByName(name);
+        const _f = @This().IXboxLiveEndpointPairTemplateStaticsCache.get();
+        return try _f.GetTemplateByName(name);
     }
-    pub fn get_Templates() core.HResult!*IVectorView(XboxLiveEndpointPairTemplate) {
-        const factory = @This().IXboxLiveEndpointPairTemplateStaticsCache.get();
-        return try factory.getTemplates();
+    pub fn getTemplates() core.HResult!*IVectorView(XboxLiveEndpointPairTemplate) {
+        const _f = @This().IXboxLiveEndpointPairTemplateStaticsCache.get();
+        return try _f.getTemplates();
     }
     pub const NAME: []const u8 = "Windows.Networking.XboxLive.XboxLiveEndpointPairTemplate";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1127,48 +1127,48 @@ pub const XboxLiveQualityOfServiceMeasurement = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IXboxLiveQualityOfServiceMeasurement.IID)));
     }
     pub fn PublishPrivatePayloadBytes(payload: [*]u8) core.HResult!void {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.PublishPrivatePayloadBytes(payload);
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.PublishPrivatePayloadBytes(payload);
     }
     pub fn ClearPrivatePayload() core.HResult!void {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.ClearPrivatePayload();
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.ClearPrivatePayload();
     }
-    pub fn get_MaxSimultaneousProbeConnections() core.HResult!u32 {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.getMaxSimultaneousProbeConnections();
+    pub fn getMaxSimultaneousProbeConnections() core.HResult!u32 {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.getMaxSimultaneousProbeConnections();
     }
-    pub fn put_MaxSimultaneousProbeConnections(value: u32) core.HResult!void {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.putMaxSimultaneousProbeConnections(value);
+    pub fn putMaxSimultaneousProbeConnections(value: u32) core.HResult!void {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.putMaxSimultaneousProbeConnections(value);
     }
-    pub fn get_IsSystemOutboundBandwidthConstrained() core.HResult!bool {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.getIsSystemOutboundBandwidthConstrained();
+    pub fn getIsSystemOutboundBandwidthConstrained() core.HResult!bool {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.getIsSystemOutboundBandwidthConstrained();
     }
-    pub fn put_IsSystemOutboundBandwidthConstrained(value: bool) core.HResult!void {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.putIsSystemOutboundBandwidthConstrained(value);
+    pub fn putIsSystemOutboundBandwidthConstrained(value: bool) core.HResult!void {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.putIsSystemOutboundBandwidthConstrained(value);
     }
-    pub fn get_IsSystemInboundBandwidthConstrained() core.HResult!bool {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.getIsSystemInboundBandwidthConstrained();
+    pub fn getIsSystemInboundBandwidthConstrained() core.HResult!bool {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.getIsSystemInboundBandwidthConstrained();
     }
-    pub fn put_IsSystemInboundBandwidthConstrained(value: bool) core.HResult!void {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.putIsSystemInboundBandwidthConstrained(value);
+    pub fn putIsSystemInboundBandwidthConstrained(value: bool) core.HResult!void {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.putIsSystemInboundBandwidthConstrained(value);
     }
-    pub fn get_PublishedPrivatePayload() core.HResult!*IBuffer {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.getPublishedPrivatePayload();
+    pub fn getPublishedPrivatePayload() core.HResult!*IBuffer {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.getPublishedPrivatePayload();
     }
-    pub fn put_PublishedPrivatePayload(value: *IBuffer) core.HResult!void {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.putPublishedPrivatePayload(value);
+    pub fn putPublishedPrivatePayload(value: *IBuffer) core.HResult!void {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.putPublishedPrivatePayload(value);
     }
-    pub fn get_MaxPrivatePayloadSize() core.HResult!u32 {
-        const factory = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
-        return try factory.getMaxPrivatePayloadSize();
+    pub fn getMaxPrivatePayloadSize() core.HResult!u32 {
+        const _f = @This().IXboxLiveQualityOfServiceMeasurementStaticsCache.get();
+        return try _f.getMaxPrivatePayloadSize();
     }
     pub const NAME: []const u8 = "Windows.Networking.XboxLive.XboxLiveQualityOfServiceMeasurement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

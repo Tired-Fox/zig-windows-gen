@@ -1250,9 +1250,9 @@ pub const IPrinting3DModel2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryPartialRepairAsync(self: *@This(), maxWaitTime: TimeSpan) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryPartialRepairAsyncWithMaxWaitTime(self: *@This(), maxWaitTime: TimeSpan) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryPartialRepairAsync(@ptrCast(self), maxWaitTime, &_r);
+        const _c = self.vtable.TryPartialRepairAsyncWithMaxWaitTime(@ptrCast(self), maxWaitTime, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1262,15 +1262,15 @@ pub const IPrinting3DModel2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryReduceFacesAsync(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
+    pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var _r: *IAsyncOperationWithProgress(bool,f64) = undefined;
-        const _c = self.vtable.TryReduceFacesAsync(@ptrCast(self), printing3DFaceReductionOptions, &_r);
+        const _c = self.vtable.TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(@ptrCast(self), printing3DFaceReductionOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryReduceFacesAsync(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
+    pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var _r: *IAsyncOperationWithProgress(bool,f64) = undefined;
-        const _c = self.vtable.TryReduceFacesAsync(@ptrCast(self), printing3DFaceReductionOptions, maxWait, &_r);
+        const _c = self.vtable.TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait(@ptrCast(self), printing3DFaceReductionOptions, maxWait, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1293,10 +1293,10 @@ pub const IPrinting3DModel2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryPartialRepairAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryPartialRepairAsync: *const fn(self: *anyopaque, maxWaitTime: TimeSpan, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryPartialRepairAsyncWithMaxWaitTime: *const fn(self: *anyopaque, maxWaitTime: TimeSpan, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryReduceFacesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(bool,f64)) callconv(.winapi) HRESULT,
-        TryReduceFacesAsync: *const fn(self: *anyopaque, printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, _r: **IAsyncOperationWithProgress(bool,f64)) callconv(.winapi) HRESULT,
-        TryReduceFacesAsync: *const fn(self: *anyopaque, printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan, _r: **IAsyncOperationWithProgress(bool,f64)) callconv(.winapi) HRESULT,
+        TryReduceFacesAsyncWithPrinting3DFaceReductionOptions: *const fn(self: *anyopaque, printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, _r: **IAsyncOperationWithProgress(bool,f64)) callconv(.winapi) HRESULT,
+        TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait: *const fn(self: *anyopaque, printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan, _r: **IAsyncOperationWithProgress(bool,f64)) callconv(.winapi) HRESULT,
         RepairWithProgressAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(bool,f64)) callconv(.winapi) HRESULT,
     };
 };
@@ -1622,12 +1622,12 @@ pub const Print3DManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*Print3DManager {
-        const factory = @This().IPrint3DManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IPrint3DManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn ShowPrintUIAsync() core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IPrint3DManagerStaticsCache.get();
-        return try factory.ShowPrintUIAsync();
+        const _f = @This().IPrint3DManagerStaticsCache.get();
+        return try _f.ShowPrintUIAsync();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Print3DManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1901,8 +1901,8 @@ pub const Printing3D3MFPackage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3D3MFPackage.IID)));
     }
     pub fn LoadAsync(value: *IRandomAccessStream) core.HResult!*IAsyncOperation(Printing3D3MFPackage) {
-        const factory = @This().IPrinting3D3MFPackageStaticsCache.get();
-        return try factory.LoadAsync(value);
+        const _f = @This().IPrinting3D3MFPackageStaticsCache.get();
+        return try _f.LoadAsync(value);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3D3MFPackage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1937,13 +1937,13 @@ pub const Printing3DBaseMaterial = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPrinting3DBaseMaterial.IID)));
     }
-    pub fn get_Abs() core.HResult!HSTRING {
-        const factory = @This().IPrinting3DBaseMaterialStaticsCache.get();
-        return try factory.getAbs();
+    pub fn getAbs() core.HResult!HSTRING {
+        const _f = @This().IPrinting3DBaseMaterialStaticsCache.get();
+        return try _f.getAbs();
     }
-    pub fn get_Pla() core.HResult!HSTRING {
-        const factory = @This().IPrinting3DBaseMaterialStaticsCache.get();
-        return try factory.getPla();
+    pub fn getPla() core.HResult!HSTRING {
+        const _f = @This().IPrinting3DBaseMaterialStaticsCache.get();
+        return try _f.getPla();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DBaseMaterial";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1967,8 +1967,8 @@ pub const Printing3DBaseMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DBaseMaterialGroup {
-        const factory = @This().IPrinting3DBaseMaterialGroupFactoryCache.get();
-        return try factory.Create(MaterialGroupId);
+        const _f = @This().IPrinting3DBaseMaterialGroupFactoryCache.get();
+        return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DBaseMaterialGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2040,8 +2040,8 @@ pub const Printing3DColorMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DColorMaterialGroup {
-        const factory = @This().IPrinting3DColorMaterialGroupFactoryCache.get();
-        return try factory.Create(MaterialGroupId);
+        const _f = @This().IPrinting3DColorMaterialGroupFactoryCache.get();
+        return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DColorMaterialGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2192,8 +2192,8 @@ pub const Printing3DCompositeMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DCompositeMaterialGroup {
-        const factory = @This().IPrinting3DCompositeMaterialGroupFactoryCache.get();
-        return try factory.Create(MaterialGroupId);
+        const _f = @This().IPrinting3DCompositeMaterialGroupFactoryCache.get();
+        return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DCompositeMaterialGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2496,11 +2496,11 @@ pub const Printing3DModel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptions(printing3DFaceReductionOptions);
     }
-    pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsWithMaxWait(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
+    pub fn TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait(self: *@This(), printing3DFaceReductionOptions: *Printing3DFaceReductionOptions, maxWait: TimeSpan) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IPrinting3DModel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsWithMaxWait(printing3DFaceReductionOptions, maxWait);
+        return try this.?.TryReduceFacesAsyncWithPrinting3DFaceReductionOptionsAndMaxWait(printing3DFaceReductionOptions, maxWait);
     }
     pub fn RepairWithProgressAsync(self: *@This()) core.HResult!*IAsyncOperationWithProgress(bool,f64) {
         var this: ?*IPrinting3DModel2 = undefined;
@@ -2608,8 +2608,8 @@ pub const Printing3DMultiplePropertyMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DMultiplePropertyMaterialGroup {
-        const factory = @This().IPrinting3DMultiplePropertyMaterialGroupFactoryCache.get();
-        return try factory.Create(MaterialGroupId);
+        const _f = @This().IPrinting3DMultiplePropertyMaterialGroupFactoryCache.get();
+        return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DMultiplePropertyMaterialGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2694,8 +2694,8 @@ pub const Printing3DTexture2CoordMaterialGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(MaterialGroupId: u32) core.HResult!*Printing3DTexture2CoordMaterialGroup {
-        const factory = @This().IPrinting3DTexture2CoordMaterialGroupFactoryCache.get();
-        return try factory.Create(MaterialGroupId);
+        const _f = @This().IPrinting3DTexture2CoordMaterialGroupFactoryCache.get();
+        return try _f.Create(MaterialGroupId);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing3D.Printing3DTexture2CoordMaterialGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

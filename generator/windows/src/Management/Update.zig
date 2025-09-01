@@ -1193,28 +1193,28 @@ pub const WindowsUpdateAdministrator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRegisteredAdministrator(organizationName: HSTRING) core.HResult!*WindowsUpdateGetAdministratorResult {
-        const factory = @This().IWindowsUpdateAdministratorStaticsCache.get();
-        return try factory.GetRegisteredAdministrator(organizationName);
+        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        return try _f.GetRegisteredAdministrator(organizationName);
     }
     pub fn RegisterForAdministration(organizationName: HSTRING, options: WindowsUpdateAdministratorOptions) core.HResult!WindowsUpdateAdministratorStatus {
-        const factory = @This().IWindowsUpdateAdministratorStaticsCache.get();
-        return try factory.RegisterForAdministration(organizationName, options);
+        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        return try _f.RegisterForAdministration(organizationName, options);
     }
     pub fn UnregisterForAdministration(organizationName: HSTRING) core.HResult!WindowsUpdateAdministratorStatus {
-        const factory = @This().IWindowsUpdateAdministratorStaticsCache.get();
-        return try factory.UnregisterForAdministration(organizationName);
+        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        return try _f.UnregisterForAdministration(organizationName);
     }
     pub fn GetRegisteredAdministratorName() core.HResult!HSTRING {
-        const factory = @This().IWindowsUpdateAdministratorStaticsCache.get();
-        return try factory.GetRegisteredAdministratorName();
+        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        return try _f.GetRegisteredAdministratorName();
     }
     pub fn RequestRestart(restartOptions: *WindowsUpdateRestartRequestOptions) core.HResult!HSTRING {
-        const factory = @This().IWindowsUpdateAdministratorStaticsCache.get();
-        return try factory.RequestRestart(restartOptions);
+        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        return try _f.RequestRestart(restartOptions);
     }
     pub fn CancelRestartRequest(requestRestartToken: HSTRING) core.HResult!void {
-        const factory = @This().IWindowsUpdateAdministratorStaticsCache.get();
-        return try factory.CancelRestartRequest(requestRestartToken);
+        const _f = @This().IWindowsUpdateAdministratorStaticsCache.get();
+        return try _f.CancelRestartRequest(requestRestartToken);
     }
     pub const NAME: []const u8 = "Windows.Management.Update.WindowsUpdateAdministrator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1495,8 +1495,8 @@ pub const WindowsUpdateManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(clientId: HSTRING) core.HResult!*WindowsUpdateManager {
-        const factory = @This().IWindowsUpdateManagerFactoryCache.get();
-        return try factory.CreateInstance(clientId);
+        const _f = @This().IWindowsUpdateManagerFactoryCache.get();
+        return try _f.CreateInstance(clientId);
     }
     pub const NAME: []const u8 = "Windows.Management.Update.WindowsUpdateManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1587,8 +1587,8 @@ pub const WindowsUpdateRestartRequestOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWindowsUpdateRestartRequestOptions.IID)));
     }
     pub fn CreateInstance(title: HSTRING, description: HSTRING, moreInfoUrl: *Uri, complianceDeadlineInDays: i32, complianceGracePeriodInDays: i32) core.HResult!*WindowsUpdateRestartRequestOptions {
-        const factory = @This().IWindowsUpdateRestartRequestOptionsFactoryCache.get();
-        return try factory.CreateInstance(title, description, moreInfoUrl, complianceDeadlineInDays, complianceGracePeriodInDays);
+        const _f = @This().IWindowsUpdateRestartRequestOptionsFactoryCache.get();
+        return try _f.CreateInstance(title, description, moreInfoUrl, complianceDeadlineInDays, complianceGracePeriodInDays);
     }
     pub const NAME: []const u8 = "Windows.Management.Update.WindowsUpdateRestartRequestOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1739,12 +1739,12 @@ pub const PreviewBuildsManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PreviewBuildsManager {
-        const factory = @This().IPreviewBuildsManagerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IPreviewBuildsManagerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IPreviewBuildsManagerStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().IPreviewBuildsManagerStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Management.Update.PreviewBuildsManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

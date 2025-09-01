@@ -4,8 +4,8 @@ pub const ApplicationDataManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForPackageFamily(packageFamilyName: HSTRING) core.HResult!*ApplicationData {
-        const factory = @This().IApplicationDataManagerStaticsCache.get();
-        return try factory.CreateForPackageFamily(packageFamilyName);
+        const _f = @This().IApplicationDataManagerStaticsCache.get();
+        return try _f.CreateForPackageFamily(packageFamilyName);
     }
     pub const NAME: []const u8 = "Windows.Management.Core.ApplicationDataManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

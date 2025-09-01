@@ -43,8 +43,8 @@ pub const CompositionDebugSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryGetSettings(compositor: *Compositor) core.HResult!*CompositionDebugSettings {
-        const factory = @This().ICompositionDebugSettingsStaticsCache.get();
-        return try factory.TryGetSettings(compositor);
+        const _f = @This().ICompositionDebugSettingsStaticsCache.get();
+        return try _f.TryGetSettings(compositor);
     }
     pub const NAME: []const u8 = "Windows.UI.Composition.Diagnostics.CompositionDebugSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

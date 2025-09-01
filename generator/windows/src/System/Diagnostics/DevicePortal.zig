@@ -22,17 +22,17 @@ pub const DevicePortalConnection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetServerMessageWebSocketForRequest(request);
     }
-    pub fn GetServerMessageWebSocketForRequestWithMessageTypeWithProtocol(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING) core.HResult!*ServerMessageWebSocket {
+    pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING) core.HResult!*ServerMessageWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetServerMessageWebSocketForRequestWithMessageTypeWithProtocol(request, messageType, protocol);
+        return try this.?.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(request, messageType, protocol);
     }
-    pub fn GetServerMessageWebSocketForRequestWithMessageTypeWithProtocolWithOutboundBufferSizeInBytesWithMaxMessageSizeWithReceiveMode(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode) core.HResult!*ServerMessageWebSocket {
+    pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode) core.HResult!*ServerMessageWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetServerMessageWebSocketForRequestWithMessageTypeWithProtocolWithOutboundBufferSizeInBytesWithMaxMessageSizeWithReceiveMode(request, messageType, protocol, outboundBufferSizeInBytes, maxMessageSize, receiveMode);
+        return try this.?.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(request, messageType, protocol, outboundBufferSizeInBytes, maxMessageSize, receiveMode);
     }
     pub fn GetServerStreamWebSocketForRequest(self: *@This(), request: *HttpRequestMessage) core.HResult!*ServerStreamWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
@@ -40,18 +40,18 @@ pub const DevicePortalConnection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetServerStreamWebSocketForRequest(request);
     }
-    pub fn GetServerStreamWebSocketForRequestWithProtocolWithOutboundBufferSizeInBytesWithNoDelay(self: *@This(), request: *HttpRequestMessage, protocol: HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool) core.HResult!*ServerStreamWebSocket {
+    pub fn GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(self: *@This(), request: *HttpRequestMessage, protocol: HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool) core.HResult!*ServerStreamWebSocket {
         var this: ?*IDevicePortalWebSocketConnection = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDevicePortalWebSocketConnection.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetServerStreamWebSocketForRequestWithProtocolWithOutboundBufferSizeInBytesWithNoDelay(request, protocol, outboundBufferSizeInBytes, noDelay);
+        return try this.?.GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(request, protocol, outboundBufferSizeInBytes, noDelay);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForAppServiceConnection(appServiceConnection: *AppServiceConnection) core.HResult!*DevicePortalConnection {
-        const factory = @This().IDevicePortalConnectionStaticsCache.get();
-        return try factory.GetForAppServiceConnection(appServiceConnection);
+        const _f = @This().IDevicePortalConnectionStaticsCache.get();
+        return try _f.GetForAppServiceConnection(appServiceConnection);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DevicePortal.DevicePortalConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -238,15 +238,15 @@ pub const IDevicePortalWebSocketConnection = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetServerMessageWebSocketForRequestWithProtocol(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING) core.HResult!*ServerMessageWebSocket {
+    pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING) core.HResult!*ServerMessageWebSocket {
         var _r: *ServerMessageWebSocket = undefined;
-        const _c = self.vtable.GetServerMessageWebSocketForRequestWithProtocol(@ptrCast(self), request, messageType, protocol, &_r);
+        const _c = self.vtable.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol(@ptrCast(self), request, messageType, protocol, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetServerMessageWebSocketForRequestWithReceiveMode(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode) core.HResult!*ServerMessageWebSocket {
+    pub fn GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(self: *@This(), request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode) core.HResult!*ServerMessageWebSocket {
         var _r: *ServerMessageWebSocket = undefined;
-        const _c = self.vtable.GetServerMessageWebSocketForRequestWithReceiveMode(@ptrCast(self), request, messageType, protocol, outboundBufferSizeInBytes, maxMessageSize, receiveMode, &_r);
+        const _c = self.vtable.GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode(@ptrCast(self), request, messageType, protocol, outboundBufferSizeInBytes, maxMessageSize, receiveMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -256,9 +256,9 @@ pub const IDevicePortalWebSocketConnection = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetServerStreamWebSocketForRequestWithNoDelay(self: *@This(), request: *HttpRequestMessage, protocol: HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool) core.HResult!*ServerStreamWebSocket {
+    pub fn GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(self: *@This(), request: *HttpRequestMessage, protocol: HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool) core.HResult!*ServerStreamWebSocket {
         var _r: *ServerStreamWebSocket = undefined;
-        const _c = self.vtable.GetServerStreamWebSocketForRequestWithNoDelay(@ptrCast(self), request, protocol, outboundBufferSizeInBytes, noDelay, &_r);
+        const _c = self.vtable.GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay(@ptrCast(self), request, protocol, outboundBufferSizeInBytes, noDelay, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -275,10 +275,10 @@ pub const IDevicePortalWebSocketConnection = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetServerMessageWebSocketForRequest: *const fn(self: *anyopaque, request: *HttpRequestMessage, _r: **ServerMessageWebSocket) callconv(.winapi) HRESULT,
-        GetServerMessageWebSocketForRequestWithProtocol: *const fn(self: *anyopaque, request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, _r: **ServerMessageWebSocket) callconv(.winapi) HRESULT,
-        GetServerMessageWebSocketForRequestWithReceiveMode: *const fn(self: *anyopaque, request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode, _r: **ServerMessageWebSocket) callconv(.winapi) HRESULT,
+        GetServerMessageWebSocketForRequestWithMessageTypeAndProtocol: *const fn(self: *anyopaque, request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, _r: **ServerMessageWebSocket) callconv(.winapi) HRESULT,
+        GetServerMessageWebSocketForRequestWithMessageTypeAndProtocolAndOutboundBufferSizeInBytesAndMaxMessageSizeAndReceiveMode: *const fn(self: *anyopaque, request: *HttpRequestMessage, messageType: SocketMessageType, protocol: HSTRING, outboundBufferSizeInBytes: u32, maxMessageSize: u32, receiveMode: MessageWebSocketReceiveMode, _r: **ServerMessageWebSocket) callconv(.winapi) HRESULT,
         GetServerStreamWebSocketForRequest: *const fn(self: *anyopaque, request: *HttpRequestMessage, _r: **ServerStreamWebSocket) callconv(.winapi) HRESULT,
-        GetServerStreamWebSocketForRequestWithNoDelay: *const fn(self: *anyopaque, request: *HttpRequestMessage, protocol: HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool, _r: **ServerStreamWebSocket) callconv(.winapi) HRESULT,
+        GetServerStreamWebSocketForRequestWithProtocolAndOutboundBufferSizeInBytesAndNoDelay: *const fn(self: *anyopaque, request: *HttpRequestMessage, protocol: HSTRING, outboundBufferSizeInBytes: u32, noDelay: bool, _r: **ServerStreamWebSocket) callconv(.winapi) HRESULT,
     };
 };
 pub const IDevicePortalWebSocketConnectionRequestReceivedEventArgs = extern struct {

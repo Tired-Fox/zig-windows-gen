@@ -50,8 +50,8 @@ pub const WebError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!WebErrorStatus {
-        const factory = @This().IWebErrorStaticsCache.get();
-        return try factory.GetStatus(hresult);
+        const _f = @This().IWebErrorStaticsCache.get();
+        return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Web.WebError";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

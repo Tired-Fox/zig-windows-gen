@@ -108,12 +108,12 @@ pub const EmailAttachment = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailAttachment.IID)));
     }
     pub fn Create(fileName: HSTRING, data: *IRandomAccessStreamReference) core.HResult!*EmailAttachment {
-        const factory = @This().IEmailAttachmentFactoryCache.get();
-        return try factory.Create(fileName, data);
+        const _f = @This().IEmailAttachmentFactoryCache.get();
+        return try _f.Create(fileName, data);
     }
     pub fn CreateWithMimeType(fileName: HSTRING, data: *IRandomAccessStreamReference, mimeType: HSTRING) core.HResult!*EmailAttachment {
-        const factory = @This().IEmailAttachmentFactory2Cache.get();
-        return try factory.Create(fileName, data, mimeType);
+        const _f = @This().IEmailAttachmentFactory2Cache.get();
+        return try _f.Create(fileName, data, mimeType);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailAttachment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -469,8 +469,8 @@ pub const EmailIrmInfo = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmInfo.IID)));
     }
     pub fn Create(expiration: DateTime, irmTemplate: *EmailIrmTemplate) core.HResult!*EmailIrmInfo {
-        const factory = @This().IEmailIrmInfoFactoryCache.get();
-        return try factory.Create(expiration, irmTemplate);
+        const _f = @This().IEmailIrmInfoFactoryCache.get();
+        return try _f.Create(expiration, irmTemplate);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailIrmInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -514,8 +514,8 @@ pub const EmailIrmTemplate = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailIrmTemplate.IID)));
     }
     pub fn Create(id: HSTRING, name: HSTRING, description: HSTRING) core.HResult!*EmailIrmTemplate {
-        const factory = @This().IEmailIrmTemplateFactoryCache.get();
-        return try factory.Create(id, name, description);
+        const _f = @This().IEmailIrmTemplateFactoryCache.get();
+        return try _f.Create(id, name, description);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailIrmTemplate";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1400,16 +1400,16 @@ pub const EmailManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowComposeNewEmailAsync(message: *EmailMessage) core.HResult!*IAsyncAction {
-        const factory = @This().IEmailManagerStaticsCache.get();
-        return try factory.ShowComposeNewEmailAsync(message);
+        const _f = @This().IEmailManagerStaticsCache.get();
+        return try _f.ShowComposeNewEmailAsync(message);
     }
     pub fn RequestStoreAsync(accessType: EmailStoreAccessType) core.HResult!*IAsyncOperation(EmailStore) {
-        const factory = @This().IEmailManagerStatics2Cache.get();
-        return try factory.RequestStoreAsync(accessType);
+        const _f = @This().IEmailManagerStatics2Cache.get();
+        return try _f.RequestStoreAsync(accessType);
     }
     pub fn GetForUser(user: *User) core.HResult!*EmailManagerForUser {
-        const factory = @This().IEmailManagerStatics3Cache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IEmailManagerStatics3Cache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2028,12 +2028,12 @@ pub const EmailQueryOptions = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailQueryOptions.IID)));
     }
     pub fn CreateWithText(text: HSTRING) core.HResult!*EmailQueryOptions {
-        const factory = @This().IEmailQueryOptionsFactoryCache.get();
-        return try factory.CreateWithText(text);
+        const _f = @This().IEmailQueryOptionsFactoryCache.get();
+        return try _f.CreateWithText(text);
     }
     pub fn CreateWithTextAndFields(text: HSTRING, fields: EmailQuerySearchFields) core.HResult!*EmailQueryOptions {
-        const factory = @This().IEmailQueryOptionsFactoryCache.get();
-        return try factory.CreateWithTextAndFields(text, fields);
+        const _f = @This().IEmailQueryOptionsFactoryCache.get();
+        return try _f.CreateWithTextAndFields(text, fields);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailQueryOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2120,12 +2120,12 @@ pub const EmailRecipient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEmailRecipient.IID)));
     }
     pub fn Create(address: HSTRING) core.HResult!*EmailRecipient {
-        const factory = @This().IEmailRecipientFactoryCache.get();
-        return try factory.Create(address);
+        const _f = @This().IEmailRecipientFactoryCache.get();
+        return try _f.Create(address);
     }
     pub fn CreateWithName(address: HSTRING, name: HSTRING) core.HResult!*EmailRecipient {
-        const factory = @This().IEmailRecipientFactoryCache.get();
-        return try factory.CreateWithName(address, name);
+        const _f = @This().IEmailRecipientFactoryCache.get();
+        return try _f.CreateWithName(address, name);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Email.EmailRecipient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2528,9 +2528,9 @@ pub const IEmailConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindMessagesAsync(self: *@This(), count: u32) core.HResult!*IAsyncOperation(IVectorView(EmailMessage)) {
+    pub fn FindMessagesAsyncWithCount(self: *@This(), count: u32) core.HResult!*IAsyncOperation(IVectorView(EmailMessage)) {
         var _r: *IAsyncOperation(IVectorView(EmailMessage)) = undefined;
-        const _c = self.vtable.FindMessagesAsync(@ptrCast(self), count, &_r);
+        const _c = self.vtable.FindMessagesAsyncWithCount(@ptrCast(self), count, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2560,7 +2560,7 @@ pub const IEmailConversation = extern struct {
         get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_UnreadMessageCount: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         FindMessagesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(EmailMessage))) callconv(.winapi) HRESULT,
-        FindMessagesAsync: *const fn(self: *anyopaque, count: u32, _r: **IAsyncOperation(IVectorView(EmailMessage))) callconv(.winapi) HRESULT,
+        FindMessagesAsyncWithCount: *const fn(self: *anyopaque, count: u32, _r: **IAsyncOperation(IVectorView(EmailMessage))) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailConversationBatch = extern struct {
@@ -2706,9 +2706,9 @@ pub const IEmailFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
+    pub fn GetConversationReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
         var _r: *EmailConversationReader = undefined;
-        const _c = self.vtable.GetConversationReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetConversationReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2724,9 +2724,9 @@ pub const IEmailFolder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
+    pub fn GetMessageReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
         var _r: *EmailMessageReader = undefined;
-        const _c = self.vtable.GetMessageReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetMessageReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2788,10 +2788,10 @@ pub const IEmailFolder = extern struct {
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         FindChildFoldersAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(EmailFolder))) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
-        GetConversationReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
+        GetConversationReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetMessageAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
-        GetMessageReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
+        GetMessageReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMessageCountsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(EmailItemCounts)) callconv(.winapi) HRESULT,
         TryMoveAsync: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryMoveAsyncWithNewFolderName: *const fn(self: *anyopaque, newParentFolder: *EmailFolder, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -3209,9 +3209,9 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
+    pub fn GetConversationReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
         var _r: *EmailConversationReader = undefined;
-        const _c = self.vtable.GetConversationReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetConversationReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3221,9 +3221,9 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
+    pub fn GetMessageReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
         var _r: *EmailMessageReader = undefined;
-        const _c = self.vtable.GetMessageReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetMessageReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3299,9 +3299,9 @@ pub const IEmailMailbox = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryMoveFolderAsyncWithNewFolderName(self: *@This(), folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName(@ptrCast(self), folderId, newParentFolderId, newFolderName, &_r);
+        const _c = self.vtable.TryMoveFolderAsyncWithNewFolderName(@ptrCast(self), folderId, newParentFolderId, newFolderName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3424,9 +3424,9 @@ pub const IEmailMailbox = extern struct {
         get_SyncManager: *const fn(self: *anyopaque, _r: **EmailMailboxSyncManager) callconv(.winapi) HRESULT,
         get_UserDataAccountId: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
-        GetConversationReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
+        GetConversationReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
-        GetMessageReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
+        GetMessageReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetConversationAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailConversation)) callconv(.winapi) HRESULT,
         GetFolderAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
@@ -3439,7 +3439,7 @@ pub const IEmailMailbox = extern struct {
         ChangeMessageFlagStateAsync: *const fn(self: *anyopaque, messageId: HSTRING, flagState: EmailFlagState, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         TryMoveMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, newParentFolderId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryMoveFolderAsync: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryMoveFolderAsyncWithNewParentFolderIdWithNewFolderName: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryMoveFolderAsyncWithNewFolderName: *const fn(self: *anyopaque, folderId: HSTRING, newParentFolderId: HSTRING, newFolderName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         DeleteMessageAsync: *const fn(self: *anyopaque, messageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         MarkFolderSyncEnabledAsync: *const fn(self: *anyopaque, folderId: HSTRING, isSyncEnabled: bool, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, message: *EmailMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -5442,9 +5442,9 @@ pub const IEmailStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
+    pub fn GetConversationReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailConversationReader {
         var _r: *EmailConversationReader = undefined;
-        const _c = self.vtable.GetConversationReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetConversationReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5454,9 +5454,9 @@ pub const IEmailStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageReader(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
+    pub fn GetMessageReaderWithOptions(self: *@This(), options: *EmailQueryOptions) core.HResult!*EmailMessageReader {
         var _r: *EmailMessageReader = undefined;
-        const _c = self.vtable.GetMessageReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetMessageReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5490,9 +5490,9 @@ pub const IEmailStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
+    pub fn CreateMailboxAsyncWithUserDataAccountId(self: *@This(), accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING) core.HResult!*IAsyncOperation(EmailMailbox) {
         var _r: *IAsyncOperation(EmailMailbox) = undefined;
-        const _c = self.vtable.CreateMailboxAsyncWithAccountAddressWithUserDataAccountId(@ptrCast(self), accountName, accountAddress, userDataAccountId, &_r);
+        const _c = self.vtable.CreateMailboxAsyncWithUserDataAccountId(@ptrCast(self), accountName, accountAddress, userDataAccountId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -5510,15 +5510,15 @@ pub const IEmailStore = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindMailboxesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(EmailMailbox))) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
-        GetConversationReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
+        GetConversationReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailConversationReader) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
-        GetMessageReader: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
+        GetMessageReaderWithOptions: *const fn(self: *anyopaque, options: *EmailQueryOptions, _r: **EmailMessageReader) callconv(.winapi) HRESULT,
         GetMailboxAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
         GetConversationAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailConversation)) callconv(.winapi) HRESULT,
         GetFolderAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailFolder)) callconv(.winapi) HRESULT,
         GetMessageAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(EmailMessage)) callconv(.winapi) HRESULT,
         CreateMailboxAsync: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
-        CreateMailboxAsyncWithAccountAddressWithUserDataAccountId: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
+        CreateMailboxAsyncWithUserDataAccountId: *const fn(self: *anyopaque, accountName: HSTRING, accountAddress: HSTRING, userDataAccountId: HSTRING, _r: **IAsyncOperation(EmailMailbox)) callconv(.winapi) HRESULT,
     };
 };
 pub const IEmailStoreNotificationTriggerDetails = extern struct {

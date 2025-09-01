@@ -163,8 +163,8 @@ pub const TwoPanelHingedDevicePosturePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(TwoPanelHingedDevicePosturePreview) {
-        const factory = @This().ITwoPanelHingedDevicePosturePreviewStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().ITwoPanelHingedDevicePosturePreviewStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.System.Preview.TwoPanelHingedDevicePosturePreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

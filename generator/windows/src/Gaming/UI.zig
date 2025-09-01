@@ -205,29 +205,29 @@ pub const GameBar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_VisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IGameBarStaticsCache.get();
-        return try factory.addVisibilityChanged(handler);
+    pub fn addVisibilityChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IGameBarStaticsCache.get();
+        return try _f.addVisibilityChanged(handler);
     }
-    pub fn remove_VisibilityChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGameBarStaticsCache.get();
-        return try factory.removeVisibilityChanged(token);
+    pub fn removeVisibilityChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGameBarStaticsCache.get();
+        return try _f.removeVisibilityChanged(token);
     }
-    pub fn add_IsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IGameBarStaticsCache.get();
-        return try factory.addIsInputRedirectedChanged(handler);
+    pub fn addIsInputRedirectedChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IGameBarStaticsCache.get();
+        return try _f.addIsInputRedirectedChanged(handler);
     }
-    pub fn remove_IsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IGameBarStaticsCache.get();
-        return try factory.removeIsInputRedirectedChanged(token);
+    pub fn removeIsInputRedirectedChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IGameBarStaticsCache.get();
+        return try _f.removeIsInputRedirectedChanged(token);
     }
-    pub fn get_Visible() core.HResult!bool {
-        const factory = @This().IGameBarStaticsCache.get();
-        return try factory.getVisible();
+    pub fn getVisible() core.HResult!bool {
+        const _f = @This().IGameBarStaticsCache.get();
+        return try _f.getVisible();
     }
-    pub fn get_IsInputRedirected() core.HResult!bool {
-        const factory = @This().IGameBarStaticsCache.get();
-        return try factory.getIsInputRedirected();
+    pub fn getIsInputRedirected() core.HResult!bool {
+        const _f = @This().IGameBarStaticsCache.get();
+        return try _f.getIsInputRedirected();
     }
     pub const NAME: []const u8 = "Windows.Gaming.UI.GameBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -255,8 +255,8 @@ pub const GameChatOverlay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*GameChatOverlay {
-        const factory = @This().IGameChatOverlayStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IGameChatOverlayStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Gaming.UI.GameChatOverlay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

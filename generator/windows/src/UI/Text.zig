@@ -88,49 +88,49 @@ pub const FontWeights = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Black() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getBlack();
+    pub fn getBlack() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getBlack();
     }
-    pub fn get_Bold() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getBold();
+    pub fn getBold() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getBold();
     }
-    pub fn get_ExtraBlack() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getExtraBlack();
+    pub fn getExtraBlack() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getExtraBlack();
     }
-    pub fn get_ExtraBold() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getExtraBold();
+    pub fn getExtraBold() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getExtraBold();
     }
-    pub fn get_ExtraLight() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getExtraLight();
+    pub fn getExtraLight() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getExtraLight();
     }
-    pub fn get_Light() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getLight();
+    pub fn getLight() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getLight();
     }
-    pub fn get_Medium() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getMedium();
+    pub fn getMedium() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getMedium();
     }
-    pub fn get_Normal() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getNormal();
+    pub fn getNormal() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getNormal();
     }
-    pub fn get_SemiBold() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getSemiBold();
+    pub fn getSemiBold() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getSemiBold();
     }
-    pub fn get_SemiLight() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getSemiLight();
+    pub fn getSemiLight() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getSemiLight();
     }
-    pub fn get_Thin() core.HResult!FontWeight {
-        const factory = @This().IFontWeightsStaticsCache.get();
-        return try factory.getThin();
+    pub fn getThin() core.HResult!FontWeight {
+        const _f = @This().IFontWeightsStaticsCache.get();
+        return try _f.getThin();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.FontWeights";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1226,8 +1226,8 @@ pub const ITextParagraphFormat = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AddTab(self: *@This(), position: f32, align: TabAlignment, leader: TabLeader) core.HResult!void {
-        const _c = self.vtable.AddTab(@ptrCast(self), position, align, leader);
+    pub fn AddTab(self: *@This(), position: f32, alignment: TabAlignment, leader: TabLeader) core.HResult!void {
+        const _c = self.vtable.AddTab(@ptrCast(self), position, alignment, leader);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ClearAllTabs(self: *@This()) core.HResult!void {
@@ -1244,8 +1244,8 @@ pub const ITextParagraphFormat = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTab(self: *@This(), index: i32, position: f32, align: TabAlignment, leader: TabLeader) core.HResult!void {
-        const _c = self.vtable.GetTab(@ptrCast(self), index, position, align, leader);
+    pub fn GetTab(self: *@This(), index: i32, position: f32, alignment: TabAlignment, leader: TabLeader) core.HResult!void {
+        const _c = self.vtable.GetTab(@ptrCast(self), index, position, alignment, leader);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn IsEqual(self: *@This(), format: *ITextParagraphFormat) core.HResult!bool {
@@ -1317,11 +1317,11 @@ pub const ITextParagraphFormat = extern struct {
         get_WidowControl: *const fn(self: *anyopaque, _r: *FormatEffect) callconv(.winapi) HRESULT,
         put_WidowControl: *const fn(self: *anyopaque, value: FormatEffect) callconv(.winapi) HRESULT,
         get_TabCount: *const fn(self: *anyopaque, _r: *i32) callconv(.winapi) HRESULT,
-        AddTab: *const fn(self: *anyopaque, position: f32, align: TabAlignment, leader: TabLeader) callconv(.winapi) HRESULT,
+        AddTab: *const fn(self: *anyopaque, position: f32, alignment: TabAlignment, leader: TabLeader) callconv(.winapi) HRESULT,
         ClearAllTabs: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         DeleteTab: *const fn(self: *anyopaque, position: f32) callconv(.winapi) HRESULT,
         GetClone: *const fn(self: *anyopaque, _r: **ITextParagraphFormat) callconv(.winapi) HRESULT,
-        GetTab: *const fn(self: *anyopaque, index: i32, position: f32, align: TabAlignment, leader: TabLeader) callconv(.winapi) HRESULT,
+        GetTab: *const fn(self: *anyopaque, index: i32, position: f32, alignment: TabAlignment, leader: TabLeader) callconv(.winapi) HRESULT,
         IsEqual: *const fn(self: *anyopaque, format: *ITextParagraphFormat, _r: *bool) callconv(.winapi) HRESULT,
         SetClone: *const fn(self: *anyopaque, format: *ITextParagraphFormat) callconv(.winapi) HRESULT,
         SetIndents: *const fn(self: *anyopaque, start: f32, left: f32, right: f32) callconv(.winapi) HRESULT,
@@ -2271,37 +2271,37 @@ pub const TextConstants = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AutoColor() core.HResult!Color {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getAutoColor();
+    pub fn getAutoColor() core.HResult!Color {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getAutoColor();
     }
-    pub fn get_MinUnitCount() core.HResult!i32 {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getMinUnitCount();
+    pub fn getMinUnitCount() core.HResult!i32 {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getMinUnitCount();
     }
-    pub fn get_MaxUnitCount() core.HResult!i32 {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getMaxUnitCount();
+    pub fn getMaxUnitCount() core.HResult!i32 {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getMaxUnitCount();
     }
-    pub fn get_UndefinedColor() core.HResult!Color {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getUndefinedColor();
+    pub fn getUndefinedColor() core.HResult!Color {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getUndefinedColor();
     }
-    pub fn get_UndefinedFloatValue() core.HResult!f32 {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getUndefinedFloatValue();
+    pub fn getUndefinedFloatValue() core.HResult!f32 {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getUndefinedFloatValue();
     }
-    pub fn get_UndefinedInt32Value() core.HResult!i32 {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getUndefinedInt32Value();
+    pub fn getUndefinedInt32Value() core.HResult!i32 {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getUndefinedInt32Value();
     }
-    pub fn get_UndefinedFontStretch() core.HResult!FontStretch {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getUndefinedFontStretch();
+    pub fn getUndefinedFontStretch() core.HResult!FontStretch {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getUndefinedFontStretch();
     }
-    pub fn get_UndefinedFontStyle() core.HResult!FontStyle {
-        const factory = @This().ITextConstantsStaticsCache.get();
-        return try factory.getUndefinedFontStyle();
+    pub fn getUndefinedFontStyle() core.HResult!FontStyle {
+        const _f = @This().ITextConstantsStaticsCache.get();
+        return try _f.getUndefinedFontStyle();
     }
     pub const NAME: []const u8 = "Windows.UI.Text.TextConstants";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

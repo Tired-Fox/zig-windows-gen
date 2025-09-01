@@ -456,53 +456,23 @@ pub const JsonArray = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetObject();
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(IJsonValue) {
         var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
-    }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(IJsonValue) = undefined;
@@ -516,19 +486,7 @@ pub const JsonArray = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IJsonValue) {
         var this: ?*IIterable(IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -548,12 +506,12 @@ pub const JsonArray = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonArray.IID)));
     }
     pub fn Parse(input: HSTRING) core.HResult!*JsonArray {
-        const factory = @This().IJsonArrayStaticsCache.get();
-        return try factory.Parse(input);
+        const _f = @This().IJsonArrayStaticsCache.get();
+        return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, result: *JsonArray) core.HResult!bool {
-        const factory = @This().IJsonArrayStaticsCache.get();
-        return try factory.TryParse(input, result);
+        const _f = @This().IJsonArrayStaticsCache.get();
+        return try _f.TryParse(input, result);
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonArray";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -569,8 +527,8 @@ pub const JsonError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetJsonStatus(hresult: i32) core.HResult!JsonErrorStatus {
-        const factory = @This().IJsonErrorStatics2Cache.get();
-        return try factory.GetJsonStatus(hresult);
+        const _f = @This().IJsonErrorStatics2Cache.get();
+        return try _f.GetJsonStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonError";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -655,41 +613,17 @@ pub const JsonObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetObject();
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IJsonValue) {
         var this: ?*IMap(HSTRING,IJsonValue) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        var this: ?*IMap(HSTRING,IJsonValue) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(HSTRING,IJsonValue) = undefined;
@@ -697,7 +631,7 @@ pub const JsonObject = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IJsonValue)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IJsonValue)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -753,12 +687,12 @@ pub const JsonObject = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IJsonObject.IID)));
     }
     pub fn Parse(input: HSTRING) core.HResult!*JsonObject {
-        const factory = @This().IJsonObjectStaticsCache.get();
-        return try factory.Parse(input);
+        const _f = @This().IJsonObjectStaticsCache.get();
+        return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, result: *JsonObject) core.HResult!bool {
-        const factory = @This().IJsonObjectStaticsCache.get();
-        return try factory.TryParse(input, result);
+        const _f = @This().IJsonObjectStaticsCache.get();
+        return try _f.TryParse(input, result);
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonObject";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -808,28 +742,28 @@ pub const JsonValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Parse(input: HSTRING) core.HResult!*JsonValue {
-        const factory = @This().IJsonValueStaticsCache.get();
-        return try factory.Parse(input);
+        const _f = @This().IJsonValueStaticsCache.get();
+        return try _f.Parse(input);
     }
     pub fn TryParse(input: HSTRING, result: *JsonValue) core.HResult!bool {
-        const factory = @This().IJsonValueStaticsCache.get();
-        return try factory.TryParse(input, result);
+        const _f = @This().IJsonValueStaticsCache.get();
+        return try _f.TryParse(input, result);
     }
     pub fn CreateBooleanValue(input: bool) core.HResult!*JsonValue {
-        const factory = @This().IJsonValueStaticsCache.get();
-        return try factory.CreateBooleanValue(input);
+        const _f = @This().IJsonValueStaticsCache.get();
+        return try _f.CreateBooleanValue(input);
     }
     pub fn CreateNumberValue(input: f64) core.HResult!*JsonValue {
-        const factory = @This().IJsonValueStaticsCache.get();
-        return try factory.CreateNumberValue(input);
+        const _f = @This().IJsonValueStaticsCache.get();
+        return try _f.CreateNumberValue(input);
     }
     pub fn CreateStringValue(input: HSTRING) core.HResult!*JsonValue {
-        const factory = @This().IJsonValueStaticsCache.get();
-        return try factory.CreateStringValue(input);
+        const _f = @This().IJsonValueStaticsCache.get();
+        return try _f.CreateStringValue(input);
     }
     pub fn CreateNullValue() core.HResult!*JsonValue {
-        const factory = @This().IJsonValueStatics2Cache.get();
-        return try factory.CreateNullValue();
+        const _f = @This().IJsonValueStatics2Cache.get();
+        return try _f.CreateNullValue();
     }
     pub const NAME: []const u8 = "Windows.Data.Json.JsonValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

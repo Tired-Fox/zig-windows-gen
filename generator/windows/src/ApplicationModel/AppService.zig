@@ -4,8 +4,8 @@ pub const AppServiceCatalog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAppServiceProvidersAsync(appServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInfo)) {
-        const factory = @This().IAppServiceCatalogStaticsCache.get();
-        return try factory.FindAppServiceProvidersAsync(appServiceName);
+        const _f = @This().IAppServiceCatalogStaticsCache.get();
+        return try _f.FindAppServiceProvidersAsync(appServiceName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppService.AppServiceCatalog";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -103,8 +103,8 @@ pub const AppServiceConnection = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAppServiceConnection.IID)));
     }
     pub fn SendStatelessMessageAsync(connection: *AppServiceConnection, connectionRequest: *RemoteSystemConnectionRequest, message: *ValueSet) core.HResult!*IAsyncOperation(StatelessAppServiceResponse) {
-        const factory = @This().IAppServiceConnectionStaticsCache.get();
-        return try factory.SendStatelessMessageAsync(connection, connectionRequest, message);
+        const _f = @This().IAppServiceConnectionStaticsCache.get();
+        return try _f.SendStatelessMessageAsync(connection, connectionRequest, message);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppService.AppServiceConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -715,7 +715,7 @@ const ValueSet = @import("../Foundation/Collections.zig").ValueSet;
 const AppInfo = @import("../ApplicationModel.zig").AppInfo;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
+const IClosable = @import("../Foundation.zig").IClosable;
 const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const User = @import("../System.zig").User;
-const IClosable = @import("../Foundation.zig").IClosable;
 const HSTRING = @import("../root.zig").HSTRING;

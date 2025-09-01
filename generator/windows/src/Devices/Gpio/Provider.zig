@@ -8,8 +8,8 @@ pub const GpioPinProviderValueChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(edge: ProviderGpioPinEdge) core.HResult!*GpioPinProviderValueChangedEventArgs {
-        const factory = @This().IGpioPinProviderValueChangedEventArgsFactoryCache.get();
-        return try factory.Create(edge);
+        const _f = @This().IGpioPinProviderValueChangedEventArgsFactoryCache.get();
+        return try _f.Create(edge);
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.Provider.GpioPinProviderValueChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

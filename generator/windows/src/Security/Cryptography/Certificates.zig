@@ -118,8 +118,8 @@ pub const Certificate = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCertificate(certBlob: *IBuffer) core.HResult!*Certificate {
-        const factory = @This().ICertificateFactoryCache.get();
-        return try factory.CreateCertificate(certBlob);
+        const _f = @This().ICertificateFactoryCache.get();
+        return try _f.CreateCertificate(certBlob);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.Certificate";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -160,28 +160,28 @@ pub const CertificateEnrollmentManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateRequestAsync(request: *CertificateRequestProperties) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().ICertificateEnrollmentManagerStaticsCache.get();
-        return try factory.CreateRequestAsync(request);
+        const _f = @This().ICertificateEnrollmentManagerStaticsCache.get();
+        return try _f.CreateRequestAsync(request);
     }
     pub fn InstallCertificateAsync(certificate: HSTRING, installOption: InstallOptions) core.HResult!*IAsyncAction {
-        const factory = @This().ICertificateEnrollmentManagerStaticsCache.get();
-        return try factory.InstallCertificateAsync(certificate, installOption);
+        const _f = @This().ICertificateEnrollmentManagerStaticsCache.get();
+        return try _f.InstallCertificateAsync(certificate, installOption);
     }
-    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().ICertificateEnrollmentManagerStaticsCache.get();
-        return try factory.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+        const _f = @This().ICertificateEnrollmentManagerStaticsCache.get();
+        return try _f.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
     pub fn ImportPfxDataAsync(pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
-        const factory = @This().ICertificateEnrollmentManagerStatics3Cache.get();
-        return try factory.ImportPfxDataAsync(pfxData, password, pfxImportParameters);
+        const _f = @This().ICertificateEnrollmentManagerStatics3Cache.get();
+        return try _f.ImportPfxDataAsync(pfxData, password, pfxImportParameters);
     }
-    pub fn get_UserCertificateEnrollmentManager() core.HResult!*UserCertificateEnrollmentManager {
-        const factory = @This().ICertificateEnrollmentManagerStatics2Cache.get();
-        return try factory.getUserCertificateEnrollmentManager();
+    pub fn getUserCertificateEnrollmentManager() core.HResult!*UserCertificateEnrollmentManager {
+        const _f = @This().ICertificateEnrollmentManagerStatics2Cache.get();
+        return try _f.getUserCertificateEnrollmentManager();
     }
-    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().ICertificateEnrollmentManagerStatics2Cache.get();
-        return try factory.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+        const _f = @This().ICertificateEnrollmentManagerStatics2Cache.get();
+        return try _f.ImportPfxDataAsync(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CertificateEnrollmentManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -631,28 +631,28 @@ pub const CertificateStores = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetUserStoreByName(storeName: HSTRING) core.HResult!*UserCertificateStore {
-        const factory = @This().ICertificateStoresStatics2Cache.get();
-        return try factory.GetUserStoreByName(storeName);
+        const _f = @This().ICertificateStoresStatics2Cache.get();
+        return try _f.GetUserStoreByName(storeName);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
-        const factory = @This().ICertificateStoresStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().ICertificateStoresStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FindAllAsyncWithQuery(query: *CertificateQuery) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
-        const factory = @This().ICertificateStoresStaticsCache.get();
-        return try factory.FindAllAsyncWithQuery(query);
+        const _f = @This().ICertificateStoresStaticsCache.get();
+        return try _f.FindAllAsyncWithQuery(query);
     }
-    pub fn get_TrustedRootCertificationAuthorities() core.HResult!*CertificateStore {
-        const factory = @This().ICertificateStoresStaticsCache.get();
-        return try factory.getTrustedRootCertificationAuthorities();
+    pub fn getTrustedRootCertificationAuthorities() core.HResult!*CertificateStore {
+        const _f = @This().ICertificateStoresStaticsCache.get();
+        return try _f.getTrustedRootCertificationAuthorities();
     }
-    pub fn get_IntermediateCertificationAuthorities() core.HResult!*CertificateStore {
-        const factory = @This().ICertificateStoresStaticsCache.get();
-        return try factory.getIntermediateCertificationAuthorities();
+    pub fn getIntermediateCertificationAuthorities() core.HResult!*CertificateStore {
+        const _f = @This().ICertificateStoresStaticsCache.get();
+        return try _f.getIntermediateCertificationAuthorities();
     }
     pub fn GetStoreByName(storeName: HSTRING) core.HResult!*CertificateStore {
-        const factory = @This().ICertificateStoresStaticsCache.get();
-        return try factory.GetStoreByName(storeName);
+        const _f = @This().ICertificateStoresStaticsCache.get();
+        return try _f.GetStoreByName(storeName);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CertificateStores";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -793,12 +793,12 @@ pub const CmsAttachedSignature = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCmsAttachedSignature(inputBlob: *IBuffer) core.HResult!*CmsAttachedSignature {
-        const factory = @This().ICmsAttachedSignatureFactoryCache.get();
-        return try factory.CreateCmsAttachedSignature(inputBlob);
+        const _f = @This().ICmsAttachedSignatureFactoryCache.get();
+        return try _f.CreateCmsAttachedSignature(inputBlob);
     }
     pub fn GenerateSignatureAsync(data: *IBuffer, signers: *IIterable(CmsSignerInfo), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(IBuffer) {
-        const factory = @This().ICmsAttachedSignatureStaticsCache.get();
-        return try factory.GenerateSignatureAsync(data, signers, certificates);
+        const _f = @This().ICmsAttachedSignatureStaticsCache.get();
+        return try _f.GenerateSignatureAsync(data, signers, certificates);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CmsAttachedSignature";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -826,12 +826,12 @@ pub const CmsDetachedSignature = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCmsDetachedSignature(inputBlob: *IBuffer) core.HResult!*CmsDetachedSignature {
-        const factory = @This().ICmsDetachedSignatureFactoryCache.get();
-        return try factory.CreateCmsDetachedSignature(inputBlob);
+        const _f = @This().ICmsDetachedSignatureFactoryCache.get();
+        return try _f.CreateCmsDetachedSignature(inputBlob);
     }
     pub fn GenerateSignatureAsync(data: *IInputStream, signers: *IIterable(CmsSignerInfo), certificates: *IIterable(Certificate)) core.HResult!*IAsyncOperation(IBuffer) {
-        const factory = @This().ICmsDetachedSignatureStaticsCache.get();
-        return try factory.GenerateSignatureAsync(data, signers, certificates);
+        const _f = @This().ICmsDetachedSignatureStaticsCache.get();
+        return try _f.GenerateSignatureAsync(data, signers, certificates);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.CmsDetachedSignature";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -934,9 +934,9 @@ pub const ICertificate = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetHashValue(self: *@This(), hashAlgorithmName: HSTRING) core.HResult![*]u8 {
+    pub fn GetHashValueWithHashAlgorithmName(self: *@This(), hashAlgorithmName: HSTRING) core.HResult![*]u8 {
         var _r: [*]u8 = undefined;
-        const _c = self.vtable.GetHashValue(@ptrCast(self), hashAlgorithmName, &_r);
+        const _c = self.vtable.GetHashValueWithHashAlgorithmName(@ptrCast(self), hashAlgorithmName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1014,7 +1014,7 @@ pub const ICertificate = extern struct {
         BuildChainAsyncWithParameters: *const fn(self: *anyopaque, certificates: *IIterable(Certificate), parameters: *ChainBuildingParameters, _r: **IAsyncOperation(CertificateChain)) callconv(.winapi) HRESULT,
         get_SerialNumber: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
         GetHashValue: *const fn(self: *anyopaque, _r: *[*]u8) callconv(.winapi) HRESULT,
-        GetHashValue: *const fn(self: *anyopaque, hashAlgorithmName: HSTRING, _r: *[*]u8) callconv(.winapi) HRESULT,
+        GetHashValueWithHashAlgorithmName: *const fn(self: *anyopaque, hashAlgorithmName: HSTRING, _r: *[*]u8) callconv(.winapi) HRESULT,
         GetCertificateBlob: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
         get_Subject: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         get_Issuer: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
@@ -1130,9 +1130,9 @@ pub const ICertificateChain = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Validate(self: *@This(), parameter: *ChainValidationParameters) core.HResult!ChainValidationResult {
+    pub fn ValidateWithParameter(self: *@This(), parameter: *ChainValidationParameters) core.HResult!ChainValidationResult {
         var _r: ChainValidationResult = undefined;
-        const _c = self.vtable.Validate(@ptrCast(self), parameter, &_r);
+        const _c = self.vtable.ValidateWithParameter(@ptrCast(self), parameter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1155,7 +1155,7 @@ pub const ICertificateChain = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Validate: *const fn(self: *anyopaque, _r: *ChainValidationResult) callconv(.winapi) HRESULT,
-        Validate: *const fn(self: *anyopaque, parameter: *ChainValidationParameters, _r: *ChainValidationResult) callconv(.winapi) HRESULT,
+        ValidateWithParameter: *const fn(self: *anyopaque, parameter: *ChainValidationParameters, _r: *ChainValidationResult) callconv(.winapi) HRESULT,
         GetCertificates: *const fn(self: *anyopaque, includeRoot: bool, _r: **IVectorView(Certificate)) callconv(.winapi) HRESULT,
     };
 };
@@ -1910,9 +1910,9 @@ pub const ICertificateStoresStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), query: *CertificateQuery) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
+    pub fn FindAllAsyncWithQuery(self: *@This(), query: *CertificateQuery) core.HResult!*IAsyncOperation(IVectorView(Certificate)) {
         var _r: *IAsyncOperation(IVectorView(Certificate)) = undefined;
-        const _c = self.vtable.FindAllAsync(@ptrCast(self), query, &_r);
+        const _c = self.vtable.FindAllAsyncWithQuery(@ptrCast(self), query, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1947,7 +1947,7 @@ pub const ICertificateStoresStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(Certificate))) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, query: *CertificateQuery, _r: **IAsyncOperation(IVectorView(Certificate))) callconv(.winapi) HRESULT,
+        FindAllAsyncWithQuery: *const fn(self: *anyopaque, query: *CertificateQuery, _r: **IAsyncOperation(IVectorView(Certificate))) callconv(.winapi) HRESULT,
         get_TrustedRootCertificationAuthorities: *const fn(self: *anyopaque, _r: **CertificateStore) callconv(.winapi) HRESULT,
         get_IntermediateCertificationAuthorities: *const fn(self: *anyopaque, _r: **CertificateStore) callconv(.winapi) HRESULT,
         GetStoreByName: *const fn(self: *anyopaque, storeName: HSTRING, _r: **CertificateStore) callconv(.winapi) HRESULT,
@@ -2858,9 +2858,9 @@ pub const IUserCertificateEnrollmentManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ImportPfxDataAsyncWithPasswordWithExportableWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ImportPfxDataAsyncWithPasswordWithExportableWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(@ptrCast(self), pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider, &_r);
+        const _c = self.vtable.ImportPfxDataAsyncWithKeyStorageProvider(@ptrCast(self), pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2879,7 +2879,7 @@ pub const IUserCertificateEnrollmentManager = extern struct {
         CreateRequestAsync: *const fn(self: *anyopaque, request: *CertificateRequestProperties, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
         InstallCertificateAsync: *const fn(self: *anyopaque, certificate: HSTRING, installOption: InstallOptions, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ImportPfxDataAsync: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ImportPfxDataAsyncWithPasswordWithExportableWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ImportPfxDataAsyncWithKeyStorageProvider: *const fn(self: *anyopaque, pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IUserCertificateEnrollmentManager2 = extern struct {
@@ -2951,45 +2951,45 @@ pub const KeyAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Rsa() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getRsa();
+    pub fn getRsa() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getRsa();
     }
-    pub fn get_Dsa() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getDsa();
+    pub fn getDsa() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getDsa();
     }
-    pub fn get_Ecdh256() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdh256();
+    pub fn getEcdh256() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdh256();
     }
-    pub fn get_Ecdh384() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdh384();
+    pub fn getEcdh384() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdh384();
     }
-    pub fn get_Ecdh521() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdh521();
+    pub fn getEcdh521() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdh521();
     }
-    pub fn get_Ecdsa256() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdsa256();
+    pub fn getEcdsa256() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdsa256();
     }
-    pub fn get_Ecdsa384() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdsa384();
+    pub fn getEcdsa384() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdsa384();
     }
-    pub fn get_Ecdsa521() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdsa521();
+    pub fn getEcdsa521() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdsa521();
     }
-    pub fn get_Ecdsa() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStatics2Cache.get();
-        return try factory.getEcdsa();
+    pub fn getEcdsa() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStatics2Cache.get();
+        return try _f.getEcdsa();
     }
-    pub fn get_Ecdh() core.HResult!HSTRING {
-        const factory = @This().IKeyAlgorithmNamesStatics2Cache.get();
-        return try factory.getEcdh();
+    pub fn getEcdh() core.HResult!HSTRING {
+        const _f = @This().IKeyAlgorithmNamesStatics2Cache.get();
+        return try _f.getEcdh();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.KeyAlgorithmNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3002,16 +3002,16 @@ pub const KeyAttestationHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DecryptTpmAttestationCredentialAsyncWithContainerName(credential: HSTRING, containerName: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IKeyAttestationHelperStatics2Cache.get();
-        return try factory.DecryptTpmAttestationCredentialAsync(credential, containerName);
+        const _f = @This().IKeyAttestationHelperStatics2Cache.get();
+        return try _f.DecryptTpmAttestationCredentialAsync(credential, containerName);
     }
     pub fn DecryptTpmAttestationCredentialAsync(credential: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IKeyAttestationHelperStaticsCache.get();
-        return try factory.DecryptTpmAttestationCredentialAsync(credential);
+        const _f = @This().IKeyAttestationHelperStaticsCache.get();
+        return try _f.DecryptTpmAttestationCredentialAsync(credential);
     }
     pub fn GetTpmAttestationCredentialId(credential: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IKeyAttestationHelperStaticsCache.get();
-        return try factory.GetTpmAttestationCredentialId(credential);
+        const _f = @This().IKeyAttestationHelperStaticsCache.get();
+        return try _f.GetTpmAttestationCredentialId(credential);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.KeyAttestationHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3034,21 +3034,21 @@ pub const KeyStorageProviderNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PassportKeyStorageProvider() core.HResult!HSTRING {
-        const factory = @This().IKeyStorageProviderNamesStatics2Cache.get();
-        return try factory.getPassportKeyStorageProvider();
+    pub fn getPassportKeyStorageProvider() core.HResult!HSTRING {
+        const _f = @This().IKeyStorageProviderNamesStatics2Cache.get();
+        return try _f.getPassportKeyStorageProvider();
     }
-    pub fn get_SoftwareKeyStorageProvider() core.HResult!HSTRING {
-        const factory = @This().IKeyStorageProviderNamesStaticsCache.get();
-        return try factory.getSoftwareKeyStorageProvider();
+    pub fn getSoftwareKeyStorageProvider() core.HResult!HSTRING {
+        const _f = @This().IKeyStorageProviderNamesStaticsCache.get();
+        return try _f.getSoftwareKeyStorageProvider();
     }
-    pub fn get_SmartcardKeyStorageProvider() core.HResult!HSTRING {
-        const factory = @This().IKeyStorageProviderNamesStaticsCache.get();
-        return try factory.getSmartcardKeyStorageProvider();
+    pub fn getSmartcardKeyStorageProvider() core.HResult!HSTRING {
+        const _f = @This().IKeyStorageProviderNamesStaticsCache.get();
+        return try _f.getSmartcardKeyStorageProvider();
     }
-    pub fn get_PlatformKeyStorageProvider() core.HResult!HSTRING {
-        const factory = @This().IKeyStorageProviderNamesStaticsCache.get();
-        return try factory.getPlatformKeyStorageProvider();
+    pub fn getPlatformKeyStorageProvider() core.HResult!HSTRING {
+        const _f = @This().IKeyStorageProviderNamesStaticsCache.get();
+        return try _f.getPlatformKeyStorageProvider();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.KeyStorageProviderNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3139,17 +3139,17 @@ pub const StandardCertificateStoreNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Personal() core.HResult!HSTRING {
-        const factory = @This().IStandardCertificateStoreNamesStaticsCache.get();
-        return try factory.getPersonal();
+    pub fn getPersonal() core.HResult!HSTRING {
+        const _f = @This().IStandardCertificateStoreNamesStaticsCache.get();
+        return try _f.getPersonal();
     }
-    pub fn get_TrustedRootCertificationAuthorities() core.HResult!HSTRING {
-        const factory = @This().IStandardCertificateStoreNamesStaticsCache.get();
-        return try factory.getTrustedRootCertificationAuthorities();
+    pub fn getTrustedRootCertificationAuthorities() core.HResult!HSTRING {
+        const _f = @This().IStandardCertificateStoreNamesStaticsCache.get();
+        return try _f.getTrustedRootCertificationAuthorities();
     }
-    pub fn get_IntermediateCertificationAuthorities() core.HResult!HSTRING {
-        const factory = @This().IStandardCertificateStoreNamesStaticsCache.get();
-        return try factory.getIntermediateCertificationAuthorities();
+    pub fn getIntermediateCertificationAuthorities() core.HResult!HSTRING {
+        const _f = @This().IStandardCertificateStoreNamesStaticsCache.get();
+        return try _f.getIntermediateCertificationAuthorities();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Certificates.StandardCertificateStoreNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3247,13 +3247,13 @@ pub const UserCertificateEnrollmentManager = extern struct {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
         return try this.InstallCertificateAsync(certificate, installOption);
     }
-    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING) core.HResult!*IAsyncAction {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
-        return try this.ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyName(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
+        return try this.ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyName(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName);
     }
-    pub fn ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(self: *@This(), pfxData: HSTRING, password: HSTRING, exportable: ExportOption, keyProtectionLevel: KeyProtectionLevel, installOption: InstallOptions, friendlyName: HSTRING, keyStorageProvider: HSTRING) core.HResult!*IAsyncAction {
         const this: *IUserCertificateEnrollmentManager = @ptrCast(self);
-        return try this.ImportPfxDataAsyncWithKeyProtectionLevelWithInstallOptionWithFriendlyNameWithKeyStorageProvider(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
+        return try this.ImportPfxDataAsyncWithExportableAndKeyProtectionLevelAndInstallOptionAndFriendlyNameAndKeyStorageProvider(pfxData, password, exportable, keyProtectionLevel, installOption, friendlyName, keyStorageProvider);
     }
     pub fn ImportPfxDataAsync(self: *@This(), pfxData: HSTRING, password: HSTRING, pfxImportParameters: *PfxImportParameters) core.HResult!*IAsyncAction {
         var this: ?*IUserCertificateEnrollmentManager2 = undefined;

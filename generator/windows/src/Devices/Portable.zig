@@ -64,12 +64,12 @@ pub const ServiceDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(serviceType: ServiceDeviceType) core.HResult!HSTRING {
-        const factory = @This().IServiceDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(serviceType);
+        const _f = @This().IServiceDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector(serviceType);
     }
     pub fn GetDeviceSelectorFromServiceId(serviceId: *Guid) core.HResult!HSTRING {
-        const factory = @This().IServiceDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorFromServiceId(serviceId);
+        const _f = @This().IServiceDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorFromServiceId(serviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Portable.ServiceDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -90,12 +90,12 @@ pub const StorageDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*StorageFolder {
-        const factory = @This().IStorageDeviceStaticsCache.get();
-        return try factory.FromId(deviceId);
+        const _f = @This().IStorageDeviceStaticsCache.get();
+        return try _f.FromId(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IStorageDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IStorageDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Portable.StorageDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

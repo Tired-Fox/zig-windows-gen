@@ -4,20 +4,20 @@ pub const GameControllerFactoryManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterCustomFactoryForGipInterface(factory: *ICustomGameControllerFactory, interfaceId: *Guid) core.HResult!void {
-        const factory = @This().IGameControllerFactoryManagerStaticsCache.get();
-        return try factory.RegisterCustomFactoryForGipInterface(factory, interfaceId);
+        const _f = @This().IGameControllerFactoryManagerStaticsCache.get();
+        return try _f.RegisterCustomFactoryForGipInterface(factory, interfaceId);
     }
     pub fn RegisterCustomFactoryForHardwareId(factory: *ICustomGameControllerFactory, hardwareVendorId: u16, hardwareProductId: u16) core.HResult!void {
-        const factory = @This().IGameControllerFactoryManagerStaticsCache.get();
-        return try factory.RegisterCustomFactoryForHardwareId(factory, hardwareVendorId, hardwareProductId);
+        const _f = @This().IGameControllerFactoryManagerStaticsCache.get();
+        return try _f.RegisterCustomFactoryForHardwareId(factory, hardwareVendorId, hardwareProductId);
     }
     pub fn RegisterCustomFactoryForXusbType(factory: *ICustomGameControllerFactory, xusbType: XusbDeviceType, xusbSubtype: XusbDeviceSubtype) core.HResult!void {
-        const factory = @This().IGameControllerFactoryManagerStaticsCache.get();
-        return try factory.RegisterCustomFactoryForXusbType(factory, xusbType, xusbSubtype);
+        const _f = @This().IGameControllerFactoryManagerStaticsCache.get();
+        return try _f.RegisterCustomFactoryForXusbType(factory, xusbType, xusbSubtype);
     }
     pub fn TryGetFactoryControllerFromGameController(factory: *ICustomGameControllerFactory, gameController: *IGameController) core.HResult!*IGameController {
-        const factory = @This().IGameControllerFactoryManagerStatics2Cache.get();
-        return try factory.TryGetFactoryControllerFromGameController(factory, gameController);
+        const _f = @This().IGameControllerFactoryManagerStatics2Cache.get();
+        return try _f.TryGetFactoryControllerFromGameController(factory, gameController);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Custom.GameControllerFactoryManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

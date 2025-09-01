@@ -42,8 +42,8 @@ pub const DesignerAppManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(appUserModelId: HSTRING) core.HResult!*DesignerAppManager {
-        const factory = @This().IDesignerAppManagerFactoryCache.get();
-        return try factory.Create(appUserModelId);
+        const _f = @This().IDesignerAppManagerFactoryCache.get();
+        return try _f.Create(appUserModelId);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.DesignerAppManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -134,8 +134,8 @@ pub const DesktopWindowXamlSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DesktopWindowXamlSource {
-        const factory = @This().IDesktopWindowXamlSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IDesktopWindowXamlSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.DesktopWindowXamlSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -824,8 +824,8 @@ pub const WindowsXamlManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn InitializeForCurrentThread() core.HResult!*WindowsXamlManager {
-        const factory = @This().IWindowsXamlManagerStaticsCache.get();
-        return try factory.InitializeForCurrentThread();
+        const _f = @This().IWindowsXamlManagerStaticsCache.get();
+        return try _f.InitializeForCurrentThread();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.WindowsXamlManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -862,16 +862,16 @@ pub const XamlSourceFocusNavigationRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(reason: XamlSourceFocusNavigationReason) core.HResult!*XamlSourceFocusNavigationRequest {
-        const factory = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
-        return try factory.CreateInstance(reason);
+        const _f = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
+        return try _f.CreateInstance(reason);
     }
     pub fn CreateInstanceWithHintRect(reason: XamlSourceFocusNavigationReason, hintRect: Rect) core.HResult!*XamlSourceFocusNavigationRequest {
-        const factory = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
-        return try factory.CreateInstanceWithHintRect(reason, hintRect);
+        const _f = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
+        return try _f.CreateInstanceWithHintRect(reason, hintRect);
     }
     pub fn CreateInstanceWithHintRectAndCorrelationId(reason: XamlSourceFocusNavigationReason, hintRect: Rect, correlationId: *Guid) core.HResult!*XamlSourceFocusNavigationRequest {
-        const factory = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
-        return try factory.CreateInstanceWithHintRectAndCorrelationId(reason, hintRect, correlationId);
+        const _f = @This().IXamlSourceFocusNavigationRequestFactoryCache.get();
+        return try _f.CreateInstanceWithHintRectAndCorrelationId(reason, hintRect, correlationId);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.XamlSourceFocusNavigationRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -890,8 +890,8 @@ pub const XamlSourceFocusNavigationResult = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(focusMoved: bool) core.HResult!*XamlSourceFocusNavigationResult {
-        const factory = @This().IXamlSourceFocusNavigationResultFactoryCache.get();
-        return try factory.CreateInstance(focusMoved);
+        const _f = @This().IXamlSourceFocusNavigationResultFactoryCache.get();
+        return try _f.CreateInstance(focusMoved);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.XamlSourceFocusNavigationResult";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -942,28 +942,28 @@ pub const XamlUIPresenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFlyoutPlacementTargetInfo(placementTarget: *FrameworkElement, preferredPlacement: FlyoutPlacementMode, targetPreferredPlacement: FlyoutPlacementMode, allowFallbacks: bool) core.HResult!Rect {
-        const factory = @This().IXamlUIPresenterStatics2Cache.get();
-        return try factory.GetFlyoutPlacementTargetInfo(placementTarget, preferredPlacement, targetPreferredPlacement, allowFallbacks);
+        const _f = @This().IXamlUIPresenterStatics2Cache.get();
+        return try _f.GetFlyoutPlacementTargetInfo(placementTarget, preferredPlacement, targetPreferredPlacement, allowFallbacks);
     }
     pub fn GetFlyoutPlacement(placementTargetBounds: Rect, controlSize: Size, minControlSize: Size, containerRect: Rect, targetPreferredPlacement: FlyoutPlacementMode, allowFallbacks: bool, chosenPlacement: FlyoutPlacementMode) core.HResult!Rect {
-        const factory = @This().IXamlUIPresenterStatics2Cache.get();
-        return try factory.GetFlyoutPlacement(placementTargetBounds, controlSize, minControlSize, containerRect, targetPreferredPlacement, allowFallbacks, chosenPlacement);
+        const _f = @This().IXamlUIPresenterStatics2Cache.get();
+        return try _f.GetFlyoutPlacement(placementTargetBounds, controlSize, minControlSize, containerRect, targetPreferredPlacement, allowFallbacks, chosenPlacement);
     }
-    pub fn get_CompleteTimelinesAutomatically() core.HResult!bool {
-        const factory = @This().IXamlUIPresenterStaticsCache.get();
-        return try factory.getCompleteTimelinesAutomatically();
+    pub fn getCompleteTimelinesAutomatically() core.HResult!bool {
+        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        return try _f.getCompleteTimelinesAutomatically();
     }
-    pub fn put_CompleteTimelinesAutomatically(value: bool) core.HResult!void {
-        const factory = @This().IXamlUIPresenterStaticsCache.get();
-        return try factory.putCompleteTimelinesAutomatically(value);
+    pub fn putCompleteTimelinesAutomatically(value: bool) core.HResult!void {
+        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        return try _f.putCompleteTimelinesAutomatically(value);
     }
     pub fn SetHost(host: *IXamlUIPresenterHost) core.HResult!void {
-        const factory = @This().IXamlUIPresenterStaticsCache.get();
-        return try factory.SetHost(host);
+        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        return try _f.SetHost(host);
     }
     pub fn NotifyWindowSizeChanged() core.HResult!void {
-        const factory = @This().IXamlUIPresenterStaticsCache.get();
-        return try factory.NotifyWindowSizeChanged();
+        const _f = @This().IXamlUIPresenterStaticsCache.get();
+        return try _f.NotifyWindowSizeChanged();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.XamlUIPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -979,44 +979,44 @@ pub const ElementCompositionPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetImplicitShowAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const factory = @This().IElementCompositionPreviewStatics2Cache.get();
-        return try factory.SetImplicitShowAnimation(element, animation);
+        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        return try _f.SetImplicitShowAnimation(element, animation);
     }
     pub fn SetImplicitHideAnimation(element: *UIElement, animation: *ICompositionAnimationBase) core.HResult!void {
-        const factory = @This().IElementCompositionPreviewStatics2Cache.get();
-        return try factory.SetImplicitHideAnimation(element, animation);
+        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        return try _f.SetImplicitHideAnimation(element, animation);
     }
     pub fn SetIsTranslationEnabled(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IElementCompositionPreviewStatics2Cache.get();
-        return try factory.SetIsTranslationEnabled(element, value);
+        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        return try _f.SetIsTranslationEnabled(element, value);
     }
     pub fn GetPointerPositionPropertySet(targetElement: *UIElement) core.HResult!*CompositionPropertySet {
-        const factory = @This().IElementCompositionPreviewStatics2Cache.get();
-        return try factory.GetPointerPositionPropertySet(targetElement);
+        const _f = @This().IElementCompositionPreviewStatics2Cache.get();
+        return try _f.GetPointerPositionPropertySet(targetElement);
     }
     pub fn SetAppWindowContent(appWindow: *AppWindow, xamlContent: *UIElement) core.HResult!void {
-        const factory = @This().IElementCompositionPreviewStatics3Cache.get();
-        return try factory.SetAppWindowContent(appWindow, xamlContent);
+        const _f = @This().IElementCompositionPreviewStatics3Cache.get();
+        return try _f.SetAppWindowContent(appWindow, xamlContent);
     }
     pub fn GetAppWindowContent(appWindow: *AppWindow) core.HResult!*UIElement {
-        const factory = @This().IElementCompositionPreviewStatics3Cache.get();
-        return try factory.GetAppWindowContent(appWindow);
+        const _f = @This().IElementCompositionPreviewStatics3Cache.get();
+        return try _f.GetAppWindowContent(appWindow);
     }
     pub fn GetElementVisual(element: *UIElement) core.HResult!*Visual {
-        const factory = @This().IElementCompositionPreviewStaticsCache.get();
-        return try factory.GetElementVisual(element);
+        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        return try _f.GetElementVisual(element);
     }
     pub fn GetElementChildVisual(element: *UIElement) core.HResult!*Visual {
-        const factory = @This().IElementCompositionPreviewStaticsCache.get();
-        return try factory.GetElementChildVisual(element);
+        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        return try _f.GetElementChildVisual(element);
     }
     pub fn SetElementChildVisual(element: *UIElement, visual: *Visual) core.HResult!void {
-        const factory = @This().IElementCompositionPreviewStaticsCache.get();
-        return try factory.SetElementChildVisual(element, visual);
+        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        return try _f.SetElementChildVisual(element, visual);
     }
     pub fn GetScrollViewerManipulationPropertySet(scrollViewer: *ScrollViewer) core.HResult!*CompositionPropertySet {
-        const factory = @This().IElementCompositionPreviewStaticsCache.get();
-        return try factory.GetScrollViewerManipulationPropertySet(scrollViewer);
+        const _f = @This().IElementCompositionPreviewStaticsCache.get();
+        return try _f.GetScrollViewerManipulationPropertySet(scrollViewer);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Hosting.ElementCompositionPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1160,8 +1160,8 @@ const FactoryCache = @import("../../core.zig").FactoryCache;
 const Visual = @import("../Composition.zig").Visual;
 const Rect = @import("../../Foundation.zig").Rect;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../../root.zig").HSTRING;
 const IInspectable = @import("../../Foundation.zig").IInspectable;
 const ICompositionAnimationBase = @import("../Composition.zig").ICompositionAnimationBase;

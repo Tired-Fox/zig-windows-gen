@@ -1574,16 +1574,16 @@ pub const PhotoImportManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupportedAsync() core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IPhotoImportManagerStaticsCache.get();
-        return try factory.IsSupportedAsync();
+        const _f = @This().IPhotoImportManagerStaticsCache.get();
+        return try _f.IsSupportedAsync();
     }
     pub fn FindAllSourcesAsync() core.HResult!*IAsyncOperation(IVectorView(PhotoImportSource)) {
-        const factory = @This().IPhotoImportManagerStaticsCache.get();
-        return try factory.FindAllSourcesAsync();
+        const _f = @This().IPhotoImportManagerStaticsCache.get();
+        return try _f.FindAllSourcesAsync();
     }
     pub fn GetPendingOperations() core.HResult!*IVectorView(PhotoImportOperation) {
-        const factory = @This().IPhotoImportManagerStaticsCache.get();
-        return try factory.GetPendingOperations();
+        const _f = @This().IPhotoImportManagerStaticsCache.get();
+        return try _f.GetPendingOperations();
     }
     pub const NAME: []const u8 = "Windows.Media.Import.PhotoImportManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1817,12 +1817,12 @@ pub const PhotoImportSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(sourceId: HSTRING) core.HResult!*IAsyncOperation(PhotoImportSource) {
-        const factory = @This().IPhotoImportSourceStaticsCache.get();
-        return try factory.FromIdAsync(sourceId);
+        const _f = @This().IPhotoImportSourceStaticsCache.get();
+        return try _f.FromIdAsync(sourceId);
     }
     pub fn FromFolderAsync(sourceRootFolder: *IStorageFolder) core.HResult!*IAsyncOperation(PhotoImportSource) {
-        const factory = @This().IPhotoImportSourceStaticsCache.get();
-        return try factory.FromFolderAsync(sourceRootFolder);
+        const _f = @This().IPhotoImportSourceStaticsCache.get();
+        return try _f.FromFolderAsync(sourceRootFolder);
     }
     pub const NAME: []const u8 = "Windows.Media.Import.PhotoImportSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

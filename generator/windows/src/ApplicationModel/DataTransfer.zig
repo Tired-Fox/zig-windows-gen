@@ -4,80 +4,80 @@ pub const Clipboard = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetHistoryItemsAsync() core.HResult!*IAsyncOperation(ClipboardHistoryItemsResult) {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.GetHistoryItemsAsync();
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.GetHistoryItemsAsync();
     }
     pub fn ClearHistory() core.HResult!bool {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.ClearHistory();
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.ClearHistory();
     }
     pub fn DeleteItemFromHistory(item: *ClipboardHistoryItem) core.HResult!bool {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.DeleteItemFromHistory(item);
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.DeleteItemFromHistory(item);
     }
     pub fn SetHistoryItemAsContent(item: *ClipboardHistoryItem) core.HResult!SetHistoryItemAsContentStatus {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.SetHistoryItemAsContent(item);
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.SetHistoryItemAsContent(item);
     }
     pub fn IsHistoryEnabled() core.HResult!bool {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.IsHistoryEnabled();
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.IsHistoryEnabled();
     }
     pub fn IsRoamingEnabled() core.HResult!bool {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.IsRoamingEnabled();
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.IsRoamingEnabled();
     }
     pub fn SetContentWithOptions(content: *DataPackage, options: *ClipboardContentOptions) core.HResult!bool {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.SetContentWithOptions(content, options);
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.SetContentWithOptions(content, options);
     }
-    pub fn add_HistoryChanged(handler: *EventHandler(ClipboardHistoryChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.addHistoryChanged(handler);
+    pub fn addHistoryChanged(handler: *EventHandler(ClipboardHistoryChangedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.addHistoryChanged(handler);
     }
-    pub fn remove_HistoryChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.removeHistoryChanged(token);
+    pub fn removeHistoryChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.removeHistoryChanged(token);
     }
-    pub fn add_RoamingEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.addRoamingEnabledChanged(handler);
+    pub fn addRoamingEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.addRoamingEnabledChanged(handler);
     }
-    pub fn remove_RoamingEnabledChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.removeRoamingEnabledChanged(token);
+    pub fn removeRoamingEnabledChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.removeRoamingEnabledChanged(token);
     }
-    pub fn add_HistoryEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.addHistoryEnabledChanged(handler);
+    pub fn addHistoryEnabledChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.addHistoryEnabledChanged(handler);
     }
-    pub fn remove_HistoryEnabledChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IClipboardStatics2Cache.get();
-        return try factory.removeHistoryEnabledChanged(token);
+    pub fn removeHistoryEnabledChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IClipboardStatics2Cache.get();
+        return try _f.removeHistoryEnabledChanged(token);
     }
     pub fn GetContent() core.HResult!*DataPackageView {
-        const factory = @This().IClipboardStaticsCache.get();
-        return try factory.GetContent();
+        const _f = @This().IClipboardStaticsCache.get();
+        return try _f.GetContent();
     }
     pub fn SetContent(content: *DataPackage) core.HResult!void {
-        const factory = @This().IClipboardStaticsCache.get();
-        return try factory.SetContent(content);
+        const _f = @This().IClipboardStaticsCache.get();
+        return try _f.SetContent(content);
     }
     pub fn Flush() core.HResult!void {
-        const factory = @This().IClipboardStaticsCache.get();
-        return try factory.Flush();
+        const _f = @This().IClipboardStaticsCache.get();
+        return try _f.Flush();
     }
     pub fn Clear() core.HResult!void {
-        const factory = @This().IClipboardStaticsCache.get();
-        return try factory.Clear();
+        const _f = @This().IClipboardStaticsCache.get();
+        return try _f.Clear();
     }
-    pub fn add_ContentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IClipboardStaticsCache.get();
-        return try factory.addContentChanged(handler);
+    pub fn addContentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IClipboardStaticsCache.get();
+        return try _f.addContentChanged(handler);
     }
-    pub fn remove_ContentChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IClipboardStaticsCache.get();
-        return try factory.removeContentChanged(token);
+    pub fn removeContentChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IClipboardStaticsCache.get();
+        return try _f.removeContentChanged(token);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.Clipboard";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -349,41 +349,17 @@ pub const DataPackagePropertySet = extern struct {
         const this: *IDataPackagePropertySet = @ptrCast(self);
         return try this.putApplicationListingUri(value);
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
         var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(HSTRING,IInspectable) = undefined;
@@ -391,7 +367,7 @@ pub const DataPackagePropertySet = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -561,31 +537,19 @@ pub const DataPackagePropertySetView = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getIsFromRoamingClipboard();
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -906,20 +870,20 @@ pub const DataTransferManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowShareUIWithOptions(options: *ShareUIOptions) core.HResult!void {
-        const factory = @This().IDataTransferManagerStatics3Cache.get();
-        return try factory.ShowShareUI(options);
+        const _f = @This().IDataTransferManagerStatics3Cache.get();
+        return try _f.ShowShareUI(options);
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IDataTransferManagerStatics2Cache.get();
-        return try factory.IsSupported();
+        const _f = @This().IDataTransferManagerStatics2Cache.get();
+        return try _f.IsSupported();
     }
     pub fn ShowShareUI() core.HResult!void {
-        const factory = @This().IDataTransferManagerStaticsCache.get();
-        return try factory.ShowShareUI();
+        const _f = @This().IDataTransferManagerStaticsCache.get();
+        return try _f.ShowShareUI();
     }
     pub fn GetForCurrentView() core.HResult!*DataTransferManager {
-        const factory = @This().IDataTransferManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IDataTransferManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.DataTransferManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -936,12 +900,12 @@ pub const HtmlFormatHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStaticFragment(htmlFormat: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IHtmlFormatHelperStaticsCache.get();
-        return try factory.GetStaticFragment(htmlFormat);
+        const _f = @This().IHtmlFormatHelperStaticsCache.get();
+        return try _f.GetStaticFragment(htmlFormat);
     }
     pub fn CreateHtmlFormat(htmlFragment: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IHtmlFormatHelperStaticsCache.get();
-        return try factory.CreateHtmlFormat(htmlFragment);
+        const _f = @This().IHtmlFormatHelperStaticsCache.get();
+        return try _f.CreateHtmlFormat(htmlFragment);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.HtmlFormatHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1870,9 +1834,9 @@ pub const IDataPackageView = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTextAsync(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
+    pub fn GetTextAsyncWithFormatId(self: *@This(), formatId: HSTRING) core.HResult!*IAsyncOperation(HSTRING) {
         var _r: *IAsyncOperation(HSTRING) = undefined;
-        const _c = self.vtable.GetTextAsync(@ptrCast(self), formatId, &_r);
+        const _c = self.vtable.GetTextAsyncWithFormatId(@ptrCast(self), formatId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1931,7 +1895,7 @@ pub const IDataPackageView = extern struct {
         Contains: *const fn(self: *anyopaque, formatId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         GetDataAsync: *const fn(self: *anyopaque, formatId: HSTRING, _r: **IAsyncOperation(IInspectable)) callconv(.winapi) HRESULT,
         GetTextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
-        GetTextAsync: *const fn(self: *anyopaque, formatId: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
+        GetTextAsyncWithFormatId: *const fn(self: *anyopaque, formatId: HSTRING, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
         GetUriAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(Uri)) callconv(.winapi) HRESULT,
         GetHtmlFormatAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HSTRING)) callconv(.winapi) HRESULT,
         GetResourceMapAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IMapView(HSTRING,RandomAccessStreamReference))) callconv(.winapi) HRESULT,
@@ -1978,9 +1942,9 @@ pub const IDataPackageView3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsync(self: *@This(), enterpriseId: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithEnterpriseId(self: *@This(), enterpriseId: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
-        const _c = self.vtable.RequestAccessAsync(@ptrCast(self), enterpriseId, &_r);
+        const _c = self.vtable.RequestAccessAsyncWithEnterpriseId(@ptrCast(self), enterpriseId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2003,7 +1967,7 @@ pub const IDataPackageView3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessAsync: *const fn(self: *anyopaque, enterpriseId: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessAsyncWithEnterpriseId: *const fn(self: *anyopaque, enterpriseId: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         UnlockAndAssumeEnterpriseIdentity: *const fn(self: *anyopaque, _r: *ProtectionPolicyEvaluationResult) callconv(.winapi) HRESULT,
     };
 };
@@ -2865,8 +2829,8 @@ pub const ShareProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(title: HSTRING, displayIcon: *RandomAccessStreamReference, backgroundColor: Color, handler: *ShareProviderHandler) core.HResult!*ShareProvider {
-        const factory = @This().IShareProviderFactoryCache.get();
-        return try factory.Create(title, displayIcon, backgroundColor, handler);
+        const _f = @This().IShareProviderFactoryCache.get();
+        return try _f.Create(title, displayIcon, backgroundColor, handler);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.ShareProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3061,16 +3025,16 @@ pub const SharedStorageAccessManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn AddFile(file: *IStorageFile) core.HResult!HSTRING {
-        const factory = @This().ISharedStorageAccessManagerStaticsCache.get();
-        return try factory.AddFile(file);
+        const _f = @This().ISharedStorageAccessManagerStaticsCache.get();
+        return try _f.AddFile(file);
     }
     pub fn RedeemTokenForFileAsync(token: HSTRING) core.HResult!*IAsyncOperation(StorageFile) {
-        const factory = @This().ISharedStorageAccessManagerStaticsCache.get();
-        return try factory.RedeemTokenForFileAsync(token);
+        const _f = @This().ISharedStorageAccessManagerStaticsCache.get();
+        return try _f.RedeemTokenForFileAsync(token);
     }
     pub fn RemoveFile(token: HSTRING) core.HResult!void {
-        const factory = @This().ISharedStorageAccessManagerStaticsCache.get();
-        return try factory.RemoveFile(token);
+        const _f = @This().ISharedStorageAccessManagerStaticsCache.get();
+        return try _f.RemoveFile(token);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.SharedStorageAccessManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3081,41 +3045,41 @@ pub const StandardDataFormats = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_UserActivityJsonArray() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStatics3Cache.get();
-        return try factory.getUserActivityJsonArray();
+    pub fn getUserActivityJsonArray() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStatics3Cache.get();
+        return try _f.getUserActivityJsonArray();
     }
-    pub fn get_WebLink() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStatics2Cache.get();
-        return try factory.getWebLink();
+    pub fn getWebLink() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStatics2Cache.get();
+        return try _f.getWebLink();
     }
-    pub fn get_ApplicationLink() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStatics2Cache.get();
-        return try factory.getApplicationLink();
+    pub fn getApplicationLink() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStatics2Cache.get();
+        return try _f.getApplicationLink();
     }
-    pub fn get_Text() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStaticsCache.get();
-        return try factory.getText();
+    pub fn getText() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        return try _f.getText();
     }
-    pub fn get_Uri() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStaticsCache.get();
-        return try factory.getUri();
+    pub fn getUri() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        return try _f.getUri();
     }
-    pub fn get_Html() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStaticsCache.get();
-        return try factory.getHtml();
+    pub fn getHtml() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        return try _f.getHtml();
     }
-    pub fn get_Rtf() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStaticsCache.get();
-        return try factory.getRtf();
+    pub fn getRtf() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        return try _f.getRtf();
     }
-    pub fn get_Bitmap() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStaticsCache.get();
-        return try factory.getBitmap();
+    pub fn getBitmap() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        return try _f.getBitmap();
     }
-    pub fn get_StorageItems() core.HResult!HSTRING {
-        const factory = @This().IStandardDataFormatsStaticsCache.get();
-        return try factory.getStorageItems();
+    pub fn getStorageItems() core.HResult!HSTRING {
+        const _f = @This().IStandardDataFormatsStaticsCache.get();
+        return try _f.getStorageItems();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DataTransfer.StandardDataFormats";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

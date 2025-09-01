@@ -8,60 +8,6 @@ pub const CurrencyFormatter = extern struct {
         const this: *ICurrencyFormatter = @ptrCast(self);
         return try this.putCurrency(value);
     }
-    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
-        var this: ?*INumberParser = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ParseInt(text);
-    }
-    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
-        var this: ?*INumberParser = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ParseUInt(text);
-    }
-    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
-        var this: ?*INumberParser = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ParseDouble(text);
-    }
-    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatInt(value);
-    }
-    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatUInt(value);
-    }
-    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatDouble(value);
-    }
-    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatWithValue(value);
-    }
-    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.FormatWithValue(value);
-    }
-    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
-        var this: ?*INumberFormatter = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Format(value);
-    }
     pub fn getLanguages(self: *@This()) core.HResult!*IVectorView(HSTRING) {
         var this: ?*INumberFormatterOptions = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatterOptions.IID, @ptrCast(&this));
@@ -146,6 +92,60 @@ pub const CurrencyFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatWithValueInt64(value);
+    }
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatWithValueUInt64(value);
+    }
+    pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Format(value);
+    }
+    pub fn FormatInt(self: *@This(), value: i64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatInt(value);
+    }
+    pub fn FormatUInt(self: *@This(), value: u64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatUInt(value);
+    }
+    pub fn FormatDouble(self: *@This(), value: f64) core.HResult!HSTRING {
+        var this: ?*INumberFormatter2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberFormatter2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.FormatDouble(value);
+    }
+    pub fn ParseInt(self: *@This(), text: HSTRING) core.HResult!*IReference(i64) {
+        var this: ?*INumberParser = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ParseInt(text);
+    }
+    pub fn ParseUInt(self: *@This(), text: HSTRING) core.HResult!*IReference(u64) {
+        var this: ?*INumberParser = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ParseUInt(text);
+    }
+    pub fn ParseDouble(self: *@This(), text: HSTRING) core.HResult!*IReference(f64) {
+        var this: ?*INumberParser = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &INumberParser.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ParseDouble(text);
+    }
     pub fn getMode(self: *@This()) core.HResult!CurrencyFormatterMode {
         var this: ?*ICurrencyFormatter2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ICurrencyFormatter2.IID, @ptrCast(&this));
@@ -204,12 +204,12 @@ pub const CurrencyFormatter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCurrencyFormatterCode(currencyCode: HSTRING) core.HResult!*CurrencyFormatter {
-        const factory = @This().ICurrencyFormatterFactoryCache.get();
-        return try factory.CreateCurrencyFormatterCode(currencyCode);
+        const _f = @This().ICurrencyFormatterFactoryCache.get();
+        return try _f.CreateCurrencyFormatterCode(currencyCode);
     }
     pub fn CreateCurrencyFormatterCodeContext(currencyCode: HSTRING, languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*CurrencyFormatter {
-        const factory = @This().ICurrencyFormatterFactoryCache.get();
-        return try factory.CreateCurrencyFormatterCodeContext(currencyCode, languages, geographicRegion);
+        const _f = @This().ICurrencyFormatterFactoryCache.get();
+        return try _f.CreateCurrencyFormatterCodeContext(currencyCode, languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.CurrencyFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -308,13 +308,13 @@ pub const DecimalFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.FormatWithValue(value);
+        return try this.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.FormatWithValue(value);
+        return try this.FormatWithValueUInt64(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
@@ -400,8 +400,8 @@ pub const DecimalFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
     pub fn CreateDecimalFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*DecimalFormatter {
-        const factory = @This().IDecimalFormatterFactoryCache.get();
-        return try factory.CreateDecimalFormatter(languages, geographicRegion);
+        const _f = @This().IDecimalFormatterFactoryCache.get();
+        return try _f.CreateDecimalFormatter(languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.DecimalFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -567,15 +567,15 @@ pub const IIncrementNumberRounder = extern struct {
 };
 pub const INumberFormatter = extern struct {
     vtable: *const VTable,
-    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.FormatWithValue(@ptrCast(self), value, &_r);
+        const _c = self.vtable.FormatWithValueInt64(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.FormatWithValue(@ptrCast(self), value, &_r);
+        const _c = self.vtable.FormatWithValueUInt64(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -597,8 +597,8 @@ pub const INumberFormatter = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        FormatWithValue: *const fn(self: *anyopaque, value: i64, _r: *HSTRING) callconv(.winapi) HRESULT,
-        FormatWithValue: *const fn(self: *anyopaque, value: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FormatWithValueInt64: *const fn(self: *anyopaque, value: i64, _r: *HSTRING) callconv(.winapi) HRESULT,
+        FormatWithValueUInt64: *const fn(self: *anyopaque, value: u64, _r: *HSTRING) callconv(.winapi) HRESULT,
         Format: *const fn(self: *anyopaque, value: f64, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
@@ -1174,8 +1174,8 @@ pub const NumeralSystemTranslator = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumeralSystemTranslator.IID)));
     }
     pub fn Create(languages: *IIterable(HSTRING)) core.HResult!*NumeralSystemTranslator {
-        const factory = @This().INumeralSystemTranslatorFactoryCache.get();
-        return try factory.Create(languages);
+        const _f = @This().INumeralSystemTranslatorFactoryCache.get();
+        return try _f.Create(languages);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.NumeralSystemTranslator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1271,13 +1271,13 @@ pub const PercentFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.FormatWithValue(value);
+        return try this.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.FormatWithValue(value);
+        return try this.FormatWithValueUInt64(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
@@ -1363,8 +1363,8 @@ pub const PercentFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
     pub fn CreatePercentFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PercentFormatter {
-        const factory = @This().IPercentFormatterFactoryCache.get();
-        return try factory.CreatePercentFormatter(languages, geographicRegion);
+        const _f = @This().IPercentFormatterFactoryCache.get();
+        return try _f.CreatePercentFormatter(languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.PercentFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1460,13 +1460,13 @@ pub const PermilleFormatter = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getResolvedGeographicRegion();
     }
-    pub fn FormatWithValue(self: *@This(), value: i64) core.HResult!HSTRING {
+    pub fn FormatWithValueInt64(self: *@This(), value: i64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.FormatWithValue(value);
+        return try this.FormatWithValueInt64(value);
     }
-    pub fn FormatWithValue(self: *@This(), value: u64) core.HResult!HSTRING {
+    pub fn FormatWithValueUInt64(self: *@This(), value: u64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
-        return try this.FormatWithValue(value);
+        return try this.FormatWithValueUInt64(value);
     }
     pub fn Format(self: *@This(), value: f64) core.HResult!HSTRING {
         const this: *INumberFormatter = @ptrCast(self);
@@ -1552,8 +1552,8 @@ pub const PermilleFormatter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INumberFormatter.IID)));
     }
     pub fn CreatePermilleFormatter(languages: *IIterable(HSTRING), geographicRegion: HSTRING) core.HResult!*PermilleFormatter {
-        const factory = @This().IPermilleFormatterFactoryCache.get();
-        return try factory.CreatePermilleFormatter(languages, geographicRegion);
+        const _f = @This().IPermilleFormatterFactoryCache.get();
+        return try _f.CreatePermilleFormatter(languages, geographicRegion);
     }
     pub const NAME: []const u8 = "Windows.Globalization.NumberFormatting.PermilleFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

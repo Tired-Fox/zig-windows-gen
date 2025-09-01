@@ -144,8 +144,8 @@ pub const HttpBaseProtocolFilter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpBaseProtocolFilter.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*HttpBaseProtocolFilter {
-        const factory = @This().IHttpBaseProtocolFilterStaticsCache.get();
-        return try factory.CreateForUser(user);
+        const _f = @This().IHttpBaseProtocolFilterStaticsCache.get();
+        return try _f.CreateForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Filters.HttpBaseProtocolFilter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -645,7 +645,7 @@ const HttpCookieManager = @import("../Http.zig").HttpCookieManager;
 const HttpRequestMessage = @import("../Http.zig").HttpRequestMessage;
 const EventRegistrationToken = @import("../../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const User = @import("../../System.zig").User;
 const HSTRING = @import("../../root.zig").HSTRING;

@@ -32,20 +32,20 @@ pub const ChatCapabilitiesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCachedCapabilitiesAsync(address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const factory = @This().IChatCapabilitiesManagerStaticsCache.get();
-        return try factory.GetCachedCapabilitiesAsync(address);
+        const _f = @This().IChatCapabilitiesManagerStaticsCache.get();
+        return try _f.GetCachedCapabilitiesAsync(address);
     }
     pub fn GetCapabilitiesFromNetworkAsync(address: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const factory = @This().IChatCapabilitiesManagerStaticsCache.get();
-        return try factory.GetCapabilitiesFromNetworkAsync(address);
+        const _f = @This().IChatCapabilitiesManagerStaticsCache.get();
+        return try _f.GetCapabilitiesFromNetworkAsync(address);
     }
     pub fn GetCachedCapabilitiesAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const factory = @This().IChatCapabilitiesManagerStatics2Cache.get();
-        return try factory.GetCachedCapabilitiesAsync(address, transportId);
+        const _f = @This().IChatCapabilitiesManagerStatics2Cache.get();
+        return try _f.GetCachedCapabilitiesAsync(address, transportId);
     }
     pub fn GetCapabilitiesFromNetworkAsyncWithTransportId(address: HSTRING, transportId: HSTRING) core.HResult!*IAsyncOperation(ChatCapabilities) {
-        const factory = @This().IChatCapabilitiesManagerStatics2Cache.get();
-        return try factory.GetCapabilitiesFromNetworkAsync(address, transportId);
+        const _f = @This().IChatCapabilitiesManagerStatics2Cache.get();
+        return try _f.GetCapabilitiesFromNetworkAsync(address, transportId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatCapabilitiesManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -578,8 +578,8 @@ pub const ChatMessageAttachment = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateChatMessageAttachment(mimeType: HSTRING, dataStreamReference: *IRandomAccessStreamReference) core.HResult!*ChatMessageAttachment {
-        const factory = @This().IChatMessageAttachmentFactoryCache.get();
-        return try factory.CreateChatMessageAttachment(mimeType, dataStreamReference);
+        const _f = @This().IChatMessageAttachmentFactoryCache.get();
+        return try _f.CreateChatMessageAttachment(mimeType, dataStreamReference);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageAttachment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -594,8 +594,8 @@ pub const ChatMessageBlocking = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn MarkMessageAsBlockedAsync(localChatMessageId: HSTRING, blocked: bool) core.HResult!*IAsyncAction {
-        const factory = @This().IChatMessageBlockingStaticCache.get();
-        return try factory.MarkMessageAsBlockedAsync(localChatMessageId, blocked);
+        const _f = @This().IChatMessageBlockingStaticCache.get();
+        return try _f.MarkMessageAsBlockedAsync(localChatMessageId, blocked);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageBlocking";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -702,32 +702,32 @@ pub const ChatMessageManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetTransportsAsync() core.HResult!*IAsyncOperation(IVectorView(ChatMessageTransport)) {
-        const factory = @This().IChatMessageManagerStaticCache.get();
-        return try factory.GetTransportsAsync();
+        const _f = @This().IChatMessageManagerStaticCache.get();
+        return try _f.GetTransportsAsync();
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(ChatMessageStore) {
-        const factory = @This().IChatMessageManagerStaticCache.get();
-        return try factory.RequestStoreAsync();
+        const _f = @This().IChatMessageManagerStaticCache.get();
+        return try _f.RequestStoreAsync();
     }
     pub fn ShowComposeSmsMessageAsync(message: *ChatMessage) core.HResult!*IAsyncAction {
-        const factory = @This().IChatMessageManagerStaticCache.get();
-        return try factory.ShowComposeSmsMessageAsync(message);
+        const _f = @This().IChatMessageManagerStaticCache.get();
+        return try _f.ShowComposeSmsMessageAsync(message);
     }
     pub fn ShowSmsSettings() core.HResult!void {
-        const factory = @This().IChatMessageManagerStaticCache.get();
-        return try factory.ShowSmsSettings();
+        const _f = @This().IChatMessageManagerStaticCache.get();
+        return try _f.ShowSmsSettings();
     }
     pub fn RegisterTransportAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IChatMessageManager2StaticsCache.get();
-        return try factory.RegisterTransportAsync();
+        const _f = @This().IChatMessageManager2StaticsCache.get();
+        return try _f.RegisterTransportAsync();
     }
     pub fn GetTransportAsync(transportId: HSTRING) core.HResult!*IAsyncOperation(ChatMessageTransport) {
-        const factory = @This().IChatMessageManager2StaticsCache.get();
-        return try factory.GetTransportAsync(transportId);
+        const _f = @This().IChatMessageManager2StaticsCache.get();
+        return try _f.GetTransportAsync(transportId);
     }
     pub fn RequestSyncManagerAsync() core.HResult!*IAsyncOperation(ChatSyncManager) {
-        const factory = @This().IChatMessageManagerStatics3Cache.get();
-        return try factory.RequestSyncManagerAsync();
+        const _f = @This().IChatMessageManagerStatics3Cache.get();
+        return try _f.RequestSyncManagerAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.ChatMessageManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1471,9 +1471,9 @@ pub const IChatConversation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkMessagesAsReadAsync(self: *@This(), value: DateTime) core.HResult!*IAsyncAction {
+    pub fn MarkMessagesAsReadAsyncWithValue(self: *@This(), value: DateTime) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MarkMessagesAsReadAsync(@ptrCast(self), value, &_r);
+        const _c = self.vtable.MarkMessagesAsReadAsyncWithValue(@ptrCast(self), value, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1525,7 +1525,7 @@ pub const IChatConversation = extern struct {
         DeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
         MarkMessagesAsReadAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkMessagesAsReadAsync: *const fn(self: *anyopaque, value: DateTime, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkMessagesAsReadAsyncWithValue: *const fn(self: *anyopaque, value: DateTime, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         NotifyLocalParticipantComposing: *const fn(self: *anyopaque, transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) callconv(.winapi) HRESULT,
         NotifyRemoteParticipantComposing: *const fn(self: *anyopaque, transportId: HSTRING, participantAddress: HSTRING, isComposing: bool) callconv(.winapi) HRESULT,
@@ -1569,9 +1569,9 @@ pub const IChatConversationReader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadBatchAsync(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatConversation)) {
+    pub fn ReadBatchAsyncWithCount(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(ChatConversation)) {
         var _r: *IAsyncOperation(IVectorView(ChatConversation)) = undefined;
-        const _c = self.vtable.ReadBatchAsync(@ptrCast(self), count, &_r);
+        const _c = self.vtable.ReadBatchAsyncWithCount(@ptrCast(self), count, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1588,7 +1588,7 @@ pub const IChatConversationReader = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReadBatchAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(ChatConversation))) callconv(.winapi) HRESULT,
-        ReadBatchAsync: *const fn(self: *anyopaque, count: i32, _r: **IAsyncOperation(IVectorView(ChatConversation))) callconv(.winapi) HRESULT,
+        ReadBatchAsyncWithCount: *const fn(self: *anyopaque, count: i32, _r: **IAsyncOperation(IVectorView(ChatConversation))) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatConversationThreadingInfo = extern struct {
@@ -2587,9 +2587,9 @@ pub const IChatMessageStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetMessageReader(self: *@This(), recentTimeLimit: TimeSpan) core.HResult!*ChatMessageReader {
+    pub fn GetMessageReaderWithRecentTimeLimit(self: *@This(), recentTimeLimit: TimeSpan) core.HResult!*ChatMessageReader {
         var _r: *ChatMessageReader = undefined;
-        const _c = self.vtable.GetMessageReader(@ptrCast(self), recentTimeLimit, &_r);
+        const _c = self.vtable.GetMessageReaderWithRecentTimeLimit(@ptrCast(self), recentTimeLimit, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2644,7 +2644,7 @@ pub const IChatMessageStore = extern struct {
         DownloadMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
         GetMessageReader: *const fn(self: *anyopaque, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
-        GetMessageReader: *const fn(self: *anyopaque, recentTimeLimit: TimeSpan, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
+        GetMessageReaderWithRecentTimeLimit: *const fn(self: *anyopaque, recentTimeLimit: TimeSpan, _r: **ChatMessageReader) callconv(.winapi) HRESULT,
         MarkMessageReadAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RetrySendMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SendMessageAsync: *const fn(self: *anyopaque, chatMessage: *ChatMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -2685,9 +2685,9 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetConversationReader(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*ChatConversationReader {
+    pub fn GetConversationReaderWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*ChatConversationReader {
         var _r: *ChatConversationReader = undefined;
-        const _c = self.vtable.GetConversationReader(@ptrCast(self), transportIds, &_r);
+        const _c = self.vtable.GetConversationReaderWithTransportIds(@ptrCast(self), transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2703,9 +2703,9 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetUnseenCountAsync(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(i32) {
+    pub fn GetUnseenCountAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(i32) {
         var _r: *IAsyncOperation(i32) = undefined;
-        const _c = self.vtable.GetUnseenCountAsync(@ptrCast(self), transportIds, &_r);
+        const _c = self.vtable.GetUnseenCountAsyncWithTransportIds(@ptrCast(self), transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2715,9 +2715,9 @@ pub const IChatMessageStore2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn MarkAsSeenAsync(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
+    pub fn MarkAsSeenAsyncWithTransportIds(self: *@This(), transportIds: *IIterable(HSTRING)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.MarkAsSeenAsync(@ptrCast(self), transportIds, &_r);
+        const _c = self.vtable.MarkAsSeenAsyncWithTransportIds(@ptrCast(self), transportIds, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2772,12 +2772,12 @@ pub const IChatMessageStore2 = extern struct {
         GetConversationAsyncWithTransportIds: *const fn(self: *anyopaque, conversationId: HSTRING, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
         GetConversationFromThreadingInfoAsync: *const fn(self: *anyopaque, threadingInfo: *ChatConversationThreadingInfo, _r: **IAsyncOperation(ChatConversation)) callconv(.winapi) HRESULT,
         GetConversationReader: *const fn(self: *anyopaque, _r: **ChatConversationReader) callconv(.winapi) HRESULT,
-        GetConversationReader: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **ChatConversationReader) callconv(.winapi) HRESULT,
+        GetConversationReaderWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **ChatConversationReader) callconv(.winapi) HRESULT,
         GetMessageByRemoteIdAsync: *const fn(self: *anyopaque, transportId: HSTRING, remoteId: HSTRING, _r: **IAsyncOperation(ChatMessage)) callconv(.winapi) HRESULT,
         GetUnseenCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(i32)) callconv(.winapi) HRESULT,
-        GetUnseenCountAsync: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(i32)) callconv(.winapi) HRESULT,
+        GetUnseenCountAsyncWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **IAsyncOperation(i32)) callconv(.winapi) HRESULT,
         MarkAsSeenAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        MarkAsSeenAsync: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        MarkAsSeenAsyncWithTransportIds: *const fn(self: *anyopaque, transportIds: *IIterable(HSTRING), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetSearchReader: *const fn(self: *anyopaque, value: *ChatQueryOptions, _r: **ChatSearchReader) callconv(.winapi) HRESULT,
         SaveMessageAsync: *const fn(self: *anyopaque, chatMessage: *ChatMessage, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         TryCancelDownloadMessageAsync: *const fn(self: *anyopaque, localChatMessageId: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -3138,9 +3138,9 @@ pub const IChatSearchReader = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ReadBatchAsync(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(IChatItem)) {
+    pub fn ReadBatchAsyncWithCount(self: *@This(), count: i32) core.HResult!*IAsyncOperation(IVectorView(IChatItem)) {
         var _r: *IAsyncOperation(IVectorView(IChatItem)) = undefined;
-        const _c = self.vtable.ReadBatchAsync(@ptrCast(self), count, &_r);
+        const _c = self.vtable.ReadBatchAsyncWithCount(@ptrCast(self), count, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3157,7 +3157,7 @@ pub const IChatSearchReader = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         ReadBatchAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(IChatItem))) callconv(.winapi) HRESULT,
-        ReadBatchAsync: *const fn(self: *anyopaque, count: i32, _r: **IAsyncOperation(IVectorView(IChatItem))) callconv(.winapi) HRESULT,
+        ReadBatchAsyncWithCount: *const fn(self: *anyopaque, count: i32, _r: **IAsyncOperation(IVectorView(IChatItem))) callconv(.winapi) HRESULT,
     };
 };
 pub const IChatSyncConfiguration = extern struct {
@@ -3800,29 +3800,29 @@ pub const RcsManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_TransportListChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IRcsManagerStatics2Cache.get();
-        return try factory.addTransportListChanged(handler);
+    pub fn addTransportListChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IRcsManagerStatics2Cache.get();
+        return try _f.addTransportListChanged(handler);
     }
-    pub fn remove_TransportListChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IRcsManagerStatics2Cache.get();
-        return try factory.removeTransportListChanged(token);
+    pub fn removeTransportListChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IRcsManagerStatics2Cache.get();
+        return try _f.removeTransportListChanged(token);
     }
     pub fn GetEndUserMessageManager() core.HResult!*RcsEndUserMessageManager {
-        const factory = @This().IRcsManagerStaticsCache.get();
-        return try factory.GetEndUserMessageManager();
+        const _f = @This().IRcsManagerStaticsCache.get();
+        return try _f.GetEndUserMessageManager();
     }
     pub fn GetTransportsAsync() core.HResult!*IAsyncOperation(IVectorView(RcsTransport)) {
-        const factory = @This().IRcsManagerStaticsCache.get();
-        return try factory.GetTransportsAsync();
+        const _f = @This().IRcsManagerStaticsCache.get();
+        return try _f.GetTransportsAsync();
     }
     pub fn GetTransportAsync(transportId: HSTRING) core.HResult!*IAsyncOperation(RcsTransport) {
-        const factory = @This().IRcsManagerStaticsCache.get();
-        return try factory.GetTransportAsync(transportId);
+        const _f = @This().IRcsManagerStaticsCache.get();
+        return try _f.GetTransportAsync(transportId);
     }
     pub fn LeaveConversationAsync(conversation: *ChatConversation) core.HResult!*IAsyncAction {
-        const factory = @This().IRcsManagerStaticsCache.get();
-        return try factory.LeaveConversationAsync(conversation);
+        const _f = @This().IRcsManagerStaticsCache.get();
+        return try _f.LeaveConversationAsync(conversation);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Chat.RcsManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

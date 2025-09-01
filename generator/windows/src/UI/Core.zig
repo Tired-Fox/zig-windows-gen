@@ -72,8 +72,8 @@ pub const CoreWindowDialog = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICoreWindowDialog.IID)));
     }
     pub fn CreateWithTitle(title: HSTRING) core.HResult!*CoreWindowDialog {
-        const factory = @This().ICoreWindowDialogFactoryCache.get();
-        return try factory.CreateWithTitle(title);
+        const _f = @This().ICoreWindowDialogFactoryCache.get();
+        return try _f.CreateWithTitle(title);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowDialog";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -145,12 +145,12 @@ pub const CoreWindowFlyout = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(position: Point) core.HResult!*CoreWindowFlyout {
-        const factory = @This().ICoreWindowFlyoutFactoryCache.get();
-        return try factory.Create(position);
+        const _f = @This().ICoreWindowFlyoutFactoryCache.get();
+        return try _f.Create(position);
     }
     pub fn CreateWithTitle(position: Point, title: HSTRING) core.HResult!*CoreWindowFlyout {
-        const factory = @This().ICoreWindowFlyoutFactoryCache.get();
-        return try factory.CreateWithTitle(position, title);
+        const _f = @This().ICoreWindowFlyoutFactoryCache.get();
+        return try _f.CreateWithTitle(position, title);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -901,8 +901,8 @@ pub const CoreCursor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCursor(ty: CoreCursorType, id: u32) core.HResult!*CoreCursor {
-        const factory = @This().ICoreCursorFactoryCache.get();
-        return try factory.CreateCursor(ty, id);
+        const _f = @This().ICoreCursorFactoryCache.get();
+        return try _f.CreateCursor(ty, id);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreCursor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1237,9 +1237,9 @@ pub const CoreIndependentInputSourceController = extern struct {
         const this: *ICoreIndependentInputSourceController = @ptrCast(self);
         return try this.SetControlledInput(inputTypes);
     }
-    pub fn SetControlledInputWithRequiredWithExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
+    pub fn SetControlledInputWithRequiredAndExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
         const this: *ICoreIndependentInputSourceController = @ptrCast(self);
-        return try this.SetControlledInputWithRequiredWithExcluded(inputTypes, required, excluded);
+        return try this.SetControlledInputWithRequiredAndExcluded(inputTypes, required, excluded);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -1251,12 +1251,12 @@ pub const CoreIndependentInputSourceController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForVisual(visual: *Visual) core.HResult!*CoreIndependentInputSourceController {
-        const factory = @This().ICoreIndependentInputSourceControllerStaticsCache.get();
-        return try factory.CreateForVisual(visual);
+        const _f = @This().ICoreIndependentInputSourceControllerStaticsCache.get();
+        return try _f.CreateForVisual(visual);
     }
     pub fn CreateForIVisualElement(visualElement: *IVisualElement) core.HResult!*CoreIndependentInputSourceController {
-        const factory = @This().ICoreIndependentInputSourceControllerStaticsCache.get();
-        return try factory.CreateForIVisualElement(visualElement);
+        const _f = @This().ICoreIndependentInputSourceControllerStaticsCache.get();
+        return try _f.CreateForIVisualElement(visualElement);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreIndependentInputSourceController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1614,8 +1614,8 @@ pub const CoreWindow = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentThread() core.HResult!*CoreWindow {
-        const factory = @This().ICoreWindowStaticCache.get();
-        return try factory.GetForCurrentThread();
+        const _f = @This().ICoreWindowStaticCache.get();
+        return try _f.GetForCurrentThread();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindow";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1677,8 +1677,8 @@ pub const CoreWindowResizeManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*CoreWindowResizeManager {
-        const factory = @This().ICoreWindowResizeManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ICoreWindowResizeManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.CoreWindowResizeManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2208,9 +2208,9 @@ pub const ICoreDispatcherWithTaskPriority = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShouldYield(self: *@This(), priority: CoreDispatcherPriority) core.HResult!bool {
+    pub fn ShouldYieldWithPriority(self: *@This(), priority: CoreDispatcherPriority) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.ShouldYield(@ptrCast(self), priority, &_r);
+        const _c = self.vtable.ShouldYieldWithPriority(@ptrCast(self), priority, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2233,7 +2233,7 @@ pub const ICoreDispatcherWithTaskPriority = extern struct {
         get_CurrentPriority: *const fn(self: *anyopaque, _r: *CoreDispatcherPriority) callconv(.winapi) HRESULT,
         put_CurrentPriority: *const fn(self: *anyopaque, value: CoreDispatcherPriority) callconv(.winapi) HRESULT,
         ShouldYield: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
-        ShouldYield: *const fn(self: *anyopaque, priority: CoreDispatcherPriority, _r: *bool) callconv(.winapi) HRESULT,
+        ShouldYieldWithPriority: *const fn(self: *anyopaque, priority: CoreDispatcherPriority, _r: *bool) callconv(.winapi) HRESULT,
         StopProcessEvents: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -2269,8 +2269,8 @@ pub const ICoreIndependentInputSourceController = extern struct {
         const _c = self.vtable.SetControlledInput(@ptrCast(self), inputTypes);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetControlledInputWithExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
-        const _c = self.vtable.SetControlledInputWithExcluded(@ptrCast(self), inputTypes, required, excluded);
+    pub fn SetControlledInputWithRequiredAndExcluded(self: *@This(), inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) core.HResult!void {
+        const _c = self.vtable.SetControlledInputWithRequiredAndExcluded(@ptrCast(self), inputTypes, required, excluded);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Core.ICoreIndependentInputSourceController";
@@ -2291,7 +2291,7 @@ pub const ICoreIndependentInputSourceController = extern struct {
         put_IsPalmRejectionEnabled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         get_Source: *const fn(self: *anyopaque, _r: **CoreIndependentInputSource) callconv(.winapi) HRESULT,
         SetControlledInput: *const fn(self: *anyopaque, inputTypes: CoreInputDeviceTypes) callconv(.winapi) HRESULT,
-        SetControlledInputWithExcluded: *const fn(self: *anyopaque, inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) callconv(.winapi) HRESULT,
+        SetControlledInputWithRequiredAndExcluded: *const fn(self: *anyopaque, inputTypes: CoreInputDeviceTypes, required: CoreIndependentInputFilters, excluded: CoreIndependentInputFilters) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreIndependentInputSourceControllerStatics = extern struct {
@@ -3872,8 +3872,8 @@ pub const SystemNavigationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SystemNavigationManager {
-        const factory = @This().ISystemNavigationManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ISystemNavigationManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.SystemNavigationManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -169,36 +169,36 @@ pub const PlatformDiagnosticActions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsScenarioEnabled(scenarioId: *Guid) core.HResult!bool {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.IsScenarioEnabled(scenarioId);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.IsScenarioEnabled(scenarioId);
     }
     pub fn TryEscalateScenario(scenarioId: *Guid, escalationType: PlatformDiagnosticEscalationType, outputDirectory: HSTRING, timestampOutputDirectory: bool, forceEscalationUpload: bool, triggers: *IMapView(HSTRING,HSTRING)) core.HResult!bool {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.TryEscalateScenario(scenarioId, escalationType, outputDirectory, timestampOutputDirectory, forceEscalationUpload, triggers);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.TryEscalateScenario(scenarioId, escalationType, outputDirectory, timestampOutputDirectory, forceEscalationUpload, triggers);
     }
     pub fn DownloadLatestSettingsForNamespace(partner: HSTRING, feature: HSTRING, isScenarioNamespace: bool, downloadOverCostedNetwork: bool, downloadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.DownloadLatestSettingsForNamespace(partner, feature, isScenarioNamespace, downloadOverCostedNetwork, downloadOverBattery);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.DownloadLatestSettingsForNamespace(partner, feature, isScenarioNamespace, downloadOverCostedNetwork, downloadOverBattery);
     }
     pub fn GetActiveScenarioList() core.HResult!*IVectorView(Guid) {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.GetActiveScenarioList();
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.GetActiveScenarioList();
     }
     pub fn ForceUpload(latency: PlatformDiagnosticEventBufferLatencies, uploadOverCostedNetwork: bool, uploadOverBattery: bool) core.HResult!PlatformDiagnosticActionState {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.ForceUpload(latency, uploadOverCostedNetwork, uploadOverBattery);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.ForceUpload(latency, uploadOverCostedNetwork, uploadOverBattery);
     }
     pub fn IsTraceRunning(slotType: PlatformDiagnosticTraceSlotType, scenarioId: *Guid, traceProfileHash: u64) core.HResult!PlatformDiagnosticTraceSlotState {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.IsTraceRunning(slotType, scenarioId, traceProfileHash);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.IsTraceRunning(slotType, scenarioId, traceProfileHash);
     }
     pub fn GetActiveTraceRuntime(slotType: PlatformDiagnosticTraceSlotType) core.HResult!*PlatformDiagnosticTraceRuntimeInfo {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.GetActiveTraceRuntime(slotType);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.GetActiveTraceRuntime(slotType);
     }
     pub fn GetKnownTraceList(slotType: PlatformDiagnosticTraceSlotType) core.HResult!*IVectorView(PlatformDiagnosticTraceInfo) {
-        const factory = @This().IPlatformDiagnosticActionsStaticsCache.get();
-        return try factory.GetKnownTraceList(slotType);
+        const _f = @This().IPlatformDiagnosticActionsStaticsCache.get();
+        return try _f.GetKnownTraceList(slotType);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.TraceReporting.PlatformDiagnosticActions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

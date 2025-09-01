@@ -16,12 +16,12 @@ pub const EyesPose = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IEyesPoseStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().IEyesPoseStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(GazeInputAccessStatus) {
-        const factory = @This().IEyesPoseStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().IEyesPoseStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.People.EyesPose";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

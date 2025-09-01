@@ -12,28 +12,28 @@ pub const AccountsSettingsPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*AccountsSettingsPane {
-        const factory = @This().IAccountsSettingsPaneStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IAccountsSettingsPaneStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn Show() core.HResult!void {
-        const factory = @This().IAccountsSettingsPaneStaticsCache.get();
-        return try factory.Show();
+        const _f = @This().IAccountsSettingsPaneStaticsCache.get();
+        return try _f.Show();
     }
     pub fn ShowManageAccountsForUserAsync(user: *User) core.HResult!*IAsyncAction {
-        const factory = @This().IAccountsSettingsPaneStatics3Cache.get();
-        return try factory.ShowManageAccountsForUserAsync(user);
+        const _f = @This().IAccountsSettingsPaneStatics3Cache.get();
+        return try _f.ShowManageAccountsForUserAsync(user);
     }
     pub fn ShowAddAccountForUserAsync(user: *User) core.HResult!*IAsyncAction {
-        const factory = @This().IAccountsSettingsPaneStatics3Cache.get();
-        return try factory.ShowAddAccountForUserAsync(user);
+        const _f = @This().IAccountsSettingsPaneStatics3Cache.get();
+        return try _f.ShowAddAccountForUserAsync(user);
     }
     pub fn ShowManageAccountsAsync() core.HResult!*IAsyncAction {
-        const factory = @This().IAccountsSettingsPaneStatics2Cache.get();
-        return try factory.ShowManageAccountsAsync();
+        const _f = @This().IAccountsSettingsPaneStatics2Cache.get();
+        return try _f.ShowManageAccountsAsync();
     }
     pub fn ShowAddAccountAsync() core.HResult!*IAsyncAction {
-        const factory = @This().IAccountsSettingsPaneStatics2Cache.get();
-        return try factory.ShowAddAccountAsync();
+        const _f = @This().IAccountsSettingsPaneStatics2Cache.get();
+        return try _f.ShowAddAccountAsync();
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.AccountsSettingsPane";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -112,12 +112,12 @@ pub const CredentialCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCredentialCommand(passwordCredential: *PasswordCredential) core.HResult!*CredentialCommand {
-        const factory = @This().ICredentialCommandFactoryCache.get();
-        return try factory.CreateCredentialCommand(passwordCredential);
+        const _f = @This().ICredentialCommandFactoryCache.get();
+        return try _f.CreateCredentialCommand(passwordCredential);
     }
     pub fn CreateCredentialCommandWithHandler(passwordCredential: *PasswordCredential, deleted: *CredentialCommandCredentialDeletedHandler) core.HResult!*CredentialCommand {
-        const factory = @This().ICredentialCommandFactoryCache.get();
-        return try factory.CreateCredentialCommandWithHandler(passwordCredential, deleted);
+        const _f = @This().ICredentialCommandFactoryCache.get();
+        return try _f.CreateCredentialCommandWithHandler(passwordCredential, deleted);
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.CredentialCommand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -708,12 +708,12 @@ pub const SettingsCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateSettingsCommand(settingsCommandId: *IInspectable, label: HSTRING, handler: *UICommandInvokedHandler) core.HResult!*SettingsCommand {
-        const factory = @This().ISettingsCommandFactoryCache.get();
-        return try factory.CreateSettingsCommand(settingsCommandId, label, handler);
+        const _f = @This().ISettingsCommandFactoryCache.get();
+        return try _f.CreateSettingsCommand(settingsCommandId, label, handler);
     }
-    pub fn get_AccountsCommand() core.HResult!*SettingsCommand {
-        const factory = @This().ISettingsCommandStaticsCache.get();
-        return try factory.getAccountsCommand();
+    pub fn getAccountsCommand() core.HResult!*SettingsCommand {
+        const _f = @This().ISettingsCommandStaticsCache.get();
+        return try _f.getAccountsCommand();
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.SettingsCommand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -756,8 +756,8 @@ pub const WebAccountCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountCommand(webAccount: *WebAccount, invoked: *WebAccountCommandInvokedHandler, actions: SupportedWebAccountActions) core.HResult!*WebAccountCommand {
-        const factory = @This().IWebAccountCommandFactoryCache.get();
-        return try factory.CreateWebAccountCommand(webAccount, invoked, actions);
+        const _f = @This().IWebAccountCommandFactoryCache.get();
+        return try _f.CreateWebAccountCommand(webAccount, invoked, actions);
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.WebAccountCommand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -879,8 +879,8 @@ pub const WebAccountProviderCommand = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountProviderCommand(webAccountProvider: *WebAccountProvider, invoked: *WebAccountProviderCommandInvokedHandler) core.HResult!*WebAccountProviderCommand {
-        const factory = @This().IWebAccountProviderCommandFactoryCache.get();
-        return try factory.CreateWebAccountProviderCommand(webAccountProvider, invoked);
+        const _f = @This().IWebAccountProviderCommandFactoryCache.get();
+        return try _f.CreateWebAccountProviderCommand(webAccountProvider, invoked);
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.WebAccountProviderCommand";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1103,16 +1103,16 @@ pub const SettingsPane = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SettingsPane {
-        const factory = @This().ISettingsPaneStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ISettingsPaneStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn Show() core.HResult!void {
-        const factory = @This().ISettingsPaneStaticsCache.get();
-        return try factory.Show();
+        const _f = @This().ISettingsPaneStaticsCache.get();
+        return try _f.Show();
     }
-    pub fn get_Edge() core.HResult!SettingsEdgeLocation {
-        const factory = @This().ISettingsPaneStaticsCache.get();
-        return try factory.getEdge();
+    pub fn getEdge() core.HResult!SettingsEdgeLocation {
+        const _f = @This().ISettingsPaneStaticsCache.get();
+        return try _f.getEdge();
     }
     pub const NAME: []const u8 = "Windows.UI.ApplicationSettings.SettingsPane";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

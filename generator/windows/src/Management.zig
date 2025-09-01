@@ -135,9 +135,9 @@ pub const IMdmSession = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn StartAsync(self: *@This(), alerts: *IIterable(MdmAlert)) core.HResult!*IAsyncAction {
+    pub fn StartAsyncWithAlerts(self: *@This(), alerts: *IIterable(MdmAlert)) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.StartAsync(@ptrCast(self), alerts, &_r);
+        const _c = self.vtable.StartAsyncWithAlerts(@ptrCast(self), alerts, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -160,7 +160,7 @@ pub const IMdmSession = extern struct {
         AttachAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         Delete: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         StartAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        StartAsync: *const fn(self: *anyopaque, alerts: *IIterable(MdmAlert), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        StartAsyncWithAlerts: *const fn(self: *anyopaque, alerts: *IIterable(MdmAlert), _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IMdmSessionManagerStatics = extern struct {
@@ -331,21 +331,21 @@ pub const MdmSessionManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SessionIds() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IMdmSessionManagerStaticsCache.get();
-        return try factory.getSessionIds();
+    pub fn getSessionIds() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        return try _f.getSessionIds();
     }
     pub fn TryCreateSession() core.HResult!*MdmSession {
-        const factory = @This().IMdmSessionManagerStaticsCache.get();
-        return try factory.TryCreateSession();
+        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        return try _f.TryCreateSession();
     }
     pub fn DeleteSessionById(sessionId: HSTRING) core.HResult!void {
-        const factory = @This().IMdmSessionManagerStaticsCache.get();
-        return try factory.DeleteSessionById(sessionId);
+        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        return try _f.DeleteSessionById(sessionId);
     }
     pub fn GetSessionById(sessionId: HSTRING) core.HResult!*MdmSession {
-        const factory = @This().IMdmSessionManagerStaticsCache.get();
-        return try factory.GetSessionById(sessionId);
+        const _f = @This().IMdmSessionManagerStaticsCache.get();
+        return try _f.GetSessionById(sessionId);
     }
     pub const NAME: []const u8 = "Windows.Management.MdmSessionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

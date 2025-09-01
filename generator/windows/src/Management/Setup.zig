@@ -306,8 +306,8 @@ pub const DeploymentWorkload = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: HSTRING) core.HResult!*DeploymentWorkload {
-        const factory = @This().IDeploymentWorkloadFactoryCache.get();
-        return try factory.CreateInstance(id);
+        const _f = @This().IDeploymentWorkloadFactoryCache.get();
+        return try _f.CreateInstance(id);
     }
     pub const NAME: []const u8 = "Windows.Management.Setup.DeploymentWorkload";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -338,8 +338,8 @@ pub const DeploymentWorkloadBatch = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: u32) core.HResult!*DeploymentWorkloadBatch {
-        const factory = @This().IDeploymentWorkloadBatchFactoryCache.get();
-        return try factory.CreateInstance(id);
+        const _f = @This().IDeploymentWorkloadBatchFactoryCache.get();
+        return try _f.CreateInstance(id);
     }
     pub const NAME: []const u8 = "Windows.Management.Setup.DeploymentWorkloadBatch";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -933,8 +933,8 @@ pub const MachineProvisioningProgressReporter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForLaunchUri(launchUri: *Uri, heartbeatHandler: *DeploymentSessionHeartbeatRequested) core.HResult!*MachineProvisioningProgressReporter {
-        const factory = @This().IMachineProvisioningProgressReporterStaticsCache.get();
-        return try factory.GetForLaunchUri(launchUri, heartbeatHandler);
+        const _f = @This().IMachineProvisioningProgressReporterStaticsCache.get();
+        return try _f.GetForLaunchUri(launchUri, heartbeatHandler);
     }
     pub const NAME: []const u8 = "Windows.Management.Setup.MachineProvisioningProgressReporter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

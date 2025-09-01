@@ -16,8 +16,8 @@ pub const AgentContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetContextForCaller() core.HResult!*AgentContext {
-        const factory = @This().IAgentContextStaticsCache.get();
-        return try factory.GetContextForCaller();
+        const _f = @This().IAgentContextStaticsCache.get();
+        return try _f.GetContextForCaller();
     }
     pub const NAME: []const u8 = "Windows.AI.Agents.AgentContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -55,37 +55,37 @@ pub const AgentResources = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FileSystemRead() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getFileSystemRead();
+    pub fn getFileSystemRead() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getFileSystemRead();
     }
-    pub fn get_FileSystemWrite() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getFileSystemWrite();
+    pub fn getFileSystemWrite() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getFileSystemWrite();
     }
-    pub fn get_FileSystemDelete() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getFileSystemDelete();
+    pub fn getFileSystemDelete() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getFileSystemDelete();
     }
-    pub fn get_FileSystemCreate() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getFileSystemCreate();
+    pub fn getFileSystemCreate() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getFileSystemCreate();
     }
-    pub fn get_HttpGet() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getHttpGet();
+    pub fn getHttpGet() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getHttpGet();
     }
-    pub fn get_HttpPost() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getHttpPost();
+    pub fn getHttpPost() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getHttpPost();
     }
-    pub fn get_HttpPut() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getHttpPut();
+    pub fn getHttpPut() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getHttpPut();
     }
-    pub fn get_HttpDelete() core.HResult!HSTRING {
-        const factory = @This().IAgentResourcesStaticsCache.get();
-        return try factory.getHttpDelete();
+    pub fn getHttpDelete() core.HResult!HSTRING {
+        const _f = @This().IAgentResourcesStaticsCache.get();
+        return try _f.getHttpDelete();
     }
     pub const NAME: []const u8 = "Windows.AI.Agents.AgentResources";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

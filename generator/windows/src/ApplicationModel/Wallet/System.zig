@@ -151,8 +151,8 @@ pub const WalletManagerSystem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(WalletItemSystemStore) {
-        const factory = @This().IWalletManagerSystemStaticsCache.get();
-        return try factory.RequestStoreAsync();
+        const _f = @This().IWalletManagerSystemStaticsCache.get();
+        return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.System.WalletManagerSystem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

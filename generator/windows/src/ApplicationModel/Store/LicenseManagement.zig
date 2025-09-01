@@ -152,16 +152,16 @@ pub const LicenseManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RefreshLicensesAsync(refreshOption: LicenseRefreshOption) core.HResult!*IAsyncAction {
-        const factory = @This().ILicenseManagerStatics2Cache.get();
-        return try factory.RefreshLicensesAsync(refreshOption);
+        const _f = @This().ILicenseManagerStatics2Cache.get();
+        return try _f.RefreshLicensesAsync(refreshOption);
     }
     pub fn AddLicenseAsync(license: *IBuffer) core.HResult!*IAsyncAction {
-        const factory = @This().ILicenseManagerStaticsCache.get();
-        return try factory.AddLicenseAsync(license);
+        const _f = @This().ILicenseManagerStaticsCache.get();
+        return try _f.AddLicenseAsync(license);
     }
     pub fn GetSatisfactionInfosAsync(contentIds: *IIterable(HSTRING), keyIds: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(LicenseSatisfactionResult) {
-        const factory = @This().ILicenseManagerStaticsCache.get();
-        return try factory.GetSatisfactionInfosAsync(contentIds, keyIds);
+        const _f = @This().ILicenseManagerStaticsCache.get();
+        return try _f.GetSatisfactionInfosAsync(contentIds, keyIds);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Store.LicenseManagement.LicenseManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

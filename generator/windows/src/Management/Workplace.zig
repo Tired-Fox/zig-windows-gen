@@ -26,9 +26,9 @@ pub const WorkplaceSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsMicrosoftAccountOptional() core.HResult!bool {
-        const factory = @This().IWorkplaceSettingsStaticsCache.get();
-        return try factory.getIsMicrosoftAccountOptional();
+    pub fn getIsMicrosoftAccountOptional() core.HResult!bool {
+        const _f = @This().IWorkplaceSettingsStaticsCache.get();
+        return try _f.getIsMicrosoftAccountOptional();
     }
     pub const NAME: []const u8 = "Windows.Management.Workplace.WorkplaceSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -107,24 +107,24 @@ pub const MdmPolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsBrowserAllowed() core.HResult!bool {
-        const factory = @This().IMdmAllowPolicyStaticsCache.get();
-        return try factory.IsBrowserAllowed();
+        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        return try _f.IsBrowserAllowed();
     }
     pub fn IsCameraAllowed() core.HResult!bool {
-        const factory = @This().IMdmAllowPolicyStaticsCache.get();
-        return try factory.IsCameraAllowed();
+        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        return try _f.IsCameraAllowed();
     }
     pub fn IsMicrosoftAccountAllowed() core.HResult!bool {
-        const factory = @This().IMdmAllowPolicyStaticsCache.get();
-        return try factory.IsMicrosoftAccountAllowed();
+        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        return try _f.IsMicrosoftAccountAllowed();
     }
     pub fn IsStoreAllowed() core.HResult!bool {
-        const factory = @This().IMdmAllowPolicyStaticsCache.get();
-        return try factory.IsStoreAllowed();
+        const _f = @This().IMdmAllowPolicyStaticsCache.get();
+        return try _f.IsStoreAllowed();
     }
     pub fn GetMessagingSyncPolicy() core.HResult!MessagingSyncPolicy {
-        const factory = @This().IMdmPolicyStatics2Cache.get();
-        return try factory.GetMessagingSyncPolicy();
+        const _f = @This().IMdmPolicyStatics2Cache.get();
+        return try _f.GetMessagingSyncPolicy();
     }
     pub const NAME: []const u8 = "Windows.Management.Workplace.MdmPolicy";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

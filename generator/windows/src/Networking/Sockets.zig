@@ -60,12 +60,12 @@ pub const ControlChannelTrigger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateControlChannelTrigger(channelId: HSTRING, serverKeepAliveIntervalInMinutes: u32) core.HResult!*ControlChannelTrigger {
-        const factory = @This().IControlChannelTriggerFactoryCache.get();
-        return try factory.CreateControlChannelTrigger(channelId, serverKeepAliveIntervalInMinutes);
+        const _f = @This().IControlChannelTriggerFactoryCache.get();
+        return try _f.CreateControlChannelTrigger(channelId, serverKeepAliveIntervalInMinutes);
     }
     pub fn CreateControlChannelTriggerEx(channelId: HSTRING, serverKeepAliveIntervalInMinutes: u32, resourceRequestType: ControlChannelTriggerResourceType) core.HResult!*ControlChannelTrigger {
-        const factory = @This().IControlChannelTriggerFactoryCache.get();
-        return try factory.CreateControlChannelTriggerEx(channelId, serverKeepAliveIntervalInMinutes, resourceRequestType);
+        const _f = @This().IControlChannelTriggerFactoryCache.get();
+        return try _f.CreateControlChannelTriggerEx(channelId, serverKeepAliveIntervalInMinutes, resourceRequestType);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.ControlChannelTrigger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -313,9 +313,9 @@ pub const DatagramSocket = extern struct {
         const this: *IDatagramSocket = @ptrCast(self);
         return try this.getOutputStream();
     }
-    pub fn ConnectAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
         const this: *IDatagramSocket = @ptrCast(self);
-        return try this.ConnectAsyncWithRemoteServiceName(remoteHostName, remoteServiceName);
+        return try this.ConnectAsyncWithRemoteHostNameAndRemoteServiceName(remoteHostName, remoteServiceName);
     }
     pub fn ConnectAsync(self: *@This(), endpointPair: *EndpointPair) core.HResult!*IAsyncAction {
         const this: *IDatagramSocket = @ptrCast(self);
@@ -333,9 +333,9 @@ pub const DatagramSocket = extern struct {
         const this: *IDatagramSocket = @ptrCast(self);
         return try this.JoinMulticastGroup(host);
     }
-    pub fn GetOutputStreamAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IOutputStream) {
+    pub fn GetOutputStreamAsyncWithRemoteHostNameAndRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IOutputStream) {
         const this: *IDatagramSocket = @ptrCast(self);
-        return try this.GetOutputStreamAsyncWithRemoteServiceName(remoteHostName, remoteServiceName);
+        return try this.GetOutputStreamAsyncWithRemoteHostNameAndRemoteServiceName(remoteHostName, remoteServiceName);
     }
     pub fn GetOutputStreamAsync(self: *@This(), endpointPair: *EndpointPair) core.HResult!*IAsyncOperation(IOutputStream) {
         const this: *IDatagramSocket = @ptrCast(self);
@@ -391,11 +391,11 @@ pub const DatagramSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
-    pub fn TransferOwnershipWithDataWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
+    pub fn TransferOwnershipWithDataAndKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
         var this: ?*IDatagramSocket3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IDatagramSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TransferOwnershipWithDataWithKeepAliveTime(socketId, data, keepAliveTime);
+        return try this.?.TransferOwnershipWithDataAndKeepAliveTime(socketId, data, keepAliveTime);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -405,12 +405,12 @@ pub const DatagramSocket = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDatagramSocket.IID)));
     }
     pub fn GetEndpointPairsAsync(remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const factory = @This().IDatagramSocketStaticsCache.get();
-        return try factory.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
+        const _f = @This().IDatagramSocketStaticsCache.get();
+        return try _f.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
     }
     pub fn GetEndpointPairsAsyncWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const factory = @This().IDatagramSocketStaticsCache.get();
-        return try factory.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
+        const _f = @This().IDatagramSocketStaticsCache.get();
+        return try _f.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.DatagramSocket";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -552,9 +552,9 @@ pub const IDatagramSocket = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ConnectAsyncWithRemoteServiceName(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
+        const _c = self.vtable.ConnectAsyncWithRemoteHostNameAndRemoteServiceName(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -580,9 +580,9 @@ pub const IDatagramSocket = extern struct {
         const _c = self.vtable.JoinMulticastGroup(@ptrCast(self), host);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn GetOutputStreamAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IOutputStream) {
+    pub fn GetOutputStreamAsyncWithRemoteHostNameAndRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IOutputStream) {
         var _r: *IAsyncOperation(IOutputStream) = undefined;
-        const _c = self.vtable.GetOutputStreamAsyncWithRemoteServiceName(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
+        const _c = self.vtable.GetOutputStreamAsyncWithRemoteHostNameAndRemoteServiceName(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -617,12 +617,12 @@ pub const IDatagramSocket = extern struct {
         get_Control: *const fn(self: *anyopaque, _r: **DatagramSocketControl) callconv(.winapi) HRESULT,
         get_Information: *const fn(self: *anyopaque, _r: **DatagramSocketInformation) callconv(.winapi) HRESULT,
         get_OutputStream: *const fn(self: *anyopaque, _r: **IOutputStream) callconv(.winapi) HRESULT,
-        ConnectAsyncWithRemoteServiceName: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ConnectAsyncWithRemoteHostNameAndRemoteServiceName: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ConnectAsync: *const fn(self: *anyopaque, endpointPair: *EndpointPair, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         BindServiceNameAsync: *const fn(self: *anyopaque, localServiceName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         BindEndpointAsync: *const fn(self: *anyopaque, localHostName: *HostName, localServiceName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         JoinMulticastGroup: *const fn(self: *anyopaque, host: *HostName) callconv(.winapi) HRESULT,
-        GetOutputStreamAsyncWithRemoteServiceName: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncOperation(IOutputStream)) callconv(.winapi) HRESULT,
+        GetOutputStreamAsyncWithRemoteHostNameAndRemoteServiceName: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncOperation(IOutputStream)) callconv(.winapi) HRESULT,
         GetOutputStreamAsync: *const fn(self: *anyopaque, endpointPair: *EndpointPair, _r: **IAsyncOperation(IOutputStream)) callconv(.winapi) HRESULT,
         add_MessageReceived: *const fn(self: *anyopaque, eventHandler: *TypedEventHandler(DatagramSocket,DatagramSocketMessageReceivedEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_MessageReceived: *const fn(self: *anyopaque, eventCookie: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -675,8 +675,8 @@ pub const IDatagramSocket3 = extern struct {
         const _c = self.vtable.TransferOwnershipWithData(@ptrCast(self), socketId, data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TransferOwnershipWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
-        const _c = self.vtable.TransferOwnershipWithKeepAliveTime(@ptrCast(self), socketId, data, keepAliveTime);
+    pub fn TransferOwnershipWithDataAndKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
+        const _c = self.vtable.TransferOwnershipWithDataAndKeepAliveTime(@ptrCast(self), socketId, data, keepAliveTime);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.IDatagramSocket3";
@@ -696,7 +696,7 @@ pub const IDatagramSocket3 = extern struct {
         EnableTransferOwnershipWithConnectedStandbyAction: *const fn(self: *anyopaque, taskId: *Guid, connectedStandbyAction: SocketActivityConnectedStandbyAction) callconv(.winapi) HRESULT,
         TransferOwnership: *const fn(self: *anyopaque, socketId: HSTRING) callconv(.winapi) HRESULT,
         TransferOwnershipWithData: *const fn(self: *anyopaque, socketId: HSTRING, data: *SocketActivityContext) callconv(.winapi) HRESULT,
-        TransferOwnershipWithKeepAliveTime: *const fn(self: *anyopaque, socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) callconv(.winapi) HRESULT,
+        TransferOwnershipWithDataAndKeepAliveTime: *const fn(self: *anyopaque, socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) callconv(.winapi) HRESULT,
     };
 };
 pub const IDatagramSocketControl = extern struct {
@@ -910,9 +910,9 @@ pub const IDatagramSocketStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
+    pub fn GetEndpointPairsAsyncWithSortOptions(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
         var _r: *IAsyncOperation(IVectorView(EndpointPair)) = undefined;
-        const _c = self.vtable.GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(@ptrCast(self), remoteHostName, remoteServiceName, sortOptions, &_r);
+        const _c = self.vtable.GetEndpointPairsAsyncWithSortOptions(@ptrCast(self), remoteHostName, remoteServiceName, sortOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -929,7 +929,7 @@ pub const IDatagramSocketStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetEndpointPairsAsync: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncOperation(IVectorView(EndpointPair))) callconv(.winapi) HRESULT,
-        GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions, _r: **IAsyncOperation(IVectorView(EndpointPair))) callconv(.winapi) HRESULT,
+        GetEndpointPairsAsyncWithSortOptions: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions, _r: **IAsyncOperation(IVectorView(EndpointPair))) callconv(.winapi) HRESULT,
     };
 };
 pub const IMessageWebSocket = extern struct {
@@ -1632,9 +1632,9 @@ pub const IStreamSocket = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ConnectAsyncWithRemoteServiceName(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
+        const _c = self.vtable.ConnectAsyncWithRemoteHostNameAndRemoteServiceName(@ptrCast(self), remoteHostName, remoteServiceName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1644,9 +1644,9 @@ pub const IStreamSocket = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConnectAsyncWithProtectionLevel(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevel(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ConnectAsyncWithProtectionLevel(@ptrCast(self), remoteHostName, remoteServiceName, protectionLevel, &_r);
+        const _c = self.vtable.ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevel(@ptrCast(self), remoteHostName, remoteServiceName, protectionLevel, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1673,9 +1673,9 @@ pub const IStreamSocket = extern struct {
         get_InputStream: *const fn(self: *anyopaque, _r: **IInputStream) callconv(.winapi) HRESULT,
         get_OutputStream: *const fn(self: *anyopaque, _r: **IOutputStream) callconv(.winapi) HRESULT,
         ConnectAsync: *const fn(self: *anyopaque, endpointPair: *EndpointPair, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ConnectAsyncWithRemoteServiceName: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ConnectAsyncWithRemoteHostNameAndRemoteServiceName: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ConnectAsyncWithProtectionLevel: *const fn(self: *anyopaque, endpointPair: *EndpointPair, protectionLevel: SocketProtectionLevel, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ConnectAsyncWithProtectionLevel: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevel: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         UpgradeToSslAsync: *const fn(self: *anyopaque, protectionLevel: SocketProtectionLevel, validationHostName: *HostName, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -1726,8 +1726,8 @@ pub const IStreamSocket3 = extern struct {
         const _c = self.vtable.TransferOwnershipWithData(@ptrCast(self), socketId, data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn TransferOwnershipWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
-        const _c = self.vtable.TransferOwnershipWithKeepAliveTime(@ptrCast(self), socketId, data, keepAliveTime);
+    pub fn TransferOwnershipWithDataAndKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
+        const _c = self.vtable.TransferOwnershipWithDataAndKeepAliveTime(@ptrCast(self), socketId, data, keepAliveTime);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.IStreamSocket3";
@@ -1747,7 +1747,7 @@ pub const IStreamSocket3 = extern struct {
         EnableTransferOwnershipWithConnectedStandbyAction: *const fn(self: *anyopaque, taskId: *Guid, connectedStandbyAction: SocketActivityConnectedStandbyAction) callconv(.winapi) HRESULT,
         TransferOwnership: *const fn(self: *anyopaque, socketId: HSTRING) callconv(.winapi) HRESULT,
         TransferOwnershipWithData: *const fn(self: *anyopaque, socketId: HSTRING, data: *SocketActivityContext) callconv(.winapi) HRESULT,
-        TransferOwnershipWithKeepAliveTime: *const fn(self: *anyopaque, socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) callconv(.winapi) HRESULT,
+        TransferOwnershipWithDataAndKeepAliveTime: *const fn(self: *anyopaque, socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) callconv(.winapi) HRESULT,
     };
 };
 pub const IStreamSocketControl = extern struct {
@@ -2111,9 +2111,9 @@ pub const IStreamSocketListener2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn BindServiceNameAsyncWithProtectionLevelWithAdapter(self: *@This(), localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
+    pub fn BindServiceNameAsyncWithAdapter(self: *@This(), localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.BindServiceNameAsyncWithProtectionLevelWithAdapter(@ptrCast(self), localServiceName, protectionLevel, adapter, &_r);
+        const _c = self.vtable.BindServiceNameAsyncWithAdapter(@ptrCast(self), localServiceName, protectionLevel, adapter, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2130,7 +2130,7 @@ pub const IStreamSocketListener2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         BindServiceNameAsync: *const fn(self: *anyopaque, localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        BindServiceNameAsyncWithProtectionLevelWithAdapter: *const fn(self: *anyopaque, localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        BindServiceNameAsyncWithAdapter: *const fn(self: *anyopaque, localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IStreamSocketListener3 = extern struct {
@@ -2322,9 +2322,9 @@ pub const IStreamSocketStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
+    pub fn GetEndpointPairsAsyncWithSortOptions(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
         var _r: *IAsyncOperation(IVectorView(EndpointPair)) = undefined;
-        const _c = self.vtable.GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions(@ptrCast(self), remoteHostName, remoteServiceName, sortOptions, &_r);
+        const _c = self.vtable.GetEndpointPairsAsyncWithSortOptions(@ptrCast(self), remoteHostName, remoteServiceName, sortOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2341,7 +2341,7 @@ pub const IStreamSocketStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetEndpointPairsAsync: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, _r: **IAsyncOperation(IVectorView(EndpointPair))) callconv(.winapi) HRESULT,
-        GetEndpointPairsAsyncWithRemoteServiceNameWithSortOptions: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions, _r: **IAsyncOperation(IVectorView(EndpointPair))) callconv(.winapi) HRESULT,
+        GetEndpointPairsAsyncWithSortOptions: *const fn(self: *anyopaque, remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions, _r: **IAsyncOperation(IVectorView(EndpointPair))) callconv(.winapi) HRESULT,
     };
 };
 pub const IStreamWebSocket = extern struct {
@@ -2856,11 +2856,11 @@ pub const MessageWebSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(eventCookie);
     }
-    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+    pub fn CloseWithCodeAndReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
         var this: ?*IWebSocket = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CloseWithCodeWithReason(code, reason);
+        return try this.?.CloseWithCodeAndReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -3130,9 +3130,9 @@ pub const ServerMessageWebSocket = extern struct {
         const this: *IServerMessageWebSocket = @ptrCast(self);
         return try this.removeClosed(token);
     }
-    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+    pub fn CloseWithCodeAndReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
         const this: *IServerMessageWebSocket = @ptrCast(self);
-        return try this.CloseWithCodeWithReason(code, reason);
+        return try this.CloseWithCodeAndReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -3204,9 +3204,9 @@ pub const ServerStreamWebSocket = extern struct {
         const this: *IServerStreamWebSocket = @ptrCast(self);
         return try this.removeClosed(token);
     }
-    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+    pub fn CloseWithCodeAndReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
         const this: *IServerStreamWebSocket = @ptrCast(self);
-        return try this.CloseWithCodeWithReason(code, reason);
+        return try this.CloseWithCodeAndReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -3254,8 +3254,8 @@ pub const SocketActivityContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(data: *IBuffer) core.HResult!*SocketActivityContext {
-        const factory = @This().ISocketActivityContextFactoryCache.get();
-        return try factory.Create(data);
+        const _f = @This().ISocketActivityContextFactoryCache.get();
+        return try _f.Create(data);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.SocketActivityContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3297,9 +3297,9 @@ pub const SocketActivityInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AllSockets() core.HResult!*IMapView(HSTRING,SocketActivityInformation) {
-        const factory = @This().ISocketActivityInformationStaticsCache.get();
-        return try factory.getAllSockets();
+    pub fn getAllSockets() core.HResult!*IMapView(HSTRING,SocketActivityInformation) {
+        const _f = @This().ISocketActivityInformationStaticsCache.get();
+        return try _f.getAllSockets();
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.SocketActivityInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3343,8 +3343,8 @@ pub const SocketError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!SocketErrorStatus {
-        const factory = @This().ISocketErrorStaticsCache.get();
-        return try factory.GetStatus(hresult);
+        const _f = @This().ISocketErrorStaticsCache.get();
+        return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.SocketError";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3431,17 +3431,17 @@ pub const StreamSocket = extern struct {
         const this: *IStreamSocket = @ptrCast(self);
         return try this.ConnectAsync(endpointPair);
     }
-    pub fn ConnectAsyncWithRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceName(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncAction {
         const this: *IStreamSocket = @ptrCast(self);
-        return try this.ConnectAsyncWithRemoteServiceName(remoteHostName, remoteServiceName);
+        return try this.ConnectAsyncWithRemoteHostNameAndRemoteServiceName(remoteHostName, remoteServiceName);
     }
     pub fn ConnectAsyncWithProtectionLevel(self: *@This(), endpointPair: *EndpointPair, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
         const this: *IStreamSocket = @ptrCast(self);
         return try this.ConnectAsyncWithProtectionLevel(endpointPair, protectionLevel);
     }
-    pub fn ConnectAsyncWithRemoteServiceNameWithProtectionLevel(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevel(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel) core.HResult!*IAsyncAction {
         const this: *IStreamSocket = @ptrCast(self);
-        return try this.ConnectAsyncWithRemoteServiceNameWithProtectionLevel(remoteHostName, remoteServiceName, protectionLevel);
+        return try this.ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevel(remoteHostName, remoteServiceName, protectionLevel);
     }
     pub fn UpgradeToSslAsync(self: *@This(), protectionLevel: SocketProtectionLevel, validationHostName: *HostName) core.HResult!*IAsyncAction {
         const this: *IStreamSocket = @ptrCast(self);
@@ -3453,11 +3453,11 @@ pub const StreamSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn ConnectAsyncWithRemoteServiceNameWithProtectionLevelWithAdapter(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
+    pub fn ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevelAndAdapter(self: *@This(), remoteHostName: *HostName, remoteServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocket2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ConnectAsyncWithRemoteServiceNameWithProtectionLevelWithAdapter(remoteHostName, remoteServiceName, protectionLevel, adapter);
+        return try this.?.ConnectAsyncWithRemoteHostNameAndRemoteServiceNameAndProtectionLevelAndAdapter(remoteHostName, remoteServiceName, protectionLevel, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocket3 = undefined;
@@ -3489,11 +3489,11 @@ pub const StreamSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TransferOwnershipWithData(socketId, data);
     }
-    pub fn TransferOwnershipWithDataWithKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
+    pub fn TransferOwnershipWithDataAndKeepAliveTime(self: *@This(), socketId: HSTRING, data: *SocketActivityContext, keepAliveTime: TimeSpan) core.HResult!void {
         var this: ?*IStreamSocket3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocket3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TransferOwnershipWithDataWithKeepAliveTime(socketId, data, keepAliveTime);
+        return try this.?.TransferOwnershipWithDataAndKeepAliveTime(socketId, data, keepAliveTime);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3503,12 +3503,12 @@ pub const StreamSocket = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStreamSocket.IID)));
     }
     pub fn GetEndpointPairsAsync(remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const factory = @This().IStreamSocketStaticsCache.get();
-        return try factory.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
+        const _f = @This().IStreamSocketStaticsCache.get();
+        return try _f.GetEndpointPairsAsync(remoteHostName, remoteServiceName);
     }
     pub fn GetEndpointPairsAsyncWithSortOptions(remoteHostName: *HostName, remoteServiceName: HSTRING, sortOptions: HostNameSortOptions) core.HResult!*IAsyncOperation(IVectorView(EndpointPair)) {
-        const factory = @This().IStreamSocketStaticsCache.get();
-        return try factory.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
+        const _f = @This().IStreamSocketStaticsCache.get();
+        return try _f.GetEndpointPairsAsyncWithSortOptions(remoteHostName, remoteServiceName, sortOptions);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.StreamSocket";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3718,11 +3718,11 @@ pub const StreamSocketListener = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.BindServiceNameAsyncWithProtectionLevel(localServiceName, protectionLevel);
     }
-    pub fn BindServiceNameAsyncWithProtectionLevelWithAdapter(self: *@This(), localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
+    pub fn BindServiceNameAsyncWithProtectionLevelAndAdapter(self: *@This(), localServiceName: HSTRING, protectionLevel: SocketProtectionLevel, adapter: *NetworkAdapter) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IStreamSocketListener2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.BindServiceNameAsyncWithProtectionLevelWithAdapter(localServiceName, protectionLevel, adapter);
+        return try this.?.BindServiceNameAsyncWithProtectionLevelAndAdapter(localServiceName, protectionLevel, adapter);
     }
     pub fn CancelIOAsync(self: *@This()) core.HResult!*IAsyncAction {
         var this: ?*IStreamSocketListener3 = undefined;
@@ -3900,11 +3900,11 @@ pub const StreamWebSocket = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeClosed(eventCookie);
     }
-    pub fn CloseWithCodeWithReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
+    pub fn CloseWithCodeAndReason(self: *@This(), code: u16, reason: HSTRING) core.HResult!void {
         var this: ?*IWebSocket = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IWebSocket.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CloseWithCodeWithReason(code, reason);
+        return try this.?.CloseWithCodeAndReason(code, reason);
     }
     pub fn Close(self: *@This()) core.HResult!void {
         var this: ?*IClosable = undefined;
@@ -4098,8 +4098,8 @@ pub const WebSocketError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!WebErrorStatus {
-        const factory = @This().IWebSocketErrorStaticsCache.get();
-        return try factory.GetStatus(hresult);
+        const _f = @This().IWebSocketErrorStaticsCache.get();
+        return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Networking.Sockets.WebSocketError";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4191,5 +4191,5 @@ const PasswordCredential = @import("../Security/Credentials.zig").PasswordCreden
 const DataReader = @import("../Storage/Streams.zig").DataReader;
 const IBackgroundTask = @import("../ApplicationModel/Background.zig").IBackgroundTask;
 const IOutputStream = @import("../Storage/Streams.zig").IOutputStream;
-const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const core = @import("../root.zig").core;
+const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;

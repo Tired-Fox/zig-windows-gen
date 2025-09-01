@@ -66,12 +66,12 @@ pub const AdcController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(AdcController) {
-        const factory = @This().IAdcControllerStatics2Cache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IAdcControllerStatics2Cache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetControllersAsync(provider: *IAdcProvider) core.HResult!*IAsyncOperation(IVectorView(AdcController)) {
-        const factory = @This().IAdcControllerStaticsCache.get();
-        return try factory.GetControllersAsync(provider);
+        const _f = @This().IAdcControllerStaticsCache.get();
+        return try _f.GetControllersAsync(provider);
     }
     pub const NAME: []const u8 = "Windows.Devices.Adc.AdcController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -242,7 +242,7 @@ const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const FactoryCache = @import("../core.zig").FactoryCache;
-const IAdcProvider = @import("./Provider.zig").IAdcProvider;
+const IAdcProvider = @import("./Adc/Provider.zig").IAdcProvider;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const IClosable = @import("../Foundation.zig").IClosable;
 const HSTRING = @import("../root.zig").HSTRING;

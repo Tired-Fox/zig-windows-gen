@@ -18,9 +18,9 @@ pub const IPlaylist = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
+    pub fn SaveAsAsyncWithPlaylistFormat(self: *@This(), saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat) core.HResult!*IAsyncOperation(StorageFile) {
         var _r: *IAsyncOperation(StorageFile) = undefined;
-        const _c = self.vtable.SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat(@ptrCast(self), saveLocation, desiredName, option, playlistFormat, &_r);
+        const _c = self.vtable.SaveAsAsyncWithPlaylistFormat(@ptrCast(self), saveLocation, desiredName, option, playlistFormat, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -39,7 +39,7 @@ pub const IPlaylist = extern struct {
         get_Files: *const fn(self: *anyopaque, _r: **IVector(StorageFile)) callconv(.winapi) HRESULT,
         SaveAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SaveAsAsync: *const fn(self: *anyopaque, saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
-        SaveAsAsyncWithDesiredNameWithOptionWithPlaylistFormat: *const fn(self: *anyopaque, saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
+        SaveAsAsyncWithPlaylistFormat: *const fn(self: *anyopaque, saveLocation: *IStorageFolder, desiredName: HSTRING, option: NameCollisionOption, playlistFormat: PlaylistFormat, _r: **IAsyncOperation(StorageFile)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPlaylistStatics = extern struct {
@@ -91,8 +91,8 @@ pub const Playlist = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPlaylist.IID)));
     }
     pub fn LoadAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(Playlist) {
-        const factory = @This().IPlaylistStaticsCache.get();
-        return try factory.LoadAsync(file);
+        const _f = @This().IPlaylistStaticsCache.get();
+        return try _f.LoadAsync(file);
     }
     pub const NAME: []const u8 = "Windows.Media.Playlists.Playlist";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

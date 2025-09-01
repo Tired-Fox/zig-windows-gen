@@ -243,28 +243,28 @@ pub const SocialInfoProviderManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateSocialFeedUpdaterAsync(kind: SocialFeedKind, mode: SocialFeedUpdateMode, ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialFeedUpdater) {
-        const factory = @This().ISocialInfoProviderManagerStaticsCache.get();
-        return try factory.CreateSocialFeedUpdaterAsync(kind, mode, ownerRemoteId);
+        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        return try _f.CreateSocialFeedUpdaterAsync(kind, mode, ownerRemoteId);
     }
     pub fn CreateDashboardItemUpdaterAsync(ownerRemoteId: HSTRING) core.HResult!*IAsyncOperation(SocialDashboardItemUpdater) {
-        const factory = @This().ISocialInfoProviderManagerStaticsCache.get();
-        return try factory.CreateDashboardItemUpdaterAsync(ownerRemoteId);
+        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        return try _f.CreateDashboardItemUpdaterAsync(ownerRemoteId);
     }
     pub fn UpdateBadgeCountValue(itemRemoteId: HSTRING, newCount: i32) core.HResult!void {
-        const factory = @This().ISocialInfoProviderManagerStaticsCache.get();
-        return try factory.UpdateBadgeCountValue(itemRemoteId, newCount);
+        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        return try _f.UpdateBadgeCountValue(itemRemoteId, newCount);
     }
     pub fn ReportNewContentAvailable(contactRemoteId: HSTRING, kind: SocialFeedKind) core.HResult!void {
-        const factory = @This().ISocialInfoProviderManagerStaticsCache.get();
-        return try factory.ReportNewContentAvailable(contactRemoteId, kind);
+        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        return try _f.ReportNewContentAvailable(contactRemoteId, kind);
     }
     pub fn ProvisionAsync() core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ISocialInfoProviderManagerStaticsCache.get();
-        return try factory.ProvisionAsync();
+        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        return try _f.ProvisionAsync();
     }
     pub fn DeprovisionAsync() core.HResult!*IAsyncAction {
-        const factory = @This().ISocialInfoProviderManagerStaticsCache.get();
-        return try factory.DeprovisionAsync();
+        const _f = @This().ISocialInfoProviderManagerStaticsCache.get();
+        return try _f.DeprovisionAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.SocialInfo.Provider.SocialInfoProviderManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

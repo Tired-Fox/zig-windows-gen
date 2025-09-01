@@ -20,8 +20,8 @@ pub const FrameNavigationOptions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FrameNavigationOptions {
-        const factory = @This().IFrameNavigationOptionsFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFrameNavigationOptionsFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Navigation.FrameNavigationOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -931,12 +931,12 @@ pub const PageStackEntry = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(sourcePageType: TypeName, parameter: *IInspectable, navigationTransitionInfo: *NavigationTransitionInfo) core.HResult!*PageStackEntry {
-        const factory = @This().IPageStackEntryFactoryCache.get();
-        return try factory.CreateInstance(sourcePageType, parameter, navigationTransitionInfo);
+        const _f = @This().IPageStackEntryFactoryCache.get();
+        return try _f.CreateInstance(sourcePageType, parameter, navigationTransitionInfo);
     }
-    pub fn get_SourcePageTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPageStackEntryStaticsCache.get();
-        return try factory.getSourcePageTypeProperty();
+    pub fn getSourcePageTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPageStackEntryStaticsCache.get();
+        return try _f.getSourcePageTypeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Navigation.PageStackEntry";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

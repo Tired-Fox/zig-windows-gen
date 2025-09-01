@@ -5,9 +5,9 @@ pub const AddContactResult = enum(i32) {
 };
 pub const ContactPickerUI = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn AddContactWithContact(self: *@This(), id: HSTRING, contact: *Contact) core.HResult!AddContactResult {
+    pub fn AddContactWithIdAndContact(self: *@This(), id: HSTRING, contact: *Contact) core.HResult!AddContactResult {
         const this: *IContactPickerUI = @ptrCast(self);
-        return try this.AddContactWithContact(id, contact);
+        return try this.AddContactWithIdAndContact(id, contact);
     }
     pub fn RemoveContact(self: *@This(), id: HSTRING) core.HResult!void {
         const this: *IContactPickerUI = @ptrCast(self);

@@ -78,28 +78,28 @@ pub const LockScreen = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestSetImageFeedAsync(syndicationFeedUri: *Uri) core.HResult!*IAsyncOperation(SetImageFeedResult) {
-        const factory = @This().ILockScreenImageFeedStaticsCache.get();
-        return try factory.RequestSetImageFeedAsync(syndicationFeedUri);
+        const _f = @This().ILockScreenImageFeedStaticsCache.get();
+        return try _f.RequestSetImageFeedAsync(syndicationFeedUri);
     }
     pub fn TryRemoveImageFeed() core.HResult!bool {
-        const factory = @This().ILockScreenImageFeedStaticsCache.get();
-        return try factory.TryRemoveImageFeed();
+        const _f = @This().ILockScreenImageFeedStaticsCache.get();
+        return try _f.TryRemoveImageFeed();
     }
-    pub fn get_OriginalImageFile() core.HResult!*Uri {
-        const factory = @This().ILockScreenStaticsCache.get();
-        return try factory.getOriginalImageFile();
+    pub fn getOriginalImageFile() core.HResult!*Uri {
+        const _f = @This().ILockScreenStaticsCache.get();
+        return try _f.getOriginalImageFile();
     }
     pub fn GetImageStream() core.HResult!*IRandomAccessStream {
-        const factory = @This().ILockScreenStaticsCache.get();
-        return try factory.GetImageStream();
+        const _f = @This().ILockScreenStaticsCache.get();
+        return try _f.GetImageStream();
     }
     pub fn SetImageFileAsync(value: *IStorageFile) core.HResult!*IAsyncAction {
-        const factory = @This().ILockScreenStaticsCache.get();
-        return try factory.SetImageFileAsync(value);
+        const _f = @This().ILockScreenStaticsCache.get();
+        return try _f.SetImageFileAsync(value);
     }
     pub fn SetImageStreamAsync(value: *IRandomAccessStream) core.HResult!*IAsyncAction {
-        const factory = @This().ILockScreenStaticsCache.get();
-        return try factory.SetImageStreamAsync(value);
+        const _f = @This().ILockScreenStaticsCache.get();
+        return try _f.SetImageStreamAsync(value);
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.LockScreen";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -248,65 +248,65 @@ pub const UserInformation = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AccountPictureChangeEnabled() core.HResult!bool {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.getAccountPictureChangeEnabled();
+    pub fn getAccountPictureChangeEnabled() core.HResult!bool {
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.getAccountPictureChangeEnabled();
     }
-    pub fn get_NameAccessAllowed() core.HResult!bool {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.getNameAccessAllowed();
+    pub fn getNameAccessAllowed() core.HResult!bool {
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.getNameAccessAllowed();
     }
     pub fn GetAccountPicture(kind: AccountPictureKind) core.HResult!*IStorageFile {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetAccountPicture(kind);
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetAccountPicture(kind);
     }
     pub fn SetAccountPictureAsync(image: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.SetAccountPictureAsync(image);
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.SetAccountPictureAsync(image);
     }
     pub fn SetAccountPicturesAsync(smallImage: *IStorageFile, largeImage: *IStorageFile, video: *IStorageFile) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.SetAccountPicturesAsync(smallImage, largeImage, video);
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.SetAccountPicturesAsync(smallImage, largeImage, video);
     }
     pub fn SetAccountPictureFromStreamAsync(image: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.SetAccountPictureFromStreamAsync(image);
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.SetAccountPictureFromStreamAsync(image);
     }
     pub fn SetAccountPicturesFromStreamsAsync(smallImage: *IRandomAccessStream, largeImage: *IRandomAccessStream, video: *IRandomAccessStream) core.HResult!*IAsyncOperation(SetAccountPictureResult) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.SetAccountPicturesFromStreamsAsync(smallImage, largeImage, video);
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.SetAccountPicturesFromStreamsAsync(smallImage, largeImage, video);
     }
-    pub fn add_AccountPictureChanged(changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.addAccountPictureChanged(changeHandler);
+    pub fn addAccountPictureChanged(changeHandler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.addAccountPictureChanged(changeHandler);
     }
-    pub fn remove_AccountPictureChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.removeAccountPictureChanged(token);
+    pub fn removeAccountPictureChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.removeAccountPictureChanged(token);
     }
     pub fn GetDisplayNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetDisplayNameAsync();
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetDisplayNameAsync();
     }
     pub fn GetFirstNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetFirstNameAsync();
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetFirstNameAsync();
     }
     pub fn GetLastNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetLastNameAsync();
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetLastNameAsync();
     }
     pub fn GetPrincipalNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetPrincipalNameAsync();
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetPrincipalNameAsync();
     }
     pub fn GetSessionInitiationProtocolUriAsync() core.HResult!*IAsyncOperation(Uri) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetSessionInitiationProtocolUriAsync();
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetSessionInitiationProtocolUriAsync();
     }
     pub fn GetDomainNameAsync() core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IUserInformationStaticsCache.get();
-        return try factory.GetDomainNameAsync();
+        const _f = @This().IUserInformationStaticsCache.get();
+        return try _f.GetDomainNameAsync();
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.UserInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -317,13 +317,13 @@ pub const AdvertisingManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AdvertisingId() core.HResult!HSTRING {
-        const factory = @This().IAdvertisingManagerStaticsCache.get();
-        return try factory.getAdvertisingId();
+    pub fn getAdvertisingId() core.HResult!HSTRING {
+        const _f = @This().IAdvertisingManagerStaticsCache.get();
+        return try _f.getAdvertisingId();
     }
     pub fn GetForUser(user: *User) core.HResult!*AdvertisingManagerForUser {
-        const factory = @This().IAdvertisingManagerStatics2Cache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IAdvertisingManagerStatics2Cache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.AdvertisingManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -364,12 +364,12 @@ pub const AssignedAccessSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*AssignedAccessSettings {
-        const factory = @This().IAssignedAccessSettingsStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IAssignedAccessSettingsStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*AssignedAccessSettings {
-        const factory = @This().IAssignedAccessSettingsStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IAssignedAccessSettingsStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.AssignedAccessSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -392,12 +392,12 @@ pub const DiagnosticsSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*DiagnosticsSettings {
-        const factory = @This().IDiagnosticsSettingsStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IDiagnosticsSettingsStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*DiagnosticsSettings {
-        const factory = @This().IDiagnosticsSettingsStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IDiagnosticsSettingsStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.DiagnosticsSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -408,31 +408,19 @@ pub const DiagnosticsSettings = extern struct {
 };
 pub const FirstSignInSettings = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -442,8 +430,8 @@ pub const FirstSignInSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*FirstSignInSettings {
-        const factory = @This().IFirstSignInSettingsStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IFirstSignInSettingsStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.FirstSignInSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -457,41 +445,41 @@ pub const GlobalizationPreferences = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Calendars() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IGlobalizationPreferencesStaticsCache.get();
-        return try factory.getCalendars();
+    pub fn getCalendars() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IGlobalizationPreferencesStaticsCache.get();
+        return try _f.getCalendars();
     }
-    pub fn get_Clocks() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IGlobalizationPreferencesStaticsCache.get();
-        return try factory.getClocks();
+    pub fn getClocks() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IGlobalizationPreferencesStaticsCache.get();
+        return try _f.getClocks();
     }
-    pub fn get_Currencies() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IGlobalizationPreferencesStaticsCache.get();
-        return try factory.getCurrencies();
+    pub fn getCurrencies() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IGlobalizationPreferencesStaticsCache.get();
+        return try _f.getCurrencies();
     }
-    pub fn get_Languages() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IGlobalizationPreferencesStaticsCache.get();
-        return try factory.getLanguages();
+    pub fn getLanguages() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IGlobalizationPreferencesStaticsCache.get();
+        return try _f.getLanguages();
     }
-    pub fn get_HomeGeographicRegion() core.HResult!HSTRING {
-        const factory = @This().IGlobalizationPreferencesStaticsCache.get();
-        return try factory.getHomeGeographicRegion();
+    pub fn getHomeGeographicRegion() core.HResult!HSTRING {
+        const _f = @This().IGlobalizationPreferencesStaticsCache.get();
+        return try _f.getHomeGeographicRegion();
     }
-    pub fn get_WeekStartsOn() core.HResult!DayOfWeek {
-        const factory = @This().IGlobalizationPreferencesStaticsCache.get();
-        return try factory.getWeekStartsOn();
+    pub fn getWeekStartsOn() core.HResult!DayOfWeek {
+        const _f = @This().IGlobalizationPreferencesStaticsCache.get();
+        return try _f.getWeekStartsOn();
     }
     pub fn TrySetHomeGeographicRegion(region: HSTRING) core.HResult!bool {
-        const factory = @This().IGlobalizationPreferencesStatics2Cache.get();
-        return try factory.TrySetHomeGeographicRegion(region);
+        const _f = @This().IGlobalizationPreferencesStatics2Cache.get();
+        return try _f.TrySetHomeGeographicRegion(region);
     }
     pub fn TrySetLanguages(languageTags: *IIterable(HSTRING)) core.HResult!bool {
-        const factory = @This().IGlobalizationPreferencesStatics2Cache.get();
-        return try factory.TrySetLanguages(languageTags);
+        const _f = @This().IGlobalizationPreferencesStatics2Cache.get();
+        return try _f.TrySetLanguages(languageTags);
     }
     pub fn GetForUser(user: *User) core.HResult!*GlobalizationPreferencesForUser {
-        const factory = @This().IGlobalizationPreferencesStatics3Cache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IGlobalizationPreferencesStatics3Cache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.GlobalizationPreferences";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1026,13 +1014,13 @@ pub const UserProfilePersonalizationSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*UserProfilePersonalizationSettings {
-        const factory = @This().IUserProfilePersonalizationSettingsStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*UserProfilePersonalizationSettings {
+        const _f = @This().IUserProfilePersonalizationSettingsStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IUserProfilePersonalizationSettingsStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().IUserProfilePersonalizationSettingsStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.System.UserProfile.UserProfilePersonalizationSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

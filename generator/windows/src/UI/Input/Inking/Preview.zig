@@ -22,9 +22,9 @@ pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForVisualWithViewportVisualWithViewportRect(self: *@This(), inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
+    pub fn CreateForVisualWithViewportVisualAndViewportRect(self: *@This(), inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
         var _r: *PalmRejectionDelayZonePreview = undefined;
-        const _c = self.vtable.CreateForVisualWithViewportVisualWithViewportRect(@ptrCast(self), inputPanelVisual, inputPanelRect, viewportVisual, viewportRect, &_r);
+        const _c = self.vtable.CreateForVisualWithViewportVisualAndViewportRect(@ptrCast(self), inputPanelVisual, inputPanelRect, viewportVisual, viewportRect, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -41,7 +41,7 @@ pub const IPalmRejectionDelayZonePreviewStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateForVisual: *const fn(self: *anyopaque, inputPanelVisual: *Visual, inputPanelRect: Rect, _r: **PalmRejectionDelayZonePreview) callconv(.winapi) HRESULT,
-        CreateForVisualWithViewportVisualWithViewportRect: *const fn(self: *anyopaque, inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect, _r: **PalmRejectionDelayZonePreview) callconv(.winapi) HRESULT,
+        CreateForVisualWithViewportVisualAndViewportRect: *const fn(self: *anyopaque, inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect, _r: **PalmRejectionDelayZonePreview) callconv(.winapi) HRESULT,
     };
 };
 pub const PalmRejectionDelayZonePreview = extern struct {
@@ -56,12 +56,12 @@ pub const PalmRejectionDelayZonePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForVisual(inputPanelVisual: *Visual, inputPanelRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
-        const factory = @This().IPalmRejectionDelayZonePreviewStaticsCache.get();
-        return try factory.CreateForVisual(inputPanelVisual, inputPanelRect);
+        const _f = @This().IPalmRejectionDelayZonePreviewStaticsCache.get();
+        return try _f.CreateForVisual(inputPanelVisual, inputPanelRect);
     }
-    pub fn CreateForVisualWithViewportVisualWithViewportRect(inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
-        const factory = @This().IPalmRejectionDelayZonePreviewStaticsCache.get();
-        return try factory.CreateForVisualWithViewportVisualWithViewportRect(inputPanelVisual, inputPanelRect, viewportVisual, viewportRect);
+    pub fn CreateForVisualWithViewportVisualAndViewportRect(inputPanelVisual: *Visual, inputPanelRect: Rect, viewportVisual: *Visual, viewportRect: Rect) core.HResult!*PalmRejectionDelayZonePreview {
+        const _f = @This().IPalmRejectionDelayZonePreviewStaticsCache.get();
+        return try _f.CreateForVisualWithViewportVisualAndViewportRect(inputPanelVisual, inputPanelRect, viewportVisual, viewportRect);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Preview.PalmRejectionDelayZonePreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

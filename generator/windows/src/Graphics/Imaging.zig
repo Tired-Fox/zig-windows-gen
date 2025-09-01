@@ -154,11 +154,11 @@ pub const BitmapDecoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetPixelDataAsync();
     }
-    pub fn GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
+    pub fn GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
         var this: ?*IBitmapFrame = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrame.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.?.GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub fn GetSoftwareBitmapAsync(self: *@This()) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
@@ -166,68 +166,68 @@ pub const BitmapDecoder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSoftwareBitmapAsync();
     }
-    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(pixelFormat, alphaMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode(pixelFormat, alphaMode);
     }
-    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BmpDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getBmpDecoderId();
+    pub fn getBmpDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getBmpDecoderId();
     }
-    pub fn get_JpegDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getJpegDecoderId();
+    pub fn getJpegDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getJpegDecoderId();
     }
-    pub fn get_PngDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getPngDecoderId();
+    pub fn getPngDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getPngDecoderId();
     }
-    pub fn get_TiffDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getTiffDecoderId();
+    pub fn getTiffDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getTiffDecoderId();
     }
-    pub fn get_GifDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getGifDecoderId();
+    pub fn getGifDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getGifDecoderId();
     }
-    pub fn get_JpegXRDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getJpegXRDecoderId();
+    pub fn getJpegXRDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getJpegXRDecoderId();
     }
-    pub fn get_IcoDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.getIcoDecoderId();
+    pub fn getIcoDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.getIcoDecoderId();
     }
     pub fn GetDecoderInformationEnumerator() core.HResult!*IVectorView(BitmapCodecInformation) {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.GetDecoderInformationEnumerator();
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.GetDecoderInformationEnumerator();
     }
     pub fn CreateAsync(stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.CreateAsync(stream);
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.CreateAsync(stream);
     }
-    pub fn CreateAsyncWithStream(decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
-        const factory = @This().IBitmapDecoderStaticsCache.get();
-        return try factory.CreateAsyncWithStream(decoderId, stream);
+    pub fn CreateAsyncWithDecoderIdAndStream(decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
+        const _f = @This().IBitmapDecoderStaticsCache.get();
+        return try _f.CreateAsyncWithDecoderIdAndStream(decoderId, stream);
     }
-    pub fn get_HeifDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStatics2Cache.get();
-        return try factory.getHeifDecoderId();
+    pub fn getHeifDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStatics2Cache.get();
+        return try _f.getHeifDecoderId();
     }
-    pub fn get_WebpDecoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapDecoderStatics2Cache.get();
-        return try factory.getWebpDecoderId();
+    pub fn getWebpDecoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapDecoderStatics2Cache.get();
+        return try _f.getWebpDecoderId();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapDecoder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -304,53 +304,53 @@ pub const BitmapEncoder = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeifEncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStatics2Cache.get();
-        return try factory.getHeifEncoderId();
+    pub fn getHeifEncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStatics2Cache.get();
+        return try _f.getHeifEncoderId();
     }
-    pub fn get_BmpEncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.getBmpEncoderId();
+    pub fn getBmpEncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.getBmpEncoderId();
     }
-    pub fn get_JpegEncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.getJpegEncoderId();
+    pub fn getJpegEncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.getJpegEncoderId();
     }
-    pub fn get_PngEncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.getPngEncoderId();
+    pub fn getPngEncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.getPngEncoderId();
     }
-    pub fn get_TiffEncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.getTiffEncoderId();
+    pub fn getTiffEncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.getTiffEncoderId();
     }
-    pub fn get_GifEncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.getGifEncoderId();
+    pub fn getGifEncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.getGifEncoderId();
     }
-    pub fn get_JpegXREncoderId() core.HResult!*Guid {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.getJpegXREncoderId();
+    pub fn getJpegXREncoderId() core.HResult!*Guid {
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.getJpegXREncoderId();
     }
     pub fn GetEncoderInformationEnumerator() core.HResult!*IVectorView(BitmapCodecInformation) {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.GetEncoderInformationEnumerator();
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.GetEncoderInformationEnumerator();
     }
     pub fn CreateAsync(encoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.CreateAsync(encoderId, stream);
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.CreateAsync(encoderId, stream);
     }
     pub fn CreateAsyncWithEncodingOptions(encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.CreateAsyncWithEncodingOptions(encoderId, stream, encodingOptions);
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.CreateAsyncWithEncodingOptions(encoderId, stream, encodingOptions);
     }
     pub fn CreateForTranscodingAsync(stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.CreateForTranscodingAsync(stream, bitmapDecoder);
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.CreateForTranscodingAsync(stream, bitmapDecoder);
     }
     pub fn CreateForInPlacePropertyEncodingAsync(bitmapDecoder: *BitmapDecoder) core.HResult!*IAsyncOperation(BitmapEncoder) {
-        const factory = @This().IBitmapEncoderStaticsCache.get();
-        return try factory.CreateForInPlacePropertyEncodingAsync(bitmapDecoder);
+        const _f = @This().IBitmapEncoderStaticsCache.get();
+        return try _f.CreateForInPlacePropertyEncodingAsync(bitmapDecoder);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapEncoder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -411,9 +411,9 @@ pub const BitmapFrame = extern struct {
         const this: *IBitmapFrame = @ptrCast(self);
         return try this.GetPixelDataAsync();
     }
-    pub fn GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
+    pub fn GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
         const this: *IBitmapFrame = @ptrCast(self);
-        return try this.GetPixelDataAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub fn GetSoftwareBitmapAsync(self: *@This()) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
@@ -421,17 +421,17 @@ pub const BitmapFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetSoftwareBitmapAsync();
     }
-    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaMode(pixelFormat, alphaMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode(pixelFormat, alphaMode);
     }
-    pub fn GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var this: ?*IBitmapFrameWithSoftwareBitmap = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IBitmapFrameWithSoftwareBitmap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatWithAlphaModeWithTransformWithExifOrientationModeWithColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
+        return try this.?.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -494,35 +494,19 @@ pub const BitmapPropertiesView = extern struct {
 };
 pub const BitmapPropertySet = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        const this: *IMap = @ptrCast(self);
-        return try this.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMap = @ptrCast(self);
+        const this: *IMap(HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        const this: *IMap = @ptrCast(self);
-        return try this.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
-        const this: *IMap = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,BitmapTypedValue) {
+        const this: *IMap(HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        const this: *IMap = @ptrCast(self);
-        return try this.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        const this: *IMap = @ptrCast(self);
-        return try this.Remove(key);
-    }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IMap = @ptrCast(self);
+        const this: *IMap(HSTRING,BitmapTypedValue) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,BitmapTypedValue)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -630,8 +614,8 @@ pub const BitmapTypedValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(value: *IInspectable, ty: PropertyType) core.HResult!*BitmapTypedValue {
-        const factory = @This().IBitmapTypedValueFactoryCache.get();
-        return try factory.Create(value, ty);
+        const _f = @This().IBitmapTypedValueFactoryCache.get();
+        return try _f.Create(value, ty);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.BitmapTypedValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -829,9 +813,9 @@ pub const IBitmapDecoderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsyncWithStream(self: *@This(), decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
+    pub fn CreateAsyncWithDecoderIdAndStream(self: *@This(), decoderId: *Guid, stream: *IRandomAccessStream) core.HResult!*IAsyncOperation(BitmapDecoder) {
         var _r: *IAsyncOperation(BitmapDecoder) = undefined;
-        const _c = self.vtable.CreateAsyncWithStream(@ptrCast(self), decoderId, stream, &_r);
+        const _c = self.vtable.CreateAsyncWithDecoderIdAndStream(@ptrCast(self), decoderId, stream, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -856,7 +840,7 @@ pub const IBitmapDecoderStatics = extern struct {
         get_IcoDecoderId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         GetDecoderInformationEnumerator: *const fn(self: *anyopaque, _r: **IVectorView(BitmapCodecInformation)) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapDecoder)) callconv(.winapi) HRESULT,
-        CreateAsyncWithStream: *const fn(self: *anyopaque, decoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapDecoder)) callconv(.winapi) HRESULT,
+        CreateAsyncWithDecoderIdAndStream: *const fn(self: *anyopaque, decoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapDecoder)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapDecoderStatics2 = extern struct {
@@ -955,9 +939,9 @@ pub const IBitmapEncoder = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GoToNextFrameAsync(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
+    pub fn GoToNextFrameAsyncWithEncodingOptions(self: *@This(), encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.GoToNextFrameAsync(@ptrCast(self), encodingOptions, &_r);
+        const _c = self.vtable.GoToNextFrameAsyncWithEncodingOptions(@ptrCast(self), encodingOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -991,7 +975,7 @@ pub const IBitmapEncoder = extern struct {
         get_BitmapTransform: *const fn(self: *anyopaque, _r: **BitmapTransform) callconv(.winapi) HRESULT,
         SetPixelData: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, width: u32, height: u32, dpiX: f64, dpiY: f64, pixels: [*]u8) callconv(.winapi) HRESULT,
         GoToNextFrameAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        GoToNextFrameAsync: *const fn(self: *anyopaque, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        GoToNextFrameAsyncWithEncodingOptions: *const fn(self: *anyopaque, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         FlushAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -1045,9 +1029,9 @@ pub const IBitmapEncoderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsyncWithStreamWithEncodingOptions(self: *@This(), encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
+    pub fn CreateAsyncWithEncodingOptions(self: *@This(), encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue))) core.HResult!*IAsyncOperation(BitmapEncoder) {
         var _r: *IAsyncOperation(BitmapEncoder) = undefined;
-        const _c = self.vtable.CreateAsyncWithStreamWithEncodingOptions(@ptrCast(self), encoderId, stream, encodingOptions, &_r);
+        const _c = self.vtable.CreateAsyncWithEncodingOptions(@ptrCast(self), encoderId, stream, encodingOptions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1083,7 +1067,7 @@ pub const IBitmapEncoderStatics = extern struct {
         get_JpegXREncoderId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
         GetEncoderInformationEnumerator: *const fn(self: *anyopaque, _r: **IVectorView(BitmapCodecInformation)) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
-        CreateAsyncWithStreamWithEncodingOptions: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
+        CreateAsyncWithEncodingOptions: *const fn(self: *anyopaque, encoderId: *Guid, stream: *IRandomAccessStream, encodingOptions: *IIterable(IKeyValuePair(HSTRING,BitmapTypedValue)), _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
         CreateForTranscodingAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStream, bitmapDecoder: *BitmapDecoder, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
         CreateForInPlacePropertyEncodingAsync: *const fn(self: *anyopaque, bitmapDecoder: *BitmapDecoder, _r: **IAsyncOperation(BitmapEncoder)) callconv(.winapi) HRESULT,
     };
@@ -1200,9 +1184,9 @@ pub const IBitmapFrame = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetPixelDataAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
+    pub fn GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(PixelDataProvider) {
         var _r: *IAsyncOperation(PixelDataProvider) = undefined;
-        const _c = self.vtable.GetPixelDataAsync(@ptrCast(self), pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode, &_r);
+        const _c = self.vtable.GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(@ptrCast(self), pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1229,7 +1213,7 @@ pub const IBitmapFrame = extern struct {
         get_OrientedPixelWidth: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         get_OrientedPixelHeight: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         GetPixelDataAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PixelDataProvider)) callconv(.winapi) HRESULT,
-        GetPixelDataAsync: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode, _r: **IAsyncOperation(PixelDataProvider)) callconv(.winapi) HRESULT,
+        GetPixelDataAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode, _r: **IAsyncOperation(PixelDataProvider)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapFrameWithSoftwareBitmap = extern struct {
@@ -1240,15 +1224,15 @@ pub const IBitmapFrameWithSoftwareBitmap = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSoftwareBitmapAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var _r: *IAsyncOperation(SoftwareBitmap) = undefined;
-        const _c = self.vtable.GetSoftwareBitmapAsync(@ptrCast(self), pixelFormat, alphaMode, &_r);
+        const _c = self.vtable.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode(@ptrCast(self), pixelFormat, alphaMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSoftwareBitmapAsync(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
+    pub fn GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(self: *@This(), pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
         var _r: *IAsyncOperation(SoftwareBitmap) = undefined;
-        const _c = self.vtable.GetSoftwareBitmapAsync(@ptrCast(self), pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode, &_r);
+        const _c = self.vtable.GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode(@ptrCast(self), pixelFormat, alphaMode, transform, exifOrientationMode, colorManagementMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1265,8 +1249,8 @@ pub const IBitmapFrameWithSoftwareBitmap = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetSoftwareBitmapAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
-        GetSoftwareBitmapAsync: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
-        GetSoftwareBitmapAsync: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
+        GetSoftwareBitmapAsyncWithPixelFormatAndAlphaMode: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
+        GetSoftwareBitmapAsyncWithPixelFormatAndAlphaModeAndTransformAndExifOrientationModeAndColorManagementMode: *const fn(self: *anyopaque, pixelFormat: BitmapPixelFormat, alphaMode: BitmapAlphaMode, transform: *BitmapTransform, exifOrientationMode: ExifOrientationMode, colorManagementMode: ColorManagementMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
     };
 };
 pub const IBitmapProperties = extern struct {
@@ -1627,9 +1611,9 @@ pub const ISoftwareBitmapStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConvertWithFormatWithAlpha(self: *@This(), source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn ConvertWithAlpha(self: *@This(), source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
-        const _c = self.vtable.ConvertWithFormatWithAlpha(@ptrCast(self), source, format, alpha, &_r);
+        const _c = self.vtable.ConvertWithAlpha(@ptrCast(self), source, format, alpha, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1639,9 +1623,9 @@ pub const ISoftwareBitmapStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(self: *@This(), source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
+    pub fn CreateCopyFromBufferWithAlpha(self: *@This(), source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
         var _r: *SoftwareBitmap = undefined;
-        const _c = self.vtable.CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha(@ptrCast(self), source, format, width, height, alpha, &_r);
+        const _c = self.vtable.CreateCopyFromBufferWithAlpha(@ptrCast(self), source, format, width, height, alpha, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1671,21 +1655,15 @@ pub const ISoftwareBitmapStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Copy: *const fn(self: *anyopaque, source: *SoftwareBitmap, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
         Convert: *const fn(self: *anyopaque, source: *SoftwareBitmap, format: BitmapPixelFormat, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
-        ConvertWithFormatWithAlpha: *const fn(self: *anyopaque, source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
+        ConvertWithAlpha: *const fn(self: *anyopaque, source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
         CreateCopyFromBuffer: *const fn(self: *anyopaque, source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
-        CreateCopyFromBufferWithFormatWithWidthWithHeightWithAlpha: *const fn(self: *anyopaque, source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
+        CreateCopyFromBufferWithAlpha: *const fn(self: *anyopaque, source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode, _r: **SoftwareBitmap) callconv(.winapi) HRESULT,
         CreateCopyFromSurfaceAsync: *const fn(self: *anyopaque, surface: *IDirect3DSurface, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
         CreateCopyFromSurfaceAsyncWithAlpha: *const fn(self: *anyopaque, surface: *IDirect3DSurface, alpha: BitmapAlphaMode, _r: **IAsyncOperation(SoftwareBitmap)) callconv(.winapi) HRESULT,
     };
 };
 pub const ImageStream = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
-    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -1740,6 +1718,18 @@ pub const ImageStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
+    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -1752,17 +1742,11 @@ pub const ImageStream = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
+        return try this.?.getContentType();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.ImageStream";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1865,40 +1849,40 @@ pub const SoftwareBitmap = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapFactoryCache.get();
-        return try factory.Create(format, width, height);
+        const _f = @This().ISoftwareBitmapFactoryCache.get();
+        return try _f.Create(format, width, height);
     }
     pub fn CreateWithAlpha(format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapFactoryCache.get();
-        return try factory.CreateWithAlpha(format, width, height, alpha);
+        const _f = @This().ISoftwareBitmapFactoryCache.get();
+        return try _f.CreateWithAlpha(format, width, height, alpha);
     }
     pub fn Copy(source: *SoftwareBitmap) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.Copy(source);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.Copy(source);
     }
     pub fn Convert(source: *SoftwareBitmap, format: BitmapPixelFormat) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.Convert(source, format);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.Convert(source, format);
     }
     pub fn ConvertWithAlpha(source: *SoftwareBitmap, format: BitmapPixelFormat, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.ConvertWithAlpha(source, format, alpha);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.ConvertWithAlpha(source, format, alpha);
     }
     pub fn CreateCopyFromBuffer(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromBuffer(source, format, width, height);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.CreateCopyFromBuffer(source, format, width, height);
     }
     pub fn CreateCopyFromBufferWithAlpha(source: *IBuffer, format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*SoftwareBitmap {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromBufferWithAlpha(source, format, width, height, alpha);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.CreateCopyFromBufferWithAlpha(source, format, width, height, alpha);
     }
     pub fn CreateCopyFromSurfaceAsync(surface: *IDirect3DSurface) core.HResult!*IAsyncOperation(SoftwareBitmap) {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromSurfaceAsync(surface);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.CreateCopyFromSurfaceAsync(surface);
     }
     pub fn CreateCopyFromSurfaceAsyncWithAlpha(surface: *IDirect3DSurface, alpha: BitmapAlphaMode) core.HResult!*IAsyncOperation(SoftwareBitmap) {
-        const factory = @This().ISoftwareBitmapStaticsCache.get();
-        return try factory.CreateCopyFromSurfaceAsyncWithAlpha(surface, alpha);
+        const _f = @This().ISoftwareBitmapStaticsCache.get();
+        return try _f.CreateCopyFromSurfaceAsyncWithAlpha(surface, alpha);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Imaging.SoftwareBitmap";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

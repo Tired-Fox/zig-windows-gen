@@ -35,12 +35,12 @@ pub const GameControllerProviderInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetParentProviderId(provider: *IGameControllerProvider) core.HResult!HSTRING {
-        const factory = @This().IGameControllerProviderInfoStaticsCache.get();
-        return try factory.GetParentProviderId(provider);
+        const _f = @This().IGameControllerProviderInfoStaticsCache.get();
+        return try _f.GetParentProviderId(provider);
     }
     pub fn GetProviderId(provider: *IGameControllerProvider) core.HResult!HSTRING {
-        const factory = @This().IGameControllerProviderInfoStaticsCache.get();
-        return try factory.GetProviderId(provider);
+        const _f = @This().IGameControllerProviderInfoStaticsCache.get();
+        return try _f.GetProviderId(provider);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Preview.GameControllerProviderInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -341,28 +341,28 @@ pub const LegacyGipGameControllerProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromGameController(controller: *IGameController) core.HResult!*LegacyGipGameControllerProvider {
-        const factory = @This().ILegacyGipGameControllerProviderStaticsCache.get();
-        return try factory.FromGameController(controller);
+        const _f = @This().ILegacyGipGameControllerProviderStaticsCache.get();
+        return try _f.FromGameController(controller);
     }
     pub fn FromGameControllerProvider(provider: *IGameControllerProvider) core.HResult!*LegacyGipGameControllerProvider {
-        const factory = @This().ILegacyGipGameControllerProviderStaticsCache.get();
-        return try factory.FromGameControllerProvider(provider);
+        const _f = @This().ILegacyGipGameControllerProviderStaticsCache.get();
+        return try _f.FromGameControllerProvider(provider);
     }
     pub fn PairPilotToCopilot(user: *User, pilotControllerProviderId: HSTRING, copilotControllerProviderId: HSTRING) core.HResult!void {
-        const factory = @This().ILegacyGipGameControllerProviderStaticsCache.get();
-        return try factory.PairPilotToCopilot(user, pilotControllerProviderId, copilotControllerProviderId);
+        const _f = @This().ILegacyGipGameControllerProviderStaticsCache.get();
+        return try _f.PairPilotToCopilot(user, pilotControllerProviderId, copilotControllerProviderId);
     }
     pub fn ClearPairing(user: *User, controllerProviderId: HSTRING) core.HResult!void {
-        const factory = @This().ILegacyGipGameControllerProviderStaticsCache.get();
-        return try factory.ClearPairing(user, controllerProviderId);
+        const _f = @This().ILegacyGipGameControllerProviderStaticsCache.get();
+        return try _f.ClearPairing(user, controllerProviderId);
     }
     pub fn IsPilot(user: *User, controllerProviderId: HSTRING) core.HResult!HSTRING {
-        const factory = @This().ILegacyGipGameControllerProviderStaticsCache.get();
-        return try factory.IsPilot(user, controllerProviderId);
+        const _f = @This().ILegacyGipGameControllerProviderStaticsCache.get();
+        return try _f.IsPilot(user, controllerProviderId);
     }
     pub fn IsCopilot(user: *User, controllerProviderId: HSTRING) core.HResult!HSTRING {
-        const factory = @This().ILegacyGipGameControllerProviderStaticsCache.get();
-        return try factory.IsCopilot(user, controllerProviderId);
+        const _f = @This().ILegacyGipGameControllerProviderStaticsCache.get();
+        return try _f.IsCopilot(user, controllerProviderId);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.Preview.LegacyGipGameControllerProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

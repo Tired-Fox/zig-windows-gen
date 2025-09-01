@@ -39,16 +39,16 @@ pub const DiagnosticInvoker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*DiagnosticInvoker {
-        const factory = @This().IDiagnosticInvokerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IDiagnosticInvokerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*DiagnosticInvoker {
-        const factory = @This().IDiagnosticInvokerStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IDiagnosticInvokerStaticsCache.get();
+        return try _f.GetForUser(user);
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().IDiagnosticInvokerStaticsCache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().IDiagnosticInvokerStaticsCache.get();
+        return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.DiagnosticInvoker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -852,16 +852,16 @@ pub const ProcessDiagnosticInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForProcesses() core.HResult!*IVectorView(ProcessDiagnosticInfo) {
-        const factory = @This().IProcessDiagnosticInfoStaticsCache.get();
-        return try factory.GetForProcesses();
+        const _f = @This().IProcessDiagnosticInfoStaticsCache.get();
+        return try _f.GetForProcesses();
     }
     pub fn GetForCurrentProcess() core.HResult!*ProcessDiagnosticInfo {
-        const factory = @This().IProcessDiagnosticInfoStaticsCache.get();
-        return try factory.GetForCurrentProcess();
+        const _f = @This().IProcessDiagnosticInfoStaticsCache.get();
+        return try _f.GetForCurrentProcess();
     }
     pub fn TryGetForProcessId(processId: u32) core.HResult!*ProcessDiagnosticInfo {
-        const factory = @This().IProcessDiagnosticInfoStatics2Cache.get();
-        return try factory.TryGetForProcessId(processId);
+        const _f = @This().IProcessDiagnosticInfoStatics2Cache.get();
+        return try _f.TryGetForProcessId(processId);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.ProcessDiagnosticInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1029,16 +1029,16 @@ pub const SystemDiagnosticInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentSystem() core.HResult!*SystemDiagnosticInfo {
-        const factory = @This().ISystemDiagnosticInfoStaticsCache.get();
-        return try factory.GetForCurrentSystem();
+        const _f = @This().ISystemDiagnosticInfoStaticsCache.get();
+        return try _f.GetForCurrentSystem();
     }
     pub fn IsArchitectureSupported(ty: ProcessorArchitecture) core.HResult!bool {
-        const factory = @This().ISystemDiagnosticInfoStatics2Cache.get();
-        return try factory.IsArchitectureSupported(ty);
+        const _f = @This().ISystemDiagnosticInfoStatics2Cache.get();
+        return try _f.IsArchitectureSupported(ty);
     }
-    pub fn get_PreferredArchitecture() core.HResult!ProcessorArchitecture {
-        const factory = @This().ISystemDiagnosticInfoStatics2Cache.get();
-        return try factory.getPreferredArchitecture();
+    pub fn getPreferredArchitecture() core.HResult!ProcessorArchitecture {
+        const _f = @This().ISystemDiagnosticInfoStatics2Cache.get();
+        return try _f.getPreferredArchitecture();
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.SystemDiagnosticInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

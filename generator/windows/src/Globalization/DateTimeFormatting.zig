@@ -82,48 +82,48 @@ pub const DateTimeFormatter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateDateTimeFormatter(formatTemplate: HSTRING) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatter(formatTemplate);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatter(formatTemplate);
     }
     pub fn CreateDateTimeFormatterLanguages(formatTemplate: HSTRING, languages: *IIterable(HSTRING)) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatterLanguages(formatTemplate, languages);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatterLanguages(formatTemplate, languages);
     }
     pub fn CreateDateTimeFormatterContext(formatTemplate: HSTRING, languages: *IIterable(HSTRING), geographicRegion: HSTRING, calendar: HSTRING, clock: HSTRING) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatterContext(formatTemplate, languages, geographicRegion, calendar, clock);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatterContext(formatTemplate, languages, geographicRegion, calendar, clock);
     }
     pub fn CreateDateTimeFormatterDate(yearFormat: YearFormat, monthFormat: MonthFormat, dayFormat: DayFormat, dayOfWeekFormat: DayOfWeekFormat) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatterDate(yearFormat, monthFormat, dayFormat, dayOfWeekFormat);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatterDate(yearFormat, monthFormat, dayFormat, dayOfWeekFormat);
     }
     pub fn CreateDateTimeFormatterTime(hourFormat: HourFormat, minuteFormat: MinuteFormat, secondFormat: SecondFormat) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatterTime(hourFormat, minuteFormat, secondFormat);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatterTime(hourFormat, minuteFormat, secondFormat);
     }
     pub fn CreateDateTimeFormatterDateTimeLanguages(yearFormat: YearFormat, monthFormat: MonthFormat, dayFormat: DayFormat, dayOfWeekFormat: DayOfWeekFormat, hourFormat: HourFormat, minuteFormat: MinuteFormat, secondFormat: SecondFormat, languages: *IIterable(HSTRING)) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatterDateTimeLanguages(yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatterDateTimeLanguages(yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages);
     }
     pub fn CreateDateTimeFormatterDateTimeContext(yearFormat: YearFormat, monthFormat: MonthFormat, dayFormat: DayFormat, dayOfWeekFormat: DayOfWeekFormat, hourFormat: HourFormat, minuteFormat: MinuteFormat, secondFormat: SecondFormat, languages: *IIterable(HSTRING), geographicRegion: HSTRING, calendar: HSTRING, clock: HSTRING) core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterFactoryCache.get();
-        return try factory.CreateDateTimeFormatterDateTimeContext(yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages, geographicRegion, calendar, clock);
+        const _f = @This().IDateTimeFormatterFactoryCache.get();
+        return try _f.CreateDateTimeFormatterDateTimeContext(yearFormat, monthFormat, dayFormat, dayOfWeekFormat, hourFormat, minuteFormat, secondFormat, languages, geographicRegion, calendar, clock);
     }
-    pub fn get_LongDate() core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterStaticsCache.get();
-        return try factory.getLongDate();
+    pub fn getLongDate() core.HResult!*DateTimeFormatter {
+        const _f = @This().IDateTimeFormatterStaticsCache.get();
+        return try _f.getLongDate();
     }
-    pub fn get_LongTime() core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterStaticsCache.get();
-        return try factory.getLongTime();
+    pub fn getLongTime() core.HResult!*DateTimeFormatter {
+        const _f = @This().IDateTimeFormatterStaticsCache.get();
+        return try _f.getLongTime();
     }
-    pub fn get_ShortDate() core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterStaticsCache.get();
-        return try factory.getShortDate();
+    pub fn getShortDate() core.HResult!*DateTimeFormatter {
+        const _f = @This().IDateTimeFormatterStaticsCache.get();
+        return try _f.getShortDate();
     }
-    pub fn get_ShortTime() core.HResult!*DateTimeFormatter {
-        const factory = @This().IDateTimeFormatterStaticsCache.get();
-        return try factory.getShortTime();
+    pub fn getShortTime() core.HResult!*DateTimeFormatter {
+        const _f = @This().IDateTimeFormatterStaticsCache.get();
+        return try _f.getShortTime();
     }
     pub const NAME: []const u8 = "Windows.Globalization.DateTimeFormatting.DateTimeFormatter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

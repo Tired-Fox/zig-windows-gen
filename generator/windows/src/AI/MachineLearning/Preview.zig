@@ -135,8 +135,8 @@ pub const ILearningModelBindingPreview = extern struct {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn BindWithValueWithMetadata(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.BindWithValueWithMetadata(@ptrCast(self), name, value, metadata);
+    pub fn BindWithMetadata(self: *@This(), name: HSTRING, value: *IInspectable, metadata: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.BindWithMetadata(@ptrCast(self), name, value, metadata);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Clear(self: *@This()) core.HResult!void {
@@ -156,7 +156,7 @@ pub const ILearningModelBindingPreview = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        BindWithValueWithMetadata: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, metadata: *IPropertySet) callconv(.winapi) HRESULT,
+        BindWithMetadata: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, metadata: *IPropertySet) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -611,31 +611,19 @@ pub const LearningModelBindingPreview = extern struct {
         const this: *ILearningModelBindingPreview = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -645,8 +633,8 @@ pub const LearningModelBindingPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromModel(model: *LearningModelPreview) core.HResult!*LearningModelBindingPreview {
-        const factory = @This().ILearningModelBindingPreviewFactoryCache.get();
-        return try factory.CreateFromModel(model);
+        const _f = @This().ILearningModelBindingPreviewFactoryCache.get();
+        return try _f.CreateFromModel(model);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.Preview.LearningModelBindingPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -752,12 +740,12 @@ pub const LearningModelPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadModelFromStorageFileAsync(modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModelPreview) {
-        const factory = @This().ILearningModelPreviewStaticsCache.get();
-        return try factory.LoadModelFromStorageFileAsync(modelFile);
+        const _f = @This().ILearningModelPreviewStaticsCache.get();
+        return try _f.LoadModelFromStorageFileAsync(modelFile);
     }
     pub fn LoadModelFromStreamAsync(modelStream: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(LearningModelPreview) {
-        const factory = @This().ILearningModelPreviewStaticsCache.get();
-        return try factory.LoadModelFromStreamAsync(modelStream);
+        const _f = @This().ILearningModelPreviewStaticsCache.get();
+        return try _f.LoadModelFromStreamAsync(modelStream);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.Preview.LearningModelPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

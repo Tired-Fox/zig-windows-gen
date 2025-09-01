@@ -110,20 +110,20 @@ pub const CastingDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(ty: CastingPlaybackTypes) core.HResult!HSTRING {
-        const factory = @This().ICastingDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(ty);
+        const _f = @This().ICastingDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector(ty);
     }
     pub fn GetDeviceSelectorFromCastingSourceAsync(castingSource: *CastingSource) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().ICastingDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorFromCastingSourceAsync(castingSource);
+        const _f = @This().ICastingDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorFromCastingSourceAsync(castingSource);
     }
     pub fn FromIdAsync(value: HSTRING) core.HResult!*IAsyncOperation(CastingDevice) {
-        const factory = @This().ICastingDeviceStaticsCache.get();
-        return try factory.FromIdAsync(value);
+        const _f = @This().ICastingDeviceStaticsCache.get();
+        return try _f.FromIdAsync(value);
     }
     pub fn DeviceInfoSupportsCastingAsync(device: *DeviceInformation) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ICastingDeviceStaticsCache.get();
-        return try factory.DeviceInfoSupportsCastingAsync(device);
+        const _f = @This().ICastingDeviceStaticsCache.get();
+        return try _f.DeviceInfoSupportsCastingAsync(device);
     }
     pub const NAME: []const u8 = "Windows.Media.Casting.CastingDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -656,5 +656,5 @@ const FactoryCache = @import("../core.zig").FactoryCache;
 const Rect = @import("../Foundation.zig").Rect;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;

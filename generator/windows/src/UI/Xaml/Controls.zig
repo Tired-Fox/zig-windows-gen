@@ -559,165 +559,165 @@ pub const Control = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_UseSystemFocusVisualsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics3Cache.get();
-        return try factory.getUseSystemFocusVisualsProperty();
+    pub fn getUseSystemFocusVisualsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics3Cache.get();
+        return try _f.getUseSystemFocusVisualsProperty();
     }
-    pub fn get_IsTemplateFocusTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics3Cache.get();
-        return try factory.getIsTemplateFocusTargetProperty();
+    pub fn getIsTemplateFocusTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics3Cache.get();
+        return try _f.getIsTemplateFocusTargetProperty();
     }
     pub fn GetIsTemplateFocusTarget(element: *FrameworkElement) core.HResult!bool {
-        const factory = @This().IControlStatics3Cache.get();
-        return try factory.GetIsTemplateFocusTarget(element);
+        const _f = @This().IControlStatics3Cache.get();
+        return try _f.GetIsTemplateFocusTarget(element);
     }
     pub fn SetIsTemplateFocusTarget(element: *FrameworkElement, value: bool) core.HResult!void {
-        const factory = @This().IControlStatics3Cache.get();
-        return try factory.SetIsTemplateFocusTarget(element, value);
+        const _f = @This().IControlStatics3Cache.get();
+        return try _f.SetIsTemplateFocusTarget(element, value);
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics2Cache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics2Cache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn get_BackgroundSizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics7Cache.get();
-        return try factory.getBackgroundSizingProperty();
+    pub fn getBackgroundSizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics7Cache.get();
+        return try _f.getBackgroundSizingProperty();
     }
-    pub fn get_CornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics7Cache.get();
-        return try factory.getCornerRadiusProperty();
+    pub fn getCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics7Cache.get();
+        return try _f.getCornerRadiusProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_FontStretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getFontStretchProperty();
+    pub fn getFontStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getFontStretchProperty();
     }
-    pub fn get_CharacterSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getCharacterSpacingProperty();
+    pub fn getCharacterSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getCharacterSpacingProperty();
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_IsTabStopProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getIsTabStopProperty();
+    pub fn getIsTabStopProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getIsTabStopProperty();
     }
-    pub fn get_IsEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getIsEnabledProperty();
+    pub fn getIsEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getIsEnabledProperty();
     }
-    pub fn get_TabIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getTabIndexProperty();
+    pub fn getTabIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getTabIndexProperty();
     }
-    pub fn get_TabNavigationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getTabNavigationProperty();
+    pub fn getTabNavigationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getTabNavigationProperty();
     }
-    pub fn get_TemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getTemplateProperty();
+    pub fn getTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getTemplateProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_HorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getHorizontalContentAlignmentProperty();
+    pub fn getHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getHorizontalContentAlignmentProperty();
     }
-    pub fn get_VerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getVerticalContentAlignmentProperty();
+    pub fn getVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getVerticalContentAlignmentProperty();
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getBackgroundProperty();
     }
-    pub fn get_BorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getBorderThicknessProperty();
+    pub fn getBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getBorderThicknessProperty();
     }
-    pub fn get_BorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getBorderBrushProperty();
+    pub fn getBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getBorderBrushProperty();
     }
-    pub fn get_DefaultStyleKeyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getDefaultStyleKeyProperty();
+    pub fn getDefaultStyleKeyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getDefaultStyleKeyProperty();
     }
-    pub fn get_FocusStateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStaticsCache.get();
-        return try factory.getFocusStateProperty();
+    pub fn getFocusStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStaticsCache.get();
+        return try _f.getFocusStateProperty();
     }
-    pub fn get_DefaultStyleResourceUriProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics5Cache.get();
-        return try factory.getDefaultStyleResourceUriProperty();
+    pub fn getDefaultStyleResourceUriProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics5Cache.get();
+        return try _f.getDefaultStyleResourceUriProperty();
     }
-    pub fn get_IsTemplateKeyTipTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics5Cache.get();
-        return try factory.getIsTemplateKeyTipTargetProperty();
+    pub fn getIsTemplateKeyTipTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics5Cache.get();
+        return try _f.getIsTemplateKeyTipTargetProperty();
     }
     pub fn GetIsTemplateKeyTipTarget(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IControlStatics5Cache.get();
-        return try factory.GetIsTemplateKeyTipTarget(element);
+        const _f = @This().IControlStatics5Cache.get();
+        return try _f.GetIsTemplateKeyTipTarget(element);
     }
     pub fn SetIsTemplateKeyTipTarget(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().IControlStatics5Cache.get();
-        return try factory.SetIsTemplateKeyTipTarget(element, value);
+        const _f = @This().IControlStatics5Cache.get();
+        return try _f.SetIsTemplateKeyTipTarget(element, value);
     }
-    pub fn get_IsFocusEngagementEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getIsFocusEngagementEnabledProperty();
+    pub fn getIsFocusEngagementEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getIsFocusEngagementEnabledProperty();
     }
-    pub fn get_IsFocusEngagedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getIsFocusEngagedProperty();
+    pub fn getIsFocusEngagedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getIsFocusEngagedProperty();
     }
-    pub fn get_RequiresPointerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getRequiresPointerProperty();
+    pub fn getRequiresPointerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getRequiresPointerProperty();
     }
-    pub fn get_XYFocusLeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getXYFocusLeftProperty();
+    pub fn getXYFocusLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getXYFocusLeftProperty();
     }
-    pub fn get_XYFocusRightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getXYFocusRightProperty();
+    pub fn getXYFocusRightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getXYFocusRightProperty();
     }
-    pub fn get_XYFocusUpProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getXYFocusUpProperty();
+    pub fn getXYFocusUpProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getXYFocusUpProperty();
     }
-    pub fn get_XYFocusDownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getXYFocusDownProperty();
+    pub fn getXYFocusDownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getXYFocusDownProperty();
     }
-    pub fn get_ElementSoundModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IControlStatics4Cache.get();
-        return try factory.getElementSoundModeProperty();
+    pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IControlStatics4Cache.get();
+        return try _f.getElementSoundModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Control {
-        const factory = @This().IControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Control";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -793,25 +793,25 @@ pub const ContentControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentControlStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentControlStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_ContentTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentControlStaticsCache.get();
-        return try factory.getContentTemplateProperty();
+    pub fn getContentTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentControlStaticsCache.get();
+        return try _f.getContentTemplateProperty();
     }
-    pub fn get_ContentTemplateSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentControlStaticsCache.get();
-        return try factory.getContentTemplateSelectorProperty();
+    pub fn getContentTemplateSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentControlStaticsCache.get();
+        return try _f.getContentTemplateSelectorProperty();
     }
-    pub fn get_ContentTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentControlStaticsCache.get();
-        return try factory.getContentTransitionsProperty();
+    pub fn getContentTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentControlStaticsCache.get();
+        return try _f.getContentTransitionsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ContentControl {
-        const factory = @This().IContentControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IContentControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ContentControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -936,25 +936,25 @@ pub const AppBar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarStatics4Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarStatics4Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
-    pub fn get_ClosedDisplayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarStatics2Cache.get();
-        return try factory.getClosedDisplayModeProperty();
+    pub fn getClosedDisplayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarStatics2Cache.get();
+        return try _f.getClosedDisplayModeProperty();
     }
-    pub fn get_IsOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarStaticsCache.get();
-        return try factory.getIsOpenProperty();
+    pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarStaticsCache.get();
+        return try _f.getIsOpenProperty();
     }
-    pub fn get_IsStickyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarStaticsCache.get();
-        return try factory.getIsStickyProperty();
+    pub fn getIsStickyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarStaticsCache.get();
+        return try _f.getIsStickyProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBar {
-        const factory = @This().IAppBarFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IAppBarFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AppBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -983,13 +983,13 @@ pub const Button = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IButtonStaticsWithFlyoutCache.get();
-        return try factory.getFlyoutProperty();
+    pub fn getFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IButtonStaticsWithFlyoutCache.get();
+        return try _f.getFlyoutProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Button {
-        const factory = @This().IButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Button";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1080,37 +1080,37 @@ pub const AppBarButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LabelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStaticsCache.get();
-        return try factory.getLabelProperty();
+    pub fn getLabelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStaticsCache.get();
+        return try _f.getLabelProperty();
     }
-    pub fn get_IconProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStaticsCache.get();
-        return try factory.getIconProperty();
+    pub fn getIconProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStaticsCache.get();
+        return try _f.getIconProperty();
     }
-    pub fn get_IsCompactProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStaticsCache.get();
-        return try factory.getIsCompactProperty();
+    pub fn getIsCompactProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStaticsCache.get();
+        return try _f.getIsCompactProperty();
     }
-    pub fn get_KeyboardAcceleratorTextOverrideProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStatics4Cache.get();
-        return try factory.getKeyboardAcceleratorTextOverrideProperty();
+    pub fn getKeyboardAcceleratorTextOverrideProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStatics4Cache.get();
+        return try _f.getKeyboardAcceleratorTextOverrideProperty();
     }
-    pub fn get_LabelPositionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStatics3Cache.get();
-        return try factory.getLabelPositionProperty();
+    pub fn getLabelPositionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStatics3Cache.get();
+        return try _f.getLabelPositionProperty();
     }
-    pub fn get_IsInOverflowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStatics3Cache.get();
-        return try factory.getIsInOverflowProperty();
+    pub fn getIsInOverflowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStatics3Cache.get();
+        return try _f.getIsInOverflowProperty();
     }
-    pub fn get_DynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarButtonStatics3Cache.get();
-        return try factory.getDynamicOverflowOrderProperty();
+    pub fn getDynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarButtonStatics3Cache.get();
+        return try _f.getDynamicOverflowOrderProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarButton {
-        const factory = @This().IAppBarButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IAppBarButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AppBarButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1162,21 +1162,21 @@ pub const AppBarElementContainer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsCompactProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarElementContainerStaticsCache.get();
-        return try factory.getIsCompactProperty();
+    pub fn getIsCompactProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarElementContainerStaticsCache.get();
+        return try _f.getIsCompactProperty();
     }
-    pub fn get_IsInOverflowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarElementContainerStaticsCache.get();
-        return try factory.getIsInOverflowProperty();
+    pub fn getIsInOverflowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarElementContainerStaticsCache.get();
+        return try _f.getIsInOverflowProperty();
     }
-    pub fn get_DynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarElementContainerStaticsCache.get();
-        return try factory.getDynamicOverflowOrderProperty();
+    pub fn getDynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarElementContainerStaticsCache.get();
+        return try _f.getDynamicOverflowOrderProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarElementContainer {
-        const factory = @This().IAppBarElementContainerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IAppBarElementContainerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AppBarElementContainer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1221,21 +1221,21 @@ pub const AppBarSeparator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsInOverflowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarSeparatorStatics3Cache.get();
-        return try factory.getIsInOverflowProperty();
+    pub fn getIsInOverflowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarSeparatorStatics3Cache.get();
+        return try _f.getIsInOverflowProperty();
     }
-    pub fn get_DynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarSeparatorStatics3Cache.get();
-        return try factory.getDynamicOverflowOrderProperty();
+    pub fn getDynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarSeparatorStatics3Cache.get();
+        return try _f.getDynamicOverflowOrderProperty();
     }
-    pub fn get_IsCompactProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarSeparatorStaticsCache.get();
-        return try factory.getIsCompactProperty();
+    pub fn getIsCompactProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarSeparatorStaticsCache.get();
+        return try _f.getIsCompactProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarSeparator {
-        const factory = @This().IAppBarSeparatorFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IAppBarSeparatorFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AppBarSeparator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1327,37 +1327,37 @@ pub const AppBarToggleButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LabelPositionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStatics3Cache.get();
-        return try factory.getLabelPositionProperty();
+    pub fn getLabelPositionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStatics3Cache.get();
+        return try _f.getLabelPositionProperty();
     }
-    pub fn get_IsInOverflowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStatics3Cache.get();
-        return try factory.getIsInOverflowProperty();
+    pub fn getIsInOverflowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStatics3Cache.get();
+        return try _f.getIsInOverflowProperty();
     }
-    pub fn get_DynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStatics3Cache.get();
-        return try factory.getDynamicOverflowOrderProperty();
+    pub fn getDynamicOverflowOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStatics3Cache.get();
+        return try _f.getDynamicOverflowOrderProperty();
     }
-    pub fn get_LabelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStaticsCache.get();
-        return try factory.getLabelProperty();
+    pub fn getLabelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStaticsCache.get();
+        return try _f.getLabelProperty();
     }
-    pub fn get_IconProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStaticsCache.get();
-        return try factory.getIconProperty();
+    pub fn getIconProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStaticsCache.get();
+        return try _f.getIconProperty();
     }
-    pub fn get_IsCompactProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStaticsCache.get();
-        return try factory.getIsCompactProperty();
+    pub fn getIsCompactProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStaticsCache.get();
+        return try _f.getIsCompactProperty();
     }
-    pub fn get_KeyboardAcceleratorTextOverrideProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAppBarToggleButtonStatics4Cache.get();
-        return try factory.getKeyboardAcceleratorTextOverrideProperty();
+    pub fn getKeyboardAcceleratorTextOverrideProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAppBarToggleButtonStatics4Cache.get();
+        return try _f.getKeyboardAcceleratorTextOverrideProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*AppBarToggleButton {
-        const factory = @This().IAppBarToggleButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IAppBarToggleButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AppBarToggleButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1558,57 +1558,57 @@ pub const ItemsControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ItemsSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemsSourceProperty();
+    pub fn getItemsSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemsSourceProperty();
     }
-    pub fn get_ItemTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemTemplateProperty();
+    pub fn getItemTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemTemplateProperty();
     }
-    pub fn get_ItemTemplateSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemTemplateSelectorProperty();
+    pub fn getItemTemplateSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemTemplateSelectorProperty();
     }
-    pub fn get_ItemsPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemsPanelProperty();
+    pub fn getItemsPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemsPanelProperty();
     }
-    pub fn get_DisplayMemberPathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getDisplayMemberPathProperty();
+    pub fn getDisplayMemberPathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getDisplayMemberPathProperty();
     }
-    pub fn get_ItemContainerStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemContainerStyleProperty();
+    pub fn getItemContainerStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemContainerStyleProperty();
     }
-    pub fn get_ItemContainerStyleSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemContainerStyleSelectorProperty();
+    pub fn getItemContainerStyleSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemContainerStyleSelectorProperty();
     }
-    pub fn get_ItemContainerTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getItemContainerTransitionsProperty();
+    pub fn getItemContainerTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getItemContainerTransitionsProperty();
     }
-    pub fn get_GroupStyleSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getGroupStyleSelectorProperty();
+    pub fn getGroupStyleSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getGroupStyleSelectorProperty();
     }
-    pub fn get_IsGroupingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.getIsGroupingProperty();
+    pub fn getIsGroupingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.getIsGroupingProperty();
     }
     pub fn GetItemsOwner(element: *DependencyObject) core.HResult!*ItemsControl {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.GetItemsOwner(element);
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.GetItemsOwner(element);
     }
     pub fn ItemsControlFromItemContainer(container: *DependencyObject) core.HResult!*ItemsControl {
-        const factory = @This().IItemsControlStaticsCache.get();
-        return try factory.ItemsControlFromItemContainer(container);
+        const _f = @This().IItemsControlStaticsCache.get();
+        return try _f.ItemsControlFromItemContainer(container);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ItemsControl {
-        const factory = @This().IItemsControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IItemsControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ItemsControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1763,53 +1763,53 @@ pub const AutoSuggestBox = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutoSuggestBox.IID)));
     }
-    pub fn get_MaxSuggestionListHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getMaxSuggestionListHeightProperty();
+    pub fn getMaxSuggestionListHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getMaxSuggestionListHeightProperty();
     }
-    pub fn get_IsSuggestionListOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getIsSuggestionListOpenProperty();
+    pub fn getIsSuggestionListOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getIsSuggestionListOpenProperty();
     }
-    pub fn get_TextMemberPathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getTextMemberPathProperty();
+    pub fn getTextMemberPathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getTextMemberPathProperty();
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getTextProperty();
     }
-    pub fn get_UpdateTextOnSelectProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getUpdateTextOnSelectProperty();
+    pub fn getUpdateTextOnSelectProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getUpdateTextOnSelectProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getPlaceholderTextProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_AutoMaximizeSuggestionAreaProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getAutoMaximizeSuggestionAreaProperty();
+    pub fn getAutoMaximizeSuggestionAreaProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getAutoMaximizeSuggestionAreaProperty();
     }
-    pub fn get_TextBoxStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStaticsCache.get();
-        return try factory.getTextBoxStyleProperty();
+    pub fn getTextBoxStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStaticsCache.get();
+        return try _f.getTextBoxStyleProperty();
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStatics3Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStatics3Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
-    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStatics4Cache.get();
-        return try factory.getDescriptionProperty();
+    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStatics4Cache.get();
+        return try _f.getDescriptionProperty();
     }
-    pub fn get_QueryIconProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxStatics2Cache.get();
-        return try factory.getQueryIconProperty();
+    pub fn getQueryIconProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxStatics2Cache.get();
+        return try _f.getQueryIconProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AutoSuggestBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1887,9 +1887,9 @@ pub const AutoSuggestBoxTextChangedEventArgs = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAutoSuggestBoxTextChangedEventArgs.IID)));
     }
-    pub fn get_ReasonProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IAutoSuggestBoxTextChangedEventArgsStaticsCache.get();
-        return try factory.getReasonProperty();
+    pub fn getReasonProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IAutoSuggestBoxTextChangedEventArgsStaticsCache.get();
+        return try _f.getReasonProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.AutoSuggestBoxTextChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2032,9 +2032,9 @@ pub const IconElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IIconElementStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IIconElementStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.IconElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2069,17 +2069,17 @@ pub const BitmapIcon = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ShowAsMonochromeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapIconStatics2Cache.get();
-        return try factory.getShowAsMonochromeProperty();
+    pub fn getShowAsMonochromeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapIconStatics2Cache.get();
+        return try _f.getShowAsMonochromeProperty();
     }
-    pub fn get_UriSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapIconStaticsCache.get();
-        return try factory.getUriSourceProperty();
+    pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapIconStaticsCache.get();
+        return try _f.getUriSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BitmapIcon {
-        const factory = @This().IBitmapIconFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBitmapIconFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.BitmapIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2103,9 +2103,9 @@ pub const IconSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IIconSourceStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IIconSourceStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.IconSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2136,17 +2136,17 @@ pub const BitmapIconSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_UriSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapIconSourceStaticsCache.get();
-        return try factory.getUriSourceProperty();
+    pub fn getUriSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapIconSourceStaticsCache.get();
+        return try _f.getUriSourceProperty();
     }
-    pub fn get_ShowAsMonochromeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBitmapIconSourceStaticsCache.get();
-        return try factory.getShowAsMonochromeProperty();
+    pub fn getShowAsMonochromeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBitmapIconSourceStaticsCache.get();
+        return try _f.getShowAsMonochromeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BitmapIconSource {
-        const factory = @This().IBitmapIconSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBitmapIconSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.BitmapIconSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2245,33 +2245,33 @@ pub const Border = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBorder.IID)));
     }
-    pub fn get_BackgroundSizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStatics2Cache.get();
-        return try factory.getBackgroundSizingProperty();
+    pub fn getBackgroundSizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStatics2Cache.get();
+        return try _f.getBackgroundSizingProperty();
     }
-    pub fn get_BorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStaticsCache.get();
-        return try factory.getBorderBrushProperty();
+    pub fn getBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStaticsCache.get();
+        return try _f.getBorderBrushProperty();
     }
-    pub fn get_BorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStaticsCache.get();
-        return try factory.getBorderThicknessProperty();
+    pub fn getBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStaticsCache.get();
+        return try _f.getBorderThicknessProperty();
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStaticsCache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStaticsCache.get();
+        return try _f.getBackgroundProperty();
     }
-    pub fn get_CornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStaticsCache.get();
-        return try factory.getCornerRadiusProperty();
+    pub fn getCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStaticsCache.get();
+        return try _f.getCornerRadiusProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_ChildTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBorderStaticsCache.get();
-        return try factory.getChildTransitionsProperty();
+    pub fn getChildTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBorderStaticsCache.get();
+        return try _f.getChildTransitionsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Border";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2479,81 +2479,81 @@ pub const CalendarDatePicker = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getDateProperty();
+    pub fn getDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getDateProperty();
     }
-    pub fn get_IsCalendarOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getIsCalendarOpenProperty();
+    pub fn getIsCalendarOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getIsCalendarOpenProperty();
     }
-    pub fn get_DateFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getDateFormatProperty();
+    pub fn getDateFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getDateFormatProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getPlaceholderTextProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_CalendarViewStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getCalendarViewStyleProperty();
+    pub fn getCalendarViewStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getCalendarViewStyleProperty();
     }
-    pub fn get_MinDateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getMinDateProperty();
+    pub fn getMinDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getMinDateProperty();
     }
-    pub fn get_MaxDateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getMaxDateProperty();
+    pub fn getMaxDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getMaxDateProperty();
     }
-    pub fn get_IsTodayHighlightedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getIsTodayHighlightedProperty();
+    pub fn getIsTodayHighlightedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getIsTodayHighlightedProperty();
     }
-    pub fn get_DisplayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getDisplayModeProperty();
+    pub fn getDisplayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getDisplayModeProperty();
     }
-    pub fn get_FirstDayOfWeekProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getFirstDayOfWeekProperty();
+    pub fn getFirstDayOfWeekProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getFirstDayOfWeekProperty();
     }
-    pub fn get_DayOfWeekFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getDayOfWeekFormatProperty();
+    pub fn getDayOfWeekFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getDayOfWeekFormatProperty();
     }
-    pub fn get_CalendarIdentifierProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getCalendarIdentifierProperty();
+    pub fn getCalendarIdentifierProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getCalendarIdentifierProperty();
     }
-    pub fn get_IsOutOfScopeEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getIsOutOfScopeEnabledProperty();
+    pub fn getIsOutOfScopeEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getIsOutOfScopeEnabledProperty();
     }
-    pub fn get_IsGroupLabelVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStaticsCache.get();
-        return try factory.getIsGroupLabelVisibleProperty();
+    pub fn getIsGroupLabelVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStaticsCache.get();
+        return try _f.getIsGroupLabelVisibleProperty();
     }
-    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStatics3Cache.get();
-        return try factory.getDescriptionProperty();
+    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStatics3Cache.get();
+        return try _f.getDescriptionProperty();
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarDatePickerStatics2Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarDatePickerStatics2Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarDatePicker {
-        const factory = @This().ICalendarDatePickerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICalendarDatePickerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CalendarDatePicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3298,309 +3298,309 @@ pub const CalendarView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SelectedDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getSelectedDisabledBorderBrushProperty();
-    }
-    pub fn get_TodaySelectedInnerBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodaySelectedInnerBorderBrushProperty();
-    }
-    pub fn get_BlackoutStrikethroughBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getBlackoutStrikethroughBrushProperty();
-    }
-    pub fn get_BlackoutBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getBlackoutBackgroundProperty();
-    }
-    pub fn get_CalendarItemHoverBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getCalendarItemHoverBackgroundProperty();
-    }
-    pub fn get_CalendarItemPressedBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getCalendarItemPressedBackgroundProperty();
-    }
-    pub fn get_CalendarItemDisabledBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getCalendarItemDisabledBackgroundProperty();
-    }
-    pub fn get_TodayBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodayBackgroundProperty();
-    }
-    pub fn get_TodayBlackoutBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodayBlackoutBackgroundProperty();
-    }
-    pub fn get_TodayHoverBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodayHoverBackgroundProperty();
-    }
-    pub fn get_TodayPressedBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodayPressedBackgroundProperty();
-    }
-    pub fn get_TodayDisabledBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodayDisabledBackgroundProperty();
-    }
-    pub fn get_TodayBlackoutForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getTodayBlackoutForegroundProperty();
-    }
-    pub fn get_SelectedHoverForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getSelectedHoverForegroundProperty();
-    }
-    pub fn get_SelectedPressedForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getSelectedPressedForegroundProperty();
-    }
-    pub fn get_SelectedDisabledForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getSelectedDisabledForegroundProperty();
-    }
-    pub fn get_OutOfScopeHoverForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getOutOfScopeHoverForegroundProperty();
-    }
-    pub fn get_OutOfScopePressedForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getOutOfScopePressedForegroundProperty();
-    }
-    pub fn get_DisabledForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getDisabledForegroundProperty();
-    }
-    pub fn get_DayItemMarginProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getDayItemMarginProperty();
-    }
-    pub fn get_MonthYearItemMarginProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getMonthYearItemMarginProperty();
-    }
-    pub fn get_FirstOfMonthLabelMarginProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getFirstOfMonthLabelMarginProperty();
-    }
-    pub fn get_FirstOfYearDecadeLabelMarginProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getFirstOfYearDecadeLabelMarginProperty();
-    }
-    pub fn get_CalendarItemCornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStatics2Cache.get();
-        return try factory.getCalendarItemCornerRadiusProperty();
-    }
-    pub fn get_CalendarIdentifierProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getCalendarIdentifierProperty();
-    }
-    pub fn get_DayOfWeekFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getDayOfWeekFormatProperty();
-    }
-    pub fn get_IsGroupLabelVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getIsGroupLabelVisibleProperty();
-    }
-    pub fn get_DisplayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getDisplayModeProperty();
-    }
-    pub fn get_FirstDayOfWeekProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstDayOfWeekProperty();
-    }
-    pub fn get_IsOutOfScopeEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getIsOutOfScopeEnabledProperty();
-    }
-    pub fn get_IsTodayHighlightedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getIsTodayHighlightedProperty();
-    }
-    pub fn get_MaxDateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getMaxDateProperty();
-    }
-    pub fn get_MinDateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getMinDateProperty();
-    }
-    pub fn get_NumberOfWeeksInViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getNumberOfWeeksInViewProperty();
-    }
-    pub fn get_SelectedDatesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getSelectedDatesProperty();
-    }
-    pub fn get_SelectionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getSelectionModeProperty();
-    }
-    pub fn get_TemplateSettingsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getTemplateSettingsProperty();
-    }
-    pub fn get_FocusBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFocusBorderBrushProperty();
-    }
-    pub fn get_SelectedHoverBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getSelectedHoverBorderBrushProperty();
-    }
-    pub fn get_SelectedPressedBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getSelectedPressedBorderBrushProperty();
-    }
-    pub fn get_SelectedBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getSelectedBorderBrushProperty();
-    }
-    pub fn get_HoverBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getHoverBorderBrushProperty();
-    }
-    pub fn get_PressedBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getPressedBorderBrushProperty();
-    }
-    pub fn get_CalendarItemBorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getCalendarItemBorderBrushProperty();
-    }
-    pub fn get_OutOfScopeBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getOutOfScopeBackgroundProperty();
-    }
-    pub fn get_CalendarItemBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getCalendarItemBackgroundProperty();
-    }
-    pub fn get_PressedForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getPressedForegroundProperty();
-    }
-    pub fn get_TodayForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getTodayForegroundProperty();
-    }
-    pub fn get_BlackoutForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getBlackoutForegroundProperty();
-    }
-    pub fn get_SelectedForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getSelectedForegroundProperty();
-    }
-    pub fn get_OutOfScopeForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getOutOfScopeForegroundProperty();
-    }
-    pub fn get_CalendarItemForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getCalendarItemForegroundProperty();
-    }
-    pub fn get_DayItemFontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getDayItemFontFamilyProperty();
-    }
-    pub fn get_DayItemFontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getDayItemFontSizeProperty();
-    }
-    pub fn get_DayItemFontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getDayItemFontStyleProperty();
-    }
-    pub fn get_DayItemFontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getDayItemFontWeightProperty();
-    }
-    pub fn get_TodayFontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getTodayFontWeightProperty();
-    }
-    pub fn get_FirstOfMonthLabelFontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfMonthLabelFontFamilyProperty();
-    }
-    pub fn get_FirstOfMonthLabelFontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfMonthLabelFontSizeProperty();
-    }
-    pub fn get_FirstOfMonthLabelFontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfMonthLabelFontStyleProperty();
-    }
-    pub fn get_FirstOfMonthLabelFontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfMonthLabelFontWeightProperty();
-    }
-    pub fn get_MonthYearItemFontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getMonthYearItemFontFamilyProperty();
-    }
-    pub fn get_MonthYearItemFontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getMonthYearItemFontSizeProperty();
-    }
-    pub fn get_MonthYearItemFontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getMonthYearItemFontStyleProperty();
-    }
-    pub fn get_MonthYearItemFontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getMonthYearItemFontWeightProperty();
-    }
-    pub fn get_FirstOfYearDecadeLabelFontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfYearDecadeLabelFontFamilyProperty();
-    }
-    pub fn get_FirstOfYearDecadeLabelFontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfYearDecadeLabelFontSizeProperty();
-    }
-    pub fn get_FirstOfYearDecadeLabelFontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfYearDecadeLabelFontStyleProperty();
-    }
-    pub fn get_FirstOfYearDecadeLabelFontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getFirstOfYearDecadeLabelFontWeightProperty();
-    }
-    pub fn get_HorizontalDayItemAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getHorizontalDayItemAlignmentProperty();
-    }
-    pub fn get_VerticalDayItemAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getVerticalDayItemAlignmentProperty();
-    }
-    pub fn get_HorizontalFirstOfMonthLabelAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getHorizontalFirstOfMonthLabelAlignmentProperty();
-    }
-    pub fn get_VerticalFirstOfMonthLabelAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getVerticalFirstOfMonthLabelAlignmentProperty();
-    }
-    pub fn get_CalendarItemBorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getCalendarItemBorderThicknessProperty();
-    }
-    pub fn get_CalendarViewDayItemStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewStaticsCache.get();
-        return try factory.getCalendarViewDayItemStyleProperty();
+    pub fn getSelectedDisabledBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getSelectedDisabledBorderBrushProperty();
+    }
+    pub fn getTodaySelectedInnerBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodaySelectedInnerBorderBrushProperty();
+    }
+    pub fn getBlackoutStrikethroughBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getBlackoutStrikethroughBrushProperty();
+    }
+    pub fn getBlackoutBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getBlackoutBackgroundProperty();
+    }
+    pub fn getCalendarItemHoverBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getCalendarItemHoverBackgroundProperty();
+    }
+    pub fn getCalendarItemPressedBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getCalendarItemPressedBackgroundProperty();
+    }
+    pub fn getCalendarItemDisabledBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getCalendarItemDisabledBackgroundProperty();
+    }
+    pub fn getTodayBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodayBackgroundProperty();
+    }
+    pub fn getTodayBlackoutBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodayBlackoutBackgroundProperty();
+    }
+    pub fn getTodayHoverBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodayHoverBackgroundProperty();
+    }
+    pub fn getTodayPressedBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodayPressedBackgroundProperty();
+    }
+    pub fn getTodayDisabledBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodayDisabledBackgroundProperty();
+    }
+    pub fn getTodayBlackoutForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getTodayBlackoutForegroundProperty();
+    }
+    pub fn getSelectedHoverForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getSelectedHoverForegroundProperty();
+    }
+    pub fn getSelectedPressedForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getSelectedPressedForegroundProperty();
+    }
+    pub fn getSelectedDisabledForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getSelectedDisabledForegroundProperty();
+    }
+    pub fn getOutOfScopeHoverForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getOutOfScopeHoverForegroundProperty();
+    }
+    pub fn getOutOfScopePressedForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getOutOfScopePressedForegroundProperty();
+    }
+    pub fn getDisabledForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getDisabledForegroundProperty();
+    }
+    pub fn getDayItemMarginProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getDayItemMarginProperty();
+    }
+    pub fn getMonthYearItemMarginProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getMonthYearItemMarginProperty();
+    }
+    pub fn getFirstOfMonthLabelMarginProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getFirstOfMonthLabelMarginProperty();
+    }
+    pub fn getFirstOfYearDecadeLabelMarginProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getFirstOfYearDecadeLabelMarginProperty();
+    }
+    pub fn getCalendarItemCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStatics2Cache.get();
+        return try _f.getCalendarItemCornerRadiusProperty();
+    }
+    pub fn getCalendarIdentifierProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getCalendarIdentifierProperty();
+    }
+    pub fn getDayOfWeekFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getDayOfWeekFormatProperty();
+    }
+    pub fn getIsGroupLabelVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getIsGroupLabelVisibleProperty();
+    }
+    pub fn getDisplayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getDisplayModeProperty();
+    }
+    pub fn getFirstDayOfWeekProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstDayOfWeekProperty();
+    }
+    pub fn getIsOutOfScopeEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getIsOutOfScopeEnabledProperty();
+    }
+    pub fn getIsTodayHighlightedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getIsTodayHighlightedProperty();
+    }
+    pub fn getMaxDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getMaxDateProperty();
+    }
+    pub fn getMinDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getMinDateProperty();
+    }
+    pub fn getNumberOfWeeksInViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getNumberOfWeeksInViewProperty();
+    }
+    pub fn getSelectedDatesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getSelectedDatesProperty();
+    }
+    pub fn getSelectionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getSelectionModeProperty();
+    }
+    pub fn getTemplateSettingsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getTemplateSettingsProperty();
+    }
+    pub fn getFocusBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFocusBorderBrushProperty();
+    }
+    pub fn getSelectedHoverBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getSelectedHoverBorderBrushProperty();
+    }
+    pub fn getSelectedPressedBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getSelectedPressedBorderBrushProperty();
+    }
+    pub fn getSelectedBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getSelectedBorderBrushProperty();
+    }
+    pub fn getHoverBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getHoverBorderBrushProperty();
+    }
+    pub fn getPressedBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getPressedBorderBrushProperty();
+    }
+    pub fn getCalendarItemBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getCalendarItemBorderBrushProperty();
+    }
+    pub fn getOutOfScopeBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getOutOfScopeBackgroundProperty();
+    }
+    pub fn getCalendarItemBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getCalendarItemBackgroundProperty();
+    }
+    pub fn getPressedForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getPressedForegroundProperty();
+    }
+    pub fn getTodayForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getTodayForegroundProperty();
+    }
+    pub fn getBlackoutForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getBlackoutForegroundProperty();
+    }
+    pub fn getSelectedForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getSelectedForegroundProperty();
+    }
+    pub fn getOutOfScopeForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getOutOfScopeForegroundProperty();
+    }
+    pub fn getCalendarItemForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getCalendarItemForegroundProperty();
+    }
+    pub fn getDayItemFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getDayItemFontFamilyProperty();
+    }
+    pub fn getDayItemFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getDayItemFontSizeProperty();
+    }
+    pub fn getDayItemFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getDayItemFontStyleProperty();
+    }
+    pub fn getDayItemFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getDayItemFontWeightProperty();
+    }
+    pub fn getTodayFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getTodayFontWeightProperty();
+    }
+    pub fn getFirstOfMonthLabelFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfMonthLabelFontFamilyProperty();
+    }
+    pub fn getFirstOfMonthLabelFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfMonthLabelFontSizeProperty();
+    }
+    pub fn getFirstOfMonthLabelFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfMonthLabelFontStyleProperty();
+    }
+    pub fn getFirstOfMonthLabelFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfMonthLabelFontWeightProperty();
+    }
+    pub fn getMonthYearItemFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getMonthYearItemFontFamilyProperty();
+    }
+    pub fn getMonthYearItemFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getMonthYearItemFontSizeProperty();
+    }
+    pub fn getMonthYearItemFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getMonthYearItemFontStyleProperty();
+    }
+    pub fn getMonthYearItemFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getMonthYearItemFontWeightProperty();
+    }
+    pub fn getFirstOfYearDecadeLabelFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfYearDecadeLabelFontFamilyProperty();
+    }
+    pub fn getFirstOfYearDecadeLabelFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfYearDecadeLabelFontSizeProperty();
+    }
+    pub fn getFirstOfYearDecadeLabelFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfYearDecadeLabelFontStyleProperty();
+    }
+    pub fn getFirstOfYearDecadeLabelFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getFirstOfYearDecadeLabelFontWeightProperty();
+    }
+    pub fn getHorizontalDayItemAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getHorizontalDayItemAlignmentProperty();
+    }
+    pub fn getVerticalDayItemAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getVerticalDayItemAlignmentProperty();
+    }
+    pub fn getHorizontalFirstOfMonthLabelAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getHorizontalFirstOfMonthLabelAlignmentProperty();
+    }
+    pub fn getVerticalFirstOfMonthLabelAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getVerticalFirstOfMonthLabelAlignmentProperty();
+    }
+    pub fn getCalendarItemBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getCalendarItemBorderThicknessProperty();
+    }
+    pub fn getCalendarViewDayItemStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewStaticsCache.get();
+        return try _f.getCalendarViewDayItemStyleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarView {
-        const factory = @This().ICalendarViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICalendarViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CalendarView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3632,17 +3632,17 @@ pub const CalendarViewDayItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsBlackoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewDayItemStaticsCache.get();
-        return try factory.getIsBlackoutProperty();
+    pub fn getIsBlackoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewDayItemStaticsCache.get();
+        return try _f.getIsBlackoutProperty();
     }
-    pub fn get_DateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICalendarViewDayItemStaticsCache.get();
-        return try factory.getDateProperty();
+    pub fn getDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICalendarViewDayItemStaticsCache.get();
+        return try _f.getDateProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CalendarViewDayItem {
-        const factory = @This().ICalendarViewDayItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICalendarViewDayItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CalendarViewDayItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3670,9 +3670,9 @@ pub const CalendarViewDayItemChangingEventArgs = extern struct {
         const this: *ICalendarViewDayItemChangingEventArgs = @ptrCast(self);
         return try this.RegisterUpdateCallback(callback);
     }
-    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
+    pub fn RegisterUpdateCallbackWithCallbackPhaseAndCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
         const this: *ICalendarViewDayItemChangingEventArgs = @ptrCast(self);
-        return try this.RegisterUpdateCallbackWithCallback(callbackPhase, callback);
+        return try this.RegisterUpdateCallbackWithCallbackPhaseAndCallback(callbackPhase, callback);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CalendarViewDayItemChangingEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3850,21 +3850,21 @@ pub const Panel = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPanelStaticsCache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPanelStaticsCache.get();
+        return try _f.getBackgroundProperty();
     }
-    pub fn get_IsItemsHostProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPanelStaticsCache.get();
-        return try factory.getIsItemsHostProperty();
+    pub fn getIsItemsHostProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPanelStaticsCache.get();
+        return try _f.getIsItemsHostProperty();
     }
-    pub fn get_ChildrenTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPanelStaticsCache.get();
-        return try factory.getChildrenTransitionsProperty();
+    pub fn getChildrenTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPanelStaticsCache.get();
+        return try _f.getChildrenTransitionsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Panel {
-        const factory = @This().IPanelFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPanelFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Panel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3879,45 +3879,45 @@ pub const Canvas = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.getLeftProperty();
+    pub fn getLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.getLeftProperty();
     }
     pub fn GetLeft(element: *UIElement) core.HResult!f64 {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.GetLeft(element);
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.GetLeft(element);
     }
     pub fn SetLeft(element: *UIElement, length: f64) core.HResult!void {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.SetLeft(element, length);
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.SetLeft(element, length);
     }
-    pub fn get_TopProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.getTopProperty();
+    pub fn getTopProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.getTopProperty();
     }
     pub fn GetTop(element: *UIElement) core.HResult!f64 {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.GetTop(element);
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.GetTop(element);
     }
     pub fn SetTop(element: *UIElement, length: f64) core.HResult!void {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.SetTop(element, length);
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.SetTop(element, length);
     }
-    pub fn get_ZIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.getZIndexProperty();
+    pub fn getZIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.getZIndexProperty();
     }
     pub fn GetZIndex(element: *UIElement) core.HResult!i32 {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.GetZIndex(element);
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.GetZIndex(element);
     }
     pub fn SetZIndex(element: *UIElement, value: i32) core.HResult!void {
-        const factory = @This().ICanvasStaticsCache.get();
-        return try factory.SetZIndex(element, value);
+        const _f = @This().ICanvasStaticsCache.get();
+        return try _f.SetZIndex(element, value);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Canvas {
-        const factory = @This().ICanvasFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICanvasFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Canvas";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3952,13 +3952,13 @@ pub const CaptureElement = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICaptureElement.IID)));
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICaptureElementStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICaptureElementStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICaptureElementStaticsCache.get();
-        return try factory.getStretchProperty();
+    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICaptureElementStaticsCache.get();
+        return try _f.getStretchProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CaptureElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3979,8 +3979,8 @@ pub const CheckBox = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CheckBox {
-        const factory = @This().ICheckBoxFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICheckBoxFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CheckBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4358,85 +4358,85 @@ pub const ColorPicker = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getColorProperty();
+    pub fn getColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getColorProperty();
     }
-    pub fn get_PreviousColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getPreviousColorProperty();
+    pub fn getPreviousColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getPreviousColorProperty();
     }
-    pub fn get_IsAlphaEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsAlphaEnabledProperty();
+    pub fn getIsAlphaEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsAlphaEnabledProperty();
     }
-    pub fn get_IsColorSpectrumVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsColorSpectrumVisibleProperty();
+    pub fn getIsColorSpectrumVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsColorSpectrumVisibleProperty();
     }
-    pub fn get_IsColorPreviewVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsColorPreviewVisibleProperty();
+    pub fn getIsColorPreviewVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsColorPreviewVisibleProperty();
     }
-    pub fn get_IsColorSliderVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsColorSliderVisibleProperty();
+    pub fn getIsColorSliderVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsColorSliderVisibleProperty();
     }
-    pub fn get_IsAlphaSliderVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsAlphaSliderVisibleProperty();
+    pub fn getIsAlphaSliderVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsAlphaSliderVisibleProperty();
     }
-    pub fn get_IsMoreButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsMoreButtonVisibleProperty();
+    pub fn getIsMoreButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsMoreButtonVisibleProperty();
     }
-    pub fn get_IsColorChannelTextInputVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsColorChannelTextInputVisibleProperty();
+    pub fn getIsColorChannelTextInputVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsColorChannelTextInputVisibleProperty();
     }
-    pub fn get_IsAlphaTextInputVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsAlphaTextInputVisibleProperty();
+    pub fn getIsAlphaTextInputVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsAlphaTextInputVisibleProperty();
     }
-    pub fn get_IsHexInputVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getIsHexInputVisibleProperty();
+    pub fn getIsHexInputVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getIsHexInputVisibleProperty();
     }
-    pub fn get_MinHueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getMinHueProperty();
+    pub fn getMinHueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getMinHueProperty();
     }
-    pub fn get_MaxHueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getMaxHueProperty();
+    pub fn getMaxHueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getMaxHueProperty();
     }
-    pub fn get_MinSaturationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getMinSaturationProperty();
+    pub fn getMinSaturationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getMinSaturationProperty();
     }
-    pub fn get_MaxSaturationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getMaxSaturationProperty();
+    pub fn getMaxSaturationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getMaxSaturationProperty();
     }
-    pub fn get_MinValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getMinValueProperty();
+    pub fn getMinValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getMinValueProperty();
     }
-    pub fn get_MaxValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getMaxValueProperty();
+    pub fn getMaxValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getMaxValueProperty();
     }
-    pub fn get_ColorSpectrumShapeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getColorSpectrumShapeProperty();
+    pub fn getColorSpectrumShapeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getColorSpectrumShapeProperty();
     }
-    pub fn get_ColorSpectrumComponentsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorPickerStaticsCache.get();
-        return try factory.getColorSpectrumComponentsProperty();
+    pub fn getColorSpectrumComponentsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorPickerStaticsCache.get();
+        return try _f.getColorSpectrumComponentsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorPicker {
-        const factory = @This().IColorPickerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IColorPickerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ColorPicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4501,17 +4501,17 @@ pub const ColumnDefinition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IColumnDefinition.IID)));
     }
-    pub fn get_WidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColumnDefinitionStaticsCache.get();
-        return try factory.getWidthProperty();
+    pub fn getWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColumnDefinitionStaticsCache.get();
+        return try _f.getWidthProperty();
     }
-    pub fn get_MaxWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColumnDefinitionStaticsCache.get();
-        return try factory.getMaxWidthProperty();
+    pub fn getMaxWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColumnDefinitionStaticsCache.get();
+        return try _f.getMaxWidthProperty();
     }
-    pub fn get_MinWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColumnDefinitionStaticsCache.get();
-        return try factory.getMinWidthProperty();
+    pub fn getMinWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColumnDefinitionStaticsCache.get();
+        return try _f.getMinWidthProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ColumnDefinition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4523,55 +4523,27 @@ pub const ColumnDefinition = extern struct {
 };
 pub const ColumnDefinitionCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColumnDefinition) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(ColumnDefinition) {
+        const this: *IVector(ColumnDefinition) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColumnDefinition) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColumnDefinition) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColumnDefinition) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ColumnDefinition) {
         var this: ?*IIterable(ColumnDefinition) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4790,61 +4762,61 @@ pub const ComboBox = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsDropDownOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStaticsCache.get();
-        return try factory.getIsDropDownOpenProperty();
+    pub fn getIsDropDownOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStaticsCache.get();
+        return try _f.getIsDropDownOpenProperty();
     }
-    pub fn get_MaxDropDownHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStaticsCache.get();
-        return try factory.getMaxDropDownHeightProperty();
+    pub fn getMaxDropDownHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStaticsCache.get();
+        return try _f.getMaxDropDownHeightProperty();
     }
-    pub fn get_IsEditableProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics6Cache.get();
-        return try factory.getIsEditableProperty();
+    pub fn getIsEditableProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics6Cache.get();
+        return try _f.getIsEditableProperty();
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics6Cache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics6Cache.get();
+        return try _f.getTextProperty();
     }
-    pub fn get_TextBoxStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics6Cache.get();
-        return try factory.getTextBoxStyleProperty();
+    pub fn getTextBoxStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics6Cache.get();
+        return try _f.getTextBoxStyleProperty();
     }
-    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics6Cache.get();
-        return try factory.getDescriptionProperty();
+    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics6Cache.get();
+        return try _f.getDescriptionProperty();
     }
-    pub fn get_PlaceholderForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics5Cache.get();
-        return try factory.getPlaceholderForegroundProperty();
+    pub fn getPlaceholderForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics5Cache.get();
+        return try _f.getPlaceholderForegroundProperty();
     }
-    pub fn get_SelectionChangedTriggerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics4Cache.get();
-        return try factory.getSelectionChangedTriggerProperty();
+    pub fn getSelectionChangedTriggerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics4Cache.get();
+        return try _f.getSelectionChangedTriggerProperty();
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics3Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics3Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
-    pub fn get_IsTextSearchEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics3Cache.get();
-        return try factory.getIsTextSearchEnabledProperty();
+    pub fn getIsTextSearchEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics3Cache.get();
+        return try _f.getIsTextSearchEnabledProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics2Cache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics2Cache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics2Cache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics2Cache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IComboBoxStatics2Cache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IComboBoxStatics2Cache.get();
+        return try _f.getPlaceholderTextProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBox {
-        const factory = @This().IComboBoxFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IComboBoxFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ComboBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4865,8 +4837,8 @@ pub const ComboBoxItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ComboBoxItem {
-        const factory = @This().IComboBoxItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IComboBoxItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ComboBoxItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4978,33 +4950,33 @@ pub const CommandBar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CommandBarOverflowPresenterStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommandBarStatics2Cache.get();
-        return try factory.getCommandBarOverflowPresenterStyleProperty();
+    pub fn getCommandBarOverflowPresenterStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommandBarStatics2Cache.get();
+        return try _f.getCommandBarOverflowPresenterStyleProperty();
     }
-    pub fn get_PrimaryCommandsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommandBarStaticsCache.get();
-        return try factory.getPrimaryCommandsProperty();
+    pub fn getPrimaryCommandsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommandBarStaticsCache.get();
+        return try _f.getPrimaryCommandsProperty();
     }
-    pub fn get_SecondaryCommandsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommandBarStaticsCache.get();
-        return try factory.getSecondaryCommandsProperty();
+    pub fn getSecondaryCommandsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommandBarStaticsCache.get();
+        return try _f.getSecondaryCommandsProperty();
     }
-    pub fn get_DefaultLabelPositionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommandBarStatics3Cache.get();
-        return try factory.getDefaultLabelPositionProperty();
+    pub fn getDefaultLabelPositionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommandBarStatics3Cache.get();
+        return try _f.getDefaultLabelPositionProperty();
     }
-    pub fn get_OverflowButtonVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommandBarStatics3Cache.get();
-        return try factory.getOverflowButtonVisibilityProperty();
+    pub fn getOverflowButtonVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommandBarStatics3Cache.get();
+        return try _f.getOverflowButtonVisibilityProperty();
     }
-    pub fn get_IsDynamicOverflowEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommandBarStatics3Cache.get();
-        return try factory.getIsDynamicOverflowEnabledProperty();
+    pub fn getIsDynamicOverflowEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommandBarStatics3Cache.get();
+        return try _f.getIsDynamicOverflowEnabledProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBar {
-        const factory = @This().ICommandBarFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICommandBarFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CommandBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5039,8 +5011,8 @@ pub const CommandBarFlyout = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBarFlyout {
-        const factory = @This().ICommandBarFlyoutFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICommandBarFlyoutFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CommandBarFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5064,8 +5036,8 @@ pub const CommandBarOverflowPresenter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CommandBarOverflowPresenter {
-        const factory = @This().ICommandBarOverflowPresenterFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICommandBarOverflowPresenterFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.CommandBarOverflowPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5108,9 +5080,9 @@ pub const ContainerContentChangingEventArgs = extern struct {
         const this: *IContainerContentChangingEventArgs = @ptrCast(self);
         return try this.RegisterUpdateCallback(callback);
     }
-    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
+    pub fn RegisterUpdateCallbackWithCallbackPhaseAndCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
         const this: *IContainerContentChangingEventArgs = @ptrCast(self);
-        return try this.RegisterUpdateCallbackWithCallback(callbackPhase, callback);
+        return try this.RegisterUpdateCallbackWithCallbackPhaseAndCallback(callbackPhase, callback);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -5369,81 +5341,81 @@ pub const ContentDialog = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getTitleProperty();
+    pub fn getTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getTitleProperty();
     }
-    pub fn get_TitleTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getTitleTemplateProperty();
+    pub fn getTitleTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getTitleTemplateProperty();
     }
-    pub fn get_FullSizeDesiredProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getFullSizeDesiredProperty();
+    pub fn getFullSizeDesiredProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getFullSizeDesiredProperty();
     }
-    pub fn get_PrimaryButtonTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getPrimaryButtonTextProperty();
+    pub fn getPrimaryButtonTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getPrimaryButtonTextProperty();
     }
-    pub fn get_SecondaryButtonTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getSecondaryButtonTextProperty();
+    pub fn getSecondaryButtonTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getSecondaryButtonTextProperty();
     }
-    pub fn get_PrimaryButtonCommandProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getPrimaryButtonCommandProperty();
+    pub fn getPrimaryButtonCommandProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getPrimaryButtonCommandProperty();
     }
-    pub fn get_SecondaryButtonCommandProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getSecondaryButtonCommandProperty();
+    pub fn getSecondaryButtonCommandProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getSecondaryButtonCommandProperty();
     }
-    pub fn get_PrimaryButtonCommandParameterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getPrimaryButtonCommandParameterProperty();
+    pub fn getPrimaryButtonCommandParameterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getPrimaryButtonCommandParameterProperty();
     }
-    pub fn get_SecondaryButtonCommandParameterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getSecondaryButtonCommandParameterProperty();
+    pub fn getSecondaryButtonCommandParameterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getSecondaryButtonCommandParameterProperty();
     }
-    pub fn get_IsPrimaryButtonEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getIsPrimaryButtonEnabledProperty();
+    pub fn getIsPrimaryButtonEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getIsPrimaryButtonEnabledProperty();
     }
-    pub fn get_IsSecondaryButtonEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStaticsCache.get();
-        return try factory.getIsSecondaryButtonEnabledProperty();
+    pub fn getIsSecondaryButtonEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStaticsCache.get();
+        return try _f.getIsSecondaryButtonEnabledProperty();
     }
-    pub fn get_CloseButtonTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getCloseButtonTextProperty();
+    pub fn getCloseButtonTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getCloseButtonTextProperty();
     }
-    pub fn get_CloseButtonCommandProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getCloseButtonCommandProperty();
+    pub fn getCloseButtonCommandProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getCloseButtonCommandProperty();
     }
-    pub fn get_CloseButtonCommandParameterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getCloseButtonCommandParameterProperty();
+    pub fn getCloseButtonCommandParameterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getCloseButtonCommandParameterProperty();
     }
-    pub fn get_PrimaryButtonStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getPrimaryButtonStyleProperty();
+    pub fn getPrimaryButtonStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getPrimaryButtonStyleProperty();
     }
-    pub fn get_SecondaryButtonStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getSecondaryButtonStyleProperty();
+    pub fn getSecondaryButtonStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getSecondaryButtonStyleProperty();
     }
-    pub fn get_CloseButtonStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getCloseButtonStyleProperty();
+    pub fn getCloseButtonStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getCloseButtonStyleProperty();
     }
-    pub fn get_DefaultButtonProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentDialogStatics2Cache.get();
-        return try factory.getDefaultButtonProperty();
+    pub fn getDefaultButtonProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentDialogStatics2Cache.get();
+        return try _f.getDefaultButtonProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ContentDialog {
-        const factory = @This().IContentDialogFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IContentDialogFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ContentDialog";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5879,113 +5851,113 @@ pub const ContentPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TextWrappingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getTextWrappingProperty();
+    pub fn getTextWrappingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getTextWrappingProperty();
     }
-    pub fn get_MaxLinesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getMaxLinesProperty();
+    pub fn getMaxLinesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getMaxLinesProperty();
     }
-    pub fn get_LineStackingStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getLineStackingStrategyProperty();
+    pub fn getLineStackingStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getLineStackingStrategyProperty();
     }
-    pub fn get_LineHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getLineHeightProperty();
+    pub fn getLineHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getLineHeightProperty();
     }
-    pub fn get_BorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getBorderBrushProperty();
+    pub fn getBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getBorderBrushProperty();
     }
-    pub fn get_BorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getBorderThicknessProperty();
+    pub fn getBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getBorderThicknessProperty();
     }
-    pub fn get_CornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getCornerRadiusProperty();
+    pub fn getCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getCornerRadiusProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getBackgroundProperty();
     }
-    pub fn get_HorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getHorizontalContentAlignmentProperty();
+    pub fn getHorizontalContentAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getHorizontalContentAlignmentProperty();
     }
-    pub fn get_VerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics4Cache.get();
-        return try factory.getVerticalContentAlignmentProperty();
+    pub fn getVerticalContentAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics4Cache.get();
+        return try _f.getVerticalContentAlignmentProperty();
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_ContentTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getContentTemplateProperty();
+    pub fn getContentTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getContentTemplateProperty();
     }
-    pub fn get_ContentTemplateSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getContentTemplateSelectorProperty();
+    pub fn getContentTemplateSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getContentTemplateSelectorProperty();
     }
-    pub fn get_ContentTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getContentTransitionsProperty();
+    pub fn getContentTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getContentTransitionsProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_FontStretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getFontStretchProperty();
+    pub fn getFontStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getFontStretchProperty();
     }
-    pub fn get_CharacterSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getCharacterSpacingProperty();
+    pub fn getCharacterSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getCharacterSpacingProperty();
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_BackgroundSizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics5Cache.get();
-        return try factory.getBackgroundSizingProperty();
+    pub fn getBackgroundSizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics5Cache.get();
+        return try _f.getBackgroundSizingProperty();
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics3Cache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics3Cache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn get_OpticalMarginAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics2Cache.get();
-        return try factory.getOpticalMarginAlignmentProperty();
+    pub fn getOpticalMarginAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics2Cache.get();
+        return try _f.getOpticalMarginAlignmentProperty();
     }
-    pub fn get_TextLineBoundsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentPresenterStatics2Cache.get();
-        return try factory.getTextLineBoundsProperty();
+    pub fn getTextLineBoundsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentPresenterStatics2Cache.get();
+        return try _f.getTextLineBoundsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ContentPresenter {
-        const factory = @This().IContentPresenterFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IContentPresenterFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ContentPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6174,8 +6146,8 @@ pub const DataTemplateSelector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DataTemplateSelector {
-        const factory = @This().IDataTemplateSelectorFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IDataTemplateSelectorFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DataTemplateSelector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6361,69 +6333,69 @@ pub const DatePicker = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SelectedDateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStatics3Cache.get();
-        return try factory.getSelectedDateProperty();
+    pub fn getSelectedDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStatics3Cache.get();
+        return try _f.getSelectedDateProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_CalendarIdentifierProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getCalendarIdentifierProperty();
+    pub fn getCalendarIdentifierProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getCalendarIdentifierProperty();
     }
-    pub fn get_DateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getDateProperty();
+    pub fn getDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getDateProperty();
     }
-    pub fn get_DayVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getDayVisibleProperty();
+    pub fn getDayVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getDayVisibleProperty();
     }
-    pub fn get_MonthVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getMonthVisibleProperty();
+    pub fn getMonthVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getMonthVisibleProperty();
     }
-    pub fn get_YearVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getYearVisibleProperty();
+    pub fn getYearVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getYearVisibleProperty();
     }
-    pub fn get_DayFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getDayFormatProperty();
+    pub fn getDayFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getDayFormatProperty();
     }
-    pub fn get_MonthFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getMonthFormatProperty();
+    pub fn getMonthFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getMonthFormatProperty();
     }
-    pub fn get_YearFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getYearFormatProperty();
+    pub fn getYearFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getYearFormatProperty();
     }
-    pub fn get_MinYearProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getMinYearProperty();
+    pub fn getMinYearProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getMinYearProperty();
     }
-    pub fn get_MaxYearProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getMaxYearProperty();
+    pub fn getMaxYearProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getMaxYearProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerStatics2Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerStatics2Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DatePicker {
-        const factory = @This().IDatePickerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IDatePickerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DatePicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6548,45 +6520,45 @@ pub const DatePickerFlyout = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDatePickerFlyout.IID)));
     }
-    pub fn get_CalendarIdentifierProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getCalendarIdentifierProperty();
+    pub fn getCalendarIdentifierProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getCalendarIdentifierProperty();
     }
-    pub fn get_DateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getDateProperty();
+    pub fn getDateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getDateProperty();
     }
-    pub fn get_DayVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getDayVisibleProperty();
+    pub fn getDayVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getDayVisibleProperty();
     }
-    pub fn get_MonthVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getMonthVisibleProperty();
+    pub fn getMonthVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getMonthVisibleProperty();
     }
-    pub fn get_YearVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getYearVisibleProperty();
+    pub fn getYearVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getYearVisibleProperty();
     }
-    pub fn get_MinYearProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getMinYearProperty();
+    pub fn getMinYearProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getMinYearProperty();
     }
-    pub fn get_MaxYearProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStaticsCache.get();
-        return try factory.getMaxYearProperty();
+    pub fn getMaxYearProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStaticsCache.get();
+        return try _f.getMaxYearProperty();
     }
-    pub fn get_DayFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStatics2Cache.get();
-        return try factory.getDayFormatProperty();
+    pub fn getDayFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStatics2Cache.get();
+        return try _f.getDayFormatProperty();
     }
-    pub fn get_MonthFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStatics2Cache.get();
-        return try factory.getMonthFormatProperty();
+    pub fn getMonthFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStatics2Cache.get();
+        return try _f.getMonthFormatProperty();
     }
-    pub fn get_YearFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutStatics2Cache.get();
-        return try factory.getYearFormatProperty();
+    pub fn getYearFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutStatics2Cache.get();
+        return try _f.getYearFormatProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DatePickerFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6642,13 +6614,13 @@ pub const DatePickerFlyoutItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PrimaryTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutItemStaticsCache.get();
-        return try factory.getPrimaryTextProperty();
+    pub fn getPrimaryTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutItemStaticsCache.get();
+        return try _f.getPrimaryTextProperty();
     }
-    pub fn get_SecondaryTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutItemStaticsCache.get();
-        return try factory.getSecondaryTextProperty();
+    pub fn getSecondaryTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutItemStaticsCache.get();
+        return try _f.getSecondaryTextProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DatePickerFlyoutItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6674,9 +6646,9 @@ pub const DatePickerFlyoutPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDatePickerFlyoutPresenterStatics2Cache.get();
-        return try factory.getIsDefaultShadowEnabledProperty();
+    pub fn getIsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDatePickerFlyoutPresenterStatics2Cache.get();
+        return try _f.getIsDefaultShadowEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DatePickerFlyoutPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6865,8 +6837,8 @@ pub const DropDownButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DropDownButton {
-        const factory = @This().IDropDownButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IDropDownButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DropDownButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6899,8 +6871,8 @@ pub const DropDownButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(owner: *DropDownButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DropDownButtonAutomationPeer {
-        const factory = @This().IDropDownButtonAutomationPeerFactoryCache.get();
-        return try factory.CreateInstance(owner, baseInterface, innerInterface);
+        const _f = @This().IDropDownButtonAutomationPeerFactoryCache.get();
+        return try _f.CreateInstance(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.DropDownButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6946,13 +6918,13 @@ pub const FlipView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_UseTouchAnimationsForAllNavigationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFlipViewStatics2Cache.get();
-        return try factory.getUseTouchAnimationsForAllNavigationProperty();
+    pub fn getUseTouchAnimationsForAllNavigationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFlipViewStatics2Cache.get();
+        return try _f.getUseTouchAnimationsForAllNavigationProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipView {
-        const factory = @This().IFlipViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFlipViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.FlipView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6968,8 +6940,8 @@ pub const FlipViewItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlipViewItem {
-        const factory = @This().IFlipViewItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFlipViewItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.FlipViewItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6999,17 +6971,17 @@ pub const Flyout = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFlyoutStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFlyoutStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_FlyoutPresenterStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFlyoutStaticsCache.get();
-        return try factory.getFlyoutPresenterStyleProperty();
+    pub fn getFlyoutPresenterStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFlyoutStaticsCache.get();
+        return try _f.getFlyoutPresenterStyleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Flyout {
-        const factory = @This().IFlyoutFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFlyoutFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Flyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7036,13 +7008,13 @@ pub const FlyoutPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFlyoutPresenterStatics2Cache.get();
-        return try factory.getIsDefaultShadowEnabledProperty();
+    pub fn getIsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFlyoutPresenterStatics2Cache.get();
+        return try _f.getIsDefaultShadowEnabledProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FlyoutPresenter {
-        const factory = @This().IFlyoutPresenterFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFlyoutPresenterFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.FlyoutPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7149,37 +7121,37 @@ pub const FontIcon = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MirroredWhenRightToLeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStatics3Cache.get();
-        return try factory.getMirroredWhenRightToLeftProperty();
+    pub fn getMirroredWhenRightToLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStatics3Cache.get();
+        return try _f.getMirroredWhenRightToLeftProperty();
     }
-    pub fn get_GlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStaticsCache.get();
-        return try factory.getGlyphProperty();
+    pub fn getGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStaticsCache.get();
+        return try _f.getGlyphProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconStatics2Cache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconStatics2Cache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontIcon {
-        const factory = @This().IFontIconFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFontIconFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.FontIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7252,37 +7224,37 @@ pub const FontIconSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_GlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getGlyphProperty();
+    pub fn getGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getGlyphProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn get_MirroredWhenRightToLeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFontIconSourceStaticsCache.get();
-        return try factory.getMirroredWhenRightToLeftProperty();
+    pub fn getMirroredWhenRightToLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFontIconSourceStaticsCache.get();
+        return try _f.getMirroredWhenRightToLeftProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*FontIconSource {
-        const factory = @This().IFontIconSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFontIconSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.FontIconSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7390,11 +7362,11 @@ pub const Frame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getForwardStack();
     }
-    pub fn NavigateWithParameterWithInfoOverride(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, infoOverride: *NavigationTransitionInfo) core.HResult!bool {
+    pub fn NavigateWithParameterAndInfoOverride(self: *@This(), sourcePageType: TypeName, parameter: *IInspectable, infoOverride: *NavigationTransitionInfo) core.HResult!bool {
         var this: ?*IFrame2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.NavigateWithParameterWithInfoOverride(sourcePageType, parameter, infoOverride);
+        return try this.?.NavigateWithParameterAndInfoOverride(sourcePageType, parameter, infoOverride);
     }
     pub fn GoBackWithTransitionInfoOverride(self: *@This(), transitionInfoOverride: *NavigationTransitionInfo) core.HResult!void {
         var this: ?*IFrame3 = undefined;
@@ -7435,45 +7407,45 @@ pub const Frame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BackStackProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStatics2Cache.get();
-        return try factory.getBackStackProperty();
+    pub fn getBackStackProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStatics2Cache.get();
+        return try _f.getBackStackProperty();
     }
-    pub fn get_ForwardStackProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStatics2Cache.get();
-        return try factory.getForwardStackProperty();
+    pub fn getForwardStackProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStatics2Cache.get();
+        return try _f.getForwardStackProperty();
     }
-    pub fn get_IsNavigationStackEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStatics5Cache.get();
-        return try factory.getIsNavigationStackEnabledProperty();
+    pub fn getIsNavigationStackEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStatics5Cache.get();
+        return try _f.getIsNavigationStackEnabledProperty();
     }
-    pub fn get_CacheSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStaticsCache.get();
-        return try factory.getCacheSizeProperty();
+    pub fn getCacheSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStaticsCache.get();
+        return try _f.getCacheSizeProperty();
     }
-    pub fn get_CanGoBackProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStaticsCache.get();
-        return try factory.getCanGoBackProperty();
+    pub fn getCanGoBackProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStaticsCache.get();
+        return try _f.getCanGoBackProperty();
     }
-    pub fn get_CanGoForwardProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStaticsCache.get();
-        return try factory.getCanGoForwardProperty();
+    pub fn getCanGoForwardProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStaticsCache.get();
+        return try _f.getCanGoForwardProperty();
     }
-    pub fn get_CurrentSourcePageTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStaticsCache.get();
-        return try factory.getCurrentSourcePageTypeProperty();
+    pub fn getCurrentSourcePageTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStaticsCache.get();
+        return try _f.getCurrentSourcePageTypeProperty();
     }
-    pub fn get_SourcePageTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStaticsCache.get();
-        return try factory.getSourcePageTypeProperty();
+    pub fn getSourcePageTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStaticsCache.get();
+        return try _f.getSourcePageTypeProperty();
     }
-    pub fn get_BackStackDepthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFrameStaticsCache.get();
-        return try factory.getBackStackDepthProperty();
+    pub fn getBackStackDepthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFrameStaticsCache.get();
+        return try _f.getBackStackDepthProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Frame {
-        const factory = @This().IFrameFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IFrameFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Frame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7582,85 +7554,85 @@ pub const Grid = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_RowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.getRowProperty();
+    pub fn getRowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.getRowProperty();
     }
     pub fn GetRow(element: *FrameworkElement) core.HResult!i32 {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.GetRow(element);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.GetRow(element);
     }
     pub fn SetRow(element: *FrameworkElement, value: i32) core.HResult!void {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.SetRow(element, value);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.SetRow(element, value);
     }
-    pub fn get_ColumnProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.getColumnProperty();
+    pub fn getColumnProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.getColumnProperty();
     }
     pub fn GetColumn(element: *FrameworkElement) core.HResult!i32 {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.GetColumn(element);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.GetColumn(element);
     }
     pub fn SetColumn(element: *FrameworkElement, value: i32) core.HResult!void {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.SetColumn(element, value);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.SetColumn(element, value);
     }
-    pub fn get_RowSpanProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.getRowSpanProperty();
+    pub fn getRowSpanProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.getRowSpanProperty();
     }
     pub fn GetRowSpan(element: *FrameworkElement) core.HResult!i32 {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.GetRowSpan(element);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.GetRowSpan(element);
     }
     pub fn SetRowSpan(element: *FrameworkElement, value: i32) core.HResult!void {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.SetRowSpan(element, value);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.SetRowSpan(element, value);
     }
-    pub fn get_ColumnSpanProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.getColumnSpanProperty();
+    pub fn getColumnSpanProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.getColumnSpanProperty();
     }
     pub fn GetColumnSpan(element: *FrameworkElement) core.HResult!i32 {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.GetColumnSpan(element);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.GetColumnSpan(element);
     }
     pub fn SetColumnSpan(element: *FrameworkElement, value: i32) core.HResult!void {
-        const factory = @This().IGridStaticsCache.get();
-        return try factory.SetColumnSpan(element, value);
+        const _f = @This().IGridStaticsCache.get();
+        return try _f.SetColumnSpan(element, value);
     }
-    pub fn get_RowSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics3Cache.get();
-        return try factory.getRowSpacingProperty();
+    pub fn getRowSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics3Cache.get();
+        return try _f.getRowSpacingProperty();
     }
-    pub fn get_ColumnSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics3Cache.get();
-        return try factory.getColumnSpacingProperty();
+    pub fn getColumnSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics3Cache.get();
+        return try _f.getColumnSpacingProperty();
     }
-    pub fn get_BorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics2Cache.get();
-        return try factory.getBorderBrushProperty();
+    pub fn getBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics2Cache.get();
+        return try _f.getBorderBrushProperty();
     }
-    pub fn get_BorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics2Cache.get();
-        return try factory.getBorderThicknessProperty();
+    pub fn getBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics2Cache.get();
+        return try _f.getBorderThicknessProperty();
     }
-    pub fn get_CornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics2Cache.get();
-        return try factory.getCornerRadiusProperty();
+    pub fn getCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics2Cache.get();
+        return try _f.getCornerRadiusProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics2Cache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics2Cache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_BackgroundSizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGridStatics4Cache.get();
-        return try factory.getBackgroundSizingProperty();
+    pub fn getBackgroundSizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGridStatics4Cache.get();
+        return try _f.getBackgroundSizingProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Grid {
-        const factory = @This().IGridFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGridFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Grid";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8054,93 +8026,93 @@ pub const ListViewBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SingleSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics5Cache.get();
-        return try factory.getSingleSelectionFollowsFocusProperty();
+    pub fn getSingleSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics5Cache.get();
+        return try _f.getSingleSelectionFollowsFocusProperty();
     }
-    pub fn get_IsMultiSelectCheckBoxEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics4Cache.get();
-        return try factory.getIsMultiSelectCheckBoxEnabledProperty();
+    pub fn getIsMultiSelectCheckBoxEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics4Cache.get();
+        return try _f.getIsMultiSelectCheckBoxEnabledProperty();
     }
-    pub fn get_ShowsScrollingPlaceholdersProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics2Cache.get();
-        return try factory.getShowsScrollingPlaceholdersProperty();
+    pub fn getShowsScrollingPlaceholdersProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics2Cache.get();
+        return try _f.getShowsScrollingPlaceholdersProperty();
     }
-    pub fn get_FooterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics2Cache.get();
-        return try factory.getFooterProperty();
+    pub fn getFooterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics2Cache.get();
+        return try _f.getFooterProperty();
     }
-    pub fn get_FooterTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics2Cache.get();
-        return try factory.getFooterTemplateProperty();
+    pub fn getFooterTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics2Cache.get();
+        return try _f.getFooterTemplateProperty();
     }
-    pub fn get_FooterTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics2Cache.get();
-        return try factory.getFooterTransitionsProperty();
+    pub fn getFooterTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics2Cache.get();
+        return try _f.getFooterTransitionsProperty();
     }
-    pub fn get_SelectionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getSelectionModeProperty();
+    pub fn getSelectionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getSelectionModeProperty();
     }
-    pub fn get_IsSwipeEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getIsSwipeEnabledProperty();
+    pub fn getIsSwipeEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getIsSwipeEnabledProperty();
     }
-    pub fn get_CanDragItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getCanDragItemsProperty();
+    pub fn getCanDragItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getCanDragItemsProperty();
     }
-    pub fn get_CanReorderItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getCanReorderItemsProperty();
+    pub fn getCanReorderItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getCanReorderItemsProperty();
     }
-    pub fn get_IsItemClickEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getIsItemClickEnabledProperty();
+    pub fn getIsItemClickEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getIsItemClickEnabledProperty();
     }
-    pub fn get_DataFetchSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getDataFetchSizeProperty();
+    pub fn getDataFetchSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getDataFetchSizeProperty();
     }
-    pub fn get_IncrementalLoadingThresholdProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getIncrementalLoadingThresholdProperty();
+    pub fn getIncrementalLoadingThresholdProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getIncrementalLoadingThresholdProperty();
     }
-    pub fn get_IncrementalLoadingTriggerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getIncrementalLoadingTriggerProperty();
+    pub fn getIncrementalLoadingTriggerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getIncrementalLoadingTriggerProperty();
     }
-    pub fn get_SemanticZoomOwnerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getSemanticZoomOwnerProperty();
+    pub fn getSemanticZoomOwnerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getSemanticZoomOwnerProperty();
     }
-    pub fn get_IsActiveViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getIsActiveViewProperty();
+    pub fn getIsActiveViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getIsActiveViewProperty();
     }
-    pub fn get_IsZoomedInViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getIsZoomedInViewProperty();
+    pub fn getIsZoomedInViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getIsZoomedInViewProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_HeaderTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStaticsCache.get();
-        return try factory.getHeaderTransitionsProperty();
+    pub fn getHeaderTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStaticsCache.get();
+        return try _f.getHeaderTransitionsProperty();
     }
-    pub fn get_ReorderModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListViewBaseStatics3Cache.get();
-        return try factory.getReorderModeProperty();
+    pub fn getReorderModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListViewBaseStatics3Cache.get();
+        return try _f.getReorderModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewBase {
-        const factory = @This().IListViewBaseFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IListViewBaseFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListViewBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8160,8 +8132,8 @@ pub const GridView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridView {
-        const factory = @This().IGridViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGridViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.GridView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8188,8 +8160,8 @@ pub const GridViewHeaderItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewHeaderItem {
-        const factory = @This().IGridViewHeaderItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGridViewHeaderItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.GridViewHeaderItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8208,8 +8180,8 @@ pub const GridViewItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GridViewItem {
-        const factory = @This().IGridViewItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGridViewItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.GridViewItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8224,8 +8196,8 @@ pub const GroupItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GroupItem {
-        const factory = @This().IGroupItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGroupItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.GroupItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8312,8 +8284,8 @@ pub const GroupStyle = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GroupStyle {
-        const factory = @This().IGroupStyleFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGroupStyleFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.GroupStyle";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8338,8 +8310,8 @@ pub const GroupStyleSelector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GroupStyleSelector {
-        const factory = @This().IGroupStyleSelectorFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGroupStyleSelectorFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.GroupStyleSelector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8500,33 +8472,33 @@ pub const HandwritingView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsSwitchToKeyboardEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHandwritingViewStatics2Cache.get();
-        return try factory.getIsSwitchToKeyboardEnabledProperty();
+    pub fn getIsSwitchToKeyboardEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHandwritingViewStatics2Cache.get();
+        return try _f.getIsSwitchToKeyboardEnabledProperty();
     }
-    pub fn get_IsCommandBarOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHandwritingViewStatics2Cache.get();
-        return try factory.getIsCommandBarOpenProperty();
+    pub fn getIsCommandBarOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHandwritingViewStatics2Cache.get();
+        return try _f.getIsCommandBarOpenProperty();
     }
-    pub fn get_PlacementTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHandwritingViewStaticsCache.get();
-        return try factory.getPlacementTargetProperty();
+    pub fn getPlacementTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHandwritingViewStaticsCache.get();
+        return try _f.getPlacementTargetProperty();
     }
-    pub fn get_PlacementAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHandwritingViewStaticsCache.get();
-        return try factory.getPlacementAlignmentProperty();
+    pub fn getPlacementAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHandwritingViewStaticsCache.get();
+        return try _f.getPlacementAlignmentProperty();
     }
-    pub fn get_IsOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHandwritingViewStaticsCache.get();
-        return try factory.getIsOpenProperty();
+    pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHandwritingViewStaticsCache.get();
+        return try _f.getIsOpenProperty();
     }
-    pub fn get_AreCandidatesEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHandwritingViewStaticsCache.get();
-        return try factory.getAreCandidatesEnabledProperty();
+    pub fn getAreCandidatesEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHandwritingViewStaticsCache.get();
+        return try _f.getAreCandidatesEnabledProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HandwritingView {
-        const factory = @This().IHandwritingViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IHandwritingViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.HandwritingView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8704,37 +8676,37 @@ pub const Hub = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_DefaultSectionIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getDefaultSectionIndexProperty();
+    pub fn getDefaultSectionIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getDefaultSectionIndexProperty();
     }
-    pub fn get_SemanticZoomOwnerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getSemanticZoomOwnerProperty();
+    pub fn getSemanticZoomOwnerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getSemanticZoomOwnerProperty();
     }
-    pub fn get_IsActiveViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getIsActiveViewProperty();
+    pub fn getIsActiveViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getIsActiveViewProperty();
     }
-    pub fn get_IsZoomedInViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubStaticsCache.get();
-        return try factory.getIsZoomedInViewProperty();
+    pub fn getIsZoomedInViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubStaticsCache.get();
+        return try _f.getIsZoomedInViewProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Hub {
-        const factory = @This().IHubFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IHubFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Hub";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8781,25 +8753,25 @@ pub const HubSection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubSectionStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubSectionStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubSectionStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubSectionStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_ContentTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubSectionStaticsCache.get();
-        return try factory.getContentTemplateProperty();
+    pub fn getContentTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubSectionStaticsCache.get();
+        return try _f.getContentTemplateProperty();
     }
-    pub fn get_IsHeaderInteractiveProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHubSectionStaticsCache.get();
-        return try factory.getIsHeaderInteractiveProperty();
+    pub fn getIsHeaderInteractiveProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHubSectionStaticsCache.get();
+        return try _f.getIsHeaderInteractiveProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HubSection {
-        const factory = @This().IHubSectionFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IHubSectionFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.HubSection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8811,55 +8783,27 @@ pub const HubSection = extern struct {
 };
 pub const HubSectionCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HubSection) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HubSection) {
+        const this: *IVector(HubSection) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HubSection) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HubSection) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HubSection) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(HubSection) {
         var this: ?*IIterable(HubSection) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -8991,13 +8935,13 @@ pub const HyperlinkButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_NavigateUriProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkButtonStaticsCache.get();
-        return try factory.getNavigateUriProperty();
+    pub fn getNavigateUriProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkButtonStaticsCache.get();
+        return try _f.getNavigateUriProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HyperlinkButton {
-        const factory = @This().IHyperlinkButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IHyperlinkButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.HyperlinkButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -12635,8 +12579,8 @@ pub const ICalendarViewDayItemChangingEventArgs = extern struct {
         const _c = self.vtable.RegisterUpdateCallback(@ptrCast(self), callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
-        const _c = self.vtable.RegisterUpdateCallbackWithCallback(@ptrCast(self), callbackPhase, callback);
+    pub fn RegisterUpdateCallbackWithCallbackPhaseAndCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) core.HResult!void {
+        const _c = self.vtable.RegisterUpdateCallbackWithCallbackPhaseAndCallback(@ptrCast(self), callbackPhase, callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ICalendarViewDayItemChangingEventArgs";
@@ -12655,7 +12599,7 @@ pub const ICalendarViewDayItemChangingEventArgs = extern struct {
         get_Item: *const fn(self: *anyopaque, _r: **CalendarViewDayItem) callconv(.winapi) HRESULT,
         get_Phase: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         RegisterUpdateCallback: *const fn(self: *anyopaque, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) callconv(.winapi) HRESULT,
-        RegisterUpdateCallbackWithCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) callconv(.winapi) HRESULT,
+        RegisterUpdateCallbackWithCallbackPhaseAndCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(CalendarView,CalendarViewDayItemChangingEventArgs)) callconv(.winapi) HRESULT,
     };
 };
 pub const ICalendarViewDayItemFactory = extern struct {
@@ -15326,8 +15270,8 @@ pub const IContainerContentChangingEventArgs = extern struct {
         const _c = self.vtable.RegisterUpdateCallback(@ptrCast(self), callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterUpdateCallbackWithCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
-        const _c = self.vtable.RegisterUpdateCallbackWithCallback(@ptrCast(self), callbackPhase, callback);
+    pub fn RegisterUpdateCallbackWithCallbackPhaseAndCallback(self: *@This(), callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) core.HResult!void {
+        const _c = self.vtable.RegisterUpdateCallbackWithCallbackPhaseAndCallback(@ptrCast(self), callbackPhase, callback);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.IContainerContentChangingEventArgs";
@@ -15350,7 +15294,7 @@ pub const IContainerContentChangingEventArgs = extern struct {
         get_Handled: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         put_Handled: *const fn(self: *anyopaque, value: bool) callconv(.winapi) HRESULT,
         RegisterUpdateCallback: *const fn(self: *anyopaque, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) callconv(.winapi) HRESULT,
-        RegisterUpdateCallbackWithCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) callconv(.winapi) HRESULT,
+        RegisterUpdateCallbackWithCallbackPhaseAndCallback: *const fn(self: *anyopaque, callbackPhase: u32, callback: *TypedEventHandler(ListViewBase,ContainerContentChangingEventArgs)) callconv(.winapi) HRESULT,
     };
 };
 pub const IContentControl = extern struct {
@@ -37999,9 +37943,9 @@ pub const IScrollViewer2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
+    pub fn ChangeViewWithDisableAnimation(self: *@This(), horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation(@ptrCast(self), horizontalOffset, verticalOffset, zoomFactor, disableAnimation, &_r);
+        const _c = self.vtable.ChangeViewWithDisableAnimation(@ptrCast(self), horizontalOffset, verticalOffset, zoomFactor, disableAnimation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -38026,7 +37970,7 @@ pub const IScrollViewer2 = extern struct {
         add_ViewChanging: *const fn(self: *anyopaque, handler: *EventHandler(ScrollViewerViewChangingEventArgs), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_ViewChanging: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
         ChangeView: *const fn(self: *anyopaque, horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), _r: *bool) callconv(.winapi) HRESULT,
-        ChangeViewWithVerticalOffsetWithZoomFactorWithDisableAnimation: *const fn(self: *anyopaque, horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool, _r: *bool) callconv(.winapi) HRESULT,
+        ChangeViewWithDisableAnimation: *const fn(self: *anyopaque, horizontalOffset: *IReference(f64), verticalOffset: *IReference(f64), zoomFactor: *IReference(f32), disableAnimation: bool, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IScrollViewer3 = extern struct {
@@ -48706,13 +48650,13 @@ pub const IconSourceElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IconSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IIconSourceElementStaticsCache.get();
-        return try factory.getIconSourceProperty();
+    pub fn getIconSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IIconSourceElementStaticsCache.get();
+        return try _f.getIconSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*IconSourceElement {
-        const factory = @This().IIconSourceElementFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IIconSourceElementFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.IconSourceElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -48787,21 +48731,21 @@ pub const Image = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IImage.IID)));
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IImageStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IImageStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IImageStaticsCache.get();
-        return try factory.getStretchProperty();
+    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IImageStaticsCache.get();
+        return try _f.getStretchProperty();
     }
-    pub fn get_NineGridProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IImageStaticsCache.get();
-        return try factory.getNineGridProperty();
+    pub fn getNineGridProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IImageStaticsCache.get();
+        return try _f.getNineGridProperty();
     }
-    pub fn get_PlayToSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IImageStaticsCache.get();
-        return try factory.getPlayToSourceProperty();
+    pub fn getPlayToSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IImageStaticsCache.get();
+        return try _f.getPlayToSourceProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Image";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -48825,8 +48769,8 @@ pub const InkCanvas = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkCanvas {
-        const factory = @This().IInkCanvasFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkCanvasFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkCanvas";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -48986,49 +48930,49 @@ pub const InkToolbar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TargetInkPresenterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStatics3Cache.get();
-        return try factory.getTargetInkPresenterProperty();
+    pub fn getTargetInkPresenterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStatics3Cache.get();
+        return try _f.getTargetInkPresenterProperty();
     }
-    pub fn get_IsStencilButtonCheckedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStatics2Cache.get();
-        return try factory.getIsStencilButtonCheckedProperty();
+    pub fn getIsStencilButtonCheckedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStatics2Cache.get();
+        return try _f.getIsStencilButtonCheckedProperty();
     }
-    pub fn get_ButtonFlyoutPlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStatics2Cache.get();
-        return try factory.getButtonFlyoutPlacementProperty();
+    pub fn getButtonFlyoutPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStatics2Cache.get();
+        return try _f.getButtonFlyoutPlacementProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStatics2Cache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStatics2Cache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_InitialControlsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStaticsCache.get();
-        return try factory.getInitialControlsProperty();
+    pub fn getInitialControlsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStaticsCache.get();
+        return try _f.getInitialControlsProperty();
     }
-    pub fn get_ChildrenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStaticsCache.get();
-        return try factory.getChildrenProperty();
+    pub fn getChildrenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStaticsCache.get();
+        return try _f.getChildrenProperty();
     }
-    pub fn get_ActiveToolProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStaticsCache.get();
-        return try factory.getActiveToolProperty();
+    pub fn getActiveToolProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStaticsCache.get();
+        return try _f.getActiveToolProperty();
     }
-    pub fn get_InkDrawingAttributesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStaticsCache.get();
-        return try factory.getInkDrawingAttributesProperty();
+    pub fn getInkDrawingAttributesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStaticsCache.get();
+        return try _f.getInkDrawingAttributesProperty();
     }
-    pub fn get_IsRulerButtonCheckedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStaticsCache.get();
-        return try factory.getIsRulerButtonCheckedProperty();
+    pub fn getIsRulerButtonCheckedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStaticsCache.get();
+        return try _f.getIsRulerButtonCheckedProperty();
     }
-    pub fn get_TargetInkCanvasProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStaticsCache.get();
-        return try factory.getTargetInkCanvasProperty();
+    pub fn getTargetInkCanvasProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStaticsCache.get();
+        return try _f.getTargetInkCanvasProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbar {
-        const factory = @This().IInkToolbarFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49053,13 +48997,13 @@ pub const RadioButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_GroupNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRadioButtonStaticsCache.get();
-        return try factory.getGroupNameProperty();
+    pub fn getGroupNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRadioButtonStaticsCache.get();
+        return try _f.getGroupNameProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RadioButton {
-        const factory = @This().IRadioButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRadioButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RadioButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49086,9 +49030,9 @@ pub const InkToolbarToolButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsExtensionGlyphShownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarToolButtonStaticsCache.get();
-        return try factory.getIsExtensionGlyphShownProperty();
+    pub fn getIsExtensionGlyphShownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarToolButtonStaticsCache.get();
+        return try _f.getIsExtensionGlyphShownProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarToolButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49147,29 +49091,29 @@ pub const InkToolbarPenButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PaletteProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenButtonStaticsCache.get();
-        return try factory.getPaletteProperty();
+    pub fn getPaletteProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenButtonStaticsCache.get();
+        return try _f.getPaletteProperty();
     }
-    pub fn get_MinStrokeWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenButtonStaticsCache.get();
-        return try factory.getMinStrokeWidthProperty();
+    pub fn getMinStrokeWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenButtonStaticsCache.get();
+        return try _f.getMinStrokeWidthProperty();
     }
-    pub fn get_MaxStrokeWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenButtonStaticsCache.get();
-        return try factory.getMaxStrokeWidthProperty();
+    pub fn getMaxStrokeWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenButtonStaticsCache.get();
+        return try _f.getMaxStrokeWidthProperty();
     }
-    pub fn get_SelectedBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenButtonStaticsCache.get();
-        return try factory.getSelectedBrushProperty();
+    pub fn getSelectedBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenButtonStaticsCache.get();
+        return try _f.getSelectedBrushProperty();
     }
-    pub fn get_SelectedBrushIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenButtonStaticsCache.get();
-        return try factory.getSelectedBrushIndexProperty();
+    pub fn getSelectedBrushIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenButtonStaticsCache.get();
+        return try _f.getSelectedBrushIndexProperty();
     }
-    pub fn get_SelectedStrokeWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenButtonStaticsCache.get();
-        return try factory.getSelectedStrokeWidthProperty();
+    pub fn getSelectedStrokeWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenButtonStaticsCache.get();
+        return try _f.getSelectedStrokeWidthProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarPenButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49185,8 +49129,8 @@ pub const InkToolbarBallpointPenButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarBallpointPenButton {
-        const factory = @This().IInkToolbarBallpointPenButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarBallpointPenButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarBallpointPenButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49218,8 +49162,8 @@ pub const InkToolbarCustomPen = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarCustomPen {
-        const factory = @This().IInkToolbarCustomPenFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarCustomPenFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarCustomPen";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49249,17 +49193,17 @@ pub const InkToolbarCustomPenButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CustomPenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarCustomPenButtonStaticsCache.get();
-        return try factory.getCustomPenProperty();
+    pub fn getCustomPenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarCustomPenButtonStaticsCache.get();
+        return try _f.getCustomPenProperty();
     }
-    pub fn get_ConfigurationContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarCustomPenButtonStaticsCache.get();
-        return try factory.getConfigurationContentProperty();
+    pub fn getConfigurationContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarCustomPenButtonStaticsCache.get();
+        return try _f.getConfigurationContentProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarCustomPenButton {
-        const factory = @This().IInkToolbarCustomPenButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarCustomPenButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarCustomPenButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49291,8 +49235,8 @@ pub const InkToolbarCustomToggleButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarCustomToggleButton {
-        const factory = @This().IInkToolbarCustomToggleButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarCustomToggleButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarCustomToggleButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49314,13 +49258,13 @@ pub const InkToolbarCustomToolButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ConfigurationContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarCustomToolButtonStaticsCache.get();
-        return try factory.getConfigurationContentProperty();
+    pub fn getConfigurationContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarCustomToolButtonStaticsCache.get();
+        return try _f.getConfigurationContentProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarCustomToolButton {
-        const factory = @This().IInkToolbarCustomToolButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarCustomToolButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarCustomToolButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49347,13 +49291,13 @@ pub const InkToolbarEraserButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsClearAllVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarEraserButtonStatics2Cache.get();
-        return try factory.getIsClearAllVisibleProperty();
+    pub fn getIsClearAllVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarEraserButtonStatics2Cache.get();
+        return try _f.getIsClearAllVisibleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarEraserButton {
-        const factory = @This().IInkToolbarEraserButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarEraserButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarEraserButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49400,17 +49344,17 @@ pub const InkToolbarFlyoutItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_KindProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarFlyoutItemStaticsCache.get();
-        return try factory.getKindProperty();
+    pub fn getKindProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarFlyoutItemStaticsCache.get();
+        return try _f.getKindProperty();
     }
-    pub fn get_IsCheckedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarFlyoutItemStaticsCache.get();
-        return try factory.getIsCheckedProperty();
+    pub fn getIsCheckedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarFlyoutItemStaticsCache.get();
+        return try _f.getIsCheckedProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarFlyoutItem {
-        const factory = @This().IInkToolbarFlyoutItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarFlyoutItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarFlyoutItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49432,8 +49376,8 @@ pub const InkToolbarHighlighterButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarHighlighterButton {
-        const factory = @This().IInkToolbarHighlighterButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarHighlighterButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarHighlighterButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49489,9 +49433,9 @@ pub const InkToolbarMenuButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsExtensionGlyphShownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarMenuButtonStaticsCache.get();
-        return try factory.getIsExtensionGlyphShownProperty();
+    pub fn getIsExtensionGlyphShownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarMenuButtonStaticsCache.get();
+        return try _f.getIsExtensionGlyphShownProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarMenuButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49513,13 +49457,13 @@ pub const InkToolbarPenConfigurationControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PenButtonProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarPenConfigurationControlStaticsCache.get();
-        return try factory.getPenButtonProperty();
+    pub fn getPenButtonProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarPenConfigurationControlStaticsCache.get();
+        return try _f.getPenButtonProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarPenConfigurationControl {
-        const factory = @This().IInkToolbarPenConfigurationControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarPenConfigurationControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarPenConfigurationControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49535,8 +49479,8 @@ pub const InkToolbarPencilButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarPencilButton {
-        const factory = @This().IInkToolbarPencilButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarPencilButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarPencilButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49554,13 +49498,13 @@ pub const InkToolbarRulerButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_RulerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarRulerButtonStaticsCache.get();
-        return try factory.getRulerProperty();
+    pub fn getRulerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarRulerButtonStaticsCache.get();
+        return try _f.getRulerProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarRulerButton {
-        const factory = @This().IInkToolbarRulerButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarRulerButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarRulerButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49607,29 +49551,29 @@ pub const InkToolbarStencilButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_RulerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStencilButtonStaticsCache.get();
-        return try factory.getRulerProperty();
+    pub fn getRulerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStencilButtonStaticsCache.get();
+        return try _f.getRulerProperty();
     }
-    pub fn get_ProtractorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStencilButtonStaticsCache.get();
-        return try factory.getProtractorProperty();
+    pub fn getProtractorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStencilButtonStaticsCache.get();
+        return try _f.getProtractorProperty();
     }
-    pub fn get_SelectedStencilProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStencilButtonStaticsCache.get();
-        return try factory.getSelectedStencilProperty();
+    pub fn getSelectedStencilProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStencilButtonStaticsCache.get();
+        return try _f.getSelectedStencilProperty();
     }
-    pub fn get_IsRulerItemVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStencilButtonStaticsCache.get();
-        return try factory.getIsRulerItemVisibleProperty();
+    pub fn getIsRulerItemVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStencilButtonStaticsCache.get();
+        return try _f.getIsRulerItemVisibleProperty();
     }
-    pub fn get_IsProtractorItemVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IInkToolbarStencilButtonStaticsCache.get();
-        return try factory.getIsProtractorItemVisibleProperty();
+    pub fn getIsProtractorItemVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IInkToolbarStencilButtonStaticsCache.get();
+        return try _f.getIsProtractorItemVisibleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*InkToolbarStencilButton {
-        const factory = @This().IInkToolbarStencilButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInkToolbarStencilButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.InkToolbarStencilButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -49772,19 +49716,13 @@ pub const ItemClickEventHandler = extern struct {
 };
 pub const ItemCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn addVectorChanged(self: *@This(), vhnd: *VectorChangedEventHandler(T)) core.HResult!EventRegistrationToken {
-        const this: *IObservableVector = @ptrCast(self);
+    pub fn addVectorChanged(self: *@This(), vhnd: *VectorChangedEventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const this: *IObservableVector(IInspectable) = @ptrCast(self);
         return try this.addVectorChanged(vhnd);
     }
     pub fn removeVectorChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IObservableVector = @ptrCast(self);
+        const this: *IObservableVector(IInspectable) = @ptrCast(self);
         return try this.removeVectorChanged(token);
-    }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(IInspectable) = undefined;
@@ -49792,41 +49730,17 @@ pub const ItemCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(IInspectable) {
         var this: ?*IVector(IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
-    }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(IInspectable) = undefined;
@@ -49840,19 +49754,7 @@ pub const ItemCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        var this: ?*IVector(IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IInspectable) {
         var this: ?*IIterable(IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -50101,33 +50003,33 @@ pub const ItemsPresenter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IItemsPresenter.IID)));
     }
-    pub fn get_FooterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStatics2Cache.get();
-        return try factory.getFooterProperty();
+    pub fn getFooterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStatics2Cache.get();
+        return try _f.getFooterProperty();
     }
-    pub fn get_FooterTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStatics2Cache.get();
-        return try factory.getFooterTemplateProperty();
+    pub fn getFooterTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStatics2Cache.get();
+        return try _f.getFooterTemplateProperty();
     }
-    pub fn get_FooterTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStatics2Cache.get();
-        return try factory.getFooterTransitionsProperty();
+    pub fn getFooterTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStatics2Cache.get();
+        return try _f.getFooterTransitionsProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_HeaderTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStaticsCache.get();
-        return try factory.getHeaderTransitionsProperty();
+    pub fn getHeaderTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStaticsCache.get();
+        return try _f.getHeaderTransitionsProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsPresenterStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsPresenterStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ItemsPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50219,25 +50121,25 @@ pub const ItemsStackPanel = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IItemsStackPanel.IID)));
     }
-    pub fn get_AreStickyGroupHeadersEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsStackPanelStatics2Cache.get();
-        return try factory.getAreStickyGroupHeadersEnabledProperty();
+    pub fn getAreStickyGroupHeadersEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsStackPanelStatics2Cache.get();
+        return try _f.getAreStickyGroupHeadersEnabledProperty();
     }
-    pub fn get_GroupPaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsStackPanelStaticsCache.get();
-        return try factory.getGroupPaddingProperty();
+    pub fn getGroupPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsStackPanelStaticsCache.get();
+        return try _f.getGroupPaddingProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsStackPanelStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsStackPanelStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_GroupHeaderPlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsStackPanelStaticsCache.get();
-        return try factory.getGroupHeaderPlacementProperty();
+    pub fn getGroupHeaderPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsStackPanelStaticsCache.get();
+        return try _f.getGroupHeaderPlacementProperty();
     }
-    pub fn get_CacheLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsStackPanelStaticsCache.get();
-        return try factory.getCacheLengthProperty();
+    pub fn getCacheLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsStackPanelStaticsCache.get();
+        return try _f.getCacheLengthProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ItemsStackPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50350,37 +50252,37 @@ pub const ItemsWrapGrid = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IItemsWrapGrid.IID)));
     }
-    pub fn get_GroupPaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getGroupPaddingProperty();
+    pub fn getGroupPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getGroupPaddingProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_MaximumRowsOrColumnsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getMaximumRowsOrColumnsProperty();
+    pub fn getMaximumRowsOrColumnsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getMaximumRowsOrColumnsProperty();
     }
-    pub fn get_ItemWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getItemWidthProperty();
+    pub fn getItemWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getItemWidthProperty();
     }
-    pub fn get_ItemHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getItemHeightProperty();
+    pub fn getItemHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getItemHeightProperty();
     }
-    pub fn get_GroupHeaderPlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getGroupHeaderPlacementProperty();
+    pub fn getGroupHeaderPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getGroupHeaderPlacementProperty();
     }
-    pub fn get_CacheLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStaticsCache.get();
-        return try factory.getCacheLengthProperty();
+    pub fn getCacheLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStaticsCache.get();
+        return try _f.getCacheLengthProperty();
     }
-    pub fn get_AreStickyGroupHeadersEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IItemsWrapGridStatics2Cache.get();
-        return try factory.getAreStickyGroupHeadersEnabledProperty();
+    pub fn getAreStickyGroupHeadersEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IItemsWrapGridStatics2Cache.get();
+        return try _f.getAreStickyGroupHeadersEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ItemsWrapGrid";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50433,17 +50335,17 @@ pub const ListBox = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SingleSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListBoxStatics2Cache.get();
-        return try factory.getSingleSelectionFollowsFocusProperty();
+    pub fn getSingleSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListBoxStatics2Cache.get();
+        return try _f.getSingleSelectionFollowsFocusProperty();
     }
-    pub fn get_SelectionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListBoxStaticsCache.get();
-        return try factory.getSelectionModeProperty();
+    pub fn getSelectionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListBoxStaticsCache.get();
+        return try _f.getSelectionModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBox {
-        const factory = @This().IListBoxFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IListBoxFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50460,8 +50362,8 @@ pub const ListBoxItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListBoxItem {
-        const factory = @This().IListBoxItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IListBoxItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListBoxItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50559,37 +50461,37 @@ pub const ListPickerFlyout = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IListPickerFlyout.IID)));
     }
-    pub fn get_ItemsSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getItemsSourceProperty();
+    pub fn getItemsSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getItemsSourceProperty();
     }
-    pub fn get_ItemTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getItemTemplateProperty();
+    pub fn getItemTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getItemTemplateProperty();
     }
-    pub fn get_DisplayMemberPathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getDisplayMemberPathProperty();
+    pub fn getDisplayMemberPathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getDisplayMemberPathProperty();
     }
-    pub fn get_SelectionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getSelectionModeProperty();
+    pub fn getSelectionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getSelectionModeProperty();
     }
-    pub fn get_SelectedIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getSelectedIndexProperty();
+    pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getSelectedIndexProperty();
     }
-    pub fn get_SelectedItemProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getSelectedItemProperty();
+    pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getSelectedItemProperty();
     }
-    pub fn get_SelectedValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getSelectedValueProperty();
+    pub fn getSelectedValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getSelectedValueProperty();
     }
-    pub fn get_SelectedValuePathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IListPickerFlyoutStaticsCache.get();
-        return try factory.getSelectedValuePathProperty();
+    pub fn getSelectedValuePathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IListPickerFlyoutStaticsCache.get();
+        return try _f.getSelectedValuePathProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListPickerFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50617,8 +50519,8 @@ pub const ListView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListView {
-        const factory = @This().IListViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IListViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50633,8 +50535,8 @@ pub const ListViewHeaderItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewHeaderItem {
-        const factory = @This().IListViewHeaderItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IListViewHeaderItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListViewHeaderItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50653,8 +50555,8 @@ pub const ListViewItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ListViewItem {
-        const factory = @This().IListViewItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IListViewItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListViewItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -50843,12 +50745,12 @@ pub const ListViewPersistenceHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRelativeScrollPosition(listViewBase: *ListViewBase, itemToKeyHandler: *ListViewItemToKeyHandler) core.HResult!HSTRING {
-        const factory = @This().IListViewPersistenceHelperStaticsCache.get();
-        return try factory.GetRelativeScrollPosition(listViewBase, itemToKeyHandler);
+        const _f = @This().IListViewPersistenceHelperStaticsCache.get();
+        return try _f.GetRelativeScrollPosition(listViewBase, itemToKeyHandler);
     }
     pub fn SetRelativeScrollPositionAsync(listViewBase: *ListViewBase, relativeScrollPosition: HSTRING, keyToItemHandler: *ListViewKeyToItemHandler) core.HResult!*IAsyncAction {
-        const factory = @This().IListViewPersistenceHelperStaticsCache.get();
-        return try factory.SetRelativeScrollPositionAsync(listViewBase, relativeScrollPosition, keyToItemHandler);
+        const _f = @This().IListViewPersistenceHelperStaticsCache.get();
+        return try _f.SetRelativeScrollPositionAsync(listViewBase, relativeScrollPosition, keyToItemHandler);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ListViewPersistenceHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -51286,153 +51188,153 @@ pub const MediaElement = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaElement.IID)));
     }
-    pub fn get_AreTransportControlsEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStatics2Cache.get();
-        return try factory.getAreTransportControlsEnabledProperty();
+    pub fn getAreTransportControlsEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStatics2Cache.get();
+        return try _f.getAreTransportControlsEnabledProperty();
     }
-    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStatics2Cache.get();
-        return try factory.getStretchProperty();
+    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStatics2Cache.get();
+        return try _f.getStretchProperty();
     }
-    pub fn get_IsFullWindowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStatics2Cache.get();
-        return try factory.getIsFullWindowProperty();
+    pub fn getIsFullWindowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStatics2Cache.get();
+        return try _f.getIsFullWindowProperty();
     }
-    pub fn get_PlayToPreferredSourceUriProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStatics2Cache.get();
-        return try factory.getPlayToPreferredSourceUriProperty();
+    pub fn getPlayToPreferredSourceUriProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStatics2Cache.get();
+        return try _f.getPlayToPreferredSourceUriProperty();
     }
-    pub fn get_PosterSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getPosterSourceProperty();
+    pub fn getPosterSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getPosterSourceProperty();
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_IsMutedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getIsMutedProperty();
+    pub fn getIsMutedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getIsMutedProperty();
     }
-    pub fn get_IsAudioOnlyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getIsAudioOnlyProperty();
+    pub fn getIsAudioOnlyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getIsAudioOnlyProperty();
     }
-    pub fn get_AutoPlayProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAutoPlayProperty();
+    pub fn getAutoPlayProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAutoPlayProperty();
     }
-    pub fn get_VolumeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getVolumeProperty();
+    pub fn getVolumeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getVolumeProperty();
     }
-    pub fn get_BalanceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getBalanceProperty();
+    pub fn getBalanceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getBalanceProperty();
     }
-    pub fn get_NaturalVideoHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getNaturalVideoHeightProperty();
+    pub fn getNaturalVideoHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getNaturalVideoHeightProperty();
     }
-    pub fn get_NaturalVideoWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getNaturalVideoWidthProperty();
+    pub fn getNaturalVideoWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getNaturalVideoWidthProperty();
     }
-    pub fn get_NaturalDurationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getNaturalDurationProperty();
+    pub fn getNaturalDurationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getNaturalDurationProperty();
     }
-    pub fn get_PositionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getPositionProperty();
+    pub fn getPositionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getPositionProperty();
     }
-    pub fn get_DownloadProgressProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getDownloadProgressProperty();
+    pub fn getDownloadProgressProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getDownloadProgressProperty();
     }
-    pub fn get_BufferingProgressProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getBufferingProgressProperty();
+    pub fn getBufferingProgressProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getBufferingProgressProperty();
     }
-    pub fn get_DownloadProgressOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getDownloadProgressOffsetProperty();
+    pub fn getDownloadProgressOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getDownloadProgressOffsetProperty();
     }
-    pub fn get_CurrentStateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getCurrentStateProperty();
+    pub fn getCurrentStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getCurrentStateProperty();
     }
-    pub fn get_CanSeekProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getCanSeekProperty();
+    pub fn getCanSeekProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getCanSeekProperty();
     }
-    pub fn get_CanPauseProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getCanPauseProperty();
+    pub fn getCanPauseProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getCanPauseProperty();
     }
-    pub fn get_AudioStreamCountProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAudioStreamCountProperty();
+    pub fn getAudioStreamCountProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAudioStreamCountProperty();
     }
-    pub fn get_AudioStreamIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAudioStreamIndexProperty();
+    pub fn getAudioStreamIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAudioStreamIndexProperty();
     }
-    pub fn get_PlaybackRateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getPlaybackRateProperty();
+    pub fn getPlaybackRateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getPlaybackRateProperty();
     }
-    pub fn get_IsLoopingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getIsLoopingProperty();
+    pub fn getIsLoopingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getIsLoopingProperty();
     }
-    pub fn get_PlayToSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getPlayToSourceProperty();
+    pub fn getPlayToSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getPlayToSourceProperty();
     }
-    pub fn get_DefaultPlaybackRateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getDefaultPlaybackRateProperty();
+    pub fn getDefaultPlaybackRateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getDefaultPlaybackRateProperty();
     }
-    pub fn get_AspectRatioWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAspectRatioWidthProperty();
+    pub fn getAspectRatioWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAspectRatioWidthProperty();
     }
-    pub fn get_AspectRatioHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAspectRatioHeightProperty();
+    pub fn getAspectRatioHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAspectRatioHeightProperty();
     }
-    pub fn get_RealTimePlaybackProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getRealTimePlaybackProperty();
+    pub fn getRealTimePlaybackProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getRealTimePlaybackProperty();
     }
-    pub fn get_AudioCategoryProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAudioCategoryProperty();
+    pub fn getAudioCategoryProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAudioCategoryProperty();
     }
-    pub fn get_AudioDeviceTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getAudioDeviceTypeProperty();
+    pub fn getAudioDeviceTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getAudioDeviceTypeProperty();
     }
-    pub fn get_ProtectionManagerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getProtectionManagerProperty();
+    pub fn getProtectionManagerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getProtectionManagerProperty();
     }
-    pub fn get_Stereo3DVideoPackingModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getStereo3DVideoPackingModeProperty();
+    pub fn getStereo3DVideoPackingModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getStereo3DVideoPackingModeProperty();
     }
-    pub fn get_Stereo3DVideoRenderModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getStereo3DVideoRenderModeProperty();
+    pub fn getStereo3DVideoRenderModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getStereo3DVideoRenderModeProperty();
     }
-    pub fn get_IsStereo3DVideoProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getIsStereo3DVideoProperty();
+    pub fn getIsStereo3DVideoProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getIsStereo3DVideoProperty();
     }
-    pub fn get_ActualStereo3DVideoPackingModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaElementStaticsCache.get();
-        return try factory.getActualStereo3DVideoPackingModeProperty();
+    pub fn getActualStereo3DVideoPackingModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaElementStaticsCache.get();
+        return try _f.getActualStereo3DVideoPackingModeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MediaElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -51512,37 +51414,37 @@ pub const MediaPlayerElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_AreTransportControlsEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getAreTransportControlsEnabledProperty();
+    pub fn getAreTransportControlsEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getAreTransportControlsEnabledProperty();
     }
-    pub fn get_PosterSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getPosterSourceProperty();
+    pub fn getPosterSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getPosterSourceProperty();
     }
-    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getStretchProperty();
+    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getStretchProperty();
     }
-    pub fn get_AutoPlayProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getAutoPlayProperty();
+    pub fn getAutoPlayProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getAutoPlayProperty();
     }
-    pub fn get_IsFullWindowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getIsFullWindowProperty();
+    pub fn getIsFullWindowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getIsFullWindowProperty();
     }
-    pub fn get_MediaPlayerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerElementStaticsCache.get();
-        return try factory.getMediaPlayerProperty();
+    pub fn getMediaPlayerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerElementStaticsCache.get();
+        return try _f.getMediaPlayerProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaPlayerElement {
-        const factory = @This().IMediaPlayerElementFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMediaPlayerElementFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MediaPlayerElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -51581,21 +51483,21 @@ pub const MediaPlayerPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MediaPlayerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerPresenterStaticsCache.get();
-        return try factory.getMediaPlayerProperty();
+    pub fn getMediaPlayerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerPresenterStaticsCache.get();
+        return try _f.getMediaPlayerProperty();
     }
-    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerPresenterStaticsCache.get();
-        return try factory.getStretchProperty();
+    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerPresenterStaticsCache.get();
+        return try _f.getStretchProperty();
     }
-    pub fn get_IsFullWindowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaPlayerPresenterStaticsCache.get();
-        return try factory.getIsFullWindowProperty();
+    pub fn getIsFullWindowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaPlayerPresenterStaticsCache.get();
+        return try _f.getIsFullWindowProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaPlayerPresenter {
-        const factory = @This().IMediaPlayerPresenterFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMediaPlayerPresenterFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MediaPlayerPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -51914,125 +51816,125 @@ pub const MediaTransportControls = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsCompactOverlayButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics4Cache.get();
-        return try factory.getIsCompactOverlayButtonVisibleProperty();
+    pub fn getIsCompactOverlayButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics4Cache.get();
+        return try _f.getIsCompactOverlayButtonVisibleProperty();
     }
-    pub fn get_IsCompactOverlayEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics4Cache.get();
-        return try factory.getIsCompactOverlayEnabledProperty();
+    pub fn getIsCompactOverlayEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics4Cache.get();
+        return try _f.getIsCompactOverlayEnabledProperty();
     }
-    pub fn get_ShowAndHideAutomaticallyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics3Cache.get();
-        return try factory.getShowAndHideAutomaticallyProperty();
+    pub fn getShowAndHideAutomaticallyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics3Cache.get();
+        return try _f.getShowAndHideAutomaticallyProperty();
     }
-    pub fn get_IsRepeatEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics3Cache.get();
-        return try factory.getIsRepeatEnabledProperty();
+    pub fn getIsRepeatEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics3Cache.get();
+        return try _f.getIsRepeatEnabledProperty();
     }
-    pub fn get_IsRepeatButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics3Cache.get();
-        return try factory.getIsRepeatButtonVisibleProperty();
+    pub fn getIsRepeatButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics3Cache.get();
+        return try _f.getIsRepeatButtonVisibleProperty();
     }
-    pub fn get_IsSkipForwardButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getIsSkipForwardButtonVisibleProperty();
+    pub fn getIsSkipForwardButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getIsSkipForwardButtonVisibleProperty();
     }
-    pub fn get_IsSkipForwardEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getIsSkipForwardEnabledProperty();
+    pub fn getIsSkipForwardEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getIsSkipForwardEnabledProperty();
     }
-    pub fn get_IsSkipBackwardButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getIsSkipBackwardButtonVisibleProperty();
+    pub fn getIsSkipBackwardButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getIsSkipBackwardButtonVisibleProperty();
     }
-    pub fn get_IsSkipBackwardEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getIsSkipBackwardEnabledProperty();
+    pub fn getIsSkipBackwardEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getIsSkipBackwardEnabledProperty();
     }
-    pub fn get_IsNextTrackButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getIsNextTrackButtonVisibleProperty();
+    pub fn getIsNextTrackButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getIsNextTrackButtonVisibleProperty();
     }
-    pub fn get_IsPreviousTrackButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getIsPreviousTrackButtonVisibleProperty();
+    pub fn getIsPreviousTrackButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getIsPreviousTrackButtonVisibleProperty();
     }
-    pub fn get_FastPlayFallbackBehaviourProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStatics2Cache.get();
-        return try factory.getFastPlayFallbackBehaviourProperty();
+    pub fn getFastPlayFallbackBehaviourProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStatics2Cache.get();
+        return try _f.getFastPlayFallbackBehaviourProperty();
     }
-    pub fn get_IsFullWindowButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsFullWindowButtonVisibleProperty();
+    pub fn getIsFullWindowButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsFullWindowButtonVisibleProperty();
     }
-    pub fn get_IsFullWindowEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsFullWindowEnabledProperty();
+    pub fn getIsFullWindowEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsFullWindowEnabledProperty();
     }
-    pub fn get_IsZoomButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsZoomButtonVisibleProperty();
+    pub fn getIsZoomButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsZoomButtonVisibleProperty();
     }
-    pub fn get_IsZoomEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsZoomEnabledProperty();
+    pub fn getIsZoomEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsZoomEnabledProperty();
     }
-    pub fn get_IsFastForwardButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsFastForwardButtonVisibleProperty();
+    pub fn getIsFastForwardButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsFastForwardButtonVisibleProperty();
     }
-    pub fn get_IsFastForwardEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsFastForwardEnabledProperty();
+    pub fn getIsFastForwardEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsFastForwardEnabledProperty();
     }
-    pub fn get_IsFastRewindButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsFastRewindButtonVisibleProperty();
+    pub fn getIsFastRewindButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsFastRewindButtonVisibleProperty();
     }
-    pub fn get_IsFastRewindEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsFastRewindEnabledProperty();
+    pub fn getIsFastRewindEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsFastRewindEnabledProperty();
     }
-    pub fn get_IsStopButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsStopButtonVisibleProperty();
+    pub fn getIsStopButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsStopButtonVisibleProperty();
     }
-    pub fn get_IsStopEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsStopEnabledProperty();
+    pub fn getIsStopEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsStopEnabledProperty();
     }
-    pub fn get_IsVolumeButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsVolumeButtonVisibleProperty();
+    pub fn getIsVolumeButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsVolumeButtonVisibleProperty();
     }
-    pub fn get_IsVolumeEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsVolumeEnabledProperty();
+    pub fn getIsVolumeEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsVolumeEnabledProperty();
     }
-    pub fn get_IsPlaybackRateButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsPlaybackRateButtonVisibleProperty();
+    pub fn getIsPlaybackRateButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsPlaybackRateButtonVisibleProperty();
     }
-    pub fn get_IsPlaybackRateEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsPlaybackRateEnabledProperty();
+    pub fn getIsPlaybackRateEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsPlaybackRateEnabledProperty();
     }
-    pub fn get_IsSeekBarVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsSeekBarVisibleProperty();
+    pub fn getIsSeekBarVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsSeekBarVisibleProperty();
     }
-    pub fn get_IsSeekEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsSeekEnabledProperty();
+    pub fn getIsSeekEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsSeekEnabledProperty();
     }
-    pub fn get_IsCompactProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsStaticsCache.get();
-        return try factory.getIsCompactProperty();
+    pub fn getIsCompactProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsStaticsCache.get();
+        return try _f.getIsCompactProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MediaTransportControls {
-        const factory = @This().IMediaTransportControlsFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMediaTransportControlsFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MediaTransportControls";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52050,17 +51952,17 @@ pub const MediaTransportControlsHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DropoutOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMediaTransportControlsHelperStaticsCache.get();
-        return try factory.getDropoutOrderProperty();
+    pub fn getDropoutOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMediaTransportControlsHelperStaticsCache.get();
+        return try _f.getDropoutOrderProperty();
     }
     pub fn GetDropoutOrder(element: *UIElement) core.HResult!*IReference(i32) {
-        const factory = @This().IMediaTransportControlsHelperStaticsCache.get();
-        return try factory.GetDropoutOrder(element);
+        const _f = @This().IMediaTransportControlsHelperStaticsCache.get();
+        return try _f.GetDropoutOrder(element);
     }
     pub fn SetDropoutOrder(element: *UIElement, value: *IReference(i32)) core.HResult!void {
-        const factory = @This().IMediaTransportControlsHelperStaticsCache.get();
-        return try factory.SetDropoutOrder(element, value);
+        const _f = @This().IMediaTransportControlsHelperStaticsCache.get();
+        return try _f.SetDropoutOrder(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MediaTransportControlsHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52078,13 +51980,13 @@ pub const MenuBar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuBarStaticsCache.get();
-        return try factory.getItemsProperty();
+    pub fn getItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuBarStaticsCache.get();
+        return try _f.getItemsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBar {
-        const factory = @This().IMenuBarFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuBarFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52111,17 +52013,17 @@ pub const MenuBarItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuBarItemStaticsCache.get();
-        return try factory.getTitleProperty();
+    pub fn getTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuBarItemStaticsCache.get();
+        return try _f.getTitleProperty();
     }
-    pub fn get_ItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuBarItemStaticsCache.get();
-        return try factory.getItemsProperty();
+    pub fn getItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuBarItemStaticsCache.get();
+        return try _f.getItemsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItem {
-        const factory = @This().IMenuBarItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuBarItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuBarItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52154,13 +52056,13 @@ pub const MenuFlyout = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MenuFlyoutPresenterStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutStaticsCache.get();
-        return try factory.getMenuFlyoutPresenterStyleProperty();
+    pub fn getMenuFlyoutPresenterStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutStaticsCache.get();
+        return try _f.getMenuFlyoutPresenterStyleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyout {
-        const factory = @This().IMenuFlyoutFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuFlyoutFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52176,8 +52078,8 @@ pub const MenuBarItemFlyout = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuBarItemFlyout {
-        const factory = @This().IMenuBarItemFlyoutFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuBarItemFlyoutFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuBarItemFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52265,29 +52167,29 @@ pub const MenuFlyoutItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutItemStaticsCache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutItemStaticsCache.get();
+        return try _f.getTextProperty();
     }
-    pub fn get_CommandProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutItemStaticsCache.get();
-        return try factory.getCommandProperty();
+    pub fn getCommandProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutItemStaticsCache.get();
+        return try _f.getCommandProperty();
     }
-    pub fn get_CommandParameterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutItemStaticsCache.get();
-        return try factory.getCommandParameterProperty();
+    pub fn getCommandParameterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutItemStaticsCache.get();
+        return try _f.getCommandParameterProperty();
     }
-    pub fn get_KeyboardAcceleratorTextOverrideProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutItemStatics3Cache.get();
-        return try factory.getKeyboardAcceleratorTextOverrideProperty();
+    pub fn getKeyboardAcceleratorTextOverrideProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutItemStatics3Cache.get();
+        return try _f.getKeyboardAcceleratorTextOverrideProperty();
     }
-    pub fn get_IconProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutItemStatics2Cache.get();
-        return try factory.getIconProperty();
+    pub fn getIconProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutItemStatics2Cache.get();
+        return try _f.getIconProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutItem {
-        const factory = @This().IMenuFlyoutItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuFlyoutItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuFlyoutItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52322,13 +52224,13 @@ pub const MenuFlyoutPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutPresenterStatics3Cache.get();
-        return try factory.getIsDefaultShadowEnabledProperty();
+    pub fn getIsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutPresenterStatics3Cache.get();
+        return try _f.getIsDefaultShadowEnabledProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutPresenter {
-        const factory = @This().IMenuFlyoutPresenterFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuFlyoutPresenterFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuFlyoutPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52344,8 +52246,8 @@ pub const MenuFlyoutSeparator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MenuFlyoutSeparator {
-        const factory = @This().IMenuFlyoutSeparatorFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMenuFlyoutSeparatorFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuFlyoutSeparator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52387,13 +52289,13 @@ pub const MenuFlyoutSubItem = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMenuFlyoutSubItem.IID)));
     }
-    pub fn get_IconProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutSubItemStatics2Cache.get();
-        return try factory.getIconProperty();
+    pub fn getIconProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutSubItemStatics2Cache.get();
+        return try _f.getIconProperty();
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMenuFlyoutSubItemStaticsCache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMenuFlyoutSubItemStaticsCache.get();
+        return try _f.getTextProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.MenuFlyoutSubItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52803,145 +52705,145 @@ pub const NavigationView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PaneDisplayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getPaneDisplayModeProperty();
+    pub fn getPaneDisplayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getPaneDisplayModeProperty();
     }
-    pub fn get_PaneHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getPaneHeaderProperty();
+    pub fn getPaneHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getPaneHeaderProperty();
     }
-    pub fn get_PaneCustomContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getPaneCustomContentProperty();
+    pub fn getPaneCustomContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getPaneCustomContentProperty();
     }
-    pub fn get_ContentOverlayProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getContentOverlayProperty();
+    pub fn getContentOverlayProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getContentOverlayProperty();
     }
-    pub fn get_IsPaneVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getIsPaneVisibleProperty();
+    pub fn getIsPaneVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getIsPaneVisibleProperty();
     }
-    pub fn get_SelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getSelectionFollowsFocusProperty();
+    pub fn getSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getSelectionFollowsFocusProperty();
     }
-    pub fn get_TemplateSettingsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getTemplateSettingsProperty();
+    pub fn getTemplateSettingsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getTemplateSettingsProperty();
     }
-    pub fn get_ShoulderNavigationEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getShoulderNavigationEnabledProperty();
+    pub fn getShoulderNavigationEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getShoulderNavigationEnabledProperty();
     }
-    pub fn get_OverflowLabelModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics3Cache.get();
-        return try factory.getOverflowLabelModeProperty();
+    pub fn getOverflowLabelModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics3Cache.get();
+        return try _f.getOverflowLabelModeProperty();
     }
-    pub fn get_IsBackButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics2Cache.get();
-        return try factory.getIsBackButtonVisibleProperty();
+    pub fn getIsBackButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics2Cache.get();
+        return try _f.getIsBackButtonVisibleProperty();
     }
-    pub fn get_IsBackEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics2Cache.get();
-        return try factory.getIsBackEnabledProperty();
+    pub fn getIsBackEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics2Cache.get();
+        return try _f.getIsBackEnabledProperty();
     }
-    pub fn get_PaneTitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStatics2Cache.get();
-        return try factory.getPaneTitleProperty();
+    pub fn getPaneTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStatics2Cache.get();
+        return try _f.getPaneTitleProperty();
     }
-    pub fn get_IsPaneOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getIsPaneOpenProperty();
+    pub fn getIsPaneOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getIsPaneOpenProperty();
     }
-    pub fn get_CompactModeThresholdWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getCompactModeThresholdWidthProperty();
+    pub fn getCompactModeThresholdWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getCompactModeThresholdWidthProperty();
     }
-    pub fn get_ExpandedModeThresholdWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getExpandedModeThresholdWidthProperty();
+    pub fn getExpandedModeThresholdWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getExpandedModeThresholdWidthProperty();
     }
-    pub fn get_PaneFooterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getPaneFooterProperty();
+    pub fn getPaneFooterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getPaneFooterProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_DisplayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getDisplayModeProperty();
+    pub fn getDisplayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getDisplayModeProperty();
     }
-    pub fn get_IsSettingsVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getIsSettingsVisibleProperty();
+    pub fn getIsSettingsVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getIsSettingsVisibleProperty();
     }
-    pub fn get_IsPaneToggleButtonVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getIsPaneToggleButtonVisibleProperty();
+    pub fn getIsPaneToggleButtonVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getIsPaneToggleButtonVisibleProperty();
     }
-    pub fn get_AlwaysShowHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getAlwaysShowHeaderProperty();
+    pub fn getAlwaysShowHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getAlwaysShowHeaderProperty();
     }
-    pub fn get_CompactPaneLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getCompactPaneLengthProperty();
+    pub fn getCompactPaneLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getCompactPaneLengthProperty();
     }
-    pub fn get_OpenPaneLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getOpenPaneLengthProperty();
+    pub fn getOpenPaneLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getOpenPaneLengthProperty();
     }
-    pub fn get_PaneToggleButtonStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getPaneToggleButtonStyleProperty();
+    pub fn getPaneToggleButtonStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getPaneToggleButtonStyleProperty();
     }
-    pub fn get_MenuItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getMenuItemsProperty();
+    pub fn getMenuItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getMenuItemsProperty();
     }
-    pub fn get_MenuItemsSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getMenuItemsSourceProperty();
+    pub fn getMenuItemsSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getMenuItemsSourceProperty();
     }
-    pub fn get_SelectedItemProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getSelectedItemProperty();
+    pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getSelectedItemProperty();
     }
-    pub fn get_SettingsItemProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getSettingsItemProperty();
+    pub fn getSettingsItemProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getSettingsItemProperty();
     }
-    pub fn get_AutoSuggestBoxProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getAutoSuggestBoxProperty();
+    pub fn getAutoSuggestBoxProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getAutoSuggestBoxProperty();
     }
-    pub fn get_MenuItemTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getMenuItemTemplateProperty();
+    pub fn getMenuItemTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getMenuItemTemplateProperty();
     }
-    pub fn get_MenuItemTemplateSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getMenuItemTemplateSelectorProperty();
+    pub fn getMenuItemTemplateSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getMenuItemTemplateSelectorProperty();
     }
-    pub fn get_MenuItemContainerStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getMenuItemContainerStyleProperty();
+    pub fn getMenuItemContainerStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getMenuItemContainerStyleProperty();
     }
-    pub fn get_MenuItemContainerStyleSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewStaticsCache.get();
-        return try factory.getMenuItemContainerStyleSelectorProperty();
+    pub fn getMenuItemContainerStyleSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewStaticsCache.get();
+        return try _f.getMenuItemContainerStyleSelectorProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationView {
-        const factory = @This().INavigationViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NavigationView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53024,21 +52926,21 @@ pub const NavigationViewItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SelectsOnInvokedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewItemStatics2Cache.get();
-        return try factory.getSelectsOnInvokedProperty();
+    pub fn getSelectsOnInvokedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewItemStatics2Cache.get();
+        return try _f.getSelectsOnInvokedProperty();
     }
-    pub fn get_IconProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewItemStaticsCache.get();
-        return try factory.getIconProperty();
+    pub fn getIconProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewItemStaticsCache.get();
+        return try _f.getIconProperty();
     }
-    pub fn get_CompactPaneLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewItemStaticsCache.get();
-        return try factory.getCompactPaneLengthProperty();
+    pub fn getCompactPaneLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewItemStaticsCache.get();
+        return try _f.getCompactPaneLengthProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItem {
-        const factory = @This().INavigationViewItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationViewItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NavigationViewItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53055,8 +52957,8 @@ pub const NavigationViewItemHeader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemHeader {
-        const factory = @This().INavigationViewItemHeaderFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationViewItemHeaderFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NavigationViewItemHeader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53107,8 +53009,8 @@ pub const NavigationViewItemSeparator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewItemSeparator {
-        const factory = @This().INavigationViewItemSeparatorFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationViewItemSeparatorFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NavigationViewItemSeparator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53123,8 +53025,8 @@ pub const NavigationViewList = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewList {
-        const factory = @This().INavigationViewListFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationViewListFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NavigationViewList";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53230,37 +53132,37 @@ pub const NavigationViewTemplateSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TopPaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getTopPaddingProperty();
+    pub fn getTopPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getTopPaddingProperty();
     }
-    pub fn get_OverflowButtonVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getOverflowButtonVisibilityProperty();
+    pub fn getOverflowButtonVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getOverflowButtonVisibilityProperty();
     }
-    pub fn get_PaneToggleButtonVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getPaneToggleButtonVisibilityProperty();
+    pub fn getPaneToggleButtonVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getPaneToggleButtonVisibilityProperty();
     }
-    pub fn get_BackButtonVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getBackButtonVisibilityProperty();
+    pub fn getBackButtonVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getBackButtonVisibilityProperty();
     }
-    pub fn get_TopPaneVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getTopPaneVisibilityProperty();
+    pub fn getTopPaneVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getTopPaneVisibilityProperty();
     }
-    pub fn get_LeftPaneVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getLeftPaneVisibilityProperty();
+    pub fn getLeftPaneVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getLeftPaneVisibilityProperty();
     }
-    pub fn get_SingleSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationViewTemplateSettingsStaticsCache.get();
-        return try factory.getSingleSelectionFollowsFocusProperty();
+    pub fn getSingleSelectionFollowsFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationViewTemplateSettingsStaticsCache.get();
+        return try _f.getSingleSelectionFollowsFocusProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationViewTemplateSettings {
-        const factory = @This().INavigationViewTemplateSettingsFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationViewTemplateSettingsFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.NavigationViewTemplateSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53392,13 +53294,13 @@ pub const UserControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IUserControlStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IUserControlStaticsCache.get();
+        return try _f.getContentProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*UserControl {
-        const factory = @This().IUserControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IUserControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.UserControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53459,21 +53361,21 @@ pub const Page = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FrameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPageStaticsCache.get();
-        return try factory.getFrameProperty();
+    pub fn getFrameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPageStaticsCache.get();
+        return try _f.getFrameProperty();
     }
-    pub fn get_TopAppBarProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPageStaticsCache.get();
-        return try factory.getTopAppBarProperty();
+    pub fn getTopAppBarProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPageStaticsCache.get();
+        return try _f.getTopAppBarProperty();
     }
-    pub fn get_BottomAppBarProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPageStaticsCache.get();
-        return try factory.getBottomAppBarProperty();
+    pub fn getBottomAppBarProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPageStaticsCache.get();
+        return try _f.getBottomAppBarProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Page {
-        const factory = @This().IPageFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPageFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Page";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53617,65 +53519,65 @@ pub const ParallaxView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ChildProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getChildProperty();
+    pub fn getChildProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getChildProperty();
     }
-    pub fn get_HorizontalSourceEndOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getHorizontalSourceEndOffsetProperty();
+    pub fn getHorizontalSourceEndOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getHorizontalSourceEndOffsetProperty();
     }
-    pub fn get_HorizontalSourceOffsetKindProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getHorizontalSourceOffsetKindProperty();
+    pub fn getHorizontalSourceOffsetKindProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getHorizontalSourceOffsetKindProperty();
     }
-    pub fn get_HorizontalSourceStartOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getHorizontalSourceStartOffsetProperty();
+    pub fn getHorizontalSourceStartOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getHorizontalSourceStartOffsetProperty();
     }
-    pub fn get_MaxHorizontalShiftRatioProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getMaxHorizontalShiftRatioProperty();
+    pub fn getMaxHorizontalShiftRatioProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getMaxHorizontalShiftRatioProperty();
     }
-    pub fn get_HorizontalShiftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getHorizontalShiftProperty();
+    pub fn getHorizontalShiftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getHorizontalShiftProperty();
     }
-    pub fn get_IsHorizontalShiftClampedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getIsHorizontalShiftClampedProperty();
+    pub fn getIsHorizontalShiftClampedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getIsHorizontalShiftClampedProperty();
     }
-    pub fn get_IsVerticalShiftClampedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getIsVerticalShiftClampedProperty();
+    pub fn getIsVerticalShiftClampedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getIsVerticalShiftClampedProperty();
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_VerticalSourceEndOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getVerticalSourceEndOffsetProperty();
+    pub fn getVerticalSourceEndOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getVerticalSourceEndOffsetProperty();
     }
-    pub fn get_VerticalSourceOffsetKindProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getVerticalSourceOffsetKindProperty();
+    pub fn getVerticalSourceOffsetKindProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getVerticalSourceOffsetKindProperty();
     }
-    pub fn get_VerticalSourceStartOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getVerticalSourceStartOffsetProperty();
+    pub fn getVerticalSourceStartOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getVerticalSourceStartOffsetProperty();
     }
-    pub fn get_MaxVerticalShiftRatioProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getMaxVerticalShiftRatioProperty();
+    pub fn getMaxVerticalShiftRatioProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getMaxVerticalShiftRatioProperty();
     }
-    pub fn get_VerticalShiftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParallaxViewStaticsCache.get();
-        return try factory.getVerticalShiftProperty();
+    pub fn getVerticalShiftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParallaxViewStaticsCache.get();
+        return try _f.getVerticalShiftProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ParallaxView {
-        const factory = @This().IParallaxViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IParallaxViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ParallaxView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -53902,65 +53804,65 @@ pub const PasswordBox = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPasswordBox.IID)));
     }
-    pub fn get_CanPasteClipboardContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics5Cache.get();
-        return try factory.getCanPasteClipboardContentProperty();
+    pub fn getCanPasteClipboardContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics5Cache.get();
+        return try _f.getCanPasteClipboardContentProperty();
     }
-    pub fn get_SelectionFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics5Cache.get();
-        return try factory.getSelectionFlyoutProperty();
+    pub fn getSelectionFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics5Cache.get();
+        return try _f.getSelectionFlyoutProperty();
     }
-    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics5Cache.get();
-        return try factory.getDescriptionProperty();
+    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics5Cache.get();
+        return try _f.getDescriptionProperty();
     }
-    pub fn get_PasswordRevealModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics3Cache.get();
-        return try factory.getPasswordRevealModeProperty();
+    pub fn getPasswordRevealModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics3Cache.get();
+        return try _f.getPasswordRevealModeProperty();
     }
-    pub fn get_TextReadingOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics3Cache.get();
-        return try factory.getTextReadingOrderProperty();
+    pub fn getTextReadingOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics3Cache.get();
+        return try _f.getTextReadingOrderProperty();
     }
-    pub fn get_InputScopeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics3Cache.get();
-        return try factory.getInputScopeProperty();
+    pub fn getInputScopeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics3Cache.get();
+        return try _f.getInputScopeProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics2Cache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics2Cache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics2Cache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics2Cache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics2Cache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics2Cache.get();
+        return try _f.getPlaceholderTextProperty();
     }
-    pub fn get_SelectionHighlightColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics2Cache.get();
-        return try factory.getSelectionHighlightColorProperty();
+    pub fn getSelectionHighlightColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics2Cache.get();
+        return try _f.getSelectionHighlightColorProperty();
     }
-    pub fn get_PreventKeyboardDisplayOnProgrammaticFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStatics2Cache.get();
-        return try factory.getPreventKeyboardDisplayOnProgrammaticFocusProperty();
+    pub fn getPreventKeyboardDisplayOnProgrammaticFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStatics2Cache.get();
+        return try _f.getPreventKeyboardDisplayOnProgrammaticFocusProperty();
     }
-    pub fn get_PasswordProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStaticsCache.get();
-        return try factory.getPasswordProperty();
+    pub fn getPasswordProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStaticsCache.get();
+        return try _f.getPasswordProperty();
     }
-    pub fn get_PasswordCharProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStaticsCache.get();
-        return try factory.getPasswordCharProperty();
+    pub fn getPasswordCharProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStaticsCache.get();
+        return try _f.getPasswordCharProperty();
     }
-    pub fn get_IsPasswordRevealButtonEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStaticsCache.get();
-        return try factory.getIsPasswordRevealButtonEnabledProperty();
+    pub fn getIsPasswordRevealButtonEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStaticsCache.get();
+        return try _f.getIsPasswordRevealButtonEnabledProperty();
     }
-    pub fn get_MaxLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPasswordBoxStaticsCache.get();
-        return try factory.getMaxLengthProperty();
+    pub fn getMaxLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPasswordBoxStaticsCache.get();
+        return try _f.getMaxLengthProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.PasswordBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54003,13 +53905,13 @@ pub const PathIcon = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DataProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPathIconStaticsCache.get();
-        return try factory.getDataProperty();
+    pub fn getDataProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPathIconStaticsCache.get();
+        return try _f.getDataProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PathIcon {
-        const factory = @This().IPathIconFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPathIconFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.PathIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54032,13 +53934,13 @@ pub const PathIconSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DataProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPathIconSourceStaticsCache.get();
-        return try factory.getDataProperty();
+    pub fn getDataProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPathIconSourceStaticsCache.get();
+        return try _f.getDataProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PathIconSource {
-        const factory = @This().IPathIconSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPathIconSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.PathIconSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54133,49 +54035,49 @@ pub const PersonPicture = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BadgeNumberProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getBadgeNumberProperty();
+    pub fn getBadgeNumberProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getBadgeNumberProperty();
     }
-    pub fn get_BadgeGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getBadgeGlyphProperty();
+    pub fn getBadgeGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getBadgeGlyphProperty();
     }
-    pub fn get_BadgeImageSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getBadgeImageSourceProperty();
+    pub fn getBadgeImageSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getBadgeImageSourceProperty();
     }
-    pub fn get_BadgeTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getBadgeTextProperty();
+    pub fn getBadgeTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getBadgeTextProperty();
     }
-    pub fn get_IsGroupProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getIsGroupProperty();
+    pub fn getIsGroupProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getIsGroupProperty();
     }
-    pub fn get_ContactProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getContactProperty();
+    pub fn getContactProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getContactProperty();
     }
-    pub fn get_DisplayNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getDisplayNameProperty();
+    pub fn getDisplayNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getDisplayNameProperty();
     }
-    pub fn get_InitialsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getInitialsProperty();
+    pub fn getInitialsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getInitialsProperty();
     }
-    pub fn get_PreferSmallImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getPreferSmallImageProperty();
+    pub fn getPreferSmallImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getPreferSmallImageProperty();
     }
-    pub fn get_ProfilePictureProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPersonPictureStaticsCache.get();
-        return try factory.getProfilePictureProperty();
+    pub fn getProfilePictureProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPersonPictureStaticsCache.get();
+        return try _f.getProfilePictureProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PersonPicture {
-        const factory = @This().IPersonPictureFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPersonPictureFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.PersonPicture";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54238,13 +54140,13 @@ pub const PickerFlyout = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPickerFlyout.IID)));
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPickerFlyoutStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPickerFlyoutStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_ConfirmationButtonsVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPickerFlyoutStaticsCache.get();
-        return try factory.getConfirmationButtonsVisibleProperty();
+    pub fn getConfirmationButtonsVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPickerFlyoutStaticsCache.get();
+        return try _f.getConfirmationButtonsVisibleProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.PickerFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54427,69 +54329,69 @@ pub const Pivot = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getTitleProperty();
+    pub fn getTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getTitleProperty();
     }
-    pub fn get_TitleTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getTitleTemplateProperty();
+    pub fn getTitleTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getTitleTemplateProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_SelectedIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getSelectedIndexProperty();
+    pub fn getSelectedIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getSelectedIndexProperty();
     }
-    pub fn get_SelectedItemProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getSelectedItemProperty();
+    pub fn getSelectedItemProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getSelectedItemProperty();
     }
-    pub fn get_IsLockedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getIsLockedProperty();
+    pub fn getIsLockedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getIsLockedProperty();
     }
-    pub fn get_SlideInAnimationGroupProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.getSlideInAnimationGroupProperty();
+    pub fn getSlideInAnimationGroupProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.getSlideInAnimationGroupProperty();
     }
     pub fn GetSlideInAnimationGroup(element: *FrameworkElement) core.HResult!PivotSlideInAnimationGroup {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.GetSlideInAnimationGroup(element);
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.GetSlideInAnimationGroup(element);
     }
     pub fn SetSlideInAnimationGroup(element: *FrameworkElement, value: PivotSlideInAnimationGroup) core.HResult!void {
-        const factory = @This().IPivotStaticsCache.get();
-        return try factory.SetSlideInAnimationGroup(element, value);
+        const _f = @This().IPivotStaticsCache.get();
+        return try _f.SetSlideInAnimationGroup(element, value);
     }
-    pub fn get_HeaderFocusVisualPlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStatics3Cache.get();
-        return try factory.getHeaderFocusVisualPlacementProperty();
+    pub fn getHeaderFocusVisualPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStatics3Cache.get();
+        return try _f.getHeaderFocusVisualPlacementProperty();
     }
-    pub fn get_IsHeaderItemsCarouselEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStatics3Cache.get();
-        return try factory.getIsHeaderItemsCarouselEnabledProperty();
+    pub fn getIsHeaderItemsCarouselEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStatics3Cache.get();
+        return try _f.getIsHeaderItemsCarouselEnabledProperty();
     }
-    pub fn get_LeftHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStatics2Cache.get();
-        return try factory.getLeftHeaderProperty();
+    pub fn getLeftHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStatics2Cache.get();
+        return try _f.getLeftHeaderProperty();
     }
-    pub fn get_LeftHeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStatics2Cache.get();
-        return try factory.getLeftHeaderTemplateProperty();
+    pub fn getLeftHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStatics2Cache.get();
+        return try _f.getLeftHeaderTemplateProperty();
     }
-    pub fn get_RightHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStatics2Cache.get();
-        return try factory.getRightHeaderProperty();
+    pub fn getRightHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStatics2Cache.get();
+        return try _f.getRightHeaderProperty();
     }
-    pub fn get_RightHeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotStatics2Cache.get();
-        return try factory.getRightHeaderTemplateProperty();
+    pub fn getRightHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotStatics2Cache.get();
+        return try _f.getRightHeaderTemplateProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Pivot {
-        const factory = @This().IPivotFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPivotFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Pivot";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54518,13 +54420,13 @@ pub const PivotItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPivotItemStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPivotItemStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PivotItem {
-        const factory = @This().IPivotItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPivotItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.PivotItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54717,53 +54619,53 @@ pub const Slider = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStatics2Cache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStatics2Cache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStatics2Cache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStatics2Cache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_IntermediateValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getIntermediateValueProperty();
+    pub fn getIntermediateValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getIntermediateValueProperty();
     }
-    pub fn get_StepFrequencyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getStepFrequencyProperty();
+    pub fn getStepFrequencyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getStepFrequencyProperty();
     }
-    pub fn get_SnapsToProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getSnapsToProperty();
+    pub fn getSnapsToProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getSnapsToProperty();
     }
-    pub fn get_TickFrequencyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getTickFrequencyProperty();
+    pub fn getTickFrequencyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getTickFrequencyProperty();
     }
-    pub fn get_TickPlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getTickPlacementProperty();
+    pub fn getTickPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getTickPlacementProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_IsDirectionReversedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getIsDirectionReversedProperty();
+    pub fn getIsDirectionReversedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getIsDirectionReversedProperty();
     }
-    pub fn get_IsThumbToolTipEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getIsThumbToolTipEnabledProperty();
+    pub fn getIsThumbToolTipEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getIsThumbToolTipEnabledProperty();
     }
-    pub fn get_ThumbToolTipValueConverterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISliderStaticsCache.get();
-        return try factory.getThumbToolTipValueConverterProperty();
+    pub fn getThumbToolTipValueConverterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISliderStaticsCache.get();
+        return try _f.getThumbToolTipValueConverterProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Slider {
-        const factory = @This().ISliderFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISliderFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Slider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54807,21 +54709,21 @@ pub const ProgressBar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsIndeterminateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IProgressBarStaticsCache.get();
-        return try factory.getIsIndeterminateProperty();
+    pub fn getIsIndeterminateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IProgressBarStaticsCache.get();
+        return try _f.getIsIndeterminateProperty();
     }
-    pub fn get_ShowErrorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IProgressBarStaticsCache.get();
-        return try factory.getShowErrorProperty();
+    pub fn getShowErrorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IProgressBarStaticsCache.get();
+        return try _f.getShowErrorProperty();
     }
-    pub fn get_ShowPausedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IProgressBarStaticsCache.get();
-        return try factory.getShowPausedProperty();
+    pub fn getShowPausedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IProgressBarStaticsCache.get();
+        return try _f.getShowPausedProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ProgressBar {
-        const factory = @This().IProgressBarFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IProgressBarFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ProgressBar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54852,9 +54754,9 @@ pub const ProgressRing = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IProgressRing.IID)));
     }
-    pub fn get_IsActiveProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IProgressRingStaticsCache.get();
-        return try factory.getIsActiveProperty();
+    pub fn getIsActiveProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IProgressRingStaticsCache.get();
+        return try _f.getIsActiveProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ProgressRing";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54941,41 +54843,41 @@ pub const RatingControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CaptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getCaptionProperty();
+    pub fn getCaptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getCaptionProperty();
     }
-    pub fn get_InitialSetValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getInitialSetValueProperty();
+    pub fn getInitialSetValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getInitialSetValueProperty();
     }
-    pub fn get_IsClearEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getIsClearEnabledProperty();
+    pub fn getIsClearEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getIsClearEnabledProperty();
     }
-    pub fn get_IsReadOnlyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getIsReadOnlyProperty();
+    pub fn getIsReadOnlyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getIsReadOnlyProperty();
     }
-    pub fn get_MaxRatingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getMaxRatingProperty();
+    pub fn getMaxRatingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getMaxRatingProperty();
     }
-    pub fn get_PlaceholderValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getPlaceholderValueProperty();
+    pub fn getPlaceholderValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getPlaceholderValueProperty();
     }
-    pub fn get_ItemInfoProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getItemInfoProperty();
+    pub fn getItemInfoProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getItemInfoProperty();
     }
-    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingControlStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingControlStaticsCache.get();
+        return try _f.getValueProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingControl {
-        const factory = @This().IRatingControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRatingControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RatingControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -54991,8 +54893,8 @@ pub const RatingItemInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingItemInfo {
-        const factory = @This().IRatingItemInfoFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRatingItemInfoFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RatingItemInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -55054,33 +54956,33 @@ pub const RatingItemFontInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DisabledGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemFontInfoStaticsCache.get();
-        return try factory.getDisabledGlyphProperty();
+    pub fn getDisabledGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemFontInfoStaticsCache.get();
+        return try _f.getDisabledGlyphProperty();
     }
-    pub fn get_GlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemFontInfoStaticsCache.get();
-        return try factory.getGlyphProperty();
+    pub fn getGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemFontInfoStaticsCache.get();
+        return try _f.getGlyphProperty();
     }
-    pub fn get_PlaceholderGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemFontInfoStaticsCache.get();
-        return try factory.getPlaceholderGlyphProperty();
+    pub fn getPlaceholderGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemFontInfoStaticsCache.get();
+        return try _f.getPlaceholderGlyphProperty();
     }
-    pub fn get_PointerOverGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemFontInfoStaticsCache.get();
-        return try factory.getPointerOverGlyphProperty();
+    pub fn getPointerOverGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemFontInfoStaticsCache.get();
+        return try _f.getPointerOverGlyphProperty();
     }
-    pub fn get_PointerOverPlaceholderGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemFontInfoStaticsCache.get();
-        return try factory.getPointerOverPlaceholderGlyphProperty();
+    pub fn getPointerOverPlaceholderGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemFontInfoStaticsCache.get();
+        return try _f.getPointerOverPlaceholderGlyphProperty();
     }
-    pub fn get_UnsetGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemFontInfoStaticsCache.get();
-        return try factory.getUnsetGlyphProperty();
+    pub fn getUnsetGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemFontInfoStaticsCache.get();
+        return try _f.getUnsetGlyphProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingItemFontInfo {
-        const factory = @This().IRatingItemFontInfoFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRatingItemFontInfoFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RatingItemFontInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -55143,33 +55045,33 @@ pub const RatingItemImageInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DisabledImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemImageInfoStaticsCache.get();
-        return try factory.getDisabledImageProperty();
+    pub fn getDisabledImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemImageInfoStaticsCache.get();
+        return try _f.getDisabledImageProperty();
     }
-    pub fn get_ImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemImageInfoStaticsCache.get();
-        return try factory.getImageProperty();
+    pub fn getImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemImageInfoStaticsCache.get();
+        return try _f.getImageProperty();
     }
-    pub fn get_PlaceholderImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemImageInfoStaticsCache.get();
-        return try factory.getPlaceholderImageProperty();
+    pub fn getPlaceholderImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemImageInfoStaticsCache.get();
+        return try _f.getPlaceholderImageProperty();
     }
-    pub fn get_PointerOverImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemImageInfoStaticsCache.get();
-        return try factory.getPointerOverImageProperty();
+    pub fn getPointerOverImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemImageInfoStaticsCache.get();
+        return try _f.getPointerOverImageProperty();
     }
-    pub fn get_PointerOverPlaceholderImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemImageInfoStaticsCache.get();
-        return try factory.getPointerOverPlaceholderImageProperty();
+    pub fn getPointerOverPlaceholderImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemImageInfoStaticsCache.get();
+        return try _f.getPointerOverPlaceholderImageProperty();
     }
-    pub fn get_UnsetImageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRatingItemImageInfoStaticsCache.get();
-        return try factory.getUnsetImageProperty();
+    pub fn getUnsetImageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRatingItemImageInfoStaticsCache.get();
+        return try _f.getUnsetImageProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RatingItemImageInfo {
-        const factory = @This().IRatingItemImageInfoFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRatingItemImageInfoFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RatingItemImageInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -55212,17 +55114,17 @@ pub const RefreshContainer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_VisualizerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRefreshContainerStaticsCache.get();
-        return try factory.getVisualizerProperty();
+    pub fn getVisualizerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRefreshContainerStaticsCache.get();
+        return try _f.getVisualizerProperty();
     }
-    pub fn get_PullDirectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRefreshContainerStaticsCache.get();
-        return try factory.getPullDirectionProperty();
+    pub fn getPullDirectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRefreshContainerStaticsCache.get();
+        return try _f.getPullDirectionProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RefreshContainer {
-        const factory = @This().IRefreshContainerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRefreshContainerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RefreshContainer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -55323,25 +55225,25 @@ pub const RefreshVisualizer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_InfoProviderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRefreshVisualizerStaticsCache.get();
-        return try factory.getInfoProviderProperty();
+    pub fn getInfoProviderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRefreshVisualizerStaticsCache.get();
+        return try _f.getInfoProviderProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRefreshVisualizerStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRefreshVisualizerStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRefreshVisualizerStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRefreshVisualizerStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_StateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRefreshVisualizerStaticsCache.get();
-        return try factory.getStateProperty();
+    pub fn getStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRefreshVisualizerStaticsCache.get();
+        return try _f.getStateProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RefreshVisualizer {
-        const factory = @This().IRefreshVisualizerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRefreshVisualizerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RefreshVisualizer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -55413,221 +55315,221 @@ pub const RelativePanel = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LeftOfProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getLeftOfProperty();
+    pub fn getLeftOfProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getLeftOfProperty();
     }
     pub fn GetLeftOf(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetLeftOf(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetLeftOf(element);
     }
     pub fn SetLeftOf(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetLeftOf(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetLeftOf(element, value);
     }
-    pub fn get_AboveProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAboveProperty();
+    pub fn getAboveProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAboveProperty();
     }
     pub fn GetAbove(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAbove(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAbove(element);
     }
     pub fn SetAbove(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAbove(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAbove(element, value);
     }
-    pub fn get_RightOfProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getRightOfProperty();
+    pub fn getRightOfProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getRightOfProperty();
     }
     pub fn GetRightOf(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetRightOf(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetRightOf(element);
     }
     pub fn SetRightOf(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetRightOf(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetRightOf(element, value);
     }
-    pub fn get_BelowProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getBelowProperty();
+    pub fn getBelowProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getBelowProperty();
     }
     pub fn GetBelow(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetBelow(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetBelow(element);
     }
     pub fn SetBelow(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetBelow(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetBelow(element, value);
     }
-    pub fn get_AlignHorizontalCenterWithProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignHorizontalCenterWithProperty();
+    pub fn getAlignHorizontalCenterWithProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignHorizontalCenterWithProperty();
     }
     pub fn GetAlignHorizontalCenterWith(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignHorizontalCenterWith(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignHorizontalCenterWith(element);
     }
     pub fn SetAlignHorizontalCenterWith(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignHorizontalCenterWith(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignHorizontalCenterWith(element, value);
     }
-    pub fn get_AlignVerticalCenterWithProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignVerticalCenterWithProperty();
+    pub fn getAlignVerticalCenterWithProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignVerticalCenterWithProperty();
     }
     pub fn GetAlignVerticalCenterWith(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignVerticalCenterWith(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignVerticalCenterWith(element);
     }
     pub fn SetAlignVerticalCenterWith(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignVerticalCenterWith(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignVerticalCenterWith(element, value);
     }
-    pub fn get_AlignLeftWithProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignLeftWithProperty();
+    pub fn getAlignLeftWithProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignLeftWithProperty();
     }
     pub fn GetAlignLeftWith(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignLeftWith(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignLeftWith(element);
     }
     pub fn SetAlignLeftWith(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignLeftWith(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignLeftWith(element, value);
     }
-    pub fn get_AlignTopWithProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignTopWithProperty();
+    pub fn getAlignTopWithProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignTopWithProperty();
     }
     pub fn GetAlignTopWith(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignTopWith(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignTopWith(element);
     }
     pub fn SetAlignTopWith(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignTopWith(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignTopWith(element, value);
     }
-    pub fn get_AlignRightWithProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignRightWithProperty();
+    pub fn getAlignRightWithProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignRightWithProperty();
     }
     pub fn GetAlignRightWith(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignRightWith(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignRightWith(element);
     }
     pub fn SetAlignRightWith(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignRightWith(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignRightWith(element, value);
     }
-    pub fn get_AlignBottomWithProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignBottomWithProperty();
+    pub fn getAlignBottomWithProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignBottomWithProperty();
     }
     pub fn GetAlignBottomWith(element: *UIElement) core.HResult!*IInspectable {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignBottomWith(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignBottomWith(element);
     }
     pub fn SetAlignBottomWith(element: *UIElement, value: *IInspectable) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignBottomWith(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignBottomWith(element, value);
     }
-    pub fn get_AlignLeftWithPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignLeftWithPanelProperty();
+    pub fn getAlignLeftWithPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignLeftWithPanelProperty();
     }
     pub fn GetAlignLeftWithPanel(element: *UIElement) core.HResult!bool {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignLeftWithPanel(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignLeftWithPanel(element);
     }
     pub fn SetAlignLeftWithPanel(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignLeftWithPanel(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignLeftWithPanel(element, value);
     }
-    pub fn get_AlignTopWithPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignTopWithPanelProperty();
+    pub fn getAlignTopWithPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignTopWithPanelProperty();
     }
     pub fn GetAlignTopWithPanel(element: *UIElement) core.HResult!bool {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignTopWithPanel(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignTopWithPanel(element);
     }
     pub fn SetAlignTopWithPanel(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignTopWithPanel(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignTopWithPanel(element, value);
     }
-    pub fn get_AlignRightWithPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignRightWithPanelProperty();
+    pub fn getAlignRightWithPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignRightWithPanelProperty();
     }
     pub fn GetAlignRightWithPanel(element: *UIElement) core.HResult!bool {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignRightWithPanel(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignRightWithPanel(element);
     }
     pub fn SetAlignRightWithPanel(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignRightWithPanel(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignRightWithPanel(element, value);
     }
-    pub fn get_AlignBottomWithPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignBottomWithPanelProperty();
+    pub fn getAlignBottomWithPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignBottomWithPanelProperty();
     }
     pub fn GetAlignBottomWithPanel(element: *UIElement) core.HResult!bool {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignBottomWithPanel(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignBottomWithPanel(element);
     }
     pub fn SetAlignBottomWithPanel(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignBottomWithPanel(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignBottomWithPanel(element, value);
     }
-    pub fn get_AlignHorizontalCenterWithPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignHorizontalCenterWithPanelProperty();
+    pub fn getAlignHorizontalCenterWithPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignHorizontalCenterWithPanelProperty();
     }
     pub fn GetAlignHorizontalCenterWithPanel(element: *UIElement) core.HResult!bool {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignHorizontalCenterWithPanel(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignHorizontalCenterWithPanel(element);
     }
     pub fn SetAlignHorizontalCenterWithPanel(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignHorizontalCenterWithPanel(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignHorizontalCenterWithPanel(element, value);
     }
-    pub fn get_AlignVerticalCenterWithPanelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getAlignVerticalCenterWithPanelProperty();
+    pub fn getAlignVerticalCenterWithPanelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getAlignVerticalCenterWithPanelProperty();
     }
     pub fn GetAlignVerticalCenterWithPanel(element: *UIElement) core.HResult!bool {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.GetAlignVerticalCenterWithPanel(element);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.GetAlignVerticalCenterWithPanel(element);
     }
     pub fn SetAlignVerticalCenterWithPanel(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.SetAlignVerticalCenterWithPanel(element, value);
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.SetAlignVerticalCenterWithPanel(element, value);
     }
-    pub fn get_BorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getBorderBrushProperty();
+    pub fn getBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getBorderBrushProperty();
     }
-    pub fn get_BorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getBorderThicknessProperty();
+    pub fn getBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getBorderThicknessProperty();
     }
-    pub fn get_CornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getCornerRadiusProperty();
+    pub fn getCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getCornerRadiusProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_BackgroundSizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRelativePanelStatics2Cache.get();
-        return try factory.getBackgroundSizingProperty();
+    pub fn getBackgroundSizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRelativePanelStatics2Cache.get();
+        return try _f.getBackgroundSizingProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RelativePanel {
-        const factory = @This().IRelativePanelFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRelativePanelFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RelativePanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -56134,125 +56036,125 @@ pub const RichEditBox = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics2Cache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics2Cache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics2Cache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics2Cache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics2Cache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics2Cache.get();
+        return try _f.getPlaceholderTextProperty();
     }
-    pub fn get_SelectionHighlightColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics2Cache.get();
-        return try factory.getSelectionHighlightColorProperty();
+    pub fn getSelectionHighlightColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics2Cache.get();
+        return try _f.getSelectionHighlightColorProperty();
     }
-    pub fn get_PreventKeyboardDisplayOnProgrammaticFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics2Cache.get();
-        return try factory.getPreventKeyboardDisplayOnProgrammaticFocusProperty();
+    pub fn getPreventKeyboardDisplayOnProgrammaticFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics2Cache.get();
+        return try _f.getPreventKeyboardDisplayOnProgrammaticFocusProperty();
     }
-    pub fn get_IsColorFontEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics2Cache.get();
-        return try factory.getIsColorFontEnabledProperty();
+    pub fn getIsColorFontEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics2Cache.get();
+        return try _f.getIsColorFontEnabledProperty();
     }
-    pub fn get_SelectionFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics8Cache.get();
-        return try factory.getSelectionFlyoutProperty();
+    pub fn getSelectionFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics8Cache.get();
+        return try _f.getSelectionFlyoutProperty();
     }
-    pub fn get_ProofingMenuFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics8Cache.get();
-        return try factory.getProofingMenuFlyoutProperty();
+    pub fn getProofingMenuFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics8Cache.get();
+        return try _f.getProofingMenuFlyoutProperty();
     }
-    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics8Cache.get();
-        return try factory.getDescriptionProperty();
+    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics8Cache.get();
+        return try _f.getDescriptionProperty();
     }
-    pub fn get_HorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics6Cache.get();
-        return try factory.getHorizontalTextAlignmentProperty();
+    pub fn getHorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics6Cache.get();
+        return try _f.getHorizontalTextAlignmentProperty();
     }
-    pub fn get_CharacterCasingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics6Cache.get();
-        return try factory.getCharacterCasingProperty();
+    pub fn getCharacterCasingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics6Cache.get();
+        return try _f.getCharacterCasingProperty();
     }
-    pub fn get_DisabledFormattingAcceleratorsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics6Cache.get();
-        return try factory.getDisabledFormattingAcceleratorsProperty();
+    pub fn getDisabledFormattingAcceleratorsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics6Cache.get();
+        return try _f.getDisabledFormattingAcceleratorsProperty();
     }
-    pub fn get_SelectionHighlightColorWhenNotFocusedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics5Cache.get();
-        return try factory.getSelectionHighlightColorWhenNotFocusedProperty();
+    pub fn getSelectionHighlightColorWhenNotFocusedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics5Cache.get();
+        return try _f.getSelectionHighlightColorWhenNotFocusedProperty();
     }
-    pub fn get_MaxLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics5Cache.get();
-        return try factory.getMaxLengthProperty();
+    pub fn getMaxLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics5Cache.get();
+        return try _f.getMaxLengthProperty();
     }
-    pub fn get_DesiredCandidateWindowAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics3Cache.get();
-        return try factory.getDesiredCandidateWindowAlignmentProperty();
+    pub fn getDesiredCandidateWindowAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics3Cache.get();
+        return try _f.getDesiredCandidateWindowAlignmentProperty();
     }
-    pub fn get_TextReadingOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics3Cache.get();
-        return try factory.getTextReadingOrderProperty();
+    pub fn getTextReadingOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics3Cache.get();
+        return try _f.getTextReadingOrderProperty();
     }
-    pub fn get_IsReadOnlyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getIsReadOnlyProperty();
+    pub fn getIsReadOnlyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getIsReadOnlyProperty();
     }
-    pub fn get_AcceptsReturnProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getAcceptsReturnProperty();
+    pub fn getAcceptsReturnProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getAcceptsReturnProperty();
     }
-    pub fn get_TextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getTextAlignmentProperty();
+    pub fn getTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getTextAlignmentProperty();
     }
-    pub fn get_TextWrappingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getTextWrappingProperty();
+    pub fn getTextWrappingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getTextWrappingProperty();
     }
-    pub fn get_IsSpellCheckEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getIsSpellCheckEnabledProperty();
+    pub fn getIsSpellCheckEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getIsSpellCheckEnabledProperty();
     }
-    pub fn get_IsTextPredictionEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getIsTextPredictionEnabledProperty();
+    pub fn getIsTextPredictionEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getIsTextPredictionEnabledProperty();
     }
-    pub fn get_InputScopeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStaticsCache.get();
-        return try factory.getInputScopeProperty();
+    pub fn getInputScopeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStaticsCache.get();
+        return try _f.getInputScopeProperty();
     }
-    pub fn get_ClipboardCopyFormatProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics4Cache.get();
-        return try factory.getClipboardCopyFormatProperty();
+    pub fn getClipboardCopyFormatProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics4Cache.get();
+        return try _f.getClipboardCopyFormatProperty();
     }
-    pub fn get_ContentLinkForegroundColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics7Cache.get();
-        return try factory.getContentLinkForegroundColorProperty();
+    pub fn getContentLinkForegroundColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics7Cache.get();
+        return try _f.getContentLinkForegroundColorProperty();
     }
-    pub fn get_ContentLinkBackgroundColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics7Cache.get();
-        return try factory.getContentLinkBackgroundColorProperty();
+    pub fn getContentLinkBackgroundColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics7Cache.get();
+        return try _f.getContentLinkBackgroundColorProperty();
     }
-    pub fn get_ContentLinkProvidersProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics7Cache.get();
-        return try factory.getContentLinkProvidersProperty();
+    pub fn getContentLinkProvidersProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics7Cache.get();
+        return try _f.getContentLinkProvidersProperty();
     }
-    pub fn get_HandwritingViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics7Cache.get();
-        return try factory.getHandwritingViewProperty();
+    pub fn getHandwritingViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics7Cache.get();
+        return try _f.getHandwritingViewProperty();
     }
-    pub fn get_IsHandwritingViewEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichEditBoxStatics7Cache.get();
-        return try factory.getIsHandwritingViewEnabledProperty();
+    pub fn getIsHandwritingViewEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichEditBoxStatics7Cache.get();
+        return try _f.getIsHandwritingViewEnabledProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*RichEditBox {
-        const factory = @This().IRichEditBoxFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IRichEditBoxFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RichEditBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -56662,121 +56564,121 @@ pub const RichTextBlock = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRichTextBlock.IID)));
     }
-    pub fn get_SelectionFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics6Cache.get();
-        return try factory.getSelectionFlyoutProperty();
+    pub fn getSelectionFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics6Cache.get();
+        return try _f.getSelectionFlyoutProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_FontStretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getFontStretchProperty();
+    pub fn getFontStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getFontStretchProperty();
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_TextWrappingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getTextWrappingProperty();
+    pub fn getTextWrappingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getTextWrappingProperty();
     }
-    pub fn get_TextTrimmingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getTextTrimmingProperty();
+    pub fn getTextTrimmingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getTextTrimmingProperty();
     }
-    pub fn get_TextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getTextAlignmentProperty();
+    pub fn getTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getTextAlignmentProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_LineHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getLineHeightProperty();
+    pub fn getLineHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getLineHeightProperty();
     }
-    pub fn get_LineStackingStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getLineStackingStrategyProperty();
+    pub fn getLineStackingStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getLineStackingStrategyProperty();
     }
-    pub fn get_CharacterSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getCharacterSpacingProperty();
+    pub fn getCharacterSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getCharacterSpacingProperty();
     }
-    pub fn get_OverflowContentTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getOverflowContentTargetProperty();
+    pub fn getOverflowContentTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getOverflowContentTargetProperty();
     }
-    pub fn get_IsTextSelectionEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getIsTextSelectionEnabledProperty();
+    pub fn getIsTextSelectionEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getIsTextSelectionEnabledProperty();
     }
-    pub fn get_HasOverflowContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getHasOverflowContentProperty();
+    pub fn getHasOverflowContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getHasOverflowContentProperty();
     }
-    pub fn get_SelectedTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getSelectedTextProperty();
+    pub fn getSelectedTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getSelectedTextProperty();
     }
-    pub fn get_TextIndentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStaticsCache.get();
-        return try factory.getTextIndentProperty();
+    pub fn getTextIndentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStaticsCache.get();
+        return try _f.getTextIndentProperty();
     }
-    pub fn get_IsTextTrimmedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics5Cache.get();
-        return try factory.getIsTextTrimmedProperty();
+    pub fn getIsTextTrimmedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics5Cache.get();
+        return try _f.getIsTextTrimmedProperty();
     }
-    pub fn get_HorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics5Cache.get();
-        return try factory.getHorizontalTextAlignmentProperty();
+    pub fn getHorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics5Cache.get();
+        return try _f.getHorizontalTextAlignmentProperty();
     }
-    pub fn get_TextDecorationsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics4Cache.get();
-        return try factory.getTextDecorationsProperty();
+    pub fn getTextDecorationsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics4Cache.get();
+        return try _f.getTextDecorationsProperty();
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics3Cache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics3Cache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn get_MaxLinesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics2Cache.get();
-        return try factory.getMaxLinesProperty();
+    pub fn getMaxLinesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics2Cache.get();
+        return try _f.getMaxLinesProperty();
     }
-    pub fn get_TextLineBoundsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics2Cache.get();
-        return try factory.getTextLineBoundsProperty();
+    pub fn getTextLineBoundsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics2Cache.get();
+        return try _f.getTextLineBoundsProperty();
     }
-    pub fn get_SelectionHighlightColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics2Cache.get();
-        return try factory.getSelectionHighlightColorProperty();
+    pub fn getSelectionHighlightColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics2Cache.get();
+        return try _f.getSelectionHighlightColorProperty();
     }
-    pub fn get_OpticalMarginAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics2Cache.get();
-        return try factory.getOpticalMarginAlignmentProperty();
+    pub fn getOpticalMarginAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics2Cache.get();
+        return try _f.getOpticalMarginAlignmentProperty();
     }
-    pub fn get_IsColorFontEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics2Cache.get();
-        return try factory.getIsColorFontEnabledProperty();
+    pub fn getIsColorFontEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics2Cache.get();
+        return try _f.getIsColorFontEnabledProperty();
     }
-    pub fn get_TextReadingOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockStatics2Cache.get();
-        return try factory.getTextReadingOrderProperty();
+    pub fn getTextReadingOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockStatics2Cache.get();
+        return try _f.getTextReadingOrderProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RichTextBlock";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -56874,25 +56776,25 @@ pub const RichTextBlockOverflow = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRichTextBlockOverflow.IID)));
     }
-    pub fn get_IsTextTrimmedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockOverflowStatics3Cache.get();
-        return try factory.getIsTextTrimmedProperty();
+    pub fn getIsTextTrimmedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockOverflowStatics3Cache.get();
+        return try _f.getIsTextTrimmedProperty();
     }
-    pub fn get_MaxLinesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockOverflowStatics2Cache.get();
-        return try factory.getMaxLinesProperty();
+    pub fn getMaxLinesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockOverflowStatics2Cache.get();
+        return try _f.getMaxLinesProperty();
     }
-    pub fn get_OverflowContentTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockOverflowStaticsCache.get();
-        return try factory.getOverflowContentTargetProperty();
+    pub fn getOverflowContentTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockOverflowStaticsCache.get();
+        return try _f.getOverflowContentTargetProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockOverflowStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockOverflowStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_HasOverflowContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRichTextBlockOverflowStaticsCache.get();
-        return try factory.getHasOverflowContentProperty();
+    pub fn getHasOverflowContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRichTextBlockOverflowStaticsCache.get();
+        return try _f.getHasOverflowContentProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RichTextBlockOverflow";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -56941,17 +56843,17 @@ pub const RowDefinition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRowDefinition.IID)));
     }
-    pub fn get_HeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRowDefinitionStaticsCache.get();
-        return try factory.getHeightProperty();
+    pub fn getHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRowDefinitionStaticsCache.get();
+        return try _f.getHeightProperty();
     }
-    pub fn get_MaxHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRowDefinitionStaticsCache.get();
-        return try factory.getMaxHeightProperty();
+    pub fn getMaxHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRowDefinitionStaticsCache.get();
+        return try _f.getMaxHeightProperty();
     }
-    pub fn get_MinHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRowDefinitionStaticsCache.get();
-        return try factory.getMinHeightProperty();
+    pub fn getMinHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRowDefinitionStaticsCache.get();
+        return try _f.getMinHeightProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.RowDefinition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -56963,55 +56865,27 @@ pub const RowDefinition = extern struct {
 };
 pub const RowDefinitionCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(RowDefinition) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(RowDefinition) {
+        const this: *IVector(RowDefinition) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(RowDefinition) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(RowDefinition) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(RowDefinition) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(RowDefinition) {
         var this: ?*IIterable(RowDefinition) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -57170,13 +57044,13 @@ pub const ScrollContentPresenter = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScrollContentPresenter.IID)));
     }
-    pub fn get_CanContentRenderOutsideBoundsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollContentPresenterStatics2Cache.get();
-        return try factory.getCanContentRenderOutsideBoundsProperty();
+    pub fn getCanContentRenderOutsideBoundsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollContentPresenterStatics2Cache.get();
+        return try _f.getCanContentRenderOutsideBoundsProperty();
     }
-    pub fn get_SizesContentToTemplatedParentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollContentPresenterStatics2Cache.get();
-        return try factory.getSizesContentToTemplatedParentProperty();
+    pub fn getSizesContentToTemplatedParentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollContentPresenterStatics2Cache.get();
+        return try _f.getSizesContentToTemplatedParentProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ScrollContentPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -57606,285 +57480,285 @@ pub const ScrollViewer = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IScrollViewer.IID)));
     }
-    pub fn get_HorizontalSnapPointsAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getHorizontalSnapPointsAlignmentProperty();
+    pub fn getHorizontalSnapPointsAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getHorizontalSnapPointsAlignmentProperty();
     }
-    pub fn get_VerticalSnapPointsAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getVerticalSnapPointsAlignmentProperty();
+    pub fn getVerticalSnapPointsAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getVerticalSnapPointsAlignmentProperty();
     }
-    pub fn get_HorizontalSnapPointsTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getHorizontalSnapPointsTypeProperty();
+    pub fn getHorizontalSnapPointsTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getHorizontalSnapPointsTypeProperty();
     }
-    pub fn get_VerticalSnapPointsTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getVerticalSnapPointsTypeProperty();
+    pub fn getVerticalSnapPointsTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getVerticalSnapPointsTypeProperty();
     }
-    pub fn get_ZoomSnapPointsTypeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getZoomSnapPointsTypeProperty();
+    pub fn getZoomSnapPointsTypeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getZoomSnapPointsTypeProperty();
     }
-    pub fn get_HorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getHorizontalOffsetProperty();
+    pub fn getHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getHorizontalOffsetProperty();
     }
-    pub fn get_ViewportWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getViewportWidthProperty();
+    pub fn getViewportWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getViewportWidthProperty();
     }
-    pub fn get_ScrollableWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getScrollableWidthProperty();
+    pub fn getScrollableWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getScrollableWidthProperty();
     }
-    pub fn get_ComputedHorizontalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getComputedHorizontalScrollBarVisibilityProperty();
+    pub fn getComputedHorizontalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getComputedHorizontalScrollBarVisibilityProperty();
     }
-    pub fn get_ExtentWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getExtentWidthProperty();
+    pub fn getExtentWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getExtentWidthProperty();
     }
-    pub fn get_VerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getVerticalOffsetProperty();
+    pub fn getVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getVerticalOffsetProperty();
     }
-    pub fn get_ViewportHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getViewportHeightProperty();
+    pub fn getViewportHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getViewportHeightProperty();
     }
-    pub fn get_ScrollableHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getScrollableHeightProperty();
+    pub fn getScrollableHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getScrollableHeightProperty();
     }
-    pub fn get_ComputedVerticalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getComputedVerticalScrollBarVisibilityProperty();
+    pub fn getComputedVerticalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getComputedVerticalScrollBarVisibilityProperty();
     }
-    pub fn get_ExtentHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getExtentHeightProperty();
+    pub fn getExtentHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getExtentHeightProperty();
     }
-    pub fn get_MinZoomFactorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getMinZoomFactorProperty();
+    pub fn getMinZoomFactorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getMinZoomFactorProperty();
     }
-    pub fn get_MaxZoomFactorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getMaxZoomFactorProperty();
+    pub fn getMaxZoomFactorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getMaxZoomFactorProperty();
     }
-    pub fn get_ZoomFactorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getZoomFactorProperty();
+    pub fn getZoomFactorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getZoomFactorProperty();
     }
-    pub fn get_ZoomSnapPointsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getZoomSnapPointsProperty();
+    pub fn getZoomSnapPointsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getZoomSnapPointsProperty();
     }
-    pub fn get_HorizontalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getHorizontalScrollBarVisibilityProperty();
+    pub fn getHorizontalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getHorizontalScrollBarVisibilityProperty();
     }
     pub fn GetHorizontalScrollBarVisibility(element: *DependencyObject) core.HResult!ScrollBarVisibility {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetHorizontalScrollBarVisibility(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetHorizontalScrollBarVisibility(element);
     }
     pub fn SetHorizontalScrollBarVisibility(element: *DependencyObject, horizontalScrollBarVisibility: ScrollBarVisibility) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetHorizontalScrollBarVisibility(element, horizontalScrollBarVisibility);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetHorizontalScrollBarVisibility(element, horizontalScrollBarVisibility);
     }
-    pub fn get_VerticalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getVerticalScrollBarVisibilityProperty();
+    pub fn getVerticalScrollBarVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getVerticalScrollBarVisibilityProperty();
     }
     pub fn GetVerticalScrollBarVisibility(element: *DependencyObject) core.HResult!ScrollBarVisibility {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetVerticalScrollBarVisibility(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetVerticalScrollBarVisibility(element);
     }
     pub fn SetVerticalScrollBarVisibility(element: *DependencyObject, verticalScrollBarVisibility: ScrollBarVisibility) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetVerticalScrollBarVisibility(element, verticalScrollBarVisibility);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetVerticalScrollBarVisibility(element, verticalScrollBarVisibility);
     }
-    pub fn get_IsHorizontalRailEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsHorizontalRailEnabledProperty();
+    pub fn getIsHorizontalRailEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsHorizontalRailEnabledProperty();
     }
     pub fn GetIsHorizontalRailEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsHorizontalRailEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsHorizontalRailEnabled(element);
     }
     pub fn SetIsHorizontalRailEnabled(element: *DependencyObject, isHorizontalRailEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsHorizontalRailEnabled(element, isHorizontalRailEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsHorizontalRailEnabled(element, isHorizontalRailEnabled);
     }
-    pub fn get_IsVerticalRailEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsVerticalRailEnabledProperty();
+    pub fn getIsVerticalRailEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsVerticalRailEnabledProperty();
     }
     pub fn GetIsVerticalRailEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsVerticalRailEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsVerticalRailEnabled(element);
     }
     pub fn SetIsVerticalRailEnabled(element: *DependencyObject, isVerticalRailEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsVerticalRailEnabled(element, isVerticalRailEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsVerticalRailEnabled(element, isVerticalRailEnabled);
     }
-    pub fn get_IsHorizontalScrollChainingEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsHorizontalScrollChainingEnabledProperty();
+    pub fn getIsHorizontalScrollChainingEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsHorizontalScrollChainingEnabledProperty();
     }
     pub fn GetIsHorizontalScrollChainingEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsHorizontalScrollChainingEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsHorizontalScrollChainingEnabled(element);
     }
     pub fn SetIsHorizontalScrollChainingEnabled(element: *DependencyObject, isHorizontalScrollChainingEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsHorizontalScrollChainingEnabled(element, isHorizontalScrollChainingEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsHorizontalScrollChainingEnabled(element, isHorizontalScrollChainingEnabled);
     }
-    pub fn get_IsVerticalScrollChainingEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsVerticalScrollChainingEnabledProperty();
+    pub fn getIsVerticalScrollChainingEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsVerticalScrollChainingEnabledProperty();
     }
     pub fn GetIsVerticalScrollChainingEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsVerticalScrollChainingEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsVerticalScrollChainingEnabled(element);
     }
     pub fn SetIsVerticalScrollChainingEnabled(element: *DependencyObject, isVerticalScrollChainingEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsVerticalScrollChainingEnabled(element, isVerticalScrollChainingEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsVerticalScrollChainingEnabled(element, isVerticalScrollChainingEnabled);
     }
-    pub fn get_IsZoomChainingEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsZoomChainingEnabledProperty();
+    pub fn getIsZoomChainingEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsZoomChainingEnabledProperty();
     }
     pub fn GetIsZoomChainingEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsZoomChainingEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsZoomChainingEnabled(element);
     }
     pub fn SetIsZoomChainingEnabled(element: *DependencyObject, isZoomChainingEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsZoomChainingEnabled(element, isZoomChainingEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsZoomChainingEnabled(element, isZoomChainingEnabled);
     }
-    pub fn get_IsScrollInertiaEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsScrollInertiaEnabledProperty();
+    pub fn getIsScrollInertiaEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsScrollInertiaEnabledProperty();
     }
     pub fn GetIsScrollInertiaEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsScrollInertiaEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsScrollInertiaEnabled(element);
     }
     pub fn SetIsScrollInertiaEnabled(element: *DependencyObject, isScrollInertiaEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsScrollInertiaEnabled(element, isScrollInertiaEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsScrollInertiaEnabled(element, isScrollInertiaEnabled);
     }
-    pub fn get_IsZoomInertiaEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsZoomInertiaEnabledProperty();
+    pub fn getIsZoomInertiaEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsZoomInertiaEnabledProperty();
     }
     pub fn GetIsZoomInertiaEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsZoomInertiaEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsZoomInertiaEnabled(element);
     }
     pub fn SetIsZoomInertiaEnabled(element: *DependencyObject, isZoomInertiaEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsZoomInertiaEnabled(element, isZoomInertiaEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsZoomInertiaEnabled(element, isZoomInertiaEnabled);
     }
-    pub fn get_HorizontalScrollModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getHorizontalScrollModeProperty();
+    pub fn getHorizontalScrollModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getHorizontalScrollModeProperty();
     }
     pub fn GetHorizontalScrollMode(element: *DependencyObject) core.HResult!ScrollMode {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetHorizontalScrollMode(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetHorizontalScrollMode(element);
     }
     pub fn SetHorizontalScrollMode(element: *DependencyObject, horizontalScrollMode: ScrollMode) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetHorizontalScrollMode(element, horizontalScrollMode);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetHorizontalScrollMode(element, horizontalScrollMode);
     }
-    pub fn get_VerticalScrollModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getVerticalScrollModeProperty();
+    pub fn getVerticalScrollModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getVerticalScrollModeProperty();
     }
     pub fn GetVerticalScrollMode(element: *DependencyObject) core.HResult!ScrollMode {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetVerticalScrollMode(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetVerticalScrollMode(element);
     }
     pub fn SetVerticalScrollMode(element: *DependencyObject, verticalScrollMode: ScrollMode) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetVerticalScrollMode(element, verticalScrollMode);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetVerticalScrollMode(element, verticalScrollMode);
     }
-    pub fn get_ZoomModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getZoomModeProperty();
+    pub fn getZoomModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getZoomModeProperty();
     }
     pub fn GetZoomMode(element: *DependencyObject) core.HResult!ZoomMode {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetZoomMode(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetZoomMode(element);
     }
     pub fn SetZoomMode(element: *DependencyObject, zoomMode: ZoomMode) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetZoomMode(element, zoomMode);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetZoomMode(element, zoomMode);
     }
-    pub fn get_IsDeferredScrollingEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getIsDeferredScrollingEnabledProperty();
+    pub fn getIsDeferredScrollingEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getIsDeferredScrollingEnabledProperty();
     }
     pub fn GetIsDeferredScrollingEnabled(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetIsDeferredScrollingEnabled(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetIsDeferredScrollingEnabled(element);
     }
     pub fn SetIsDeferredScrollingEnabled(element: *DependencyObject, isDeferredScrollingEnabled: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetIsDeferredScrollingEnabled(element, isDeferredScrollingEnabled);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetIsDeferredScrollingEnabled(element, isDeferredScrollingEnabled);
     }
-    pub fn get_BringIntoViewOnFocusChangeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.getBringIntoViewOnFocusChangeProperty();
+    pub fn getBringIntoViewOnFocusChangeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.getBringIntoViewOnFocusChangeProperty();
     }
     pub fn GetBringIntoViewOnFocusChange(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.GetBringIntoViewOnFocusChange(element);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.GetBringIntoViewOnFocusChange(element);
     }
     pub fn SetBringIntoViewOnFocusChange(element: *DependencyObject, bringIntoViewOnFocusChange: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStaticsCache.get();
-        return try factory.SetBringIntoViewOnFocusChange(element, bringIntoViewOnFocusChange);
+        const _f = @This().IScrollViewerStaticsCache.get();
+        return try _f.SetBringIntoViewOnFocusChange(element, bringIntoViewOnFocusChange);
     }
-    pub fn get_TopLeftHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics2Cache.get();
-        return try factory.getTopLeftHeaderProperty();
+    pub fn getTopLeftHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics2Cache.get();
+        return try _f.getTopLeftHeaderProperty();
     }
-    pub fn get_LeftHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics2Cache.get();
-        return try factory.getLeftHeaderProperty();
+    pub fn getLeftHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics2Cache.get();
+        return try _f.getLeftHeaderProperty();
     }
-    pub fn get_TopHeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics2Cache.get();
-        return try factory.getTopHeaderProperty();
+    pub fn getTopHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics2Cache.get();
+        return try _f.getTopHeaderProperty();
     }
-    pub fn get_ReduceViewportForCoreInputViewOcclusionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics4Cache.get();
-        return try factory.getReduceViewportForCoreInputViewOcclusionsProperty();
+    pub fn getReduceViewportForCoreInputViewOcclusionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics4Cache.get();
+        return try _f.getReduceViewportForCoreInputViewOcclusionsProperty();
     }
-    pub fn get_HorizontalAnchorRatioProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics4Cache.get();
-        return try factory.getHorizontalAnchorRatioProperty();
+    pub fn getHorizontalAnchorRatioProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics4Cache.get();
+        return try _f.getHorizontalAnchorRatioProperty();
     }
-    pub fn get_VerticalAnchorRatioProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics4Cache.get();
-        return try factory.getVerticalAnchorRatioProperty();
+    pub fn getVerticalAnchorRatioProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics4Cache.get();
+        return try _f.getVerticalAnchorRatioProperty();
     }
-    pub fn get_CanContentRenderOutsideBoundsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IScrollViewerStatics4Cache.get();
-        return try factory.getCanContentRenderOutsideBoundsProperty();
+    pub fn getCanContentRenderOutsideBoundsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IScrollViewerStatics4Cache.get();
+        return try _f.getCanContentRenderOutsideBoundsProperty();
     }
     pub fn GetCanContentRenderOutsideBounds(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().IScrollViewerStatics4Cache.get();
-        return try factory.GetCanContentRenderOutsideBounds(element);
+        const _f = @This().IScrollViewerStatics4Cache.get();
+        return try _f.GetCanContentRenderOutsideBounds(element);
     }
     pub fn SetCanContentRenderOutsideBounds(element: *DependencyObject, canContentRenderOutsideBounds: bool) core.HResult!void {
-        const factory = @This().IScrollViewerStatics4Cache.get();
-        return try factory.SetCanContentRenderOutsideBounds(element, canContentRenderOutsideBounds);
+        const _f = @This().IScrollViewerStatics4Cache.get();
+        return try _f.SetCanContentRenderOutsideBounds(element, canContentRenderOutsideBounds);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ScrollViewer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58053,33 +57927,33 @@ pub const SearchBox = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SearchHistoryEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISearchBoxStaticsCache.get();
-        return try factory.getSearchHistoryEnabledProperty();
+    pub fn getSearchHistoryEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISearchBoxStaticsCache.get();
+        return try _f.getSearchHistoryEnabledProperty();
     }
-    pub fn get_SearchHistoryContextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISearchBoxStaticsCache.get();
-        return try factory.getSearchHistoryContextProperty();
+    pub fn getSearchHistoryContextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISearchBoxStaticsCache.get();
+        return try _f.getSearchHistoryContextProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISearchBoxStaticsCache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISearchBoxStaticsCache.get();
+        return try _f.getPlaceholderTextProperty();
     }
-    pub fn get_QueryTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISearchBoxStaticsCache.get();
-        return try factory.getQueryTextProperty();
+    pub fn getQueryTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISearchBoxStaticsCache.get();
+        return try _f.getQueryTextProperty();
     }
-    pub fn get_FocusOnKeyboardInputProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISearchBoxStaticsCache.get();
-        return try factory.getFocusOnKeyboardInputProperty();
+    pub fn getFocusOnKeyboardInputProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISearchBoxStaticsCache.get();
+        return try _f.getFocusOnKeyboardInputProperty();
     }
-    pub fn get_ChooseSuggestionOnEnterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISearchBoxStaticsCache.get();
-        return try factory.getChooseSuggestionOnEnterProperty();
+    pub fn getChooseSuggestionOnEnterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISearchBoxStaticsCache.get();
+        return try _f.getChooseSuggestionOnEnterProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SearchBox {
-        const factory = @This().ISearchBoxFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISearchBoxFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SearchBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58302,8 +58176,8 @@ pub const SelectionChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithRemovedItemsAndAddedItems(removedItems: *IVector(IInspectable), addedItems: *IVector(IInspectable), baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SelectionChangedEventArgs {
-        const factory = @This().ISelectionChangedEventArgsFactoryCache.get();
-        return try factory.CreateInstanceWithRemovedItemsAndAddedItems(removedItems, addedItems, baseInterface, innerInterface);
+        const _f = @This().ISelectionChangedEventArgsFactoryCache.get();
+        return try _f.CreateInstanceWithRemovedItemsAndAddedItems(removedItems, addedItems, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SelectionChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58473,25 +58347,25 @@ pub const SemanticZoom = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISemanticZoom.IID)));
     }
-    pub fn get_ZoomedInViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISemanticZoomStaticsCache.get();
-        return try factory.getZoomedInViewProperty();
+    pub fn getZoomedInViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISemanticZoomStaticsCache.get();
+        return try _f.getZoomedInViewProperty();
     }
-    pub fn get_ZoomedOutViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISemanticZoomStaticsCache.get();
-        return try factory.getZoomedOutViewProperty();
+    pub fn getZoomedOutViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISemanticZoomStaticsCache.get();
+        return try _f.getZoomedOutViewProperty();
     }
-    pub fn get_IsZoomedInViewActiveProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISemanticZoomStaticsCache.get();
-        return try factory.getIsZoomedInViewActiveProperty();
+    pub fn getIsZoomedInViewActiveProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISemanticZoomStaticsCache.get();
+        return try _f.getIsZoomedInViewActiveProperty();
     }
-    pub fn get_CanChangeViewsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISemanticZoomStaticsCache.get();
-        return try factory.getCanChangeViewsProperty();
+    pub fn getCanChangeViewsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISemanticZoomStaticsCache.get();
+        return try _f.getCanChangeViewsProperty();
     }
-    pub fn get_IsZoomOutButtonEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISemanticZoomStaticsCache.get();
-        return try factory.getIsZoomOutButtonEnabledProperty();
+    pub fn getIsZoomOutButtonEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISemanticZoomStaticsCache.get();
+        return try _f.getIsZoomOutButtonEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SemanticZoom";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58721,25 +58595,25 @@ pub const SettingsFlyout = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISettingsFlyoutStaticsCache.get();
-        return try factory.getTitleProperty();
+    pub fn getTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISettingsFlyoutStaticsCache.get();
+        return try _f.getTitleProperty();
     }
-    pub fn get_HeaderBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISettingsFlyoutStaticsCache.get();
-        return try factory.getHeaderBackgroundProperty();
+    pub fn getHeaderBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISettingsFlyoutStaticsCache.get();
+        return try _f.getHeaderBackgroundProperty();
     }
-    pub fn get_HeaderForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISettingsFlyoutStaticsCache.get();
-        return try factory.getHeaderForegroundProperty();
+    pub fn getHeaderForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISettingsFlyoutStaticsCache.get();
+        return try _f.getHeaderForegroundProperty();
     }
-    pub fn get_IconSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISettingsFlyoutStaticsCache.get();
-        return try factory.getIconSourceProperty();
+    pub fn getIconSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISettingsFlyoutStaticsCache.get();
+        return try _f.getIconSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SettingsFlyout {
-        const factory = @This().ISettingsFlyoutFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISettingsFlyoutFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SettingsFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58793,21 +58667,21 @@ pub const SplitButton = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitButtonStaticsCache.get();
-        return try factory.getFlyoutProperty();
+    pub fn getFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitButtonStaticsCache.get();
+        return try _f.getFlyoutProperty();
     }
-    pub fn get_CommandProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitButtonStaticsCache.get();
-        return try factory.getCommandProperty();
+    pub fn getCommandProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitButtonStaticsCache.get();
+        return try _f.getCommandProperty();
     }
-    pub fn get_CommandParameterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitButtonStaticsCache.get();
-        return try factory.getCommandParameterProperty();
+    pub fn getCommandParameterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitButtonStaticsCache.get();
+        return try _f.getCommandParameterProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SplitButton {
-        const factory = @This().ISplitButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISplitButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SplitButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58847,8 +58721,8 @@ pub const SplitButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(owner: *SplitButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SplitButtonAutomationPeer {
-        const factory = @This().ISplitButtonAutomationPeerFactoryCache.get();
-        return try factory.CreateInstance(owner, baseInterface, innerInterface);
+        const _f = @This().ISplitButtonAutomationPeerFactoryCache.get();
+        return try _f.CreateInstance(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SplitButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -58990,49 +58864,49 @@ pub const SplitView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_PaneProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getPaneProperty();
+    pub fn getPaneProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getPaneProperty();
     }
-    pub fn get_IsPaneOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getIsPaneOpenProperty();
+    pub fn getIsPaneOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getIsPaneOpenProperty();
     }
-    pub fn get_OpenPaneLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getOpenPaneLengthProperty();
+    pub fn getOpenPaneLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getOpenPaneLengthProperty();
     }
-    pub fn get_CompactPaneLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getCompactPaneLengthProperty();
+    pub fn getCompactPaneLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getCompactPaneLengthProperty();
     }
-    pub fn get_PanePlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getPanePlacementProperty();
+    pub fn getPanePlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getPanePlacementProperty();
     }
-    pub fn get_DisplayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getDisplayModeProperty();
+    pub fn getDisplayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getDisplayModeProperty();
     }
-    pub fn get_TemplateSettingsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getTemplateSettingsProperty();
+    pub fn getTemplateSettingsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getTemplateSettingsProperty();
     }
-    pub fn get_PaneBackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStaticsCache.get();
-        return try factory.getPaneBackgroundProperty();
+    pub fn getPaneBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStaticsCache.get();
+        return try _f.getPaneBackgroundProperty();
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitViewStatics2Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitViewStatics2Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SplitView {
-        const factory = @This().ISplitViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISplitViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SplitView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59216,41 +59090,41 @@ pub const StackPanel = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BorderBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStatics2Cache.get();
-        return try factory.getBorderBrushProperty();
+    pub fn getBorderBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStatics2Cache.get();
+        return try _f.getBorderBrushProperty();
     }
-    pub fn get_BorderThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStatics2Cache.get();
-        return try factory.getBorderThicknessProperty();
+    pub fn getBorderThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStatics2Cache.get();
+        return try _f.getBorderThicknessProperty();
     }
-    pub fn get_CornerRadiusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStatics2Cache.get();
-        return try factory.getCornerRadiusProperty();
+    pub fn getCornerRadiusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStatics2Cache.get();
+        return try _f.getCornerRadiusProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStatics2Cache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStatics2Cache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_AreScrollSnapPointsRegularProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStaticsCache.get();
-        return try factory.getAreScrollSnapPointsRegularProperty();
+    pub fn getAreScrollSnapPointsRegularProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStaticsCache.get();
+        return try _f.getAreScrollSnapPointsRegularProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_BackgroundSizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStatics5Cache.get();
-        return try factory.getBackgroundSizingProperty();
+    pub fn getBackgroundSizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStatics5Cache.get();
+        return try _f.getBackgroundSizingProperty();
     }
-    pub fn get_SpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStackPanelStatics4Cache.get();
-        return try factory.getSpacingProperty();
+    pub fn getSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStackPanelStatics4Cache.get();
+        return try _f.getSpacingProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*StackPanel {
-        const factory = @This().IStackPanelFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IStackPanelFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.StackPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59284,8 +59158,8 @@ pub const StyleSelector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*StyleSelector {
-        const factory = @This().IStyleSelectorFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IStyleSelectorFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.StyleSelector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59306,8 +59180,8 @@ pub const SwapChainBackgroundPanel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SwapChainBackgroundPanel {
-        const factory = @This().ISwapChainBackgroundPanelFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISwapChainBackgroundPanelFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SwapChainBackgroundPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59341,17 +59215,17 @@ pub const SwapChainPanel = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CompositionScaleXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwapChainPanelStaticsCache.get();
-        return try factory.getCompositionScaleXProperty();
+    pub fn getCompositionScaleXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwapChainPanelStaticsCache.get();
+        return try _f.getCompositionScaleXProperty();
     }
-    pub fn get_CompositionScaleYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwapChainPanelStaticsCache.get();
-        return try factory.getCompositionScaleYProperty();
+    pub fn getCompositionScaleYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwapChainPanelStaticsCache.get();
+        return try _f.getCompositionScaleYProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SwapChainPanel {
-        const factory = @This().ISwapChainPanelFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISwapChainPanelFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SwapChainPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59407,25 +59281,25 @@ pub const SwipeControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LeftItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeControlStaticsCache.get();
-        return try factory.getLeftItemsProperty();
+    pub fn getLeftItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeControlStaticsCache.get();
+        return try _f.getLeftItemsProperty();
     }
-    pub fn get_RightItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeControlStaticsCache.get();
-        return try factory.getRightItemsProperty();
+    pub fn getRightItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeControlStaticsCache.get();
+        return try _f.getRightItemsProperty();
     }
-    pub fn get_TopItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeControlStaticsCache.get();
-        return try factory.getTopItemsProperty();
+    pub fn getTopItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeControlStaticsCache.get();
+        return try _f.getTopItemsProperty();
     }
-    pub fn get_BottomItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeControlStaticsCache.get();
-        return try factory.getBottomItemsProperty();
+    pub fn getBottomItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeControlStaticsCache.get();
+        return try _f.getBottomItemsProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SwipeControl {
-        const factory = @This().ISwipeControlFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISwipeControlFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SwipeControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59504,37 +59378,37 @@ pub const SwipeItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IconSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getIconSourceProperty();
+    pub fn getIconSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getIconSourceProperty();
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getTextProperty();
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getBackgroundProperty();
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_CommandProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getCommandProperty();
+    pub fn getCommandProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getCommandProperty();
     }
-    pub fn get_CommandParameterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getCommandParameterProperty();
+    pub fn getCommandParameterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getCommandParameterProperty();
     }
-    pub fn get_BehaviorOnInvokedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemStaticsCache.get();
-        return try factory.getBehaviorOnInvokedProperty();
+    pub fn getBehaviorOnInvokedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemStaticsCache.get();
+        return try _f.getBehaviorOnInvokedProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SwipeItem {
-        const factory = @This().ISwipeItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISwipeItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SwipeItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59566,53 +59440,23 @@ pub const SwipeItems = extern struct {
         const this: *ISwipeItems = @ptrCast(self);
         return try this.putMode(value);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(SwipeItem) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(SwipeItem) {
         var this: ?*IVector(SwipeItem) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(SwipeItem) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
-    }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(SwipeItem) = undefined;
@@ -59626,19 +59470,7 @@ pub const SwipeItems = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        var this: ?*IVector(SwipeItem) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(SwipeItem) {
         var this: ?*IIterable(SwipeItem) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -59647,13 +59479,13 @@ pub const SwipeItems = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeItemsStaticsCache.get();
-        return try factory.getModeProperty();
+    pub fn getModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeItemsStaticsCache.get();
+        return try _f.getModeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SwipeItems {
-        const factory = @This().ISwipeItemsFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISwipeItemsFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SwipeItems";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59884,12 +59716,12 @@ pub const SymbolIcon = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISymbolIcon.IID)));
     }
     pub fn CreateInstanceWithSymbol(symbol: Symbol) core.HResult!*SymbolIcon {
-        const factory = @This().ISymbolIconFactoryCache.get();
-        return try factory.CreateInstanceWithSymbol(symbol);
+        const _f = @This().ISymbolIconFactoryCache.get();
+        return try _f.CreateInstanceWithSymbol(symbol);
     }
-    pub fn get_SymbolProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISymbolIconStaticsCache.get();
-        return try factory.getSymbolProperty();
+    pub fn getSymbolProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISymbolIconStaticsCache.get();
+        return try _f.getSymbolProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SymbolIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -59913,13 +59745,13 @@ pub const SymbolIconSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SymbolProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISymbolIconSourceStaticsCache.get();
-        return try factory.getSymbolProperty();
+    pub fn getSymbolProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISymbolIconSourceStaticsCache.get();
+        return try _f.getSymbolProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*SymbolIconSource {
-        const factory = @This().ISymbolIconSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISymbolIconSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.SymbolIconSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -60270,113 +60102,113 @@ pub const TextBlock = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITextBlock.IID)));
     }
-    pub fn get_TextDecorationsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics5Cache.get();
-        return try factory.getTextDecorationsProperty();
+    pub fn getTextDecorationsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics5Cache.get();
+        return try _f.getTextDecorationsProperty();
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics3Cache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics3Cache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn get_SelectionFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics7Cache.get();
-        return try factory.getSelectionFlyoutProperty();
+    pub fn getSelectionFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics7Cache.get();
+        return try _f.getSelectionFlyoutProperty();
     }
-    pub fn get_SelectionHighlightColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics2Cache.get();
-        return try factory.getSelectionHighlightColorProperty();
+    pub fn getSelectionHighlightColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics2Cache.get();
+        return try _f.getSelectionHighlightColorProperty();
     }
-    pub fn get_MaxLinesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics2Cache.get();
-        return try factory.getMaxLinesProperty();
+    pub fn getMaxLinesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics2Cache.get();
+        return try _f.getMaxLinesProperty();
     }
-    pub fn get_TextLineBoundsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics2Cache.get();
-        return try factory.getTextLineBoundsProperty();
+    pub fn getTextLineBoundsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics2Cache.get();
+        return try _f.getTextLineBoundsProperty();
     }
-    pub fn get_OpticalMarginAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics2Cache.get();
-        return try factory.getOpticalMarginAlignmentProperty();
+    pub fn getOpticalMarginAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics2Cache.get();
+        return try _f.getOpticalMarginAlignmentProperty();
     }
-    pub fn get_IsColorFontEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics2Cache.get();
-        return try factory.getIsColorFontEnabledProperty();
+    pub fn getIsColorFontEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics2Cache.get();
+        return try _f.getIsColorFontEnabledProperty();
     }
-    pub fn get_TextReadingOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics2Cache.get();
-        return try factory.getTextReadingOrderProperty();
+    pub fn getTextReadingOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics2Cache.get();
+        return try _f.getTextReadingOrderProperty();
     }
-    pub fn get_IsTextTrimmedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics6Cache.get();
-        return try factory.getIsTextTrimmedProperty();
+    pub fn getIsTextTrimmedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics6Cache.get();
+        return try _f.getIsTextTrimmedProperty();
     }
-    pub fn get_HorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStatics6Cache.get();
-        return try factory.getHorizontalTextAlignmentProperty();
+    pub fn getHorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStatics6Cache.get();
+        return try _f.getHorizontalTextAlignmentProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_FontStretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getFontStretchProperty();
+    pub fn getFontStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getFontStretchProperty();
     }
-    pub fn get_CharacterSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getCharacterSpacingProperty();
+    pub fn getCharacterSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getCharacterSpacingProperty();
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_TextWrappingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getTextWrappingProperty();
+    pub fn getTextWrappingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getTextWrappingProperty();
     }
-    pub fn get_TextTrimmingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getTextTrimmingProperty();
+    pub fn getTextTrimmingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getTextTrimmingProperty();
     }
-    pub fn get_TextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getTextAlignmentProperty();
+    pub fn getTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getTextAlignmentProperty();
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getTextProperty();
     }
-    pub fn get_PaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getPaddingProperty();
+    pub fn getPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getPaddingProperty();
     }
-    pub fn get_LineHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getLineHeightProperty();
+    pub fn getLineHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getLineHeightProperty();
     }
-    pub fn get_LineStackingStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getLineStackingStrategyProperty();
+    pub fn getLineStackingStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getLineStackingStrategyProperty();
     }
-    pub fn get_IsTextSelectionEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getIsTextSelectionEnabledProperty();
+    pub fn getIsTextSelectionEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getIsTextSelectionEnabledProperty();
     }
-    pub fn get_SelectedTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBlockStaticsCache.get();
-        return try factory.getSelectedTextProperty();
+    pub fn getSelectedTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBlockStaticsCache.get();
+        return try _f.getSelectedTextProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TextBlock";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -60906,125 +60738,125 @@ pub const TextBox = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics2Cache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics2Cache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics2Cache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics2Cache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_PlaceholderTextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics2Cache.get();
-        return try factory.getPlaceholderTextProperty();
+    pub fn getPlaceholderTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics2Cache.get();
+        return try _f.getPlaceholderTextProperty();
     }
-    pub fn get_SelectionHighlightColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics2Cache.get();
-        return try factory.getSelectionHighlightColorProperty();
+    pub fn getSelectionHighlightColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics2Cache.get();
+        return try _f.getSelectionHighlightColorProperty();
     }
-    pub fn get_PreventKeyboardDisplayOnProgrammaticFocusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics2Cache.get();
-        return try factory.getPreventKeyboardDisplayOnProgrammaticFocusProperty();
+    pub fn getPreventKeyboardDisplayOnProgrammaticFocusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics2Cache.get();
+        return try _f.getPreventKeyboardDisplayOnProgrammaticFocusProperty();
     }
-    pub fn get_IsColorFontEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics2Cache.get();
-        return try factory.getIsColorFontEnabledProperty();
+    pub fn getIsColorFontEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics2Cache.get();
+        return try _f.getIsColorFontEnabledProperty();
     }
-    pub fn get_TextProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getTextProperty();
+    pub fn getTextProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getTextProperty();
     }
-    pub fn get_MaxLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getMaxLengthProperty();
+    pub fn getMaxLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getMaxLengthProperty();
     }
-    pub fn get_IsReadOnlyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getIsReadOnlyProperty();
+    pub fn getIsReadOnlyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getIsReadOnlyProperty();
     }
-    pub fn get_AcceptsReturnProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getAcceptsReturnProperty();
+    pub fn getAcceptsReturnProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getAcceptsReturnProperty();
     }
-    pub fn get_TextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getTextAlignmentProperty();
+    pub fn getTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getTextAlignmentProperty();
     }
-    pub fn get_TextWrappingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getTextWrappingProperty();
+    pub fn getTextWrappingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getTextWrappingProperty();
     }
-    pub fn get_IsSpellCheckEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getIsSpellCheckEnabledProperty();
+    pub fn getIsSpellCheckEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getIsSpellCheckEnabledProperty();
     }
-    pub fn get_IsTextPredictionEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getIsTextPredictionEnabledProperty();
+    pub fn getIsTextPredictionEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getIsTextPredictionEnabledProperty();
     }
-    pub fn get_InputScopeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStaticsCache.get();
-        return try factory.getInputScopeProperty();
+    pub fn getInputScopeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStaticsCache.get();
+        return try _f.getInputScopeProperty();
     }
-    pub fn get_CanPasteClipboardContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics8Cache.get();
-        return try factory.getCanPasteClipboardContentProperty();
+    pub fn getCanPasteClipboardContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics8Cache.get();
+        return try _f.getCanPasteClipboardContentProperty();
     }
-    pub fn get_CanUndoProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics8Cache.get();
-        return try factory.getCanUndoProperty();
+    pub fn getCanUndoProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics8Cache.get();
+        return try _f.getCanUndoProperty();
     }
-    pub fn get_CanRedoProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics8Cache.get();
-        return try factory.getCanRedoProperty();
+    pub fn getCanRedoProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics8Cache.get();
+        return try _f.getCanRedoProperty();
     }
-    pub fn get_SelectionFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics8Cache.get();
-        return try factory.getSelectionFlyoutProperty();
+    pub fn getSelectionFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics8Cache.get();
+        return try _f.getSelectionFlyoutProperty();
     }
-    pub fn get_ProofingMenuFlyoutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics8Cache.get();
-        return try factory.getProofingMenuFlyoutProperty();
+    pub fn getProofingMenuFlyoutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics8Cache.get();
+        return try _f.getProofingMenuFlyoutProperty();
     }
-    pub fn get_DescriptionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics8Cache.get();
-        return try factory.getDescriptionProperty();
+    pub fn getDescriptionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics8Cache.get();
+        return try _f.getDescriptionProperty();
     }
-    pub fn get_HandwritingViewProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics7Cache.get();
-        return try factory.getHandwritingViewProperty();
+    pub fn getHandwritingViewProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics7Cache.get();
+        return try _f.getHandwritingViewProperty();
     }
-    pub fn get_IsHandwritingViewEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics7Cache.get();
-        return try factory.getIsHandwritingViewEnabledProperty();
+    pub fn getIsHandwritingViewEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics7Cache.get();
+        return try _f.getIsHandwritingViewEnabledProperty();
     }
-    pub fn get_HorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics6Cache.get();
-        return try factory.getHorizontalTextAlignmentProperty();
+    pub fn getHorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics6Cache.get();
+        return try _f.getHorizontalTextAlignmentProperty();
     }
-    pub fn get_CharacterCasingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics6Cache.get();
-        return try factory.getCharacterCasingProperty();
+    pub fn getCharacterCasingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics6Cache.get();
+        return try _f.getCharacterCasingProperty();
     }
-    pub fn get_PlaceholderForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics6Cache.get();
-        return try factory.getPlaceholderForegroundProperty();
+    pub fn getPlaceholderForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics6Cache.get();
+        return try _f.getPlaceholderForegroundProperty();
     }
-    pub fn get_SelectionHighlightColorWhenNotFocusedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics5Cache.get();
-        return try factory.getSelectionHighlightColorWhenNotFocusedProperty();
+    pub fn getSelectionHighlightColorWhenNotFocusedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics5Cache.get();
+        return try _f.getSelectionHighlightColorWhenNotFocusedProperty();
     }
-    pub fn get_DesiredCandidateWindowAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics3Cache.get();
-        return try factory.getDesiredCandidateWindowAlignmentProperty();
+    pub fn getDesiredCandidateWindowAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics3Cache.get();
+        return try _f.getDesiredCandidateWindowAlignmentProperty();
     }
-    pub fn get_TextReadingOrderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextBoxStatics3Cache.get();
-        return try factory.getTextReadingOrderProperty();
+    pub fn getTextReadingOrderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextBoxStatics3Cache.get();
+        return try _f.getTextReadingOrderProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextBox {
-        const factory = @This().ITextBoxFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITextBoxFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TextBox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61199,8 +61031,8 @@ pub const TextCommandBarFlyout = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextCommandBarFlyout {
-        const factory = @This().ITextCommandBarFlyoutFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITextCommandBarFlyoutFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TextCommandBarFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61505,37 +61337,37 @@ pub const TimePicker = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_LightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStatics2Cache.get();
-        return try factory.getLightDismissOverlayModeProperty();
+    pub fn getLightDismissOverlayModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStatics2Cache.get();
+        return try _f.getLightDismissOverlayModeProperty();
     }
-    pub fn get_SelectedTimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStatics3Cache.get();
-        return try factory.getSelectedTimeProperty();
+    pub fn getSelectedTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStatics3Cache.get();
+        return try _f.getSelectedTimeProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_ClockIdentifierProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStaticsCache.get();
-        return try factory.getClockIdentifierProperty();
+    pub fn getClockIdentifierProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStaticsCache.get();
+        return try _f.getClockIdentifierProperty();
     }
-    pub fn get_MinuteIncrementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStaticsCache.get();
-        return try factory.getMinuteIncrementProperty();
+    pub fn getMinuteIncrementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStaticsCache.get();
+        return try _f.getMinuteIncrementProperty();
     }
-    pub fn get_TimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerStaticsCache.get();
-        return try factory.getTimeProperty();
+    pub fn getTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerStaticsCache.get();
+        return try _f.getTimeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TimePicker {
-        const factory = @This().ITimePickerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITimePickerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TimePicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61592,17 +61424,17 @@ pub const TimePickerFlyout = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ITimePickerFlyout.IID)));
     }
-    pub fn get_ClockIdentifierProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerFlyoutStaticsCache.get();
-        return try factory.getClockIdentifierProperty();
+    pub fn getClockIdentifierProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerFlyoutStaticsCache.get();
+        return try _f.getClockIdentifierProperty();
     }
-    pub fn get_TimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerFlyoutStaticsCache.get();
-        return try factory.getTimeProperty();
+    pub fn getTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerFlyoutStaticsCache.get();
+        return try _f.getTimeProperty();
     }
-    pub fn get_MinuteIncrementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerFlyoutStaticsCache.get();
-        return try factory.getMinuteIncrementProperty();
+    pub fn getMinuteIncrementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerFlyoutStaticsCache.get();
+        return try _f.getMinuteIncrementProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TimePickerFlyout";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61629,9 +61461,9 @@ pub const TimePickerFlyoutPresenter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimePickerFlyoutPresenterStatics2Cache.get();
-        return try factory.getIsDefaultShadowEnabledProperty();
+    pub fn getIsDefaultShadowEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimePickerFlyoutPresenterStatics2Cache.get();
+        return try _f.getIsDefaultShadowEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TimePickerFlyoutPresenter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61685,13 +61517,13 @@ pub const ToggleMenuFlyoutItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsCheckedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleMenuFlyoutItemStaticsCache.get();
-        return try factory.getIsCheckedProperty();
+    pub fn getIsCheckedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleMenuFlyoutItemStaticsCache.get();
+        return try _f.getIsCheckedProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleMenuFlyoutItem {
-        const factory = @This().IToggleMenuFlyoutItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IToggleMenuFlyoutItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ToggleMenuFlyoutItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61723,8 +61555,8 @@ pub const ToggleSplitButton = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSplitButton {
-        const factory = @This().IToggleSplitButtonFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IToggleSplitButtonFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ToggleSplitButton";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61769,8 +61601,8 @@ pub const ToggleSplitButtonAutomationPeer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(owner: *ToggleSplitButton, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToggleSplitButtonAutomationPeer {
-        const factory = @This().IToggleSplitButtonAutomationPeerFactoryCache.get();
-        return try factory.CreateInstance(owner, baseInterface, innerInterface);
+        const _f = @This().IToggleSplitButtonAutomationPeerFactoryCache.get();
+        return try _f.CreateInstance(owner, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ToggleSplitButtonAutomationPeer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -61888,33 +61720,33 @@ pub const ToggleSwitch = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IToggleSwitch.IID)));
     }
-    pub fn get_IsOnProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getIsOnProperty();
+    pub fn getIsOnProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getIsOnProperty();
     }
-    pub fn get_HeaderProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getHeaderProperty();
+    pub fn getHeaderProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getHeaderProperty();
     }
-    pub fn get_HeaderTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getHeaderTemplateProperty();
+    pub fn getHeaderTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getHeaderTemplateProperty();
     }
-    pub fn get_OnContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getOnContentProperty();
+    pub fn getOnContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getOnContentProperty();
     }
-    pub fn get_OnContentTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getOnContentTemplateProperty();
+    pub fn getOnContentTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getOnContentTemplateProperty();
     }
-    pub fn get_OffContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getOffContentProperty();
+    pub fn getOffContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getOffContentProperty();
     }
-    pub fn get_OffContentTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToggleSwitchStaticsCache.get();
-        return try factory.getOffContentTemplateProperty();
+    pub fn getOffContentTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToggleSwitchStaticsCache.get();
+        return try _f.getOffContentTemplateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ToggleSwitch";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62001,33 +61833,33 @@ pub const ToolTip = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PlacementRectProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipStatics2Cache.get();
-        return try factory.getPlacementRectProperty();
+    pub fn getPlacementRectProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipStatics2Cache.get();
+        return try _f.getPlacementRectProperty();
     }
-    pub fn get_HorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipStaticsCache.get();
-        return try factory.getHorizontalOffsetProperty();
+    pub fn getHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipStaticsCache.get();
+        return try _f.getHorizontalOffsetProperty();
     }
-    pub fn get_IsOpenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipStaticsCache.get();
-        return try factory.getIsOpenProperty();
+    pub fn getIsOpenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipStaticsCache.get();
+        return try _f.getIsOpenProperty();
     }
-    pub fn get_PlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipStaticsCache.get();
-        return try factory.getPlacementProperty();
+    pub fn getPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipStaticsCache.get();
+        return try _f.getPlacementProperty();
     }
-    pub fn get_PlacementTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipStaticsCache.get();
-        return try factory.getPlacementTargetProperty();
+    pub fn getPlacementTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipStaticsCache.get();
+        return try _f.getPlacementTargetProperty();
     }
-    pub fn get_VerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipStaticsCache.get();
-        return try factory.getVerticalOffsetProperty();
+    pub fn getVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipStaticsCache.get();
+        return try _f.getVerticalOffsetProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ToolTip {
-        const factory = @This().IToolTipFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IToolTipFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ToolTip";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62043,41 +61875,41 @@ pub const ToolTipService = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_PlacementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.getPlacementProperty();
+    pub fn getPlacementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.getPlacementProperty();
     }
     pub fn GetPlacement(element: *DependencyObject) core.HResult!PlacementMode {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.GetPlacement(element);
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.GetPlacement(element);
     }
     pub fn SetPlacement(element: *DependencyObject, value: PlacementMode) core.HResult!void {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.SetPlacement(element, value);
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.SetPlacement(element, value);
     }
-    pub fn get_PlacementTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.getPlacementTargetProperty();
+    pub fn getPlacementTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.getPlacementTargetProperty();
     }
     pub fn GetPlacementTarget(element: *DependencyObject) core.HResult!*UIElement {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.GetPlacementTarget(element);
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.GetPlacementTarget(element);
     }
     pub fn SetPlacementTarget(element: *DependencyObject, value: *UIElement) core.HResult!void {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.SetPlacementTarget(element, value);
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.SetPlacementTarget(element, value);
     }
-    pub fn get_ToolTipProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.getToolTipProperty();
+    pub fn getToolTipProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.getToolTipProperty();
     }
     pub fn GetToolTip(element: *DependencyObject) core.HResult!*IInspectable {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.GetToolTip(element);
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.GetToolTip(element);
     }
     pub fn SetToolTip(element: *DependencyObject, value: *IInspectable) core.HResult!void {
-        const factory = @This().IToolTipServiceStaticsCache.get();
-        return try factory.SetToolTip(element, value);
+        const _f = @This().IToolTipServiceStaticsCache.get();
+        return try _f.SetToolTip(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.ToolTipService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62287,45 +62119,45 @@ pub const TreeView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SelectionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStaticsCache.get();
-        return try factory.getSelectionModeProperty();
+    pub fn getSelectionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStaticsCache.get();
+        return try _f.getSelectionModeProperty();
     }
-    pub fn get_CanDragItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getCanDragItemsProperty();
+    pub fn getCanDragItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getCanDragItemsProperty();
     }
-    pub fn get_CanReorderItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getCanReorderItemsProperty();
+    pub fn getCanReorderItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getCanReorderItemsProperty();
     }
-    pub fn get_ItemTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getItemTemplateProperty();
+    pub fn getItemTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getItemTemplateProperty();
     }
-    pub fn get_ItemTemplateSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getItemTemplateSelectorProperty();
+    pub fn getItemTemplateSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getItemTemplateSelectorProperty();
     }
-    pub fn get_ItemContainerStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getItemContainerStyleProperty();
+    pub fn getItemContainerStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getItemContainerStyleProperty();
     }
-    pub fn get_ItemContainerStyleSelectorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getItemContainerStyleSelectorProperty();
+    pub fn getItemContainerStyleSelectorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getItemContainerStyleSelectorProperty();
     }
-    pub fn get_ItemContainerTransitionsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getItemContainerTransitionsProperty();
+    pub fn getItemContainerTransitionsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getItemContainerTransitionsProperty();
     }
-    pub fn get_ItemsSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewStatics2Cache.get();
-        return try factory.getItemsSourceProperty();
+    pub fn getItemsSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewStatics2Cache.get();
+        return try _f.getItemsSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeView {
-        const factory = @This().ITreeViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITreeViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TreeView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62493,45 +62325,45 @@ pub const TreeViewItem = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_GlyphOpacityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getGlyphOpacityProperty();
+    pub fn getGlyphOpacityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getGlyphOpacityProperty();
     }
-    pub fn get_GlyphBrushProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getGlyphBrushProperty();
+    pub fn getGlyphBrushProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getGlyphBrushProperty();
     }
-    pub fn get_ExpandedGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getExpandedGlyphProperty();
+    pub fn getExpandedGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getExpandedGlyphProperty();
     }
-    pub fn get_CollapsedGlyphProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getCollapsedGlyphProperty();
+    pub fn getCollapsedGlyphProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getCollapsedGlyphProperty();
     }
-    pub fn get_GlyphSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getGlyphSizeProperty();
+    pub fn getGlyphSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getGlyphSizeProperty();
     }
-    pub fn get_IsExpandedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getIsExpandedProperty();
+    pub fn getIsExpandedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getIsExpandedProperty();
     }
-    pub fn get_TreeViewItemTemplateSettingsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStaticsCache.get();
-        return try factory.getTreeViewItemTemplateSettingsProperty();
+    pub fn getTreeViewItemTemplateSettingsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStaticsCache.get();
+        return try _f.getTreeViewItemTemplateSettingsProperty();
     }
-    pub fn get_HasUnrealizedChildrenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStatics2Cache.get();
-        return try factory.getHasUnrealizedChildrenProperty();
+    pub fn getHasUnrealizedChildrenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStatics2Cache.get();
+        return try _f.getHasUnrealizedChildrenProperty();
     }
-    pub fn get_ItemsSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemStatics2Cache.get();
-        return try factory.getItemsSourceProperty();
+    pub fn getItemsSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemStatics2Cache.get();
+        return try _f.getItemsSourceProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItem {
-        const factory = @This().ITreeViewItemFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITreeViewItemFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TreeViewItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62583,25 +62415,25 @@ pub const TreeViewItemTemplateSettings = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ExpandedGlyphVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
-        return try factory.getExpandedGlyphVisibilityProperty();
+    pub fn getExpandedGlyphVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
+        return try _f.getExpandedGlyphVisibilityProperty();
     }
-    pub fn get_CollapsedGlyphVisibilityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
-        return try factory.getCollapsedGlyphVisibilityProperty();
+    pub fn getCollapsedGlyphVisibilityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
+        return try _f.getCollapsedGlyphVisibilityProperty();
     }
-    pub fn get_IndentationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
-        return try factory.getIndentationProperty();
+    pub fn getIndentationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
+        return try _f.getIndentationProperty();
     }
-    pub fn get_DragItemsCountProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
-        return try factory.getDragItemsCountProperty();
+    pub fn getDragItemsCountProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewItemTemplateSettingsStaticsCache.get();
+        return try _f.getDragItemsCountProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewItemTemplateSettings {
-        const factory = @This().ITreeViewItemTemplateSettingsFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITreeViewItemTemplateSettingsFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TreeViewItemTemplateSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62617,8 +62449,8 @@ pub const TreeViewList = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewList {
-        const factory = @This().ITreeViewListFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITreeViewListFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TreeViewList";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62672,25 +62504,25 @@ pub const TreeViewNode = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ContentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewNodeStaticsCache.get();
-        return try factory.getContentProperty();
+    pub fn getContentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewNodeStaticsCache.get();
+        return try _f.getContentProperty();
     }
-    pub fn get_DepthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewNodeStaticsCache.get();
-        return try factory.getDepthProperty();
+    pub fn getDepthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewNodeStaticsCache.get();
+        return try _f.getDepthProperty();
     }
-    pub fn get_IsExpandedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewNodeStaticsCache.get();
-        return try factory.getIsExpandedProperty();
+    pub fn getIsExpandedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewNodeStaticsCache.get();
+        return try _f.getIsExpandedProperty();
     }
-    pub fn get_HasChildrenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITreeViewNodeStaticsCache.get();
-        return try factory.getHasChildrenProperty();
+    pub fn getHasChildrenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITreeViewNodeStaticsCache.get();
+        return try _f.getHasChildrenProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TreeViewNode {
-        const factory = @This().ITreeViewNodeFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITreeViewNodeFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TreeViewNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62794,49 +62626,49 @@ pub const TwoPaneView = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Pane1Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getPane1Property();
+    pub fn getPane1Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getPane1Property();
     }
-    pub fn get_Pane2Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getPane2Property();
+    pub fn getPane2Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getPane2Property();
     }
-    pub fn get_Pane1LengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getPane1LengthProperty();
+    pub fn getPane1LengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getPane1LengthProperty();
     }
-    pub fn get_Pane2LengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getPane2LengthProperty();
+    pub fn getPane2LengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getPane2LengthProperty();
     }
-    pub fn get_PanePriorityProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getPanePriorityProperty();
+    pub fn getPanePriorityProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getPanePriorityProperty();
     }
-    pub fn get_ModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getModeProperty();
+    pub fn getModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getModeProperty();
     }
-    pub fn get_WideModeConfigurationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getWideModeConfigurationProperty();
+    pub fn getWideModeConfigurationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getWideModeConfigurationProperty();
     }
-    pub fn get_TallModeConfigurationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getTallModeConfigurationProperty();
+    pub fn getTallModeConfigurationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getTallModeConfigurationProperty();
     }
-    pub fn get_MinWideModeWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getMinWideModeWidthProperty();
+    pub fn getMinWideModeWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getMinWideModeWidthProperty();
     }
-    pub fn get_MinTallModeHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITwoPaneViewStaticsCache.get();
-        return try factory.getMinTallModeHeightProperty();
+    pub fn getMinTallModeHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITwoPaneViewStaticsCache.get();
+        return try _f.getMinTallModeHeightProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TwoPaneView {
-        const factory = @This().ITwoPaneViewFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITwoPaneViewFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.TwoPaneView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -62873,55 +62705,27 @@ pub const UIElementCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Move(oldIndex, newIndex);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(UIElement) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(UIElement) {
+        const this: *IVector(UIElement) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(UIElement) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(UIElement) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(UIElement) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(UIElement) {
         var this: ?*IIterable(UIElement) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -62990,53 +62794,53 @@ pub const VariableSizedWrapGrid = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVariableSizedWrapGrid.IID)));
     }
-    pub fn get_ItemHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getItemHeightProperty();
+    pub fn getItemHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getItemHeightProperty();
     }
-    pub fn get_ItemWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getItemWidthProperty();
+    pub fn getItemWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getItemWidthProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_HorizontalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getHorizontalChildrenAlignmentProperty();
+    pub fn getHorizontalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getHorizontalChildrenAlignmentProperty();
     }
-    pub fn get_VerticalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getVerticalChildrenAlignmentProperty();
+    pub fn getVerticalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getVerticalChildrenAlignmentProperty();
     }
-    pub fn get_MaximumRowsOrColumnsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getMaximumRowsOrColumnsProperty();
+    pub fn getMaximumRowsOrColumnsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getMaximumRowsOrColumnsProperty();
     }
-    pub fn get_RowSpanProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getRowSpanProperty();
+    pub fn getRowSpanProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getRowSpanProperty();
     }
     pub fn GetRowSpan(element: *UIElement) core.HResult!i32 {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.GetRowSpan(element);
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.GetRowSpan(element);
     }
     pub fn SetRowSpan(element: *UIElement, value: i32) core.HResult!void {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.SetRowSpan(element, value);
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.SetRowSpan(element, value);
     }
-    pub fn get_ColumnSpanProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.getColumnSpanProperty();
+    pub fn getColumnSpanProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.getColumnSpanProperty();
     }
     pub fn GetColumnSpan(element: *UIElement) core.HResult!i32 {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.GetColumnSpan(element);
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.GetColumnSpan(element);
     }
     pub fn SetColumnSpan(element: *UIElement, value: i32) core.HResult!void {
-        const factory = @This().IVariableSizedWrapGridStaticsCache.get();
-        return try factory.SetColumnSpan(element, value);
+        const _f = @This().IVariableSizedWrapGridStaticsCache.get();
+        return try _f.SetColumnSpan(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.VariableSizedWrapGrid";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -63079,13 +62883,13 @@ pub const Viewbox = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IViewbox.IID)));
     }
-    pub fn get_StretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IViewboxStaticsCache.get();
-        return try factory.getStretchProperty();
+    pub fn getStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IViewboxStaticsCache.get();
+        return try _f.getStretchProperty();
     }
-    pub fn get_StretchDirectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IViewboxStaticsCache.get();
-        return try factory.getStretchDirectionProperty();
+    pub fn getStretchDirectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IViewboxStaticsCache.get();
+        return try _f.getStretchDirectionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Viewbox";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -63138,33 +62942,33 @@ pub const VirtualizingStackPanel = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IVirtualizingStackPanel.IID)));
     }
-    pub fn get_AreScrollSnapPointsRegularProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.getAreScrollSnapPointsRegularProperty();
+    pub fn getAreScrollSnapPointsRegularProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.getAreScrollSnapPointsRegularProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_VirtualizationModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.getVirtualizationModeProperty();
+    pub fn getVirtualizationModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.getVirtualizationModeProperty();
     }
     pub fn GetVirtualizationMode(element: *DependencyObject) core.HResult!VirtualizationMode {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.GetVirtualizationMode(element);
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.GetVirtualizationMode(element);
     }
     pub fn SetVirtualizationMode(element: *DependencyObject, value: VirtualizationMode) core.HResult!void {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.SetVirtualizationMode(element, value);
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.SetVirtualizationMode(element, value);
     }
-    pub fn get_IsVirtualizingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.getIsVirtualizingProperty();
+    pub fn getIsVirtualizingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.getIsVirtualizingProperty();
     }
     pub fn GetIsVirtualizing(o: *DependencyObject) core.HResult!bool {
-        const factory = @This().IVirtualizingStackPanelStaticsCache.get();
-        return try factory.GetIsVirtualizing(o);
+        const _f = @This().IVirtualizingStackPanelStaticsCache.get();
+        return try _f.GetIsVirtualizing(o);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.VirtualizingStackPanel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -63624,68 +63428,68 @@ pub const WebView = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWebView.IID)));
     }
     pub fn CreateInstanceWithExecutionMode(executionMode: WebViewExecutionMode) core.HResult!*WebView {
-        const factory = @This().IWebViewFactory4Cache.get();
-        return try factory.CreateInstanceWithExecutionMode(executionMode);
+        const _f = @This().IWebViewFactory4Cache.get();
+        return try _f.CreateInstanceWithExecutionMode(executionMode);
     }
-    pub fn get_DefaultExecutionMode() core.HResult!WebViewExecutionMode {
-        const factory = @This().IWebViewStatics4Cache.get();
-        return try factory.getDefaultExecutionMode();
+    pub fn getDefaultExecutionMode() core.HResult!WebViewExecutionMode {
+        const _f = @This().IWebViewStatics4Cache.get();
+        return try _f.getDefaultExecutionMode();
     }
     pub fn ClearTemporaryWebDataAsync() core.HResult!*IAsyncAction {
-        const factory = @This().IWebViewStatics4Cache.get();
-        return try factory.ClearTemporaryWebDataAsync();
+        const _f = @This().IWebViewStatics4Cache.get();
+        return try _f.ClearTemporaryWebDataAsync();
     }
-    pub fn get_CanGoBackProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics2Cache.get();
-        return try factory.getCanGoBackProperty();
+    pub fn getCanGoBackProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics2Cache.get();
+        return try _f.getCanGoBackProperty();
     }
-    pub fn get_CanGoForwardProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics2Cache.get();
-        return try factory.getCanGoForwardProperty();
+    pub fn getCanGoForwardProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics2Cache.get();
+        return try _f.getCanGoForwardProperty();
     }
-    pub fn get_DocumentTitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics2Cache.get();
-        return try factory.getDocumentTitleProperty();
+    pub fn getDocumentTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics2Cache.get();
+        return try _f.getDocumentTitleProperty();
     }
-    pub fn get_DefaultBackgroundColorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics2Cache.get();
-        return try factory.getDefaultBackgroundColorProperty();
+    pub fn getDefaultBackgroundColorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics2Cache.get();
+        return try _f.getDefaultBackgroundColorProperty();
     }
-    pub fn get_ContainsFullScreenElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics3Cache.get();
-        return try factory.getContainsFullScreenElementProperty();
+    pub fn getContainsFullScreenElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics3Cache.get();
+        return try _f.getContainsFullScreenElementProperty();
     }
-    pub fn get_XYFocusLeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics5Cache.get();
-        return try factory.getXYFocusLeftProperty();
+    pub fn getXYFocusLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics5Cache.get();
+        return try _f.getXYFocusLeftProperty();
     }
-    pub fn get_XYFocusRightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics5Cache.get();
-        return try factory.getXYFocusRightProperty();
+    pub fn getXYFocusRightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics5Cache.get();
+        return try _f.getXYFocusRightProperty();
     }
-    pub fn get_XYFocusUpProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics5Cache.get();
-        return try factory.getXYFocusUpProperty();
+    pub fn getXYFocusUpProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics5Cache.get();
+        return try _f.getXYFocusUpProperty();
     }
-    pub fn get_XYFocusDownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStatics5Cache.get();
-        return try factory.getXYFocusDownProperty();
+    pub fn getXYFocusDownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStatics5Cache.get();
+        return try _f.getXYFocusDownProperty();
     }
-    pub fn get_AnyScriptNotifyUri() core.HResult!*IVector(Uri) {
-        const factory = @This().IWebViewStaticsCache.get();
-        return try factory.getAnyScriptNotifyUri();
+    pub fn getAnyScriptNotifyUri() core.HResult!*IVector(Uri) {
+        const _f = @This().IWebViewStaticsCache.get();
+        return try _f.getAnyScriptNotifyUri();
     }
-    pub fn get_SourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStaticsCache.get();
-        return try factory.getSourceProperty();
+    pub fn getSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStaticsCache.get();
+        return try _f.getSourceProperty();
     }
-    pub fn get_AllowedScriptNotifyUrisProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStaticsCache.get();
-        return try factory.getAllowedScriptNotifyUrisProperty();
+    pub fn getAllowedScriptNotifyUrisProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStaticsCache.get();
+        return try _f.getAllowedScriptNotifyUrisProperty();
     }
-    pub fn get_DataTransferPackageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewStaticsCache.get();
-        return try factory.getDataTransferPackageProperty();
+    pub fn getDataTransferPackageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewStaticsCache.get();
+        return try _f.getDataTransferPackageProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.WebView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -63725,9 +63529,9 @@ pub const WebViewBrush = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWebViewBrush.IID)));
     }
-    pub fn get_SourceNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWebViewBrushStaticsCache.get();
-        return try factory.getSourceNameProperty();
+    pub fn getSourceNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWebViewBrushStaticsCache.get();
+        return try _f.getSourceNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.WebViewBrush";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -64199,29 +64003,29 @@ pub const WrapGrid = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IWrapGrid.IID)));
     }
-    pub fn get_ItemWidthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWrapGridStaticsCache.get();
-        return try factory.getItemWidthProperty();
+    pub fn getItemWidthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWrapGridStaticsCache.get();
+        return try _f.getItemWidthProperty();
     }
-    pub fn get_ItemHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWrapGridStaticsCache.get();
-        return try factory.getItemHeightProperty();
+    pub fn getItemHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWrapGridStaticsCache.get();
+        return try _f.getItemHeightProperty();
     }
-    pub fn get_OrientationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWrapGridStaticsCache.get();
-        return try factory.getOrientationProperty();
+    pub fn getOrientationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWrapGridStaticsCache.get();
+        return try _f.getOrientationProperty();
     }
-    pub fn get_HorizontalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWrapGridStaticsCache.get();
-        return try factory.getHorizontalChildrenAlignmentProperty();
+    pub fn getHorizontalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWrapGridStaticsCache.get();
+        return try _f.getHorizontalChildrenAlignmentProperty();
     }
-    pub fn get_VerticalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWrapGridStaticsCache.get();
-        return try factory.getVerticalChildrenAlignmentProperty();
+    pub fn getVerticalChildrenAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWrapGridStaticsCache.get();
+        return try _f.getVerticalChildrenAlignmentProperty();
     }
-    pub fn get_MaximumRowsOrColumnsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IWrapGridStaticsCache.get();
-        return try factory.getMaximumRowsOrColumnsProperty();
+    pub fn getMaximumRowsOrColumnsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IWrapGridStaticsCache.get();
+        return try _f.getMaximumRowsOrColumnsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.WrapGrid";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -64236,29 +64040,29 @@ pub const ZoomMode = enum(i32) {
     Enabled = 1,
 };
 const AudioCategory = @import("./Media.zig").AudioCategory;
-const AppBarButtonTemplateSettings = @import("./Primitives.zig").AppBarButtonTemplateSettings;
-const CalendarViewTemplateSettings = @import("./Primitives.zig").CalendarViewTemplateSettings;
+const AppBarButtonTemplateSettings = @import("./Controls/Primitives.zig").AppBarButtonTemplateSettings;
+const CalendarViewTemplateSettings = @import("./Controls/Primitives.zig").CalendarViewTemplateSettings;
 const TextTrimming = @import("../Xaml.zig").TextTrimming;
 const IIterable = @import("../../Foundation/Collections.zig").IIterable;
-const ItemsChangedEventHandler = @import("./Primitives.zig").ItemsChangedEventHandler;
+const ItemsChangedEventHandler = @import("./Controls/Primitives.zig").ItemsChangedEventHandler;
 const CornerRadius = @import("../Xaml.zig").CornerRadius;
 const IReference = @import("../../Foundation.zig").IReference;
 const Stereo3DVideoRenderMode = @import("./Media.zig").Stereo3DVideoRenderMode;
 const TextAlignment = @import("../Xaml.zig").TextAlignment;
 const InputScope = @import("./Input.zig").InputScope;
 const BrushTransition = @import("../Xaml.zig").BrushTransition;
-const SplitViewTemplateSettings = @import("./Primitives.zig").SplitViewTemplateSettings;
+const SplitViewTemplateSettings = @import("./Controls/Primitives.zig").SplitViewTemplateSettings;
 const TrustLevel = @import("../../root.zig").TrustLevel;
-const MenuFlyoutPresenterTemplateSettings = @import("./Primitives.zig").MenuFlyoutPresenterTemplateSettings;
+const MenuFlyoutPresenterTemplateSettings = @import("./Controls/Primitives.zig").MenuFlyoutPresenterTemplateSettings;
 const FastPlayFallbackBehaviour = @import("./Media.zig").FastPlayFallbackBehaviour;
-const GroupHeaderPlacement = @import("./Primitives.zig").GroupHeaderPlacement;
+const GroupHeaderPlacement = @import("./Controls/Primitives.zig").GroupHeaderPlacement;
 const IPropertySet = @import("../../Foundation/Collections.zig").IPropertySet;
 const NavigationStoppedEventHandler = @import("./Navigation.zig").NavigationStoppedEventHandler;
 const LineStackingStrategy = @import("../Xaml.zig").LineStackingStrategy;
 const Style = @import("../Xaml.zig").Style;
 const DependencyProperty = @import("../Xaml.zig").DependencyProperty;
 const PageStackEntry = @import("./Navigation.zig").PageStackEntry;
-const MenuFlyoutItemTemplateSettings = @import("./Primitives.zig").MenuFlyoutItemTemplateSettings;
+const MenuFlyoutItemTemplateSettings = @import("./Controls/Primitives.zig").MenuFlyoutItemTemplateSettings;
 const ToggleState = @import("./Automation.zig").ToggleState;
 const InlineCollection = @import("./Documents.zig").InlineCollection;
 const MediaPlayer = @import("../../Media/Playback.zig").MediaPlayer;
@@ -64266,7 +64070,7 @@ const Stereo3DVideoPackingMode = @import("./Media.zig").Stereo3DVideoPackingMode
 const Brush = @import("./Media.zig").Brush;
 const ElementFactoryGetArgs = @import("../Xaml.zig").ElementFactoryGetArgs;
 const LoadCompletedEventHandler = @import("./Navigation.zig").LoadCompletedEventHandler;
-const GeneratorPosition = @import("./Primitives.zig").GeneratorPosition;
+const GeneratorPosition = @import("./Controls/Primitives.zig").GeneratorPosition;
 const ManipulationStartedRoutedEventArgs = @import("./Input.zig").ManipulationStartedRoutedEventArgs;
 const IIterator = @import("../../Foundation/Collections.zig").IIterator;
 const WebErrorStatus = @import("../../Web.zig").WebErrorStatus;
@@ -64277,7 +64081,7 @@ const GridLength = @import("../Xaml.zig").GridLength;
 const INotifyPropertyChanged = @import("./Data.zig").INotifyPropertyChanged;
 const CastingSource = @import("../../Media/Casting.zig").CastingSource;
 const FontFamily = @import("./Media.zig").FontFamily;
-const FlyoutBase = @import("./Primitives.zig").FlyoutBase;
+const FlyoutBase = @import("./Controls/Primitives.zig").FlyoutBase;
 const RateChangedRoutedEventHandler = @import("./Media.zig").RateChangedRoutedEventHandler;
 const PropertyChangedEventHandler = @import("./Data.zig").PropertyChangedEventHandler;
 const TextDecorations = @import("../Text.zig").TextDecorations;
@@ -64288,10 +64092,10 @@ const LoadMoreItemsResult = @import("./Data.zig").LoadMoreItemsResult;
 const DependencyObjectCollection = @import("../Xaml.zig").DependencyObjectCollection;
 const EventRegistrationToken = @import("../../Foundation.zig").EventRegistrationToken;
 const Stretch = @import("./Media.zig").Stretch;
-const TickPlacement = @import("./Primitives.zig").TickPlacement;
+const TickPlacement = @import("./Controls/Primitives.zig").TickPlacement;
 const LocalContentSuggestionSettings = @import("../../ApplicationModel/Search.zig").LocalContentSuggestionSettings;
-const ItemsChangedEventArgs = @import("./Primitives.zig").ItemsChangedEventArgs;
-const ProgressRingTemplateSettings = @import("./Primitives.zig").ProgressRingTemplateSettings;
+const ItemsChangedEventArgs = @import("./Controls/Primitives.zig").ItemsChangedEventArgs;
+const ProgressRingTemplateSettings = @import("./Controls/Primitives.zig").ProgressRingTemplateSettings;
 const Rect = @import("../../Foundation.zig").Rect;
 const InkPresenter = @import("../Input/Inking.zig").InkPresenter;
 const ConnectedAnimation = @import("./Media/Animation.zig").ConnectedAnimation;
@@ -64306,7 +64110,7 @@ const CompositionBrush = @import("../Composition.zig").CompositionBrush;
 const IVector = @import("../../Foundation/Collections.zig").IVector;
 const ManipulationCompletedRoutedEventArgs = @import("./Input.zig").ManipulationCompletedRoutedEventArgs;
 const CharacterReceivedRoutedEventArgs = @import("./Input.zig").CharacterReceivedRoutedEventArgs;
-const ComboBoxTemplateSettings = @import("./Primitives.zig").ComboBoxTemplateSettings;
+const ComboBoxTemplateSettings = @import("./Controls/Primitives.zig").ComboBoxTemplateSettings;
 const DependencyObject = @import("../Xaml.zig").DependencyObject;
 const HttpResponseMessage = @import("../../Web/Http.zig").HttpResponseMessage;
 const FrameNavigationOptions = @import("./Navigation.zig").FrameNavigationOptions;
@@ -64314,11 +64118,11 @@ const TypeName = @import("./Interop.zig").TypeName;
 const RoutedEventArgs = @import("../Xaml.zig").RoutedEventArgs;
 const HRESULT = @import("../../root.zig").HRESULT;
 const TextHighlighter = @import("./Documents.zig").TextHighlighter;
-const AppBarTemplateSettings = @import("./Primitives.zig").AppBarTemplateSettings;
+const AppBarTemplateSettings = @import("./Controls/Primitives.zig").AppBarTemplateSettings;
 const TextPointer = @import("./Documents.zig").TextPointer;
 const DateTime = @import("../../Foundation.zig").DateTime;
 const DoubleTappedRoutedEventArgs = @import("./Input.zig").DoubleTappedRoutedEventArgs;
-const GridViewItemTemplateSettings = @import("./Primitives.zig").GridViewItemTemplateSettings;
+const GridViewItemTemplateSettings = @import("./Controls/Primitives.zig").GridViewItemTemplateSettings;
 const ElementFactoryRecycleArgs = @import("../Xaml.zig").ElementFactoryRecycleArgs;
 const NavigatingCancelEventHandler = @import("./Navigation.zig").NavigatingCancelEventHandler;
 const SearchSuggestionsRequest = @import("../../ApplicationModel/Search.zig").SearchSuggestionsRequest;
@@ -64326,8 +64130,8 @@ const FrameworkElement = @import("../Xaml.zig").FrameworkElement;
 const PlayToSource = @import("../../Media/PlayTo.zig").PlayToSource;
 const EventHandler = @import("../../Foundation.zig").EventHandler;
 const VirtualKeyModifiers = @import("../../System.zig").VirtualKeyModifiers;
-const SliderSnapsTo = @import("./Primitives.zig").SliderSnapsTo;
-const SelectorItem = @import("./Primitives.zig").SelectorItem;
+const SliderSnapsTo = @import("./Controls/Primitives.zig").SliderSnapsTo;
+const SelectorItem = @import("./Controls/Primitives.zig").SelectorItem;
 const MediaTransportControlsThumbnailRequestedEventArgs = @import("./Media.zig").MediaTransportControlsThumbnailRequestedEventArgs;
 const TextWrapping = @import("../Xaml.zig").TextWrapping;
 const IUnknown = @import("../../root.zig").IUnknown;
@@ -64341,7 +64145,7 @@ const ContentLinkProviderCollection = @import("./Documents.zig").ContentLinkProv
 const ManipulationStartingRoutedEventArgs = @import("./Input.zig").ManipulationStartingRoutedEventArgs;
 const UIElement = @import("../Xaml.zig").UIElement;
 const ICustomPropertyProvider = @import("./Data.zig").ICustomPropertyProvider;
-const ToolTipTemplateSettings = @import("./Primitives.zig").ToolTipTemplateSettings;
+const ToolTipTemplateSettings = @import("./Controls/Primitives.zig").ToolTipTemplateSettings;
 const KeyRoutedEventArgs = @import("./Input.zig").KeyRoutedEventArgs;
 const NavigatingCancelEventArgs = @import("./Navigation.zig").NavigatingCancelEventArgs;
 const FontStyle = @import("../Text.zig").FontStyle;
@@ -64349,10 +64153,10 @@ const ContentLinkInfo = @import("../Text.zig").ContentLinkInfo;
 const ManipulationDeltaRoutedEventArgs = @import("./Input.zig").ManipulationDeltaRoutedEventArgs;
 const IElementFactory = @import("../Xaml.zig").IElementFactory;
 const TextRange = @import("./Documents.zig").TextRange;
-const SnapPointsAlignment = @import("./Primitives.zig").SnapPointsAlignment;
+const SnapPointsAlignment = @import("./Controls/Primitives.zig").SnapPointsAlignment;
 const ImageSource = @import("./Media.zig").ImageSource;
 const NavigationFailedEventHandler = @import("./Navigation.zig").NavigationFailedEventHandler;
-const SettingsFlyoutTemplateSettings = @import("./Primitives.zig").SettingsFlyoutTemplateSettings;
+const SettingsFlyoutTemplateSettings = @import("./Controls/Primitives.zig").SettingsFlyoutTemplateSettings;
 const IAgileObject = @import("../../root.zig").IAgileObject;
 const KeyboardNavigationMode = @import("./Input.zig").KeyboardNavigationMode;
 const ICommand = @import("./Input.zig").ICommand;
@@ -64364,15 +64168,15 @@ const TextLineBounds = @import("../Xaml.zig").TextLineBounds;
 const VerticalAlignment = @import("../Xaml.zig").VerticalAlignment;
 const BlockCollection = @import("./Documents.zig").BlockCollection;
 const ICustomProperty = @import("./Data.zig").ICustomProperty;
-const ToggleSwitchTemplateSettings = @import("./Primitives.zig").ToggleSwitchTemplateSettings;
+const ToggleSwitchTemplateSettings = @import("./Controls/Primitives.zig").ToggleSwitchTemplateSettings;
 const ElementSoundMode = @import("../Xaml.zig").ElementSoundMode;
 const ExceptionRoutedEventHandler = @import("../Xaml.zig").ExceptionRoutedEventHandler;
-const AppBarToggleButtonTemplateSettings = @import("./Primitives.zig").AppBarToggleButtonTemplateSettings;
+const AppBarToggleButtonTemplateSettings = @import("./Controls/Primitives.zig").AppBarToggleButtonTemplateSettings;
 const ITextDocument = @import("../Text.zig").ITextDocument;
 const Geometry = @import("./Media.zig").Geometry;
-const GeneratorDirection = @import("./Primitives.zig").GeneratorDirection;
+const GeneratorDirection = @import("./Controls/Primitives.zig").GeneratorDirection;
 const SearchQueryLinguisticDetails = @import("../../ApplicationModel/Search.zig").SearchQueryLinguisticDetails;
-const PlacementMode = @import("./Primitives.zig").PlacementMode;
+const PlacementMode = @import("./Controls/Primitives.zig").PlacementMode;
 const IRandomAccessStream = @import("../../Storage/Streams.zig").IRandomAccessStream;
 const CoreInputDeviceTypes = @import("../Core.zig").CoreInputDeviceTypes;
 const RichEditTextDocument = @import("../Text.zig").RichEditTextDocument;
@@ -64380,7 +64184,7 @@ const TappedRoutedEventArgs = @import("./Input.zig").TappedRoutedEventArgs;
 const Color = @import("../../UI.zig").Color;
 const MediaElementState = @import("./Media.zig").MediaElementState;
 const DataPackageOperation = @import("../../ApplicationModel/DataTransfer.zig").DataPackageOperation;
-const CommandBarTemplateSettings = @import("./Primitives.zig").CommandBarTemplateSettings;
+const CommandBarTemplateSettings = @import("./Controls/Primitives.zig").CommandBarTemplateSettings;
 const InkPresenterProtractor = @import("../Input/Inking.zig").InkPresenterProtractor;
 const IAsyncOperation = @import("../../Foundation.zig").IAsyncOperation;
 const MediaCanPlayResponse = @import("./Media.zig").MediaCanPlayResponse;
@@ -64397,12 +64201,12 @@ const IVectorView = @import("../../Foundation/Collections.zig").IVectorView;
 const Point = @import("../../Foundation.zig").Point;
 const NavigationEventArgs = @import("./Navigation.zig").NavigationEventArgs;
 const FactoryCache = @import("../../core.zig").FactoryCache;
-const ListViewItemTemplateSettings = @import("./Primitives.zig").ListViewItemTemplateSettings;
+const ListViewItemTemplateSettings = @import("./Controls/Primitives.zig").ListViewItemTemplateSettings;
 const CoreIndependentInputSource = @import("../Core.zig").CoreIndependentInputSource;
 const PartialMediaFailureDetectedEventArgs = @import("./Media.zig").PartialMediaFailureDetectedEventArgs;
 const TimeSpan = @import("../../Foundation.zig").TimeSpan;
 const MediaProtectionManager = @import("../../Media/Protection.zig").MediaProtectionManager;
-const ProgressBarTemplateSettings = @import("./Primitives.zig").ProgressBarTemplateSettings;
+const ProgressBarTemplateSettings = @import("./Controls/Primitives.zig").ProgressBarTemplateSettings;
 const OpticalMarginAlignment = @import("../Xaml.zig").OpticalMarginAlignment;
 const IToggleProvider = @import("./Automation/Provider.zig").IToggleProvider;
 const Thickness = @import("../Xaml.zig").Thickness;
@@ -64423,7 +64227,7 @@ const TypedEventHandler = @import("../../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../../root.zig").HSTRING;
 const FontStretch = @import("../Text.zig").FontStretch;
 const MediaCapture = @import("../../Media/Capture.zig").MediaCapture;
-const IScrollSnapPointsInfo = @import("./Primitives.zig").IScrollSnapPointsInfo;
+const IScrollSnapPointsInfo = @import("./Controls/Primitives.zig").IScrollSnapPointsInfo;
 const core = @import("../../root.zig").core;
 pub const Maps = @import("./Controls/Maps.zig");
 pub const Primitives = @import("./Controls/Primitives.zig");

@@ -5,8 +5,20 @@ const metadata = @import("../metadata.zig");
 const replaceAll = @import("../root.zig").replaceAll;
 const noreserved = metadata.noreserved;
 const generateMethodNameMap = metadata.generateMethodNameMap;
-const generateMethodNameMapSig = metadata.generateMethodNameMapSig;
 const TypeDef = metadata.TypeDef;
+
+pub fn hashMethod(key: *const metadata.Method) u64 {
+    var hash_value: std.hash.Fnv1a_64 = .init();
+    hash_value.update(key.Name);
+    if (key.Parameters) |params| {
+        for (params) |p| {
+            hash_value.update(p.Name);
+            hash_value.update(p.Type.Name);
+        }
+    }
+    hash_value.update(key.ReturnType.Name);
+    return hash_value.final();
+}
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
     // At this piont the kind should have already been determined;
@@ -16,7 +28,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("pub const {s} = extern struct {{\n", .{typedef.Name});
     try writer.writeAll("    vtable: *const IInspectable.VTable,\n");
 
-    var method_to_interface: std.StringHashMapUnmanaged([]const u8) = .empty;
+    var method_to_interface: std.AutoHashMapUnmanaged(u64, *const metadata.Interface) = .empty;
     defer method_to_interface.deinit(allocator);
 
     if (typedef.Interfaces) |interfaces| {
@@ -24,29 +36,68 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             try ctx.requirements.add("Windows", "IUnknown");
         }
 
-        var all_interface_methods: std.ArrayList(metadata.TypeSignature.Method) = .empty;
-        defer all_interface_methods.deinit(allocator);
-
-        for (interfaces) |interface| {
-            if (ctx.definitions.getMethods(interface.Namespace, interface.Name)) |methods| {
-                try all_interface_methods.appendSlice(allocator, methods);
-            }
-        }
-
-        const nameMap = try generateMethodNameMapSig(allocator, all_interface_methods.items);
-        defer {
-            for (nameMap) |n| allocator.free(n);
-            allocator.free(nameMap);
-        }
-
-        var idx: usize = 0;
-        for (interfaces) |interface| {
-
+        for (interfaces) |*interface| {
             try ctx.requirements.add(interface.Namespace, interface.Name);
             if (ctx.definitions.getMethods(interface.Namespace, interface.Name)) |methods| {
-                for (methods) |method| {
-                    defer idx +|= 1;
+                for (methods) |*method| {
+                    const h = hashMethod(method);
+                    try method_to_interface.put(allocator, h, interface);
+                }
+            }
+        }
+    }
 
+    var all_methods: std.ArrayListUnmanaged(metadata.Method) = .empty;
+
+    if (typedef.DefaultInterface != null) {
+        if (typedef.Methods) |methods| {
+            for (methods) |method| {
+                if (std.mem.eql(u8, method.Name, ".ctor")) continue;
+                try all_methods.append(allocator, method);
+            }
+        }
+    }
+
+    if (typedef.Factory) |info| {
+        if (info.Interfaces) |factories| {
+            for (factories) |factory| {
+                if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
+                    try all_methods.appendSlice(allocator, methods);
+                }
+            }
+        }
+        if (info.Statics) |factories| {
+            for (factories) |factory| {
+                if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
+                    try all_methods.appendSlice(allocator, methods);
+                }
+            }
+        }
+        if (info.Composable) |factories| {
+            for (factories) |factory| {
+                if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
+                    try all_methods.appendSlice(allocator, methods);
+                }
+            }
+        }
+    }
+
+    const nameMap = try generateMethodNameMap(allocator, all_methods.items);
+    defer {
+        for (nameMap) |n| allocator.free(n);
+        allocator.free(nameMap);
+    }
+
+    var idx: usize = 0;
+    if (typedef.DefaultInterface != null) {
+        if (typedef.Methods) |methods| {
+            for (methods) |*method| {
+                if (std.mem.eql(u8, method.Name, ".ctor")) continue;
+                defer idx +|= 1;
+
+                const h = hashMethod(method);
+                const interface_ref = method_to_interface.get(h);
+                if (interface_ref) |interface| {
                     const mname = try replaceAll(allocator, nameMap[idx], "_", "");
                     defer allocator.free(mname);
 
@@ -70,7 +121,22 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                     }
 
                     if (typedef.DefaultInterface != null and std.mem.eql(u8, typedef.DefaultInterface.?.Name, interface.Name)) {
-                        try writer.print("        const this: *{s} = @ptrCast(self);\n", .{interface.Name});
+                        try writer.print("        const this: *{s}", .{interface.Name});
+                        if (interface.GenericArguments) |ga| {
+                            try writer.writeAll("(");
+                            if (try ty.winToZig(allocator, ctx, &ga[0])) |t| {
+                                defer t.deinit(allocator);
+                                try writer.print("{f}", .{t.asValue()});
+                            }
+                            for (1..ga.len) |i| {
+                                if (try ty.winToZig(allocator, ctx, &ga[i])) |t| {
+                                    defer t.deinit(allocator);
+                                    try writer.print(",{f}", .{t.asValue()});
+                                }
+                            }
+                            try writer.writeAll(")");
+                        }
+                        try writer.writeAll(" = @ptrCast(self);\n");
                         try writer.print("        return try this.{s}(", .{mname});
                     } else {
                         try writer.print("        var this: ?*{s}", .{interface.Name});
@@ -78,12 +144,12 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                             try writer.writeAll("(");
                             if (try ty.winToZig(allocator, ctx, &ga[0])) |t| {
                                 defer t.deinit(allocator);
-                                try writer.print("{f}", .{ t.asValue() });
+                                try writer.print("{f}", .{t.asValue()});
                             }
                             for (1..ga.len) |i| {
                                 if (try ty.winToZig(allocator, ctx, &ga[i])) |t| {
                                     defer t.deinit(allocator);
-                                    try writer.print(",{f}", .{ t.asValue() });
+                                    try writer.print(",{f}", .{t.asValue()});
                                 }
                             }
 
@@ -102,6 +168,23 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                     }
                     try writer.writeAll(");\n    }\n");
                 }
+
+                //  else {
+                //     if (return_type) |rt| {
+                //         try writer.print("        var _r: {f} = undefined;\n", .{rt.asParam()});
+                //     }
+                //     try writer.print("        const _c = self.vtable.{s}(@ptrCast(self)", .{nameMap[idx]});
+                //     if (method.Parameters) |parameters| {
+                //         for (parameters) |param| {
+                //             try writer.print(", {s}", .{noreserved(param.Name)});
+                //         }
+                //         if (return_type != null) try writer.writeAll(", &_r");
+                //     }
+                //     try writer.writeAll(");\n");
+                //     try writer.writeAll("        if (_c != 0) return core.hresultToError(_c).err;\n");
+                //     if (return_type != null) try writer.writeAll("        return _r;\n");
+                //     try writer.writeAll("    }\n");
+                // }
             }
         }
     }
@@ -125,45 +208,20 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         // Should probably combine all the factories into a single list then handle
         // them all together
 
-        var all_factories: std.ArrayList(metadata.Interface) = .empty;
-        defer all_factories.deinit(allocator);
-        var all_factory_methods: std.ArrayList(metadata.TypeSignature.Method) = .empty;
-        defer all_factory_methods.deinit(allocator);
-
         if (info.Interfaces) |factories| {
-            try all_factories.appendSlice(allocator, factories);
             for (factories) |factory| {
-                if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
-                    try all_factory_methods.appendSlice(allocator, methods);
-                }
+                try serializeFactoryMethods(allocator, ctx, factory, &idx, nameMap, writer);
             }
         }
         if (info.Statics) |factories| {
-            try all_factories.appendSlice(allocator, factories);
             for (factories) |factory| {
-                if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
-                    try all_factory_methods.appendSlice(allocator, methods);
-                }
+                try serializeFactoryMethods(allocator, ctx, factory, &idx, nameMap, writer);
             }
         }
         if (info.Composable) |factories| {
-            try all_factories.appendSlice(allocator, factories);
             for (factories) |factory| {
-                if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
-                    try all_factory_methods.appendSlice(allocator, methods);
-                }
+                try serializeFactoryMethods(allocator, ctx, factory, &idx, nameMap, writer);
             }
-        }
-
-        const all_factory_names_map = try generateMethodNameMapSig(allocator, all_factory_methods.items);
-        defer {
-            for (all_factory_names_map) |n| allocator.free(n);
-            allocator.free(all_factory_names_map);
-        }
-
-        var method_index: usize = 0;
-        for (all_factories.items) |factory| {
-            try serializeFactoryMethods(allocator, ctx, factory, &method_index, all_factory_names_map, writer);
         }
     }
 
@@ -215,7 +273,7 @@ fn serializeFactoryMethods(
     writer: *std.io.Writer,
 ) !void {
     if (ctx.definitions.getMethods(factory.Namespace, factory.Name)) |methods| {
-        const nameMap = try generateMethodNameMapSig(allocator, methods);
+        const nameMap = try generateMethodNameMap(allocator, methods);
         defer {
             for (nameMap) |n| allocator.free(n);
             allocator.free(nameMap);
@@ -227,7 +285,10 @@ fn serializeFactoryMethods(
             const mname = try replaceAll(allocator, nameMap[m], "_", "");
             defer allocator.free(mname);
 
-            try writer.print("    pub fn {s}(", .{resolved_names[resolve_index.*]});
+            const rmname = try replaceAll(allocator, resolved_names[resolve_index.*], "_", "");
+            defer allocator.free(rmname);
+
+            try writer.print("    pub fn {s}(", .{rmname});
             if (method.Parameters) |parameters| {
                 if (try ty.winToZig(allocator, ctx, &parameters[0].Type)) |t| {
                     defer t.deinit(allocator);
@@ -251,8 +312,8 @@ fn serializeFactoryMethods(
                 try writer.writeAll(") core.HResult!void {\n");
             }
 
-            try writer.print("        const factory = @This().{s}Cache.get();\n", .{factory.Name});
-            try writer.print("        return try factory.{s}(", .{mname});
+            try writer.print("        const _f = @This().{s}Cache.get();\n", .{factory.Name});
+            try writer.print("        return try _f.{s}(", .{mname});
             if (method.Parameters) |parameters| {
                 try writer.print("{s}", .{noreserved(parameters[0].Name)});
                 for (1..parameters.len) |i| {

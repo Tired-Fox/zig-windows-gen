@@ -93,8 +93,8 @@ pub const InstalledDesktopApp = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetInventoryAsync() core.HResult!*IAsyncOperation(IVectorView(InstalledDesktopApp)) {
-        const factory = @This().IInstalledDesktopAppStaticsCache.get();
-        return try factory.GetInventoryAsync();
+        const _f = @This().IInstalledDesktopAppStaticsCache.get();
+        return try _f.GetInventoryAsync();
     }
     pub const NAME: []const u8 = "Windows.System.Inventory.InstalledDesktopApp";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

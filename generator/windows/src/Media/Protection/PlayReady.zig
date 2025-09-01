@@ -2083,8 +2083,8 @@ pub const NDClient = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(downloadEngine: *INDDownloadEngine, streamParser: *INDStreamParser, pMessenger: *INDMessenger) core.HResult!*NDClient {
-        const factory = @This().INDClientFactoryCache.get();
-        return try factory.CreateInstance(downloadEngine, streamParser, pMessenger);
+        const _f = @This().INDClientFactoryCache.get();
+        return try _f.CreateInstance(downloadEngine, streamParser, pMessenger);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2117,8 +2117,8 @@ pub const NDCustomData = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(customDataTypeIDBytes: [*]u8, customDataBytes: [*]u8) core.HResult!*NDCustomData {
-        const factory = @This().INDCustomDataFactoryCache.get();
-        return try factory.CreateInstance(customDataTypeIDBytes, customDataBytes);
+        const _f = @This().INDCustomDataFactoryCache.get();
+        return try _f.CreateInstance(customDataTypeIDBytes, customDataBytes);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDCustomData";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2189,8 +2189,8 @@ pub const NDLicenseFetchDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(contentIDType: NDContentIDType, contentIDBytes: [*]u8, licenseFetchChallengeCustomData: *INDCustomData) core.HResult!*NDLicenseFetchDescriptor {
-        const factory = @This().INDLicenseFetchDescriptorFactoryCache.get();
-        return try factory.CreateInstance(contentIDType, contentIDBytes, licenseFetchChallengeCustomData);
+        const _f = @This().INDLicenseFetchDescriptorFactoryCache.get();
+        return try _f.CreateInstance(contentIDType, contentIDBytes, licenseFetchChallengeCustomData);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDLicenseFetchDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2286,8 +2286,8 @@ pub const NDTCPMessenger = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(remoteHostName: HSTRING, remoteHostPort: u32) core.HResult!*NDTCPMessenger {
-        const factory = @This().INDTCPMessengerFactoryCache.get();
-        return try factory.CreateInstance(remoteHostName, remoteHostPort);
+        const _f = @This().INDTCPMessengerFactoryCache.get();
+        return try _f.CreateInstance(remoteHostName, remoteHostPort);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.NDTCPMessenger";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2354,20 +2354,20 @@ pub const PlayReadyContentHeader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceFromWindowsMediaDrmHeader(headerBytes: [*]u8, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
-        const factory = @This().IPlayReadyContentHeaderFactoryCache.get();
-        return try factory.CreateInstanceFromWindowsMediaDrmHeader(headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
+        const _f = @This().IPlayReadyContentHeaderFactoryCache.get();
+        return try _f.CreateInstanceFromWindowsMediaDrmHeader(headerBytes, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
     pub fn CreateInstanceFromComponents(contentKeyId: *Guid, contentKeyIdString: HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
-        const factory = @This().IPlayReadyContentHeaderFactoryCache.get();
-        return try factory.CreateInstanceFromComponents(contentKeyId, contentKeyIdString, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
+        const _f = @This().IPlayReadyContentHeaderFactoryCache.get();
+        return try _f.CreateInstanceFromComponents(contentKeyId, contentKeyIdString, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
     pub fn CreateInstanceFromPlayReadyHeader(headerBytes: [*]u8) core.HResult!*PlayReadyContentHeader {
-        const factory = @This().IPlayReadyContentHeaderFactoryCache.get();
-        return try factory.CreateInstanceFromPlayReadyHeader(headerBytes);
+        const _f = @This().IPlayReadyContentHeaderFactoryCache.get();
+        return try _f.CreateInstanceFromPlayReadyHeader(headerBytes);
     }
     pub fn CreateInstanceFromComponents2(dwFlags: u32, contentKeyIds: [*]Guid, contentKeyIdStrings: [*]HSTRING, contentEncryptionAlgorithm: PlayReadyEncryptionAlgorithm, licenseAcquisitionUrl: *Uri, licenseAcquisitionUserInterfaceUrl: *Uri, customAttributes: HSTRING, domainServiceId: *Guid) core.HResult!*PlayReadyContentHeader {
-        const factory = @This().IPlayReadyContentHeaderFactory2Cache.get();
-        return try factory.CreateInstanceFromComponents2(dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
+        const _f = @This().IPlayReadyContentHeaderFactory2Cache.get();
+        return try _f.CreateInstanceFromComponents2(dwFlags, contentKeyIds, contentKeyIdStrings, contentEncryptionAlgorithm, licenseAcquisitionUrl, licenseAcquisitionUserInterfaceUrl, customAttributes, domainServiceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyContentHeader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2383,8 +2383,8 @@ pub const PlayReadyContentResolver = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ServiceRequest(contentHeader: *PlayReadyContentHeader) core.HResult!*IPlayReadyServiceRequest {
-        const factory = @This().IPlayReadyContentResolverCache.get();
-        return try factory.ServiceRequest(contentHeader);
+        const _f = @This().IPlayReadyContentResolverCache.get();
+        return try _f.ServiceRequest(contentHeader);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyContentResolver";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2424,16 +2424,16 @@ pub const PlayReadyDomain = extern struct {
 };
 pub const PlayReadyDomainIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
-        const this: *IIterable = @ptrCast(self);
+    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyDomain) {
+        const this: *IIterable(IPlayReadyDomain) = @ptrCast(self);
         return try this.First();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(domainAccountId: *Guid) core.HResult!*PlayReadyDomainIterable {
-        const factory = @This().IPlayReadyDomainIterableFactoryCache.get();
-        return try factory.CreateInstance(domainAccountId);
+        const _f = @This().IPlayReadyDomainIterableFactoryCache.get();
+        return try _f.CreateInstance(domainAccountId);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyDomainIterable";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2444,21 +2444,13 @@ pub const PlayReadyDomainIterable = extern struct {
 };
 pub const PlayReadyDomainIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
-        const this: *IIterator = @ptrCast(self);
-        return try this.getCurrent();
-    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IPlayReadyDomain) = @ptrCast(self);
         return try this.getHasCurrent();
     }
     pub fn MoveNext(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IPlayReadyDomain) = @ptrCast(self);
         return try this.MoveNext();
-    }
-    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IIterator = @ptrCast(self);
-        return try this.GetMany(items);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyDomainIterator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2961,8 +2953,8 @@ pub const PlayReadyLicenseAcquisitionServiceRequest = extern struct {
 };
 pub const PlayReadyLicenseIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
-        const this: *IIterable = @ptrCast(self);
+    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadyLicense) {
+        const this: *IIterable(IPlayReadyLicense) = @ptrCast(self);
         return try this.First();
     }
     pub fn deinit(self: *@This()) void {
@@ -2973,8 +2965,8 @@ pub const PlayReadyLicenseIterable = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IIterable.IID)));
     }
     pub fn CreateInstance(contentHeader: *PlayReadyContentHeader, fullyEvaluated: bool) core.HResult!*PlayReadyLicenseIterable {
-        const factory = @This().IPlayReadyLicenseIterableFactoryCache.get();
-        return try factory.CreateInstance(contentHeader, fullyEvaluated);
+        const _f = @This().IPlayReadyLicenseIterableFactoryCache.get();
+        return try _f.CreateInstance(contentHeader, fullyEvaluated);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseIterable";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2986,21 +2978,13 @@ pub const PlayReadyLicenseIterable = extern struct {
 };
 pub const PlayReadyLicenseIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
-        const this: *IIterator = @ptrCast(self);
-        return try this.getCurrent();
-    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IPlayReadyLicense) = @ptrCast(self);
         return try this.getHasCurrent();
     }
     pub fn MoveNext(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IPlayReadyLicense) = @ptrCast(self);
         return try this.MoveNext();
-    }
-    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IIterator = @ptrCast(self);
-        return try this.GetMany(items);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseIterator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3014,8 +2998,8 @@ pub const PlayReadyLicenseManagement = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn DeleteLicenses(contentHeader: *PlayReadyContentHeader) core.HResult!*IAsyncAction {
-        const factory = @This().IPlayReadyLicenseManagementCache.get();
-        return try factory.DeleteLicenses(contentHeader);
+        const _f = @This().IPlayReadyLicenseManagementCache.get();
+        return try _f.DeleteLicenses(contentHeader);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseManagement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3041,8 +3025,8 @@ pub const PlayReadyLicenseSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(configuration: *IPropertySet) core.HResult!*PlayReadyLicenseSession {
-        const factory = @This().IPlayReadyLicenseSessionFactoryCache.get();
-        return try factory.CreateInstance(configuration);
+        const _f = @This().IPlayReadyLicenseSessionFactoryCache.get();
+        return try _f.CreateInstance(configuration);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyLicenseSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3225,16 +3209,16 @@ pub const PlayReadyRevocationServiceRequest = extern struct {
 };
 pub const PlayReadySecureStopIterable = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
-        const this: *IIterable = @ptrCast(self);
+    pub fn First(self: *@This()) core.HResult!*IIterator(IPlayReadySecureStopServiceRequest) {
+        const this: *IIterable(IPlayReadySecureStopServiceRequest) = @ptrCast(self);
         return try this.First();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopIterable {
-        const factory = @This().IPlayReadySecureStopIterableFactoryCache.get();
-        return try factory.CreateInstance(publisherCertBytes);
+        const _f = @This().IPlayReadySecureStopIterableFactoryCache.get();
+        return try _f.CreateInstance(publisherCertBytes);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadySecureStopIterable";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3245,21 +3229,13 @@ pub const PlayReadySecureStopIterable = extern struct {
 };
 pub const PlayReadySecureStopIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
-        const this: *IIterator = @ptrCast(self);
-        return try this.getCurrent();
-    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IPlayReadySecureStopServiceRequest) = @ptrCast(self);
         return try this.getHasCurrent();
     }
     pub fn MoveNext(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IPlayReadySecureStopServiceRequest) = @ptrCast(self);
         return try this.MoveNext();
-    }
-    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IIterator = @ptrCast(self);
-        return try this.GetMany(items);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadySecureStopIterator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3359,12 +3335,12 @@ pub const PlayReadySecureStopServiceRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
-        const factory = @This().IPlayReadySecureStopServiceRequestFactoryCache.get();
-        return try factory.CreateInstance(publisherCertBytes);
+        const _f = @This().IPlayReadySecureStopServiceRequestFactoryCache.get();
+        return try _f.CreateInstance(publisherCertBytes);
     }
     pub fn CreateInstanceFromSessionID(sessionID: *Guid, publisherCertBytes: [*]u8) core.HResult!*PlayReadySecureStopServiceRequest {
-        const factory = @This().IPlayReadySecureStopServiceRequestFactoryCache.get();
-        return try factory.CreateInstanceFromSessionID(sessionID, publisherCertBytes);
+        const _f = @This().IPlayReadySecureStopServiceRequestFactoryCache.get();
+        return try _f.CreateInstanceFromSessionID(sessionID, publisherCertBytes);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadySecureStopServiceRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3398,69 +3374,69 @@ pub const PlayReadyStatics = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_SecureStopServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStatics3Cache.get();
-        return try factory.getSecureStopServiceRequestType();
+    pub fn getSecureStopServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStatics3Cache.get();
+        return try _f.getSecureStopServiceRequestType();
     }
     pub fn CheckSupportedHardware(hwdrmFeature: PlayReadyHardwareDRMFeatures) core.HResult!bool {
-        const factory = @This().IPlayReadyStatics3Cache.get();
-        return try factory.CheckSupportedHardware(hwdrmFeature);
+        const _f = @This().IPlayReadyStatics3Cache.get();
+        return try _f.CheckSupportedHardware(hwdrmFeature);
     }
-    pub fn get_PlayReadyCertificateSecurityLevel() core.HResult!u32 {
-        const factory = @This().IPlayReadyStatics2Cache.get();
-        return try factory.getPlayReadyCertificateSecurityLevel();
+    pub fn getPlayReadyCertificateSecurityLevel() core.HResult!u32 {
+        const _f = @This().IPlayReadyStatics2Cache.get();
+        return try _f.getPlayReadyCertificateSecurityLevel();
     }
-    pub fn get_InputTrustAuthorityToCreate() core.HResult!HSTRING {
-        const factory = @This().IPlayReadyStatics4Cache.get();
-        return try factory.getInputTrustAuthorityToCreate();
+    pub fn getInputTrustAuthorityToCreate() core.HResult!HSTRING {
+        const _f = @This().IPlayReadyStatics4Cache.get();
+        return try _f.getInputTrustAuthorityToCreate();
     }
-    pub fn get_ProtectionSystemId() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStatics4Cache.get();
-        return try factory.getProtectionSystemId();
+    pub fn getProtectionSystemId() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStatics4Cache.get();
+        return try _f.getProtectionSystemId();
     }
-    pub fn get_DomainJoinServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getDomainJoinServiceRequestType();
+    pub fn getDomainJoinServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getDomainJoinServiceRequestType();
     }
-    pub fn get_DomainLeaveServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getDomainLeaveServiceRequestType();
+    pub fn getDomainLeaveServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getDomainLeaveServiceRequestType();
     }
-    pub fn get_IndividualizationServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getIndividualizationServiceRequestType();
+    pub fn getIndividualizationServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getIndividualizationServiceRequestType();
     }
-    pub fn get_LicenseAcquirerServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getLicenseAcquirerServiceRequestType();
+    pub fn getLicenseAcquirerServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getLicenseAcquirerServiceRequestType();
     }
-    pub fn get_MeteringReportServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getMeteringReportServiceRequestType();
+    pub fn getMeteringReportServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getMeteringReportServiceRequestType();
     }
-    pub fn get_RevocationServiceRequestType() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getRevocationServiceRequestType();
+    pub fn getRevocationServiceRequestType() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getRevocationServiceRequestType();
     }
-    pub fn get_MediaProtectionSystemId() core.HResult!*Guid {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getMediaProtectionSystemId();
+    pub fn getMediaProtectionSystemId() core.HResult!*Guid {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getMediaProtectionSystemId();
     }
-    pub fn get_PlayReadySecurityVersion() core.HResult!u32 {
-        const factory = @This().IPlayReadyStaticsCache.get();
-        return try factory.getPlayReadySecurityVersion();
+    pub fn getPlayReadySecurityVersion() core.HResult!u32 {
+        const _f = @This().IPlayReadyStaticsCache.get();
+        return try _f.getPlayReadySecurityVersion();
     }
-    pub fn get_HardwareDRMDisabledAtTime() core.HResult!*IReference(DateTime) {
-        const factory = @This().IPlayReadyStatics5Cache.get();
-        return try factory.getHardwareDRMDisabledAtTime();
+    pub fn getHardwareDRMDisabledAtTime() core.HResult!*IReference(DateTime) {
+        const _f = @This().IPlayReadyStatics5Cache.get();
+        return try _f.getHardwareDRMDisabledAtTime();
     }
-    pub fn get_HardwareDRMDisabledUntilTime() core.HResult!*IReference(DateTime) {
-        const factory = @This().IPlayReadyStatics5Cache.get();
-        return try factory.getHardwareDRMDisabledUntilTime();
+    pub fn getHardwareDRMDisabledUntilTime() core.HResult!*IReference(DateTime) {
+        const _f = @This().IPlayReadyStatics5Cache.get();
+        return try _f.getHardwareDRMDisabledUntilTime();
     }
     pub fn ResetHardwareDRMDisabled() core.HResult!void {
-        const factory = @This().IPlayReadyStatics5Cache.get();
-        return try factory.ResetHardwareDRMDisabled();
+        const _f = @This().IPlayReadyStatics5Cache.get();
+        return try _f.ResetHardwareDRMDisabled();
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.PlayReady.PlayReadyStatics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

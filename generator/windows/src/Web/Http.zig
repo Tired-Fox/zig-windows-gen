@@ -44,12 +44,12 @@ pub const HttpBufferContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromBuffer(content: *IBuffer) core.HResult!*HttpBufferContent {
-        const factory = @This().IHttpBufferContentFactoryCache.get();
-        return try factory.CreateFromBuffer(content);
+        const _f = @This().IHttpBufferContentFactoryCache.get();
+        return try _f.CreateFromBuffer(content);
     }
     pub fn CreateFromBufferWithOffset(content: *IBuffer, offset: u32, count: u32) core.HResult!*HttpBufferContent {
-        const factory = @This().IHttpBufferContentFactoryCache.get();
-        return try factory.CreateFromBufferWithOffset(content, offset, count);
+        const _f = @This().IHttpBufferContentFactoryCache.get();
+        return try _f.CreateFromBufferWithOffset(content, offset, count);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpBufferContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -196,8 +196,8 @@ pub const HttpClient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpClient.IID)));
     }
     pub fn Create(filter: *IHttpFilter) core.HResult!*HttpClient {
-        const factory = @This().IHttpClientFactoryCache.get();
-        return try factory.Create(filter);
+        const _f = @This().IHttpClientFactoryCache.get();
+        return try _f.Create(filter);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -267,8 +267,8 @@ pub const HttpCookie = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(name: HSTRING, domain: HSTRING, path: HSTRING) core.HResult!*HttpCookie {
-        const factory = @This().IHttpCookieFactoryCache.get();
-        return try factory.Create(name, domain, path);
+        const _f = @This().IHttpCookieFactoryCache.get();
+        return try _f.Create(name, domain, path);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpCookie";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -279,23 +279,11 @@ pub const HttpCookie = extern struct {
 };
 pub const HttpCookieCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(HttpCookie) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(HttpCookie) {
         var this: ?*IIterable(HttpCookie) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -377,8 +365,8 @@ pub const HttpFormUrlEncodedContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(content: *IIterable(IKeyValuePair(HSTRING,HSTRING))) core.HResult!*HttpFormUrlEncodedContent {
-        const factory = @This().IHttpFormUrlEncodedContentFactoryCache.get();
-        return try factory.Create(content);
+        const _f = @This().IHttpFormUrlEncodedContentFactoryCache.get();
+        return try _f.Create(content);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpFormUrlEncodedContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -523,36 +511,36 @@ pub const HttpMethod = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(method: HSTRING) core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodFactoryCache.get();
-        return try factory.Create(method);
+        const _f = @This().IHttpMethodFactoryCache.get();
+        return try _f.Create(method);
     }
-    pub fn get_Delete() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getDelete();
+    pub fn getDelete() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getDelete();
     }
-    pub fn get_Get() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getGet();
+    pub fn getGet() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getGet();
     }
-    pub fn get_Head() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getHead();
+    pub fn getHead() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getHead();
     }
-    pub fn get_Options() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getOptions();
+    pub fn getOptions() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getOptions();
     }
-    pub fn get_Patch() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getPatch();
+    pub fn getPatch() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getPatch();
     }
-    pub fn get_Post() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getPost();
+    pub fn getPost() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getPost();
     }
-    pub fn get_Put() core.HResult!*HttpMethod {
-        const factory = @This().IHttpMethodStaticsCache.get();
-        return try factory.getPut();
+    pub fn getPut() core.HResult!*HttpMethod {
+        const _f = @This().IHttpMethodStaticsCache.get();
+        return try _f.getPut();
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpMethod";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -604,7 +592,7 @@ pub const HttpMultipartContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IHttpContent) {
         var this: ?*IIterable(IHttpContent) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -624,12 +612,12 @@ pub const HttpMultipartContent = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
     }
     pub fn CreateWithSubtype(subtype: HSTRING) core.HResult!*HttpMultipartContent {
-        const factory = @This().IHttpMultipartContentFactoryCache.get();
-        return try factory.CreateWithSubtype(subtype);
+        const _f = @This().IHttpMultipartContentFactoryCache.get();
+        return try _f.CreateWithSubtype(subtype);
     }
     pub fn CreateWithSubtypeAndBoundary(subtype: HSTRING, boundary: HSTRING) core.HResult!*HttpMultipartContent {
-        const factory = @This().IHttpMultipartContentFactoryCache.get();
-        return try factory.CreateWithSubtypeAndBoundary(subtype, boundary);
+        const _f = @This().IHttpMultipartContentFactoryCache.get();
+        return try _f.CreateWithSubtypeAndBoundary(subtype, boundary);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpMultipartContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -653,11 +641,11 @@ pub const HttpMultipartFormDataContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.AddWithName(content, name);
     }
-    pub fn AddWithNameWithFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
+    pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
         var this: ?*IHttpMultipartFormDataContent = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IHttpMultipartFormDataContent.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.AddWithNameWithFileName(content, name, fileName);
+        return try this.?.AddWithNameAndFileName(content, name, fileName);
     }
     pub fn getHeaders(self: *@This()) core.HResult!*HttpContentHeaderCollection {
         const this: *IHttpContent = @ptrCast(self);
@@ -693,7 +681,7 @@ pub const HttpMultipartFormDataContent = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IHttpContent) {
         var this: ?*IIterable(IHttpContent) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -713,8 +701,8 @@ pub const HttpMultipartFormDataContent = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpContent.IID)));
     }
     pub fn CreateWithBoundary(boundary: HSTRING) core.HResult!*HttpMultipartFormDataContent {
-        const factory = @This().IHttpMultipartFormDataContentFactoryCache.get();
-        return try factory.CreateWithBoundary(boundary);
+        const _f = @This().IHttpMultipartFormDataContentFactoryCache.get();
+        return try _f.CreateWithBoundary(boundary);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpMultipartFormDataContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -814,8 +802,8 @@ pub const HttpRequestMessage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpRequestMessage.IID)));
     }
     pub fn Create(method: *HttpMethod, uri: *Uri) core.HResult!*HttpRequestMessage {
-        const factory = @This().IHttpRequestMessageFactoryCache.get();
-        return try factory.Create(method, uri);
+        const _f = @This().IHttpRequestMessageFactoryCache.get();
+        return try _f.Create(method, uri);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpRequestMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -943,8 +931,8 @@ pub const HttpResponseMessage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHttpResponseMessage.IID)));
     }
     pub fn Create(statusCode: HttpStatusCode) core.HResult!*HttpResponseMessage {
-        const factory = @This().IHttpResponseMessageFactoryCache.get();
-        return try factory.Create(statusCode);
+        const _f = @This().IHttpResponseMessageFactoryCache.get();
+        return try _f.Create(statusCode);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpResponseMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1065,8 +1053,8 @@ pub const HttpStreamContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromInputStream(content: *IInputStream) core.HResult!*HttpStreamContent {
-        const factory = @This().IHttpStreamContentFactoryCache.get();
-        return try factory.CreateFromInputStream(content);
+        const _f = @This().IHttpStreamContentFactoryCache.get();
+        return try _f.CreateFromInputStream(content);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpStreamContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1121,16 +1109,16 @@ pub const HttpStringContent = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromString(content: HSTRING) core.HResult!*HttpStringContent {
-        const factory = @This().IHttpStringContentFactoryCache.get();
-        return try factory.CreateFromString(content);
+        const _f = @This().IHttpStringContentFactoryCache.get();
+        return try _f.CreateFromString(content);
     }
     pub fn CreateFromStringWithEncoding(content: HSTRING, encoding: UnicodeEncoding) core.HResult!*HttpStringContent {
-        const factory = @This().IHttpStringContentFactoryCache.get();
-        return try factory.CreateFromStringWithEncoding(content, encoding);
+        const _f = @This().IHttpStringContentFactoryCache.get();
+        return try _f.CreateFromStringWithEncoding(content, encoding);
     }
     pub fn CreateFromStringWithEncodingAndMediaType(content: HSTRING, encoding: UnicodeEncoding, mediaType: HSTRING) core.HResult!*HttpStringContent {
-        const factory = @This().IHttpStringContentFactoryCache.get();
-        return try factory.CreateFromStringWithEncodingAndMediaType(content, encoding, mediaType);
+        const _f = @This().IHttpStringContentFactoryCache.get();
+        return try _f.CreateFromStringWithEncodingAndMediaType(content, encoding, mediaType);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.HttpStringContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1998,8 +1986,8 @@ pub const IHttpMultipartFormDataContent = extern struct {
         const _c = self.vtable.AddWithName(@ptrCast(self), content, name);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddWithFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
-        const _c = self.vtable.AddWithFileName(@ptrCast(self), content, name, fileName);
+    pub fn AddWithNameAndFileName(self: *@This(), content: *IHttpContent, name: HSTRING, fileName: HSTRING) core.HResult!void {
+        const _c = self.vtable.AddWithNameAndFileName(@ptrCast(self), content, name, fileName);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Web.Http.IHttpMultipartFormDataContent";
@@ -2016,7 +2004,7 @@ pub const IHttpMultipartFormDataContent = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Add: *const fn(self: *anyopaque, content: *IHttpContent) callconv(.winapi) HRESULT,
         AddWithName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING) callconv(.winapi) HRESULT,
-        AddWithFileName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING, fileName: HSTRING) callconv(.winapi) HRESULT,
+        AddWithNameAndFileName: *const fn(self: *anyopaque, content: *IHttpContent, name: HSTRING, fileName: HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IHttpMultipartFormDataContentFactory = extern struct {
@@ -2459,12 +2447,12 @@ const IInputStream = @import("../Storage/Streams.zig").IInputStream;
 const IStringable = @import("../Foundation.zig").IStringable;
 const DateTime = @import("../Foundation.zig").DateTime;
 const IKeyValuePair = @import("../Foundation/Collections.zig").IKeyValuePair;
-const HttpResponseHeaderCollection = @import("./Headers.zig").HttpResponseHeaderCollection;
+const HttpResponseHeaderCollection = @import("./Http/Headers.zig").HttpResponseHeaderCollection;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const IAsyncOperationWithProgress = @import("../Foundation.zig").IAsyncOperationWithProgress;
 const IIterator = @import("../Foundation/Collections.zig").IIterator;
 const UnicodeEncoding = @import("../Storage/Streams.zig").UnicodeEncoding;
-const HttpContentHeaderCollection = @import("./Headers.zig").HttpContentHeaderCollection;
+const HttpContentHeaderCollection = @import("./Http/Headers.zig").HttpContentHeaderCollection;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const IClosable = @import("../Foundation.zig").IClosable;
 const HSTRING = @import("../root.zig").HSTRING;
@@ -2474,10 +2462,10 @@ const IInspectable = @import("../Foundation.zig").IInspectable;
 const IOutputStream = @import("../Storage/Streams.zig").IOutputStream;
 const Uri = @import("../Foundation.zig").Uri;
 const HResult = @import("../Foundation.zig").HResult;
-const IHttpFilter = @import("./Filters.zig").IHttpFilter;
+const IHttpFilter = @import("./Http/Filters.zig").IHttpFilter;
 const HRESULT = @import("../root.zig").HRESULT;
 const core = @import("../root.zig").core;
-const HttpRequestHeaderCollection = @import("./Headers.zig").HttpRequestHeaderCollection;
+const HttpRequestHeaderCollection = @import("./Http/Headers.zig").HttpRequestHeaderCollection;
 pub const Diagnostics = @import("./Http/Diagnostics.zig");
 pub const Filters = @import("./Http/Filters.zig");
 pub const Headers = @import("./Http/Headers.zig");

@@ -35,25 +35,25 @@ pub const AppointmentsProviderLaunchActionVerbs = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AddAppointment() core.HResult!HSTRING {
-        const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
-        return try factory.getAddAppointment();
+    pub fn getAddAppointment() core.HResult!HSTRING {
+        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        return try _f.getAddAppointment();
     }
-    pub fn get_ReplaceAppointment() core.HResult!HSTRING {
-        const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
-        return try factory.getReplaceAppointment();
+    pub fn getReplaceAppointment() core.HResult!HSTRING {
+        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        return try _f.getReplaceAppointment();
     }
-    pub fn get_RemoveAppointment() core.HResult!HSTRING {
-        const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
-        return try factory.getRemoveAppointment();
+    pub fn getRemoveAppointment() core.HResult!HSTRING {
+        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        return try _f.getRemoveAppointment();
     }
-    pub fn get_ShowTimeFrame() core.HResult!HSTRING {
-        const factory = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
-        return try factory.getShowTimeFrame();
+    pub fn getShowTimeFrame() core.HResult!HSTRING {
+        const _f = @This().IAppointmentsProviderLaunchActionVerbsStaticsCache.get();
+        return try _f.getShowTimeFrame();
     }
-    pub fn get_ShowAppointmentDetails() core.HResult!HSTRING {
-        const factory = @This().IAppointmentsProviderLaunchActionVerbsStatics2Cache.get();
-        return try factory.getShowAppointmentDetails();
+    pub fn getShowAppointmentDetails() core.HResult!HSTRING {
+        const _f = @This().IAppointmentsProviderLaunchActionVerbsStatics2Cache.get();
+        return try _f.getShowAppointmentDetails();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Appointments.AppointmentsProvider.AppointmentsProviderLaunchActionVerbs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -50,12 +50,12 @@ pub const CustomSensor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(interfaceId: *Guid) core.HResult!HSTRING {
-        const factory = @This().ICustomSensorStaticsCache.get();
-        return try factory.GetDeviceSelector(interfaceId);
+        const _f = @This().ICustomSensorStaticsCache.get();
+        return try _f.GetDeviceSelector(interfaceId);
     }
     pub fn FromIdAsync(sensorId: HSTRING) core.HResult!*IAsyncOperation(CustomSensor) {
-        const factory = @This().ICustomSensorStaticsCache.get();
-        return try factory.FromIdAsync(sensorId);
+        const _f = @This().ICustomSensorStaticsCache.get();
+        return try _f.FromIdAsync(sensorId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sensors.Custom.CustomSensor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

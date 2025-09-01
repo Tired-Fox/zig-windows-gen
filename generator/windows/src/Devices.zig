@@ -142,8 +142,8 @@ pub const LowLevelDevicesAggregateProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(adc: *IAdcControllerProvider, pwm: *IPwmControllerProvider, gpio: *IGpioControllerProvider, i2c: *II2cControllerProvider, spi: *ISpiControllerProvider) core.HResult!*LowLevelDevicesAggregateProvider {
-        const factory = @This().ILowLevelDevicesAggregateProviderFactoryCache.get();
-        return try factory.Create(adc, pwm, gpio, i2c, spi);
+        const _f = @This().ILowLevelDevicesAggregateProviderFactoryCache.get();
+        return try _f.Create(adc, pwm, gpio, i2c, spi);
     }
     pub const NAME: []const u8 = "Windows.Devices.LowLevelDevicesAggregateProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -157,13 +157,13 @@ pub const LowLevelDevicesController = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DefaultProvider() core.HResult!*ILowLevelDevicesAggregateProvider {
-        const factory = @This().ILowLevelDevicesControllerStaticsCache.get();
-        return try factory.getDefaultProvider();
+    pub fn getDefaultProvider() core.HResult!*ILowLevelDevicesAggregateProvider {
+        const _f = @This().ILowLevelDevicesControllerStaticsCache.get();
+        return try _f.getDefaultProvider();
     }
-    pub fn put_DefaultProvider(value: *ILowLevelDevicesAggregateProvider) core.HResult!void {
-        const factory = @This().ILowLevelDevicesControllerStaticsCache.get();
-        return try factory.putDefaultProvider(value);
+    pub fn putDefaultProvider(value: *ILowLevelDevicesAggregateProvider) core.HResult!void {
+        const _f = @This().ILowLevelDevicesControllerStaticsCache.get();
+        return try _f.putDefaultProvider(value);
     }
     pub const NAME: []const u8 = "Windows.Devices.LowLevelDevicesController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -172,7 +172,7 @@ pub const LowLevelDevicesController = extern struct {
     pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ILowLevelDevicesController.SIGNATURE);
     var _ILowLevelDevicesControllerStaticsCache: FactoryCache(ILowLevelDevicesControllerStatics, RUNTIME_NAME) = .{};
 };
-const IAdcControllerProvider = @import("./Adc/Provider.zig").IAdcControllerProvider;
+const IAdcControllerProvider = @import("./Devices/Adc/Provider.zig").IAdcControllerProvider;
 const HSTRING = @import("./root.zig").HSTRING;
 const IUnknown = @import("./root.zig").IUnknown;
 const Guid = @import("./root.zig").Guid;
@@ -180,11 +180,11 @@ const HRESULT = @import("./root.zig").HRESULT;
 const core = @import("./root.zig").core;
 const FactoryCache = @import("./core.zig").FactoryCache;
 const IInspectable = @import("./Foundation.zig").IInspectable;
-const IPwmControllerProvider = @import("./Pwm/Provider.zig").IPwmControllerProvider;
+const IPwmControllerProvider = @import("./Devices/Pwm/Provider.zig").IPwmControllerProvider;
 const TrustLevel = @import("./root.zig").TrustLevel;
-const IGpioControllerProvider = @import("./Gpio/Provider.zig").IGpioControllerProvider;
-const II2cControllerProvider = @import("./I2c/Provider.zig").II2cControllerProvider;
-const ISpiControllerProvider = @import("./Spi/Provider.zig").ISpiControllerProvider;
+const IGpioControllerProvider = @import("./Devices/Gpio/Provider.zig").IGpioControllerProvider;
+const II2cControllerProvider = @import("./Devices/I2c/Provider.zig").II2cControllerProvider;
+const ISpiControllerProvider = @import("./Devices/Spi/Provider.zig").ISpiControllerProvider;
 pub const Adc = @import("./Devices/Adc.zig");
 pub const Background = @import("./Devices/Background.zig");
 pub const Bluetooth = @import("./Devices/Bluetooth.zig");

@@ -94,8 +94,8 @@ pub const IShareOperation = extern struct {
         const _c = self.vtable.ReportSubmittedBackgroundTask(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ReportCompleted(self: *@This(), quicklink: *QuickLink) core.HResult!void {
-        const _c = self.vtable.ReportCompleted(@ptrCast(self), quicklink);
+    pub fn ReportCompletedWithQuicklink(self: *@This(), quicklink: *QuickLink) core.HResult!void {
+        const _c = self.vtable.ReportCompletedWithQuicklink(@ptrCast(self), quicklink);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ReportCompleted(self: *@This()) core.HResult!void {
@@ -124,7 +124,7 @@ pub const IShareOperation = extern struct {
         ReportStarted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportDataRetrieved: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportSubmittedBackgroundTask: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ReportCompleted: *const fn(self: *anyopaque, quicklink: *QuickLink) callconv(.winapi) HRESULT,
+        ReportCompletedWithQuicklink: *const fn(self: *anyopaque, quicklink: *QuickLink) callconv(.winapi) HRESULT,
         ReportCompleted: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ReportError: *const fn(self: *anyopaque, value: HSTRING) callconv(.winapi) HRESULT,
     };

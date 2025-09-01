@@ -241,12 +241,12 @@ pub const AudioEffectsPackConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForDeviceId(effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!*AudioEffectsPackConfiguration {
-        const factory = @This().IAudioEffectsPackConfigurationStaticsCache.get();
-        return try factory.GetForDeviceId(effectsPackId, deviceId);
+        const _f = @This().IAudioEffectsPackConfigurationStaticsCache.get();
+        return try _f.GetForDeviceId(effectsPackId, deviceId);
     }
     pub fn IsDeviceIdSupported(effectsPackId: HSTRING, deviceId: HSTRING) core.HResult!bool {
-        const factory = @This().IAudioEffectsPackConfigurationStaticsCache.get();
-        return try factory.IsDeviceIdSupported(effectsPackId, deviceId);
+        const _f = @This().IAudioEffectsPackConfigurationStaticsCache.get();
+        return try _f.IsDeviceIdSupported(effectsPackId, deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioEffectsPackConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -785,9 +785,9 @@ pub const AudioGraph = extern struct {
         const this: *IAudioGraph = @ptrCast(self);
         return try this.CreateDeviceInputNodeAsyncWithEncodingProperties(category, encodingProperties);
     }
-    pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesWithDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         const this: *IAudioGraph = @ptrCast(self);
-        return try this.CreateDeviceInputNodeAsyncWithEncodingPropertiesWithDevice(category, encodingProperties, device);
+        return try this.CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice(category, encodingProperties, device);
     }
     pub fn CreateFrameOutputNode(self: *@This()) core.HResult!*AudioFrameOutputNode {
         const this: *IAudioGraph = @ptrCast(self);
@@ -887,17 +887,17 @@ pub const AudioGraph = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn CreateFrameInputNodeWithEncodingPropertiesWithEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioFrameInputNode {
+    pub fn CreateFrameInputNodeWithEncodingPropertiesAndEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioFrameInputNode {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateFrameInputNodeWithEncodingPropertiesWithEmitter(encodingProperties, emitter);
+        return try this.?.CreateFrameInputNodeWithEncodingPropertiesAndEmitter(encodingProperties, emitter);
     }
-    pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesWithDeviceWithEmitter(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDeviceAndEmitter(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateDeviceInputNodeAsyncWithEncodingPropertiesWithDeviceWithEmitter(category, encodingProperties, device, emitter);
+        return try this.?.CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDeviceAndEmitter(category, encodingProperties, device, emitter);
     }
     pub fn CreateFileInputNodeAsyncWithEmitter(self: *@This(), file: *IStorageFile, emitter: *AudioNodeEmitter) core.HResult!*IAsyncOperation(CreateAudioFileInputNodeResult) {
         var this: ?*IAudioGraph2 = undefined;
@@ -905,11 +905,11 @@ pub const AudioGraph = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateFileInputNodeAsyncWithEmitter(file, emitter);
     }
-    pub fn CreateSubmixNodeWithEncodingPropertiesWithEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioSubmixNode {
+    pub fn CreateSubmixNodeWithEncodingPropertiesAndEmitter(self: *@This(), encodingProperties: *AudioEncodingProperties, emitter: *AudioNodeEmitter) core.HResult!*AudioSubmixNode {
         var this: ?*IAudioGraph2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioGraph2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateSubmixNodeWithEncodingPropertiesWithEmitter(encodingProperties, emitter);
+        return try this.?.CreateSubmixNodeWithEncodingPropertiesAndEmitter(encodingProperties, emitter);
     }
     pub fn CreateBatchUpdater(self: *@This()) core.HResult!*AudioGraphBatchUpdater {
         var this: ?*IAudioGraph2 = undefined;
@@ -933,8 +933,8 @@ pub const AudioGraph = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync(settings: *AudioGraphSettings) core.HResult!*IAsyncOperation(CreateAudioGraphResult) {
-        const factory = @This().IAudioGraphStaticsCache.get();
-        return try factory.CreateAsync(settings);
+        const _f = @This().IAudioGraphStaticsCache.get();
+        return try _f.CreateAsync(settings);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioGraph";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1047,8 +1047,8 @@ pub const AudioGraphSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioRenderCategory: AudioRenderCategory) core.HResult!*AudioGraphSettings {
-        const factory = @This().IAudioGraphSettingsFactoryCache.get();
-        return try factory.Create(audioRenderCategory);
+        const _f = @This().IAudioGraphSettingsFactoryCache.get();
+        return try _f.Create(audioRenderCategory);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioGraphSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1157,8 +1157,8 @@ pub const AudioNodeEmitter = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAudioNodeEmitter.IID)));
     }
     pub fn CreateAudioNodeEmitter(shape: *AudioNodeEmitterShape, decayModel: *AudioNodeEmitterDecayModel, settings: AudioNodeEmitterSettings) core.HResult!*AudioNodeEmitter {
-        const factory = @This().IAudioNodeEmitterFactoryCache.get();
-        return try factory.CreateAudioNodeEmitter(shape, decayModel, settings);
+        const _f = @This().IAudioNodeEmitterFactoryCache.get();
+        return try _f.CreateAudioNodeEmitter(shape, decayModel, settings);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioNodeEmitter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1214,12 +1214,12 @@ pub const AudioNodeEmitterDecayModel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateNatural(minGain: f64, maxGain: f64, unityGainDistance: f64, cutoffDistance: f64) core.HResult!*AudioNodeEmitterDecayModel {
-        const factory = @This().IAudioNodeEmitterDecayModelStaticsCache.get();
-        return try factory.CreateNatural(minGain, maxGain, unityGainDistance, cutoffDistance);
+        const _f = @This().IAudioNodeEmitterDecayModelStaticsCache.get();
+        return try _f.CreateNatural(minGain, maxGain, unityGainDistance, cutoffDistance);
     }
     pub fn CreateCustom(minGain: f64, maxGain: f64) core.HResult!*AudioNodeEmitterDecayModel {
-        const factory = @This().IAudioNodeEmitterDecayModelStaticsCache.get();
-        return try factory.CreateCustom(minGain, maxGain);
+        const _f = @This().IAudioNodeEmitterDecayModelStaticsCache.get();
+        return try _f.CreateCustom(minGain, maxGain);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioNodeEmitterDecayModel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1262,12 +1262,12 @@ pub const AudioNodeEmitterShape = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCone(innerAngle: f64, outerAngle: f64, outerAngleGain: f64) core.HResult!*AudioNodeEmitterShape {
-        const factory = @This().IAudioNodeEmitterShapeStaticsCache.get();
-        return try factory.CreateCone(innerAngle, outerAngle, outerAngleGain);
+        const _f = @This().IAudioNodeEmitterShapeStaticsCache.get();
+        return try _f.CreateCone(innerAngle, outerAngle, outerAngleGain);
     }
     pub fn CreateOmnidirectional() core.HResult!*AudioNodeEmitterShape {
-        const factory = @This().IAudioNodeEmitterShapeStaticsCache.get();
-        return try factory.CreateOmnidirectional();
+        const _f = @This().IAudioNodeEmitterShapeStaticsCache.get();
+        return try _f.CreateOmnidirectional();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioNodeEmitterShape";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1372,12 +1372,12 @@ pub const AudioPlaybackConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IAudioPlaybackConnectionStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IAudioPlaybackConnectionStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn TryCreateFromId(id: HSTRING) core.HResult!*AudioPlaybackConnection {
-        const factory = @This().IAudioPlaybackConnectionStaticsCache.get();
-        return try factory.TryCreateFromId(id);
+        const _f = @This().IAudioPlaybackConnectionStaticsCache.get();
+        return try _f.TryCreateFromId(id);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioPlaybackConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1430,36 +1430,36 @@ pub const AudioStateMonitor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateForRenderMonitoring() core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForRenderMonitoring();
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForRenderMonitoring();
     }
     pub fn CreateForRenderMonitoringWithCategory(category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForRenderMonitoringWithCategory(category);
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForRenderMonitoringWithCategory(category);
     }
-    pub fn CreateForRenderMonitoringWithCategoryWithRole(category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForRenderMonitoringWithCategoryWithRole(category, role);
+    pub fn CreateForRenderMonitoringWithCategoryAndRole(category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForRenderMonitoringWithCategoryAndRole(category, role);
     }
     pub fn CreateForRenderMonitoringWithCategoryAndDeviceId(category: AudioRenderCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForRenderMonitoringWithCategoryAndDeviceId(category, deviceId);
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForRenderMonitoringWithCategoryAndDeviceId(category, deviceId);
     }
     pub fn CreateForCaptureMonitoring() core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForCaptureMonitoring();
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForCaptureMonitoring();
     }
     pub fn CreateForCaptureMonitoringWithCategory(category: MediaCategory) core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForCaptureMonitoringWithCategory(category);
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForCaptureMonitoringWithCategory(category);
     }
-    pub fn CreateForCaptureMonitoringWithCategoryWithRole(category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForCaptureMonitoringWithCategoryWithRole(category, role);
+    pub fn CreateForCaptureMonitoringWithCategoryAndRole(category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForCaptureMonitoringWithCategoryAndRole(category, role);
     }
     pub fn CreateForCaptureMonitoringWithCategoryAndDeviceId(category: MediaCategory, deviceId: HSTRING) core.HResult!*AudioStateMonitor {
-        const factory = @This().IAudioStateMonitorStaticsCache.get();
-        return try factory.CreateForCaptureMonitoringWithCategoryAndDeviceId(category, deviceId);
+        const _f = @This().IAudioStateMonitorStaticsCache.get();
+        return try _f.CreateForCaptureMonitoringWithCategoryAndDeviceId(category, deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.AudioStateMonitor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1744,8 +1744,8 @@ pub const EchoEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*EchoEffectDefinition {
-        const factory = @This().IEchoEffectDefinitionFactoryCache.get();
-        return try factory.Create(audioGraph);
+        const _f = @This().IEchoEffectDefinitionFactoryCache.get();
+        return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.EchoEffectDefinition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1808,8 +1808,8 @@ pub const EqualizerEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*EqualizerEffectDefinition {
-        const factory = @This().IEqualizerEffectDefinitionFactoryCache.get();
-        return try factory.Create(audioGraph);
+        const _f = @This().IEqualizerEffectDefinitionFactoryCache.get();
+        return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.EqualizerEffectDefinition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2217,9 +2217,9 @@ pub const IAudioGraph = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrameInputNode(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioFrameInputNode {
+    pub fn CreateFrameInputNodeWithEncodingProperties(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioFrameInputNode {
         var _r: *AudioFrameInputNode = undefined;
-        const _c = self.vtable.CreateFrameInputNode(@ptrCast(self), encodingProperties, &_r);
+        const _c = self.vtable.CreateFrameInputNodeWithEncodingProperties(@ptrCast(self), encodingProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2235,9 +2235,9 @@ pub const IAudioGraph = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateDeviceInputNodeAsyncWithDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
+    pub fn CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice(self: *@This(), category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation) core.HResult!*IAsyncOperation(CreateAudioDeviceInputNodeResult) {
         var _r: *IAsyncOperation(CreateAudioDeviceInputNodeResult) = undefined;
-        const _c = self.vtable.CreateDeviceInputNodeAsyncWithDevice(@ptrCast(self), category, encodingProperties, device, &_r);
+        const _c = self.vtable.CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice(@ptrCast(self), category, encodingProperties, device, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2247,9 +2247,9 @@ pub const IAudioGraph = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFrameOutputNode(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioFrameOutputNode {
+    pub fn CreateFrameOutputNodeWithEncodingProperties(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioFrameOutputNode {
         var _r: *AudioFrameOutputNode = undefined;
-        const _c = self.vtable.CreateFrameOutputNode(@ptrCast(self), encodingProperties, &_r);
+        const _c = self.vtable.CreateFrameOutputNodeWithEncodingProperties(@ptrCast(self), encodingProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2283,9 +2283,9 @@ pub const IAudioGraph = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateSubmixNode(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioSubmixNode {
+    pub fn CreateSubmixNodeWithEncodingProperties(self: *@This(), encodingProperties: *AudioEncodingProperties) core.HResult!*AudioSubmixNode {
         var _r: *AudioSubmixNode = undefined;
-        const _c = self.vtable.CreateSubmixNode(@ptrCast(self), encodingProperties, &_r);
+        const _c = self.vtable.CreateSubmixNodeWithEncodingProperties(@ptrCast(self), encodingProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2380,18 +2380,18 @@ pub const IAudioGraph = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFrameInputNode: *const fn(self: *anyopaque, _r: **AudioFrameInputNode) callconv(.winapi) HRESULT,
-        CreateFrameInputNode: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioFrameInputNode) callconv(.winapi) HRESULT,
+        CreateFrameInputNodeWithEncodingProperties: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioFrameInputNode) callconv(.winapi) HRESULT,
         CreateDeviceInputNodeAsync: *const fn(self: *anyopaque, category: MediaCategory, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
         CreateDeviceInputNodeAsyncWithEncodingProperties: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
-        CreateDeviceInputNodeAsyncWithDevice: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
+        CreateDeviceInputNodeAsyncWithEncodingPropertiesAndDevice: *const fn(self: *anyopaque, category: MediaCategory, encodingProperties: *AudioEncodingProperties, device: *DeviceInformation, _r: **IAsyncOperation(CreateAudioDeviceInputNodeResult)) callconv(.winapi) HRESULT,
         CreateFrameOutputNode: *const fn(self: *anyopaque, _r: **AudioFrameOutputNode) callconv(.winapi) HRESULT,
-        CreateFrameOutputNode: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioFrameOutputNode) callconv(.winapi) HRESULT,
+        CreateFrameOutputNodeWithEncodingProperties: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioFrameOutputNode) callconv(.winapi) HRESULT,
         CreateDeviceOutputNodeAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(CreateAudioDeviceOutputNodeResult)) callconv(.winapi) HRESULT,
         CreateFileInputNodeAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(CreateAudioFileInputNodeResult)) callconv(.winapi) HRESULT,
         CreateFileOutputNodeAsync: *const fn(self: *anyopaque, file: *IStorageFile, _r: **IAsyncOperation(CreateAudioFileOutputNodeResult)) callconv(.winapi) HRESULT,
         CreateFileOutputNodeAsyncWithFileEncodingProfile: *const fn(self: *anyopaque, file: *IStorageFile, fileEncodingProfile: *MediaEncodingProfile, _r: **IAsyncOperation(CreateAudioFileOutputNodeResult)) callconv(.winapi) HRESULT,
         CreateSubmixNode: *const fn(self: *anyopaque, _r: **AudioSubmixNode) callconv(.winapi) HRESULT,
-        CreateSubmixNode: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioSubmixNode) callconv(.winapi) HRESULT,
+        CreateSubmixNodeWithEncodingProperties: *const fn(self: *anyopaque, encodingProperties: *AudioEncodingProperties, _r: **AudioSubmixNode) callconv(.winapi) HRESULT,
         Start: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         Stop: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ResetAllNodes: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
@@ -3474,15 +3474,15 @@ pub const IAudioStateMonitorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForRenderMonitoring(self: *@This(), category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
+    pub fn CreateForRenderMonitoringWithCategory(self: *@This(), category: AudioRenderCategory) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
-        const _c = self.vtable.CreateForRenderMonitoring(@ptrCast(self), category, &_r);
+        const _c = self.vtable.CreateForRenderMonitoringWithCategory(@ptrCast(self), category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForRenderMonitoring(self: *@This(), category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
+    pub fn CreateForRenderMonitoringWithCategoryAndRole(self: *@This(), category: AudioRenderCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
-        const _c = self.vtable.CreateForRenderMonitoring(@ptrCast(self), category, role, &_r);
+        const _c = self.vtable.CreateForRenderMonitoringWithCategoryAndRole(@ptrCast(self), category, role, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3498,15 +3498,15 @@ pub const IAudioStateMonitorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForCaptureMonitoring(self: *@This(), category: MediaCategory) core.HResult!*AudioStateMonitor {
+    pub fn CreateForCaptureMonitoringWithCategory(self: *@This(), category: MediaCategory) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
-        const _c = self.vtable.CreateForCaptureMonitoring(@ptrCast(self), category, &_r);
+        const _c = self.vtable.CreateForCaptureMonitoringWithCategory(@ptrCast(self), category, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateForCaptureMonitoring(self: *@This(), category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
+    pub fn CreateForCaptureMonitoringWithCategoryAndRole(self: *@This(), category: MediaCategory, role: AudioDeviceRole) core.HResult!*AudioStateMonitor {
         var _r: *AudioStateMonitor = undefined;
-        const _c = self.vtable.CreateForCaptureMonitoring(@ptrCast(self), category, role, &_r);
+        const _c = self.vtable.CreateForCaptureMonitoringWithCategoryAndRole(@ptrCast(self), category, role, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3529,12 +3529,12 @@ pub const IAudioStateMonitorStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateForRenderMonitoring: *const fn(self: *anyopaque, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
-        CreateForRenderMonitoring: *const fn(self: *anyopaque, category: AudioRenderCategory, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
-        CreateForRenderMonitoring: *const fn(self: *anyopaque, category: AudioRenderCategory, role: AudioDeviceRole, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
+        CreateForRenderMonitoringWithCategory: *const fn(self: *anyopaque, category: AudioRenderCategory, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
+        CreateForRenderMonitoringWithCategoryAndRole: *const fn(self: *anyopaque, category: AudioRenderCategory, role: AudioDeviceRole, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForRenderMonitoringWithCategoryAndDeviceId: *const fn(self: *anyopaque, category: AudioRenderCategory, deviceId: HSTRING, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForCaptureMonitoring: *const fn(self: *anyopaque, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
-        CreateForCaptureMonitoring: *const fn(self: *anyopaque, category: MediaCategory, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
-        CreateForCaptureMonitoring: *const fn(self: *anyopaque, category: MediaCategory, role: AudioDeviceRole, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
+        CreateForCaptureMonitoringWithCategory: *const fn(self: *anyopaque, category: MediaCategory, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
+        CreateForCaptureMonitoringWithCategoryAndRole: *const fn(self: *anyopaque, category: MediaCategory, role: AudioDeviceRole, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
         CreateForCaptureMonitoringWithCategoryAndDeviceId: *const fn(self: *anyopaque, category: MediaCategory, deviceId: HSTRING, _r: **AudioStateMonitor) callconv(.winapi) HRESULT,
     };
 };
@@ -4828,8 +4828,8 @@ pub const LimiterEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*LimiterEffectDefinition {
-        const factory = @This().ILimiterEffectDefinitionFactoryCache.get();
-        return try factory.Create(audioGraph);
+        const _f = @This().ILimiterEffectDefinitionFactoryCache.get();
+        return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.LimiterEffectDefinition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4895,12 +4895,6 @@ pub const MediaSourceAudioInputNode = extern struct {
     pub fn removeMediaSourceCompleted(self: *@This(), token: EventRegistrationToken) core.HResult!void {
         const this: *IMediaSourceAudioInputNode = @ptrCast(self);
         return try this.removeMediaSourceCompleted(token);
-    }
-    pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
-        var this: ?*IAudioInputNode2 = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getEmitter();
     }
     pub fn getOutgoingConnections(self: *@This()) core.HResult!*IVectorView(AudioGraphConnection) {
         var this: ?*IAudioInputNode = undefined;
@@ -4997,6 +4991,12 @@ pub const MediaSourceAudioInputNode = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
+    }
+    pub fn getEmitter(self: *@This()) core.HResult!*AudioNodeEmitter {
+        var this: ?*IAudioInputNode2 = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IAudioInputNode2.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getEmitter();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.MediaSourceAudioInputNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5221,8 +5221,8 @@ pub const ReverbEffectDefinition = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audioGraph: *AudioGraph) core.HResult!*ReverbEffectDefinition {
-        const factory = @This().IReverbEffectDefinitionFactoryCache.get();
-        return try factory.Create(audioGraph);
+        const _f = @This().IReverbEffectDefinitionFactoryCache.get();
+        return try _f.Create(audioGraph);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.ReverbEffectDefinition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5289,8 +5289,8 @@ pub const SpatialAudioDeviceConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForDeviceId(deviceId: HSTRING) core.HResult!*SpatialAudioDeviceConfiguration {
-        const factory = @This().ISpatialAudioDeviceConfigurationStaticsCache.get();
-        return try factory.GetForDeviceId(deviceId);
+        const _f = @This().ISpatialAudioDeviceConfigurationStaticsCache.get();
+        return try _f.GetForDeviceId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.SpatialAudioDeviceConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5321,8 +5321,8 @@ pub const SpatialAudioFormatConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialAudioFormatConfiguration {
-        const factory = @This().ISpatialAudioFormatConfigurationStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ISpatialAudioFormatConfigurationStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.SpatialAudioFormatConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5336,33 +5336,33 @@ pub const SpatialAudioFormatSubtype = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DTSXForHomeTheater() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStatics2Cache.get();
-        return try factory.getDTSXForHomeTheater();
+    pub fn getDTSXForHomeTheater() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStatics2Cache.get();
+        return try _f.getDTSXForHomeTheater();
     }
-    pub fn get_WindowsSonic() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
-        return try factory.getWindowsSonic();
+    pub fn getWindowsSonic() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        return try _f.getWindowsSonic();
     }
-    pub fn get_DolbyAtmosForHeadphones() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
-        return try factory.getDolbyAtmosForHeadphones();
+    pub fn getDolbyAtmosForHeadphones() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        return try _f.getDolbyAtmosForHeadphones();
     }
-    pub fn get_DolbyAtmosForHomeTheater() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
-        return try factory.getDolbyAtmosForHomeTheater();
+    pub fn getDolbyAtmosForHomeTheater() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        return try _f.getDolbyAtmosForHomeTheater();
     }
-    pub fn get_DolbyAtmosForSpeakers() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
-        return try factory.getDolbyAtmosForSpeakers();
+    pub fn getDolbyAtmosForSpeakers() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        return try _f.getDolbyAtmosForSpeakers();
     }
-    pub fn get_DTSHeadphoneX() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
-        return try factory.getDTSHeadphoneX();
+    pub fn getDTSHeadphoneX() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        return try _f.getDTSHeadphoneX();
     }
-    pub fn get_DTSXUltra() core.HResult!HSTRING {
-        const factory = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
-        return try factory.getDTSXUltra();
+    pub fn getDTSXUltra() core.HResult!HSTRING {
+        const _f = @This().ISpatialAudioFormatSubtypeStaticsCache.get();
+        return try _f.getDTSXUltra();
     }
     pub const NAME: []const u8 = "Windows.Media.Audio.SpatialAudioFormatSubtype";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

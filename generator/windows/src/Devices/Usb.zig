@@ -664,9 +664,9 @@ pub const IUsbDeviceDescriptor = extern struct {
 };
 pub const IUsbDeviceStatics = extern struct {
     vtable: *const VTable,
-    pub fn GetDeviceSelectorWithWinUsbInterfaceClass(self: *@This(), vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(self: *@This(), vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorWithWinUsbInterfaceClass(@ptrCast(self), vendorId, productId, winUsbInterfaceClass, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(@ptrCast(self), vendorId, productId, winUsbInterfaceClass, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -676,9 +676,9 @@ pub const IUsbDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithProductId(self: *@This(), vendorId: u32, productId: u32) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithVendorIdAndProductId(self: *@This(), vendorId: u32, productId: u32) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorWithProductId(@ptrCast(self), vendorId, productId, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithVendorIdAndProductId(@ptrCast(self), vendorId, productId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -706,9 +706,9 @@ pub const IUsbDeviceStatics = extern struct {
         GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithWinUsbInterfaceClass: *const fn(self: *anyopaque, vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass: *const fn(self: *anyopaque, vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, winUsbInterfaceClass: *Guid, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithProductId: *const fn(self: *anyopaque, vendorId: u32, productId: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithVendorIdAndProductId: *const fn(self: *anyopaque, vendorId: u32, productId: u32, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceClassSelector: *const fn(self: *anyopaque, usbClass: *UsbDeviceClass, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(UsbDevice)) callconv(.winapi) HRESULT,
     };
@@ -1473,12 +1473,12 @@ pub const UsbConfigurationDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryParse(descriptor: *UsbDescriptor, parsed: *UsbConfigurationDescriptor) core.HResult!bool {
-        const factory = @This().IUsbConfigurationDescriptorStaticsCache.get();
-        return try factory.TryParse(descriptor, parsed);
+        const _f = @This().IUsbConfigurationDescriptorStaticsCache.get();
+        return try _f.TryParse(descriptor, parsed);
     }
     pub fn Parse(descriptor: *UsbDescriptor) core.HResult!*UsbConfigurationDescriptor {
-        const factory = @This().IUsbConfigurationDescriptorStaticsCache.get();
-        return try factory.Parse(descriptor);
+        const _f = @This().IUsbConfigurationDescriptorStaticsCache.get();
+        return try _f.Parse(descriptor);
     }
     pub const NAME: []const u8 = "Windows.Devices.Usb.UsbConfigurationDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1606,25 +1606,25 @@ pub const UsbDevice = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn GetDeviceSelectorWithProductIdWithWinUsbInterfaceClass(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
-        const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorWithProductIdWithWinUsbInterfaceClass(vendorId, productId, winUsbInterfaceClass);
+    pub fn GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(vendorId: u32, productId: u32, winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
+        const _f = @This().IUsbDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorWithVendorIdAndProductIdAndWinUsbInterfaceClass(vendorId, productId, winUsbInterfaceClass);
     }
     pub fn GetDeviceSelector(winUsbInterfaceClass: *Guid) core.HResult!HSTRING {
-        const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(winUsbInterfaceClass);
+        const _f = @This().IUsbDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector(winUsbInterfaceClass);
     }
-    pub fn GetDeviceSelectorWithProductId(vendorId: u32, productId: u32) core.HResult!HSTRING {
-        const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorWithProductId(vendorId, productId);
+    pub fn GetDeviceSelectorWithVendorIdAndProductId(vendorId: u32, productId: u32) core.HResult!HSTRING {
+        const _f = @This().IUsbDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorWithVendorIdAndProductId(vendorId, productId);
     }
     pub fn GetDeviceClassSelector(usbClass: *UsbDeviceClass) core.HResult!HSTRING {
-        const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.GetDeviceClassSelector(usbClass);
+        const _f = @This().IUsbDeviceStaticsCache.get();
+        return try _f.GetDeviceClassSelector(usbClass);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(UsbDevice) {
-        const factory = @This().IUsbDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IUsbDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Usb.UsbDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1678,41 +1678,41 @@ pub const UsbDeviceClasses = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_CdcControl() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getCdcControl();
+    pub fn getCdcControl() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getCdcControl();
     }
-    pub fn get_Physical() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getPhysical();
+    pub fn getPhysical() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getPhysical();
     }
-    pub fn get_PersonalHealthcare() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getPersonalHealthcare();
+    pub fn getPersonalHealthcare() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getPersonalHealthcare();
     }
-    pub fn get_ActiveSync() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getActiveSync();
+    pub fn getActiveSync() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getActiveSync();
     }
-    pub fn get_PalmSync() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getPalmSync();
+    pub fn getPalmSync() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getPalmSync();
     }
-    pub fn get_DeviceFirmwareUpdate() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getDeviceFirmwareUpdate();
+    pub fn getDeviceFirmwareUpdate() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getDeviceFirmwareUpdate();
     }
-    pub fn get_Irda() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getIrda();
+    pub fn getIrda() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getIrda();
     }
-    pub fn get_Measurement() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getMeasurement();
+    pub fn getMeasurement() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getMeasurement();
     }
-    pub fn get_VendorSpecific() core.HResult!*UsbDeviceClass {
-        const factory = @This().IUsbDeviceClassesStaticsCache.get();
-        return try factory.getVendorSpecific();
+    pub fn getVendorSpecific() core.HResult!*UsbDeviceClass {
+        const _f = @This().IUsbDeviceClassesStaticsCache.get();
+        return try _f.getVendorSpecific();
     }
     pub const NAME: []const u8 = "Windows.Devices.Usb.UsbDeviceClasses";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1787,12 +1787,12 @@ pub const UsbEndpointDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryParse(descriptor: *UsbDescriptor, parsed: *UsbEndpointDescriptor) core.HResult!bool {
-        const factory = @This().IUsbEndpointDescriptorStaticsCache.get();
-        return try factory.TryParse(descriptor, parsed);
+        const _f = @This().IUsbEndpointDescriptorStaticsCache.get();
+        return try _f.TryParse(descriptor, parsed);
     }
     pub fn Parse(descriptor: *UsbDescriptor) core.HResult!*UsbEndpointDescriptor {
-        const factory = @This().IUsbEndpointDescriptorStaticsCache.get();
-        return try factory.Parse(descriptor);
+        const _f = @This().IUsbEndpointDescriptorStaticsCache.get();
+        return try _f.Parse(descriptor);
     }
     pub const NAME: []const u8 = "Windows.Devices.Usb.UsbEndpointDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1869,12 +1869,12 @@ pub const UsbInterfaceDescriptor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryParse(descriptor: *UsbDescriptor, parsed: *UsbInterfaceDescriptor) core.HResult!bool {
-        const factory = @This().IUsbInterfaceDescriptorStaticsCache.get();
-        return try factory.TryParse(descriptor, parsed);
+        const _f = @This().IUsbInterfaceDescriptorStaticsCache.get();
+        return try _f.TryParse(descriptor, parsed);
     }
     pub fn Parse(descriptor: *UsbDescriptor) core.HResult!*UsbInterfaceDescriptor {
-        const factory = @This().IUsbInterfaceDescriptorStaticsCache.get();
-        return try factory.Parse(descriptor);
+        const _f = @This().IUsbInterfaceDescriptorStaticsCache.get();
+        return try _f.Parse(descriptor);
     }
     pub const NAME: []const u8 = "Windows.Devices.Usb.UsbInterfaceDescriptor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2092,8 +2092,8 @@ pub const UsbSetupPacket = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUsbSetupPacket.IID)));
     }
     pub fn CreateWithEightByteBuffer(eightByteBuffer: *IBuffer) core.HResult!*UsbSetupPacket {
-        const factory = @This().IUsbSetupPacketFactoryCache.get();
-        return try factory.CreateWithEightByteBuffer(eightByteBuffer);
+        const _f = @This().IUsbSetupPacketFactoryCache.get();
+        return try _f.CreateWithEightByteBuffer(eightByteBuffer);
     }
     pub const NAME: []const u8 = "Windows.Devices.Usb.UsbSetupPacket";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

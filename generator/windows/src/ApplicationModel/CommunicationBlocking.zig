@@ -3,29 +3,29 @@ pub const CommunicationBlockingAccessManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsBlockingActive() core.HResult!bool {
-        const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
-        return try factory.getIsBlockingActive();
+    pub fn getIsBlockingActive() core.HResult!bool {
+        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        return try _f.getIsBlockingActive();
     }
     pub fn IsBlockedNumberAsync(number: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
-        return try factory.IsBlockedNumberAsync(number);
+        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        return try _f.IsBlockedNumberAsync(number);
     }
     pub fn ShowBlockNumbersUI(phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
-        const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
-        return try factory.ShowBlockNumbersUI(phoneNumbers);
+        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        return try _f.ShowBlockNumbersUI(phoneNumbers);
     }
     pub fn ShowUnblockNumbersUI(phoneNumbers: *IIterable(HSTRING)) core.HResult!bool {
-        const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
-        return try factory.ShowUnblockNumbersUI(phoneNumbers);
+        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        return try _f.ShowUnblockNumbersUI(phoneNumbers);
     }
     pub fn ShowBlockedCallsUI() core.HResult!void {
-        const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
-        return try factory.ShowBlockedCallsUI();
+        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        return try _f.ShowBlockedCallsUI();
     }
     pub fn ShowBlockedMessagesUI() core.HResult!void {
-        const factory = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
-        return try factory.ShowBlockedMessagesUI();
+        const _f = @This().ICommunicationBlockingAccessManagerStaticsCache.get();
+        return try _f.ShowBlockedMessagesUI();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingAccessManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -36,17 +36,17 @@ pub const CommunicationBlockingAppManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsCurrentAppActiveBlockingApp() core.HResult!bool {
-        const factory = @This().ICommunicationBlockingAppManagerStaticsCache.get();
-        return try factory.getIsCurrentAppActiveBlockingApp();
+    pub fn getIsCurrentAppActiveBlockingApp() core.HResult!bool {
+        const _f = @This().ICommunicationBlockingAppManagerStaticsCache.get();
+        return try _f.getIsCurrentAppActiveBlockingApp();
     }
     pub fn ShowCommunicationBlockingSettingsUI() core.HResult!void {
-        const factory = @This().ICommunicationBlockingAppManagerStaticsCache.get();
-        return try factory.ShowCommunicationBlockingSettingsUI();
+        const _f = @This().ICommunicationBlockingAppManagerStaticsCache.get();
+        return try _f.ShowCommunicationBlockingSettingsUI();
     }
     pub fn RequestSetAsActiveBlockingAppAsync() core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ICommunicationBlockingAppManagerStatics2Cache.get();
-        return try factory.RequestSetAsActiveBlockingAppAsync();
+        const _f = @This().ICommunicationBlockingAppManagerStatics2Cache.get();
+        return try _f.RequestSetAsActiveBlockingAppAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.CommunicationBlocking.CommunicationBlockingAppManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -189,8 +189,8 @@ pub const ILearningModelBinding = extern struct {
         const _c = self.vtable.Bind(@ptrCast(self), name, value);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn BindWithValueWithProps(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.BindWithValueWithProps(@ptrCast(self), name, value, props);
+    pub fn BindWithProps(self: *@This(), name: HSTRING, value: *IInspectable, props: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.BindWithProps(@ptrCast(self), name, value, props);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn Clear(self: *@This()) core.HResult!void {
@@ -210,7 +210,7 @@ pub const ILearningModelBinding = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Bind: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable) callconv(.winapi) HRESULT,
-        BindWithValueWithProps: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, props: *IPropertySet) callconv(.winapi) HRESULT,
+        BindWithProps: *const fn(self: *anyopaque, name: HSTRING, value: *IInspectable, props: *IPropertySet) callconv(.winapi) HRESULT,
         Clear: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -821,9 +821,9 @@ pub const ITensorBooleanStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorBoolean {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorBoolean {
         var _r: *TensorBoolean = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -852,7 +852,7 @@ pub const ITensorBooleanStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorBoolean) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorBoolean) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorBoolean) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]bool, _r: **TensorBoolean) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(bool), _r: **TensorBoolean) callconv(.winapi) HRESULT,
     };
@@ -918,9 +918,9 @@ pub const ITensorDoubleStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorDouble {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorDouble {
         var _r: *TensorDouble = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -949,7 +949,7 @@ pub const ITensorDoubleStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorDouble) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorDouble) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorDouble) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]f64, _r: **TensorDouble) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(f64), _r: **TensorDouble) callconv(.winapi) HRESULT,
     };
@@ -1068,9 +1068,9 @@ pub const ITensorFloat16BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorFloat16Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorFloat16Bit {
         var _r: *TensorFloat16Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1099,7 +1099,7 @@ pub const ITensorFloat16BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorFloat16Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorFloat16Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorFloat16Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]f32, _r: **TensorFloat16Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(f32), _r: **TensorFloat16Bit) callconv(.winapi) HRESULT,
     };
@@ -1142,9 +1142,9 @@ pub const ITensorFloatStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorFloat {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorFloat {
         var _r: *TensorFloat = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1173,7 +1173,7 @@ pub const ITensorFloatStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorFloat) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorFloat) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorFloat) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]f32, _r: **TensorFloat) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(f32), _r: **TensorFloat) callconv(.winapi) HRESULT,
     };
@@ -1239,9 +1239,9 @@ pub const ITensorInt16BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt16Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt16Bit {
         var _r: *TensorInt16Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1270,7 +1270,7 @@ pub const ITensorInt16BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorInt16Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt16Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt16Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]i16, _r: **TensorInt16Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(i16), _r: **TensorInt16Bit) callconv(.winapi) HRESULT,
     };
@@ -1336,9 +1336,9 @@ pub const ITensorInt32BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt32Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt32Bit {
         var _r: *TensorInt32Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1367,7 +1367,7 @@ pub const ITensorInt32BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorInt32Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt32Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt32Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]i32, _r: **TensorInt32Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(i32), _r: **TensorInt32Bit) callconv(.winapi) HRESULT,
     };
@@ -1433,9 +1433,9 @@ pub const ITensorInt64BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt64Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt64Bit {
         var _r: *TensorInt64Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1464,7 +1464,7 @@ pub const ITensorInt64BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorInt64Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt64Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt64Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]i64, _r: **TensorInt64Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(i64), _r: **TensorInt64Bit) callconv(.winapi) HRESULT,
     };
@@ -1530,9 +1530,9 @@ pub const ITensorInt8BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt8Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorInt8Bit {
         var _r: *TensorInt8Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1561,7 +1561,7 @@ pub const ITensorInt8BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorInt8Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt8Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorInt8Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]u8, _r: **TensorInt8Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(u8), _r: **TensorInt8Bit) callconv(.winapi) HRESULT,
     };
@@ -1627,9 +1627,9 @@ pub const ITensorStringStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorString {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorString {
         var _r: *TensorString = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1658,7 +1658,7 @@ pub const ITensorStringStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorString) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorString) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorString) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]HSTRING, _r: **TensorString) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(HSTRING), _r: **TensorString) callconv(.winapi) HRESULT,
     };
@@ -1717,9 +1717,9 @@ pub const ITensorUInt16BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt16Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt16Bit {
         var _r: *TensorUInt16Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1748,7 +1748,7 @@ pub const ITensorUInt16BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorUInt16Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt16Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt16Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]u16, _r: **TensorUInt16Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(u16), _r: **TensorUInt16Bit) callconv(.winapi) HRESULT,
     };
@@ -1814,9 +1814,9 @@ pub const ITensorUInt32BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt32Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt32Bit {
         var _r: *TensorUInt32Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1845,7 +1845,7 @@ pub const ITensorUInt32BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorUInt32Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt32Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt32Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]u32, _r: **TensorUInt32Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(u32), _r: **TensorUInt32Bit) callconv(.winapi) HRESULT,
     };
@@ -1911,9 +1911,9 @@ pub const ITensorUInt64BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt64Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt64Bit {
         var _r: *TensorUInt64Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1942,7 +1942,7 @@ pub const ITensorUInt64BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorUInt64Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt64Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt64Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]u64, _r: **TensorUInt64Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(u64), _r: **TensorUInt64Bit) callconv(.winapi) HRESULT,
     };
@@ -2008,9 +2008,9 @@ pub const ITensorUInt8BitStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Create(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt8Bit {
+    pub fn CreateWithShape(self: *@This(), shape: *IIterable(i64)) core.HResult!*TensorUInt8Bit {
         var _r: *TensorUInt8Bit = undefined;
-        const _c = self.vtable.Create(@ptrCast(self), shape, &_r);
+        const _c = self.vtable.CreateWithShape(@ptrCast(self), shape, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2039,7 +2039,7 @@ pub const ITensorUInt8BitStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Create: *const fn(self: *anyopaque, _r: **TensorUInt8Bit) callconv(.winapi) HRESULT,
-        Create: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt8Bit) callconv(.winapi) HRESULT,
+        CreateWithShape: *const fn(self: *anyopaque, shape: *IIterable(i64), _r: **TensorUInt8Bit) callconv(.winapi) HRESULT,
         CreateFromArray: *const fn(self: *anyopaque, shape: *IIterable(i64), data: [*]u8, _r: **TensorUInt8Bit) callconv(.winapi) HRESULT,
         CreateFromIterable: *const fn(self: *anyopaque, shape: *IIterable(i64), data: *IIterable(u8), _r: **TensorUInt8Bit) callconv(.winapi) HRESULT,
     };
@@ -2144,8 +2144,8 @@ pub const ImageFeatureValue = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromVideoFrame(image: *VideoFrame) core.HResult!*ImageFeatureValue {
-        const factory = @This().IImageFeatureValueStaticsCache.get();
-        return try factory.CreateFromVideoFrame(image);
+        const _f = @This().IImageFeatureValueStaticsCache.get();
+        return try _f.CreateFromVideoFrame(image);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.ImageFeatureValue";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2198,36 +2198,36 @@ pub const LearningModel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadFromStorageFileAsync(modelFile: *IStorageFile) core.HResult!*IAsyncOperation(LearningModel) {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStorageFileAsync(modelFile);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromStorageFileAsync(modelFile);
     }
     pub fn LoadFromStreamAsync(modelStream: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(LearningModel) {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStreamAsync(modelStream);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromStreamAsync(modelStream);
     }
     pub fn LoadFromFilePath(filePath: HSTRING) core.HResult!*LearningModel {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromFilePath(filePath);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromFilePath(filePath);
     }
     pub fn LoadFromStream(modelStream: *IRandomAccessStreamReference) core.HResult!*LearningModel {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStream(modelStream);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromStream(modelStream);
     }
     pub fn LoadFromStorageFileAsyncWithOperatorProvider(modelFile: *IStorageFile, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStorageFileAsyncWithOperatorProvider(modelFile, operatorProvider);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromStorageFileAsyncWithOperatorProvider(modelFile, operatorProvider);
     }
     pub fn LoadFromStreamAsyncWithOperatorProvider(modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*IAsyncOperation(LearningModel) {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStreamAsyncWithOperatorProvider(modelStream, operatorProvider);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromStreamAsyncWithOperatorProvider(modelStream, operatorProvider);
     }
     pub fn LoadFromFilePathWithOperatorProvider(filePath: HSTRING, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromFilePathWithOperatorProvider(filePath, operatorProvider);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromFilePathWithOperatorProvider(filePath, operatorProvider);
     }
     pub fn LoadFromStreamWithOperatorProvider(modelStream: *IRandomAccessStreamReference, operatorProvider: *ILearningModelOperatorProvider) core.HResult!*LearningModel {
-        const factory = @This().ILearningModelStaticsCache.get();
-        return try factory.LoadFromStreamWithOperatorProvider(modelStream, operatorProvider);
+        const _f = @This().ILearningModelStaticsCache.get();
+        return try _f.LoadFromStreamWithOperatorProvider(modelStream, operatorProvider);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.LearningModel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2250,31 +2250,19 @@ pub const LearningModelBinding = extern struct {
         const this: *ILearningModelBinding = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMapView(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,IInspectable), second: *IMapView(HSTRING,IInspectable)) core.HResult!void {
         var this: ?*IMapView(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -2284,8 +2272,8 @@ pub const LearningModelBinding = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromSession(session: *LearningModelSession) core.HResult!*LearningModelBinding {
-        const factory = @This().ILearningModelBindingFactoryCache.get();
-        return try factory.CreateFromSession(session);
+        const _f = @This().ILearningModelBindingFactoryCache.get();
+        return try _f.CreateFromSession(session);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.LearningModelBinding";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2308,12 +2296,12 @@ pub const LearningModelDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(deviceKind: LearningModelDeviceKind) core.HResult!*LearningModelDevice {
-        const factory = @This().ILearningModelDeviceFactoryCache.get();
-        return try factory.Create(deviceKind);
+        const _f = @This().ILearningModelDeviceFactoryCache.get();
+        return try _f.Create(deviceKind);
     }
     pub fn CreateFromDirect3D11Device(device: *IDirect3DDevice) core.HResult!*LearningModelDevice {
-        const factory = @This().ILearningModelDeviceStaticsCache.get();
-        return try factory.CreateFromDirect3D11Device(device);
+        const _f = @This().ILearningModelDeviceStaticsCache.get();
+        return try _f.CreateFromDirect3D11Device(device);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.LearningModelDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2405,16 +2393,16 @@ pub const LearningModelSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromModelOnDeviceWithSessionOptions(model: *LearningModel, deviceToRunOn: *LearningModelDevice, learningModelSessionOptions: *LearningModelSessionOptions) core.HResult!*LearningModelSession {
-        const factory = @This().ILearningModelSessionFactory2Cache.get();
-        return try factory.CreateFromModelOnDeviceWithSessionOptions(model, deviceToRunOn, learningModelSessionOptions);
+        const _f = @This().ILearningModelSessionFactory2Cache.get();
+        return try _f.CreateFromModelOnDeviceWithSessionOptions(model, deviceToRunOn, learningModelSessionOptions);
     }
     pub fn CreateFromModel(model: *LearningModel) core.HResult!*LearningModelSession {
-        const factory = @This().ILearningModelSessionFactoryCache.get();
-        return try factory.CreateFromModel(model);
+        const _f = @This().ILearningModelSessionFactoryCache.get();
+        return try _f.CreateFromModel(model);
     }
     pub fn CreateFromModelOnDevice(model: *LearningModel, deviceToRunOn: *LearningModelDevice) core.HResult!*LearningModelSession {
-        const factory = @This().ILearningModelSessionFactoryCache.get();
-        return try factory.CreateFromModelOnDevice(model, deviceToRunOn);
+        const _f = @This().ILearningModelSessionFactoryCache.get();
+        return try _f.CreateFromModelOnDevice(model, deviceToRunOn);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.LearningModelSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2582,28 +2570,28 @@ pub const TensorBoolean = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]bool) core.HResult!*TensorBoolean {
-        const factory = @This().ITensorBooleanStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorBooleanStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorBoolean {
-        const factory = @This().ITensorBooleanStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorBooleanStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub fn Create() core.HResult!*TensorBoolean {
-        const factory = @This().ITensorBooleanStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorBooleanStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorBoolean {
-        const factory = @This().ITensorBooleanStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorBooleanStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]bool) core.HResult!*TensorBoolean {
-        const factory = @This().ITensorBooleanStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorBooleanStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(bool)) core.HResult!*TensorBoolean {
-        const factory = @This().ITensorBooleanStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorBooleanStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorBoolean";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2653,28 +2641,28 @@ pub const TensorDouble = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorDouble {
-        const factory = @This().ITensorDoubleStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorDoubleStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorDouble {
-        const factory = @This().ITensorDoubleStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorDoubleStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]f64) core.HResult!*TensorDouble {
-        const factory = @This().ITensorDoubleStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorDoubleStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(f64)) core.HResult!*TensorDouble {
-        const factory = @This().ITensorDoubleStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorDoubleStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]f64) core.HResult!*TensorDouble {
-        const factory = @This().ITensorDoubleStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorDoubleStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorDouble {
-        const factory = @This().ITensorDoubleStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorDoubleStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorDouble";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2764,28 +2752,28 @@ pub const TensorFloat = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorFloat {
-        const factory = @This().ITensorFloatStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorFloatStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorFloat {
-        const factory = @This().ITensorFloatStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorFloatStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]f32) core.HResult!*TensorFloat {
-        const factory = @This().ITensorFloatStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorFloatStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(f32)) core.HResult!*TensorFloat {
-        const factory = @This().ITensorFloatStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorFloatStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat {
-        const factory = @This().ITensorFloatStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorFloatStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorFloat {
-        const factory = @This().ITensorFloatStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorFloatStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorFloat";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2835,28 +2823,28 @@ pub const TensorFloat16Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]f32) core.HResult!*TensorFloat16Bit {
-        const factory = @This().ITensorFloat16BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorFloat16BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorFloat16Bit {
-        const factory = @This().ITensorFloat16BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorFloat16BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub fn Create() core.HResult!*TensorFloat16Bit {
-        const factory = @This().ITensorFloat16BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorFloat16BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorFloat16Bit {
-        const factory = @This().ITensorFloat16BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorFloat16BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]f32) core.HResult!*TensorFloat16Bit {
-        const factory = @This().ITensorFloat16BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorFloat16BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(f32)) core.HResult!*TensorFloat16Bit {
-        const factory = @This().ITensorFloat16BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorFloat16BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorFloat16Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2906,28 +2894,28 @@ pub const TensorInt16Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorInt16Bit {
-        const factory = @This().ITensorInt16BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorInt16BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt16Bit {
-        const factory = @This().ITensorInt16BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorInt16BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]i16) core.HResult!*TensorInt16Bit {
-        const factory = @This().ITensorInt16BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorInt16BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(i16)) core.HResult!*TensorInt16Bit {
-        const factory = @This().ITensorInt16BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorInt16BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]i16) core.HResult!*TensorInt16Bit {
-        const factory = @This().ITensorInt16BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorInt16BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt16Bit {
-        const factory = @This().ITensorInt16BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorInt16BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorInt16Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2977,28 +2965,28 @@ pub const TensorInt32Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorInt32Bit {
-        const factory = @This().ITensorInt32BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorInt32BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt32Bit {
-        const factory = @This().ITensorInt32BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorInt32BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]i32) core.HResult!*TensorInt32Bit {
-        const factory = @This().ITensorInt32BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorInt32BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(i32)) core.HResult!*TensorInt32Bit {
-        const factory = @This().ITensorInt32BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorInt32BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]i32) core.HResult!*TensorInt32Bit {
-        const factory = @This().ITensorInt32BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorInt32BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt32Bit {
-        const factory = @This().ITensorInt32BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorInt32BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorInt32Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3048,28 +3036,28 @@ pub const TensorInt64Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorInt64Bit {
-        const factory = @This().ITensorInt64BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorInt64BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt64Bit {
-        const factory = @This().ITensorInt64BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorInt64BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]i64) core.HResult!*TensorInt64Bit {
-        const factory = @This().ITensorInt64BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorInt64BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(i64)) core.HResult!*TensorInt64Bit {
-        const factory = @This().ITensorInt64BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorInt64BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]i64) core.HResult!*TensorInt64Bit {
-        const factory = @This().ITensorInt64BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorInt64BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt64Bit {
-        const factory = @This().ITensorInt64BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorInt64BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorInt64Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3119,28 +3107,28 @@ pub const TensorInt8Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u8) core.HResult!*TensorInt8Bit {
-        const factory = @This().ITensorInt8BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorInt8BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorInt8Bit {
-        const factory = @This().ITensorInt8BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorInt8BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub fn Create() core.HResult!*TensorInt8Bit {
-        const factory = @This().ITensorInt8BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorInt8BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorInt8Bit {
-        const factory = @This().ITensorInt8BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorInt8BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u8) core.HResult!*TensorInt8Bit {
-        const factory = @This().ITensorInt8BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorInt8BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(u8)) core.HResult!*TensorInt8Bit {
-        const factory = @This().ITensorInt8BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorInt8BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorInt8Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3208,24 +3196,24 @@ pub const TensorString = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorString {
-        const factory = @This().ITensorStringStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorStringStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorString {
-        const factory = @This().ITensorStringStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorStringStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]HSTRING) core.HResult!*TensorString {
-        const factory = @This().ITensorStringStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorStringStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(HSTRING)) core.HResult!*TensorString {
-        const factory = @This().ITensorStringStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorStringStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]HSTRING) core.HResult!*TensorString {
-        const factory = @This().ITensorStringStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorStringStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorString";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3275,28 +3263,28 @@ pub const TensorUInt16Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorUInt16Bit {
-        const factory = @This().ITensorUInt16BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorUInt16BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt16Bit {
-        const factory = @This().ITensorUInt16BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorUInt16BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u16) core.HResult!*TensorUInt16Bit {
-        const factory = @This().ITensorUInt16BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorUInt16BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(u16)) core.HResult!*TensorUInt16Bit {
-        const factory = @This().ITensorUInt16BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorUInt16BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u16) core.HResult!*TensorUInt16Bit {
-        const factory = @This().ITensorUInt16BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorUInt16BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt16Bit {
-        const factory = @This().ITensorUInt16BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorUInt16BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorUInt16Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3346,28 +3334,28 @@ pub const TensorUInt32Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorUInt32Bit {
-        const factory = @This().ITensorUInt32BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorUInt32BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt32Bit {
-        const factory = @This().ITensorUInt32BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorUInt32BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u32) core.HResult!*TensorUInt32Bit {
-        const factory = @This().ITensorUInt32BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorUInt32BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(u32)) core.HResult!*TensorUInt32Bit {
-        const factory = @This().ITensorUInt32BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorUInt32BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u32) core.HResult!*TensorUInt32Bit {
-        const factory = @This().ITensorUInt32BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorUInt32BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt32Bit {
-        const factory = @This().ITensorUInt32BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorUInt32BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorUInt32Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3417,28 +3405,28 @@ pub const TensorUInt64Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create() core.HResult!*TensorUInt64Bit {
-        const factory = @This().ITensorUInt64BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorUInt64BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt64Bit {
-        const factory = @This().ITensorUInt64BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorUInt64BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u64) core.HResult!*TensorUInt64Bit {
-        const factory = @This().ITensorUInt64BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorUInt64BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(u64)) core.HResult!*TensorUInt64Bit {
-        const factory = @This().ITensorUInt64BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorUInt64BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u64) core.HResult!*TensorUInt64Bit {
-        const factory = @This().ITensorUInt64BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorUInt64BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt64Bit {
-        const factory = @This().ITensorUInt64BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorUInt64BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorUInt64Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3488,28 +3476,28 @@ pub const TensorUInt8Bit = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromShapeArrayAndDataArray(shape: [*]i64, data: [*]u8) core.HResult!*TensorUInt8Bit {
-        const factory = @This().ITensorUInt8BitStatics2Cache.get();
-        return try factory.CreateFromShapeArrayAndDataArray(shape, data);
+        const _f = @This().ITensorUInt8BitStatics2Cache.get();
+        return try _f.CreateFromShapeArrayAndDataArray(shape, data);
     }
     pub fn CreateFromBuffer(shape: [*]i64, buffer: *IBuffer) core.HResult!*TensorUInt8Bit {
-        const factory = @This().ITensorUInt8BitStatics2Cache.get();
-        return try factory.CreateFromBuffer(shape, buffer);
+        const _f = @This().ITensorUInt8BitStatics2Cache.get();
+        return try _f.CreateFromBuffer(shape, buffer);
     }
     pub fn Create() core.HResult!*TensorUInt8Bit {
-        const factory = @This().ITensorUInt8BitStaticsCache.get();
-        return try factory.Create();
+        const _f = @This().ITensorUInt8BitStaticsCache.get();
+        return try _f.Create();
     }
     pub fn CreateWithShape(shape: *IIterable(i64)) core.HResult!*TensorUInt8Bit {
-        const factory = @This().ITensorUInt8BitStaticsCache.get();
-        return try factory.CreateWithShape(shape);
+        const _f = @This().ITensorUInt8BitStaticsCache.get();
+        return try _f.CreateWithShape(shape);
     }
     pub fn CreateFromArray(shape: *IIterable(i64), data: [*]u8) core.HResult!*TensorUInt8Bit {
-        const factory = @This().ITensorUInt8BitStaticsCache.get();
-        return try factory.CreateFromArray(shape, data);
+        const _f = @This().ITensorUInt8BitStaticsCache.get();
+        return try _f.CreateFromArray(shape, data);
     }
     pub fn CreateFromIterable(shape: *IIterable(i64), data: *IIterable(u8)) core.HResult!*TensorUInt8Bit {
-        const factory = @This().ITensorUInt8BitStaticsCache.get();
-        return try factory.CreateFromIterable(shape, data);
+        const _f = @This().ITensorUInt8BitStaticsCache.get();
+        return try _f.CreateFromIterable(shape, data);
     }
     pub const NAME: []const u8 = "Windows.AI.MachineLearning.TensorUInt8Bit";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -265,77 +265,77 @@ pub const TextElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TextDecorationsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics4Cache.get();
-        return try factory.getTextDecorationsProperty();
+    pub fn getTextDecorationsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics4Cache.get();
+        return try _f.getTextDecorationsProperty();
     }
-    pub fn get_IsAccessKeyScopeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics4Cache.get();
-        return try factory.getIsAccessKeyScopeProperty();
+    pub fn getIsAccessKeyScopeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics4Cache.get();
+        return try _f.getIsAccessKeyScopeProperty();
     }
-    pub fn get_AccessKeyScopeOwnerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics4Cache.get();
-        return try factory.getAccessKeyScopeOwnerProperty();
+    pub fn getAccessKeyScopeOwnerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics4Cache.get();
+        return try _f.getAccessKeyScopeOwnerProperty();
     }
-    pub fn get_KeyTipPlacementModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics4Cache.get();
-        return try factory.getKeyTipPlacementModeProperty();
+    pub fn getKeyTipPlacementModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics4Cache.get();
+        return try _f.getKeyTipPlacementModeProperty();
     }
-    pub fn get_KeyTipHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics4Cache.get();
-        return try factory.getKeyTipHorizontalOffsetProperty();
+    pub fn getKeyTipHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics4Cache.get();
+        return try _f.getKeyTipHorizontalOffsetProperty();
     }
-    pub fn get_KeyTipVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics4Cache.get();
-        return try factory.getKeyTipVerticalOffsetProperty();
+    pub fn getKeyTipVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics4Cache.get();
+        return try _f.getKeyTipVerticalOffsetProperty();
     }
-    pub fn get_AllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics3Cache.get();
-        return try factory.getAllowFocusOnInteractionProperty();
+    pub fn getAllowFocusOnInteractionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics3Cache.get();
+        return try _f.getAllowFocusOnInteractionProperty();
     }
-    pub fn get_AccessKeyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics3Cache.get();
-        return try factory.getAccessKeyProperty();
+    pub fn getAccessKeyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics3Cache.get();
+        return try _f.getAccessKeyProperty();
     }
-    pub fn get_ExitDisplayModeOnAccessKeyInvokedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics3Cache.get();
-        return try factory.getExitDisplayModeOnAccessKeyInvokedProperty();
+    pub fn getExitDisplayModeOnAccessKeyInvokedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics3Cache.get();
+        return try _f.getExitDisplayModeOnAccessKeyInvokedProperty();
     }
-    pub fn get_IsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStatics2Cache.get();
-        return try factory.getIsTextScaleFactorEnabledProperty();
+    pub fn getIsTextScaleFactorEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStatics2Cache.get();
+        return try _f.getIsTextScaleFactorEnabledProperty();
     }
-    pub fn get_FontSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getFontSizeProperty();
+    pub fn getFontSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getFontSizeProperty();
     }
-    pub fn get_FontFamilyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getFontFamilyProperty();
+    pub fn getFontFamilyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getFontFamilyProperty();
     }
-    pub fn get_FontWeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getFontWeightProperty();
+    pub fn getFontWeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getFontWeightProperty();
     }
-    pub fn get_FontStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getFontStyleProperty();
+    pub fn getFontStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getFontStyleProperty();
     }
-    pub fn get_FontStretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getFontStretchProperty();
+    pub fn getFontStretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getFontStretchProperty();
     }
-    pub fn get_CharacterSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getCharacterSpacingProperty();
+    pub fn getCharacterSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getCharacterSpacingProperty();
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_LanguageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextElementStaticsCache.get();
-        return try factory.getLanguageProperty();
+    pub fn getLanguageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextElementStaticsCache.get();
+        return try _f.getLanguageProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.TextElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -397,29 +397,29 @@ pub const Block = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_TextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBlockStaticsCache.get();
-        return try factory.getTextAlignmentProperty();
+    pub fn getTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBlockStaticsCache.get();
+        return try _f.getTextAlignmentProperty();
     }
-    pub fn get_LineHeightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBlockStaticsCache.get();
-        return try factory.getLineHeightProperty();
+    pub fn getLineHeightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBlockStaticsCache.get();
+        return try _f.getLineHeightProperty();
     }
-    pub fn get_LineStackingStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBlockStaticsCache.get();
-        return try factory.getLineStackingStrategyProperty();
+    pub fn getLineStackingStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBlockStaticsCache.get();
+        return try _f.getLineStackingStrategyProperty();
     }
-    pub fn get_MarginProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBlockStaticsCache.get();
-        return try factory.getMarginProperty();
+    pub fn getMarginProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBlockStaticsCache.get();
+        return try _f.getMarginProperty();
     }
-    pub fn get_HorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBlockStatics2Cache.get();
-        return try factory.getHorizontalTextAlignmentProperty();
+    pub fn getHorizontalTextAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBlockStatics2Cache.get();
+        return try _f.getHorizontalTextAlignmentProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Block {
-        const factory = @This().IBlockFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBlockFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Block";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -432,55 +432,27 @@ pub const Block = extern struct {
 };
 pub const BlockCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Block) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Block) {
+        const this: *IVector(Block) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Block) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Block) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Block) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(Block) {
         var this: ?*IIterable(Block) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -498,8 +470,8 @@ pub const Inline = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Inline {
-        const factory = @This().IInlineFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IInlineFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Inline";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -522,8 +494,8 @@ pub const Span = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Span {
-        const factory = @This().ISpanFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ISpanFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Span";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -554,8 +526,8 @@ pub const ContentLinkProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ContentLinkProvider {
-        const factory = @This().IContentLinkProviderFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IContentLinkProviderFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.ContentLinkProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -733,61 +705,61 @@ pub const ContentLink = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContentLink.IID)));
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getBackgroundProperty();
     }
-    pub fn get_CursorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getCursorProperty();
+    pub fn getCursorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getCursorProperty();
     }
-    pub fn get_XYFocusLeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusLeftProperty();
+    pub fn getXYFocusLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusLeftProperty();
     }
-    pub fn get_XYFocusRightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusRightProperty();
+    pub fn getXYFocusRightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusRightProperty();
     }
-    pub fn get_XYFocusUpProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusUpProperty();
+    pub fn getXYFocusUpProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusUpProperty();
     }
-    pub fn get_XYFocusDownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusDownProperty();
+    pub fn getXYFocusDownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusDownProperty();
     }
-    pub fn get_ElementSoundModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getElementSoundModeProperty();
+    pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getElementSoundModeProperty();
     }
-    pub fn get_FocusStateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getFocusStateProperty();
+    pub fn getFocusStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getFocusStateProperty();
     }
-    pub fn get_XYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusUpNavigationStrategyProperty();
+    pub fn getXYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusUpNavigationStrategyProperty();
     }
-    pub fn get_XYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusDownNavigationStrategyProperty();
+    pub fn getXYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusDownNavigationStrategyProperty();
     }
-    pub fn get_XYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusLeftNavigationStrategyProperty();
+    pub fn getXYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusLeftNavigationStrategyProperty();
     }
-    pub fn get_XYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getXYFocusRightNavigationStrategyProperty();
+    pub fn getXYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getXYFocusRightNavigationStrategyProperty();
     }
-    pub fn get_IsTabStopProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getIsTabStopProperty();
+    pub fn getIsTabStopProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getIsTabStopProperty();
     }
-    pub fn get_TabIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentLinkStaticsCache.get();
-        return try factory.getTabIndexProperty();
+    pub fn getTabIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentLinkStaticsCache.get();
+        return try _f.getTabIndexProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.ContentLink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -819,53 +791,23 @@ pub const ContentLinkInvokedEventArgs = extern struct {
 };
 pub const ContentLinkProviderCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(ContentLinkProvider) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(ContentLinkProvider) {
         var this: ?*IVector(ContentLinkProvider) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(ContentLinkProvider) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
-    }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(ContentLinkProvider) = undefined;
@@ -879,19 +821,7 @@ pub const ContentLinkProviderCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        var this: ?*IVector(ContentLinkProvider) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ContentLinkProvider) {
         var this: ?*IIterable(ContentLinkProvider) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1008,45 +938,45 @@ pub const Glyphs = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IGlyphs.IID)));
     }
-    pub fn get_UnicodeStringProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getUnicodeStringProperty();
+    pub fn getUnicodeStringProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getUnicodeStringProperty();
     }
-    pub fn get_IndicesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getIndicesProperty();
+    pub fn getIndicesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getIndicesProperty();
     }
-    pub fn get_FontUriProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getFontUriProperty();
+    pub fn getFontUriProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getFontUriProperty();
     }
-    pub fn get_StyleSimulationsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getStyleSimulationsProperty();
+    pub fn getStyleSimulationsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getStyleSimulationsProperty();
     }
-    pub fn get_FontRenderingEmSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getFontRenderingEmSizeProperty();
+    pub fn getFontRenderingEmSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getFontRenderingEmSizeProperty();
     }
-    pub fn get_OriginXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getOriginXProperty();
+    pub fn getOriginXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getOriginXProperty();
     }
-    pub fn get_OriginYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getOriginYProperty();
+    pub fn getOriginYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getOriginYProperty();
     }
-    pub fn get_FillProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStaticsCache.get();
-        return try factory.getFillProperty();
+    pub fn getFillProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStaticsCache.get();
+        return try _f.getFillProperty();
     }
-    pub fn get_IsColorFontEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStatics2Cache.get();
-        return try factory.getIsColorFontEnabledProperty();
+    pub fn getIsColorFontEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStatics2Cache.get();
+        return try _f.getIsColorFontEnabledProperty();
     }
-    pub fn get_ColorFontPaletteIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IGlyphsStatics2Cache.get();
-        return try factory.getColorFontPaletteIndexProperty();
+    pub fn getColorFontPaletteIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IGlyphsStatics2Cache.get();
+        return try _f.getColorFontPaletteIndexProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Glyphs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1262,61 +1192,61 @@ pub const Hyperlink = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IHyperlink.IID)));
     }
-    pub fn get_UnderlineStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics2Cache.get();
-        return try factory.getUnderlineStyleProperty();
+    pub fn getUnderlineStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics2Cache.get();
+        return try _f.getUnderlineStyleProperty();
     }
-    pub fn get_NavigateUriProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStaticsCache.get();
-        return try factory.getNavigateUriProperty();
+    pub fn getNavigateUriProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStaticsCache.get();
+        return try _f.getNavigateUriProperty();
     }
-    pub fn get_XYFocusLeftProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics3Cache.get();
-        return try factory.getXYFocusLeftProperty();
+    pub fn getXYFocusLeftProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics3Cache.get();
+        return try _f.getXYFocusLeftProperty();
     }
-    pub fn get_XYFocusRightProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics3Cache.get();
-        return try factory.getXYFocusRightProperty();
+    pub fn getXYFocusRightProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics3Cache.get();
+        return try _f.getXYFocusRightProperty();
     }
-    pub fn get_XYFocusUpProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics3Cache.get();
-        return try factory.getXYFocusUpProperty();
+    pub fn getXYFocusUpProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics3Cache.get();
+        return try _f.getXYFocusUpProperty();
     }
-    pub fn get_XYFocusDownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics3Cache.get();
-        return try factory.getXYFocusDownProperty();
+    pub fn getXYFocusDownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics3Cache.get();
+        return try _f.getXYFocusDownProperty();
     }
-    pub fn get_ElementSoundModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics3Cache.get();
-        return try factory.getElementSoundModeProperty();
+    pub fn getElementSoundModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics3Cache.get();
+        return try _f.getElementSoundModeProperty();
     }
-    pub fn get_IsTabStopProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics5Cache.get();
-        return try factory.getIsTabStopProperty();
+    pub fn getIsTabStopProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics5Cache.get();
+        return try _f.getIsTabStopProperty();
     }
-    pub fn get_TabIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics5Cache.get();
-        return try factory.getTabIndexProperty();
+    pub fn getTabIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics5Cache.get();
+        return try _f.getTabIndexProperty();
     }
-    pub fn get_FocusStateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics4Cache.get();
-        return try factory.getFocusStateProperty();
+    pub fn getFocusStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics4Cache.get();
+        return try _f.getFocusStateProperty();
     }
-    pub fn get_XYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics4Cache.get();
-        return try factory.getXYFocusUpNavigationStrategyProperty();
+    pub fn getXYFocusUpNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics4Cache.get();
+        return try _f.getXYFocusUpNavigationStrategyProperty();
     }
-    pub fn get_XYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics4Cache.get();
-        return try factory.getXYFocusDownNavigationStrategyProperty();
+    pub fn getXYFocusDownNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics4Cache.get();
+        return try _f.getXYFocusDownNavigationStrategyProperty();
     }
-    pub fn get_XYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics4Cache.get();
-        return try factory.getXYFocusLeftNavigationStrategyProperty();
+    pub fn getXYFocusLeftNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics4Cache.get();
+        return try _f.getXYFocusLeftNavigationStrategyProperty();
     }
-    pub fn get_XYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IHyperlinkStatics4Cache.get();
-        return try factory.getXYFocusRightNavigationStrategyProperty();
+    pub fn getXYFocusRightNavigationStrategyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IHyperlinkStatics4Cache.get();
+        return try _f.getXYFocusRightNavigationStrategyProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Hyperlink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4681,55 +4611,27 @@ pub const IUnderline = extern struct {
 };
 pub const InlineCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Inline) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Inline) {
+        const this: *IVector(Inline) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Inline) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Inline) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Inline) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(Inline) {
         var this: ?*IIterable(Inline) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -4822,9 +4724,9 @@ pub const Paragraph = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IParagraph.IID)));
     }
-    pub fn get_TextIndentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IParagraphStaticsCache.get();
-        return try factory.getTextIndentProperty();
+    pub fn getTextIndentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IParagraphStaticsCache.get();
+        return try _f.getTextIndentProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Paragraph";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4875,9 +4777,9 @@ pub const Run = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRun.IID)));
     }
-    pub fn get_FlowDirectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRunStaticsCache.get();
-        return try factory.getFlowDirectionProperty();
+    pub fn getFlowDirectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRunStaticsCache.get();
+        return try _f.getFlowDirectionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Run";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4912,17 +4814,17 @@ pub const TextHighlighter = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ForegroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextHighlighterStaticsCache.get();
-        return try factory.getForegroundProperty();
+    pub fn getForegroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextHighlighterStaticsCache.get();
+        return try _f.getForegroundProperty();
     }
-    pub fn get_BackgroundProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITextHighlighterStaticsCache.get();
-        return try factory.getBackgroundProperty();
+    pub fn getBackgroundProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITextHighlighterStaticsCache.get();
+        return try _f.getBackgroundProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*TextHighlighter {
-        const factory = @This().ITextHighlighterFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITextHighlighterFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.TextHighlighter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4985,521 +4887,521 @@ pub const Typography = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AnnotationAlternatesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getAnnotationAlternatesProperty();
+    pub fn getAnnotationAlternatesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getAnnotationAlternatesProperty();
     }
     pub fn GetAnnotationAlternates(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetAnnotationAlternates(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetAnnotationAlternates(element);
     }
     pub fn SetAnnotationAlternates(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetAnnotationAlternates(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetAnnotationAlternates(element, value);
     }
-    pub fn get_EastAsianExpertFormsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getEastAsianExpertFormsProperty();
+    pub fn getEastAsianExpertFormsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getEastAsianExpertFormsProperty();
     }
     pub fn GetEastAsianExpertForms(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetEastAsianExpertForms(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetEastAsianExpertForms(element);
     }
     pub fn SetEastAsianExpertForms(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetEastAsianExpertForms(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetEastAsianExpertForms(element, value);
     }
-    pub fn get_EastAsianLanguageProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getEastAsianLanguageProperty();
+    pub fn getEastAsianLanguageProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getEastAsianLanguageProperty();
     }
     pub fn GetEastAsianLanguage(element: *DependencyObject) core.HResult!FontEastAsianLanguage {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetEastAsianLanguage(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetEastAsianLanguage(element);
     }
     pub fn SetEastAsianLanguage(element: *DependencyObject, value: FontEastAsianLanguage) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetEastAsianLanguage(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetEastAsianLanguage(element, value);
     }
-    pub fn get_EastAsianWidthsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getEastAsianWidthsProperty();
+    pub fn getEastAsianWidthsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getEastAsianWidthsProperty();
     }
     pub fn GetEastAsianWidths(element: *DependencyObject) core.HResult!FontEastAsianWidths {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetEastAsianWidths(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetEastAsianWidths(element);
     }
     pub fn SetEastAsianWidths(element: *DependencyObject, value: FontEastAsianWidths) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetEastAsianWidths(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetEastAsianWidths(element, value);
     }
-    pub fn get_StandardLigaturesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStandardLigaturesProperty();
+    pub fn getStandardLigaturesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStandardLigaturesProperty();
     }
     pub fn GetStandardLigatures(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStandardLigatures(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStandardLigatures(element);
     }
     pub fn SetStandardLigatures(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStandardLigatures(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStandardLigatures(element, value);
     }
-    pub fn get_ContextualLigaturesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getContextualLigaturesProperty();
+    pub fn getContextualLigaturesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getContextualLigaturesProperty();
     }
     pub fn GetContextualLigatures(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetContextualLigatures(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetContextualLigatures(element);
     }
     pub fn SetContextualLigatures(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetContextualLigatures(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetContextualLigatures(element, value);
     }
-    pub fn get_DiscretionaryLigaturesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getDiscretionaryLigaturesProperty();
+    pub fn getDiscretionaryLigaturesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getDiscretionaryLigaturesProperty();
     }
     pub fn GetDiscretionaryLigatures(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetDiscretionaryLigatures(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetDiscretionaryLigatures(element);
     }
     pub fn SetDiscretionaryLigatures(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetDiscretionaryLigatures(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetDiscretionaryLigatures(element, value);
     }
-    pub fn get_HistoricalLigaturesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getHistoricalLigaturesProperty();
+    pub fn getHistoricalLigaturesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getHistoricalLigaturesProperty();
     }
     pub fn GetHistoricalLigatures(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetHistoricalLigatures(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetHistoricalLigatures(element);
     }
     pub fn SetHistoricalLigatures(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetHistoricalLigatures(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetHistoricalLigatures(element, value);
     }
-    pub fn get_StandardSwashesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStandardSwashesProperty();
+    pub fn getStandardSwashesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStandardSwashesProperty();
     }
     pub fn GetStandardSwashes(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStandardSwashes(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStandardSwashes(element);
     }
     pub fn SetStandardSwashes(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStandardSwashes(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStandardSwashes(element, value);
     }
-    pub fn get_ContextualSwashesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getContextualSwashesProperty();
+    pub fn getContextualSwashesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getContextualSwashesProperty();
     }
     pub fn GetContextualSwashes(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetContextualSwashes(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetContextualSwashes(element);
     }
     pub fn SetContextualSwashes(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetContextualSwashes(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetContextualSwashes(element, value);
     }
-    pub fn get_ContextualAlternatesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getContextualAlternatesProperty();
+    pub fn getContextualAlternatesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getContextualAlternatesProperty();
     }
     pub fn GetContextualAlternates(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetContextualAlternates(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetContextualAlternates(element);
     }
     pub fn SetContextualAlternates(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetContextualAlternates(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetContextualAlternates(element, value);
     }
-    pub fn get_StylisticAlternatesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticAlternatesProperty();
+    pub fn getStylisticAlternatesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticAlternatesProperty();
     }
     pub fn GetStylisticAlternates(element: *DependencyObject) core.HResult!i32 {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticAlternates(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticAlternates(element);
     }
     pub fn SetStylisticAlternates(element: *DependencyObject, value: i32) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticAlternates(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticAlternates(element, value);
     }
-    pub fn get_StylisticSet1Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet1Property();
+    pub fn getStylisticSet1Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet1Property();
     }
     pub fn GetStylisticSet1(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet1(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet1(element);
     }
     pub fn SetStylisticSet1(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet1(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet1(element, value);
     }
-    pub fn get_StylisticSet2Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet2Property();
+    pub fn getStylisticSet2Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet2Property();
     }
     pub fn GetStylisticSet2(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet2(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet2(element);
     }
     pub fn SetStylisticSet2(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet2(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet2(element, value);
     }
-    pub fn get_StylisticSet3Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet3Property();
+    pub fn getStylisticSet3Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet3Property();
     }
     pub fn GetStylisticSet3(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet3(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet3(element);
     }
     pub fn SetStylisticSet3(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet3(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet3(element, value);
     }
-    pub fn get_StylisticSet4Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet4Property();
+    pub fn getStylisticSet4Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet4Property();
     }
     pub fn GetStylisticSet4(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet4(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet4(element);
     }
     pub fn SetStylisticSet4(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet4(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet4(element, value);
     }
-    pub fn get_StylisticSet5Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet5Property();
+    pub fn getStylisticSet5Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet5Property();
     }
     pub fn GetStylisticSet5(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet5(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet5(element);
     }
     pub fn SetStylisticSet5(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet5(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet5(element, value);
     }
-    pub fn get_StylisticSet6Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet6Property();
+    pub fn getStylisticSet6Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet6Property();
     }
     pub fn GetStylisticSet6(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet6(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet6(element);
     }
     pub fn SetStylisticSet6(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet6(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet6(element, value);
     }
-    pub fn get_StylisticSet7Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet7Property();
+    pub fn getStylisticSet7Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet7Property();
     }
     pub fn GetStylisticSet7(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet7(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet7(element);
     }
     pub fn SetStylisticSet7(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet7(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet7(element, value);
     }
-    pub fn get_StylisticSet8Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet8Property();
+    pub fn getStylisticSet8Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet8Property();
     }
     pub fn GetStylisticSet8(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet8(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet8(element);
     }
     pub fn SetStylisticSet8(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet8(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet8(element, value);
     }
-    pub fn get_StylisticSet9Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet9Property();
+    pub fn getStylisticSet9Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet9Property();
     }
     pub fn GetStylisticSet9(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet9(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet9(element);
     }
     pub fn SetStylisticSet9(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet9(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet9(element, value);
     }
-    pub fn get_StylisticSet10Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet10Property();
+    pub fn getStylisticSet10Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet10Property();
     }
     pub fn GetStylisticSet10(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet10(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet10(element);
     }
     pub fn SetStylisticSet10(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet10(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet10(element, value);
     }
-    pub fn get_StylisticSet11Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet11Property();
+    pub fn getStylisticSet11Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet11Property();
     }
     pub fn GetStylisticSet11(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet11(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet11(element);
     }
     pub fn SetStylisticSet11(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet11(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet11(element, value);
     }
-    pub fn get_StylisticSet12Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet12Property();
+    pub fn getStylisticSet12Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet12Property();
     }
     pub fn GetStylisticSet12(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet12(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet12(element);
     }
     pub fn SetStylisticSet12(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet12(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet12(element, value);
     }
-    pub fn get_StylisticSet13Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet13Property();
+    pub fn getStylisticSet13Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet13Property();
     }
     pub fn GetStylisticSet13(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet13(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet13(element);
     }
     pub fn SetStylisticSet13(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet13(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet13(element, value);
     }
-    pub fn get_StylisticSet14Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet14Property();
+    pub fn getStylisticSet14Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet14Property();
     }
     pub fn GetStylisticSet14(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet14(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet14(element);
     }
     pub fn SetStylisticSet14(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet14(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet14(element, value);
     }
-    pub fn get_StylisticSet15Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet15Property();
+    pub fn getStylisticSet15Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet15Property();
     }
     pub fn GetStylisticSet15(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet15(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet15(element);
     }
     pub fn SetStylisticSet15(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet15(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet15(element, value);
     }
-    pub fn get_StylisticSet16Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet16Property();
+    pub fn getStylisticSet16Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet16Property();
     }
     pub fn GetStylisticSet16(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet16(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet16(element);
     }
     pub fn SetStylisticSet16(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet16(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet16(element, value);
     }
-    pub fn get_StylisticSet17Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet17Property();
+    pub fn getStylisticSet17Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet17Property();
     }
     pub fn GetStylisticSet17(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet17(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet17(element);
     }
     pub fn SetStylisticSet17(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet17(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet17(element, value);
     }
-    pub fn get_StylisticSet18Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet18Property();
+    pub fn getStylisticSet18Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet18Property();
     }
     pub fn GetStylisticSet18(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet18(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet18(element);
     }
     pub fn SetStylisticSet18(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet18(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet18(element, value);
     }
-    pub fn get_StylisticSet19Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet19Property();
+    pub fn getStylisticSet19Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet19Property();
     }
     pub fn GetStylisticSet19(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet19(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet19(element);
     }
     pub fn SetStylisticSet19(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet19(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet19(element, value);
     }
-    pub fn get_StylisticSet20Property() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getStylisticSet20Property();
+    pub fn getStylisticSet20Property() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getStylisticSet20Property();
     }
     pub fn GetStylisticSet20(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetStylisticSet20(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetStylisticSet20(element);
     }
     pub fn SetStylisticSet20(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetStylisticSet20(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetStylisticSet20(element, value);
     }
-    pub fn get_CapitalsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getCapitalsProperty();
+    pub fn getCapitalsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getCapitalsProperty();
     }
     pub fn GetCapitals(element: *DependencyObject) core.HResult!FontCapitals {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetCapitals(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetCapitals(element);
     }
     pub fn SetCapitals(element: *DependencyObject, value: FontCapitals) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetCapitals(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetCapitals(element, value);
     }
-    pub fn get_CapitalSpacingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getCapitalSpacingProperty();
+    pub fn getCapitalSpacingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getCapitalSpacingProperty();
     }
     pub fn GetCapitalSpacing(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetCapitalSpacing(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetCapitalSpacing(element);
     }
     pub fn SetCapitalSpacing(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetCapitalSpacing(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetCapitalSpacing(element, value);
     }
-    pub fn get_KerningProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getKerningProperty();
+    pub fn getKerningProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getKerningProperty();
     }
     pub fn GetKerning(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetKerning(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetKerning(element);
     }
     pub fn SetKerning(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetKerning(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetKerning(element, value);
     }
-    pub fn get_CaseSensitiveFormsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getCaseSensitiveFormsProperty();
+    pub fn getCaseSensitiveFormsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getCaseSensitiveFormsProperty();
     }
     pub fn GetCaseSensitiveForms(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetCaseSensitiveForms(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetCaseSensitiveForms(element);
     }
     pub fn SetCaseSensitiveForms(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetCaseSensitiveForms(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetCaseSensitiveForms(element, value);
     }
-    pub fn get_HistoricalFormsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getHistoricalFormsProperty();
+    pub fn getHistoricalFormsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getHistoricalFormsProperty();
     }
     pub fn GetHistoricalForms(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetHistoricalForms(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetHistoricalForms(element);
     }
     pub fn SetHistoricalForms(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetHistoricalForms(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetHistoricalForms(element, value);
     }
-    pub fn get_FractionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getFractionProperty();
+    pub fn getFractionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getFractionProperty();
     }
     pub fn GetFraction(element: *DependencyObject) core.HResult!FontFraction {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetFraction(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetFraction(element);
     }
     pub fn SetFraction(element: *DependencyObject, value: FontFraction) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetFraction(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetFraction(element, value);
     }
-    pub fn get_NumeralStyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getNumeralStyleProperty();
+    pub fn getNumeralStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getNumeralStyleProperty();
     }
     pub fn GetNumeralStyle(element: *DependencyObject) core.HResult!FontNumeralStyle {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetNumeralStyle(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetNumeralStyle(element);
     }
     pub fn SetNumeralStyle(element: *DependencyObject, value: FontNumeralStyle) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetNumeralStyle(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetNumeralStyle(element, value);
     }
-    pub fn get_NumeralAlignmentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getNumeralAlignmentProperty();
+    pub fn getNumeralAlignmentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getNumeralAlignmentProperty();
     }
     pub fn GetNumeralAlignment(element: *DependencyObject) core.HResult!FontNumeralAlignment {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetNumeralAlignment(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetNumeralAlignment(element);
     }
     pub fn SetNumeralAlignment(element: *DependencyObject, value: FontNumeralAlignment) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetNumeralAlignment(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetNumeralAlignment(element, value);
     }
-    pub fn get_SlashedZeroProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getSlashedZeroProperty();
+    pub fn getSlashedZeroProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getSlashedZeroProperty();
     }
     pub fn GetSlashedZero(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetSlashedZero(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetSlashedZero(element);
     }
     pub fn SetSlashedZero(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetSlashedZero(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetSlashedZero(element, value);
     }
-    pub fn get_MathematicalGreekProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getMathematicalGreekProperty();
+    pub fn getMathematicalGreekProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getMathematicalGreekProperty();
     }
     pub fn GetMathematicalGreek(element: *DependencyObject) core.HResult!bool {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetMathematicalGreek(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetMathematicalGreek(element);
     }
     pub fn SetMathematicalGreek(element: *DependencyObject, value: bool) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetMathematicalGreek(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetMathematicalGreek(element, value);
     }
-    pub fn get_VariantsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.getVariantsProperty();
+    pub fn getVariantsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.getVariantsProperty();
     }
     pub fn GetVariants(element: *DependencyObject) core.HResult!FontVariants {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.GetVariants(element);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.GetVariants(element);
     }
     pub fn SetVariants(element: *DependencyObject, value: FontVariants) core.HResult!void {
-        const factory = @This().ITypographyStaticsCache.get();
-        return try factory.SetVariants(element, value);
+        const _f = @This().ITypographyStaticsCache.get();
+        return try _f.SetVariants(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Documents.Typography";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

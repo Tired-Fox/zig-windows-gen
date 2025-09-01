@@ -317,9 +317,9 @@ pub const ISecondaryTile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestCreateAsync(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestCreateAsyncWithInvocationPoint(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestCreateAsync(@ptrCast(self), invocationPoint, &_r);
+        const _c = self.vtable.RequestCreateAsyncWithInvocationPoint(@ptrCast(self), invocationPoint, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -341,9 +341,9 @@ pub const ISecondaryTile = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestDeleteAsync(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestDeleteAsyncWithInvocationPoint(self: *@This(), invocationPoint: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestDeleteAsync(@ptrCast(self), invocationPoint, &_r);
+        const _c = self.vtable.RequestDeleteAsyncWithInvocationPoint(@ptrCast(self), invocationPoint, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -402,11 +402,11 @@ pub const ISecondaryTile = extern struct {
         put_BackgroundColor: *const fn(self: *anyopaque, value: Color) callconv(.winapi) HRESULT,
         get_BackgroundColor: *const fn(self: *anyopaque, _r: *Color) callconv(.winapi) HRESULT,
         RequestCreateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestCreateAsync: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestCreateAsyncWithInvocationPoint: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestCreateForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestCreateForSelectionAsyncWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestDeleteAsync: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestDeleteAsyncWithInvocationPoint: *const fn(self: *anyopaque, invocationPoint: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteForSelectionAsync: *const fn(self: *anyopaque, selection: Rect, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestDeleteForSelectionAsyncWithPreferredPlacement: *const fn(self: *anyopaque, selection: Rect, preferredPlacement: Placement, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         UpdateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -545,9 +545,9 @@ pub const ISecondaryTileStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindAllAsync(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
+    pub fn FindAllAsyncWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
         var _r: *IAsyncOperation(IVectorView(SecondaryTile)) = undefined;
-        const _c = self.vtable.FindAllAsync(@ptrCast(self), applicationId, &_r);
+        const _c = self.vtable.FindAllAsyncWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -571,7 +571,7 @@ pub const ISecondaryTileStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Exists: *const fn(self: *anyopaque, tileId: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         FindAllAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
-        FindAllAsync: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
+        FindAllAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
         FindAllForPackageAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(SecondaryTile))) callconv(.winapi) HRESULT,
     };
 };
@@ -1072,12 +1072,12 @@ pub const JumpList = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LoadCurrentAsync() core.HResult!*IAsyncOperation(JumpList) {
-        const factory = @This().IJumpListStaticsCache.get();
-        return try factory.LoadCurrentAsync();
+        const _f = @This().IJumpListStaticsCache.get();
+        return try _f.LoadCurrentAsync();
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IJumpListStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().IJumpListStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.JumpList";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1136,12 +1136,12 @@ pub const JumpListItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithArguments(arguments: HSTRING, displayName: HSTRING) core.HResult!*JumpListItem {
-        const factory = @This().IJumpListItemStaticsCache.get();
-        return try factory.CreateWithArguments(arguments, displayName);
+        const _f = @This().IJumpListItemStaticsCache.get();
+        return try _f.CreateWithArguments(arguments, displayName);
     }
     pub fn CreateSeparator() core.HResult!*JumpListItem {
-        const factory = @This().IJumpListItemStaticsCache.get();
-        return try factory.CreateSeparator();
+        const _f = @This().IJumpListItemStaticsCache.get();
+        return try _f.CreateSeparator();
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.JumpListItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1343,36 +1343,36 @@ pub const SecondaryTile = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISecondaryTile.IID)));
     }
     pub fn CreateTile(tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri) core.HResult!*SecondaryTile {
-        const factory = @This().ISecondaryTileFactoryCache.get();
-        return try factory.CreateTile(tileId, shortName, displayName, arguments, tileOptions, logoReference);
+        const _f = @This().ISecondaryTileFactoryCache.get();
+        return try _f.CreateTile(tileId, shortName, displayName, arguments, tileOptions, logoReference);
     }
     pub fn CreateWideTile(tileId: HSTRING, shortName: HSTRING, displayName: HSTRING, arguments: HSTRING, tileOptions: TileOptions, logoReference: *Uri, wideLogoReference: *Uri) core.HResult!*SecondaryTile {
-        const factory = @This().ISecondaryTileFactoryCache.get();
-        return try factory.CreateWideTile(tileId, shortName, displayName, arguments, tileOptions, logoReference, wideLogoReference);
+        const _f = @This().ISecondaryTileFactoryCache.get();
+        return try _f.CreateWideTile(tileId, shortName, displayName, arguments, tileOptions, logoReference, wideLogoReference);
     }
     pub fn CreateWithId(tileId: HSTRING) core.HResult!*SecondaryTile {
-        const factory = @This().ISecondaryTileFactoryCache.get();
-        return try factory.CreateWithId(tileId);
+        const _f = @This().ISecondaryTileFactoryCache.get();
+        return try _f.CreateWithId(tileId);
     }
     pub fn CreateMinimalTile(tileId: HSTRING, displayName: HSTRING, arguments: HSTRING, square150x150Logo: *Uri, desiredSize: TileSize) core.HResult!*SecondaryTile {
-        const factory = @This().ISecondaryTileFactory2Cache.get();
-        return try factory.CreateMinimalTile(tileId, displayName, arguments, square150x150Logo, desiredSize);
+        const _f = @This().ISecondaryTileFactory2Cache.get();
+        return try _f.CreateMinimalTile(tileId, displayName, arguments, square150x150Logo, desiredSize);
     }
     pub fn Exists(tileId: HSTRING) core.HResult!bool {
-        const factory = @This().ISecondaryTileStaticsCache.get();
-        return try factory.Exists(tileId);
+        const _f = @This().ISecondaryTileStaticsCache.get();
+        return try _f.Exists(tileId);
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
-        const factory = @This().ISecondaryTileStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().ISecondaryTileStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FindAllAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
-        const factory = @This().ISecondaryTileStaticsCache.get();
-        return try factory.FindAllAsyncWithApplicationId(applicationId);
+        const _f = @This().ISecondaryTileStaticsCache.get();
+        return try _f.FindAllAsyncWithApplicationId(applicationId);
     }
     pub fn FindAllForPackageAsync() core.HResult!*IAsyncOperation(IVectorView(SecondaryTile)) {
-        const factory = @This().ISecondaryTileStaticsCache.get();
-        return try factory.FindAllForPackageAsync();
+        const _f = @This().ISecondaryTileStaticsCache.get();
+        return try _f.FindAllForPackageAsync();
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.SecondaryTile";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1536,12 +1536,12 @@ pub const StartScreenManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*StartScreenManager {
-        const factory = @This().IStartScreenManagerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IStartScreenManagerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*StartScreenManager {
-        const factory = @This().IStartScreenManagerStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IStartScreenManagerStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.UI.StartScreen.StartScreenManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

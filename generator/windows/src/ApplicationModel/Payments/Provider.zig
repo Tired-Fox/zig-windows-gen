@@ -239,9 +239,9 @@ pub const PaymentAppManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*PaymentAppManager {
-        const factory = @This().IPaymentAppManagerStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*PaymentAppManager {
+        const _f = @This().IPaymentAppManagerStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.PaymentAppManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -300,8 +300,8 @@ pub const PaymentTransaction = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PaymentTransaction) {
-        const factory = @This().IPaymentTransactionStaticsCache.get();
-        return try factory.FromIdAsync(id);
+        const _f = @This().IPaymentTransactionStaticsCache.get();
+        return try _f.FromIdAsync(id);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.Provider.PaymentTransaction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -97,12 +97,12 @@ pub const PlatformTelemetryClient = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Register(id: HSTRING) core.HResult!*PlatformTelemetryRegistrationResult {
-        const factory = @This().IPlatformTelemetryClientStaticsCache.get();
-        return try factory.Register(id);
+        const _f = @This().IPlatformTelemetryClientStaticsCache.get();
+        return try _f.Register(id);
     }
     pub fn RegisterWithSettings(id: HSTRING, settings: *PlatformTelemetryRegistrationSettings) core.HResult!*PlatformTelemetryRegistrationResult {
-        const factory = @This().IPlatformTelemetryClientStaticsCache.get();
-        return try factory.RegisterWithSettings(id, settings);
+        const _f = @This().IPlatformTelemetryClientStaticsCache.get();
+        return try _f.RegisterWithSettings(id, settings);
     }
     pub const NAME: []const u8 = "Windows.System.Diagnostics.Telemetry.PlatformTelemetryClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

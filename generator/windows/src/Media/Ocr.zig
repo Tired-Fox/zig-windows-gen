@@ -189,25 +189,25 @@ pub const OcrEngine = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MaxImageDimension() core.HResult!u32 {
-        const factory = @This().IOcrEngineStaticsCache.get();
-        return try factory.getMaxImageDimension();
+    pub fn getMaxImageDimension() core.HResult!u32 {
+        const _f = @This().IOcrEngineStaticsCache.get();
+        return try _f.getMaxImageDimension();
     }
-    pub fn get_AvailableRecognizerLanguages() core.HResult!*IVectorView(Language) {
-        const factory = @This().IOcrEngineStaticsCache.get();
-        return try factory.getAvailableRecognizerLanguages();
+    pub fn getAvailableRecognizerLanguages() core.HResult!*IVectorView(Language) {
+        const _f = @This().IOcrEngineStaticsCache.get();
+        return try _f.getAvailableRecognizerLanguages();
     }
     pub fn IsLanguageSupported(language: *Language) core.HResult!bool {
-        const factory = @This().IOcrEngineStaticsCache.get();
-        return try factory.IsLanguageSupported(language);
+        const _f = @This().IOcrEngineStaticsCache.get();
+        return try _f.IsLanguageSupported(language);
     }
     pub fn TryCreateFromLanguage(language: *Language) core.HResult!*OcrEngine {
-        const factory = @This().IOcrEngineStaticsCache.get();
-        return try factory.TryCreateFromLanguage(language);
+        const _f = @This().IOcrEngineStaticsCache.get();
+        return try _f.TryCreateFromLanguage(language);
     }
     pub fn TryCreateFromUserProfileLanguages() core.HResult!*OcrEngine {
-        const factory = @This().IOcrEngineStaticsCache.get();
-        return try factory.TryCreateFromUserProfileLanguages();
+        const _f = @This().IOcrEngineStaticsCache.get();
+        return try _f.TryCreateFromUserProfileLanguages();
     }
     pub const NAME: []const u8 = "Windows.Media.Ocr.OcrEngine";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

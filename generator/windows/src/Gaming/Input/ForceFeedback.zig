@@ -36,8 +36,8 @@ pub const ConditionForceEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effectKind: ConditionForceEffectKind) core.HResult!*ConditionForceEffect {
-        const factory = @This().IConditionForceEffectFactoryCache.get();
-        return try factory.CreateInstance(effectKind);
+        const _f = @This().IConditionForceEffectFactoryCache.get();
+        return try _f.CreateInstance(effectKind);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.ConditionForceEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -524,8 +524,8 @@ pub const PeriodicForceEffect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(effectKind: PeriodicForceEffectKind) core.HResult!*PeriodicForceEffect {
-        const factory = @This().IPeriodicForceEffectFactoryCache.get();
-        return try factory.CreateInstance(effectKind);
+        const _f = @This().IPeriodicForceEffectFactoryCache.get();
+        return try _f.CreateInstance(effectKind);
     }
     pub const NAME: []const u8 = "Windows.Gaming.Input.ForceFeedback.PeriodicForceEffect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

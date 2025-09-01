@@ -1405,8 +1405,8 @@ pub const PaymentCanMakePaymentResult = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(value: PaymentCanMakePaymentResultStatus) core.HResult!*PaymentCanMakePaymentResult {
-        const factory = @This().IPaymentCanMakePaymentResultFactoryCache.get();
-        return try factory.Create(value);
+        const _f = @This().IPaymentCanMakePaymentResultFactoryCache.get();
+        return try _f.Create(value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentCanMakePaymentResult";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1454,12 +1454,12 @@ pub const PaymentCurrencyAmount = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(value: HSTRING, currency: HSTRING) core.HResult!*PaymentCurrencyAmount {
-        const factory = @This().IPaymentCurrencyAmountFactoryCache.get();
-        return try factory.Create(value, currency);
+        const _f = @This().IPaymentCurrencyAmountFactoryCache.get();
+        return try _f.Create(value, currency);
     }
     pub fn CreateWithCurrencySystem(value: HSTRING, currency: HSTRING, currencySystem: HSTRING) core.HResult!*PaymentCurrencyAmount {
-        const factory = @This().IPaymentCurrencyAmountFactoryCache.get();
-        return try factory.CreateWithCurrencySystem(value, currency, currencySystem);
+        const _f = @This().IPaymentCurrencyAmountFactoryCache.get();
+        return try _f.CreateWithCurrencySystem(value, currency, currencySystem);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentCurrencyAmount";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1510,12 +1510,12 @@ pub const PaymentDetails = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPaymentDetails.IID)));
     }
     pub fn Create(total: *PaymentItem) core.HResult!*PaymentDetails {
-        const factory = @This().IPaymentDetailsFactoryCache.get();
-        return try factory.Create(total);
+        const _f = @This().IPaymentDetailsFactoryCache.get();
+        return try _f.Create(total);
     }
     pub fn CreateWithDisplayItems(total: *PaymentItem, displayItems: *IIterable(PaymentItem)) core.HResult!*PaymentDetails {
-        const factory = @This().IPaymentDetailsFactoryCache.get();
-        return try factory.CreateWithDisplayItems(total, displayItems);
+        const _f = @This().IPaymentDetailsFactoryCache.get();
+        return try _f.CreateWithDisplayItems(total, displayItems);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentDetails";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1547,16 +1547,16 @@ pub const PaymentDetailsModifier = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem) core.HResult!*PaymentDetailsModifier {
-        const factory = @This().IPaymentDetailsModifierFactoryCache.get();
-        return try factory.Create(supportedMethodIds, total);
+        const _f = @This().IPaymentDetailsModifierFactoryCache.get();
+        return try _f.Create(supportedMethodIds, total);
     }
     pub fn CreateWithAdditionalDisplayItems(supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem)) core.HResult!*PaymentDetailsModifier {
-        const factory = @This().IPaymentDetailsModifierFactoryCache.get();
-        return try factory.CreateWithAdditionalDisplayItems(supportedMethodIds, total, additionalDisplayItems);
+        const _f = @This().IPaymentDetailsModifierFactoryCache.get();
+        return try _f.CreateWithAdditionalDisplayItems(supportedMethodIds, total, additionalDisplayItems);
     }
     pub fn CreateWithAdditionalDisplayItemsAndJsonData(supportedMethodIds: *IIterable(HSTRING), total: *PaymentItem, additionalDisplayItems: *IIterable(PaymentItem), jsonData: HSTRING) core.HResult!*PaymentDetailsModifier {
-        const factory = @This().IPaymentDetailsModifierFactoryCache.get();
-        return try factory.CreateWithAdditionalDisplayItemsAndJsonData(supportedMethodIds, total, additionalDisplayItems, jsonData);
+        const _f = @This().IPaymentDetailsModifierFactoryCache.get();
+        return try _f.CreateWithAdditionalDisplayItemsAndJsonData(supportedMethodIds, total, additionalDisplayItems, jsonData);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentDetailsModifier";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1595,8 +1595,8 @@ pub const PaymentItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(label: HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentItem {
-        const factory = @This().IPaymentItemFactoryCache.get();
-        return try factory.Create(label, amount);
+        const _f = @This().IPaymentItemFactoryCache.get();
+        return try _f.Create(label, amount);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1657,8 +1657,8 @@ pub const PaymentMerchantInfo = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPaymentMerchantInfo.IID)));
     }
     pub fn Create(uri: *Uri) core.HResult!*PaymentMerchantInfo {
-        const factory = @This().IPaymentMerchantInfoFactoryCache.get();
-        return try factory.Create(uri);
+        const _f = @This().IPaymentMerchantInfoFactoryCache.get();
+        return try _f.Create(uri);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentMerchantInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1682,12 +1682,12 @@ pub const PaymentMethodData = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(supportedMethodIds: *IIterable(HSTRING)) core.HResult!*PaymentMethodData {
-        const factory = @This().IPaymentMethodDataFactoryCache.get();
-        return try factory.Create(supportedMethodIds);
+        const _f = @This().IPaymentMethodDataFactoryCache.get();
+        return try _f.Create(supportedMethodIds);
     }
     pub fn CreateWithJsonData(supportedMethodIds: *IIterable(HSTRING), jsonData: HSTRING) core.HResult!*PaymentMethodData {
-        const factory = @This().IPaymentMethodDataFactoryCache.get();
-        return try factory.CreateWithJsonData(supportedMethodIds, jsonData);
+        const _f = @This().IPaymentMethodDataFactoryCache.get();
+        return try _f.CreateWithJsonData(supportedMethodIds, jsonData);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentMethodData";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1785,20 +1785,20 @@ pub const PaymentRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithMerchantInfoOptionsAndId(details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions, id: HSTRING) core.HResult!*PaymentRequest {
-        const factory = @This().IPaymentRequestFactory2Cache.get();
-        return try factory.CreateWithMerchantInfoOptionsAndId(details, methodData, merchantInfo, options, id);
+        const _f = @This().IPaymentRequestFactory2Cache.get();
+        return try _f.CreateWithMerchantInfoOptionsAndId(details, methodData, merchantInfo, options, id);
     }
     pub fn Create(details: *PaymentDetails, methodData: *IIterable(PaymentMethodData)) core.HResult!*PaymentRequest {
-        const factory = @This().IPaymentRequestFactoryCache.get();
-        return try factory.Create(details, methodData);
+        const _f = @This().IPaymentRequestFactoryCache.get();
+        return try _f.Create(details, methodData);
     }
     pub fn CreateWithMerchantInfo(details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo) core.HResult!*PaymentRequest {
-        const factory = @This().IPaymentRequestFactoryCache.get();
-        return try factory.CreateWithMerchantInfo(details, methodData, merchantInfo);
+        const _f = @This().IPaymentRequestFactoryCache.get();
+        return try _f.CreateWithMerchantInfo(details, methodData, merchantInfo);
     }
     pub fn CreateWithMerchantInfoAndOptions(details: *PaymentDetails, methodData: *IIterable(PaymentMethodData), merchantInfo: *PaymentMerchantInfo, options: *PaymentOptions) core.HResult!*PaymentRequest {
-        const factory = @This().IPaymentRequestFactoryCache.get();
-        return try factory.CreateWithMerchantInfoAndOptions(details, methodData, merchantInfo, options);
+        const _f = @This().IPaymentRequestFactoryCache.get();
+        return try _f.CreateWithMerchantInfoAndOptions(details, methodData, merchantInfo, options);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1953,12 +1953,12 @@ pub const PaymentRequestChangedResult = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(changeAcceptedByMerchant: bool) core.HResult!*PaymentRequestChangedResult {
-        const factory = @This().IPaymentRequestChangedResultFactoryCache.get();
-        return try factory.Create(changeAcceptedByMerchant);
+        const _f = @This().IPaymentRequestChangedResultFactoryCache.get();
+        return try _f.Create(changeAcceptedByMerchant);
     }
     pub fn CreateWithPaymentDetails(changeAcceptedByMerchant: bool, updatedPaymentDetails: *PaymentDetails) core.HResult!*PaymentRequestChangedResult {
-        const factory = @This().IPaymentRequestChangedResultFactoryCache.get();
-        return try factory.CreateWithPaymentDetails(changeAcceptedByMerchant, updatedPaymentDetails);
+        const _f = @This().IPaymentRequestChangedResultFactoryCache.get();
+        return try _f.CreateWithPaymentDetails(changeAcceptedByMerchant, updatedPaymentDetails);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentRequestChangedResult";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2067,16 +2067,16 @@ pub const PaymentShippingOption = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(label: HSTRING, amount: *PaymentCurrencyAmount) core.HResult!*PaymentShippingOption {
-        const factory = @This().IPaymentShippingOptionFactoryCache.get();
-        return try factory.Create(label, amount);
+        const _f = @This().IPaymentShippingOptionFactoryCache.get();
+        return try _f.Create(label, amount);
     }
     pub fn CreateWithSelected(label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool) core.HResult!*PaymentShippingOption {
-        const factory = @This().IPaymentShippingOptionFactoryCache.get();
-        return try factory.CreateWithSelected(label, amount, selected);
+        const _f = @This().IPaymentShippingOptionFactoryCache.get();
+        return try _f.CreateWithSelected(label, amount, selected);
     }
     pub fn CreateWithSelectedAndTag(label: HSTRING, amount: *PaymentCurrencyAmount, selected: bool, tag: HSTRING) core.HResult!*PaymentShippingOption {
-        const factory = @This().IPaymentShippingOptionFactoryCache.get();
-        return try factory.CreateWithSelectedAndTag(label, amount, selected, tag);
+        const _f = @This().IPaymentShippingOptionFactoryCache.get();
+        return try _f.CreateWithSelectedAndTag(label, amount, selected, tag);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentShippingOption";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2104,12 +2104,12 @@ pub const PaymentToken = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(paymentMethodId: HSTRING) core.HResult!*PaymentToken {
-        const factory = @This().IPaymentTokenFactoryCache.get();
-        return try factory.Create(paymentMethodId);
+        const _f = @This().IPaymentTokenFactoryCache.get();
+        return try _f.Create(paymentMethodId);
     }
     pub fn CreateWithJsonDetails(paymentMethodId: HSTRING, jsonDetails: HSTRING) core.HResult!*PaymentToken {
-        const factory = @This().IPaymentTokenFactoryCache.get();
-        return try factory.CreateWithJsonDetails(paymentMethodId, jsonDetails);
+        const _f = @This().IPaymentTokenFactoryCache.get();
+        return try _f.CreateWithJsonDetails(paymentMethodId, jsonDetails);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Payments.PaymentToken";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

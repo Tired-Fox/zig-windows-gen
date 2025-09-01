@@ -1290,8 +1290,8 @@ pub const SyndicationAttribute = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationAttribute.IID)));
     }
     pub fn CreateSyndicationAttribute(attributeName: HSTRING, attributeNamespace: HSTRING, attributeValue: HSTRING) core.HResult!*SyndicationAttribute {
-        const factory = @This().ISyndicationAttributeFactoryCache.get();
-        return try factory.CreateSyndicationAttribute(attributeName, attributeNamespace, attributeValue);
+        const _f = @This().ISyndicationAttributeFactoryCache.get();
+        return try _f.CreateSyndicationAttribute(attributeName, attributeNamespace, attributeValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1413,12 +1413,12 @@ pub const SyndicationCategory = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationCategory.IID)));
     }
     pub fn CreateSyndicationCategory(term: HSTRING) core.HResult!*SyndicationCategory {
-        const factory = @This().ISyndicationCategoryFactoryCache.get();
-        return try factory.CreateSyndicationCategory(term);
+        const _f = @This().ISyndicationCategoryFactoryCache.get();
+        return try _f.CreateSyndicationCategory(term);
     }
     pub fn CreateSyndicationCategoryEx(term: HSTRING, scheme: HSTRING, label: HSTRING) core.HResult!*SyndicationCategory {
-        const factory = @This().ISyndicationCategoryFactoryCache.get();
-        return try factory.CreateSyndicationCategoryEx(term, scheme, label);
+        const _f = @This().ISyndicationCategoryFactoryCache.get();
+        return try _f.CreateSyndicationCategoryEx(term, scheme, label);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationCategory";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1486,8 +1486,8 @@ pub const SyndicationClient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationClient.IID)));
     }
     pub fn CreateSyndicationClient(serverCredential: *PasswordCredential) core.HResult!*SyndicationClient {
-        const factory = @This().ISyndicationClientFactoryCache.get();
-        return try factory.CreateSyndicationClient(serverCredential);
+        const _f = @This().ISyndicationClientFactoryCache.get();
+        return try _f.CreateSyndicationClient(serverCredential);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1629,12 +1629,12 @@ pub const SyndicationContent = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationContent.IID)));
     }
     pub fn CreateSyndicationContent(text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationContent {
-        const factory = @This().ISyndicationContentFactoryCache.get();
-        return try factory.CreateSyndicationContent(text, ty);
+        const _f = @This().ISyndicationContentFactoryCache.get();
+        return try _f.CreateSyndicationContent(text, ty);
     }
     pub fn CreateSyndicationContentWithSourceUri(sourceUri: *Uri) core.HResult!*SyndicationContent {
-        const factory = @This().ISyndicationContentFactoryCache.get();
-        return try factory.CreateSyndicationContentWithSourceUri(sourceUri);
+        const _f = @This().ISyndicationContentFactoryCache.get();
+        return try _f.CreateSyndicationContentWithSourceUri(sourceUri);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationContent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1650,8 +1650,8 @@ pub const SyndicationError = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetStatus(hresult: i32) core.HResult!SyndicationErrorStatus {
-        const factory = @This().ISyndicationErrorStaticsCache.get();
-        return try factory.GetStatus(hresult);
+        const _f = @This().ISyndicationErrorStaticsCache.get();
+        return try _f.GetStatus(hresult);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationError";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1865,8 +1865,8 @@ pub const SyndicationFeed = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationFeed.IID)));
     }
     pub fn CreateSyndicationFeed(title: HSTRING, subtitle: HSTRING, uri: *Uri) core.HResult!*SyndicationFeed {
-        const factory = @This().ISyndicationFeedFactoryCache.get();
-        return try factory.CreateSyndicationFeed(title, subtitle, uri);
+        const _f = @This().ISyndicationFeedFactoryCache.get();
+        return try _f.CreateSyndicationFeed(title, subtitle, uri);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationFeed";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1996,8 +1996,8 @@ pub const SyndicationGenerator = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationGenerator.IID)));
     }
     pub fn CreateSyndicationGenerator(text: HSTRING) core.HResult!*SyndicationGenerator {
-        const factory = @This().ISyndicationGeneratorFactoryCache.get();
-        return try factory.CreateSyndicationGenerator(text);
+        const _f = @This().ISyndicationGeneratorFactoryCache.get();
+        return try _f.CreateSyndicationGenerator(text);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationGenerator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2207,8 +2207,8 @@ pub const SyndicationItem = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationItem.IID)));
     }
     pub fn CreateSyndicationItem(title: HSTRING, content: *SyndicationContent, uri: *Uri) core.HResult!*SyndicationItem {
-        const factory = @This().ISyndicationItemFactoryCache.get();
-        return try factory.CreateSyndicationItem(title, content, uri);
+        const _f = @This().ISyndicationItemFactoryCache.get();
+        return try _f.CreateSyndicationItem(title, content, uri);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2354,12 +2354,12 @@ pub const SyndicationLink = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationLink.IID)));
     }
     pub fn CreateSyndicationLink(uri: *Uri) core.HResult!*SyndicationLink {
-        const factory = @This().ISyndicationLinkFactoryCache.get();
-        return try factory.CreateSyndicationLink(uri);
+        const _f = @This().ISyndicationLinkFactoryCache.get();
+        return try _f.CreateSyndicationLink(uri);
     }
     pub fn CreateSyndicationLinkEx(uri: *Uri, relationship: HSTRING, title: HSTRING, mediaType: HSTRING, length: u32) core.HResult!*SyndicationLink {
-        const factory = @This().ISyndicationLinkFactoryCache.get();
-        return try factory.CreateSyndicationLinkEx(uri, relationship, title, mediaType, length);
+        const _f = @This().ISyndicationLinkFactoryCache.get();
+        return try _f.CreateSyndicationLinkEx(uri, relationship, title, mediaType, length);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationLink";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2431,8 +2431,8 @@ pub const SyndicationNode = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationNode.IID)));
     }
     pub fn CreateSyndicationNode(nodeName: HSTRING, nodeNamespace: HSTRING, nodeValue: HSTRING) core.HResult!*SyndicationNode {
-        const factory = @This().ISyndicationNodeFactoryCache.get();
-        return try factory.CreateSyndicationNode(nodeName, nodeNamespace, nodeValue);
+        const _f = @This().ISyndicationNodeFactoryCache.get();
+        return try _f.CreateSyndicationNode(nodeName, nodeNamespace, nodeValue);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationNode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2554,12 +2554,12 @@ pub const SyndicationPerson = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationPerson.IID)));
     }
     pub fn CreateSyndicationPerson(name: HSTRING) core.HResult!*SyndicationPerson {
-        const factory = @This().ISyndicationPersonFactoryCache.get();
-        return try factory.CreateSyndicationPerson(name);
+        const _f = @This().ISyndicationPersonFactoryCache.get();
+        return try _f.CreateSyndicationPerson(name);
     }
     pub fn CreateSyndicationPersonEx(name: HSTRING, email: HSTRING, uri: *Uri) core.HResult!*SyndicationPerson {
-        const factory = @This().ISyndicationPersonFactoryCache.get();
-        return try factory.CreateSyndicationPersonEx(name, email, uri);
+        const _f = @This().ISyndicationPersonFactoryCache.get();
+        return try _f.CreateSyndicationPersonEx(name, email, uri);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationPerson";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2681,12 +2681,12 @@ pub const SyndicationText = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISyndicationText.IID)));
     }
     pub fn CreateSyndicationText(text: HSTRING) core.HResult!*SyndicationText {
-        const factory = @This().ISyndicationTextFactoryCache.get();
-        return try factory.CreateSyndicationText(text);
+        const _f = @This().ISyndicationTextFactoryCache.get();
+        return try _f.CreateSyndicationText(text);
     }
     pub fn CreateSyndicationTextEx(text: HSTRING, ty: SyndicationTextType) core.HResult!*SyndicationText {
-        const factory = @This().ISyndicationTextFactoryCache.get();
-        return try factory.CreateSyndicationTextEx(text, ty);
+        const _f = @This().ISyndicationTextFactoryCache.get();
+        return try _f.CreateSyndicationTextEx(text, ty);
     }
     pub const NAME: []const u8 = "Windows.Web.Syndication.SyndicationText";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

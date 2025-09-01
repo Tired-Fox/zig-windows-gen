@@ -106,8 +106,8 @@ pub const ISearchSuggestionManager = extern struct {
         const _c = self.vtable.SetQueryWithLanguage(@ptrCast(self), queryText, language);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetQueryWithLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
-        const _c = self.vtable.SetQueryWithLinguisticDetails(@ptrCast(self), queryText, language, linguisticDetails);
+    pub fn SetQueryWithLanguageAndLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
+        const _c = self.vtable.SetQueryWithLanguageAndLinguisticDetails(@ptrCast(self), queryText, language, linguisticDetails);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getSuggestions(self: *@This()) core.HResult!*IObservableVector(SearchSuggestion) {
@@ -167,7 +167,7 @@ pub const ISearchSuggestionManager = extern struct {
         SetLocalContentSuggestionSettings: *const fn(self: *anyopaque, settings: *LocalContentSuggestionSettings) callconv(.winapi) HRESULT,
         SetQuery: *const fn(self: *anyopaque, queryText: HSTRING) callconv(.winapi) HRESULT,
         SetQueryWithLanguage: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING) callconv(.winapi) HRESULT,
-        SetQueryWithLinguisticDetails: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
+        SetQueryWithLanguageAndLinguisticDetails: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) callconv(.winapi) HRESULT,
         get_Suggestions: *const fn(self: *anyopaque, _r: **IObservableVector(SearchSuggestion)) callconv(.winapi) HRESULT,
         AddToHistory: *const fn(self: *anyopaque, queryText: HSTRING) callconv(.winapi) HRESULT,
         AddToHistoryWithLanguage: *const fn(self: *anyopaque, queryText: HSTRING, language: HSTRING) callconv(.winapi) HRESULT,
@@ -297,9 +297,9 @@ pub const SearchSuggestionManager = extern struct {
         const this: *ISearchSuggestionManager = @ptrCast(self);
         return try this.SetQueryWithLanguage(queryText, language);
     }
-    pub fn SetQueryWithLanguageWithLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
+    pub fn SetQueryWithLanguageAndLinguisticDetails(self: *@This(), queryText: HSTRING, language: HSTRING, linguisticDetails: *SearchQueryLinguisticDetails) core.HResult!void {
         const this: *ISearchSuggestionManager = @ptrCast(self);
-        return try this.SetQueryWithLanguageWithLinguisticDetails(queryText, language, linguisticDetails);
+        return try this.SetQueryWithLanguageAndLinguisticDetails(queryText, language, linguisticDetails);
     }
     pub fn getSuggestions(self: *@This()) core.HResult!*IObservableVector(SearchSuggestion) {
         const this: *ISearchSuggestionManager = @ptrCast(self);

@@ -367,100 +367,100 @@ pub const SystemUpdateManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.IsSupported();
     }
-    pub fn get_State() core.HResult!SystemUpdateManagerState {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getState();
+    pub fn getState() core.HResult!SystemUpdateManagerState {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getState();
     }
-    pub fn add_StateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.addStateChanged(handler);
+    pub fn addStateChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.addStateChanged(handler);
     }
-    pub fn remove_StateChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.removeStateChanged(token);
+    pub fn removeStateChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.removeStateChanged(token);
     }
-    pub fn get_DownloadProgress() core.HResult!f64 {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getDownloadProgress();
+    pub fn getDownloadProgress() core.HResult!f64 {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getDownloadProgress();
     }
-    pub fn get_InstallProgress() core.HResult!f64 {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getInstallProgress();
+    pub fn getInstallProgress() core.HResult!f64 {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getInstallProgress();
     }
-    pub fn get_UserActiveHoursStart() core.HResult!TimeSpan {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getUserActiveHoursStart();
+    pub fn getUserActiveHoursStart() core.HResult!TimeSpan {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getUserActiveHoursStart();
     }
-    pub fn get_UserActiveHoursEnd() core.HResult!TimeSpan {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getUserActiveHoursEnd();
+    pub fn getUserActiveHoursEnd() core.HResult!TimeSpan {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getUserActiveHoursEnd();
     }
-    pub fn get_UserActiveHoursMax() core.HResult!i32 {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getUserActiveHoursMax();
+    pub fn getUserActiveHoursMax() core.HResult!i32 {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getUserActiveHoursMax();
     }
     pub fn TrySetUserActiveHours(start: TimeSpan, end: TimeSpan) core.HResult!bool {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.TrySetUserActiveHours(start, end);
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.TrySetUserActiveHours(start, end);
     }
-    pub fn get_LastUpdateCheckTime() core.HResult!DateTime {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getLastUpdateCheckTime();
+    pub fn getLastUpdateCheckTime() core.HResult!DateTime {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getLastUpdateCheckTime();
     }
-    pub fn get_LastUpdateInstallTime() core.HResult!DateTime {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getLastUpdateInstallTime();
+    pub fn getLastUpdateInstallTime() core.HResult!DateTime {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getLastUpdateInstallTime();
     }
-    pub fn get_LastErrorInfo() core.HResult!*SystemUpdateLastErrorInfo {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getLastErrorInfo();
+    pub fn getLastErrorInfo() core.HResult!*SystemUpdateLastErrorInfo {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getLastErrorInfo();
     }
     pub fn GetAutomaticRebootBlockIds() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.GetAutomaticRebootBlockIds();
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.GetAutomaticRebootBlockIds();
     }
     pub fn BlockAutomaticRebootAsync(lockId: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.BlockAutomaticRebootAsync(lockId);
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.BlockAutomaticRebootAsync(lockId);
     }
     pub fn UnblockAutomaticRebootAsync(lockId: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.UnblockAutomaticRebootAsync(lockId);
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.UnblockAutomaticRebootAsync(lockId);
     }
-    pub fn get_ExtendedError() core.HResult!HResult {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getExtendedError();
+    pub fn getExtendedError() core.HResult!HResult {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getExtendedError();
     }
     pub fn GetUpdateItems() core.HResult!*IVectorView(SystemUpdateItem) {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.GetUpdateItems();
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.GetUpdateItems();
     }
-    pub fn get_AttentionRequiredReason() core.HResult!SystemUpdateAttentionRequiredReason {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.getAttentionRequiredReason();
+    pub fn getAttentionRequiredReason() core.HResult!SystemUpdateAttentionRequiredReason {
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.getAttentionRequiredReason();
     }
     pub fn SetFlightRing(flightRing: HSTRING) core.HResult!bool {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.SetFlightRing(flightRing);
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.SetFlightRing(flightRing);
     }
     pub fn GetFlightRing() core.HResult!HSTRING {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.GetFlightRing();
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.GetFlightRing();
     }
     pub fn StartInstall(action: SystemUpdateStartInstallAction) core.HResult!void {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.StartInstall(action);
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.StartInstall(action);
     }
     pub fn RebootToCompleteInstall() core.HResult!void {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.RebootToCompleteInstall();
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.RebootToCompleteInstall();
     }
     pub fn StartCancelUpdates() core.HResult!void {
-        const factory = @This().ISystemUpdateManagerStaticsCache.get();
-        return try factory.StartCancelUpdates();
+        const _f = @This().ISystemUpdateManagerStaticsCache.get();
+        return try _f.StartCancelUpdates();
     }
     pub const NAME: []const u8 = "Windows.System.Update.SystemUpdateManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

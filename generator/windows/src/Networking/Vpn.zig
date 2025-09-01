@@ -207,9 +207,9 @@ pub const IVpnChannel2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestCredentialsAsyncWithCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
+    pub fn RequestCredentialsAsyncWithCredOptionsAndCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
         var _r: *IAsyncOperation(VpnCredential) = undefined;
-        const _c = self.vtable.RequestCredentialsAsyncWithCertificate(@ptrCast(self), credType, credOptions, certificate, &_r);
+        const _c = self.vtable.RequestCredentialsAsyncWithCredOptionsAndCertificate(@ptrCast(self), credType, credOptions, certificate, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -252,7 +252,7 @@ pub const IVpnChannel2 = extern struct {
         GetVpnSendPacketBuffer: *const fn(self: *anyopaque, _r: **VpnPacketBuffer) callconv(.winapi) HRESULT,
         GetVpnReceivePacketBuffer: *const fn(self: *anyopaque, _r: **VpnPacketBuffer) callconv(.winapi) HRESULT,
         RequestCustomPromptAsync: *const fn(self: *anyopaque, customPromptElement: *IVectorView(IVpnCustomPromptElement), _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        RequestCredentialsAsyncWithCertificate: *const fn(self: *anyopaque, credType: VpnCredentialType, credOptions: u32, certificate: *Certificate, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
+        RequestCredentialsAsyncWithCredOptionsAndCertificate: *const fn(self: *anyopaque, credType: VpnCredentialType, credOptions: u32, certificate: *Certificate, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
         RequestCredentialsAsyncWithCredOptions: *const fn(self: *anyopaque, credType: VpnCredentialType, credOptions: u32, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
         RequestCredentialsAsync: *const fn(self: *anyopaque, credType: VpnCredentialType, _r: **IAsyncOperation(VpnCredential)) callconv(.winapi) HRESULT,
         TerminateConnection: *const fn(self: *anyopaque, message: HSTRING) callconv(.winapi) HRESULT,
@@ -2320,8 +2320,8 @@ pub const VpnAppId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ty: VpnAppIdType, value: HSTRING) core.HResult!*VpnAppId {
-        const factory = @This().IVpnAppIdFactoryCache.get();
-        return try factory.Create(ty, value);
+        const _f = @This().IVpnAppIdFactoryCache.get();
+        return try _f.Create(ty, value);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnAppId";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2449,11 +2449,11 @@ pub const VpnChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RequestCustomPromptAsync(customPromptElement);
     }
-    pub fn RequestCredentialsAsyncWithCredOptionsWithCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
+    pub fn RequestCredentialsAsyncWithCredOptionsAndCertificate(self: *@This(), credType: VpnCredentialType, credOptions: u32, certificate: *Certificate) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RequestCredentialsAsyncWithCredOptionsWithCertificate(credType, credOptions, certificate);
+        return try this.?.RequestCredentialsAsyncWithCredOptionsAndCertificate(credType, credOptions, certificate);
     }
     pub fn RequestCredentialsAsyncWithCredOptions(self: *@This(), credType: VpnCredentialType, credOptions: u32) core.HResult!*IAsyncOperation(VpnCredential) {
         var this: ?*IVpnChannel2 = undefined;
@@ -2473,11 +2473,11 @@ pub const VpnChannel = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TerminateConnection(message);
     }
-    pub fn StartWithTrafficFilterWithAssignedTrafficFilters(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
+    pub fn StartWithTrafficFilterWithAssignedClientIpv4ListAndAssignedClientIpv6ListAndMainOuterTunnelTransportAndOptionalOuterTunnelTransportAndAssignedTrafficFilters(self: *@This(), assignedClientIpv4List: *IVectorView(HostName), assignedClientIpv6List: *IVectorView(HostName), vpnInterfaceId: *VpnInterfaceId, assignedRoutes: *VpnRouteAssignment, assignedNamespace: *VpnDomainNameAssignment, mtuSize: u32, maxFrameSize: u32, reserved: bool, mainOuterTunnelTransport: *IInspectable, optionalOuterTunnelTransport: *IInspectable, assignedTrafficFilters: *VpnTrafficFilterAssignment) core.HResult!void {
         var this: ?*IVpnChannel2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVpnChannel2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartWithTrafficFilterWithAssignedTrafficFilters(assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
+        return try this.?.StartWithTrafficFilterWithAssignedClientIpv4ListAndAssignedClientIpv6ListAndMainOuterTunnelTransportAndOptionalOuterTunnelTransportAndAssignedTrafficFilters(assignedClientIpv4List, assignedClientIpv6List, vpnInterfaceId, assignedRoutes, assignedNamespace, mtuSize, maxFrameSize, reserved, mainOuterTunnelTransport, optionalOuterTunnelTransport, assignedTrafficFilters);
     }
     pub fn AddAndAssociateTransport(self: *@This(), transport: *IInspectable, context: *IInspectable) core.HResult!void {
         var this: ?*IVpnChannel4 = undefined;
@@ -2549,8 +2549,8 @@ pub const VpnChannel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ProcessEventAsync(thirdPartyPlugIn: *IInspectable, event: *IInspectable) core.HResult!void {
-        const factory = @This().IVpnChannelStaticsCache.get();
-        return try factory.ProcessEventAsync(thirdPartyPlugIn, event);
+        const _f = @This().IVpnChannelStaticsCache.get();
+        return try _f.ProcessEventAsync(thirdPartyPlugIn, event);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnChannel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3287,8 +3287,8 @@ pub const VpnDomainNameInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnDomainNameInfo(name: HSTRING, nameType: VpnDomainNameType, dnsServerList: *IIterable(HostName), proxyServerList: *IIterable(HostName)) core.HResult!*VpnDomainNameInfo {
-        const factory = @This().IVpnDomainNameInfoFactoryCache.get();
-        return try factory.CreateVpnDomainNameInfo(name, nameType, dnsServerList, proxyServerList);
+        const _f = @This().IVpnDomainNameInfoFactoryCache.get();
+        return try _f.CreateVpnDomainNameInfo(name, nameType, dnsServerList, proxyServerList);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnDomainNameInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3377,8 +3377,8 @@ pub const VpnInterfaceId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnInterfaceId(address: [*]u8) core.HResult!*VpnInterfaceId {
-        const factory = @This().IVpnInterfaceIdFactoryCache.get();
-        return try factory.CreateVpnInterfaceId(address);
+        const _f = @This().IVpnInterfaceIdFactoryCache.get();
+        return try _f.CreateVpnInterfaceId(address);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnInterfaceId";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3528,8 +3528,8 @@ pub const VpnNamespaceInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnNamespaceInfo(name: HSTRING, dnsServerList: *IVector(HostName), proxyServerList: *IVector(HostName)) core.HResult!*VpnNamespaceInfo {
-        const factory = @This().IVpnNamespaceInfoFactoryCache.get();
-        return try factory.CreateVpnNamespaceInfo(name, dnsServerList, proxyServerList);
+        const _f = @This().IVpnNamespaceInfoFactoryCache.get();
+        return try _f.CreateVpnNamespaceInfo(name, dnsServerList, proxyServerList);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnNamespaceInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3725,8 +3725,8 @@ pub const VpnPacketBuffer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnPacketBuffer(parentBuffer: *VpnPacketBuffer, offset: u32, length: u32) core.HResult!*VpnPacketBuffer {
-        const factory = @This().IVpnPacketBufferFactoryCache.get();
-        return try factory.CreateVpnPacketBuffer(parentBuffer, offset, length);
+        const _f = @This().IVpnPacketBufferFactoryCache.get();
+        return try _f.CreateVpnPacketBuffer(parentBuffer, offset, length);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnPacketBuffer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3769,7 +3769,7 @@ pub const VpnPacketBufferList = extern struct {
         const this: *IVpnPacketBufferList = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(VpnPacketBuffer) {
         var this: ?*IIterable(VpnPacketBuffer) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3941,8 +3941,8 @@ pub const VpnRoute = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateVpnRoute(address: *HostName, prefixSize: u8) core.HResult!*VpnRoute {
-        const factory = @This().IVpnRouteFactoryCache.get();
-        return try factory.CreateVpnRoute(address, prefixSize);
+        const _f = @This().IVpnRouteFactoryCache.get();
+        return try _f.CreateVpnRoute(address, prefixSize);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnRoute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4073,8 +4073,8 @@ pub const VpnTrafficFilter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(appId: *VpnAppId) core.HResult!*VpnTrafficFilter {
-        const factory = @This().IVpnTrafficFilterFactoryCache.get();
-        return try factory.Create(appId);
+        const _f = @This().IVpnTrafficFilterFactoryCache.get();
+        return try _f.Create(appId);
     }
     pub const NAME: []const u8 = "Windows.Networking.Vpn.VpnTrafficFilter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

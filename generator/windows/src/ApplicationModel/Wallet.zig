@@ -554,9 +554,9 @@ pub const IWalletItemStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetItemsAsync(self: *@This(), kind: WalletItemKind) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
+    pub fn GetItemsAsyncWithKind(self: *@This(), kind: WalletItemKind) core.HResult!*IAsyncOperation(IVectorView(WalletItem)) {
         var _r: *IAsyncOperation(IVectorView(WalletItem)) = undefined;
-        const _c = self.vtable.GetItemsAsync(@ptrCast(self), kind, &_r);
+        const _c = self.vtable.GetItemsAsyncWithKind(@ptrCast(self), kind, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -578,9 +578,9 @@ pub const IWalletItemStore = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ShowAsync(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
+    pub fn ShowAsyncWithId(self: *@This(), id: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.ShowAsync(@ptrCast(self), id, &_r);
+        const _c = self.vtable.ShowAsyncWithId(@ptrCast(self), id, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -606,11 +606,11 @@ pub const IWalletItemStore = extern struct {
         ClearAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetWalletItemAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncOperation(WalletItem)) callconv(.winapi) HRESULT,
         GetItemsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IVectorView(WalletItem))) callconv(.winapi) HRESULT,
-        GetItemsAsync: *const fn(self: *anyopaque, kind: WalletItemKind, _r: **IAsyncOperation(IVectorView(WalletItem))) callconv(.winapi) HRESULT,
+        GetItemsAsyncWithKind: *const fn(self: *anyopaque, kind: WalletItemKind, _r: **IAsyncOperation(IVectorView(WalletItem))) callconv(.winapi) HRESULT,
         ImportItemAsync: *const fn(self: *anyopaque, stream: *IRandomAccessStreamReference, _r: **IAsyncOperation(WalletItem)) callconv(.winapi) HRESULT,
         DeleteAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         ShowAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        ShowAsync: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        ShowAsyncWithId: *const fn(self: *anyopaque, id: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         UpdateAsync: *const fn(self: *anyopaque, item: *WalletItem, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -862,12 +862,12 @@ pub const WalletBarcode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletBarcode(symbology: WalletBarcodeSymbology, value: HSTRING) core.HResult!*WalletBarcode {
-        const factory = @This().IWalletBarcodeFactoryCache.get();
-        return try factory.CreateWalletBarcode(symbology, value);
+        const _f = @This().IWalletBarcodeFactoryCache.get();
+        return try _f.CreateWalletBarcode(symbology, value);
     }
     pub fn CreateCustomWalletBarcode(streamToBarcodeImage: *IRandomAccessStreamReference) core.HResult!*WalletBarcode {
-        const factory = @This().IWalletBarcodeFactoryCache.get();
-        return try factory.CreateCustomWalletBarcode(streamToBarcodeImage);
+        const _f = @This().IWalletBarcodeFactoryCache.get();
+        return try _f.CreateCustomWalletBarcode(streamToBarcodeImage);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletBarcode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1121,8 +1121,8 @@ pub const WalletItem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletItem(kind: WalletItemKind, displayName: HSTRING) core.HResult!*WalletItem {
-        const factory = @This().IWalletItemFactoryCache.get();
-        return try factory.CreateWalletItem(kind, displayName);
+        const _f = @This().IWalletItemFactoryCache.get();
+        return try _f.CreateWalletItem(kind, displayName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletItem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1177,8 +1177,8 @@ pub const WalletItemCustomProperty = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletItemCustomProperty(name: HSTRING, value: HSTRING) core.HResult!*WalletItemCustomProperty {
-        const factory = @This().IWalletItemCustomPropertyFactoryCache.get();
-        return try factory.CreateWalletItemCustomProperty(name, value);
+        const _f = @This().IWalletItemCustomPropertyFactoryCache.get();
+        return try _f.CreateWalletItemCustomProperty(name, value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletItemCustomProperty";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1250,8 +1250,8 @@ pub const WalletManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(WalletItemStore) {
-        const factory = @This().IWalletManagerStaticsCache.get();
-        return try factory.RequestStoreAsync();
+        const _f = @This().IWalletManagerStaticsCache.get();
+        return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1372,8 +1372,8 @@ pub const WalletVerb = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWalletVerb(name: HSTRING) core.HResult!*WalletVerb {
-        const factory = @This().IWalletVerbFactoryCache.get();
-        return try factory.CreateWalletVerb(name);
+        const _f = @This().IWalletVerbFactoryCache.get();
+        return try _f.CreateWalletVerb(name);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Wallet.WalletVerb";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

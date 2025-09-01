@@ -24,44 +24,44 @@ pub const ApiInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsTypePresent(typeName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsTypePresent(typeName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsTypePresent(typeName);
     }
     pub fn IsMethodPresent(typeName: HSTRING, methodName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsMethodPresent(typeName, methodName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsMethodPresent(typeName, methodName);
     }
     pub fn IsMethodPresentWithInputParameterCount(typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsMethodPresentWithInputParameterCount(typeName, methodName, inputParameterCount);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsMethodPresentWithInputParameterCount(typeName, methodName, inputParameterCount);
     }
     pub fn IsEventPresent(typeName: HSTRING, eventName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsEventPresent(typeName, eventName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsEventPresent(typeName, eventName);
     }
     pub fn IsPropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsPropertyPresent(typeName, propertyName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsPropertyPresent(typeName, propertyName);
     }
     pub fn IsReadOnlyPropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsReadOnlyPropertyPresent(typeName, propertyName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsReadOnlyPropertyPresent(typeName, propertyName);
     }
     pub fn IsWriteablePropertyPresent(typeName: HSTRING, propertyName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsWriteablePropertyPresent(typeName, propertyName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsWriteablePropertyPresent(typeName, propertyName);
     }
     pub fn IsEnumNamedValuePresent(enumTypeName: HSTRING, valueName: HSTRING) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsEnumNamedValuePresent(enumTypeName, valueName);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsEnumNamedValuePresent(enumTypeName, valueName);
     }
     pub fn IsApiContractPresent(contractName: HSTRING, majorVersion: u16) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsApiContractPresent(contractName, majorVersion);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsApiContractPresent(contractName, majorVersion);
     }
     pub fn IsApiContractPresentWithMinorVersion(contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
-        const factory = @This().IApiInformationStaticsCache.get();
-        return try factory.IsApiContractPresentWithMinorVersion(contractName, majorVersion, minorVersion);
+        const _f = @This().IApiInformationStaticsCache.get();
+        return try _f.IsApiContractPresentWithMinorVersion(contractName, majorVersion, minorVersion);
     }
     pub const NAME: []const u8 = "Windows.Foundation.Metadata.ApiInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -190,9 +190,9 @@ pub const IApiInformationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsMethodPresentWithMethodNameWithInputParameterCount(self: *@This(), typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
+    pub fn IsMethodPresentWithInputParameterCount(self: *@This(), typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.IsMethodPresentWithMethodNameWithInputParameterCount(@ptrCast(self), typeName, methodName, inputParameterCount, &_r);
+        const _c = self.vtable.IsMethodPresentWithInputParameterCount(@ptrCast(self), typeName, methodName, inputParameterCount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -232,9 +232,9 @@ pub const IApiInformationStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn IsApiContractPresentWithMajorVersionWithMinorVersion(self: *@This(), contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
+    pub fn IsApiContractPresentWithMinorVersion(self: *@This(), contractName: HSTRING, majorVersion: u16, minorVersion: u16) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.IsApiContractPresentWithMajorVersionWithMinorVersion(@ptrCast(self), contractName, majorVersion, minorVersion, &_r);
+        const _c = self.vtable.IsApiContractPresentWithMinorVersion(@ptrCast(self), contractName, majorVersion, minorVersion, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -252,14 +252,14 @@ pub const IApiInformationStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         IsTypePresent: *const fn(self: *anyopaque, typeName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         IsMethodPresent: *const fn(self: *anyopaque, typeName: HSTRING, methodName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
-        IsMethodPresentWithMethodNameWithInputParameterCount: *const fn(self: *anyopaque, typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32, _r: *bool) callconv(.winapi) HRESULT,
+        IsMethodPresentWithInputParameterCount: *const fn(self: *anyopaque, typeName: HSTRING, methodName: HSTRING, inputParameterCount: u32, _r: *bool) callconv(.winapi) HRESULT,
         IsEventPresent: *const fn(self: *anyopaque, typeName: HSTRING, eventName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         IsPropertyPresent: *const fn(self: *anyopaque, typeName: HSTRING, propertyName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         IsReadOnlyPropertyPresent: *const fn(self: *anyopaque, typeName: HSTRING, propertyName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         IsWriteablePropertyPresent: *const fn(self: *anyopaque, typeName: HSTRING, propertyName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         IsEnumNamedValuePresent: *const fn(self: *anyopaque, enumTypeName: HSTRING, valueName: HSTRING, _r: *bool) callconv(.winapi) HRESULT,
         IsApiContractPresent: *const fn(self: *anyopaque, contractName: HSTRING, majorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
-        IsApiContractPresentWithMajorVersionWithMinorVersion: *const fn(self: *anyopaque, contractName: HSTRING, majorVersion: u16, minorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
+        IsApiContractPresentWithMinorVersion: *const fn(self: *anyopaque, contractName: HSTRING, majorVersion: u16, minorVersion: u16, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const InternalAttribute = extern struct {

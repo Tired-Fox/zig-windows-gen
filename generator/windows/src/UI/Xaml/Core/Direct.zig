@@ -250,8 +250,8 @@ pub const IXamlDirect = extern struct {
         const _c = self.vtable.AddEventHandler(@ptrCast(self), xamlDirectObject, eventIndex, handler);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn AddEventHandlerWithEventIndexWithHandlerWithHandledEventsToo(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) core.HResult!void {
-        const _c = self.vtable.AddEventHandlerWithEventIndexWithHandlerWithHandledEventsToo(@ptrCast(self), xamlDirectObject, eventIndex, handler, handledEventsToo);
+    pub fn AddEventHandlerWithHandledEventsToo(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) core.HResult!void {
+        const _c = self.vtable.AddEventHandlerWithHandledEventsToo(@ptrCast(self), xamlDirectObject, eventIndex, handler, handledEventsToo);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RemoveEventHandler(self: *@This(), xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) core.HResult!void {
@@ -320,7 +320,7 @@ pub const IXamlDirect = extern struct {
         RemoveFromCollectionAt: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, index: u32) callconv(.winapi) HRESULT,
         ClearCollection: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject) callconv(.winapi) HRESULT,
         AddEventHandler: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) callconv(.winapi) HRESULT,
-        AddEventHandlerWithEventIndexWithHandlerWithHandledEventsToo: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) callconv(.winapi) HRESULT,
+        AddEventHandlerWithHandledEventsToo: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable, handledEventsToo: bool) callconv(.winapi) HRESULT,
         RemoveEventHandler: *const fn(self: *anyopaque, xamlDirectObject: *IXamlDirectObject, eventIndex: XamlEventIndex, handler: *IInspectable) callconv(.winapi) HRESULT,
     };
 };
@@ -577,8 +577,8 @@ pub const XamlDirect = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*XamlDirect {
-        const factory = @This().IXamlDirectStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IXamlDirectStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Core.Direct.XamlDirect";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

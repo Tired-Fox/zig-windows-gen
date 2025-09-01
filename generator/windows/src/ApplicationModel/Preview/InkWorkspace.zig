@@ -54,8 +54,8 @@ pub const InkWorkspaceHostedAppManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentApp() core.HResult!*InkWorkspaceHostedAppManager {
-        const factory = @This().IInkWorkspaceHostedAppManagerStaticsCache.get();
-        return try factory.GetForCurrentApp();
+        const _f = @This().IInkWorkspaceHostedAppManagerStaticsCache.get();
+        return try _f.GetForCurrentApp();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.InkWorkspace.InkWorkspaceHostedAppManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

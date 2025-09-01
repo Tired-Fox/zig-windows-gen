@@ -419,8 +419,8 @@ pub const NotifyCollectionChangedEventArgs = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithAllParameters(action: NotifyCollectionChangedAction, newItems: *IBindableVector, oldItems: *IBindableVector, newIndex: i32, oldIndex: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NotifyCollectionChangedEventArgs {
-        const factory = @This().INotifyCollectionChangedEventArgsFactoryCache.get();
-        return try factory.CreateInstanceWithAllParameters(action, newItems, oldItems, newIndex, oldIndex, baseInterface, innerInterface);
+        const _f = @This().INotifyCollectionChangedEventArgsFactoryCache.get();
+        return try _f.CreateInstanceWithAllParameters(action, newItems, oldItems, newIndex, oldIndex, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Interop.NotifyCollectionChangedEventArgs";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

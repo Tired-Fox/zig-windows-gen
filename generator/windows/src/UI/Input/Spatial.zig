@@ -1804,8 +1804,8 @@ pub const SpatialGestureRecognizer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(settings: SpatialGestureSettings) core.HResult!*SpatialGestureRecognizer {
-        const factory = @This().ISpatialGestureRecognizerFactoryCache.get();
-        return try factory.Create(settings);
+        const _f = @This().ISpatialGestureRecognizerFactoryCache.get();
+        return try _f.Create(settings);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Spatial.SpatialGestureRecognizer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2043,12 +2043,12 @@ pub const SpatialInteractionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSourceKindSupported(kind: SpatialInteractionSourceKind) core.HResult!bool {
-        const factory = @This().ISpatialInteractionManagerStatics2Cache.get();
-        return try factory.IsSourceKindSupported(kind);
+        const _f = @This().ISpatialInteractionManagerStatics2Cache.get();
+        return try _f.IsSourceKindSupported(kind);
     }
     pub fn GetForCurrentView() core.HResult!*SpatialInteractionManager {
-        const factory = @This().ISpatialInteractionManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ISpatialInteractionManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Spatial.SpatialInteractionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2495,8 +2495,8 @@ pub const SpatialPointerPose = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryGetAtTimestamp(coordinateSystem: *SpatialCoordinateSystem, timestamp: *PerceptionTimestamp) core.HResult!*SpatialPointerPose {
-        const factory = @This().ISpatialPointerPoseStaticsCache.get();
-        return try factory.TryGetAtTimestamp(coordinateSystem, timestamp);
+        const _f = @This().ISpatialPointerPoseStaticsCache.get();
+        return try _f.TryGetAtTimestamp(coordinateSystem, timestamp);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Spatial.SpatialPointerPose";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

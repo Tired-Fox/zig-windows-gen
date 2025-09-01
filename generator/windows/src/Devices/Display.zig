@@ -90,16 +90,16 @@ pub const DisplayMonitor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IDisplayMonitorStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IDisplayMonitorStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
-        const factory = @This().IDisplayMonitorStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IDisplayMonitorStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn FromInterfaceIdAsync(deviceInterfaceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMonitor) {
-        const factory = @This().IDisplayMonitorStaticsCache.get();
-        return try factory.FromInterfaceIdAsync(deviceInterfaceId);
+        const _f = @This().IDisplayMonitorStaticsCache.get();
+        return try _f.FromInterfaceIdAsync(deviceInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.DisplayMonitor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

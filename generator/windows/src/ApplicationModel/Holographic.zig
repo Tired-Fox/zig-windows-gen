@@ -16,8 +16,8 @@ pub const HolographicKeyboard = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*HolographicKeyboard {
-        const factory = @This().IHolographicKeyboardStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IHolographicKeyboardStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Holographic.HolographicKeyboard";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -32,8 +32,8 @@ pub const IHolographicKeyboard = extern struct {
         const _c = self.vtable.SetPlacementOverride(@ptrCast(self), coordinateSystem, topCenterPosition, orientation);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
-        const _c = self.vtable.SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize(@ptrCast(self), coordinateSystem, topCenterPosition, orientation, maxSize);
+    pub fn SetPlacementOverrideWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) core.HResult!void {
+        const _c = self.vtable.SetPlacementOverrideWithMaxSize(@ptrCast(self), coordinateSystem, topCenterPosition, orientation, maxSize);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
@@ -53,7 +53,7 @@ pub const IHolographicKeyboard = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetPlacementOverride: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion) callconv(.winapi) HRESULT,
-        SetPlacementOverrideWithTopCenterPositionWithOrientationWithMaxSize: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) callconv(.winapi) HRESULT,
+        SetPlacementOverrideWithMaxSize: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, orientation: Quaternion, maxSize: Vector2) callconv(.winapi) HRESULT,
         ResetPlacementOverride: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };

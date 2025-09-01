@@ -1011,12 +1011,12 @@ pub const PlayToManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*PlayToManager {
-        const factory = @This().IPlayToManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IPlayToManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn ShowPlayToUI() core.HResult!void {
-        const factory = @This().IPlayToManagerStaticsCache.get();
-        return try factory.ShowPlayToUI();
+        const _f = @This().IPlayToManagerStaticsCache.get();
+        return try _f.ShowPlayToUI();
     }
     pub const NAME: []const u8 = "Windows.Media.PlayTo.PlayToManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

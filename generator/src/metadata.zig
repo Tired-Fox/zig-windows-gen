@@ -9,16 +9,7 @@ pub const enumeration = @import("metadata/enumeration.zig");
 pub const structure = @import("metadata/structure.zig");
 pub const delegate = @import("metadata/delegate.zig");
 
-pub const Kind = enum {
-    Native,
-    Generic,
-    Function,
-    Delegate,
-    Class,
-    Struct,
-    Interface,
-    Enum
-};
+pub const Kind = enum { Native, Generic, Function, Delegate, Class, Struct, Interface, Enum };
 
 pub const Type = enum {
     Array,
@@ -32,11 +23,11 @@ pub const Interface = struct {
     GenericArguments: ?[]const TypeReference = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -47,11 +38,11 @@ pub const FactoryInfo = struct {
     HasDefault: bool = false,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -59,13 +50,7 @@ pub const TypeSignature = struct {
     Kind: Kind, // Class|Interface|struct|Enum|Delegate|Type
     Namespace: []const u8,
     Name: []const u8,
-    Methods: ?[]const @This().Method = null,
-
-    pub const Method = struct {
-        Name: []const u8,
-        Parameters: ?[]const Parameter = null,
-        ReturnType: TypeReference,
-    };
+    Methods: ?[]const Method = null,
 };
 
 pub const TypeDef = struct {
@@ -84,11 +69,11 @@ pub const TypeDef = struct {
     Values: ?[]const EnumValue = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -98,11 +83,11 @@ pub const Parameter = struct {
     Attributes: ?[]const []const u8 = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -114,11 +99,11 @@ pub const Method = struct {
     ReturnType: TypeReference,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -128,11 +113,11 @@ pub const Property = struct {
     Accessors: ?[]const []const u8 = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -141,11 +126,11 @@ pub const Event = struct {
     HandlerType: TypeReference,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -155,11 +140,11 @@ pub const Field = struct {
     Value: ?[]const u8 = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -171,11 +156,11 @@ pub const TypeReference = struct {
     GenericArguments: ?[]const TypeReference = null,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -184,11 +169,11 @@ pub const EnumValue = struct {
     Value: i32,
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .indent_4, .emit_null_optional_fields = false })});
     }
 
     pub fn formatMinify(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        try writer.print("{f}", .{ std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false }) });
+        try writer.print("{f}", .{std.json.fmt(self, .{ .whitespace = .minified, .emit_null_optional_fields = false })});
     }
 };
 
@@ -208,7 +193,7 @@ pub fn parse(allocator: std.mem.Allocator, base: *const std.fs.Dir, path: []cons
 
     const data = try base.readFileAlloc(arena.allocator(), path, std.math.maxInt(usize));
     const types = std.json.parseFromSliceLeaky([]const TypeDef, arena.allocator(), data, .{ .ignore_unknown_fields = true }) catch |err| {
-        std.debug.print("[error in {s}]\n", .{ path });
+        std.debug.print("[error in {s}]\n", .{path});
         return err;
     };
 
@@ -216,7 +201,7 @@ pub fn parse(allocator: std.mem.Allocator, base: *const std.fs.Dir, path: []cons
         .arena = arena,
         .data = data,
         .types = types,
-        .namespace = path[0..path.len - 5],
+        .namespace = path[0 .. path.len - 5],
     };
 }
 
@@ -241,7 +226,7 @@ pub fn parseSignature(allocator: std.mem.Allocator, base: *const std.fs.Dir, pat
         .arena = arena,
         .data = data,
         .types = types,
-        .namespace = path[0..path.len - 5],
+        .namespace = path[0 .. path.len - 5],
     };
 }
 
@@ -250,10 +235,7 @@ pub const Requirements = struct {
     items: std.StringHashMapUnmanaged([]const u8),
 
     pub fn init(allocator: std.mem.Allocator) @This() {
-        return .{
-            .allocator = allocator,
-            .items = .empty
-        };
+        return .{ .allocator = allocator, .items = .empty };
     }
 
     pub fn deinit(self: *@This()) void {
@@ -299,7 +281,7 @@ pub const Requirements = struct {
 
 pub const Definition = struct {
     kind: Kind,
-    methods: ?[]const TypeSignature.Method,
+    methods: ?[]const Method,
 };
 
 pub const Definitions = struct {
@@ -307,10 +289,7 @@ pub const Definitions = struct {
     items: std.StringHashMapUnmanaged(std.StringHashMapUnmanaged(Definition)),
 
     pub fn init(a: std.mem.Allocator) @This() {
-        return .{
-            .arena = std.heap.ArenaAllocator.init(a),
-            .items = .empty
-        };
+        return .{ .arena = std.heap.ArenaAllocator.init(a), .items = .empty };
     }
 
     pub fn deinit(self: *@This()) void {
@@ -335,14 +314,14 @@ pub const Definitions = struct {
         return null;
     }
 
-    pub fn getMethods(self: *const @This(), namespace: []const u8, name: []const u8) ?[]const TypeSignature.Method {
+    pub fn getMethods(self: *const @This(), namespace: []const u8, name: []const u8) ?[]const Method {
         if (self.items.getPtr(namespace)) |ns| {
             if (ns.get(name)) |d| return d.methods;
         }
         return null;
     }
 
-    pub fn add(self: *@This(), namespace: []const u8, name: []const u8, kind: Kind, methods: ?[]const TypeSignature.Method) !void {
+    pub fn add(self: *@This(), namespace: []const u8, name: []const u8, kind: Kind, methods: ?[]const Method) !void {
         const allo = self.allocator();
         const ns = try self.items.getOrPut(allo, namespace);
 
@@ -354,10 +333,7 @@ pub const Definitions = struct {
         } else {
             var table: std.StringHashMapUnmanaged(Definition) = .empty;
 
-            try table.put(allo, name, .{
-                .kind = kind,
-                .methods = methods
-            });
+            try table.put(allo, name, .{ .kind = kind, .methods = methods });
 
             ns.value_ptr.* = table;
         }
@@ -372,88 +348,14 @@ pub const Context = struct {
 pub fn noreserved(name: []const u8) []const u8 {
     if (std.mem.eql(u8, name, "type")) {
         return "ty";
+    } else if (std.mem.eql(u8, name, "error")) {
+        return "err";
+    } else if (std.mem.eql(u8, name, "align")) {
+        return "alignment";
+    } else if (std.mem.eql(u8, name, "RatedContentDescription")) {
+        return "ratedContentDescription";
     }
     return name;
-}
-
-// Caller must free the hashmap and the values inside the hashmap
-pub fn generateMethodNameMapSig(allocator: std.mem.Allocator, methods: []const TypeSignature.Method) ![]const []const u8 {
-    var buckets: std.StringHashMap(std.ArrayList(usize)) = .init(allocator);
-    defer {
-        var it = buckets.valueIterator();
-        while (it.next()) |n| n.deinit(allocator);
-        buckets.deinit();
-    }
-
-    for (methods, 0..) |*method, m| {
-        const entry = try buckets.getOrPut(method.Name);
-        if (entry.found_existing) {
-            try entry.value_ptr.append(allocator, m);
-        } else {
-            var list: std.ArrayList(usize) = .empty;
-            try list.append(allocator, m);
-            entry.value_ptr.* = list;
-
-        }
-    }
-
-    var map: [][]const u8 = try allocator.alloc([]const u8, methods.len);
-
-    var it = buckets.iterator();
-    while (it.next()) |bucket| {
-        var items = bucket.value_ptr.items;
-
-        std.sort.heap(usize, items, .{ methods }, sortMethodBucketSig);
-
-        const base = methods[items[0]];
-        map[items[0]] = try allocator.dupe(u8, base.Name);
-
-        if (items.len > 1) {
-            for (items[1..]) |m| {
-                const method = methods[m];
-
-                // TODO: Resolution algorithm
-                var buffer: std.io.Writer.Allocating = .init(allocator);
-                const writer = &buffer.writer;
-                try writer.writeAll(method.Name);
-
-                const bpc = if (base.Parameters) |p| p.len else 0;
-                const cpc = if (method.Parameters) |p| p.len else 0;
-                if (cpc > bpc) {
-                    for (method.Parameters.?[bpc..]) |param| {
-                        const name = noreserved(param.Name);
-                        try writer.print("With{c}{s}", .{ std.ascii.toUpper(name[0]), name[1..] });
-                    }
-                } else if (cpc == bpc) {
-                    var checkReturnType = true;
-                    if (base.Parameters) |bp| {
-                        for (bp, method.Parameters.?) |a, b| {
-                            if (!std.mem.eql(u8, a.Type.Name, b.Type.Name)) {
-                                try writer.print("With{c}{s}", .{ std.ascii.toUpper(b.Name[0]), b.Name[1..] });
-                                checkReturnType = false;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (checkReturnType) {
-                        if (!std.mem.eql(u8, base.ReturnType.Name, method.ReturnType.Name)) {
-                            try writer.print("As{s}", .{ method.ReturnType.Name });
-                        } else {
-                            return error.ComplexNameResolution;
-                        }
-                    }
-                } else {
-                    std.debug.print("{s}: P{d} vs P{d}\n", .{ method.Name, bpc, cpc });
-                    return error.ComplexNameResolution;
-                }
-
-                map[m] = try buffer.toOwnedSlice();
-            }
-        }
-    }
-
-    return map;
 }
 
 pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const Method) ![]const []const u8 {
@@ -472,7 +374,6 @@ pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const Meth
             var list: std.ArrayList(usize) = .empty;
             try list.append(allocator, m);
             entry.value_ptr.* = list;
-
         }
     }
 
@@ -482,10 +383,14 @@ pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const Meth
     while (it.next()) |bucket| {
         var items = bucket.value_ptr.items;
 
-        std.sort.heap(usize, items, .{ methods }, sortMethodBucket);
+        std.sort.heap(usize, items, .{methods}, sortMethodBucket);
 
         const base = methods[items[0]];
         map[items[0]] = try allocator.dupe(u8, base.Name);
+
+        if (std.mem.eql(u8, base.Name, "FindElementsInHostCoordinates")) {
+            std.debug.print("{f}\n", .{base});
+        }
 
         if (items.len > 1) {
             for (items[1..]) |m| {
@@ -499,26 +404,63 @@ pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const Meth
                 const bpc = if (base.Parameters) |p| p.len else 0;
                 const cpc = if (method.Parameters) |p| p.len else 0;
                 if (cpc > bpc) {
-                    for (method.Parameters.?[cpc-|bpc..]) |param| {
-                        const name = noreserved(param.Name);
-                        try writer.print("With{c}{s}", .{ std.ascii.toUpper(name[0]), name[1..] });
-                    }
-                } else if (cpc == bpc) {
-                    var checkReturnType = true;
+                    var with: usize = 0;
                     if (base.Parameters) |bp| {
-                        for (bp, method.Parameters.?) |a, b| {
+                        for (bp, method.Parameters.?[0..bpc]) |a, b| {
                             if (!std.mem.eql(u8, a.Type.Name, b.Type.Name)) {
-                                try writer.print("With{c}{s}", .{ std.ascii.toUpper(b.Name[0]), b.Name[1..] });
-                                checkReturnType = false;
-                                break;
+                                try writer.print("{s}{c}{s}", .{
+                                    if (with > 0) "And" else "With",
+                                    std.ascii.toUpper(b.Name[0]),
+                                    b.Name[1..],
+                                });
+                                with += 1;
                             }
                         }
                     }
 
-                    if (checkReturnType) {
+                    for (method.Parameters.?[bpc..]) |param| {
+                        const name = noreserved(param.Name);
+                        try writer.print("{s}{c}{s}", .{
+                            if (with > 0) "And" else "With",
+                            std.ascii.toUpper(name[0]),
+                            name[1..],
+                        });
+                        with += 1;
+                    }
+                } else if (cpc == bpc) {
+                    var param_diff_found = false;
+                    if (base.Parameters) |bp| {
+                        if (std.mem.eql(u8, base.Name, "FindElementsInHostCoordinates")) {
+                            std.debug.print("==> {f}\n", .{method});
+                        }
+                        for (bp, method.Parameters.?) |a, b| {
+                            if (!std.mem.eql(u8, a.Type.Name, b.Type.Name)) {
+                                if (std.mem.eql(u8, a.Name, b.Name)) {
+                                    try writer.print("{s}{c}{s}{s}", .{
+                                        if (param_diff_found) "And" else "With",
+                                        std.ascii.toUpper(b.Name[0]),
+                                        b.Name[1..],
+                                        b.Type.Name,
+                                    });
+                                } else {
+                                    try writer.print("{s}{c}{s}", .{
+                                        if (param_diff_found) "And" else "With",
+                                        std.ascii.toUpper(b.Name[0]),
+                                        b.Name[1..],
+                                    });
+                                }
+                                param_diff_found = true;
+                            }
+                        }
+                    }
+
+                    if (!param_diff_found) {
                         if (!std.mem.eql(u8, base.ReturnType.Name, method.ReturnType.Name)) {
-                            try writer.print("As{s}", .{ method.ReturnType.Name });
+                            try writer.print("As{s}", .{method.ReturnType.Name});
+                        } else if (method.Static and !base.Static) {
+                            try writer.writeAll("Static");
                         } else {
+                            std.debug.print("{f}\n{f}\n", .{ base, method });
                             return error.ComplexNameResolution;
                         }
                     }
@@ -535,14 +477,15 @@ pub fn generateMethodNameMap(allocator: std.mem.Allocator, methods: []const Meth
     return map;
 }
 
-fn sortMethodBucket(context: std.meta.Tuple(&.{ []const Method }), lhs: usize, rhs: usize) bool {
-    const lpc = if (context[0][lhs].Parameters) |p| p.len else 0;
-    const rpc = if (context[0][rhs].Parameters) |p| p.len else 0;
-    return lpc < rpc;
-}
+fn sortMethodBucket(context: std.meta.Tuple(&.{[]const Method}), lhs: usize, rhs: usize) bool {
+    const a = context[0][lhs];
+    const b = context[0][rhs];
 
-fn sortMethodBucketSig(context: std.meta.Tuple(&.{ []const TypeSignature.Method }), lhs: usize, rhs: usize) bool {
-    const lpc = if (context[0][lhs].Parameters) |p| p.len else 0;
-    const rpc = if (context[0][rhs].Parameters) |p| p.len else 0;
+    if (!a.Static and b.Static) return true;
+    if (!b.Static and a.Static) return false;
+
+    const lpc = if (a.Parameters) |p| p.len else 0;
+    const rpc = if (b.Parameters) |p| p.len else 0;
+
     return lpc < rpc;
 }

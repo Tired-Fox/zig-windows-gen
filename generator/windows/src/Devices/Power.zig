@@ -134,16 +134,16 @@ pub const PowerGridForecast = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForecast() core.HResult!*PowerGridForecast {
-        const factory = @This().IPowerGridForecastStaticsCache.get();
-        return try factory.GetForecast();
+        const _f = @This().IPowerGridForecastStaticsCache.get();
+        return try _f.GetForecast();
     }
-    pub fn add_ForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IPowerGridForecastStaticsCache.get();
-        return try factory.addForecastUpdated(handler);
+    pub fn addForecastUpdated(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IPowerGridForecastStaticsCache.get();
+        return try _f.addForecastUpdated(handler);
     }
-    pub fn remove_ForecastUpdated(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IPowerGridForecastStaticsCache.get();
-        return try factory.removeForecastUpdated(token);
+    pub fn removeForecastUpdated(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IPowerGridForecastStaticsCache.get();
+        return try _f.removeForecastUpdated(token);
     }
     pub const NAME: []const u8 = "Windows.Devices.Power.PowerGridForecast";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -173,17 +173,17 @@ pub const Battery = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AggregateBattery() core.HResult!*Battery {
-        const factory = @This().IBatteryStaticsCache.get();
-        return try factory.getAggregateBattery();
+    pub fn getAggregateBattery() core.HResult!*Battery {
+        const _f = @This().IBatteryStaticsCache.get();
+        return try _f.getAggregateBattery();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Battery) {
-        const factory = @This().IBatteryStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IBatteryStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IBatteryStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IBatteryStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Power.Battery";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -351,12 +351,12 @@ pub const GuidanceNavigator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrent() core.HResult!*GuidanceNavigator {
-        const factory = @This().IGuidanceNavigatorStaticsCache.get();
-        return try factory.GetCurrent();
+        const _f = @This().IGuidanceNavigatorStaticsCache.get();
+        return try _f.GetCurrent();
     }
-    pub fn get_UseAppProvidedVoice() core.HResult!bool {
-        const factory = @This().IGuidanceNavigatorStatics2Cache.get();
-        return try factory.getUseAppProvidedVoice();
+    pub fn getUseAppProvidedVoice() core.HResult!bool {
+        const _f = @This().IGuidanceNavigatorStatics2Cache.get();
+        return try _f.getUseAppProvidedVoice();
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.Guidance.GuidanceNavigator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -490,12 +490,12 @@ pub const GuidanceRoute = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CanCreateFromMapRoute(mapRoute: *MapRoute) core.HResult!bool {
-        const factory = @This().IGuidanceRouteStaticsCache.get();
-        return try factory.CanCreateFromMapRoute(mapRoute);
+        const _f = @This().IGuidanceRouteStaticsCache.get();
+        return try _f.CanCreateFromMapRoute(mapRoute);
     }
     pub fn TryCreateFromMapRoute(mapRoute: *MapRoute) core.HResult!*GuidanceRoute {
-        const factory = @This().IGuidanceRouteStaticsCache.get();
-        return try factory.TryCreateFromMapRoute(mapRoute);
+        const _f = @This().IGuidanceRouteStaticsCache.get();
+        return try _f.TryCreateFromMapRoute(mapRoute);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.Guidance.GuidanceRoute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -538,8 +538,8 @@ pub const GuidanceTelemetryCollector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrent() core.HResult!*GuidanceTelemetryCollector {
-        const factory = @This().IGuidanceTelemetryCollectorStaticsCache.get();
-        return try factory.GetCurrent();
+        const _f = @This().IGuidanceTelemetryCollectorStaticsCache.get();
+        return try _f.GetCurrent();
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.Guidance.GuidanceTelemetryCollector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

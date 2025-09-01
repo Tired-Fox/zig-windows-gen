@@ -642,8 +642,8 @@ pub const InjectedInputGamepadInfo = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInjectedInputGamepadInfo.IID)));
     }
     pub fn CreateInstance(reading: GamepadReading) core.HResult!*InjectedInputGamepadInfo {
-        const factory = @This().IInjectedInputGamepadInfoFactoryCache.get();
-        return try factory.CreateInstance(reading);
+        const _f = @This().IInjectedInputGamepadInfoFactoryCache.get();
+        return try _f.CreateInstance(reading);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Preview.Injection.InjectedInputGamepadInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1022,12 +1022,12 @@ pub const InputInjector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreate() core.HResult!*InputInjector {
-        const factory = @This().IInputInjectorStaticsCache.get();
-        return try factory.TryCreate();
+        const _f = @This().IInputInjectorStaticsCache.get();
+        return try _f.TryCreate();
     }
     pub fn TryCreateForAppBroadcastOnly() core.HResult!*InputInjector {
-        const factory = @This().IInputInjectorStatics2Cache.get();
-        return try factory.TryCreateForAppBroadcastOnly();
+        const _f = @This().IInputInjectorStatics2Cache.get();
+        return try _f.TryCreateForAppBroadcastOnly();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Preview.Injection.InputInjector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -35,9 +35,9 @@ pub const IKeyCredential = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RetrievePublicKey(self: *@This(), blobType: CryptographicPublicKeyBlobType) core.HResult!*IBuffer {
+    pub fn RetrievePublicKeyWithBlobType(self: *@This(), blobType: CryptographicPublicKeyBlobType) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
-        const _c = self.vtable.RetrievePublicKey(@ptrCast(self), blobType, &_r);
+        const _c = self.vtable.RetrievePublicKeyWithBlobType(@ptrCast(self), blobType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -67,7 +67,7 @@ pub const IKeyCredential = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_Name: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         RetrievePublicKey: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        RetrievePublicKey: *const fn(self: *anyopaque, blobType: CryptographicPublicKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
+        RetrievePublicKeyWithBlobType: *const fn(self: *anyopaque, blobType: CryptographicPublicKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
         RequestSignAsync: *const fn(self: *anyopaque, data: *IBuffer, _r: **IAsyncOperation(KeyCredentialOperationResult)) callconv(.winapi) HRESULT,
         GetAttestationAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(KeyCredentialAttestationResult)) callconv(.winapi) HRESULT,
     };
@@ -401,9 +401,9 @@ pub const IWebAccount2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SignOutAsync(self: *@This(), clientId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn SignOutAsyncWithClientId(self: *@This(), clientId: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SignOutAsync(@ptrCast(self), clientId, &_r);
+        const _c = self.vtable.SignOutAsyncWithClientId(@ptrCast(self), clientId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -423,7 +423,7 @@ pub const IWebAccount2 = extern struct {
         get_Properties: *const fn(self: *anyopaque, _r: **IMapView(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
         GetPictureAsync: *const fn(self: *anyopaque, desizedSize: WebAccountPictureSize, _r: **IAsyncOperation(IRandomAccessStream)) callconv(.winapi) HRESULT,
         SignOutAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        SignOutAsync: *const fn(self: *anyopaque, clientId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SignOutAsyncWithClientId: *const fn(self: *anyopaque, clientId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
 pub const IWebAccountFactory = extern struct {
@@ -649,24 +649,24 @@ pub const KeyCredentialManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupportedAsync() core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IKeyCredentialManagerStaticsCache.get();
-        return try factory.IsSupportedAsync();
+        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        return try _f.IsSupportedAsync();
     }
     pub fn RenewAttestationAsync() core.HResult!*IAsyncAction {
-        const factory = @This().IKeyCredentialManagerStaticsCache.get();
-        return try factory.RenewAttestationAsync();
+        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        return try _f.RenewAttestationAsync();
     }
     pub fn RequestCreateAsync(name: HSTRING, option: KeyCredentialCreationOption) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
-        const factory = @This().IKeyCredentialManagerStaticsCache.get();
-        return try factory.RequestCreateAsync(name, option);
+        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        return try _f.RequestCreateAsync(name, option);
     }
     pub fn OpenAsync(name: HSTRING) core.HResult!*IAsyncOperation(KeyCredentialRetrievalResult) {
-        const factory = @This().IKeyCredentialManagerStaticsCache.get();
-        return try factory.OpenAsync(name);
+        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        return try _f.OpenAsync(name);
     }
     pub fn DeleteAsync(name: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IKeyCredentialManagerStaticsCache.get();
-        return try factory.DeleteAsync(name);
+        const _f = @This().IKeyCredentialManagerStaticsCache.get();
+        return try _f.DeleteAsync(name);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.KeyCredentialManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -755,8 +755,8 @@ pub const PasswordCredential = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPasswordCredential.IID)));
     }
     pub fn CreatePasswordCredential(resource: HSTRING, userName: HSTRING, password: HSTRING) core.HResult!*PasswordCredential {
-        const factory = @This().ICredentialFactoryCache.get();
-        return try factory.CreatePasswordCredential(resource, userName, password);
+        const _f = @This().ICredentialFactoryCache.get();
+        return try _f.CreatePasswordCredential(resource, userName, password);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.PasswordCredential";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -768,7 +768,7 @@ pub const PasswordCredential = extern struct {
 };
 pub const PasswordCredentialPropertyStore = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
+    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(HSTRING,IInspectable)) core.HResult!EventRegistrationToken {
         var this: ?*IObservableMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IObservableMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -780,41 +780,17 @@ pub const PasswordCredentialPropertyStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.removeMapChanged(token);
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IInspectable) {
         var this: ?*IMap(HSTRING,IInspectable) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        var this: ?*IMap(HSTRING,IInspectable) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(HSTRING,IInspectable) = undefined;
@@ -822,7 +798,7 @@ pub const PasswordCredentialPropertyStore = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IInspectable)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IInspectable)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -930,8 +906,8 @@ pub const WebAccount = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccount(webAccountProvider: *WebAccountProvider, userName: HSTRING, state: WebAccountState) core.HResult!*WebAccount {
-        const factory = @This().IWebAccountFactoryCache.get();
-        return try factory.CreateWebAccount(webAccountProvider, userName, state);
+        const _f = @This().IWebAccountFactoryCache.get();
+        return try _f.CreateWebAccount(webAccountProvider, userName, state);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.WebAccount";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -988,8 +964,8 @@ pub const WebAccountProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWebAccountProvider(id: HSTRING, displayName: HSTRING, iconUri: *Uri) core.HResult!*WebAccountProvider {
-        const factory = @This().IWebAccountProviderFactoryCache.get();
-        return try factory.CreateWebAccountProvider(id, displayName, iconUri);
+        const _f = @This().IWebAccountProviderFactoryCache.get();
+        return try _f.CreateWebAccountProvider(id, displayName, iconUri);
     }
     pub const NAME: []const u8 = "Windows.Security.Credentials.WebAccountProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

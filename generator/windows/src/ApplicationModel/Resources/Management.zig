@@ -229,12 +229,12 @@ pub const ResourceIndexer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateResourceIndexer(projectRoot: *Uri) core.HResult!*ResourceIndexer {
-        const factory = @This().IResourceIndexerFactoryCache.get();
-        return try factory.CreateResourceIndexer(projectRoot);
+        const _f = @This().IResourceIndexerFactoryCache.get();
+        return try _f.CreateResourceIndexer(projectRoot);
     }
     pub fn CreateResourceIndexerWithExtension(projectRoot: *Uri, extensionDllPath: *Uri) core.HResult!*ResourceIndexer {
-        const factory = @This().IResourceIndexerFactory2Cache.get();
-        return try factory.CreateResourceIndexerWithExtension(projectRoot, extensionDllPath);
+        const _f = @This().IResourceIndexerFactory2Cache.get();
+        return try _f.CreateResourceIndexerWithExtension(projectRoot, extensionDllPath);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Management.ResourceIndexer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

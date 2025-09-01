@@ -162,9 +162,9 @@ pub const IStoreAvailability = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
-        const _c = self.vtable.RequestPurchaseAsync(@ptrCast(self), storePurchaseProperties, &_r);
+        const _c = self.vtable.RequestPurchaseAsyncWithStorePurchaseProperties(@ptrCast(self), storePurchaseProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -185,7 +185,7 @@ pub const IStoreAvailability = extern struct {
         get_Price: *const fn(self: *anyopaque, _r: **StorePrice) callconv(.winapi) HRESULT,
         get_ExtendedJsonData: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseAsync: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IStoreCanAcquireLicenseResult = extern struct {
@@ -1189,9 +1189,9 @@ pub const IStoreProduct = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
-        const _c = self.vtable.RequestPurchaseAsync(@ptrCast(self), storePurchaseProperties, &_r);
+        const _c = self.vtable.RequestPurchaseAsyncWithStorePurchaseProperties(@ptrCast(self), storePurchaseProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1229,7 +1229,7 @@ pub const IStoreProduct = extern struct {
         get_LinkUri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         GetIsAnySkuInstalledAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseAsync: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
         get_InAppOfferToken: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
@@ -1843,9 +1843,9 @@ pub const IStoreSku = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestPurchaseAsync(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
+    pub fn RequestPurchaseAsyncWithStorePurchaseProperties(self: *@This(), storePurchaseProperties: *StorePurchaseProperties) core.HResult!*IAsyncOperation(StorePurchaseResult) {
         var _r: *IAsyncOperation(StorePurchaseResult) = undefined;
-        const _c = self.vtable.RequestPurchaseAsync(@ptrCast(self), storePurchaseProperties, &_r);
+        const _c = self.vtable.RequestPurchaseAsyncWithStorePurchaseProperties(@ptrCast(self), storePurchaseProperties, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1889,7 +1889,7 @@ pub const IStoreSku = extern struct {
         get_CollectionData: *const fn(self: *anyopaque, _r: **StoreCollectionData) callconv(.winapi) HRESULT,
         GetIsInstalledAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestPurchaseAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
-        RequestPurchaseAsync: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
+        RequestPurchaseAsyncWithStorePurchaseProperties: *const fn(self: *anyopaque, storePurchaseProperties: *StorePurchaseProperties, _r: **IAsyncOperation(StorePurchaseResult)) callconv(.winapi) HRESULT,
         get_IsSubscription: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         get_SubscriptionInfo: *const fn(self: *anyopaque, _r: **StoreSubscriptionInfo) callconv(.winapi) HRESULT,
     };
@@ -2438,12 +2438,12 @@ pub const StoreContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*StoreContext {
-        const factory = @This().IStoreContextStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IStoreContextStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*StoreContext {
-        const factory = @This().IStoreContextStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IStoreContextStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StoreContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2863,8 +2863,8 @@ pub const StorePurchaseProperties = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStorePurchaseProperties.IID)));
     }
     pub fn Create(name: HSTRING) core.HResult!*StorePurchaseProperties {
-        const factory = @This().IStorePurchasePropertiesFactoryCache.get();
-        return try factory.Create(name);
+        const _f = @This().IStorePurchasePropertiesFactoryCache.get();
+        return try _f.Create(name);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StorePurchaseProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3056,8 +3056,8 @@ pub const StoreRequestHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SendRequestAsync(context: *StoreContext, requestKind: u32, parametersAsJson: HSTRING) core.HResult!*IAsyncOperation(StoreSendRequestResult) {
-        const factory = @This().IStoreRequestHelperStaticsCache.get();
-        return try factory.SendRequestAsync(context, requestKind, parametersAsJson);
+        const _f = @This().IStoreRequestHelperStaticsCache.get();
+        return try _f.SendRequestAsync(context, requestKind, parametersAsJson);
     }
     pub const NAME: []const u8 = "Windows.Services.Store.StoreRequestHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

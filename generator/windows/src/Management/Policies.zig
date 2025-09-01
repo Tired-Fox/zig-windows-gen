@@ -139,12 +139,12 @@ pub const NamedPolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetPolicyFromPath(area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
-        const factory = @This().INamedPolicyStaticsCache.get();
-        return try factory.GetPolicyFromPath(area, name);
+        const _f = @This().INamedPolicyStaticsCache.get();
+        return try _f.GetPolicyFromPath(area, name);
     }
     pub fn GetPolicyFromPathForUser(user: *User, area: HSTRING, name: HSTRING) core.HResult!*NamedPolicyData {
-        const factory = @This().INamedPolicyStaticsCache.get();
-        return try factory.GetPolicyFromPathForUser(user, area, name);
+        const _f = @This().INamedPolicyStaticsCache.get();
+        return try _f.GetPolicyFromPathForUser(user, area, name);
     }
     pub const NAME: []const u8 = "Windows.Management.Policies.NamedPolicy";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -60,20 +60,20 @@ pub const BarcodeScanner = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(BarcodeScanner) {
-        const factory = @This().IBarcodeScannerStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IBarcodeScannerStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(BarcodeScanner) {
-        const factory = @This().IBarcodeScannerStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IBarcodeScannerStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IBarcodeScannerStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IBarcodeScannerStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const factory = @This().IBarcodeScannerStatics2Cache.get();
-        return try factory.GetDeviceSelector(connectionTypes);
+        const _f = @This().IBarcodeScannerStatics2Cache.get();
+        return try _f.GetDeviceSelector(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeScanner";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -181,8 +181,8 @@ pub const BarcodeScannerReport = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(scanDataType: u32, scanData: *IBuffer, scanDataLabel: *IBuffer) core.HResult!*BarcodeScannerReport {
-        const factory = @This().IBarcodeScannerReportFactoryCache.get();
-        return try factory.CreateInstance(scanDataType, scanData, scanDataLabel);
+        const _f = @This().IBarcodeScannerReportFactoryCache.get();
+        return try _f.CreateInstance(scanDataType, scanData, scanDataLabel);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeScannerReport";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -219,385 +219,385 @@ pub const BarcodeSymbologies = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Unknown() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUnknown();
-    }
-    pub fn get_Ean8() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan8();
-    }
-    pub fn get_Ean8Add2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan8Add2();
-    }
-    pub fn get_Ean8Add5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan8Add5();
-    }
-    pub fn get_Eanv() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEanv();
-    }
-    pub fn get_EanvAdd2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEanvAdd2();
-    }
-    pub fn get_EanvAdd5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEanvAdd5();
-    }
-    pub fn get_Ean13() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan13();
-    }
-    pub fn get_Ean13Add2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan13Add2();
-    }
-    pub fn get_Ean13Add5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan13Add5();
-    }
-    pub fn get_Isbn() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIsbn();
-    }
-    pub fn get_IsbnAdd5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIsbnAdd5();
-    }
-    pub fn get_Ismn() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIsmn();
-    }
-    pub fn get_IsmnAdd2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIsmnAdd2();
-    }
-    pub fn get_IsmnAdd5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIsmnAdd5();
-    }
-    pub fn get_Issn() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIssn();
-    }
-    pub fn get_IssnAdd2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIssnAdd2();
-    }
-    pub fn get_IssnAdd5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIssnAdd5();
-    }
-    pub fn get_Ean99() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan99();
-    }
-    pub fn get_Ean99Add2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan99Add2();
-    }
-    pub fn get_Ean99Add5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getEan99Add5();
-    }
-    pub fn get_Upca() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpca();
-    }
-    pub fn get_UpcaAdd2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpcaAdd2();
-    }
-    pub fn get_UpcaAdd5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpcaAdd5();
-    }
-    pub fn get_Upce() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpce();
-    }
-    pub fn get_UpceAdd2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpceAdd2();
-    }
-    pub fn get_UpceAdd5() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpceAdd5();
-    }
-    pub fn get_UpcCoupon() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUpcCoupon();
-    }
-    pub fn get_TfStd() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTfStd();
-    }
-    pub fn get_TfDis() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTfDis();
-    }
-    pub fn get_TfInt() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTfInt();
-    }
-    pub fn get_TfInd() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTfInd();
-    }
-    pub fn get_TfMat() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTfMat();
-    }
-    pub fn get_TfIata() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTfIata();
-    }
-    pub fn get_Gs1DatabarType1() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getGs1DatabarType1();
-    }
-    pub fn get_Gs1DatabarType2() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getGs1DatabarType2();
-    }
-    pub fn get_Gs1DatabarType3() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getGs1DatabarType3();
-    }
-    pub fn get_Code39() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode39();
-    }
-    pub fn get_Code39Ex() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode39Ex();
-    }
-    pub fn get_Trioptic39() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTrioptic39();
-    }
-    pub fn get_Code32() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode32();
-    }
-    pub fn get_Pzn() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getPzn();
-    }
-    pub fn get_Code93() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode93();
-    }
-    pub fn get_Code93Ex() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode93Ex();
-    }
-    pub fn get_Code128() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode128();
-    }
-    pub fn get_Gs1128() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getGs1128();
-    }
-    pub fn get_Gs1128Coupon() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getGs1128Coupon();
-    }
-    pub fn get_UccEan128() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUccEan128();
-    }
-    pub fn get_Sisac() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getSisac();
-    }
-    pub fn get_Isbt() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getIsbt();
-    }
-    pub fn get_Codabar() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCodabar();
-    }
-    pub fn get_Code11() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode11();
-    }
-    pub fn get_Msi() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getMsi();
-    }
-    pub fn get_Plessey() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getPlessey();
-    }
-    pub fn get_Telepen() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTelepen();
-    }
-    pub fn get_Code16k() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode16k();
-    }
-    pub fn get_CodablockA() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCodablockA();
-    }
-    pub fn get_CodablockF() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCodablockF();
-    }
-    pub fn get_Codablock128() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCodablock128();
-    }
-    pub fn get_Code49() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCode49();
-    }
-    pub fn get_Aztec() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getAztec();
-    }
-    pub fn get_DataCode() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getDataCode();
-    }
-    pub fn get_DataMatrix() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getDataMatrix();
-    }
-    pub fn get_HanXin() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getHanXin();
-    }
-    pub fn get_Maxicode() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getMaxicode();
-    }
-    pub fn get_MicroPdf417() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getMicroPdf417();
-    }
-    pub fn get_MicroQr() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getMicroQr();
-    }
-    pub fn get_Pdf417() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getPdf417();
-    }
-    pub fn get_Qr() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getQr();
-    }
-    pub fn get_MsTag() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getMsTag();
-    }
-    pub fn get_Ccab() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCcab();
-    }
-    pub fn get_Ccc() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCcc();
-    }
-    pub fn get_Tlc39() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getTlc39();
-    }
-    pub fn get_AusPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getAusPost();
-    }
-    pub fn get_CanPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getCanPost();
-    }
-    pub fn get_ChinaPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getChinaPost();
-    }
-    pub fn get_DutchKix() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getDutchKix();
-    }
-    pub fn get_InfoMail() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getInfoMail();
-    }
-    pub fn get_ItalianPost25() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getItalianPost25();
-    }
-    pub fn get_ItalianPost39() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getItalianPost39();
-    }
-    pub fn get_JapanPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getJapanPost();
-    }
-    pub fn get_KoreanPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getKoreanPost();
-    }
-    pub fn get_SwedenPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getSwedenPost();
-    }
-    pub fn get_UkPost() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUkPost();
-    }
-    pub fn get_UsIntelligent() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUsIntelligent();
-    }
-    pub fn get_UsIntelligentPkg() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUsIntelligentPkg();
-    }
-    pub fn get_UsPlanet() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUsPlanet();
-    }
-    pub fn get_UsPostNet() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUsPostNet();
-    }
-    pub fn get_Us4StateFics() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getUs4StateFics();
-    }
-    pub fn get_OcrA() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getOcrA();
-    }
-    pub fn get_OcrB() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getOcrB();
-    }
-    pub fn get_Micr() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getMicr();
-    }
-    pub fn get_ExtendedBase() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.getExtendedBase();
+    pub fn getUnknown() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUnknown();
+    }
+    pub fn getEan8() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan8();
+    }
+    pub fn getEan8Add2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan8Add2();
+    }
+    pub fn getEan8Add5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan8Add5();
+    }
+    pub fn getEanv() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEanv();
+    }
+    pub fn getEanvAdd2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEanvAdd2();
+    }
+    pub fn getEanvAdd5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEanvAdd5();
+    }
+    pub fn getEan13() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan13();
+    }
+    pub fn getEan13Add2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan13Add2();
+    }
+    pub fn getEan13Add5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan13Add5();
+    }
+    pub fn getIsbn() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIsbn();
+    }
+    pub fn getIsbnAdd5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIsbnAdd5();
+    }
+    pub fn getIsmn() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIsmn();
+    }
+    pub fn getIsmnAdd2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIsmnAdd2();
+    }
+    pub fn getIsmnAdd5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIsmnAdd5();
+    }
+    pub fn getIssn() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIssn();
+    }
+    pub fn getIssnAdd2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIssnAdd2();
+    }
+    pub fn getIssnAdd5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIssnAdd5();
+    }
+    pub fn getEan99() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan99();
+    }
+    pub fn getEan99Add2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan99Add2();
+    }
+    pub fn getEan99Add5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getEan99Add5();
+    }
+    pub fn getUpca() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpca();
+    }
+    pub fn getUpcaAdd2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpcaAdd2();
+    }
+    pub fn getUpcaAdd5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpcaAdd5();
+    }
+    pub fn getUpce() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpce();
+    }
+    pub fn getUpceAdd2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpceAdd2();
+    }
+    pub fn getUpceAdd5() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpceAdd5();
+    }
+    pub fn getUpcCoupon() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUpcCoupon();
+    }
+    pub fn getTfStd() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTfStd();
+    }
+    pub fn getTfDis() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTfDis();
+    }
+    pub fn getTfInt() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTfInt();
+    }
+    pub fn getTfInd() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTfInd();
+    }
+    pub fn getTfMat() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTfMat();
+    }
+    pub fn getTfIata() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTfIata();
+    }
+    pub fn getGs1DatabarType1() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getGs1DatabarType1();
+    }
+    pub fn getGs1DatabarType2() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getGs1DatabarType2();
+    }
+    pub fn getGs1DatabarType3() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getGs1DatabarType3();
+    }
+    pub fn getCode39() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode39();
+    }
+    pub fn getCode39Ex() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode39Ex();
+    }
+    pub fn getTrioptic39() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTrioptic39();
+    }
+    pub fn getCode32() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode32();
+    }
+    pub fn getPzn() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getPzn();
+    }
+    pub fn getCode93() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode93();
+    }
+    pub fn getCode93Ex() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode93Ex();
+    }
+    pub fn getCode128() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode128();
+    }
+    pub fn getGs1128() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getGs1128();
+    }
+    pub fn getGs1128Coupon() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getGs1128Coupon();
+    }
+    pub fn getUccEan128() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUccEan128();
+    }
+    pub fn getSisac() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getSisac();
+    }
+    pub fn getIsbt() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getIsbt();
+    }
+    pub fn getCodabar() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCodabar();
+    }
+    pub fn getCode11() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode11();
+    }
+    pub fn getMsi() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getMsi();
+    }
+    pub fn getPlessey() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getPlessey();
+    }
+    pub fn getTelepen() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTelepen();
+    }
+    pub fn getCode16k() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode16k();
+    }
+    pub fn getCodablockA() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCodablockA();
+    }
+    pub fn getCodablockF() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCodablockF();
+    }
+    pub fn getCodablock128() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCodablock128();
+    }
+    pub fn getCode49() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCode49();
+    }
+    pub fn getAztec() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getAztec();
+    }
+    pub fn getDataCode() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getDataCode();
+    }
+    pub fn getDataMatrix() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getDataMatrix();
+    }
+    pub fn getHanXin() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getHanXin();
+    }
+    pub fn getMaxicode() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getMaxicode();
+    }
+    pub fn getMicroPdf417() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getMicroPdf417();
+    }
+    pub fn getMicroQr() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getMicroQr();
+    }
+    pub fn getPdf417() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getPdf417();
+    }
+    pub fn getQr() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getQr();
+    }
+    pub fn getMsTag() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getMsTag();
+    }
+    pub fn getCcab() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCcab();
+    }
+    pub fn getCcc() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCcc();
+    }
+    pub fn getTlc39() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getTlc39();
+    }
+    pub fn getAusPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getAusPost();
+    }
+    pub fn getCanPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getCanPost();
+    }
+    pub fn getChinaPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getChinaPost();
+    }
+    pub fn getDutchKix() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getDutchKix();
+    }
+    pub fn getInfoMail() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getInfoMail();
+    }
+    pub fn getItalianPost25() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getItalianPost25();
+    }
+    pub fn getItalianPost39() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getItalianPost39();
+    }
+    pub fn getJapanPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getJapanPost();
+    }
+    pub fn getKoreanPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getKoreanPost();
+    }
+    pub fn getSwedenPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getSwedenPost();
+    }
+    pub fn getUkPost() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUkPost();
+    }
+    pub fn getUsIntelligent() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUsIntelligent();
+    }
+    pub fn getUsIntelligentPkg() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUsIntelligentPkg();
+    }
+    pub fn getUsPlanet() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUsPlanet();
+    }
+    pub fn getUsPostNet() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUsPostNet();
+    }
+    pub fn getUs4StateFics() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getUs4StateFics();
+    }
+    pub fn getOcrA() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getOcrA();
+    }
+    pub fn getOcrB() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getOcrB();
+    }
+    pub fn getMicr() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getMicr();
+    }
+    pub fn getExtendedBase() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.getExtendedBase();
     }
     pub fn GetName(scanDataType: u32) core.HResult!HSTRING {
-        const factory = @This().IBarcodeSymbologiesStaticsCache.get();
-        return try factory.GetName(scanDataType);
+        const _f = @This().IBarcodeSymbologiesStaticsCache.get();
+        return try _f.GetName(scanDataType);
     }
-    pub fn get_Gs1DWCode() core.HResult!u32 {
-        const factory = @This().IBarcodeSymbologiesStatics2Cache.get();
-        return try factory.getGs1DWCode();
+    pub fn getGs1DWCode() core.HResult!u32 {
+        const _f = @This().IBarcodeSymbologiesStatics2Cache.get();
+        return try _f.getGs1DWCode();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.BarcodeSymbologies";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -721,20 +721,20 @@ pub const CashDrawer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(CashDrawer) {
-        const factory = @This().ICashDrawerStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().ICashDrawerStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(CashDrawer) {
-        const factory = @This().ICashDrawerStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ICashDrawerStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ICashDrawerStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ICashDrawerStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const factory = @This().ICashDrawerStatics2Cache.get();
-        return try factory.GetDeviceSelector(connectionTypes);
+        const _f = @This().ICashDrawerStatics2Cache.get();
+        return try _f.GetDeviceSelector(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.CashDrawer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1437,17 +1437,17 @@ pub const ClaimedLineDisplay = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryStoreStorageFileBitmapAsync(bitmap);
     }
-    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
+    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
+        return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
-    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
+    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var this: ?*IClaimedLineDisplay2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IClaimedLineDisplay2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
+        return try this.?.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn addClosed(self: *@This(), handler: *TypedEventHandler(ClaimedLineDisplay,ClaimedLineDisplayClosedEventArgs)) core.HResult!EventRegistrationToken {
         var this: ?*IClaimedLineDisplay3 = undefined;
@@ -1471,16 +1471,16 @@ pub const ClaimedLineDisplay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ClaimedLineDisplay) {
-        const factory = @This().IClaimedLineDisplayStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IClaimedLineDisplayStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IClaimedLineDisplayStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IClaimedLineDisplayStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const factory = @This().IClaimedLineDisplayStaticsCache.get();
-        return try factory.GetDeviceSelectorWithConnectionTypes(connectionTypes);
+        const _f = @This().IClaimedLineDisplayStaticsCache.get();
+        return try _f.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.ClaimedLineDisplay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4386,15 +4386,15 @@ pub const IClaimedLineDisplay2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryStoreStorageFileBitmapAsyncWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
+    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var _r: *IAsyncOperation(LineDisplayStoredBitmap) = undefined;
-        const _c = self.vtable.TryStoreStorageFileBitmapAsyncWithVerticalAlignment(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, &_r);
+        const _c = self.vtable.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryStoreStorageFileBitmapAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
+    pub fn TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(LineDisplayStoredBitmap) {
         var _r: *IAsyncOperation(LineDisplayStoredBitmap) = undefined;
-        const _c = self.vtable.TryStoreStorageFileBitmapAsyncWithWidthInPixels(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, widthInPixels, &_r);
+        const _c = self.vtable.TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, widthInPixels, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4425,8 +4425,8 @@ pub const IClaimedLineDisplay2 = extern struct {
         TryClearDescriptorsAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryCreateWindowAsync: *const fn(self: *anyopaque, viewport: Rect, windowSize: Size, _r: **IAsyncOperation(LineDisplayWindow)) callconv(.winapi) HRESULT,
         TryStoreStorageFileBitmapAsync: *const fn(self: *anyopaque, bitmap: *StorageFile, _r: **IAsyncOperation(LineDisplayStoredBitmap)) callconv(.winapi) HRESULT,
-        TryStoreStorageFileBitmapAsyncWithVerticalAlignment: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, _r: **IAsyncOperation(LineDisplayStoredBitmap)) callconv(.winapi) HRESULT,
-        TryStoreStorageFileBitmapAsyncWithWidthInPixels: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32, _r: **IAsyncOperation(LineDisplayStoredBitmap)) callconv(.winapi) HRESULT,
+        TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignment: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, _r: **IAsyncOperation(LineDisplayStoredBitmap)) callconv(.winapi) HRESULT,
+        TryStoreStorageFileBitmapAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32, _r: **IAsyncOperation(LineDisplayStoredBitmap)) callconv(.winapi) HRESULT,
     };
 };
 pub const IClaimedLineDisplay3 = extern struct {
@@ -4487,9 +4487,9 @@ pub const IClaimedLineDisplayStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithConnectionTypes(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4507,7 +4507,7 @@ pub const IClaimedLineDisplayStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(ClaimedLineDisplay)) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithConnectionTypes: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IClaimedMagneticStripeReader = extern struct {
@@ -6154,9 +6154,9 @@ pub const ILineDisplayStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithConnectionTypes(self: *@This(), connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), connectionTypes, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithConnectionTypes(@ptrCast(self), connectionTypes, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6175,7 +6175,7 @@ pub const ILineDisplayStatics = extern struct {
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(LineDisplay)) callconv(.winapi) HRESULT,
         GetDefaultAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(LineDisplay)) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithConnectionTypes: *const fn(self: *anyopaque, connectionTypes: PosConnectionTypes, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const ILineDisplayStatics2 = extern struct {
@@ -6321,9 +6321,9 @@ pub const ILineDisplayWindow = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayTextAsyncWithStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryDisplayTextAsyncWithStartPosition(@ptrCast(self), text, displayAttribute, startPosition, &_r);
+        const _c = self.vtable.TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(@ptrCast(self), text, displayAttribute, startPosition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6362,7 +6362,7 @@ pub const ILineDisplayWindow = extern struct {
         put_InterCharacterWaitInterval: *const fn(self: *anyopaque, value: TimeSpan) callconv(.winapi) HRESULT,
         TryRefreshAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryDisplayTextAsyncWithDisplayAttribute: *const fn(self: *anyopaque, text: HSTRING, displayAttribute: LineDisplayTextAttribute, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayTextAsyncWithStartPosition: *const fn(self: *anyopaque, text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayTextAsyncWithDisplayAttributeAndStartPosition: *const fn(self: *anyopaque, text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryDisplayTextAsync: *const fn(self: *anyopaque, text: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryScrollTextAsync: *const fn(self: *anyopaque, direction: LineDisplayScrollDirection, numberOfColumnsOrRows: u32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryClearTextAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
@@ -6400,15 +6400,15 @@ pub const ILineDisplayWindow2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsyncWithVerticalAlignment(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, &_r);
+        const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsyncWithWidthInPixels(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, widthInPixels, &_r);
+        const _c = self.vtable.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(@ptrCast(self), bitmap, horizontalAlignment, verticalAlignment, widthInPixels, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6418,9 +6418,9 @@ pub const ILineDisplayWindow2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryDisplayStorageFileBitmapAtPointAsyncWithOffsetInPixelsWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TryDisplayStorageFileBitmapAtPointAsyncWithOffsetInPixelsWithWidthInPixels(@ptrCast(self), bitmap, offsetInPixels, widthInPixels, &_r);
+        const _c = self.vtable.TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels(@ptrCast(self), bitmap, offsetInPixels, widthInPixels, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -6441,10 +6441,10 @@ pub const ILineDisplayWindow2 = extern struct {
         ReadCharacterAtCursorAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         TryDisplayStoredBitmapAtCursorAsync: *const fn(self: *anyopaque, bitmap: *LineDisplayStoredBitmap, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryDisplayStorageFileBitmapAtCursorAsync: *const fn(self: *anyopaque, bitmap: *StorageFile, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayStorageFileBitmapAtCursorAsyncWithVerticalAlignment: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayStorageFileBitmapAtCursorAsyncWithWidthInPixels: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels: *const fn(self: *anyopaque, bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TryDisplayStorageFileBitmapAtPointAsync: *const fn(self: *anyopaque, bitmap: *StorageFile, offsetInPixels: Point, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TryDisplayStorageFileBitmapAtPointAsyncWithOffsetInPixelsWithWidthInPixels: *const fn(self: *anyopaque, bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TryDisplayStorageFileBitmapAtPointAsyncWithWidthInPixels: *const fn(self: *anyopaque, bitmap: *StorageFile, offsetInPixels: Point, widthInPixels: i32, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMagneticStripeReader = extern struct {
@@ -7500,8 +7500,8 @@ pub const IPosPrinterJob = extern struct {
         const _c = self.vtable.Print(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrintLine(self: *@This(), data: HSTRING) core.HResult!void {
-        const _c = self.vtable.PrintLine(@ptrCast(self), data);
+    pub fn PrintLineWithData(self: *@This(), data: HSTRING) core.HResult!void {
+        const _c = self.vtable.PrintLineWithData(@ptrCast(self), data);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn PrintLine(self: *@This()) core.HResult!void {
@@ -7527,7 +7527,7 @@ pub const IPosPrinterJob = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Print: *const fn(self: *anyopaque, data: HSTRING) callconv(.winapi) HRESULT,
-        PrintLine: *const fn(self: *anyopaque, data: HSTRING) callconv(.winapi) HRESULT,
+        PrintLineWithData: *const fn(self: *anyopaque, data: HSTRING) callconv(.winapi) HRESULT,
         PrintLine: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         ExecuteAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
@@ -7851,16 +7851,16 @@ pub const IReceiptOrSlipJob = extern struct {
         const _c = self.vtable.SetBitmap(@ptrCast(self), bitmapNumber, bitmap, alignment);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetBitmapWithBitmapWithAlignmentWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
-        const _c = self.vtable.SetBitmapWithBitmapWithAlignmentWithWidth(@ptrCast(self), bitmapNumber, bitmap, alignment, width);
+    pub fn SetBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
+        const _c = self.vtable.SetBitmapWithWidth(@ptrCast(self), bitmapNumber, bitmap, alignment, width);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn SetCustomAlignedBitmap(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         const _c = self.vtable.SetCustomAlignedBitmap(@ptrCast(self), bitmapNumber, bitmap, alignmentDistance);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
-        const _c = self.vtable.SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth(@ptrCast(self), bitmapNumber, bitmap, alignmentDistance, width);
+    pub fn SetCustomAlignedBitmapWithWidth(self: *@This(), bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
+        const _c = self.vtable.SetCustomAlignedBitmapWithWidth(@ptrCast(self), bitmapNumber, bitmap, alignmentDistance, width);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn PrintSavedBitmap(self: *@This(), bitmapNumber: u32) core.HResult!void {
@@ -7883,16 +7883,16 @@ pub const IReceiptOrSlipJob = extern struct {
         const _c = self.vtable.PrintBitmap(@ptrCast(self), bitmap, alignment);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrintBitmapWithAlignmentWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
-        const _c = self.vtable.PrintBitmapWithAlignmentWithWidth(@ptrCast(self), bitmap, alignment, width);
+    pub fn PrintBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) core.HResult!void {
+        const _c = self.vtable.PrintBitmapWithWidth(@ptrCast(self), bitmap, alignment, width);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn PrintCustomAlignedBitmap(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32) core.HResult!void {
         const _c = self.vtable.PrintCustomAlignedBitmap(@ptrCast(self), bitmap, alignmentDistance);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
-        const _c = self.vtable.PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth(@ptrCast(self), bitmap, alignmentDistance, width);
+    pub fn PrintCustomAlignedBitmapWithWidth(self: *@This(), bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) core.HResult!void {
+        const _c = self.vtable.PrintCustomAlignedBitmapWithWidth(@ptrCast(self), bitmap, alignmentDistance, width);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.IReceiptOrSlipJob";
@@ -7911,17 +7911,17 @@ pub const IReceiptOrSlipJob = extern struct {
         SetPrintRotation: *const fn(self: *anyopaque, value: PosPrinterRotation, includeBitmaps: bool) callconv(.winapi) HRESULT,
         SetPrintArea: *const fn(self: *anyopaque, value: Rect) callconv(.winapi) HRESULT,
         SetBitmap: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment) callconv(.winapi) HRESULT,
-        SetBitmapWithBitmapWithAlignmentWithWidth: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) callconv(.winapi) HRESULT,
+        SetBitmapWithWidth: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) callconv(.winapi) HRESULT,
         SetCustomAlignedBitmap: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32) callconv(.winapi) HRESULT,
-        SetCustomAlignedBitmapWithBitmapWithAlignmentDistanceWithWidth: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) callconv(.winapi) HRESULT,
+        SetCustomAlignedBitmapWithWidth: *const fn(self: *anyopaque, bitmapNumber: u32, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) callconv(.winapi) HRESULT,
         PrintSavedBitmap: *const fn(self: *anyopaque, bitmapNumber: u32) callconv(.winapi) HRESULT,
         DrawRuledLine: *const fn(self: *anyopaque, positionList: HSTRING, lineDirection: PosPrinterLineDirection, lineWidth: u32, lineStyle: PosPrinterLineStyle, lineColor: u32) callconv(.winapi) HRESULT,
         PrintBarcode: *const fn(self: *anyopaque, data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignment: PosPrinterAlignment) callconv(.winapi) HRESULT,
         PrintBarcodeCustomAlign: *const fn(self: *anyopaque, data: HSTRING, symbology: u32, height: u32, width: u32, textPosition: PosPrinterBarcodeTextPosition, alignmentDistance: u32) callconv(.winapi) HRESULT,
         PrintBitmap: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignment: PosPrinterAlignment) callconv(.winapi) HRESULT,
-        PrintBitmapWithAlignmentWithWidth: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) callconv(.winapi) HRESULT,
+        PrintBitmapWithWidth: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignment: PosPrinterAlignment, width: u32) callconv(.winapi) HRESULT,
         PrintCustomAlignedBitmap: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignmentDistance: u32) callconv(.winapi) HRESULT,
-        PrintCustomAlignedBitmapWithAlignmentDistanceWithWidth: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) callconv(.winapi) HRESULT,
+        PrintCustomAlignedBitmapWithWidth: *const fn(self: *anyopaque, bitmap: *BitmapFrame, alignmentDistance: u32, width: u32) callconv(.winapi) HRESULT,
     };
 };
 pub const IReceiptPrintJob = extern struct {
@@ -7930,8 +7930,8 @@ pub const IReceiptPrintJob = extern struct {
         const _c = self.vtable.MarkFeed(@ptrCast(self), kind);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn CutPaper(self: *@This(), percentage: f64) core.HResult!void {
-        const _c = self.vtable.CutPaper(@ptrCast(self), percentage);
+    pub fn CutPaperWithPercentage(self: *@This(), percentage: f64) core.HResult!void {
+        const _c = self.vtable.CutPaperWithPercentage(@ptrCast(self), percentage);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn CutPaper(self: *@This()) core.HResult!void {
@@ -7951,7 +7951,7 @@ pub const IReceiptPrintJob = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         MarkFeed: *const fn(self: *anyopaque, kind: PosPrinterMarkFeedKind) callconv(.winapi) HRESULT,
-        CutPaper: *const fn(self: *anyopaque, percentage: f64) callconv(.winapi) HRESULT,
+        CutPaperWithPercentage: *const fn(self: *anyopaque, percentage: f64) callconv(.winapi) HRESULT,
         CutPaper: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
@@ -8485,25 +8485,25 @@ pub const LineDisplay = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_StatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
-        const factory = @This().ILineDisplayStatics2Cache.get();
-        return try factory.getStatisticsCategorySelector();
+    pub fn getStatisticsCategorySelector() core.HResult!*LineDisplayStatisticsCategorySelector {
+        const _f = @This().ILineDisplayStatics2Cache.get();
+        return try _f.getStatisticsCategorySelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(LineDisplay) {
-        const factory = @This().ILineDisplayStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ILineDisplayStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(LineDisplay) {
-        const factory = @This().ILineDisplayStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().ILineDisplayStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ILineDisplayStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ILineDisplayStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const factory = @This().ILineDisplayStaticsCache.get();
-        return try factory.GetDeviceSelectorWithConnectionTypes(connectionTypes);
+        const _f = @This().ILineDisplayStaticsCache.get();
+        return try _f.GetDeviceSelectorWithConnectionTypes(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.LineDisplay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8923,9 +8923,9 @@ pub const LineDisplayWindow = extern struct {
         const this: *ILineDisplayWindow = @ptrCast(self);
         return try this.TryDisplayTextAsyncWithDisplayAttribute(text, displayAttribute);
     }
-    pub fn TryDisplayTextAsyncWithDisplayAttributeWithStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(self: *@This(), text: HSTRING, displayAttribute: LineDisplayTextAttribute, startPosition: Point) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
-        return try this.TryDisplayTextAsyncWithDisplayAttributeWithStartPosition(text, displayAttribute, startPosition);
+        return try this.TryDisplayTextAsyncWithDisplayAttributeAndStartPosition(text, displayAttribute, startPosition);
     }
     pub fn TryDisplayTextAsync(self: *@This(), text: HSTRING) core.HResult!*IAsyncOperation(bool) {
         const this: *ILineDisplayWindow = @ptrCast(self);
@@ -8969,17 +8969,17 @@ pub const LineDisplayWindow = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryDisplayStorageFileBitmapAtCursorAsync(bitmap);
     }
-    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
+        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignment(bitmap, horizontalAlignment, verticalAlignment);
     }
-    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
+    pub fn TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(self: *@This(), bitmap: *StorageFile, horizontalAlignment: LineDisplayHorizontalAlignment, verticalAlignment: LineDisplayVerticalAlignment, widthInPixels: i32) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &ILineDisplayWindow2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentWithVerticalAlignmentWithWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
+        return try this.?.TryDisplayStorageFileBitmapAtCursorAsyncWithHorizontalAlignmentAndVerticalAlignmentAndWidthInPixels(bitmap, horizontalAlignment, verticalAlignment, widthInPixels);
     }
     pub fn TryDisplayStorageFileBitmapAtPointAsync(self: *@This(), bitmap: *StorageFile, offsetInPixels: Point) core.HResult!*IAsyncOperation(bool) {
         var this: ?*ILineDisplayWindow2 = undefined;
@@ -9057,20 +9057,20 @@ pub const MagneticStripeReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(MagneticStripeReader) {
-        const factory = @This().IMagneticStripeReaderStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IMagneticStripeReaderStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(MagneticStripeReader) {
-        const factory = @This().IMagneticStripeReaderStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IMagneticStripeReaderStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IMagneticStripeReaderStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IMagneticStripeReaderStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const factory = @This().IMagneticStripeReaderStatics2Cache.get();
-        return try factory.GetDeviceSelector(connectionTypes);
+        const _f = @This().IMagneticStripeReaderStatics2Cache.get();
+        return try _f.GetDeviceSelector(connectionTypes);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.MagneticStripeReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9274,21 +9274,21 @@ pub const MagneticStripeReaderCardTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Unknown() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
-        return try factory.getUnknown();
+    pub fn getUnknown() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        return try _f.getUnknown();
     }
-    pub fn get_Bank() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
-        return try factory.getBank();
+    pub fn getBank() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        return try _f.getBank();
     }
-    pub fn get_Aamva() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
-        return try factory.getAamva();
+    pub fn getAamva() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        return try _f.getAamva();
     }
-    pub fn get_ExtendedBase() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
-        return try factory.getExtendedBase();
+    pub fn getExtendedBase() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderCardTypesStaticsCache.get();
+        return try _f.getExtendedBase();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.MagneticStripeReaderCardTypes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9299,17 +9299,17 @@ pub const MagneticStripeReaderEncryptionAlgorithms = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_None() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
-        return try factory.getNone();
+    pub fn getNone() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
+        return try _f.getNone();
     }
-    pub fn get_TripleDesDukpt() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
-        return try factory.getTripleDesDukpt();
+    pub fn getTripleDesDukpt() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
+        return try _f.getTripleDesDukpt();
     }
-    pub fn get_ExtendedBase() core.HResult!u32 {
-        const factory = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
-        return try factory.getExtendedBase();
+    pub fn getExtendedBase() core.HResult!u32 {
+        const _f = @This().IMagneticStripeReaderEncryptionAlgorithmsStaticsCache.get();
+        return try _f.getExtendedBase();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.MagneticStripeReaderEncryptionAlgorithms";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9533,20 +9533,20 @@ pub const PosPrinter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelectorWithConnectionTypes(connectionTypes: PosConnectionTypes) core.HResult!HSTRING {
-        const factory = @This().IPosPrinterStatics2Cache.get();
-        return try factory.GetDeviceSelector(connectionTypes);
+        const _f = @This().IPosPrinterStatics2Cache.get();
+        return try _f.GetDeviceSelector(connectionTypes);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(PosPrinter) {
-        const factory = @This().IPosPrinterStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IPosPrinterStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(PosPrinter) {
-        const factory = @This().IPosPrinterStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IPosPrinterStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IPosPrinterStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IPosPrinterStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.PosPrinter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9626,17 +9626,17 @@ pub const PosPrinterCharacterSetIds = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Utf16LE() core.HResult!u32 {
-        const factory = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
-        return try factory.getUtf16LE();
+    pub fn getUtf16LE() core.HResult!u32 {
+        const _f = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
+        return try _f.getUtf16LE();
     }
-    pub fn get_Ascii() core.HResult!u32 {
-        const factory = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
-        return try factory.getAscii();
+    pub fn getAscii() core.HResult!u32 {
+        const _f = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
+        return try _f.getAscii();
     }
-    pub fn get_Ansi() core.HResult!u32 {
-        const factory = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
-        return try factory.getAnsi();
+    pub fn getAnsi() core.HResult!u32 {
+        const _f = @This().IPosPrinterCharacterSetIdsStaticsCache.get();
+        return try _f.getAnsi();
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.PosPrinterCharacterSetIds";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -10563,8 +10563,8 @@ pub const UnifiedPosErrorData = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(message: HSTRING, severity: UnifiedPosErrorSeverity, reason: UnifiedPosErrorReason, extendedReason: u32) core.HResult!*UnifiedPosErrorData {
-        const factory = @This().IUnifiedPosErrorDataFactoryCache.get();
-        return try factory.CreateInstance(message, severity, reason, extendedReason);
+        const _f = @This().IUnifiedPosErrorDataFactoryCache.get();
+        return try _f.CreateInstance(message, severity, reason, extendedReason);
     }
     pub const NAME: []const u8 = "Windows.Devices.PointOfService.UnifiedPosErrorData";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

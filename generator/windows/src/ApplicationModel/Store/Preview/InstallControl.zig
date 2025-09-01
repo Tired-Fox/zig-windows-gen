@@ -234,11 +234,11 @@ pub const AppInstallManager = extern struct {
         const this: *IAppInstallManager = @ptrCast(self);
         return try this.GetIsAppAllowedToInstallAsync(productId);
     }
-    pub fn StartAppInstallAsyncWithCatalogIdWithBundleIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: HSTRING, bundleId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
+    pub fn StartAppInstallAsyncWithCatalogIdAndBundleIdAndCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, catalogId: HSTRING, bundleId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartAppInstallAsyncWithCatalogIdWithBundleIdWithCorrelationVector(productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector);
+        return try this.?.StartAppInstallAsyncWithCatalogIdAndBundleIdAndCorrelationVector(productId, skuId, repair, forceUseOfNonRemovableStorage, catalogId, bundleId, correlationVector);
     }
     pub fn UpdateAppByPackageFamilyNameAsyncWithCorrelationVector(self: *@This(), packageFamilyName: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
@@ -246,11 +246,11 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.UpdateAppByPackageFamilyNameAsyncWithCorrelationVector(packageFamilyName, correlationVector);
     }
-    pub fn SearchForUpdatesAsyncWithCatalogIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
+    pub fn SearchForUpdatesAsyncWithCatalogIdAndCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForUpdatesAsyncWithCatalogIdWithCorrelationVector(productId, skuId, catalogId, correlationVector);
+        return try this.?.SearchForUpdatesAsyncWithCatalogIdAndCorrelationVector(productId, skuId, catalogId, correlationVector);
     }
     pub fn SearchForAllUpdatesAsyncWithCorrelationVector(self: *@This(), correlationVector: HSTRING) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager2 = undefined;
@@ -258,11 +258,11 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SearchForAllUpdatesAsyncWithCorrelationVector(correlationVector);
     }
-    pub fn GetIsAppAllowedToInstallAsyncWithSkuIdWithCatalogIdWithCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(bool) {
+    pub fn GetIsAppAllowedToInstallAsyncWithSkuIdAndCatalogIdAndCorrelationVector(self: *@This(), productId: HSTRING, skuId: HSTRING, catalogId: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(bool) {
         var this: ?*IAppInstallManager2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetIsAppAllowedToInstallAsyncWithSkuIdWithCatalogIdWithCorrelationVector(productId, skuId, catalogId, correlationVector);
+        return try this.?.GetIsAppAllowedToInstallAsyncWithSkuIdAndCatalogIdAndCorrelationVector(productId, skuId, catalogId, correlationVector);
     }
     pub fn CancelWithCorrelationVector(self: *@This(), productId: HSTRING, correlationVector: HSTRING) core.HResult!void {
         var this: ?*IAppInstallManager2 = undefined;
@@ -282,17 +282,17 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RestartWithCorrelationVector(productId, correlationVector);
     }
-    pub fn StartProductInstallAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(self: *@This(), productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+    pub fn StartProductInstallAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(self: *@This(), productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartProductInstallAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
+        return try this.?.StartProductInstallAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
     }
-    pub fn StartProductInstallForUserAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(self: *@This(), user: *User, productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+    pub fn StartProductInstallForUserAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(self: *@This(), user: *User, productId: HSTRING, catalogId: HSTRING, flightId: HSTRING, clientId: HSTRING, repair: bool, forceUseOfNonRemovableStorage: bool, correlationVector: HSTRING, targetVolume: *PackageVolume) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.StartProductInstallForUserAsyncWithForceUseOfNonRemovableStorageWithCorrelationVectorWithTargetVolume(user, productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
+        return try this.?.StartProductInstallForUserAsyncWithRepairAndForceUseOfNonRemovableStorageAndCorrelationVectorAndTargetVolume(user, productId, catalogId, flightId, clientId, repair, forceUseOfNonRemovableStorage, correlationVector, targetVolume);
     }
     pub fn UpdateAppByPackageFamilyNameForUserAsync(self: *@This(), user: *User, packageFamilyName: HSTRING, correlationVector: HSTRING) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager3 = undefined;
@@ -354,23 +354,23 @@ pub const AppInstallManager = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getAppInstallItemsWithGroupSupport();
     }
-    pub fn SearchForAllUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(self: *@This(), correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+    pub fn SearchForAllUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(self: *@This(), correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForAllUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(correlationVector, clientId, updateOptions);
+        return try this.?.SearchForAllUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(correlationVector, clientId, updateOptions);
     }
-    pub fn SearchForAllUpdatesForUserAsyncWithClientIdWithUpdateOptions(self: *@This(), user: *User, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
+    pub fn SearchForAllUpdatesForUserAsyncWithClientIdAndUpdateOptions(self: *@This(), user: *User, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(IVectorView(AppInstallItem)) {
         var this: ?*IAppInstallManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForAllUpdatesForUserAsyncWithClientIdWithUpdateOptions(user, correlationVector, clientId, updateOptions);
+        return try this.?.SearchForAllUpdatesForUserAsyncWithClientIdAndUpdateOptions(user, correlationVector, clientId, updateOptions);
     }
-    pub fn SearchForUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(self: *@This(), productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
+    pub fn SearchForUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(self: *@This(), productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IAppInstallManager6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SearchForUpdatesAsyncWithCorrelationVectorWithClientIdWithUpdateOptions(productId, skuId, correlationVector, clientId, updateOptions);
+        return try this.?.SearchForUpdatesAsyncWithCorrelationVectorAndClientIdAndUpdateOptions(productId, skuId, correlationVector, clientId, updateOptions);
     }
     pub fn SearchForUpdatesForUserAsyncWithUpdateOptions(self: *@This(), user: *User, productId: HSTRING, skuId: HSTRING, correlationVector: HSTRING, clientId: HSTRING, updateOptions: *AppUpdateOptions) core.HResult!*IAsyncOperation(AppInstallItem) {
         var this: ?*IAppInstallManager6 = undefined;
@@ -1927,6 +1927,7 @@ pub const IGetEntitlementResult2 = extern struct {
     };
 };
 const IUnknown = @import("../../../root.zig").IUnknown;
+const User = @import("../../../System.zig").User;
 const IActivationFactory = @import("../../../Foundation.zig").IActivationFactory;
 const Guid = @import("../../../root.zig").Guid;
 const IVectorView = @import("../../../Foundation/Collections.zig").IVectorView;
@@ -1940,5 +1941,4 @@ const FactoryCache = @import("../../../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../../../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../../../root.zig").TrustLevel;
 const TypedEventHandler = @import("../../../Foundation.zig").TypedEventHandler;
-const User = @import("../../../System.zig").User;
 const HSTRING = @import("../../../root.zig").HSTRING;

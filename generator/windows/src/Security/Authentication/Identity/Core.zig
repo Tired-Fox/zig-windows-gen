@@ -42,9 +42,9 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ApproveSessionAsyncWithSessionIdWithSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
-        const _c = self.vtable.ApproveSessionAsyncWithSessionIdWithSessionAuthenticationType(@ptrCast(self), sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType, &_r);
+        const _c = self.vtable.ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(@ptrCast(self), sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -54,9 +54,9 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DenySessionAsyncWithSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         var _r: *IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) = undefined;
-        const _c = self.vtable.DenySessionAsyncWithSessionAuthenticationType(@ptrCast(self), userAccountId, sessionId, sessionAuthenticationType, &_r);
+        const _c = self.vtable.DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(@ptrCast(self), userAccountId, sessionId, sessionAuthenticationType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -79,9 +79,9 @@ pub const IMicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         GetSessionsAsync: *const fn(self: *anyopaque, userAccountIdList: *IIterable(HSTRING), _r: **IAsyncOperation(MicrosoftAccountMultiFactorGetSessionsResult)) callconv(.winapi) HRESULT,
         GetSessionsAndUnregisteredAccountsAsync: *const fn(self: *anyopaque, userAccountIdList: *IIterable(HSTRING), _r: **IAsyncOperation(MicrosoftAccountMultiFactorUnregisteredAccountsAndSessionInfo)) callconv(.winapi) HRESULT,
         ApproveSessionAsync: *const fn(self: *anyopaque, sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        ApproveSessionAsyncWithSessionIdWithSessionAuthenticationType: *const fn(self: *anyopaque, sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType: *const fn(self: *anyopaque, sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
         DenySessionAsync: *const fn(self: *anyopaque, authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
-        DenySessionAsyncWithSessionAuthenticationType: *const fn(self: *anyopaque, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
+        DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType: *const fn(self: *anyopaque, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType, _r: **IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMicrosoftAccountMultiFactorAuthenticatorStatics = extern struct {
@@ -313,24 +313,24 @@ pub const MicrosoftAccountMultiFactorAuthenticationManager = extern struct {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.ApproveSessionAsync(sessionAuthentictionStatus, authenticationSessionInfo);
     }
-    pub fn ApproveSessionAsyncWithSessionIdWithSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), sessionAuthentictionStatus: MicrosoftAccountMultiFactorSessionAuthenticationStatus, userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
-        return try this.ApproveSessionAsyncWithSessionIdWithSessionAuthenticationType(sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType);
+        return try this.ApproveSessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(sessionAuthentictionStatus, userAccountId, sessionId, sessionAuthenticationType);
     }
     pub fn DenySessionAsync(self: *@This(), authenticationSessionInfo: *MicrosoftAccountMultiFactorSessionInfo) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
         return try this.DenySessionAsync(authenticationSessionInfo);
     }
-    pub fn DenySessionAsyncWithSessionIdWithSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
+    pub fn DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(self: *@This(), userAccountId: HSTRING, sessionId: HSTRING, sessionAuthenticationType: MicrosoftAccountMultiFactorAuthenticationType) core.HResult!*IAsyncOperation(MicrosoftAccountMultiFactorServiceResponse) {
         const this: *IMicrosoftAccountMultiFactorAuthenticationManager = @ptrCast(self);
-        return try this.DenySessionAsyncWithSessionIdWithSessionAuthenticationType(userAccountId, sessionId, sessionAuthenticationType);
+        return try this.DenySessionAsyncWithUserAccountIdAndSessionIdAndSessionAuthenticationType(userAccountId, sessionId, sessionAuthenticationType);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
-        const factory = @This().IMicrosoftAccountMultiFactorAuthenticatorStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*MicrosoftAccountMultiFactorAuthenticationManager {
+        const _f = @This().IMicrosoftAccountMultiFactorAuthenticatorStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.Identity.Core.MicrosoftAccountMultiFactorAuthenticationManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -1140,12 +1140,12 @@ pub const PrintSupportPrintDeviceCapabilitiesUpdatePolicy = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreatePeriodicRefresh(updatePeriod: TimeSpan) core.HResult!*PrintSupportPrintDeviceCapabilitiesUpdatePolicy {
-        const factory = @This().IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
-        return try factory.CreatePeriodicRefresh(updatePeriod);
+        const _f = @This().IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
+        return try _f.CreatePeriodicRefresh(updatePeriod);
     }
     pub fn CreatePrintJobRefresh(numberOfJobs: u32) core.HResult!*PrintSupportPrintDeviceCapabilitiesUpdatePolicy {
-        const factory = @This().IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
-        return try factory.CreatePrintJobRefresh(numberOfJobs);
+        const _f = @This().IPrintSupportPrintDeviceCapabilitiesUpdatePolicyStaticsCache.get();
+        return try _f.CreatePrintJobRefresh(numberOfJobs);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.PrintSupport.PrintSupportPrintDeviceCapabilitiesUpdatePolicy";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

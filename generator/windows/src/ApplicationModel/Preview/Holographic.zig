@@ -4,12 +4,12 @@ pub const HolographicApplicationPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsCurrentViewPresentedOnHolographicDisplay() core.HResult!bool {
-        const factory = @This().IHolographicApplicationPreviewStaticsCache.get();
-        return try factory.IsCurrentViewPresentedOnHolographicDisplay();
+        const _f = @This().IHolographicApplicationPreviewStaticsCache.get();
+        return try _f.IsCurrentViewPresentedOnHolographicDisplay();
     }
     pub fn IsHolographicActivation(activatedEventArgs: *IActivatedEventArgs) core.HResult!bool {
-        const factory = @This().IHolographicApplicationPreviewStaticsCache.get();
-        return try factory.IsHolographicActivation(activatedEventArgs);
+        const _f = @This().IHolographicApplicationPreviewStaticsCache.get();
+        return try _f.IsHolographicActivation(activatedEventArgs);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.Holographic.HolographicApplicationPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -33,8 +33,8 @@ pub const HolographicKeyboardPlacementOverridePreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*HolographicKeyboardPlacementOverridePreview {
-        const factory = @This().IHolographicKeyboardPlacementOverridePreviewStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IHolographicKeyboardPlacementOverridePreviewStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.Holographic.HolographicKeyboardPlacementOverridePreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -79,8 +79,8 @@ pub const IHolographicKeyboardPlacementOverridePreview = extern struct {
         const _c = self.vtable.SetPlacementOverride(@ptrCast(self), coordinateSystem, topCenterPosition, normal);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetPlacementOverrideWithTopCenterPositionWithNormalWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3, maxSize: Vector2) core.HResult!void {
-        const _c = self.vtable.SetPlacementOverrideWithTopCenterPositionWithNormalWithMaxSize(@ptrCast(self), coordinateSystem, topCenterPosition, normal, maxSize);
+    pub fn SetPlacementOverrideWithMaxSize(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3, maxSize: Vector2) core.HResult!void {
+        const _c = self.vtable.SetPlacementOverrideWithMaxSize(@ptrCast(self), coordinateSystem, topCenterPosition, normal, maxSize);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn ResetPlacementOverride(self: *@This()) core.HResult!void {
@@ -100,7 +100,7 @@ pub const IHolographicKeyboardPlacementOverridePreview = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetPlacementOverride: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3) callconv(.winapi) HRESULT,
-        SetPlacementOverrideWithTopCenterPositionWithNormalWithMaxSize: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3, maxSize: Vector2) callconv(.winapi) HRESULT,
+        SetPlacementOverrideWithMaxSize: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, topCenterPosition: Vector3, normal: Vector3, maxSize: Vector2) callconv(.winapi) HRESULT,
         ResetPlacementOverride: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };

@@ -190,11 +190,11 @@ pub const ESim = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Discover();
     }
-    pub fn DiscoverWithServerAddressWithMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*ESimDiscoverResult {
+    pub fn DiscoverWithServerAddressAndMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*ESimDiscoverResult {
         var this: ?*IESim2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.DiscoverWithServerAddressWithMatchingId(serverAddress, matchingId);
+        return try this.?.DiscoverWithServerAddressAndMatchingId(serverAddress, matchingId);
     }
     pub fn DiscoverAsync(self: *@This()) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
@@ -202,11 +202,11 @@ pub const ESim = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.DiscoverAsync();
     }
-    pub fn DiscoverAsyncWithServerAddressWithMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
+    pub fn DiscoverAsyncWithServerAddressAndMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var this: ?*IESim2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IESim2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.DiscoverAsyncWithServerAddressWithMatchingId(serverAddress, matchingId);
+        return try this.?.DiscoverAsyncWithServerAddressAndMatchingId(serverAddress, matchingId);
     }
     pub fn getSlotIndex(self: *@This()) core.HResult!*IReference(i32) {
         var this: ?*IESim3 = undefined;
@@ -303,21 +303,21 @@ pub const ESimManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ServiceInfo() core.HResult!*ESimServiceInfo {
-        const factory = @This().IESimManagerStaticsCache.get();
-        return try factory.getServiceInfo();
+    pub fn getServiceInfo() core.HResult!*ESimServiceInfo {
+        const _f = @This().IESimManagerStaticsCache.get();
+        return try _f.getServiceInfo();
     }
     pub fn TryCreateESimWatcher() core.HResult!*ESimWatcher {
-        const factory = @This().IESimManagerStaticsCache.get();
-        return try factory.TryCreateESimWatcher();
+        const _f = @This().IESimManagerStaticsCache.get();
+        return try _f.TryCreateESimWatcher();
     }
-    pub fn add_ServiceInfoChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IESimManagerStaticsCache.get();
-        return try factory.addServiceInfoChanged(handler);
+    pub fn addServiceInfoChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IESimManagerStaticsCache.get();
+        return try _f.addServiceInfoChanged(handler);
     }
-    pub fn remove_ServiceInfoChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IESimManagerStaticsCache.get();
-        return try factory.removeServiceInfoChanged(token);
+    pub fn removeServiceInfoChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IESimManagerStaticsCache.get();
+        return try _f.removeServiceInfoChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.ESimManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -696,8 +696,8 @@ pub const HotspotAuthenticationContext = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryGetAuthenticationContext(evenToken: HSTRING, context: *HotspotAuthenticationContext) core.HResult!bool {
-        const factory = @This().IHotspotAuthenticationContextStaticsCache.get();
-        return try factory.TryGetAuthenticationContext(evenToken, context);
+        const _f = @This().IHotspotAuthenticationContextStaticsCache.get();
+        return try _f.TryGetAuthenticationContext(evenToken, context);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.HotspotAuthenticationContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -857,9 +857,9 @@ pub const IESim2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Discover(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*ESimDiscoverResult {
+    pub fn DiscoverWithServerAddressAndMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*ESimDiscoverResult {
         var _r: *ESimDiscoverResult = undefined;
-        const _c = self.vtable.Discover(@ptrCast(self), serverAddress, matchingId, &_r);
+        const _c = self.vtable.DiscoverWithServerAddressAndMatchingId(@ptrCast(self), serverAddress, matchingId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -869,9 +869,9 @@ pub const IESim2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn DiscoverAsync(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
+    pub fn DiscoverAsyncWithServerAddressAndMatchingId(self: *@This(), serverAddress: HSTRING, matchingId: HSTRING) core.HResult!*IAsyncOperation(ESimDiscoverResult) {
         var _r: *IAsyncOperation(ESimDiscoverResult) = undefined;
-        const _c = self.vtable.DiscoverAsync(@ptrCast(self), serverAddress, matchingId, &_r);
+        const _c = self.vtable.DiscoverAsyncWithServerAddressAndMatchingId(@ptrCast(self), serverAddress, matchingId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -888,9 +888,9 @@ pub const IESim2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         Discover: *const fn(self: *anyopaque, _r: **ESimDiscoverResult) callconv(.winapi) HRESULT,
-        Discover: *const fn(self: *anyopaque, serverAddress: HSTRING, matchingId: HSTRING, _r: **ESimDiscoverResult) callconv(.winapi) HRESULT,
+        DiscoverWithServerAddressAndMatchingId: *const fn(self: *anyopaque, serverAddress: HSTRING, matchingId: HSTRING, _r: **ESimDiscoverResult) callconv(.winapi) HRESULT,
         DiscoverAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ESimDiscoverResult)) callconv(.winapi) HRESULT,
-        DiscoverAsync: *const fn(self: *anyopaque, serverAddress: HSTRING, matchingId: HSTRING, _r: **IAsyncOperation(ESimDiscoverResult)) callconv(.winapi) HRESULT,
+        DiscoverAsyncWithServerAddressAndMatchingId: *const fn(self: *anyopaque, serverAddress: HSTRING, matchingId: HSTRING, _r: **IAsyncOperation(ESimDiscoverResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IESim3 = extern struct {
@@ -1280,9 +1280,9 @@ pub const IESimProfileMetadata = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ConfirmInstallAsync(self: *@This(), confirmationCode: HSTRING) core.HResult!*IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) {
+    pub fn ConfirmInstallAsyncWithConfirmationCode(self: *@This(), confirmationCode: HSTRING) core.HResult!*IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) {
         var _r: *IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress) = undefined;
-        const _c = self.vtable.ConfirmInstallAsync(@ptrCast(self), confirmationCode, &_r);
+        const _c = self.vtable.ConfirmInstallAsyncWithConfirmationCode(@ptrCast(self), confirmationCode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1323,7 +1323,7 @@ pub const IESimProfileMetadata = extern struct {
         get_State: *const fn(self: *anyopaque, _r: *ESimProfileMetadataState) callconv(.winapi) HRESULT,
         DenyInstallAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ESimOperationResult)) callconv(.winapi) HRESULT,
         ConfirmInstallAsync: *const fn(self: *anyopaque, _r: **IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress)) callconv(.winapi) HRESULT,
-        ConfirmInstallAsync: *const fn(self: *anyopaque, confirmationCode: HSTRING, _r: **IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress)) callconv(.winapi) HRESULT,
+        ConfirmInstallAsyncWithConfirmationCode: *const fn(self: *anyopaque, confirmationCode: HSTRING, _r: **IAsyncOperationWithProgress(ESimOperationResult,ESimProfileInstallProgress)) callconv(.winapi) HRESULT,
         PostponeInstallAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(ESimOperationResult)) callconv(.winapi) HRESULT,
         add_StateChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(ESimProfileMetadata,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_StateChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -5565,17 +5565,17 @@ pub const KnownCSimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownCSimFilePathsStaticsCache.get();
-        return try factory.getEFSpn();
+    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownCSimFilePathsStaticsCache.get();
+        return try _f.getEFSpn();
     }
-    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownCSimFilePathsStaticsCache.get();
-        return try factory.getGid1();
+    pub fn getGid1() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownCSimFilePathsStaticsCache.get();
+        return try _f.getGid1();
     }
-    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownCSimFilePathsStaticsCache.get();
-        return try factory.getGid2();
+    pub fn getGid2() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownCSimFilePathsStaticsCache.get();
+        return try _f.getGid2();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.KnownCSimFilePaths";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5586,17 +5586,17 @@ pub const KnownRuimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownRuimFilePathsStaticsCache.get();
-        return try factory.getEFSpn();
+    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownRuimFilePathsStaticsCache.get();
+        return try _f.getEFSpn();
     }
-    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownRuimFilePathsStaticsCache.get();
-        return try factory.getGid1();
+    pub fn getGid1() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownRuimFilePathsStaticsCache.get();
+        return try _f.getGid1();
     }
-    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownRuimFilePathsStaticsCache.get();
-        return try factory.getGid2();
+    pub fn getGid2() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownRuimFilePathsStaticsCache.get();
+        return try _f.getGid2();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.KnownRuimFilePaths";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5607,21 +5607,21 @@ pub const KnownSimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_EFOns() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownSimFilePathsStaticsCache.get();
-        return try factory.getEFOns();
+    pub fn getEFOns() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownSimFilePathsStaticsCache.get();
+        return try _f.getEFOns();
     }
-    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownSimFilePathsStaticsCache.get();
-        return try factory.getEFSpn();
+    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownSimFilePathsStaticsCache.get();
+        return try _f.getEFSpn();
     }
-    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownSimFilePathsStaticsCache.get();
-        return try factory.getGid1();
+    pub fn getGid1() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownSimFilePathsStaticsCache.get();
+        return try _f.getGid1();
     }
-    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownSimFilePathsStaticsCache.get();
-        return try factory.getGid2();
+    pub fn getGid2() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownSimFilePathsStaticsCache.get();
+        return try _f.getGid2();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.KnownSimFilePaths";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5632,25 +5632,25 @@ pub const KnownUSimFilePaths = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_EFSpn() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownUSimFilePathsStaticsCache.get();
-        return try factory.getEFSpn();
+    pub fn getEFSpn() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownUSimFilePathsStaticsCache.get();
+        return try _f.getEFSpn();
     }
-    pub fn get_EFOpl() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownUSimFilePathsStaticsCache.get();
-        return try factory.getEFOpl();
+    pub fn getEFOpl() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownUSimFilePathsStaticsCache.get();
+        return try _f.getEFOpl();
     }
-    pub fn get_EFPnn() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownUSimFilePathsStaticsCache.get();
-        return try factory.getEFPnn();
+    pub fn getEFPnn() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownUSimFilePathsStaticsCache.get();
+        return try _f.getEFPnn();
     }
-    pub fn get_Gid1() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownUSimFilePathsStaticsCache.get();
-        return try factory.getGid1();
+    pub fn getGid1() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownUSimFilePathsStaticsCache.get();
+        return try _f.getGid1();
     }
-    pub fn get_Gid2() core.HResult!*IVectorView(u32) {
-        const factory = @This().IKnownUSimFilePathsStaticsCache.get();
-        return try factory.getGid2();
+    pub fn getGid2() core.HResult!*IVectorView(u32) {
+        const _f = @This().IKnownUSimFilePathsStaticsCache.get();
+        return try _f.getGid2();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.KnownUSimFilePaths";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5693,13 +5693,13 @@ pub const MobileBroadbandAccount = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AvailableNetworkAccountIds() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IMobileBroadbandAccountStaticsCache.get();
-        return try factory.getAvailableNetworkAccountIds();
+    pub fn getAvailableNetworkAccountIds() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IMobileBroadbandAccountStaticsCache.get();
+        return try _f.getAvailableNetworkAccountIds();
     }
     pub fn CreateFromNetworkAccountId(networkAccountId: HSTRING) core.HResult!*MobileBroadbandAccount {
-        const factory = @This().IMobileBroadbandAccountStaticsCache.get();
-        return try factory.CreateFromNetworkAccountId(networkAccountId);
+        const _f = @This().IMobileBroadbandAccountStaticsCache.get();
+        return try _f.CreateFromNetworkAccountId(networkAccountId);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandAccount";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5829,8 +5829,8 @@ pub const MobileBroadbandAntennaSar = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithIndex(antennaIndex: i32, sarBackoffIndex: i32) core.HResult!*MobileBroadbandAntennaSar {
-        const factory = @This().IMobileBroadbandAntennaSarFactoryCache.get();
-        return try factory.CreateWithIndex(antennaIndex, sarBackoffIndex);
+        const _f = @This().IMobileBroadbandAntennaSarFactoryCache.get();
+        return try _f.CreateWithIndex(antennaIndex, sarBackoffIndex);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandAntennaSar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6547,16 +6547,16 @@ pub const MobileBroadbandModem = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IMobileBroadbandModemStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IMobileBroadbandModemStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*MobileBroadbandModem {
-        const factory = @This().IMobileBroadbandModemStaticsCache.get();
-        return try factory.FromId(deviceId);
+        const _f = @This().IMobileBroadbandModemStaticsCache.get();
+        return try _f.FromId(deviceId);
     }
     pub fn GetDefault() core.HResult!*MobileBroadbandModem {
-        const factory = @This().IMobileBroadbandModemStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IMobileBroadbandModemStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandModem";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6613,8 +6613,8 @@ pub const MobileBroadbandModemIsolation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(modemDeviceId: HSTRING, ruleGroupId: HSTRING) core.HResult!*MobileBroadbandModemIsolation {
-        const factory = @This().IMobileBroadbandModemIsolationFactoryCache.get();
-        return try factory.Create(modemDeviceId, ruleGroupId);
+        const _f = @This().IMobileBroadbandModemIsolationFactoryCache.get();
+        return try _f.Create(modemDeviceId, ruleGroupId);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.MobileBroadbandModemIsolation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7389,44 +7389,44 @@ pub const NetworkOperatorTetheringManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetTetheringCapabilityFromConnectionProfile(profile: *ConnectionProfile) core.HResult!TetheringCapability {
-        const factory = @This().INetworkOperatorTetheringManagerStatics2Cache.get();
-        return try factory.GetTetheringCapabilityFromConnectionProfile(profile);
+        const _f = @This().INetworkOperatorTetheringManagerStatics2Cache.get();
+        return try _f.GetTetheringCapabilityFromConnectionProfile(profile);
     }
     pub fn CreateFromConnectionProfile(profile: *ConnectionProfile) core.HResult!*NetworkOperatorTetheringManager {
-        const factory = @This().INetworkOperatorTetheringManagerStatics2Cache.get();
-        return try factory.CreateFromConnectionProfile(profile);
+        const _f = @This().INetworkOperatorTetheringManagerStatics2Cache.get();
+        return try _f.CreateFromConnectionProfile(profile);
     }
     pub fn CreateFromConnectionProfileWithAdapter(profile: *ConnectionProfile, adapter: *NetworkAdapter) core.HResult!*NetworkOperatorTetheringManager {
-        const factory = @This().INetworkOperatorTetheringManagerStatics3Cache.get();
-        return try factory.CreateFromConnectionProfile(profile, adapter);
+        const _f = @This().INetworkOperatorTetheringManagerStatics3Cache.get();
+        return try _f.CreateFromConnectionProfile(profile, adapter);
     }
     pub fn GetTetheringCapability(networkAccountId: HSTRING) core.HResult!TetheringCapability {
-        const factory = @This().INetworkOperatorTetheringManagerStaticsCache.get();
-        return try factory.GetTetheringCapability(networkAccountId);
+        const _f = @This().INetworkOperatorTetheringManagerStaticsCache.get();
+        return try _f.GetTetheringCapability(networkAccountId);
     }
     pub fn CreateFromNetworkAccountId(networkAccountId: HSTRING) core.HResult!*NetworkOperatorTetheringManager {
-        const factory = @This().INetworkOperatorTetheringManagerStaticsCache.get();
-        return try factory.CreateFromNetworkAccountId(networkAccountId);
+        const _f = @This().INetworkOperatorTetheringManagerStaticsCache.get();
+        return try _f.CreateFromNetworkAccountId(networkAccountId);
     }
     pub fn IsNoConnectionsTimeoutEnabled() core.HResult!bool {
-        const factory = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
-        return try factory.IsNoConnectionsTimeoutEnabled();
+        const _f = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
+        return try _f.IsNoConnectionsTimeoutEnabled();
     }
     pub fn EnableNoConnectionsTimeout() core.HResult!void {
-        const factory = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
-        return try factory.EnableNoConnectionsTimeout();
+        const _f = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
+        return try _f.EnableNoConnectionsTimeout();
     }
     pub fn EnableNoConnectionsTimeoutAsync() core.HResult!*IAsyncAction {
-        const factory = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
-        return try factory.EnableNoConnectionsTimeoutAsync();
+        const _f = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
+        return try _f.EnableNoConnectionsTimeoutAsync();
     }
     pub fn DisableNoConnectionsTimeout() core.HResult!void {
-        const factory = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
-        return try factory.DisableNoConnectionsTimeout();
+        const _f = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
+        return try _f.DisableNoConnectionsTimeout();
     }
     pub fn DisableNoConnectionsTimeoutAsync() core.HResult!*IAsyncAction {
-        const factory = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
-        return try factory.DisableNoConnectionsTimeoutAsync();
+        const _f = @This().INetworkOperatorTetheringManagerStatics4Cache.get();
+        return try _f.DisableNoConnectionsTimeoutAsync();
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.NetworkOperatorTetheringManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7593,8 +7593,8 @@ pub const ProvisioningAgent = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IProvisioningAgent.IID)));
     }
     pub fn CreateFromNetworkAccountId(networkAccountId: HSTRING) core.HResult!*ProvisioningAgent {
-        const factory = @This().IProvisioningAgentStaticMethodsCache.get();
-        return try factory.CreateFromNetworkAccountId(networkAccountId);
+        const _f = @This().IProvisioningAgentStaticMethodsCache.get();
+        return try _f.CreateFromNetworkAccountId(networkAccountId);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.ProvisioningAgent";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7723,8 +7723,8 @@ pub const UssdMessage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateMessage(messageText: HSTRING) core.HResult!*UssdMessage {
-        const factory = @This().IUssdMessageFactoryCache.get();
-        return try factory.CreateMessage(messageText);
+        const _f = @This().IUssdMessageFactoryCache.get();
+        return try _f.CreateMessage(messageText);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.UssdMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7771,12 +7771,12 @@ pub const UssdSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromNetworkAccountId(networkAccountId: HSTRING) core.HResult!*UssdSession {
-        const factory = @This().IUssdSessionStaticsCache.get();
-        return try factory.CreateFromNetworkAccountId(networkAccountId);
+        const _f = @This().IUssdSessionStaticsCache.get();
+        return try _f.CreateFromNetworkAccountId(networkAccountId);
     }
     pub fn CreateFromNetworkInterfaceId(networkInterfaceId: HSTRING) core.HResult!*UssdSession {
-        const factory = @This().IUssdSessionStaticsCache.get();
-        return try factory.CreateFromNetworkInterfaceId(networkInterfaceId);
+        const _f = @This().IUssdSessionStaticsCache.get();
+        return try _f.CreateFromNetworkInterfaceId(networkInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.Networking.NetworkOperators.UssdSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

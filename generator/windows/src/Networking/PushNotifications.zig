@@ -53,9 +53,9 @@ pub const IPushNotificationChannelManagerForUser = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreatePushNotificationChannelForApplicationAsync(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
+    pub fn CreatePushNotificationChannelForApplicationAsyncWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var _r: *IAsyncOperation(PushNotificationChannel) = undefined;
-        const _c = self.vtable.CreatePushNotificationChannelForApplicationAsync(@ptrCast(self), applicationId, &_r);
+        const _c = self.vtable.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -84,7 +84,7 @@ pub const IPushNotificationChannelManagerForUser = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreatePushNotificationChannelForApplicationAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
-        CreatePushNotificationChannelForApplicationAsync: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
+        CreatePushNotificationChannelForApplicationAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
         CreatePushNotificationChannelForSecondaryTileAsync: *const fn(self: *anyopaque, tileId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
         get_User: *const fn(self: *anyopaque, _r: **User) callconv(.winapi) HRESULT,
     };
@@ -97,9 +97,9 @@ pub const IPushNotificationChannelManagerForUser2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithChannelIdWithAppId(self: *@This(), appServerKey: *IBuffer, channelId: HSTRING, appId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
+    pub fn CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId(self: *@This(), appServerKey: *IBuffer, channelId: HSTRING, appId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var _r: *IAsyncOperation(PushNotificationChannel) = undefined;
-        const _c = self.vtable.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithChannelIdWithAppId(@ptrCast(self), appServerKey, channelId, appId, &_r);
+        const _c = self.vtable.CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId(@ptrCast(self), appServerKey, channelId, appId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -116,7 +116,7 @@ pub const IPushNotificationChannelManagerForUser2 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsync: *const fn(self: *anyopaque, appServerKey: *IBuffer, channelId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
-        CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithChannelIdWithAppId: *const fn(self: *anyopaque, appServerKey: *IBuffer, channelId: HSTRING, appId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
+        CreateRawPushNotificationChannelWithAlternateKeyForApplicationAsyncWithAppId: *const fn(self: *anyopaque, appServerKey: *IBuffer, channelId: HSTRING, appId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
     };
 };
 pub const IPushNotificationChannelManagerStatics = extern struct {
@@ -127,9 +127,9 @@ pub const IPushNotificationChannelManagerStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreatePushNotificationChannelForApplicationAsync(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
+    pub fn CreatePushNotificationChannelForApplicationAsyncWithApplicationId(self: *@This(), applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
         var _r: *IAsyncOperation(PushNotificationChannel) = undefined;
-        const _c = self.vtable.CreatePushNotificationChannelForApplicationAsync(@ptrCast(self), applicationId, &_r);
+        const _c = self.vtable.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(@ptrCast(self), applicationId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -152,7 +152,7 @@ pub const IPushNotificationChannelManagerStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreatePushNotificationChannelForApplicationAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
-        CreatePushNotificationChannelForApplicationAsync: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
+        CreatePushNotificationChannelForApplicationAsyncWithApplicationId: *const fn(self: *anyopaque, applicationId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
         CreatePushNotificationChannelForSecondaryTileAsync: *const fn(self: *anyopaque, tileId: HSTRING, _r: **IAsyncOperation(PushNotificationChannel)) callconv(.winapi) HRESULT,
     };
 };
@@ -419,32 +419,32 @@ pub const PushNotificationChannelManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PushNotificationChannelManagerForUser {
-        const factory = @This().IPushNotificationChannelManagerStatics3Cache.get();
-        return try factory.GetDefault();
+        const _f = @This().IPushNotificationChannelManagerStatics3Cache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*PushNotificationChannelManagerForUser {
-        const factory = @This().IPushNotificationChannelManagerStatics2Cache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IPushNotificationChannelManagerStatics2Cache.get();
+        return try _f.GetForUser(user);
     }
-    pub fn add_ChannelsRevoked(handler: *EventHandler(PushNotificationChannelsRevokedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IPushNotificationChannelManagerStatics4Cache.get();
-        return try factory.addChannelsRevoked(handler);
+    pub fn addChannelsRevoked(handler: *EventHandler(PushNotificationChannelsRevokedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IPushNotificationChannelManagerStatics4Cache.get();
+        return try _f.addChannelsRevoked(handler);
     }
-    pub fn remove_ChannelsRevoked(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IPushNotificationChannelManagerStatics4Cache.get();
-        return try factory.removeChannelsRevoked(token);
+    pub fn removeChannelsRevoked(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IPushNotificationChannelManagerStatics4Cache.get();
+        return try _f.removeChannelsRevoked(token);
     }
     pub fn CreatePushNotificationChannelForApplicationAsync() core.HResult!*IAsyncOperation(PushNotificationChannel) {
-        const factory = @This().IPushNotificationChannelManagerStaticsCache.get();
-        return try factory.CreatePushNotificationChannelForApplicationAsync();
+        const _f = @This().IPushNotificationChannelManagerStaticsCache.get();
+        return try _f.CreatePushNotificationChannelForApplicationAsync();
     }
     pub fn CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
-        const factory = @This().IPushNotificationChannelManagerStaticsCache.get();
-        return try factory.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId);
+        const _f = @This().IPushNotificationChannelManagerStaticsCache.get();
+        return try _f.CreatePushNotificationChannelForApplicationAsyncWithApplicationId(applicationId);
     }
     pub fn CreatePushNotificationChannelForSecondaryTileAsync(tileId: HSTRING) core.HResult!*IAsyncOperation(PushNotificationChannel) {
-        const factory = @This().IPushNotificationChannelManagerStaticsCache.get();
-        return try factory.CreatePushNotificationChannelForSecondaryTileAsync(tileId);
+        const _f = @This().IPushNotificationChannelManagerStaticsCache.get();
+        return try _f.CreatePushNotificationChannelForSecondaryTileAsync(tileId);
     }
     pub const NAME: []const u8 = "Windows.Networking.PushNotifications.PushNotificationChannelManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

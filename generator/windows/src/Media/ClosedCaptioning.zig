@@ -29,61 +29,61 @@ pub const ClosedCaptionProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FontColor() core.HResult!ClosedCaptionColor {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getFontColor();
+    pub fn getFontColor() core.HResult!ClosedCaptionColor {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getFontColor();
     }
-    pub fn get_ComputedFontColor() core.HResult!Color {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getComputedFontColor();
+    pub fn getComputedFontColor() core.HResult!Color {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getComputedFontColor();
     }
-    pub fn get_FontOpacity() core.HResult!ClosedCaptionOpacity {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getFontOpacity();
+    pub fn getFontOpacity() core.HResult!ClosedCaptionOpacity {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getFontOpacity();
     }
-    pub fn get_FontSize() core.HResult!ClosedCaptionSize {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getFontSize();
+    pub fn getFontSize() core.HResult!ClosedCaptionSize {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getFontSize();
     }
-    pub fn get_FontStyle() core.HResult!ClosedCaptionStyle {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getFontStyle();
+    pub fn getFontStyle() core.HResult!ClosedCaptionStyle {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getFontStyle();
     }
-    pub fn get_FontEffect() core.HResult!ClosedCaptionEdgeEffect {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getFontEffect();
+    pub fn getFontEffect() core.HResult!ClosedCaptionEdgeEffect {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getFontEffect();
     }
-    pub fn get_BackgroundColor() core.HResult!ClosedCaptionColor {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getBackgroundColor();
+    pub fn getBackgroundColor() core.HResult!ClosedCaptionColor {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getBackgroundColor();
     }
-    pub fn get_ComputedBackgroundColor() core.HResult!Color {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getComputedBackgroundColor();
+    pub fn getComputedBackgroundColor() core.HResult!Color {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getComputedBackgroundColor();
     }
-    pub fn get_BackgroundOpacity() core.HResult!ClosedCaptionOpacity {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getBackgroundOpacity();
+    pub fn getBackgroundOpacity() core.HResult!ClosedCaptionOpacity {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getBackgroundOpacity();
     }
-    pub fn get_RegionColor() core.HResult!ClosedCaptionColor {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getRegionColor();
+    pub fn getRegionColor() core.HResult!ClosedCaptionColor {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getRegionColor();
     }
-    pub fn get_ComputedRegionColor() core.HResult!Color {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getComputedRegionColor();
+    pub fn getComputedRegionColor() core.HResult!Color {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getComputedRegionColor();
     }
-    pub fn get_RegionOpacity() core.HResult!ClosedCaptionOpacity {
-        const factory = @This().IClosedCaptionPropertiesStaticsCache.get();
-        return try factory.getRegionOpacity();
+    pub fn getRegionOpacity() core.HResult!ClosedCaptionOpacity {
+        const _f = @This().IClosedCaptionPropertiesStaticsCache.get();
+        return try _f.getRegionOpacity();
     }
-    pub fn add_PropertiesChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IClosedCaptionPropertiesStatics2Cache.get();
-        return try factory.addPropertiesChanged(handler);
+    pub fn addPropertiesChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IClosedCaptionPropertiesStatics2Cache.get();
+        return try _f.addPropertiesChanged(handler);
     }
-    pub fn remove_PropertiesChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IClosedCaptionPropertiesStatics2Cache.get();
-        return try factory.removePropertiesChanged(token);
+    pub fn removePropertiesChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IClosedCaptionPropertiesStatics2Cache.get();
+        return try _f.removePropertiesChanged(token);
     }
     pub const NAME: []const u8 = "Windows.Media.ClosedCaptioning.ClosedCaptionProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

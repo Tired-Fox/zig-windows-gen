@@ -60,12 +60,12 @@ pub const BackgroundAudioTrack = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromEmbeddedAudioTrack(embeddedAudioTrack: *EmbeddedAudioTrack) core.HResult!*BackgroundAudioTrack {
-        const factory = @This().IBackgroundAudioTrackStaticsCache.get();
-        return try factory.CreateFromEmbeddedAudioTrack(embeddedAudioTrack);
+        const _f = @This().IBackgroundAudioTrackStaticsCache.get();
+        return try _f.CreateFromEmbeddedAudioTrack(embeddedAudioTrack);
     }
     pub fn CreateFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(BackgroundAudioTrack) {
-        const factory = @This().IBackgroundAudioTrackStaticsCache.get();
-        return try factory.CreateFromFileAsync(file);
+        const _f = @This().IBackgroundAudioTrackStaticsCache.get();
+        return try _f.CreateFromFileAsync(file);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.BackgroundAudioTrack";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -501,9 +501,9 @@ pub const IMediaComposition = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RenderToFileAsyncWithEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithTrimmingPreferenceAndEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         var _r: *IAsyncOperationWithProgress(TranscodeFailureReason,f64) = undefined;
-        const _c = self.vtable.RenderToFileAsyncWithEncodingProfile(@ptrCast(self), destination, trimmingPreference, encodingProfile, &_r);
+        const _c = self.vtable.RenderToFileAsyncWithTrimmingPreferenceAndEncodingProfile(@ptrCast(self), destination, trimmingPreference, encodingProfile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -519,9 +519,9 @@ pub const IMediaComposition = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GenerateMediaStreamSource(self: *@This(), encodingProfile: *MediaEncodingProfile) core.HResult!*MediaStreamSource {
+    pub fn GenerateMediaStreamSourceWithEncodingProfile(self: *@This(), encodingProfile: *MediaEncodingProfile) core.HResult!*MediaStreamSource {
         var _r: *MediaStreamSource = undefined;
-        const _c = self.vtable.GenerateMediaStreamSource(@ptrCast(self), encodingProfile, &_r);
+        const _c = self.vtable.GenerateMediaStreamSourceWithEncodingProfile(@ptrCast(self), encodingProfile, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -553,10 +553,10 @@ pub const IMediaComposition = extern struct {
         GetThumbnailsAsync: *const fn(self: *anyopaque, timesFromStart: *IIterable(TimeSpan), scaledWidth: i32, scaledHeight: i32, framePrecision: VideoFramePrecision, _r: **IAsyncOperation(IVectorView(ImageStream))) callconv(.winapi) HRESULT,
         RenderToFileAsync: *const fn(self: *anyopaque, destination: *IStorageFile, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
         RenderToFileAsyncWithTrimmingPreference: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
-        RenderToFileAsyncWithEncodingProfile: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
+        RenderToFileAsyncWithTrimmingPreferenceAndEncodingProfile: *const fn(self: *anyopaque, destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile, _r: **IAsyncOperationWithProgress(TranscodeFailureReason,f64)) callconv(.winapi) HRESULT,
         CreateDefaultEncodingProfile: *const fn(self: *anyopaque, _r: **MediaEncodingProfile) callconv(.winapi) HRESULT,
         GenerateMediaStreamSource: *const fn(self: *anyopaque, _r: **MediaStreamSource) callconv(.winapi) HRESULT,
-        GenerateMediaStreamSource: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, _r: **MediaStreamSource) callconv(.winapi) HRESULT,
+        GenerateMediaStreamSourceWithEncodingProfile: *const fn(self: *anyopaque, encodingProfile: *MediaEncodingProfile, _r: **MediaStreamSource) callconv(.winapi) HRESULT,
         GeneratePreviewMediaStreamSource: *const fn(self: *anyopaque, scaledWidth: i32, scaledHeight: i32, _r: **MediaStreamSource) callconv(.winapi) HRESULT,
     };
 };
@@ -852,20 +852,20 @@ pub const MediaClip = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromSurface(surface: *IDirect3DSurface, originalDuration: TimeSpan) core.HResult!*MediaClip {
-        const factory = @This().IMediaClipStatics2Cache.get();
-        return try factory.CreateFromSurface(surface, originalDuration);
+        const _f = @This().IMediaClipStatics2Cache.get();
+        return try _f.CreateFromSurface(surface, originalDuration);
     }
     pub fn CreateFromColor(color: Color, originalDuration: TimeSpan) core.HResult!*MediaClip {
-        const factory = @This().IMediaClipStaticsCache.get();
-        return try factory.CreateFromColor(color, originalDuration);
+        const _f = @This().IMediaClipStaticsCache.get();
+        return try _f.CreateFromColor(color, originalDuration);
     }
     pub fn CreateFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(MediaClip) {
-        const factory = @This().IMediaClipStaticsCache.get();
-        return try factory.CreateFromFileAsync(file);
+        const _f = @This().IMediaClipStaticsCache.get();
+        return try _f.CreateFromFileAsync(file);
     }
     pub fn CreateFromImageFileAsync(file: *IStorageFile, originalDuration: TimeSpan) core.HResult!*IAsyncOperation(MediaClip) {
-        const factory = @This().IMediaClipStaticsCache.get();
-        return try factory.CreateFromImageFileAsync(file, originalDuration);
+        const _f = @This().IMediaClipStaticsCache.get();
+        return try _f.CreateFromImageFileAsync(file, originalDuration);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaClip";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -917,9 +917,9 @@ pub const MediaComposition = extern struct {
         const this: *IMediaComposition = @ptrCast(self);
         return try this.RenderToFileAsyncWithTrimmingPreference(destination, trimmingPreference);
     }
-    pub fn RenderToFileAsyncWithTrimmingPreferenceWithEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
+    pub fn RenderToFileAsyncWithTrimmingPreferenceAndEncodingProfile(self: *@This(), destination: *IStorageFile, trimmingPreference: MediaTrimmingPreference, encodingProfile: *MediaEncodingProfile) core.HResult!*IAsyncOperationWithProgress(TranscodeFailureReason,f64) {
         const this: *IMediaComposition = @ptrCast(self);
-        return try this.RenderToFileAsyncWithTrimmingPreferenceWithEncodingProfile(destination, trimmingPreference, encodingProfile);
+        return try this.RenderToFileAsyncWithTrimmingPreferenceAndEncodingProfile(destination, trimmingPreference, encodingProfile);
     }
     pub fn CreateDefaultEncodingProfile(self: *@This()) core.HResult!*MediaEncodingProfile {
         const this: *IMediaComposition = @ptrCast(self);
@@ -951,8 +951,8 @@ pub const MediaComposition = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaComposition.IID)));
     }
     pub fn LoadAsync(file: *StorageFile) core.HResult!*IAsyncOperation(MediaComposition) {
-        const factory = @This().IMediaCompositionStaticsCache.get();
-        return try factory.LoadAsync(file);
+        const _f = @This().IMediaCompositionStaticsCache.get();
+        return try _f.LoadAsync(file);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaComposition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1008,12 +1008,12 @@ pub const MediaOverlay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(clip: *MediaClip) core.HResult!*MediaOverlay {
-        const factory = @This().IMediaOverlayFactoryCache.get();
-        return try factory.Create(clip);
+        const _f = @This().IMediaOverlayFactoryCache.get();
+        return try _f.Create(clip);
     }
     pub fn CreateWithPositionAndOpacity(clip: *MediaClip, position: Rect, opacity: f64) core.HResult!*MediaOverlay {
-        const factory = @This().IMediaOverlayFactoryCache.get();
-        return try factory.CreateWithPositionAndOpacity(clip, position, opacity);
+        const _f = @This().IMediaOverlayFactoryCache.get();
+        return try _f.CreateWithPositionAndOpacity(clip, position, opacity);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaOverlay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1044,8 +1044,8 @@ pub const MediaOverlayLayer = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMediaOverlayLayer.IID)));
     }
     pub fn CreateWithCompositorDefinition(compositorDefinition: *IVideoCompositorDefinition) core.HResult!*MediaOverlayLayer {
-        const factory = @This().IMediaOverlayLayerFactoryCache.get();
-        return try factory.CreateWithCompositorDefinition(compositorDefinition);
+        const _f = @This().IMediaOverlayLayerFactoryCache.get();
+        return try _f.CreateWithCompositorDefinition(compositorDefinition);
     }
     pub const NAME: []const u8 = "Windows.Media.Editing.MediaOverlayLayer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -12,8 +12,8 @@ pub const EnhancedWaypoint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(point: *Geopoint, kind: WaypointKind) core.HResult!*EnhancedWaypoint {
-        const factory = @This().IEnhancedWaypointFactoryCache.get();
-        return try factory.Create(point, kind);
+        const _f = @This().IEnhancedWaypointFactoryCache.get();
+        return try _f.Create(point, kind);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.EnhancedWaypoint";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -337,9 +337,9 @@ pub const IMapLocationFinderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn FindLocationsAsyncWithReferencePointWithMaxCount(self: *@This(), searchText: HSTRING, referencePoint: *Geopoint, maxCount: u32) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
+    pub fn FindLocationsAsyncWithMaxCount(self: *@This(), searchText: HSTRING, referencePoint: *Geopoint, maxCount: u32) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
         var _r: *IAsyncOperation(MapLocationFinderResult) = undefined;
-        const _c = self.vtable.FindLocationsAsyncWithReferencePointWithMaxCount(@ptrCast(self), searchText, referencePoint, maxCount, &_r);
+        const _c = self.vtable.FindLocationsAsyncWithMaxCount(@ptrCast(self), searchText, referencePoint, maxCount, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -357,7 +357,7 @@ pub const IMapLocationFinderStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         FindLocationsAtAsync: *const fn(self: *anyopaque, queryPoint: *Geopoint, _r: **IAsyncOperation(MapLocationFinderResult)) callconv(.winapi) HRESULT,
         FindLocationsAsync: *const fn(self: *anyopaque, searchText: HSTRING, referencePoint: *Geopoint, _r: **IAsyncOperation(MapLocationFinderResult)) callconv(.winapi) HRESULT,
-        FindLocationsAsyncWithReferencePointWithMaxCount: *const fn(self: *anyopaque, searchText: HSTRING, referencePoint: *Geopoint, maxCount: u32, _r: **IAsyncOperation(MapLocationFinderResult)) callconv(.winapi) HRESULT,
+        FindLocationsAsyncWithMaxCount: *const fn(self: *anyopaque, searchText: HSTRING, referencePoint: *Geopoint, maxCount: u32, _r: **IAsyncOperation(MapLocationFinderResult)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapLocationFinderStatics2 = extern struct {
@@ -703,21 +703,21 @@ pub const IMapRouteFinderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDrivingRouteAsyncWithEndPointWithOptimization(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+    pub fn GetDrivingRouteAsyncWithOptimization(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
-        const _c = self.vtable.GetDrivingRouteAsyncWithEndPointWithOptimization(@ptrCast(self), startPoint, endPoint, optimization, &_r);
+        const _c = self.vtable.GetDrivingRouteAsyncWithOptimization(@ptrCast(self), startPoint, endPoint, optimization, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDrivingRouteAsyncWithOptimizationWithRestrictions(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+    pub fn GetDrivingRouteAsyncWithOptimizationAndRestrictions(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
-        const _c = self.vtable.GetDrivingRouteAsyncWithOptimizationWithRestrictions(@ptrCast(self), startPoint, endPoint, optimization, restrictions, &_r);
+        const _c = self.vtable.GetDrivingRouteAsyncWithOptimizationAndRestrictions(@ptrCast(self), startPoint, endPoint, optimization, restrictions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDrivingRouteAsyncWithRestrictionsWithHeadingInDegrees(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+    pub fn GetDrivingRouteAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(self: *@This(), startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
-        const _c = self.vtable.GetDrivingRouteAsyncWithRestrictionsWithHeadingInDegrees(@ptrCast(self), startPoint, endPoint, optimization, restrictions, headingInDegrees, &_r);
+        const _c = self.vtable.GetDrivingRouteAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(@ptrCast(self), startPoint, endPoint, optimization, restrictions, headingInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -733,15 +733,15 @@ pub const IMapRouteFinderStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDrivingRouteFromWaypointsAsyncWithRestrictions(self: *@This(), wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+    pub fn GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictions(self: *@This(), wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
-        const _c = self.vtable.GetDrivingRouteFromWaypointsAsyncWithRestrictions(@ptrCast(self), wayPoints, optimization, restrictions, &_r);
+        const _c = self.vtable.GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictions(@ptrCast(self), wayPoints, optimization, restrictions, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDrivingRouteFromWaypointsAsyncWithHeadingInDegrees(self: *@This(), wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+    pub fn GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(self: *@This(), wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
         var _r: *IAsyncOperation(MapRouteFinderResult) = undefined;
-        const _c = self.vtable.GetDrivingRouteFromWaypointsAsyncWithHeadingInDegrees(@ptrCast(self), wayPoints, optimization, restrictions, headingInDegrees, &_r);
+        const _c = self.vtable.GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(@ptrCast(self), wayPoints, optimization, restrictions, headingInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -770,13 +770,13 @@ pub const IMapRouteFinderStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDrivingRouteAsync: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
-        GetDrivingRouteAsyncWithEndPointWithOptimization: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
-        GetDrivingRouteAsyncWithOptimizationWithRestrictions: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
-        GetDrivingRouteAsyncWithRestrictionsWithHeadingInDegrees: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
+        GetDrivingRouteAsyncWithOptimization: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
+        GetDrivingRouteAsyncWithOptimizationAndRestrictions: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
+        GetDrivingRouteAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
         GetDrivingRouteFromWaypointsAsync: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
         GetDrivingRouteFromWaypointsAsyncWithOptimization: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
-        GetDrivingRouteFromWaypointsAsyncWithRestrictions: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
-        GetDrivingRouteFromWaypointsAsyncWithHeadingInDegrees: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
+        GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictions: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
+        GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
         GetWalkingRouteAsync: *const fn(self: *anyopaque, startPoint: *Geopoint, endPoint: *Geopoint, _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
         GetWalkingRouteFromWaypointsAsync: *const fn(self: *anyopaque, wayPoints: *IIterable(Geopoint), _r: **IAsyncOperation(MapRouteFinderResult)) callconv(.winapi) HRESULT,
     };
@@ -1249,9 +1249,9 @@ pub const IPlaceInfoStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromIdentifierWithOptions(self: *@This(), identifier: HSTRING, defaultPoint: *Geopoint, options: *PlaceInfoCreateOptions) core.HResult!*PlaceInfo {
+    pub fn CreateFromIdentifierWithDefaultPointAndOptions(self: *@This(), identifier: HSTRING, defaultPoint: *Geopoint, options: *PlaceInfoCreateOptions) core.HResult!*PlaceInfo {
         var _r: *PlaceInfo = undefined;
-        const _c = self.vtable.CreateFromIdentifierWithOptions(@ptrCast(self), identifier, defaultPoint, options, &_r);
+        const _c = self.vtable.CreateFromIdentifierWithDefaultPointAndOptions(@ptrCast(self), identifier, defaultPoint, options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1282,7 +1282,7 @@ pub const IPlaceInfoStatics = extern struct {
         Create: *const fn(self: *anyopaque, referencePoint: *Geopoint, _r: **PlaceInfo) callconv(.winapi) HRESULT,
         CreateWithOptions: *const fn(self: *anyopaque, referencePoint: *Geopoint, options: *PlaceInfoCreateOptions, _r: **PlaceInfo) callconv(.winapi) HRESULT,
         CreateFromIdentifier: *const fn(self: *anyopaque, identifier: HSTRING, _r: **PlaceInfo) callconv(.winapi) HRESULT,
-        CreateFromIdentifierWithOptions: *const fn(self: *anyopaque, identifier: HSTRING, defaultPoint: *Geopoint, options: *PlaceInfoCreateOptions, _r: **PlaceInfo) callconv(.winapi) HRESULT,
+        CreateFromIdentifierWithDefaultPointAndOptions: *const fn(self: *anyopaque, identifier: HSTRING, defaultPoint: *Geopoint, options: *PlaceInfoCreateOptions, _r: **PlaceInfo) callconv(.winapi) HRESULT,
         CreateFromMapLocation: *const fn(self: *anyopaque, location: *MapLocation, _r: **PlaceInfo) callconv(.winapi) HRESULT,
         get_IsShowSupported: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
     };
@@ -1486,20 +1486,20 @@ pub const MapLocationFinder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindLocationsAtAsyncWithAccuracy(queryPoint: *Geopoint, accuracy: MapLocationDesiredAccuracy) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
-        const factory = @This().IMapLocationFinderStatics2Cache.get();
-        return try factory.FindLocationsAtAsync(queryPoint, accuracy);
+        const _f = @This().IMapLocationFinderStatics2Cache.get();
+        return try _f.FindLocationsAtAsync(queryPoint, accuracy);
     }
     pub fn FindLocationsAtAsync(queryPoint: *Geopoint) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
-        const factory = @This().IMapLocationFinderStaticsCache.get();
-        return try factory.FindLocationsAtAsync(queryPoint);
+        const _f = @This().IMapLocationFinderStaticsCache.get();
+        return try _f.FindLocationsAtAsync(queryPoint);
     }
     pub fn FindLocationsAsync(searchText: HSTRING, referencePoint: *Geopoint) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
-        const factory = @This().IMapLocationFinderStaticsCache.get();
-        return try factory.FindLocationsAsync(searchText, referencePoint);
+        const _f = @This().IMapLocationFinderStaticsCache.get();
+        return try _f.FindLocationsAsync(searchText, referencePoint);
     }
     pub fn FindLocationsAsyncWithMaxCount(searchText: HSTRING, referencePoint: *Geopoint, maxCount: u32) core.HResult!*IAsyncOperation(MapLocationFinderResult) {
-        const factory = @This().IMapLocationFinderStaticsCache.get();
-        return try factory.FindLocationsAsyncWithMaxCount(searchText, referencePoint, maxCount);
+        const _f = @This().IMapLocationFinderStaticsCache.get();
+        return try _f.FindLocationsAsyncWithMaxCount(searchText, referencePoint, maxCount);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.MapLocationFinder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1537,12 +1537,12 @@ pub const MapManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ShowDownloadedMapsUI() core.HResult!void {
-        const factory = @This().IMapManagerStaticsCache.get();
-        return try factory.ShowDownloadedMapsUI();
+        const _f = @This().IMapManagerStaticsCache.get();
+        return try _f.ShowDownloadedMapsUI();
     }
     pub fn ShowMapsUpdateUI() core.HResult!void {
-        const factory = @This().IMapManagerStaticsCache.get();
-        return try factory.ShowMapsUpdateUI();
+        const _f = @This().IMapManagerStaticsCache.get();
+        return try _f.ShowMapsUpdateUI();
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.MapManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1681,56 +1681,56 @@ pub const MapRouteFinder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDrivingRouteAsync(startPoint: *Geopoint, endPoint: *Geopoint) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteAsync(startPoint, endPoint);
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteAsync(startPoint, endPoint);
     }
     pub fn GetDrivingRouteAsyncWithOptimization(startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteAsyncWithOptimization(startPoint, endPoint, optimization);
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteAsyncWithOptimization(startPoint, endPoint, optimization);
     }
-    pub fn GetDrivingRouteAsyncWithOptimizationWithRestrictions(startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteAsyncWithOptimizationWithRestrictions(startPoint, endPoint, optimization, restrictions);
+    pub fn GetDrivingRouteAsyncWithOptimizationAndRestrictions(startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteAsyncWithOptimizationAndRestrictions(startPoint, endPoint, optimization, restrictions);
     }
-    pub fn GetDrivingRouteAsyncWithOptimizationWithRestrictionsWithHeadingInDegrees(startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteAsyncWithOptimizationWithRestrictionsWithHeadingInDegrees(startPoint, endPoint, optimization, restrictions, headingInDegrees);
+    pub fn GetDrivingRouteAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(startPoint: *Geopoint, endPoint: *Geopoint, optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(startPoint, endPoint, optimization, restrictions, headingInDegrees);
     }
     pub fn GetDrivingRouteFromWaypointsAsync(wayPoints: *IIterable(Geopoint)) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteFromWaypointsAsync(wayPoints);
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteFromWaypointsAsync(wayPoints);
     }
     pub fn GetDrivingRouteFromWaypointsAsyncWithOptimization(wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteFromWaypointsAsyncWithOptimization(wayPoints, optimization);
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteFromWaypointsAsyncWithOptimization(wayPoints, optimization);
     }
-    pub fn GetDrivingRouteFromWaypointsAsyncWithOptimizationWithRestrictions(wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteFromWaypointsAsyncWithOptimizationWithRestrictions(wayPoints, optimization, restrictions);
+    pub fn GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictions(wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictions(wayPoints, optimization, restrictions);
     }
-    pub fn GetDrivingRouteFromWaypointsAsyncWithOptimizationWithRestrictionsWithHeadingInDegrees(wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetDrivingRouteFromWaypointsAsyncWithOptimizationWithRestrictionsWithHeadingInDegrees(wayPoints, optimization, restrictions, headingInDegrees);
+    pub fn GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(wayPoints: *IIterable(Geopoint), optimization: MapRouteOptimization, restrictions: MapRouteRestrictions, headingInDegrees: f64) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetDrivingRouteFromWaypointsAsyncWithOptimizationAndRestrictionsAndHeadingInDegrees(wayPoints, optimization, restrictions, headingInDegrees);
     }
     pub fn GetWalkingRouteAsync(startPoint: *Geopoint, endPoint: *Geopoint) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetWalkingRouteAsync(startPoint, endPoint);
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetWalkingRouteAsync(startPoint, endPoint);
     }
     pub fn GetWalkingRouteFromWaypointsAsync(wayPoints: *IIterable(Geopoint)) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStaticsCache.get();
-        return try factory.GetWalkingRouteFromWaypointsAsync(wayPoints);
+        const _f = @This().IMapRouteFinderStaticsCache.get();
+        return try _f.GetWalkingRouteFromWaypointsAsync(wayPoints);
     }
     pub fn GetDrivingRouteFromEnhancedWaypointsAsync(waypoints: *IIterable(EnhancedWaypoint)) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStatics3Cache.get();
-        return try factory.GetDrivingRouteFromEnhancedWaypointsAsync(waypoints);
+        const _f = @This().IMapRouteFinderStatics3Cache.get();
+        return try _f.GetDrivingRouteFromEnhancedWaypointsAsync(waypoints);
     }
     pub fn GetDrivingRouteFromEnhancedWaypointsAsyncWithOptions(waypoints: *IIterable(EnhancedWaypoint), options: *MapRouteDrivingOptions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStatics3Cache.get();
-        return try factory.GetDrivingRouteFromEnhancedWaypointsAsyncWithOptions(waypoints, options);
+        const _f = @This().IMapRouteFinderStatics3Cache.get();
+        return try _f.GetDrivingRouteFromEnhancedWaypointsAsyncWithOptions(waypoints, options);
     }
     pub fn GetDrivingRouteAsyncWithOptions(startPoint: *Geopoint, endPoint: *Geopoint, options: *MapRouteDrivingOptions) core.HResult!*IAsyncOperation(MapRouteFinderResult) {
-        const factory = @This().IMapRouteFinderStatics2Cache.get();
-        return try factory.GetDrivingRouteAsync(startPoint, endPoint, options);
+        const _f = @This().IMapRouteFinderStatics2Cache.get();
+        return try _f.GetDrivingRouteAsync(startPoint, endPoint, options);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.MapRouteFinder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1915,29 +1915,29 @@ pub const MapService = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn put_DataUsagePreference(value: MapServiceDataUsagePreference) core.HResult!void {
-        const factory = @This().IMapServiceStatics4Cache.get();
-        return try factory.putDataUsagePreference(value);
+    pub fn putDataUsagePreference(value: MapServiceDataUsagePreference) core.HResult!void {
+        const _f = @This().IMapServiceStatics4Cache.get();
+        return try _f.putDataUsagePreference(value);
     }
-    pub fn get_DataUsagePreference() core.HResult!MapServiceDataUsagePreference {
-        const factory = @This().IMapServiceStatics4Cache.get();
-        return try factory.getDataUsagePreference();
+    pub fn getDataUsagePreference() core.HResult!MapServiceDataUsagePreference {
+        const _f = @This().IMapServiceStatics4Cache.get();
+        return try _f.getDataUsagePreference();
     }
-    pub fn put_ServiceToken(value: HSTRING) core.HResult!void {
-        const factory = @This().IMapServiceStaticsCache.get();
-        return try factory.putServiceToken(value);
+    pub fn putServiceToken(value: HSTRING) core.HResult!void {
+        const _f = @This().IMapServiceStaticsCache.get();
+        return try _f.putServiceToken(value);
     }
-    pub fn get_ServiceToken() core.HResult!HSTRING {
-        const factory = @This().IMapServiceStaticsCache.get();
-        return try factory.getServiceToken();
+    pub fn getServiceToken() core.HResult!HSTRING {
+        const _f = @This().IMapServiceStaticsCache.get();
+        return try _f.getServiceToken();
     }
-    pub fn get_WorldViewRegionCode() core.HResult!HSTRING {
-        const factory = @This().IMapServiceStatics2Cache.get();
-        return try factory.getWorldViewRegionCode();
+    pub fn getWorldViewRegionCode() core.HResult!HSTRING {
+        const _f = @This().IMapServiceStatics2Cache.get();
+        return try _f.getWorldViewRegionCode();
     }
-    pub fn get_DataAttributions() core.HResult!HSTRING {
-        const factory = @This().IMapServiceStatics3Cache.get();
-        return try factory.getDataAttributions();
+    pub fn getDataAttributions() core.HResult!HSTRING {
+        const _f = @This().IMapServiceStatics3Cache.get();
+        return try _f.getDataAttributions();
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.MapService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1980,36 +1980,36 @@ pub const PlaceInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromAddress(displayAddress: HSTRING) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStatics2Cache.get();
-        return try factory.CreateFromAddress(displayAddress);
+        const _f = @This().IPlaceInfoStatics2Cache.get();
+        return try _f.CreateFromAddress(displayAddress);
     }
     pub fn CreateFromAddressWithDisplayName(displayAddress: HSTRING, displayName: HSTRING) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStatics2Cache.get();
-        return try factory.CreateFromAddressWithDisplayName(displayAddress, displayName);
+        const _f = @This().IPlaceInfoStatics2Cache.get();
+        return try _f.CreateFromAddressWithDisplayName(displayAddress, displayName);
     }
     pub fn Create(referencePoint: *Geopoint) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStaticsCache.get();
-        return try factory.Create(referencePoint);
+        const _f = @This().IPlaceInfoStaticsCache.get();
+        return try _f.Create(referencePoint);
     }
     pub fn CreateWithOptions(referencePoint: *Geopoint, options: *PlaceInfoCreateOptions) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStaticsCache.get();
-        return try factory.CreateWithOptions(referencePoint, options);
+        const _f = @This().IPlaceInfoStaticsCache.get();
+        return try _f.CreateWithOptions(referencePoint, options);
     }
     pub fn CreateFromIdentifier(identifier: HSTRING) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStaticsCache.get();
-        return try factory.CreateFromIdentifier(identifier);
+        const _f = @This().IPlaceInfoStaticsCache.get();
+        return try _f.CreateFromIdentifier(identifier);
     }
-    pub fn CreateFromIdentifierWithDefaultPointWithOptions(identifier: HSTRING, defaultPoint: *Geopoint, options: *PlaceInfoCreateOptions) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStaticsCache.get();
-        return try factory.CreateFromIdentifierWithDefaultPointWithOptions(identifier, defaultPoint, options);
+    pub fn CreateFromIdentifierWithDefaultPointAndOptions(identifier: HSTRING, defaultPoint: *Geopoint, options: *PlaceInfoCreateOptions) core.HResult!*PlaceInfo {
+        const _f = @This().IPlaceInfoStaticsCache.get();
+        return try _f.CreateFromIdentifierWithDefaultPointAndOptions(identifier, defaultPoint, options);
     }
     pub fn CreateFromMapLocation(location: *MapLocation) core.HResult!*PlaceInfo {
-        const factory = @This().IPlaceInfoStaticsCache.get();
-        return try factory.CreateFromMapLocation(location);
+        const _f = @This().IPlaceInfoStaticsCache.get();
+        return try _f.CreateFromMapLocation(location);
     }
-    pub fn get_IsShowSupported() core.HResult!bool {
-        const factory = @This().IPlaceInfoStaticsCache.get();
-        return try factory.getIsShowSupported();
+    pub fn getIsShowSupported() core.HResult!bool {
+        const _f = @This().IPlaceInfoStaticsCache.get();
+        return try _f.getIsShowSupported();
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.PlaceInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

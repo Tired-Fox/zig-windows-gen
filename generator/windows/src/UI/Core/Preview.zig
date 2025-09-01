@@ -4,8 +4,8 @@ pub const CoreAppWindowPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetIdFromWindow(window: *AppWindow) core.HResult!i32 {
-        const factory = @This().ICoreAppWindowPreviewStaticsCache.get();
-        return try factory.GetIdFromWindow(window);
+        const _f = @This().ICoreAppWindowPreviewStaticsCache.get();
+        return try _f.GetIdFromWindow(window);
     }
     pub const NAME: []const u8 = "Windows.UI.Core.Preview.CoreAppWindowPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -173,8 +173,8 @@ pub const SystemNavigationManagerPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SystemNavigationManagerPreview {
-        const factory = @This().ISystemNavigationManagerPreviewStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ISystemNavigationManagerPreviewStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Core.Preview.SystemNavigationManagerPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

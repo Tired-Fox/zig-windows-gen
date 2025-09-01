@@ -72,12 +72,12 @@ pub const CallControl = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CallControl {
-        const factory = @This().ICallControlStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ICallControlStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*CallControl {
-        const factory = @This().ICallControlStaticsCache.get();
-        return try factory.FromId(deviceId);
+        const _f = @This().ICallControlStaticsCache.get();
+        return try _f.FromId(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.CallControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -885,8 +885,8 @@ pub const AudioDeviceModulesManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(deviceId: HSTRING) core.HResult!*AudioDeviceModulesManager {
-        const factory = @This().IAudioDeviceModulesManagerFactoryCache.get();
-        return try factory.Create(deviceId);
+        const _f = @This().IAudioDeviceModulesManagerFactoryCache.get();
+        return try _f.Create(deviceId);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.AudioDeviceModulesManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4802,40 +4802,40 @@ pub const MediaDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAudioCaptureSelector() core.HResult!HSTRING {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.GetAudioCaptureSelector();
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.GetAudioCaptureSelector();
     }
     pub fn GetAudioRenderSelector() core.HResult!HSTRING {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.GetAudioRenderSelector();
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.GetAudioRenderSelector();
     }
     pub fn GetVideoCaptureSelector() core.HResult!HSTRING {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.GetVideoCaptureSelector();
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.GetVideoCaptureSelector();
     }
     pub fn GetDefaultAudioCaptureId(role: AudioDeviceRole) core.HResult!HSTRING {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.GetDefaultAudioCaptureId(role);
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.GetDefaultAudioCaptureId(role);
     }
     pub fn GetDefaultAudioRenderId(role: AudioDeviceRole) core.HResult!HSTRING {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.GetDefaultAudioRenderId(role);
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.GetDefaultAudioRenderId(role);
     }
-    pub fn add_DefaultAudioCaptureDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioCaptureDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.addDefaultAudioCaptureDeviceChanged(handler);
+    pub fn addDefaultAudioCaptureDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioCaptureDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.addDefaultAudioCaptureDeviceChanged(handler);
     }
-    pub fn remove_DefaultAudioCaptureDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.removeDefaultAudioCaptureDeviceChanged(cookie);
+    pub fn removeDefaultAudioCaptureDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.removeDefaultAudioCaptureDeviceChanged(cookie);
     }
-    pub fn add_DefaultAudioRenderDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioRenderDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.addDefaultAudioRenderDeviceChanged(handler);
+    pub fn addDefaultAudioRenderDeviceChanged(handler: *TypedEventHandler(IInspectable,DefaultAudioRenderDeviceChangedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.addDefaultAudioRenderDeviceChanged(handler);
     }
-    pub fn remove_DefaultAudioRenderDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaDeviceStaticsCache.get();
-        return try factory.removeDefaultAudioRenderDeviceChanged(cookie);
+    pub fn removeDefaultAudioRenderDeviceChanged(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaDeviceStaticsCache.get();
+        return try _f.removeDefaultAudioRenderDeviceChanged(cookie);
     }
     pub const NAME: []const u8 = "Windows.Media.Devices.MediaDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -5655,7 +5655,7 @@ const IUnknown = @import("../root.zig").IUnknown;
 const IActivationFactory = @import("../Foundation.zig").IActivationFactory;
 const Guid = @import("../root.zig").Guid;
 const MediaStreamType = @import("./Capture.zig").MediaStreamType;
-const VariablePhotoSequenceController = @import("./Core.zig").VariablePhotoSequenceController;
+const VariablePhotoSequenceController = @import("./Devices/Core.zig").VariablePhotoSequenceController;
 const MediaThumbnailFormat = @import("./MediaProperties.zig").MediaThumbnailFormat;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IIterable = @import("../Foundation/Collections.zig").IIterable;

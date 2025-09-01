@@ -84,8 +84,8 @@ pub const BluetoothLEAdvertisementBytePattern = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementBytePattern.IID)));
     }
     pub fn Create(dataType: u8, offset: i16, data: *IBuffer) core.HResult!*BluetoothLEAdvertisementBytePattern {
-        const factory = @This().IBluetoothLEAdvertisementBytePatternFactoryCache.get();
-        return try factory.Create(dataType, offset, data);
+        const _f = @This().IBluetoothLEAdvertisementBytePatternFactoryCache.get();
+        return try _f.Create(dataType, offset, data);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEAdvertisementBytePattern";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -121,8 +121,8 @@ pub const BluetoothLEAdvertisementDataSection = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementDataSection.IID)));
     }
     pub fn Create(dataType: u8, data: *IBuffer) core.HResult!*BluetoothLEAdvertisementDataSection {
-        const factory = @This().IBluetoothLEAdvertisementDataSectionFactoryCache.get();
-        return try factory.Create(dataType, data);
+        const _f = @This().IBluetoothLEAdvertisementDataSectionFactoryCache.get();
+        return try _f.Create(dataType, data);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEAdvertisementDataSection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -137,93 +137,93 @@ pub const BluetoothLEAdvertisementDataTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Flags() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getFlags();
+    pub fn getFlags() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getFlags();
     }
-    pub fn get_IncompleteService16BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getIncompleteService16BitUuids();
+    pub fn getIncompleteService16BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getIncompleteService16BitUuids();
     }
-    pub fn get_CompleteService16BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getCompleteService16BitUuids();
+    pub fn getCompleteService16BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getCompleteService16BitUuids();
     }
-    pub fn get_IncompleteService32BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getIncompleteService32BitUuids();
+    pub fn getIncompleteService32BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getIncompleteService32BitUuids();
     }
-    pub fn get_CompleteService32BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getCompleteService32BitUuids();
+    pub fn getCompleteService32BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getCompleteService32BitUuids();
     }
-    pub fn get_IncompleteService128BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getIncompleteService128BitUuids();
+    pub fn getIncompleteService128BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getIncompleteService128BitUuids();
     }
-    pub fn get_CompleteService128BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getCompleteService128BitUuids();
+    pub fn getCompleteService128BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getCompleteService128BitUuids();
     }
-    pub fn get_ShortenedLocalName() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getShortenedLocalName();
+    pub fn getShortenedLocalName() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getShortenedLocalName();
     }
-    pub fn get_CompleteLocalName() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getCompleteLocalName();
+    pub fn getCompleteLocalName() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getCompleteLocalName();
     }
-    pub fn get_TxPowerLevel() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getTxPowerLevel();
+    pub fn getTxPowerLevel() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getTxPowerLevel();
     }
-    pub fn get_PeripheralConnectionIntervalRange() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getPeripheralConnectionIntervalRange();
+    pub fn getPeripheralConnectionIntervalRange() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getPeripheralConnectionIntervalRange();
     }
-    pub fn get_ServiceSolicitation16BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getServiceSolicitation16BitUuids();
+    pub fn getServiceSolicitation16BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getServiceSolicitation16BitUuids();
     }
-    pub fn get_ServiceSolicitation32BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getServiceSolicitation32BitUuids();
+    pub fn getServiceSolicitation32BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getServiceSolicitation32BitUuids();
     }
-    pub fn get_ServiceSolicitation128BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getServiceSolicitation128BitUuids();
+    pub fn getServiceSolicitation128BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getServiceSolicitation128BitUuids();
     }
-    pub fn get_ServiceData16BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getServiceData16BitUuids();
+    pub fn getServiceData16BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getServiceData16BitUuids();
     }
-    pub fn get_ServiceData32BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getServiceData32BitUuids();
+    pub fn getServiceData32BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getServiceData32BitUuids();
     }
-    pub fn get_ServiceData128BitUuids() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getServiceData128BitUuids();
+    pub fn getServiceData128BitUuids() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getServiceData128BitUuids();
     }
-    pub fn get_PublicTargetAddress() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getPublicTargetAddress();
+    pub fn getPublicTargetAddress() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getPublicTargetAddress();
     }
-    pub fn get_RandomTargetAddress() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getRandomTargetAddress();
+    pub fn getRandomTargetAddress() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getRandomTargetAddress();
     }
-    pub fn get_Appearance() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getAppearance();
+    pub fn getAppearance() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getAppearance();
     }
-    pub fn get_AdvertisingInterval() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getAdvertisingInterval();
+    pub fn getAdvertisingInterval() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getAdvertisingInterval();
     }
-    pub fn get_ManufacturerSpecificData() core.HResult!u8 {
-        const factory = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
-        return try factory.getManufacturerSpecificData();
+    pub fn getManufacturerSpecificData() core.HResult!u8 {
+        const _f = @This().IBluetoothLEAdvertisementDataTypesStaticsCache.get();
+        return try _f.getManufacturerSpecificData();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEAdvertisementDataTypes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -377,8 +377,8 @@ pub const BluetoothLEAdvertisementPublisher = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementPublisher.IID)));
     }
     pub fn Create(advertisement: *BluetoothLEAdvertisement) core.HResult!*BluetoothLEAdvertisementPublisher {
-        const factory = @This().IBluetoothLEAdvertisementPublisherFactoryCache.get();
-        return try factory.Create(advertisement);
+        const _f = @This().IBluetoothLEAdvertisementPublisherFactoryCache.get();
+        return try _f.Create(advertisement);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEAdvertisementPublisher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -514,12 +514,12 @@ pub const BluetoothLEAdvertisementScanParameters = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CoexistenceOptimized() core.HResult!*BluetoothLEAdvertisementScanParameters {
-        const factory = @This().IBluetoothLEAdvertisementScanParametersStaticsCache.get();
-        return try factory.CoexistenceOptimized();
+        const _f = @This().IBluetoothLEAdvertisementScanParametersStaticsCache.get();
+        return try _f.CoexistenceOptimized();
     }
     pub fn LowLatency() core.HResult!*BluetoothLEAdvertisementScanParameters {
-        const factory = @This().IBluetoothLEAdvertisementScanParametersStaticsCache.get();
-        return try factory.LowLatency();
+        const _f = @This().IBluetoothLEAdvertisementScanParametersStaticsCache.get();
+        return try _f.LowLatency();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEAdvertisementScanParameters";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -674,8 +674,8 @@ pub const BluetoothLEAdvertisementWatcher = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEAdvertisementWatcher.IID)));
     }
     pub fn Create(advertisementFilter: *BluetoothLEAdvertisementFilter) core.HResult!*BluetoothLEAdvertisementWatcher {
-        const factory = @This().IBluetoothLEAdvertisementWatcherFactoryCache.get();
-        return try factory.Create(advertisementFilter);
+        const _f = @This().IBluetoothLEAdvertisementWatcherFactoryCache.get();
+        return try _f.Create(advertisementFilter);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEAdvertisementWatcher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -730,8 +730,8 @@ pub const BluetoothLEManufacturerData = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBluetoothLEManufacturerData.IID)));
     }
     pub fn Create(companyId: u16, data: *IBuffer) core.HResult!*BluetoothLEManufacturerData {
-        const factory = @This().IBluetoothLEManufacturerDataFactoryCache.get();
-        return try factory.Create(companyId, data);
+        const _f = @This().IBluetoothLEManufacturerDataFactoryCache.get();
+        return try _f.Create(companyId, data);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Advertisement.BluetoothLEManufacturerData";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

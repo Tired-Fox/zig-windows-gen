@@ -220,9 +220,9 @@ pub const ISpatialAnchorStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCreateRelativeToWithOrientation(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
+    pub fn TryCreateRelativeToWithPositionAndOrientation(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
         var _r: *SpatialAnchor = undefined;
-        const _c = self.vtable.TryCreateRelativeToWithOrientation(@ptrCast(self), coordinateSystem, position, orientation, &_r);
+        const _c = self.vtable.TryCreateRelativeToWithPositionAndOrientation(@ptrCast(self), coordinateSystem, position, orientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -240,7 +240,7 @@ pub const ISpatialAnchorStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryCreateRelativeTo: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
         TryCreateRelativeToWithPosition: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
-        TryCreateRelativeToWithOrientation: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
+        TryCreateRelativeToWithPositionAndOrientation: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion, _r: **SpatialAnchor) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialAnchorStore = extern struct {
@@ -815,21 +815,21 @@ pub const ISpatialLocator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeading(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePosition(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         var _r: *SpatialLocatorAttachedFrameOfReference = undefined;
-        const _c = self.vtable.CreateAttachedFrameOfReferenceAtCurrentHeading(@ptrCast(self), relativePosition, &_r);
+        const _c = self.vtable.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePosition(@ptrCast(self), relativePosition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeading(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         var _r: *SpatialLocatorAttachedFrameOfReference = undefined;
-        const _c = self.vtable.CreateAttachedFrameOfReferenceAtCurrentHeading(@ptrCast(self), relativePosition, relativeOrientation, &_r);
+        const _c = self.vtable.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientation(@ptrCast(self), relativePosition, relativeOrientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeading(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         var _r: *SpatialLocatorAttachedFrameOfReference = undefined;
-        const _c = self.vtable.CreateAttachedFrameOfReferenceAtCurrentHeading(@ptrCast(self), relativePosition, relativeOrientation, relativeHeadingInRadians, &_r);
+        const _c = self.vtable.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(@ptrCast(self), relativePosition, relativeOrientation, relativeHeadingInRadians, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -839,21 +839,21 @@ pub const ISpatialLocator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePosition(self: *@This(), relativePosition: Vector3) core.HResult!*SpatialStationaryFrameOfReference {
         var _r: *SpatialStationaryFrameOfReference = undefined;
-        const _c = self.vtable.CreateStationaryFrameOfReferenceAtCurrentLocation(@ptrCast(self), relativePosition, &_r);
+        const _c = self.vtable.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePosition(@ptrCast(self), relativePosition, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialStationaryFrameOfReference {
         var _r: *SpatialStationaryFrameOfReference = undefined;
-        const _c = self.vtable.CreateStationaryFrameOfReferenceAtCurrentLocation(@ptrCast(self), relativePosition, relativeOrientation, &_r);
+        const _c = self.vtable.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientation(@ptrCast(self), relativePosition, relativeOrientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialStationaryFrameOfReference {
         var _r: *SpatialStationaryFrameOfReference = undefined;
-        const _c = self.vtable.CreateStationaryFrameOfReferenceAtCurrentLocation(@ptrCast(self), relativePosition, relativeOrientation, relativeHeadingInRadians, &_r);
+        const _c = self.vtable.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(@ptrCast(self), relativePosition, relativeOrientation, relativeHeadingInRadians, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -876,13 +876,13 @@ pub const ISpatialLocator = extern struct {
         remove_PositionalTrackingDeactivating: *const fn(self: *anyopaque, cookie: EventRegistrationToken) callconv(.winapi) HRESULT,
         TryLocateAtTimestamp: *const fn(self: *anyopaque, timestamp: *PerceptionTimestamp, coordinateSystem: *SpatialCoordinateSystem, _r: **SpatialLocation) callconv(.winapi) HRESULT,
         CreateAttachedFrameOfReferenceAtCurrentHeading: *const fn(self: *anyopaque, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
-        CreateAttachedFrameOfReferenceAtCurrentHeading: *const fn(self: *anyopaque, relativePosition: Vector3, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
-        CreateAttachedFrameOfReferenceAtCurrentHeading: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
-        CreateAttachedFrameOfReferenceAtCurrentHeading: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
+        CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePosition: *const fn(self: *anyopaque, relativePosition: Vector3, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
+        CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientation: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
+        CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64, _r: **SpatialLocatorAttachedFrameOfReference) callconv(.winapi) HRESULT,
         CreateStationaryFrameOfReferenceAtCurrentLocation: *const fn(self: *anyopaque, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
-        CreateStationaryFrameOfReferenceAtCurrentLocation: *const fn(self: *anyopaque, relativePosition: Vector3, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
-        CreateStationaryFrameOfReferenceAtCurrentLocation: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
-        CreateStationaryFrameOfReferenceAtCurrentLocation: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
+        CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePosition: *const fn(self: *anyopaque, relativePosition: Vector3, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
+        CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientation: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
+        CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians: *const fn(self: *anyopaque, relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64, _r: **SpatialStationaryFrameOfReference) callconv(.winapi) HRESULT,
     };
 };
 pub const ISpatialLocatorAttachedFrameOfReference = extern struct {
@@ -1139,16 +1139,16 @@ pub const SpatialAnchor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateRelativeTo(coordinateSystem: *SpatialCoordinateSystem) core.HResult!*SpatialAnchor {
-        const factory = @This().ISpatialAnchorStaticsCache.get();
-        return try factory.TryCreateRelativeTo(coordinateSystem);
+        const _f = @This().ISpatialAnchorStaticsCache.get();
+        return try _f.TryCreateRelativeTo(coordinateSystem);
     }
     pub fn TryCreateRelativeToWithPosition(coordinateSystem: *SpatialCoordinateSystem, position: Vector3) core.HResult!*SpatialAnchor {
-        const factory = @This().ISpatialAnchorStaticsCache.get();
-        return try factory.TryCreateRelativeToWithPosition(coordinateSystem, position);
+        const _f = @This().ISpatialAnchorStaticsCache.get();
+        return try _f.TryCreateRelativeToWithPosition(coordinateSystem, position);
     }
-    pub fn TryCreateRelativeToWithPositionWithOrientation(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
-        const factory = @This().ISpatialAnchorStaticsCache.get();
-        return try factory.TryCreateRelativeToWithPositionWithOrientation(coordinateSystem, position, orientation);
+    pub fn TryCreateRelativeToWithPositionAndOrientation(coordinateSystem: *SpatialCoordinateSystem, position: Vector3, orientation: Quaternion) core.HResult!*SpatialAnchor {
+        const _f = @This().ISpatialAnchorStaticsCache.get();
+        return try _f.TryCreateRelativeToWithPositionAndOrientation(coordinateSystem, position, orientation);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1195,12 +1195,12 @@ pub const SpatialAnchorExporter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialAnchorExporter {
-        const factory = @This().ISpatialAnchorExporterStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ISpatialAnchorExporterStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
-        const factory = @This().ISpatialAnchorExporterStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().ISpatialAnchorExporterStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchorExporter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1215,8 +1215,8 @@ pub const SpatialAnchorManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestStoreAsync() core.HResult!*IAsyncOperation(SpatialAnchorStore) {
-        const factory = @This().ISpatialAnchorManagerStaticsCache.get();
-        return try factory.RequestStoreAsync();
+        const _f = @This().ISpatialAnchorManagerStaticsCache.get();
+        return try _f.RequestStoreAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchorManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1264,16 +1264,16 @@ pub const SpatialAnchorTransferManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryImportAnchorsAsync(stream: *IInputStream) core.HResult!*IAsyncOperation(IMapView(HSTRING,SpatialAnchor)) {
-        const factory = @This().ISpatialAnchorTransferManagerStaticsCache.get();
-        return try factory.TryImportAnchorsAsync(stream);
+        const _f = @This().ISpatialAnchorTransferManagerStaticsCache.get();
+        return try _f.TryImportAnchorsAsync(stream);
     }
     pub fn TryExportAnchorsAsync(anchors: *IIterable(IKeyValuePair(HSTRING,SpatialAnchor)), stream: *IOutputStream) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().ISpatialAnchorTransferManagerStaticsCache.get();
-        return try factory.TryExportAnchorsAsync(anchors, stream);
+        const _f = @This().ISpatialAnchorTransferManagerStaticsCache.get();
+        return try _f.TryExportAnchorsAsync(anchors, stream);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
-        const factory = @This().ISpatialAnchorTransferManagerStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().ISpatialAnchorTransferManagerStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialAnchorTransferManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1306,20 +1306,20 @@ pub const SpatialBoundingVolume = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromBox(coordinateSystem: *SpatialCoordinateSystem, box: SpatialBoundingBox) core.HResult!*SpatialBoundingVolume {
-        const factory = @This().ISpatialBoundingVolumeStaticsCache.get();
-        return try factory.FromBox(coordinateSystem, box);
+        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        return try _f.FromBox(coordinateSystem, box);
     }
     pub fn FromOrientedBox(coordinateSystem: *SpatialCoordinateSystem, box: SpatialBoundingOrientedBox) core.HResult!*SpatialBoundingVolume {
-        const factory = @This().ISpatialBoundingVolumeStaticsCache.get();
-        return try factory.FromOrientedBox(coordinateSystem, box);
+        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        return try _f.FromOrientedBox(coordinateSystem, box);
     }
     pub fn FromSphere(coordinateSystem: *SpatialCoordinateSystem, sphere: SpatialBoundingSphere) core.HResult!*SpatialBoundingVolume {
-        const factory = @This().ISpatialBoundingVolumeStaticsCache.get();
-        return try factory.FromSphere(coordinateSystem, sphere);
+        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        return try _f.FromSphere(coordinateSystem, sphere);
     }
     pub fn FromFrustum(coordinateSystem: *SpatialCoordinateSystem, frustum: SpatialBoundingFrustum) core.HResult!*SpatialBoundingVolume {
-        const factory = @This().ISpatialBoundingVolumeStaticsCache.get();
-        return try factory.FromFrustum(coordinateSystem, frustum);
+        const _f = @This().ISpatialBoundingVolumeStaticsCache.get();
+        return try _f.FromFrustum(coordinateSystem, frustum);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialBoundingVolume";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1358,12 +1358,12 @@ pub const SpatialEntity = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithSpatialAnchor(spatialAnchor: *SpatialAnchor) core.HResult!*SpatialEntity {
-        const factory = @This().ISpatialEntityFactoryCache.get();
-        return try factory.CreateWithSpatialAnchor(spatialAnchor);
+        const _f = @This().ISpatialEntityFactoryCache.get();
+        return try _f.CreateWithSpatialAnchor(spatialAnchor);
     }
     pub fn CreateWithSpatialAnchorAndProperties(spatialAnchor: *SpatialAnchor, propertySet: *ValueSet) core.HResult!*SpatialEntity {
-        const factory = @This().ISpatialEntityFactoryCache.get();
-        return try factory.CreateWithSpatialAnchorAndProperties(spatialAnchor, propertySet);
+        const _f = @This().ISpatialEntityFactoryCache.get();
+        return try _f.CreateWithSpatialAnchorAndProperties(spatialAnchor, propertySet);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialEntity";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1413,13 +1413,13 @@ pub const SpatialEntityStore = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().ISpatialEntityStoreStaticsCache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().ISpatialEntityStoreStaticsCache.get();
+        return try _f.getIsSupported();
     }
     pub fn TryGet(session: *RemoteSystemSession) core.HResult!*SpatialEntityStore {
-        const factory = @This().ISpatialEntityStoreStaticsCache.get();
-        return try factory.TryGet(session);
+        const _f = @This().ISpatialEntityStoreStaticsCache.get();
+        return try _f.TryGet(session);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialEntityStore";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1585,13 +1585,13 @@ pub const SpatialLocator = extern struct {
         const this: *ISpatialLocator = @ptrCast(self);
         return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePosition(relativePosition);
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientation(relativePosition, relativeOrientation);
+        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientation(relativePosition, relativeOrientation);
     }
-    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialLocatorAttachedFrameOfReference {
+    pub fn CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialLocatorAttachedFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
+        return try this.CreateAttachedFrameOfReferenceAtCurrentHeadingWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
     }
     pub fn CreateStationaryFrameOfReferenceAtCurrentLocation(self: *@This()) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
@@ -1601,20 +1601,20 @@ pub const SpatialLocator = extern struct {
         const this: *ISpatialLocator = @ptrCast(self);
         return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePosition(relativePosition);
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientation(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientation(relativePosition, relativeOrientation);
+        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientation(relativePosition, relativeOrientation);
     }
-    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialStationaryFrameOfReference {
+    pub fn CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(self: *@This(), relativePosition: Vector3, relativeOrientation: Quaternion, relativeHeadingInRadians: f64) core.HResult!*SpatialStationaryFrameOfReference {
         const this: *ISpatialLocator = @ptrCast(self);
-        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionWithRelativeOrientationWithRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
+        return try this.CreateStationaryFrameOfReferenceAtCurrentLocationWithRelativePositionAndRelativeOrientationAndRelativeHeadingInRadians(relativePosition, relativeOrientation, relativeHeadingInRadians);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*SpatialLocator {
-        const factory = @This().ISpatialLocatorStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ISpatialLocatorStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialLocator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1718,21 +1718,21 @@ pub const SpatialStageFrameOfReference = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*SpatialStageFrameOfReference {
-        const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*SpatialStageFrameOfReference {
+        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        return try _f.getCurrent();
     }
-    pub fn add_CurrentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
-        return try factory.addCurrentChanged(handler);
+    pub fn addCurrentChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        return try _f.addCurrentChanged(handler);
     }
-    pub fn remove_CurrentChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
-        return try factory.removeCurrentChanged(cookie);
+    pub fn removeCurrentChanged(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        return try _f.removeCurrentChanged(cookie);
     }
     pub fn RequestNewStageAsync() core.HResult!*IAsyncOperation(SpatialStageFrameOfReference) {
-        const factory = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
-        return try factory.RequestNewStageAsync();
+        const _f = @This().ISpatialStageFrameOfReferenceStaticsCache.get();
+        return try _f.RequestNewStageAsync();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.SpatialStageFrameOfReference";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

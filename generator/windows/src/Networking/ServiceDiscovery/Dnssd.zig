@@ -110,8 +110,8 @@ pub const DnssdServiceInstance = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(dnssdServiceInstanceName: HSTRING, hostName: *HostName, port: u16) core.HResult!*DnssdServiceInstance {
-        const factory = @This().IDnssdServiceInstanceFactoryCache.get();
-        return try factory.Create(dnssdServiceInstanceName, hostName, port);
+        const _f = @This().IDnssdServiceInstanceFactoryCache.get();
+        return try _f.Create(dnssdServiceInstanceName, hostName, port);
     }
     pub const NAME: []const u8 = "Windows.Networking.ServiceDiscovery.Dnssd.DnssdServiceInstance";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -122,23 +122,11 @@ pub const DnssdServiceInstance = extern struct {
 };
 pub const DnssdServiceInstanceCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(DnssdServiceInstance) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(DnssdServiceInstance) {
         var this: ?*IIterable(DnssdServiceInstance) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

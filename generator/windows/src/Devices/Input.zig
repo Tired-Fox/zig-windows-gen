@@ -686,8 +686,8 @@ pub const MouseDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*MouseDevice {
-        const factory = @This().IMouseDeviceStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IMouseDeviceStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.MouseDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -750,8 +750,8 @@ pub const PenButtonListener = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PenButtonListener {
-        const factory = @This().IPenButtonListenerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IPenButtonListenerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenButtonListener";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -776,8 +776,8 @@ pub const PenDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetFromPointerId(pointerId: u32) core.HResult!*PenDevice {
-        const factory = @This().IPenDeviceStaticsCache.get();
-        return try factory.GetFromPointerId(pointerId);
+        const _f = @This().IPenDeviceStaticsCache.get();
+        return try _f.GetFromPointerId(pointerId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -820,8 +820,8 @@ pub const PenDockListener = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PenDockListener {
-        const factory = @This().IPenDockListenerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IPenDockListenerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PenDockListener";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -906,12 +906,12 @@ pub const PointerDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetPointerDevice(pointerId: u32) core.HResult!*PointerDevice {
-        const factory = @This().IPointerDeviceStaticsCache.get();
-        return try factory.GetPointerDevice(pointerId);
+        const _f = @This().IPointerDeviceStaticsCache.get();
+        return try _f.GetPointerDevice(pointerId);
     }
     pub fn GetPointerDevices() core.HResult!*IVectorView(PointerDevice) {
-        const factory = @This().IPointerDeviceStaticsCache.get();
-        return try factory.GetPointerDevices();
+        const _f = @This().IPointerDeviceStaticsCache.get();
+        return try _f.GetPointerDevices();
     }
     pub const NAME: []const u8 = "Windows.Devices.Input.PointerDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -36,9 +36,9 @@ pub const IRfcommDeviceService = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetSdpRawAttributesAsync(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(IMapView(u32,IBuffer)) {
+    pub fn GetSdpRawAttributesAsyncWithCacheMode(self: *@This(), cacheMode: BluetoothCacheMode) core.HResult!*IAsyncOperation(IMapView(u32,IBuffer)) {
         var _r: *IAsyncOperation(IMapView(u32,IBuffer)) = undefined;
-        const _c = self.vtable.GetSdpRawAttributesAsync(@ptrCast(self), cacheMode, &_r);
+        const _c = self.vtable.GetSdpRawAttributesAsyncWithCacheMode(@ptrCast(self), cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -60,7 +60,7 @@ pub const IRfcommDeviceService = extern struct {
         get_ProtectionLevel: *const fn(self: *anyopaque, _r: *SocketProtectionLevel) callconv(.winapi) HRESULT,
         get_MaxProtectionLevel: *const fn(self: *anyopaque, _r: *SocketProtectionLevel) callconv(.winapi) HRESULT,
         GetSdpRawAttributesAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(IMapView(u32,IBuffer))) callconv(.winapi) HRESULT,
-        GetSdpRawAttributesAsync: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(IMapView(u32,IBuffer))) callconv(.winapi) HRESULT,
+        GetSdpRawAttributesAsyncWithCacheMode: *const fn(self: *anyopaque, cacheMode: BluetoothCacheMode, _r: **IAsyncOperation(IMapView(u32,IBuffer))) callconv(.winapi) HRESULT,
     };
 };
 pub const IRfcommDeviceService2 = extern struct {
@@ -166,9 +166,9 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(self: *@This(), bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode(@ptrCast(self), bluetoothDevice, serviceId, cacheMode, &_r);
+        const _c = self.vtable.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(@ptrCast(self), bluetoothDevice, serviceId, cacheMode, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -187,7 +187,7 @@ pub const IRfcommDeviceServiceStatics2 = extern struct {
         GetDeviceSelectorForBluetoothDevice: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorForBluetoothDeviceWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetDeviceSelectorForBluetoothDeviceAndServiceId: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorForBluetoothDeviceAndServiceIdWithServiceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode: *const fn(self: *anyopaque, bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode, _r: *HSTRING) callconv(.winapi) HRESULT,
     };
 };
 pub const IRfcommDeviceServicesResult = extern struct {
@@ -471,28 +471,28 @@ pub const RfcommDeviceService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(RfcommDeviceService) {
-        const factory = @This().IRfcommDeviceServiceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IRfcommDeviceServiceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector(serviceId: *RfcommServiceId) core.HResult!HSTRING {
-        const factory = @This().IRfcommDeviceServiceStaticsCache.get();
-        return try factory.GetDeviceSelector(serviceId);
+        const _f = @This().IRfcommDeviceServiceStaticsCache.get();
+        return try _f.GetDeviceSelector(serviceId);
     }
     pub fn GetDeviceSelectorForBluetoothDevice(bluetoothDevice: *BluetoothDevice) core.HResult!HSTRING {
-        const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDevice(bluetoothDevice);
+        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        return try _f.GetDeviceSelectorForBluetoothDevice(bluetoothDevice);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice: *BluetoothDevice, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice, cacheMode);
+        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        return try _f.GetDeviceSelectorForBluetoothDeviceWithCacheMode(bluetoothDevice, cacheMode);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId) core.HResult!HSTRING {
-        const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId);
+        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        return try _f.GetDeviceSelectorForBluetoothDeviceAndServiceId(bluetoothDevice, serviceId);
     }
     pub fn GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice: *BluetoothDevice, serviceId: *RfcommServiceId, cacheMode: BluetoothCacheMode) core.HResult!HSTRING {
-        const factory = @This().IRfcommDeviceServiceStatics2Cache.get();
-        return try factory.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
+        const _f = @This().IRfcommDeviceServiceStatics2Cache.get();
+        return try _f.GetDeviceSelectorForBluetoothDeviceAndServiceIdWithCacheMode(bluetoothDevice, serviceId, cacheMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommDeviceService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -536,36 +536,36 @@ pub const RfcommServiceId = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromUuid(uuid: *Guid) core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.FromUuid(uuid);
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.FromUuid(uuid);
     }
     pub fn FromShortId(shortId: u32) core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.FromShortId(shortId);
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.FromShortId(shortId);
     }
-    pub fn get_SerialPort() core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.getSerialPort();
+    pub fn getSerialPort() core.HResult!*RfcommServiceId {
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.getSerialPort();
     }
-    pub fn get_ObexObjectPush() core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.getObexObjectPush();
+    pub fn getObexObjectPush() core.HResult!*RfcommServiceId {
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.getObexObjectPush();
     }
-    pub fn get_ObexFileTransfer() core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.getObexFileTransfer();
+    pub fn getObexFileTransfer() core.HResult!*RfcommServiceId {
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.getObexFileTransfer();
     }
-    pub fn get_PhoneBookAccessPce() core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.getPhoneBookAccessPce();
+    pub fn getPhoneBookAccessPce() core.HResult!*RfcommServiceId {
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.getPhoneBookAccessPce();
     }
-    pub fn get_PhoneBookAccessPse() core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.getPhoneBookAccessPse();
+    pub fn getPhoneBookAccessPse() core.HResult!*RfcommServiceId {
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.getPhoneBookAccessPse();
     }
-    pub fn get_GenericFileTransfer() core.HResult!*RfcommServiceId {
-        const factory = @This().IRfcommServiceIdStaticsCache.get();
-        return try factory.getGenericFileTransfer();
+    pub fn getGenericFileTransfer() core.HResult!*RfcommServiceId {
+        const _f = @This().IRfcommServiceIdStaticsCache.get();
+        return try _f.getGenericFileTransfer();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommServiceId";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -602,8 +602,8 @@ pub const RfcommServiceProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync(serviceId: *RfcommServiceId) core.HResult!*IAsyncOperation(RfcommServiceProvider) {
-        const factory = @This().IRfcommServiceProviderStaticsCache.get();
-        return try factory.CreateAsync(serviceId);
+        const _f = @This().IRfcommServiceProviderStaticsCache.get();
+        return try _f.CreateAsync(serviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Rfcomm.RfcommServiceProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

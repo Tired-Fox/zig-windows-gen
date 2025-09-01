@@ -40,20 +40,20 @@ pub const FaceDetector = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(FaceDetector) {
-        const factory = @This().IFaceDetectorStaticsCache.get();
-        return try factory.CreateAsync();
+        const _f = @This().IFaceDetectorStaticsCache.get();
+        return try _f.CreateAsync();
     }
     pub fn GetSupportedBitmapPixelFormats() core.HResult!*IVectorView(BitmapPixelFormat) {
-        const factory = @This().IFaceDetectorStaticsCache.get();
-        return try factory.GetSupportedBitmapPixelFormats();
+        const _f = @This().IFaceDetectorStaticsCache.get();
+        return try _f.GetSupportedBitmapPixelFormats();
     }
     pub fn IsBitmapPixelFormatSupported(bitmapPixelFormat: BitmapPixelFormat) core.HResult!bool {
-        const factory = @This().IFaceDetectorStaticsCache.get();
-        return try factory.IsBitmapPixelFormatSupported(bitmapPixelFormat);
+        const _f = @This().IFaceDetectorStaticsCache.get();
+        return try _f.IsBitmapPixelFormatSupported(bitmapPixelFormat);
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().IFaceDetectorStaticsCache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().IFaceDetectorStaticsCache.get();
+        return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.FaceDetector";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -88,20 +88,20 @@ pub const FaceTracker = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(FaceTracker) {
-        const factory = @This().IFaceTrackerStaticsCache.get();
-        return try factory.CreateAsync();
+        const _f = @This().IFaceTrackerStaticsCache.get();
+        return try _f.CreateAsync();
     }
     pub fn GetSupportedBitmapPixelFormats() core.HResult!*IVectorView(BitmapPixelFormat) {
-        const factory = @This().IFaceTrackerStaticsCache.get();
-        return try factory.GetSupportedBitmapPixelFormats();
+        const _f = @This().IFaceTrackerStaticsCache.get();
+        return try _f.GetSupportedBitmapPixelFormats();
     }
     pub fn IsBitmapPixelFormatSupported(bitmapPixelFormat: BitmapPixelFormat) core.HResult!bool {
-        const factory = @This().IFaceTrackerStaticsCache.get();
-        return try factory.IsBitmapPixelFormatSupported(bitmapPixelFormat);
+        const _f = @This().IFaceTrackerStaticsCache.get();
+        return try _f.IsBitmapPixelFormatSupported(bitmapPixelFormat);
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().IFaceTrackerStaticsCache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().IFaceTrackerStaticsCache.get();
+        return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.Media.FaceAnalysis.FaceTracker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

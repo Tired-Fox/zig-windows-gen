@@ -2122,21 +2122,21 @@ pub const KnownCameraIntrinsicsProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_FocalLength() core.HResult!HSTRING {
-        const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
-        return try factory.getFocalLength();
+    pub fn getFocalLength() core.HResult!HSTRING {
+        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        return try _f.getFocalLength();
     }
-    pub fn get_PrincipalPoint() core.HResult!HSTRING {
-        const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
-        return try factory.getPrincipalPoint();
+    pub fn getPrincipalPoint() core.HResult!HSTRING {
+        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        return try _f.getPrincipalPoint();
     }
-    pub fn get_RadialDistortion() core.HResult!HSTRING {
-        const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
-        return try factory.getRadialDistortion();
+    pub fn getRadialDistortion() core.HResult!HSTRING {
+        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        return try _f.getRadialDistortion();
     }
-    pub fn get_TangentialDistortion() core.HResult!HSTRING {
-        const factory = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
-        return try factory.getTangentialDistortion();
+    pub fn getTangentialDistortion() core.HResult!HSTRING {
+        const _f = @This().IKnownCameraIntrinsicsPropertiesStaticsCache.get();
+        return try _f.getTangentialDistortion();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownCameraIntrinsicsProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2147,17 +2147,17 @@ pub const KnownPerceptionColorFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Exposure() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
-        return try factory.getExposure();
+    pub fn getExposure() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
+        return try _f.getExposure();
     }
-    pub fn get_AutoExposureEnabled() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
-        return try factory.getAutoExposureEnabled();
+    pub fn getAutoExposureEnabled() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
+        return try _f.getAutoExposureEnabled();
     }
-    pub fn get_ExposureCompensation() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
-        return try factory.getExposureCompensation();
+    pub fn getExposureCompensation() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionColorFrameSourcePropertiesStaticsCache.get();
+        return try _f.getExposureCompensation();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionColorFrameSourceProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2168,13 +2168,13 @@ pub const KnownPerceptionDepthFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MinDepth() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
-        return try factory.getMinDepth();
+    pub fn getMinDepth() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
+        return try _f.getMinDepth();
     }
-    pub fn get_MaxDepth() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
-        return try factory.getMaxDepth();
+    pub fn getMaxDepth() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionDepthFrameSourcePropertiesStaticsCache.get();
+        return try _f.getMaxDepth();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionDepthFrameSourceProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2185,29 +2185,29 @@ pub const KnownPerceptionFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DeviceId() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameSourcePropertiesStatics2Cache.get();
-        return try factory.getDeviceId();
+    pub fn getDeviceId() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameSourcePropertiesStatics2Cache.get();
+        return try _f.getDeviceId();
     }
-    pub fn get_Id() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
-        return try factory.getId();
+    pub fn getId() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        return try _f.getId();
     }
-    pub fn get_PhysicalDeviceIds() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
-        return try factory.getPhysicalDeviceIds();
+    pub fn getPhysicalDeviceIds() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        return try _f.getPhysicalDeviceIds();
     }
-    pub fn get_FrameKind() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
-        return try factory.getFrameKind();
+    pub fn getFrameKind() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        return try _f.getFrameKind();
     }
-    pub fn get_DeviceModelVersion() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
-        return try factory.getDeviceModelVersion();
+    pub fn getDeviceModelVersion() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        return try _f.getDeviceModelVersion();
     }
-    pub fn get_EnclosureLocation() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
-        return try factory.getEnclosureLocation();
+    pub fn getEnclosureLocation() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameSourcePropertiesStaticsCache.get();
+        return try _f.getEnclosureLocation();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionFrameSourceProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2219,33 +2219,33 @@ pub const KnownPerceptionInfraredFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Exposure() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getExposure();
+    pub fn getExposure() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getExposure();
     }
-    pub fn get_AutoExposureEnabled() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getAutoExposureEnabled();
+    pub fn getAutoExposureEnabled() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getAutoExposureEnabled();
     }
-    pub fn get_ExposureCompensation() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getExposureCompensation();
+    pub fn getExposureCompensation() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getExposureCompensation();
     }
-    pub fn get_ActiveIlluminationEnabled() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getActiveIlluminationEnabled();
+    pub fn getActiveIlluminationEnabled() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getActiveIlluminationEnabled();
     }
-    pub fn get_AmbientSubtractionEnabled() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getAmbientSubtractionEnabled();
+    pub fn getAmbientSubtractionEnabled() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getAmbientSubtractionEnabled();
     }
-    pub fn get_StructureLightPatternEnabled() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getStructureLightPatternEnabled();
+    pub fn getStructureLightPatternEnabled() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getStructureLightPatternEnabled();
     }
-    pub fn get_InterleavedIlluminationEnabled() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
-        return try factory.getInterleavedIlluminationEnabled();
+    pub fn getInterleavedIlluminationEnabled() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionInfraredFrameSourcePropertiesStaticsCache.get();
+        return try _f.getInterleavedIlluminationEnabled();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionInfraredFrameSourceProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2256,25 +2256,25 @@ pub const KnownPerceptionVideoFrameSourceProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_VideoProfile() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
-        return try factory.getVideoProfile();
+    pub fn getVideoProfile() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        return try _f.getVideoProfile();
     }
-    pub fn get_SupportedVideoProfiles() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
-        return try factory.getSupportedVideoProfiles();
+    pub fn getSupportedVideoProfiles() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        return try _f.getSupportedVideoProfiles();
     }
-    pub fn get_AvailableVideoProfiles() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
-        return try factory.getAvailableVideoProfiles();
+    pub fn getAvailableVideoProfiles() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        return try _f.getAvailableVideoProfiles();
     }
-    pub fn get_IsMirrored() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
-        return try factory.getIsMirrored();
+    pub fn getIsMirrored() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        return try _f.getIsMirrored();
     }
-    pub fn get_CameraIntrinsics() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
-        return try factory.getCameraIntrinsics();
+    pub fn getCameraIntrinsics() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoFrameSourcePropertiesStaticsCache.get();
+        return try _f.getCameraIntrinsics();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionVideoFrameSourceProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2285,25 +2285,25 @@ pub const KnownPerceptionVideoProfileProperties = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BitmapPixelFormat() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
-        return try factory.getBitmapPixelFormat();
+    pub fn getBitmapPixelFormat() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        return try _f.getBitmapPixelFormat();
     }
-    pub fn get_BitmapAlphaMode() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
-        return try factory.getBitmapAlphaMode();
+    pub fn getBitmapAlphaMode() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        return try _f.getBitmapAlphaMode();
     }
-    pub fn get_Width() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
-        return try factory.getWidth();
+    pub fn getWidth() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        return try _f.getWidth();
     }
-    pub fn get_Height() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
-        return try factory.getHeight();
+    pub fn getHeight() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        return try _f.getHeight();
     }
-    pub fn get_FrameDuration() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
-        return try factory.getFrameDuration();
+    pub fn getFrameDuration() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionVideoProfilePropertiesStaticsCache.get();
+        return try _f.getFrameDuration();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.KnownPerceptionVideoProfileProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2509,20 +2509,20 @@ pub const PerceptionColorFrameSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*PerceptionColorFrameSourceWatcher {
-        const factory = @This().IPerceptionColorFrameSourceStaticsCache.get();
-        return try factory.CreateWatcher();
+        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        return try _f.CreateWatcher();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(PerceptionColorFrameSource)) {
-        const factory = @This().IPerceptionColorFrameSourceStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionColorFrameSource) {
-        const factory = @This().IPerceptionColorFrameSourceStaticsCache.get();
-        return try factory.FromIdAsync(id);
+        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        return try _f.FromIdAsync(id);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
-        const factory = @This().IPerceptionColorFrameSourceStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().IPerceptionColorFrameSourceStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionColorFrameSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2881,20 +2881,20 @@ pub const PerceptionDepthFrameSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*PerceptionDepthFrameSourceWatcher {
-        const factory = @This().IPerceptionDepthFrameSourceStaticsCache.get();
-        return try factory.CreateWatcher();
+        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        return try _f.CreateWatcher();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(PerceptionDepthFrameSource)) {
-        const factory = @This().IPerceptionDepthFrameSourceStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionDepthFrameSource) {
-        const factory = @This().IPerceptionDepthFrameSourceStaticsCache.get();
-        return try factory.FromIdAsync(id);
+        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        return try _f.FromIdAsync(id);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
-        const factory = @This().IPerceptionDepthFrameSourceStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().IPerceptionDepthFrameSourceStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionDepthFrameSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3225,20 +3225,20 @@ pub const PerceptionInfraredFrameSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWatcher() core.HResult!*PerceptionInfraredFrameSourceWatcher {
-        const factory = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
-        return try factory.CreateWatcher();
+        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        return try _f.CreateWatcher();
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(PerceptionInfraredFrameSource)) {
-        const factory = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(PerceptionInfraredFrameSource) {
-        const factory = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
-        return try factory.FromIdAsync(id);
+        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        return try _f.FromIdAsync(id);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(PerceptionFrameSourceAccessStatus) {
-        const factory = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().IPerceptionInfraredFrameSourceStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.PerceptionInfraredFrameSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -150,24 +150,6 @@ pub const DtdEntity = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -191,6 +173,24 @@ pub const DtdEntity = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.DtdEntity";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -346,24 +346,6 @@ pub const DtdNotation = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -387,6 +369,24 @@ pub const DtdNotation = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.DtdNotation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1683,24 +1683,6 @@ pub const XmlAttribute = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -1724,6 +1706,24 @@ pub const XmlAttribute = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlAttribute";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1925,24 +1925,6 @@ pub const XmlCDataSection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -1966,6 +1948,24 @@ pub const XmlCDataSection = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlCDataSection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2161,24 +2161,6 @@ pub const XmlComment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -2202,6 +2184,24 @@ pub const XmlComment = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlComment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2417,24 +2417,6 @@ pub const XmlDocument = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -2458,6 +2440,24 @@ pub const XmlDocument = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub fn LoadXml(self: *@This(), xml: HSTRING) core.HResult!void {
         var this: ?*IXmlDocumentIO = undefined;
@@ -2497,20 +2497,20 @@ pub const XmlDocument = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IXmlDocument.IID)));
     }
     pub fn LoadFromUriAsync(uri: *Uri) core.HResult!*IAsyncOperation(XmlDocument) {
-        const factory = @This().IXmlDocumentStaticsCache.get();
-        return try factory.LoadFromUriAsync(uri);
+        const _f = @This().IXmlDocumentStaticsCache.get();
+        return try _f.LoadFromUriAsync(uri);
     }
     pub fn LoadFromUriAsyncWithLoadSettings(uri: *Uri, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
-        const factory = @This().IXmlDocumentStaticsCache.get();
-        return try factory.LoadFromUriAsyncWithLoadSettings(uri, loadSettings);
+        const _f = @This().IXmlDocumentStaticsCache.get();
+        return try _f.LoadFromUriAsyncWithLoadSettings(uri, loadSettings);
     }
     pub fn LoadFromFileAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(XmlDocument) {
-        const factory = @This().IXmlDocumentStaticsCache.get();
-        return try factory.LoadFromFileAsync(file);
+        const _f = @This().IXmlDocumentStaticsCache.get();
+        return try _f.LoadFromFileAsync(file);
     }
     pub fn LoadFromFileAsyncWithLoadSettings(file: *IStorageFile, loadSettings: *XmlLoadSettings) core.HResult!*IAsyncOperation(XmlDocument) {
-        const factory = @This().IXmlDocumentStaticsCache.get();
-        return try factory.LoadFromFileAsyncWithLoadSettings(file, loadSettings);
+        const _f = @This().IXmlDocumentStaticsCache.get();
+        return try _f.LoadFromFileAsyncWithLoadSettings(file, loadSettings);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocument";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2660,24 +2660,6 @@ pub const XmlDocumentFragment = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -2701,6 +2683,24 @@ pub const XmlDocumentFragment = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocumentFragment";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2860,24 +2860,6 @@ pub const XmlDocumentType = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -2901,6 +2883,24 @@ pub const XmlDocumentType = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlDocumentType";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3112,24 +3112,6 @@ pub const XmlElement = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -3153,6 +3135,24 @@ pub const XmlElement = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3300,24 +3300,6 @@ pub const XmlEntityReference = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -3341,6 +3323,24 @@ pub const XmlEntityReference = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlEntityReference";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3438,31 +3438,13 @@ pub const XmlNamedNodeMap = extern struct {
         const this: *IXmlNamedNodeMap = @ptrCast(self);
         return try this.SetNamedItemNS(node);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVectorView(IXmlNode) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IXmlNode) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVectorView(IXmlNode) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVectorView(IXmlNode) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IXmlNode) {
         var this: ?*IIterable(IXmlNode) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3484,31 +3466,13 @@ pub const XmlNodeList = extern struct {
         const this: *IXmlNodeList = @ptrCast(self);
         return try this.Item(index);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVectorView(IXmlNode) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVectorView(IXmlNode) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVectorView(IXmlNode) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVectorView(IXmlNode) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVectorView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IXmlNode) {
         var this: ?*IIterable(IXmlNode) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -3672,24 +3636,6 @@ pub const XmlProcessingInstruction = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -3713,6 +3659,24 @@ pub const XmlProcessingInstruction = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlProcessingInstruction";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3912,24 +3876,6 @@ pub const XmlText = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.putPrefix(value);
     }
-    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetXml();
-    }
-    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getInnerText();
-    }
-    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
-        var this: ?*IXmlNodeSerializer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.putInnerText(value);
-    }
     pub fn SelectSingleNode(self: *@This(), xpath: HSTRING) core.HResult!*IXmlNode {
         var this: ?*IXmlNodeSelector = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
@@ -3953,6 +3899,24 @@ pub const XmlText = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSelector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.SelectNodesNS(xpath, namespaces);
+    }
+    pub fn GetXml(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetXml();
+    }
+    pub fn getInnerText(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.getInnerText();
+    }
+    pub fn putInnerText(self: *@This(), value: HSTRING) core.HResult!void {
+        var this: ?*IXmlNodeSerializer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IXmlNodeSerializer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.putInnerText(value);
     }
     pub const NAME: []const u8 = "Windows.Data.Xml.Dom.XmlText";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -46,21 +46,14 @@ const Config = struct {
     digest: []const u8 = "",
 
     pub fn parse(allocator: std.mem.Allocator, path: []const u8) !@This() {
-        const config_slice = std.fs.cwd().readFileAllocOptions(
-            allocator,
-            path,
-            std.math.maxInt(usize),
-            null,
-            .@"1",
-            0
-        ) catch |err| switch (err) {
-            error.FileNotFound => return .{ },
+        const config_slice = std.fs.cwd().readFileAllocOptions(allocator, path, std.math.maxInt(usize), null, .@"1", 0) catch |err| switch (err) {
+            error.FileNotFound => return .{},
             else => return err,
         };
         defer allocator.free(config_slice);
 
         if (config_slice.len == 0) {
-            return .{ };
+            return .{};
         }
 
         return try std.zon.parse.fromSlice(Config, allocator, config_slice[0..], null, .{
@@ -171,12 +164,7 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
     );
     defer allocator.free(uri);
 
-    const release = try fetch(
-        allocator,
-        &client,
-        uri,
-        Release
-    );
+    const release = try fetch(allocator, &client, uri, Release);
     defer release.deinit();
 
     for (release.value.assets) |asset| {
@@ -186,7 +174,7 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
                 print("🎉 Metadata is up to date\n", .{});
                 return;
             }
-            print("[Release] {s}\n", .{ release.value.name });
+            print("[Release] {s}\n", .{release.value.name});
 
             try download(&client, asset.browser_download_url, "Metadata.zip");
             config.current = latest.name;
@@ -253,7 +241,7 @@ fn generateHresultEnum(allocator: std.mem.Allocator) !void {
         try writer.interface.writeAll("pub const HResult = error {\n");
         try writer.interface.writeAll("    NOERROR,\n");
         for (result.value) |hresult| {
-            try writer.interface.print("    {s},\n", .{ hresult[0] });
+            try writer.interface.print("    {s},\n", .{hresult[0]});
         }
         try writer.interface.writeAll("};\n");
 
@@ -313,7 +301,7 @@ pub fn main() !void {
         const namespace = try metadata.parse(allocator, &metaDir, entry.name);
         defer namespace.deinit();
 
-        var ctx = metadata.Context {
+        var ctx = metadata.Context{
             .requirements = metadata.Requirements.init(allocator),
             .definitions = &definitions,
         };
@@ -333,44 +321,53 @@ pub fn main() !void {
         // var writer = &stdout_writer.interface;
 
         for (namespace.types) |*ty| {
+            if (std.mem.eql(u8, namespace.namespace, "Windows.UI.WebUI") and (std.mem.eql(u8, ty.Name, "SuspendingOperation") or std.mem.eql(u8, ty.Name, "SuspendingDeferral"))) {
+                continue;
+            }
+
             switch (ty.Kind) {
                 .Interface => metadata.interface.serialize(allocator, &ctx, ty, writer) catch |e| {
-                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    std.debug.print("{s}\n", .{namespace.namespace});
                     return e;
                 },
                 .Class => metadata.class.serialize(allocator, &ctx, ty, writer) catch |e| {
-                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    std.debug.print("{s}\n", .{namespace.namespace});
                     return e;
                 },
                 .Enum => metadata.enumeration.serialize(ty, writer) catch |e| {
-                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    std.debug.print("{s}\n", .{namespace.namespace});
                     return e;
                 },
                 .Struct => metadata.structure.serialize(allocator, &ctx, ty, writer) catch |e| {
-                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    std.debug.print("{s}\n", .{namespace.namespace});
                     return e;
                 },
                 .Delegate => metadata.delegate.serialize(allocator, &ctx, ty, writer) catch |e| {
-                    std.debug.print("{s}\n", .{ namespace.namespace });
+                    std.debug.print("{s}\n", .{namespace.namespace});
                     return e;
                 },
-                else => std.debug.print("\x1b[31m{f}\x1b[39m\n", .{ ty })
+                else => std.debug.print("\x1b[31m{f}\x1b[39m\n", .{ty}),
             }
         }
 
         var it = ctx.requirements.items.iterator();
         while (it.next()) |requirement| {
+            if (std.mem.eql(u8, namespace.namespace, "Windows.UI.WebUI") and (std.mem.eql(u8, requirement.key_ptr.*, "SuspendingOperation") or std.mem.eql(u8, requirement.key_ptr.*, "SuspendingDeferral"))) {
+                continue;
+            }
+
             if (std.mem.eql(u8, requirement.value_ptr.*, namespace.namespace)) {
                 continue;
             }
 
-            const relative = try relativeNamespace(allocator, namespace.namespace, requirement.value_ptr.*);
-            defer allocator.free(relative);
-            try writer.print("const {s} = @import(\"{s}\").{s};\n", .{ requirement.key_ptr.*, relative, requirement.key_ptr.* });
+            if (try relativeNamespace(allocator, namespace.namespace, requirement.value_ptr.*)) |relative| {
+                defer allocator.free(relative);
+                try writer.print("const {s} = @import(\"{s}\").{s};\n", .{ requirement.key_ptr.*, relative, requirement.key_ptr.* });
+            }
         }
 
         writer.flush() catch unreachable;
-        std.debug.print("{s}\n", .{ namespace.namespace });
+        std.debug.print("{s}\n", .{namespace.namespace});
         try namespaces.append(allocator, try allocator.dupe(u8, namespace.namespace));
     }
 
@@ -414,10 +411,10 @@ fn addNamespaceImports(allocator: std.mem.Allocator, namespaces: []const []const
         var target: []const u8 = undefined;
 
         if (idx) |i| {
-            target = rest[i+1..];
+            target = rest[i + 1 ..];
             idx = std.mem.lastIndexOf(u8, rest[0..i], ".");
             if (idx) |k| {
-                file = rest[k+1..i];
+                file = rest[k + 1 .. i];
                 dir = try std.fmt.allocPrint(allocator, "{s}/{s}", .{ base, rest[0..k] });
             } else {
                 file = rest[0..i];
@@ -433,15 +430,15 @@ fn addNamespaceImports(allocator: std.mem.Allocator, namespaces: []const []const
             const path = try replaceAll(allocator, dir, ".", "/");
             defer allocator.free(path);
             break :blk std.fs.cwd().openDir(path, .{}) catch |err| {
-                std.debug.print("[Error] Failed to open path: {s}\n", .{ path });
-                std.debug.print("  [-] FROM: {s}\n", .{ namespace });
+                std.debug.print("[Error] Failed to open path: {s}\n", .{path});
+                std.debug.print("  [-] FROM: {s}\n", .{namespace});
                 return err;
             };
         };
         defer location.close();
 
         var ns_file = blk: {
-            const target_file = try std.fmt.allocPrint(allocator, "{s}.zig", .{ file });
+            const target_file = try std.fmt.allocPrint(allocator, "{s}.zig", .{file});
             defer allocator.free(target_file);
             break :blk try location.createFile(target_file, .{ .truncate = false });
         };
@@ -452,16 +449,9 @@ fn addNamespaceImports(allocator: std.mem.Allocator, namespaces: []const []const
         try writer.seekTo(try ns_file.getEndPos());
 
         if (std.mem.eql(u8, file, "root")) {
-            try writer.interface.print("pub const {s} = @import(\"./{s}.zig\");\n", .{
-                target,
-                target
-            });
+            try writer.interface.print("pub const {s} = @import(\"./{s}.zig\");\n", .{ target, target });
         } else {
-            try writer.interface.print("pub const {s} = @import(\"./{s}/{s}.zig\");\n", .{
-                target,
-                file,
-                target
-            });
+            try writer.interface.print("pub const {s} = @import(\"./{s}/{s}.zig\");\n", .{ target, file, target });
         }
 
         try writer.interface.flush();
@@ -475,10 +465,10 @@ fn openNamespaceFile(allocator: std.mem.Allocator, namespace: []const u8, base: 
 
     while (parts.next()) |part| {
         if (parts.peek() == null) {
-            const name = try std.fmt.allocPrint(allocator, "{s}.zig", .{ part });
+            const name = try std.fmt.allocPrint(allocator, "{s}.zig", .{part});
             defer allocator.free(name);
 
-            return current.openFile(name, .{ .mode = .write_only }) catch |err| switch(err) {
+            return current.openFile(name, .{ .mode = .write_only }) catch |err| switch (err) {
                 error.FileNotFound => return try current.createFile(name, .{ .truncate = false }),
                 else => return err,
             };
@@ -498,7 +488,7 @@ fn openNamespaceFile(allocator: std.mem.Allocator, namespace: []const u8, base: 
 //
 // Foundation
 // <root>
-fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const u8) ![]const u8 {
+fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const u8) !?[]const u8 {
     var back: usize = 0;
     var previous: []const u8 = "root";
 
@@ -508,6 +498,7 @@ fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const
         back -|= 1;
 
         var buffer: std.io.Writer.Allocating = .init(allocator);
+        defer buffer.deinit();
         const writer = &buffer.writer;
 
         if (back >= 1) {
@@ -521,6 +512,13 @@ fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const
 
         try writer.writeAll("/root.zig");
         return try buffer.toOwnedSlice();
+    }
+
+    if (from.len < to.len and std.mem.eql(u8, from, to[0..from.len])) {
+        const start = std.mem.lastIndexOf(u8, from, ".").?;
+        const replaced = try replaceAll(allocator, to[start + 1 ..], ".", "/");
+        defer allocator.free(replaced);
+        return try std.fmt.allocPrint(allocator, "./{s}.zig", .{replaced});
     }
 
     var f_it = std.mem.splitSequence(u8, from[8..], ".");
@@ -544,6 +542,7 @@ fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const
     }
 
     var buffer: std.io.Writer.Allocating = .init(allocator);
+    defer buffer.deinit();
     const writer = &buffer.writer;
 
     if (back >= 1) {
@@ -559,11 +558,11 @@ fn relativeNamespace(allocator: std.mem.Allocator, from: []const u8, to: []const
         if (std.mem.eql(u8, previous, "Windows")) {
             try writer.writeAll("/root");
         } else {
-            try writer.print("/{s}", .{ previous });
+            try writer.print("/{s}", .{previous});
         }
     } else {
         while (t_it.next()) |p| {
-            try writer.print("/{s}", .{ p });
+            try writer.print("/{s}", .{p});
         }
     }
 
@@ -587,7 +586,7 @@ fn copyDirRecursive(source: std.fs.Dir, dest: std.fs.Dir) !void {
                 defer subDest.close();
                 try copyDirRecursive(subSrc, subDest);
             },
-            else => {}
+            else => {},
         }
     }
 }

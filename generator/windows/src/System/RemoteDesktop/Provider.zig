@@ -281,8 +281,8 @@ pub const RemoteDesktopConnectionInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForLaunchUri(launchUri: *Uri, windowId: WindowId) core.HResult!*RemoteDesktopConnectionInfo {
-        const factory = @This().IRemoteDesktopConnectionInfoStaticsCache.get();
-        return try factory.GetForLaunchUri(launchUri, windowId);
+        const _f = @This().IRemoteDesktopConnectionInfoStaticsCache.get();
+        return try _f.GetForLaunchUri(launchUri, windowId);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopConnectionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -323,12 +323,12 @@ pub const RemoteDesktopConnectionRemoteInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSwitchSupported() core.HResult!bool {
-        const factory = @This().IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
-        return try factory.IsSwitchSupported();
+        const _f = @This().IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
+        return try _f.IsSwitchSupported();
     }
     pub fn GetForLaunchUri(launchUri: *Uri) core.HResult!*RemoteDesktopConnectionRemoteInfo {
-        const factory = @This().IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
-        return try factory.GetForLaunchUri(launchUri);
+        const _f = @This().IRemoteDesktopConnectionRemoteInfoStaticsCache.get();
+        return try _f.GetForLaunchUri(launchUri);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopConnectionRemoteInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -357,8 +357,8 @@ pub const RemoteDesktopInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(id: HSTRING, displayName: HSTRING) core.HResult!*RemoteDesktopInfo {
-        const factory = @This().IRemoteDesktopInfoFactoryCache.get();
-        return try factory.CreateInstance(id, displayName);
+        const _f = @This().IRemoteDesktopInfoFactoryCache.get();
+        return try _f.CreateInstance(id, displayName);
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -379,13 +379,13 @@ pub const RemoteDesktopRegistrar = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DesktopInfos() core.HResult!*IVector(RemoteDesktopInfo) {
-        const factory = @This().IRemoteDesktopRegistrarStaticsCache.get();
-        return try factory.getDesktopInfos();
+    pub fn getDesktopInfos() core.HResult!*IVector(RemoteDesktopInfo) {
+        const _f = @This().IRemoteDesktopRegistrarStaticsCache.get();
+        return try _f.getDesktopInfos();
     }
     pub fn IsSwitchToLocalSessionEnabled() core.HResult!bool {
-        const factory = @This().IRemoteDesktopRegistrarStaticsCache.get();
-        return try factory.IsSwitchToLocalSessionEnabled();
+        const _f = @This().IRemoteDesktopRegistrarStaticsCache.get();
+        return try _f.IsSwitchToLocalSessionEnabled();
     }
     pub const NAME: []const u8 = "Windows.System.RemoteDesktop.Provider.RemoteDesktopRegistrar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

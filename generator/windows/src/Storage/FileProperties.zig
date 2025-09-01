@@ -92,16 +92,16 @@ pub const GeotagHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetGeotagAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(Geopoint) {
-        const factory = @This().IGeotagHelperStaticsCache.get();
-        return try factory.GetGeotagAsync(file);
+        const _f = @This().IGeotagHelperStaticsCache.get();
+        return try _f.GetGeotagAsync(file);
     }
     pub fn SetGeotagFromGeolocatorAsync(file: *IStorageFile, geolocator: *Geolocator) core.HResult!*IAsyncAction {
-        const factory = @This().IGeotagHelperStaticsCache.get();
-        return try factory.SetGeotagFromGeolocatorAsync(file, geolocator);
+        const _f = @This().IGeotagHelperStaticsCache.get();
+        return try _f.SetGeotagFromGeolocatorAsync(file, geolocator);
     }
     pub fn SetGeotagAsync(file: *IStorageFile, geopoint: *Geopoint) core.HResult!*IAsyncAction {
-        const factory = @This().IGeotagHelperStaticsCache.get();
-        return try factory.SetGeotagAsync(file, geopoint);
+        const _f = @This().IGeotagHelperStaticsCache.get();
+        return try _f.SetGeotagAsync(file, geopoint);
     }
     pub const NAME: []const u8 = "Windows.Storage.FileProperties.GeotagHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -585,9 +585,9 @@ pub const IStorageItemExtraProperties = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn SavePropertiesAsync(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
+    pub fn SavePropertiesAsyncWithPropertiesToSave(self: *@This(), propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable))) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.SavePropertiesAsync(@ptrCast(self), propertiesToSave, &_r);
+        const _c = self.vtable.SavePropertiesAsyncWithPropertiesToSave(@ptrCast(self), propertiesToSave, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -610,7 +610,7 @@ pub const IStorageItemExtraProperties = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RetrievePropertiesAsync: *const fn(self: *anyopaque, propertiesToRetrieve: *IIterable(HSTRING), _r: **IAsyncOperation(IMap(HSTRING,IInspectable))) callconv(.winapi) HRESULT,
-        SavePropertiesAsync: *const fn(self: *anyopaque, propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        SavePropertiesAsyncWithPropertiesToSave: *const fn(self: *anyopaque, propertiesToSave: *IIterable(IKeyValuePair(HSTRING,IInspectable)), _r: **IAsyncAction) callconv(.winapi) HRESULT,
         SavePropertiesAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
 };
@@ -1094,12 +1094,6 @@ pub const StorageItemContentProperties = extern struct {
 };
 pub const StorageItemThumbnail = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
-        var this: ?*IContentTypeProvider = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.getContentType();
-    }
     pub fn getSize(self: *@This()) core.HResult!u64 {
         var this: ?*IRandomAccessStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IRandomAccessStream.IID, @ptrCast(&this));
@@ -1154,6 +1148,18 @@ pub const StorageItemThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getCanWrite();
     }
+    pub fn Close(self: *@This()) core.HResult!void {
+        var this: ?*IClosable = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.Close();
+    }
+    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
+        var this: ?*IInputStream = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.ReadAsync(buffer, count, options);
+    }
     pub fn WriteAsync(self: *@This(), buffer: *IBuffer) core.HResult!*IAsyncOperationWithProgress(u32,u32) {
         var this: ?*IOutputStream = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IOutputStream.IID, @ptrCast(&this));
@@ -1166,17 +1172,11 @@ pub const StorageItemThumbnail = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FlushAsync();
     }
-    pub fn Close(self: *@This()) core.HResult!void {
-        var this: ?*IClosable = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IClosable.IID, @ptrCast(&this));
+    pub fn getContentType(self: *@This()) core.HResult!HSTRING {
+        var this: ?*IContentTypeProvider = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IContentTypeProvider.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Close();
-    }
-    pub fn ReadAsync(self: *@This(), buffer: *IBuffer, count: u32, options: InputStreamOptions) core.HResult!*IAsyncOperationWithProgress(IBuffer,u32) {
-        var this: ?*IInputStream = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInputStream.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReadAsync(buffer, count, options);
+        return try this.?.getContentType();
     }
     pub fn getOriginalWidth(self: *@This()) core.HResult!u32 {
         var this: ?*IThumbnailProperties = undefined;

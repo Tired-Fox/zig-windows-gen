@@ -48,8 +48,8 @@ pub const DisplayAdapter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromId(id: DisplayAdapterId) core.HResult!*DisplayAdapter {
-        const factory = @This().IDisplayAdapterStaticsCache.get();
-        return try factory.FromId(id);
+        const _f = @This().IDisplayAdapterStaticsCache.get();
+        return try _f.FromId(id);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayAdapter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -226,8 +226,8 @@ pub const DisplayManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(options: DisplayManagerOptions) core.HResult!*DisplayManager {
-        const factory = @This().IDisplayManagerStaticsCache.get();
-        return try factory.Create(options);
+        const _f = @This().IDisplayManagerStaticsCache.get();
+        return try _f.Create(options);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -454,12 +454,12 @@ pub const DisplayMuxDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IDisplayMuxDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IDisplayMuxDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceInterfaceId: HSTRING) core.HResult!*IAsyncOperation(DisplayMuxDevice) {
-        const factory = @This().IDisplayMuxDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceInterfaceId);
+        const _f = @This().IDisplayMuxDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceInterfaceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayMuxDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -646,12 +646,12 @@ pub const DisplayPrimaryDescription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(width: u32, height: u32, pixelFormat: DirectXPixelFormat, colorSpace: DirectXColorSpace, isStereo: bool, multisampleDescription: Direct3DMultisampleDescription) core.HResult!*DisplayPrimaryDescription {
-        const factory = @This().IDisplayPrimaryDescriptionFactoryCache.get();
-        return try factory.CreateInstance(width, height, pixelFormat, colorSpace, isStereo, multisampleDescription);
+        const _f = @This().IDisplayPrimaryDescriptionFactoryCache.get();
+        return try _f.CreateInstance(width, height, pixelFormat, colorSpace, isStereo, multisampleDescription);
     }
     pub fn CreateWithProperties(extraProperties: *IIterable(IKeyValuePair(Guid,IInspectable)), width: u32, height: u32, pixelFormat: DirectXPixelFormat, colorSpace: DirectXColorSpace, isStereo: bool, multisampleDescription: Direct3DMultisampleDescription) core.HResult!*DisplayPrimaryDescription {
-        const factory = @This().IDisplayPrimaryDescriptionStaticsCache.get();
-        return try factory.CreateWithProperties(extraProperties, width, height, pixelFormat, colorSpace, isStereo, multisampleDescription);
+        const _f = @This().IDisplayPrimaryDescriptionStaticsCache.get();
+        return try _f.CreateWithProperties(extraProperties, width, height, pixelFormat, colorSpace, isStereo, multisampleDescription);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayPrimaryDescription";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1029,12 +1029,12 @@ pub const DisplayWireFormat = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(pixelEncoding: DisplayWireFormatPixelEncoding, bitsPerChannel: i32, colorSpace: DisplayWireFormatColorSpace, eotf: DisplayWireFormatEotf, hdrMetadata: DisplayWireFormatHdrMetadata) core.HResult!*DisplayWireFormat {
-        const factory = @This().IDisplayWireFormatFactoryCache.get();
-        return try factory.CreateInstance(pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata);
+        const _f = @This().IDisplayWireFormatFactoryCache.get();
+        return try _f.CreateInstance(pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata);
     }
     pub fn CreateWithProperties(extraProperties: *IIterable(IKeyValuePair(Guid,IInspectable)), pixelEncoding: DisplayWireFormatPixelEncoding, bitsPerChannel: i32, colorSpace: DisplayWireFormatColorSpace, eotf: DisplayWireFormatEotf, hdrMetadata: DisplayWireFormatHdrMetadata) core.HResult!*DisplayWireFormat {
-        const factory = @This().IDisplayWireFormatStaticsCache.get();
-        return try factory.CreateWithProperties(extraProperties, pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata);
+        const _f = @This().IDisplayWireFormatStaticsCache.get();
+        return try _f.CreateWithProperties(extraProperties, pixelEncoding, bitsPerChannel, colorSpace, eotf, hdrMetadata);
     }
     pub const NAME: []const u8 = "Windows.Devices.Display.Core.DisplayWireFormat";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

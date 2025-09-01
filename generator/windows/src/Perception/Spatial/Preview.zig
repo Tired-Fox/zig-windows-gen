@@ -49,9 +49,9 @@ pub const ISpatialGraphInteropPreviewStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateCoordinateSystemForNodeWithRelativeOrientation(self: *@This(), nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
+    pub fn CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation(self: *@This(), nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
         var _r: *SpatialCoordinateSystem = undefined;
-        const _c = self.vtable.CreateCoordinateSystemForNodeWithRelativeOrientation(@ptrCast(self), nodeId, relativePosition, relativeOrientation, &_r);
+        const _c = self.vtable.CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation(@ptrCast(self), nodeId, relativePosition, relativeOrientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -75,7 +75,7 @@ pub const ISpatialGraphInteropPreviewStatics = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateCoordinateSystemForNode: *const fn(self: *anyopaque, nodeId: *Guid, _r: **SpatialCoordinateSystem) callconv(.winapi) HRESULT,
         CreateCoordinateSystemForNodeWithRelativePosition: *const fn(self: *anyopaque, nodeId: *Guid, relativePosition: Vector3, _r: **SpatialCoordinateSystem) callconv(.winapi) HRESULT,
-        CreateCoordinateSystemForNodeWithRelativeOrientation: *const fn(self: *anyopaque, nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialCoordinateSystem) callconv(.winapi) HRESULT,
+        CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation: *const fn(self: *anyopaque, nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialCoordinateSystem) callconv(.winapi) HRESULT,
         CreateLocatorForNode: *const fn(self: *anyopaque, nodeId: *Guid, _r: **SpatialLocator) callconv(.winapi) HRESULT,
     };
 };
@@ -93,9 +93,9 @@ pub const ISpatialGraphInteropPreviewStatics2 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryCreateFrameOfReferenceWithRelativeOrientation(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
+    pub fn TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
         var _r: *SpatialGraphInteropFrameOfReferencePreview = undefined;
-        const _c = self.vtable.TryCreateFrameOfReferenceWithRelativeOrientation(@ptrCast(self), coordinateSystem, relativePosition, relativeOrientation, &_r);
+        const _c = self.vtable.TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation(@ptrCast(self), coordinateSystem, relativePosition, relativeOrientation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -113,7 +113,7 @@ pub const ISpatialGraphInteropPreviewStatics2 = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         TryCreateFrameOfReference: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, _r: **SpatialGraphInteropFrameOfReferencePreview) callconv(.winapi) HRESULT,
         TryCreateFrameOfReferenceWithRelativePosition: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, _r: **SpatialGraphInteropFrameOfReferencePreview) callconv(.winapi) HRESULT,
-        TryCreateFrameOfReferenceWithRelativeOrientation: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialGraphInteropFrameOfReferencePreview) callconv(.winapi) HRESULT,
+        TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion, _r: **SpatialGraphInteropFrameOfReferencePreview) callconv(.winapi) HRESULT,
     };
 };
 pub const SpatialGraphInteropFrameOfReferencePreview = extern struct {
@@ -142,32 +142,32 @@ pub const SpatialGraphInteropPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryCreateFrameOfReference(coordinateSystem: *SpatialCoordinateSystem) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
-        const factory = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
-        return try factory.TryCreateFrameOfReference(coordinateSystem);
+        const _f = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
+        return try _f.TryCreateFrameOfReference(coordinateSystem);
     }
     pub fn TryCreateFrameOfReferenceWithRelativePosition(coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
-        const factory = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
-        return try factory.TryCreateFrameOfReferenceWithRelativePosition(coordinateSystem, relativePosition);
+        const _f = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
+        return try _f.TryCreateFrameOfReferenceWithRelativePosition(coordinateSystem, relativePosition);
     }
-    pub fn TryCreateFrameOfReferenceWithRelativePositionWithRelativeOrientation(coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
-        const factory = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
-        return try factory.TryCreateFrameOfReferenceWithRelativePositionWithRelativeOrientation(coordinateSystem, relativePosition, relativeOrientation);
+    pub fn TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation(coordinateSystem: *SpatialCoordinateSystem, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialGraphInteropFrameOfReferencePreview {
+        const _f = @This().ISpatialGraphInteropPreviewStatics2Cache.get();
+        return try _f.TryCreateFrameOfReferenceWithRelativePositionAndRelativeOrientation(coordinateSystem, relativePosition, relativeOrientation);
     }
     pub fn CreateCoordinateSystemForNode(nodeId: *Guid) core.HResult!*SpatialCoordinateSystem {
-        const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
-        return try factory.CreateCoordinateSystemForNode(nodeId);
+        const _f = @This().ISpatialGraphInteropPreviewStaticsCache.get();
+        return try _f.CreateCoordinateSystemForNode(nodeId);
     }
     pub fn CreateCoordinateSystemForNodeWithRelativePosition(nodeId: *Guid, relativePosition: Vector3) core.HResult!*SpatialCoordinateSystem {
-        const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
-        return try factory.CreateCoordinateSystemForNodeWithRelativePosition(nodeId, relativePosition);
+        const _f = @This().ISpatialGraphInteropPreviewStaticsCache.get();
+        return try _f.CreateCoordinateSystemForNodeWithRelativePosition(nodeId, relativePosition);
     }
-    pub fn CreateCoordinateSystemForNodeWithRelativePositionWithRelativeOrientation(nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
-        const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
-        return try factory.CreateCoordinateSystemForNodeWithRelativePositionWithRelativeOrientation(nodeId, relativePosition, relativeOrientation);
+    pub fn CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation(nodeId: *Guid, relativePosition: Vector3, relativeOrientation: Quaternion) core.HResult!*SpatialCoordinateSystem {
+        const _f = @This().ISpatialGraphInteropPreviewStaticsCache.get();
+        return try _f.CreateCoordinateSystemForNodeWithRelativePositionAndRelativeOrientation(nodeId, relativePosition, relativeOrientation);
     }
     pub fn CreateLocatorForNode(nodeId: *Guid) core.HResult!*SpatialLocator {
-        const factory = @This().ISpatialGraphInteropPreviewStaticsCache.get();
-        return try factory.CreateLocatorForNode(nodeId);
+        const _f = @This().ISpatialGraphInteropPreviewStaticsCache.get();
+        return try _f.CreateLocatorForNode(nodeId);
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Preview.SpatialGraphInteropPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

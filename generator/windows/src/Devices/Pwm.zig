@@ -110,9 +110,9 @@ pub const IPwmControllerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), friendlyName, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithFriendlyName(@ptrCast(self), friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -135,7 +135,7 @@ pub const IPwmControllerStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, _r: **IAsyncOperation(PwmController)) callconv(.winapi) HRESULT,
     };
 };
@@ -233,24 +233,24 @@ pub const PwmController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IPwmControllerStatics3Cache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IPwmControllerStatics3Cache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IPwmControllerStatics3Cache.get();
-        return try factory.GetDeviceSelectorWithFriendlyName(friendlyName);
+        const _f = @This().IPwmControllerStatics3Cache.get();
+        return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(PwmController) {
-        const factory = @This().IPwmControllerStatics3Cache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IPwmControllerStatics3Cache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(PwmController) {
-        const factory = @This().IPwmControllerStatics2Cache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IPwmControllerStatics2Cache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetControllersAsync(provider: *IPwmProvider) core.HResult!*IAsyncOperation(IVectorView(PwmController)) {
-        const factory = @This().IPwmControllerStaticsCache.get();
-        return try factory.GetControllersAsync(provider);
+        const _f = @This().IPwmControllerStaticsCache.get();
+        return try _f.GetControllersAsync(provider);
     }
     pub const NAME: []const u8 = "Windows.Devices.Pwm.PwmController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -320,7 +320,7 @@ const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const FactoryCache = @import("../core.zig").FactoryCache;
-const IPwmProvider = @import("./Provider.zig").IPwmProvider;
+const IPwmProvider = @import("./Pwm/Provider.zig").IPwmProvider;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const IClosable = @import("../Foundation.zig").IClosable;
 pub const Provider = @import("./Pwm/Provider.zig");

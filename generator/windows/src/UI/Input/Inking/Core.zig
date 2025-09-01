@@ -24,8 +24,8 @@ pub const CoreIncrementalInkStroke = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(drawingAttributes: *InkDrawingAttributes, pointTransform: Matrix3x2) core.HResult!*CoreIncrementalInkStroke {
-        const factory = @This().ICoreIncrementalInkStrokeFactoryCache.get();
-        return try factory.Create(drawingAttributes, pointTransform);
+        const _f = @This().ICoreIncrementalInkStrokeFactoryCache.get();
+        return try _f.Create(drawingAttributes, pointTransform);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Core.CoreIncrementalInkStroke";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -112,8 +112,8 @@ pub const CoreInkIndependentInputSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*CoreInkIndependentInputSource {
-        const factory = @This().ICoreInkIndependentInputSourceStaticsCache.get();
-        return try factory.Create(inkPresenter);
+        const _f = @This().ICoreInkIndependentInputSourceStaticsCache.get();
+        return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Core.CoreInkIndependentInputSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -229,8 +229,8 @@ pub const CoreWetStrokeUpdateSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*CoreWetStrokeUpdateSource {
-        const factory = @This().ICoreWetStrokeUpdateSourceStaticsCache.get();
-        return try factory.Create(inkPresenter);
+        const _f = @This().ICoreWetStrokeUpdateSourceStaticsCache.get();
+        return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.Core.CoreWetStrokeUpdateSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -574,12 +574,12 @@ pub const ImageScanner = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(ImageScanner) {
-        const factory = @This().IImageScannerStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IImageScannerStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IImageScannerStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IImageScannerStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Devices.Scanners.ImageScanner";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -368,9 +368,9 @@ pub const IVoiceCommandResponseStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateResponseForPromptWithRepeatMessageWithContentTiles(self: *@This(), message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
+    pub fn CreateResponseForPromptWithContentTiles(self: *@This(), message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
         var _r: *VoiceCommandResponse = undefined;
-        const _c = self.vtable.CreateResponseForPromptWithRepeatMessageWithContentTiles(@ptrCast(self), message, repeatMessage, contentTiles, &_r);
+        const _c = self.vtable.CreateResponseForPromptWithContentTiles(@ptrCast(self), message, repeatMessage, contentTiles, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -390,7 +390,7 @@ pub const IVoiceCommandResponseStatics = extern struct {
         CreateResponse: *const fn(self: *anyopaque, userMessage: *VoiceCommandUserMessage, _r: **VoiceCommandResponse) callconv(.winapi) HRESULT,
         CreateResponseWithContentTiles: *const fn(self: *anyopaque, message: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile), _r: **VoiceCommandResponse) callconv(.winapi) HRESULT,
         CreateResponseForPrompt: *const fn(self: *anyopaque, message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, _r: **VoiceCommandResponse) callconv(.winapi) HRESULT,
-        CreateResponseForPromptWithRepeatMessageWithContentTiles: *const fn(self: *anyopaque, message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile), _r: **VoiceCommandResponse) callconv(.winapi) HRESULT,
+        CreateResponseForPromptWithContentTiles: *const fn(self: *anyopaque, message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile), _r: **VoiceCommandResponse) callconv(.winapi) HRESULT,
     };
 };
 pub const IVoiceCommandServiceConnection = extern struct {
@@ -709,12 +709,12 @@ pub const VoiceCommandDefinitionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn InstallCommandDefinitionsFromStorageFileAsync(file: *StorageFile) core.HResult!*IAsyncAction {
-        const factory = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
-        return try factory.InstallCommandDefinitionsFromStorageFileAsync(file);
+        const _f = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
+        return try _f.InstallCommandDefinitionsFromStorageFileAsync(file);
     }
-    pub fn get_InstalledCommandDefinitions() core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
-        const factory = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
-        return try factory.getInstalledCommandDefinitions();
+    pub fn getInstalledCommandDefinitions() core.HResult!*IMapView(HSTRING,VoiceCommandDefinition) {
+        const _f = @This().IVoiceCommandDefinitionManagerStaticsCache.get();
+        return try _f.getInstalledCommandDefinitions();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -765,25 +765,25 @@ pub const VoiceCommandResponse = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MaxSupportedVoiceCommandContentTiles() core.HResult!u32 {
-        const factory = @This().IVoiceCommandResponseStaticsCache.get();
-        return try factory.getMaxSupportedVoiceCommandContentTiles();
+    pub fn getMaxSupportedVoiceCommandContentTiles() core.HResult!u32 {
+        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        return try _f.getMaxSupportedVoiceCommandContentTiles();
     }
     pub fn CreateResponse(userMessage: *VoiceCommandUserMessage) core.HResult!*VoiceCommandResponse {
-        const factory = @This().IVoiceCommandResponseStaticsCache.get();
-        return try factory.CreateResponse(userMessage);
+        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        return try _f.CreateResponse(userMessage);
     }
     pub fn CreateResponseWithContentTiles(message: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
-        const factory = @This().IVoiceCommandResponseStaticsCache.get();
-        return try factory.CreateResponseWithContentTiles(message, contentTiles);
+        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        return try _f.CreateResponseWithContentTiles(message, contentTiles);
     }
     pub fn CreateResponseForPrompt(message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage) core.HResult!*VoiceCommandResponse {
-        const factory = @This().IVoiceCommandResponseStaticsCache.get();
-        return try factory.CreateResponseForPrompt(message, repeatMessage);
+        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        return try _f.CreateResponseForPrompt(message, repeatMessage);
     }
     pub fn CreateResponseForPromptWithContentTiles(message: *VoiceCommandUserMessage, repeatMessage: *VoiceCommandUserMessage, contentTiles: *IIterable(VoiceCommandContentTile)) core.HResult!*VoiceCommandResponse {
-        const factory = @This().IVoiceCommandResponseStaticsCache.get();
-        return try factory.CreateResponseForPromptWithContentTiles(message, repeatMessage, contentTiles);
+        const _f = @This().IVoiceCommandResponseStaticsCache.get();
+        return try _f.CreateResponseForPromptWithContentTiles(message, repeatMessage, contentTiles);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandResponse";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -838,8 +838,8 @@ pub const VoiceCommandServiceConnection = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromAppServiceTriggerDetails(triggerDetails: *AppServiceTriggerDetails) core.HResult!*VoiceCommandServiceConnection {
-        const factory = @This().IVoiceCommandServiceConnectionStaticsCache.get();
-        return try factory.FromAppServiceTriggerDetails(triggerDetails);
+        const _f = @This().IVoiceCommandServiceConnectionStaticsCache.get();
+        return try _f.FromAppServiceTriggerDetails(triggerDetails);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.VoiceCommands.VoiceCommandServiceConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

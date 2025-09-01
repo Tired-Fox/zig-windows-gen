@@ -3,89 +3,89 @@ pub const AsymmetricAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_EcdsaSha256() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStatics2Cache.get();
-        return try factory.getEcdsaSha256();
+    pub fn getEcdsaSha256() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStatics2Cache.get();
+        return try _f.getEcdsaSha256();
     }
-    pub fn get_EcdsaSha384() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStatics2Cache.get();
-        return try factory.getEcdsaSha384();
+    pub fn getEcdsaSha384() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStatics2Cache.get();
+        return try _f.getEcdsaSha384();
     }
-    pub fn get_EcdsaSha512() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStatics2Cache.get();
-        return try factory.getEcdsaSha512();
+    pub fn getEcdsaSha512() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStatics2Cache.get();
+        return try _f.getEcdsaSha512();
     }
-    pub fn get_RsaPkcs1() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaPkcs1();
+    pub fn getRsaPkcs1() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaPkcs1();
     }
-    pub fn get_RsaOaepSha1() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaOaepSha1();
+    pub fn getRsaOaepSha1() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaOaepSha1();
     }
-    pub fn get_RsaOaepSha256() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaOaepSha256();
+    pub fn getRsaOaepSha256() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaOaepSha256();
     }
-    pub fn get_RsaOaepSha384() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaOaepSha384();
+    pub fn getRsaOaepSha384() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaOaepSha384();
     }
-    pub fn get_RsaOaepSha512() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaOaepSha512();
+    pub fn getRsaOaepSha512() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaOaepSha512();
     }
-    pub fn get_EcdsaP256Sha256() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdsaP256Sha256();
+    pub fn getEcdsaP256Sha256() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdsaP256Sha256();
     }
-    pub fn get_EcdsaP384Sha384() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdsaP384Sha384();
+    pub fn getEcdsaP384Sha384() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdsaP384Sha384();
     }
-    pub fn get_EcdsaP521Sha512() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getEcdsaP521Sha512();
+    pub fn getEcdsaP521Sha512() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getEcdsaP521Sha512();
     }
-    pub fn get_DsaSha1() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getDsaSha1();
+    pub fn getDsaSha1() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getDsaSha1();
     }
-    pub fn get_DsaSha256() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getDsaSha256();
+    pub fn getDsaSha256() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getDsaSha256();
     }
-    pub fn get_RsaSignPkcs1Sha1() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPkcs1Sha1();
+    pub fn getRsaSignPkcs1Sha1() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPkcs1Sha1();
     }
-    pub fn get_RsaSignPkcs1Sha256() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPkcs1Sha256();
+    pub fn getRsaSignPkcs1Sha256() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPkcs1Sha256();
     }
-    pub fn get_RsaSignPkcs1Sha384() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPkcs1Sha384();
+    pub fn getRsaSignPkcs1Sha384() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPkcs1Sha384();
     }
-    pub fn get_RsaSignPkcs1Sha512() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPkcs1Sha512();
+    pub fn getRsaSignPkcs1Sha512() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPkcs1Sha512();
     }
-    pub fn get_RsaSignPssSha1() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPssSha1();
+    pub fn getRsaSignPssSha1() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPssSha1();
     }
-    pub fn get_RsaSignPssSha256() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPssSha256();
+    pub fn getRsaSignPssSha256() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPssSha256();
     }
-    pub fn get_RsaSignPssSha384() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPssSha384();
+    pub fn getRsaSignPssSha384() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPssSha384();
     }
-    pub fn get_RsaSignPssSha512() core.HResult!HSTRING {
-        const factory = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRsaSignPssSha512();
+    pub fn getRsaSignPssSha512() core.HResult!HSTRING {
+        const _f = @This().IAsymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRsaSignPssSha512();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.AsymmetricAlgorithmNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -134,8 +134,8 @@ pub const AsymmetricKeyAlgorithmProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*AsymmetricKeyAlgorithmProvider {
-        const factory = @This().IAsymmetricKeyAlgorithmProviderStaticsCache.get();
-        return try factory.OpenAlgorithm(algorithm);
+        const _f = @This().IAsymmetricKeyAlgorithmProviderStaticsCache.get();
+        return try _f.OpenAlgorithm(algorithm);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.AsymmetricKeyAlgorithmProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -154,52 +154,52 @@ pub const CryptographicEngine = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Encrypt(key: *CryptographicKey, data: *IBuffer, iv: *IBuffer) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.Encrypt(key, data, iv);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.Encrypt(key, data, iv);
     }
     pub fn Decrypt(key: *CryptographicKey, data: *IBuffer, iv: *IBuffer) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.Decrypt(key, data, iv);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.Decrypt(key, data, iv);
     }
     pub fn EncryptAndAuthenticate(key: *CryptographicKey, data: *IBuffer, nonce: *IBuffer, authenticatedData: *IBuffer) core.HResult!*EncryptedAndAuthenticatedData {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.EncryptAndAuthenticate(key, data, nonce, authenticatedData);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.EncryptAndAuthenticate(key, data, nonce, authenticatedData);
     }
     pub fn DecryptAndAuthenticate(key: *CryptographicKey, data: *IBuffer, nonce: *IBuffer, authenticationTag: *IBuffer, authenticatedData: *IBuffer) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.DecryptAndAuthenticate(key, data, nonce, authenticationTag, authenticatedData);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.DecryptAndAuthenticate(key, data, nonce, authenticationTag, authenticatedData);
     }
     pub fn Sign(key: *CryptographicKey, data: *IBuffer) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.Sign(key, data);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.Sign(key, data);
     }
     pub fn VerifySignature(key: *CryptographicKey, data: *IBuffer, signature: *IBuffer) core.HResult!bool {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.VerifySignature(key, data, signature);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.VerifySignature(key, data, signature);
     }
     pub fn DeriveKeyMaterial(key: *CryptographicKey, parameters: *KeyDerivationParameters, desiredKeySize: u32) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicEngineStaticsCache.get();
-        return try factory.DeriveKeyMaterial(key, parameters, desiredKeySize);
+        const _f = @This().ICryptographicEngineStaticsCache.get();
+        return try _f.DeriveKeyMaterial(key, parameters, desiredKeySize);
     }
     pub fn SignHashedData(key: *CryptographicKey, data: *IBuffer) core.HResult!*IBuffer {
-        const factory = @This().ICryptographicEngineStatics2Cache.get();
-        return try factory.SignHashedData(key, data);
+        const _f = @This().ICryptographicEngineStatics2Cache.get();
+        return try _f.SignHashedData(key, data);
     }
     pub fn VerifySignatureWithHashInput(key: *CryptographicKey, data: *IBuffer, signature: *IBuffer) core.HResult!bool {
-        const factory = @This().ICryptographicEngineStatics2Cache.get();
-        return try factory.VerifySignatureWithHashInput(key, data, signature);
+        const _f = @This().ICryptographicEngineStatics2Cache.get();
+        return try _f.VerifySignatureWithHashInput(key, data, signature);
     }
     pub fn DecryptAsync(key: *CryptographicKey, data: *IBuffer, iv: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
-        const factory = @This().ICryptographicEngineStatics2Cache.get();
-        return try factory.DecryptAsync(key, data, iv);
+        const _f = @This().ICryptographicEngineStatics2Cache.get();
+        return try _f.DecryptAsync(key, data, iv);
     }
     pub fn SignAsync(key: *CryptographicKey, data: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
-        const factory = @This().ICryptographicEngineStatics2Cache.get();
-        return try factory.SignAsync(key, data);
+        const _f = @This().ICryptographicEngineStatics2Cache.get();
+        return try _f.SignAsync(key, data);
     }
     pub fn SignHashedDataAsync(key: *CryptographicKey, data: *IBuffer) core.HResult!*IAsyncOperation(IBuffer) {
-        const factory = @This().ICryptographicEngineStatics2Cache.get();
-        return try factory.SignHashedDataAsync(key, data);
+        const _f = @This().ICryptographicEngineStatics2Cache.get();
+        return try _f.SignHashedDataAsync(key, data);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.CryptographicEngine";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -275,189 +275,189 @@ pub const EccCurveNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_BrainpoolP160r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP160r1();
+    pub fn getBrainpoolP160r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP160r1();
     }
-    pub fn get_BrainpoolP160t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP160t1();
+    pub fn getBrainpoolP160t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP160t1();
     }
-    pub fn get_BrainpoolP192r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP192r1();
+    pub fn getBrainpoolP192r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP192r1();
     }
-    pub fn get_BrainpoolP192t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP192t1();
+    pub fn getBrainpoolP192t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP192t1();
     }
-    pub fn get_BrainpoolP224r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP224r1();
+    pub fn getBrainpoolP224r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP224r1();
     }
-    pub fn get_BrainpoolP224t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP224t1();
+    pub fn getBrainpoolP224t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP224t1();
     }
-    pub fn get_BrainpoolP256r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP256r1();
+    pub fn getBrainpoolP256r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP256r1();
     }
-    pub fn get_BrainpoolP256t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP256t1();
+    pub fn getBrainpoolP256t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP256t1();
     }
-    pub fn get_BrainpoolP320r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP320r1();
+    pub fn getBrainpoolP320r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP320r1();
     }
-    pub fn get_BrainpoolP320t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP320t1();
+    pub fn getBrainpoolP320t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP320t1();
     }
-    pub fn get_BrainpoolP384r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP384r1();
+    pub fn getBrainpoolP384r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP384r1();
     }
-    pub fn get_BrainpoolP384t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP384t1();
+    pub fn getBrainpoolP384t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP384t1();
     }
-    pub fn get_BrainpoolP512r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP512r1();
+    pub fn getBrainpoolP512r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP512r1();
     }
-    pub fn get_BrainpoolP512t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getBrainpoolP512t1();
+    pub fn getBrainpoolP512t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getBrainpoolP512t1();
     }
-    pub fn get_Curve25519() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getCurve25519();
+    pub fn getCurve25519() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getCurve25519();
     }
-    pub fn get_Ec192wapi() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getEc192wapi();
+    pub fn getEc192wapi() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getEc192wapi();
     }
-    pub fn get_NistP192() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNistP192();
+    pub fn getNistP192() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNistP192();
     }
-    pub fn get_NistP224() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNistP224();
+    pub fn getNistP224() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNistP224();
     }
-    pub fn get_NistP256() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNistP256();
+    pub fn getNistP256() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNistP256();
     }
-    pub fn get_NistP384() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNistP384();
+    pub fn getNistP384() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNistP384();
     }
-    pub fn get_NistP521() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNistP521();
+    pub fn getNistP521() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNistP521();
     }
-    pub fn get_NumsP256t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNumsP256t1();
+    pub fn getNumsP256t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNumsP256t1();
     }
-    pub fn get_NumsP384t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNumsP384t1();
+    pub fn getNumsP384t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNumsP384t1();
     }
-    pub fn get_NumsP512t1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getNumsP512t1();
+    pub fn getNumsP512t1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getNumsP512t1();
     }
-    pub fn get_SecP160k1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP160k1();
+    pub fn getSecP160k1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP160k1();
     }
-    pub fn get_SecP160r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP160r1();
+    pub fn getSecP160r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP160r1();
     }
-    pub fn get_SecP160r2() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP160r2();
+    pub fn getSecP160r2() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP160r2();
     }
-    pub fn get_SecP192k1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP192k1();
+    pub fn getSecP192k1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP192k1();
     }
-    pub fn get_SecP192r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP192r1();
+    pub fn getSecP192r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP192r1();
     }
-    pub fn get_SecP224k1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP224k1();
+    pub fn getSecP224k1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP224k1();
     }
-    pub fn get_SecP224r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP224r1();
+    pub fn getSecP224r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP224r1();
     }
-    pub fn get_SecP256k1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP256k1();
+    pub fn getSecP256k1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP256k1();
     }
-    pub fn get_SecP256r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP256r1();
+    pub fn getSecP256r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP256r1();
     }
-    pub fn get_SecP384r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP384r1();
+    pub fn getSecP384r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP384r1();
     }
-    pub fn get_SecP521r1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getSecP521r1();
+    pub fn getSecP521r1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getSecP521r1();
     }
-    pub fn get_Wtls7() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getWtls7();
+    pub fn getWtls7() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getWtls7();
     }
-    pub fn get_Wtls9() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getWtls9();
+    pub fn getWtls9() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getWtls9();
     }
-    pub fn get_Wtls12() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getWtls12();
+    pub fn getWtls12() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getWtls12();
     }
-    pub fn get_X962P192v1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P192v1();
+    pub fn getX962P192v1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P192v1();
     }
-    pub fn get_X962P192v2() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P192v2();
+    pub fn getX962P192v2() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P192v2();
     }
-    pub fn get_X962P192v3() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P192v3();
+    pub fn getX962P192v3() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P192v3();
     }
-    pub fn get_X962P239v1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P239v1();
+    pub fn getX962P239v1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P239v1();
     }
-    pub fn get_X962P239v2() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P239v2();
+    pub fn getX962P239v2() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P239v2();
     }
-    pub fn get_X962P239v3() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P239v3();
+    pub fn getX962P239v3() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P239v3();
     }
-    pub fn get_X962P256v1() core.HResult!HSTRING {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getX962P256v1();
+    pub fn getX962P256v1() core.HResult!HSTRING {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getX962P256v1();
     }
-    pub fn get_AllEccCurveNames() core.HResult!*IVectorView(HSTRING) {
-        const factory = @This().IEccCurveNamesStaticsCache.get();
-        return try factory.getAllEccCurveNames();
+    pub fn getAllEccCurveNames() core.HResult!*IVectorView(HSTRING) {
+        const _f = @This().IEccCurveNamesStaticsCache.get();
+        return try _f.getAllEccCurveNames();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.EccCurveNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -484,25 +484,25 @@ pub const HashAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Md5() core.HResult!HSTRING {
-        const factory = @This().IHashAlgorithmNamesStaticsCache.get();
-        return try factory.getMd5();
+    pub fn getMd5() core.HResult!HSTRING {
+        const _f = @This().IHashAlgorithmNamesStaticsCache.get();
+        return try _f.getMd5();
     }
-    pub fn get_Sha1() core.HResult!HSTRING {
-        const factory = @This().IHashAlgorithmNamesStaticsCache.get();
-        return try factory.getSha1();
+    pub fn getSha1() core.HResult!HSTRING {
+        const _f = @This().IHashAlgorithmNamesStaticsCache.get();
+        return try _f.getSha1();
     }
-    pub fn get_Sha256() core.HResult!HSTRING {
-        const factory = @This().IHashAlgorithmNamesStaticsCache.get();
-        return try factory.getSha256();
+    pub fn getSha256() core.HResult!HSTRING {
+        const _f = @This().IHashAlgorithmNamesStaticsCache.get();
+        return try _f.getSha256();
     }
-    pub fn get_Sha384() core.HResult!HSTRING {
-        const factory = @This().IHashAlgorithmNamesStaticsCache.get();
-        return try factory.getSha384();
+    pub fn getSha384() core.HResult!HSTRING {
+        const _f = @This().IHashAlgorithmNamesStaticsCache.get();
+        return try _f.getSha384();
     }
-    pub fn get_Sha512() core.HResult!HSTRING {
-        const factory = @This().IHashAlgorithmNamesStaticsCache.get();
-        return try factory.getSha512();
+    pub fn getSha512() core.HResult!HSTRING {
+        const _f = @This().IHashAlgorithmNamesStaticsCache.get();
+        return try _f.getSha512();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.HashAlgorithmNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -530,8 +530,8 @@ pub const HashAlgorithmProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*HashAlgorithmProvider {
-        const factory = @This().IHashAlgorithmProviderStaticsCache.get();
-        return try factory.OpenAlgorithm(algorithm);
+        const _f = @This().IHashAlgorithmProviderStaticsCache.get();
+        return try _f.OpenAlgorithm(algorithm);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.HashAlgorithmProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -960,9 +960,9 @@ pub const ICryptographicKey = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Export(self: *@This(), BlobType: CryptographicPrivateKeyBlobType) core.HResult!*IBuffer {
+    pub fn ExportWithBlobType(self: *@This(), BlobType: CryptographicPrivateKeyBlobType) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
-        const _c = self.vtable.Export(@ptrCast(self), BlobType, &_r);
+        const _c = self.vtable.ExportWithBlobType(@ptrCast(self), BlobType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -972,9 +972,9 @@ pub const ICryptographicKey = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ExportPublicKey(self: *@This(), BlobType: CryptographicPublicKeyBlobType) core.HResult!*IBuffer {
+    pub fn ExportPublicKeyWithBlobType(self: *@This(), BlobType: CryptographicPublicKeyBlobType) core.HResult!*IBuffer {
         var _r: *IBuffer = undefined;
-        const _c = self.vtable.ExportPublicKey(@ptrCast(self), BlobType, &_r);
+        const _c = self.vtable.ExportPublicKeyWithBlobType(@ptrCast(self), BlobType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -992,9 +992,9 @@ pub const ICryptographicKey = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_KeySize: *const fn(self: *anyopaque, _r: *u32) callconv(.winapi) HRESULT,
         Export: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        Export: *const fn(self: *anyopaque, BlobType: CryptographicPrivateKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
+        ExportWithBlobType: *const fn(self: *anyopaque, BlobType: CryptographicPrivateKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
         ExportPublicKey: *const fn(self: *anyopaque, _r: **IBuffer) callconv(.winapi) HRESULT,
-        ExportPublicKey: *const fn(self: *anyopaque, BlobType: CryptographicPublicKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
+        ExportPublicKeyWithBlobType: *const fn(self: *anyopaque, BlobType: CryptographicPublicKeyBlobType, _r: **IBuffer) callconv(.winapi) HRESULT,
     };
 };
 pub const IEccCurveNamesStatics = extern struct {
@@ -2244,85 +2244,85 @@ pub const KeyDerivationAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Pbkdf2Md5() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getPbkdf2Md5();
+    pub fn getPbkdf2Md5() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getPbkdf2Md5();
     }
-    pub fn get_Pbkdf2Sha1() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getPbkdf2Sha1();
+    pub fn getPbkdf2Sha1() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getPbkdf2Sha1();
     }
-    pub fn get_Pbkdf2Sha256() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getPbkdf2Sha256();
+    pub fn getPbkdf2Sha256() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getPbkdf2Sha256();
     }
-    pub fn get_Pbkdf2Sha384() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getPbkdf2Sha384();
+    pub fn getPbkdf2Sha384() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getPbkdf2Sha384();
     }
-    pub fn get_Pbkdf2Sha512() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getPbkdf2Sha512();
+    pub fn getPbkdf2Sha512() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getPbkdf2Sha512();
     }
-    pub fn get_Sp800108CtrHmacMd5() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp800108CtrHmacMd5();
+    pub fn getSp800108CtrHmacMd5() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp800108CtrHmacMd5();
     }
-    pub fn get_Sp800108CtrHmacSha1() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp800108CtrHmacSha1();
+    pub fn getSp800108CtrHmacSha1() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp800108CtrHmacSha1();
     }
-    pub fn get_Sp800108CtrHmacSha256() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp800108CtrHmacSha256();
+    pub fn getSp800108CtrHmacSha256() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp800108CtrHmacSha256();
     }
-    pub fn get_Sp800108CtrHmacSha384() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp800108CtrHmacSha384();
+    pub fn getSp800108CtrHmacSha384() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp800108CtrHmacSha384();
     }
-    pub fn get_Sp800108CtrHmacSha512() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp800108CtrHmacSha512();
+    pub fn getSp800108CtrHmacSha512() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp800108CtrHmacSha512();
     }
-    pub fn get_Sp80056aConcatMd5() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp80056aConcatMd5();
+    pub fn getSp80056aConcatMd5() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp80056aConcatMd5();
     }
-    pub fn get_Sp80056aConcatSha1() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp80056aConcatSha1();
+    pub fn getSp80056aConcatSha1() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp80056aConcatSha1();
     }
-    pub fn get_Sp80056aConcatSha256() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp80056aConcatSha256();
+    pub fn getSp80056aConcatSha256() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp80056aConcatSha256();
     }
-    pub fn get_Sp80056aConcatSha384() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp80056aConcatSha384();
+    pub fn getSp80056aConcatSha384() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp80056aConcatSha384();
     }
-    pub fn get_Sp80056aConcatSha512() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
-        return try factory.getSp80056aConcatSha512();
+    pub fn getSp80056aConcatSha512() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStaticsCache.get();
+        return try _f.getSp80056aConcatSha512();
     }
-    pub fn get_CapiKdfMd5() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
-        return try factory.getCapiKdfMd5();
+    pub fn getCapiKdfMd5() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
+        return try _f.getCapiKdfMd5();
     }
-    pub fn get_CapiKdfSha1() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
-        return try factory.getCapiKdfSha1();
+    pub fn getCapiKdfSha1() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
+        return try _f.getCapiKdfSha1();
     }
-    pub fn get_CapiKdfSha256() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
-        return try factory.getCapiKdfSha256();
+    pub fn getCapiKdfSha256() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
+        return try _f.getCapiKdfSha256();
     }
-    pub fn get_CapiKdfSha384() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
-        return try factory.getCapiKdfSha384();
+    pub fn getCapiKdfSha384() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
+        return try _f.getCapiKdfSha384();
     }
-    pub fn get_CapiKdfSha512() core.HResult!HSTRING {
-        const factory = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
-        return try factory.getCapiKdfSha512();
+    pub fn getCapiKdfSha512() core.HResult!HSTRING {
+        const _f = @This().IKeyDerivationAlgorithmNamesStatics2Cache.get();
+        return try _f.getCapiKdfSha512();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.KeyDerivationAlgorithmNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2343,8 +2343,8 @@ pub const KeyDerivationAlgorithmProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*KeyDerivationAlgorithmProvider {
-        const factory = @This().IKeyDerivationAlgorithmProviderStaticsCache.get();
-        return try factory.OpenAlgorithm(algorithm);
+        const _f = @This().IKeyDerivationAlgorithmProviderStaticsCache.get();
+        return try _f.OpenAlgorithm(algorithm);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.KeyDerivationAlgorithmProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2383,20 +2383,20 @@ pub const KeyDerivationParameters = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn BuildForCapi1Kdf(capi1KdfTargetAlgorithm: Capi1KdfTargetAlgorithm) core.HResult!*KeyDerivationParameters {
-        const factory = @This().IKeyDerivationParametersStatics2Cache.get();
-        return try factory.BuildForCapi1Kdf(capi1KdfTargetAlgorithm);
+        const _f = @This().IKeyDerivationParametersStatics2Cache.get();
+        return try _f.BuildForCapi1Kdf(capi1KdfTargetAlgorithm);
     }
     pub fn BuildForPbkdf2(pbkdf2Salt: *IBuffer, iterationCount: u32) core.HResult!*KeyDerivationParameters {
-        const factory = @This().IKeyDerivationParametersStaticsCache.get();
-        return try factory.BuildForPbkdf2(pbkdf2Salt, iterationCount);
+        const _f = @This().IKeyDerivationParametersStaticsCache.get();
+        return try _f.BuildForPbkdf2(pbkdf2Salt, iterationCount);
     }
     pub fn BuildForSP800108(label: *IBuffer, context: *IBuffer) core.HResult!*KeyDerivationParameters {
-        const factory = @This().IKeyDerivationParametersStaticsCache.get();
-        return try factory.BuildForSP800108(label, context);
+        const _f = @This().IKeyDerivationParametersStaticsCache.get();
+        return try _f.BuildForSP800108(label, context);
     }
     pub fn BuildForSP80056a(algorithmId: *IBuffer, partyUInfo: *IBuffer, partyVInfo: *IBuffer, suppPubInfo: *IBuffer, suppPrivInfo: *IBuffer) core.HResult!*KeyDerivationParameters {
-        const factory = @This().IKeyDerivationParametersStaticsCache.get();
-        return try factory.BuildForSP80056a(algorithmId, partyUInfo, partyVInfo, suppPubInfo, suppPrivInfo);
+        const _f = @This().IKeyDerivationParametersStaticsCache.get();
+        return try _f.BuildForSP80056a(algorithmId, partyUInfo, partyVInfo, suppPubInfo, suppPrivInfo);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.KeyDerivationParameters";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2411,29 +2411,29 @@ pub const MacAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_HmacMd5() core.HResult!HSTRING {
-        const factory = @This().IMacAlgorithmNamesStaticsCache.get();
-        return try factory.getHmacMd5();
+    pub fn getHmacMd5() core.HResult!HSTRING {
+        const _f = @This().IMacAlgorithmNamesStaticsCache.get();
+        return try _f.getHmacMd5();
     }
-    pub fn get_HmacSha1() core.HResult!HSTRING {
-        const factory = @This().IMacAlgorithmNamesStaticsCache.get();
-        return try factory.getHmacSha1();
+    pub fn getHmacSha1() core.HResult!HSTRING {
+        const _f = @This().IMacAlgorithmNamesStaticsCache.get();
+        return try _f.getHmacSha1();
     }
-    pub fn get_HmacSha256() core.HResult!HSTRING {
-        const factory = @This().IMacAlgorithmNamesStaticsCache.get();
-        return try factory.getHmacSha256();
+    pub fn getHmacSha256() core.HResult!HSTRING {
+        const _f = @This().IMacAlgorithmNamesStaticsCache.get();
+        return try _f.getHmacSha256();
     }
-    pub fn get_HmacSha384() core.HResult!HSTRING {
-        const factory = @This().IMacAlgorithmNamesStaticsCache.get();
-        return try factory.getHmacSha384();
+    pub fn getHmacSha384() core.HResult!HSTRING {
+        const _f = @This().IMacAlgorithmNamesStaticsCache.get();
+        return try _f.getHmacSha384();
     }
-    pub fn get_HmacSha512() core.HResult!HSTRING {
-        const factory = @This().IMacAlgorithmNamesStaticsCache.get();
-        return try factory.getHmacSha512();
+    pub fn getHmacSha512() core.HResult!HSTRING {
+        const _f = @This().IMacAlgorithmNamesStaticsCache.get();
+        return try _f.getHmacSha512();
     }
-    pub fn get_AesCmac() core.HResult!HSTRING {
-        const factory = @This().IMacAlgorithmNamesStaticsCache.get();
-        return try factory.getAesCmac();
+    pub fn getAesCmac() core.HResult!HSTRING {
+        const _f = @This().IMacAlgorithmNamesStaticsCache.get();
+        return try _f.getAesCmac();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.MacAlgorithmNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2463,8 +2463,8 @@ pub const MacAlgorithmProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*MacAlgorithmProvider {
-        const factory = @This().IMacAlgorithmProviderStaticsCache.get();
-        return try factory.OpenAlgorithm(algorithm);
+        const _f = @This().IMacAlgorithmProviderStaticsCache.get();
+        return try _f.OpenAlgorithm(algorithm);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.MacAlgorithmProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2479,12 +2479,12 @@ pub const PersistedKeyProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenKeyPairFromCertificateAsync(certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding) core.HResult!*IAsyncOperation(CryptographicKey) {
-        const factory = @This().IPersistedKeyProviderStaticsCache.get();
-        return try factory.OpenKeyPairFromCertificateAsync(certificate, hashAlgorithmName, padding);
+        const _f = @This().IPersistedKeyProviderStaticsCache.get();
+        return try _f.OpenKeyPairFromCertificateAsync(certificate, hashAlgorithmName, padding);
     }
     pub fn OpenPublicKeyFromCertificate(certificate: *Certificate, hashAlgorithmName: HSTRING, padding: CryptographicPadding) core.HResult!*CryptographicKey {
-        const factory = @This().IPersistedKeyProviderStaticsCache.get();
-        return try factory.OpenPublicKeyFromCertificate(certificate, hashAlgorithmName, padding);
+        const _f = @This().IPersistedKeyProviderStaticsCache.get();
+        return try _f.OpenPublicKeyFromCertificate(certificate, hashAlgorithmName, padding);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.PersistedKeyProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2495,81 +2495,81 @@ pub const SymmetricAlgorithmNames = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DesCbc() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getDesCbc();
+    pub fn getDesCbc() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getDesCbc();
     }
-    pub fn get_DesEcb() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getDesEcb();
+    pub fn getDesEcb() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getDesEcb();
     }
-    pub fn get_TripleDesCbc() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getTripleDesCbc();
+    pub fn getTripleDesCbc() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getTripleDesCbc();
     }
-    pub fn get_TripleDesEcb() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getTripleDesEcb();
+    pub fn getTripleDesEcb() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getTripleDesEcb();
     }
-    pub fn get_Rc2Cbc() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRc2Cbc();
+    pub fn getRc2Cbc() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRc2Cbc();
     }
-    pub fn get_Rc2Ecb() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRc2Ecb();
+    pub fn getRc2Ecb() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRc2Ecb();
     }
-    pub fn get_AesCbc() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getAesCbc();
+    pub fn getAesCbc() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getAesCbc();
     }
-    pub fn get_AesEcb() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getAesEcb();
+    pub fn getAesEcb() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getAesEcb();
     }
-    pub fn get_AesGcm() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getAesGcm();
+    pub fn getAesGcm() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getAesGcm();
     }
-    pub fn get_AesCcm() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getAesCcm();
+    pub fn getAesCcm() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getAesCcm();
     }
-    pub fn get_AesCbcPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getAesCbcPkcs7();
+    pub fn getAesCbcPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getAesCbcPkcs7();
     }
-    pub fn get_AesEcbPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getAesEcbPkcs7();
+    pub fn getAesEcbPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getAesEcbPkcs7();
     }
-    pub fn get_DesCbcPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getDesCbcPkcs7();
+    pub fn getDesCbcPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getDesCbcPkcs7();
     }
-    pub fn get_DesEcbPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getDesEcbPkcs7();
+    pub fn getDesEcbPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getDesEcbPkcs7();
     }
-    pub fn get_TripleDesCbcPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getTripleDesCbcPkcs7();
+    pub fn getTripleDesCbcPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getTripleDesCbcPkcs7();
     }
-    pub fn get_TripleDesEcbPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getTripleDesEcbPkcs7();
+    pub fn getTripleDesEcbPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getTripleDesEcbPkcs7();
     }
-    pub fn get_Rc2CbcPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRc2CbcPkcs7();
+    pub fn getRc2CbcPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRc2CbcPkcs7();
     }
-    pub fn get_Rc2EcbPkcs7() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRc2EcbPkcs7();
+    pub fn getRc2EcbPkcs7() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRc2EcbPkcs7();
     }
-    pub fn get_Rc4() core.HResult!HSTRING {
-        const factory = @This().ISymmetricAlgorithmNamesStaticsCache.get();
-        return try factory.getRc4();
+    pub fn getRc4() core.HResult!HSTRING {
+        const _f = @This().ISymmetricAlgorithmNamesStaticsCache.get();
+        return try _f.getRc4();
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.SymmetricAlgorithmNames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2593,8 +2593,8 @@ pub const SymmetricKeyAlgorithmProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenAlgorithm(algorithm: HSTRING) core.HResult!*SymmetricKeyAlgorithmProvider {
-        const factory = @This().ISymmetricKeyAlgorithmProviderStaticsCache.get();
-        return try factory.OpenAlgorithm(algorithm);
+        const _f = @This().ISymmetricKeyAlgorithmProviderStaticsCache.get();
+        return try _f.OpenAlgorithm(algorithm);
     }
     pub const NAME: []const u8 = "Windows.Security.Cryptography.Core.SymmetricKeyAlgorithmProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

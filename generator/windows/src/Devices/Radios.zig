@@ -128,20 +128,20 @@ pub const Radio = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetRadiosAsync() core.HResult!*IAsyncOperation(IVectorView(Radio)) {
-        const factory = @This().IRadioStaticsCache.get();
-        return try factory.GetRadiosAsync();
+        const _f = @This().IRadioStaticsCache.get();
+        return try _f.GetRadiosAsync();
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IRadioStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IRadioStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(Radio) {
-        const factory = @This().IRadioStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().IRadioStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(RadioAccessStatus) {
-        const factory = @This().IRadioStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().IRadioStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Radios.Radio";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

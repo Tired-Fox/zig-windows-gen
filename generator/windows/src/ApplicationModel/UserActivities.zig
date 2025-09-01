@@ -832,20 +832,20 @@ pub const UserActivity = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateWithActivityId(activityId: HSTRING) core.HResult!*UserActivity {
-        const factory = @This().IUserActivityFactoryCache.get();
-        return try factory.CreateWithActivityId(activityId);
+        const _f = @This().IUserActivityFactoryCache.get();
+        return try _f.CreateWithActivityId(activityId);
     }
     pub fn TryParseFromJson(json: HSTRING) core.HResult!*UserActivity {
-        const factory = @This().IUserActivityStaticsCache.get();
-        return try factory.TryParseFromJson(json);
+        const _f = @This().IUserActivityStaticsCache.get();
+        return try _f.TryParseFromJson(json);
     }
     pub fn TryParseFromJsonArray(json: HSTRING) core.HResult!*IVector(UserActivity) {
-        const factory = @This().IUserActivityStaticsCache.get();
-        return try factory.TryParseFromJsonArray(json);
+        const _f = @This().IUserActivityStaticsCache.get();
+        return try _f.TryParseFromJsonArray(json);
     }
     pub fn ToJsonArray(activities: *IIterable(UserActivity)) core.HResult!HSTRING {
-        const factory = @This().IUserActivityStaticsCache.get();
-        return try factory.ToJsonArray(activities);
+        const _f = @This().IUserActivityStaticsCache.get();
+        return try _f.ToJsonArray(activities);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivity";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -889,8 +889,8 @@ pub const UserActivityAttribution = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IUserActivityAttribution.IID)));
     }
     pub fn CreateWithUri(iconUri: *Uri) core.HResult!*UserActivityAttribution {
-        const factory = @This().IUserActivityAttributionFactoryCache.get();
-        return try factory.CreateWithUri(iconUri);
+        const _f = @This().IUserActivityAttributionFactoryCache.get();
+        return try _f.CreateWithUri(iconUri);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityAttribution";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -930,20 +930,20 @@ pub const UserActivityChannel = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUser(user: *User) core.HResult!*UserActivityChannel {
-        const factory = @This().IUserActivityChannelStatics3Cache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IUserActivityChannelStatics3Cache.get();
+        return try _f.GetForUser(user);
     }
     pub fn GetDefault() core.HResult!*UserActivityChannel {
-        const factory = @This().IUserActivityChannelStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IUserActivityChannelStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn DisableAutoSessionCreation() core.HResult!void {
-        const factory = @This().IUserActivityChannelStatics2Cache.get();
-        return try factory.DisableAutoSessionCreation();
+        const _f = @This().IUserActivityChannelStatics2Cache.get();
+        return try _f.DisableAutoSessionCreation();
     }
     pub fn TryGetForWebAccount(account: *WebAccount) core.HResult!*UserActivityChannel {
-        const factory = @This().IUserActivityChannelStatics2Cache.get();
-        return try factory.TryGetForWebAccount(account);
+        const _f = @This().IUserActivityChannelStatics2Cache.get();
+        return try _f.TryGetForWebAccount(account);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityChannel";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -964,8 +964,8 @@ pub const UserActivityContentInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromJson(value: HSTRING) core.HResult!*UserActivityContentInfo {
-        const factory = @This().IUserActivityContentInfoStaticsCache.get();
-        return try factory.FromJson(value);
+        const _f = @This().IUserActivityContentInfoStaticsCache.get();
+        return try _f.FromJson(value);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityContentInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1000,8 +1000,8 @@ pub const UserActivityRequestManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*UserActivityRequestManager {
-        const factory = @This().IUserActivityRequestManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IUserActivityRequestManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserActivities.UserActivityRequestManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

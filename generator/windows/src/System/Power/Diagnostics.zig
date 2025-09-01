@@ -3,17 +3,17 @@ pub const BackgroundEnergyDiagnostics = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DeviceSpecificConversionFactor() core.HResult!f64 {
-        const factory = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
-        return try factory.getDeviceSpecificConversionFactor();
+    pub fn getDeviceSpecificConversionFactor() core.HResult!f64 {
+        const _f = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
+        return try _f.getDeviceSpecificConversionFactor();
     }
     pub fn ComputeTotalEnergyUsage() core.HResult!u64 {
-        const factory = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
-        return try factory.ComputeTotalEnergyUsage();
+        const _f = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
+        return try _f.ComputeTotalEnergyUsage();
     }
     pub fn ResetTotalEnergyUsage() core.HResult!void {
-        const factory = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
-        return try factory.ResetTotalEnergyUsage();
+        const _f = @This().IBackgroundEnergyDiagnosticsStaticsCache.get();
+        return try _f.ResetTotalEnergyUsage();
     }
     pub const NAME: []const u8 = "Windows.System.Power.Diagnostics.BackgroundEnergyDiagnostics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -24,17 +24,17 @@ pub const ForegroundEnergyDiagnostics = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DeviceSpecificConversionFactor() core.HResult!f64 {
-        const factory = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
-        return try factory.getDeviceSpecificConversionFactor();
+    pub fn getDeviceSpecificConversionFactor() core.HResult!f64 {
+        const _f = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
+        return try _f.getDeviceSpecificConversionFactor();
     }
     pub fn ComputeTotalEnergyUsage() core.HResult!u64 {
-        const factory = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
-        return try factory.ComputeTotalEnergyUsage();
+        const _f = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
+        return try _f.ComputeTotalEnergyUsage();
     }
     pub fn ResetTotalEnergyUsage() core.HResult!void {
-        const factory = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
-        return try factory.ResetTotalEnergyUsage();
+        const _f = @This().IForegroundEnergyDiagnosticsStaticsCache.get();
+        return try _f.ResetTotalEnergyUsage();
     }
     pub const NAME: []const u8 = "Windows.System.Power.Diagnostics.ForegroundEnergyDiagnostics";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

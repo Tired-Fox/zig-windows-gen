@@ -42,8 +42,8 @@ pub const GpioChangeCounter = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(pin: *GpioPin) core.HResult!*GpioChangeCounter {
-        const factory = @This().IGpioChangeCounterFactoryCache.get();
-        return try factory.Create(pin);
+        const _f = @This().IGpioChangeCounterFactoryCache.get();
+        return try _f.Create(pin);
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.GpioChangeCounter";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -125,12 +125,12 @@ pub const GpioChangeReader = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(pin: *GpioPin) core.HResult!*GpioChangeReader {
-        const factory = @This().IGpioChangeReaderFactoryCache.get();
-        return try factory.Create(pin);
+        const _f = @This().IGpioChangeReaderFactoryCache.get();
+        return try _f.Create(pin);
     }
     pub fn CreateWithCapacity(pin: *GpioPin, minCapacity: i32) core.HResult!*GpioChangeReader {
-        const factory = @This().IGpioChangeReaderFactoryCache.get();
-        return try factory.CreateWithCapacity(pin, minCapacity);
+        const _f = @This().IGpioChangeReaderFactoryCache.get();
+        return try _f.CreateWithCapacity(pin, minCapacity);
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.GpioChangeReader";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -165,16 +165,16 @@ pub const GpioController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetControllersAsync(provider: *IGpioProvider) core.HResult!*IAsyncOperation(IVectorView(GpioController)) {
-        const factory = @This().IGpioControllerStatics2Cache.get();
-        return try factory.GetControllersAsync(provider);
+        const _f = @This().IGpioControllerStatics2Cache.get();
+        return try _f.GetControllersAsync(provider);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(GpioController) {
-        const factory = @This().IGpioControllerStatics2Cache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().IGpioControllerStatics2Cache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetDefault() core.HResult!*GpioController {
-        const factory = @This().IGpioControllerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IGpioControllerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Devices.Gpio.GpioController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -712,7 +712,7 @@ const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IVector = @import("../Foundation/Collections.zig").IVector;
 const TimeSpan = @import("../Foundation.zig").TimeSpan;
-const IGpioProvider = @import("./Provider.zig").IGpioProvider;
+const IGpioProvider = @import("./Gpio/Provider.zig").IGpioProvider;
 const HRESULT = @import("../root.zig").HRESULT;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const core = @import("../root.zig").core;

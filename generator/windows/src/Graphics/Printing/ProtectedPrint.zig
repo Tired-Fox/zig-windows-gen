@@ -26,9 +26,9 @@ pub const WindowsProtectedPrintInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsProtectedPrintEnabled() core.HResult!bool {
-        const factory = @This().IWindowsProtectedPrintInfoStaticsCache.get();
-        return try factory.getIsProtectedPrintEnabled();
+    pub fn getIsProtectedPrintEnabled() core.HResult!bool {
+        const _f = @This().IWindowsProtectedPrintInfoStaticsCache.get();
+        return try _f.getIsProtectedPrintEnabled();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Printing.ProtectedPrint.WindowsProtectedPrintInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

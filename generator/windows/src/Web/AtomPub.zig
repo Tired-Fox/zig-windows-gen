@@ -124,8 +124,8 @@ pub const AtomPubClient = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IAtomPubClient.IID)));
     }
     pub fn CreateAtomPubClientWithCredentials(serverCredential: *PasswordCredential) core.HResult!*AtomPubClient {
-        const factory = @This().IAtomPubClientFactoryCache.get();
-        return try factory.CreateAtomPubClientWithCredentials(serverCredential);
+        const _f = @This().IAtomPubClientFactoryCache.get();
+        return try _f.CreateAtomPubClientWithCredentials(serverCredential);
     }
     pub const NAME: []const u8 = "Windows.Web.AtomPub.AtomPubClient";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

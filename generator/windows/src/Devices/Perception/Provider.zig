@@ -599,17 +599,17 @@ pub const KnownPerceptionFrameKind = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Color() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameKindStaticsCache.get();
-        return try factory.getColor();
+    pub fn getColor() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameKindStaticsCache.get();
+        return try _f.getColor();
     }
-    pub fn get_Depth() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameKindStaticsCache.get();
-        return try factory.getDepth();
+    pub fn getDepth() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameKindStaticsCache.get();
+        return try _f.getDepth();
     }
-    pub fn get_Infrared() core.HResult!HSTRING {
-        const factory = @This().IKnownPerceptionFrameKindStaticsCache.get();
-        return try factory.getInfrared();
+    pub fn getInfrared() core.HResult!HSTRING {
+        const _f = @This().IKnownPerceptionFrameKindStaticsCache.get();
+        return try _f.getInfrared();
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.KnownPerceptionFrameKind";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -625,8 +625,8 @@ pub const PerceptionControlGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ids: *IIterable(HSTRING)) core.HResult!*PerceptionControlGroup {
-        const factory = @This().IPerceptionControlGroupFactoryCache.get();
-        return try factory.Create(ids);
+        const _f = @This().IPerceptionControlGroupFactoryCache.get();
+        return try _f.Create(ids);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionControlGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -653,8 +653,8 @@ pub const PerceptionCorrelation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(targetId: HSTRING, position: Vector3, orientation: Quaternion) core.HResult!*PerceptionCorrelation {
-        const factory = @This().IPerceptionCorrelationFactoryCache.get();
-        return try factory.Create(targetId, position, orientation);
+        const _f = @This().IPerceptionCorrelationFactoryCache.get();
+        return try _f.Create(targetId, position, orientation);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionCorrelation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -673,8 +673,8 @@ pub const PerceptionCorrelationGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(relativeLocations: *IIterable(PerceptionCorrelation)) core.HResult!*PerceptionCorrelationGroup {
-        const factory = @This().IPerceptionCorrelationGroupFactoryCache.get();
-        return try factory.Create(relativeLocations);
+        const _f = @This().IPerceptionCorrelationGroupFactoryCache.get();
+        return try _f.Create(relativeLocations);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionCorrelationGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -693,8 +693,8 @@ pub const PerceptionFaceAuthenticationGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(ids: *IIterable(HSTRING), startHandler: *PerceptionStartFaceAuthenticationHandler, stopHandler: *PerceptionStopFaceAuthenticationHandler) core.HResult!*PerceptionFaceAuthenticationGroup {
-        const factory = @This().IPerceptionFaceAuthenticationGroupFactoryCache.get();
-        return try factory.Create(ids, startHandler, stopHandler);
+        const _f = @This().IPerceptionFaceAuthenticationGroupFactoryCache.get();
+        return try _f.Create(ids, startHandler, stopHandler);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionFaceAuthenticationGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -789,44 +789,44 @@ pub const PerceptionFrameProviderManagerService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterFrameProviderInfo(manager: *IPerceptionFrameProviderManager, frameProviderInfo: *PerceptionFrameProviderInfo) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.RegisterFrameProviderInfo(manager, frameProviderInfo);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.RegisterFrameProviderInfo(manager, frameProviderInfo);
     }
     pub fn UnregisterFrameProviderInfo(manager: *IPerceptionFrameProviderManager, frameProviderInfo: *PerceptionFrameProviderInfo) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.UnregisterFrameProviderInfo(manager, frameProviderInfo);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.UnregisterFrameProviderInfo(manager, frameProviderInfo);
     }
     pub fn RegisterFaceAuthenticationGroup(manager: *IPerceptionFrameProviderManager, faceAuthenticationGroup: *PerceptionFaceAuthenticationGroup) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.RegisterFaceAuthenticationGroup(manager, faceAuthenticationGroup);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.RegisterFaceAuthenticationGroup(manager, faceAuthenticationGroup);
     }
     pub fn UnregisterFaceAuthenticationGroup(manager: *IPerceptionFrameProviderManager, faceAuthenticationGroup: *PerceptionFaceAuthenticationGroup) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.UnregisterFaceAuthenticationGroup(manager, faceAuthenticationGroup);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.UnregisterFaceAuthenticationGroup(manager, faceAuthenticationGroup);
     }
     pub fn RegisterControlGroup(manager: *IPerceptionFrameProviderManager, controlGroup: *PerceptionControlGroup) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.RegisterControlGroup(manager, controlGroup);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.RegisterControlGroup(manager, controlGroup);
     }
     pub fn UnregisterControlGroup(manager: *IPerceptionFrameProviderManager, controlGroup: *PerceptionControlGroup) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.UnregisterControlGroup(manager, controlGroup);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.UnregisterControlGroup(manager, controlGroup);
     }
     pub fn RegisterCorrelationGroup(manager: *IPerceptionFrameProviderManager, correlationGroup: *PerceptionCorrelationGroup) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.RegisterCorrelationGroup(manager, correlationGroup);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.RegisterCorrelationGroup(manager, correlationGroup);
     }
     pub fn UnregisterCorrelationGroup(manager: *IPerceptionFrameProviderManager, correlationGroup: *PerceptionCorrelationGroup) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.UnregisterCorrelationGroup(manager, correlationGroup);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.UnregisterCorrelationGroup(manager, correlationGroup);
     }
     pub fn UpdateAvailabilityForProvider(provider: *IPerceptionFrameProvider, available: bool) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.UpdateAvailabilityForProvider(provider, available);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.UpdateAvailabilityForProvider(provider, available);
     }
     pub fn PublishFrameForProvider(provider: *IPerceptionFrameProvider, frame: *PerceptionFrame) core.HResult!void {
-        const factory = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
-        return try factory.PublishFrameForProvider(provider, frame);
+        const _f = @This().IPerceptionFrameProviderManagerServiceStaticsCache.get();
+        return try _f.PublishFrameForProvider(provider, frame);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionFrameProviderManagerService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1054,8 +1054,8 @@ pub const PerceptionVideoFrameAllocator = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(maxOutstandingFrameCountForWrite: u32, format: BitmapPixelFormat, resolution: Size, alpha: BitmapAlphaMode) core.HResult!*PerceptionVideoFrameAllocator {
-        const factory = @This().IPerceptionVideoFrameAllocatorFactoryCache.get();
-        return try factory.Create(maxOutstandingFrameCountForWrite, format, resolution, alpha);
+        const _f = @This().IPerceptionVideoFrameAllocatorFactoryCache.get();
+        return try _f.Create(maxOutstandingFrameCountForWrite, format, resolution, alpha);
     }
     pub const NAME: []const u8 = "Windows.Devices.Perception.Provider.PerceptionVideoFrameAllocator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

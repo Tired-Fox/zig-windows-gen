@@ -144,8 +144,8 @@ pub const GlobalSystemMediaTransportControlsSessionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestAsync() core.HResult!*IAsyncOperation(GlobalSystemMediaTransportControlsSessionManager) {
-        const factory = @This().IGlobalSystemMediaTransportControlsSessionManagerStaticsCache.get();
-        return try factory.RequestAsync();
+        const _f = @This().IGlobalSystemMediaTransportControlsSessionManagerStaticsCache.get();
+        return try _f.RequestAsync();
     }
     pub const NAME: []const u8 = "Windows.Media.Control.GlobalSystemMediaTransportControlsSessionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

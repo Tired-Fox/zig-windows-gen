@@ -20,12 +20,12 @@ pub const CustomDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(classGuid: *Guid) core.HResult!HSTRING {
-        const factory = @This().ICustomDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(classGuid);
+        const _f = @This().ICustomDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector(classGuid);
     }
     pub fn FromIdAsync(deviceId: HSTRING, desiredAccess: DeviceAccessMode, sharingMode: DeviceSharingMode) core.HResult!*IAsyncOperation(CustomDevice) {
-        const factory = @This().ICustomDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId, desiredAccess, sharingMode);
+        const _f = @This().ICustomDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId, desiredAccess, sharingMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.Custom.CustomDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -252,8 +252,8 @@ pub const IOControlCode = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateIOControlCode(deviceType: u16, function: u16, accessMode: IOControlAccessMode, bufferingMethod: IOControlBufferingMethod) core.HResult!*IOControlCode {
-        const factory = @This().IIOControlCodeFactoryCache.get();
-        return try factory.CreateIOControlCode(deviceType, function, accessMode, bufferingMethod);
+        const _f = @This().IIOControlCodeFactoryCache.get();
+        return try _f.CreateIOControlCode(deviceType, function, accessMode, bufferingMethod);
     }
     pub const NAME: []const u8 = "Windows.Devices.Custom.IOControlCode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -267,9 +267,9 @@ pub const KnownDeviceTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Unknown() core.HResult!u16 {
-        const factory = @This().IKnownDeviceTypesStaticsCache.get();
-        return try factory.getUnknown();
+    pub fn getUnknown() core.HResult!u16 {
+        const _f = @This().IKnownDeviceTypesStaticsCache.get();
+        return try _f.getUnknown();
     }
     pub const NAME: []const u8 = "Windows.Devices.Custom.KnownDeviceTypes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

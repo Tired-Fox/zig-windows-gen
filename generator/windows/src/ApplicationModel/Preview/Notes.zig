@@ -363,8 +363,8 @@ pub const NotesWindowManagerPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentApp() core.HResult!*NotesWindowManagerPreview {
-        const factory = @This().INotesWindowManagerPreviewStaticsCache.get();
-        return try factory.GetForCurrentApp();
+        const _f = @This().INotesWindowManagerPreviewStaticsCache.get();
+        return try _f.GetForCurrentApp();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Preview.Notes.NotesWindowManagerPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

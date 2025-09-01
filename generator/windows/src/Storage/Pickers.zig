@@ -1,54 +1,26 @@
 pub const FileExtensionVector = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HSTRING) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(HSTRING) {
+        const this: *IVector(HSTRING) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HSTRING) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HSTRING) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(HSTRING) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(HSTRING) {
         var this: ?*IIterable(HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -144,12 +116,12 @@ pub const FileOpenPicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFileOpenPicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*FileOpenPicker {
-        const factory = @This().IFileOpenPickerStatics2Cache.get();
-        return try factory.CreateForUser(user);
+        const _f = @This().IFileOpenPickerStatics2Cache.get();
+        return try _f.CreateForUser(user);
     }
     pub fn ResumePickSingleFileAsync() core.HResult!*IAsyncOperation(StorageFile) {
-        const factory = @This().IFileOpenPickerStaticsCache.get();
-        return try factory.ResumePickSingleFileAsync();
+        const _f = @This().IFileOpenPickerStaticsCache.get();
+        return try _f.ResumePickSingleFileAsync();
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FileOpenPicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -162,35 +134,19 @@ pub const FileOpenPicker = extern struct {
 };
 pub const FilePickerFileTypesOrderedMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        const this: *IMap = @ptrCast(self);
-        return try this.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMap = @ptrCast(self);
+        const this: *IMap(HSTRING,IVector(HSTRING)) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        const this: *IMap = @ptrCast(self);
-        return try this.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
-        const this: *IMap = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,IVector(HSTRING)) {
+        const this: *IMap(HSTRING,IVector(HSTRING)) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        const this: *IMap = @ptrCast(self);
-        return try this.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        const this: *IMap = @ptrCast(self);
-        return try this.Remove(key);
-    }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IMap = @ptrCast(self);
+        const this: *IMap(HSTRING,IVector(HSTRING)) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,IVector(HSTRING))) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,IVector(HSTRING))) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -204,23 +160,11 @@ pub const FilePickerFileTypesOrderedMap = extern struct {
 };
 pub const FilePickerSelectedFilesArray = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(StorageFile) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(StorageFile) {
         var this: ?*IIterable(StorageFile) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -328,8 +272,8 @@ pub const FileSavePicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFileSavePicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*FileSavePicker {
-        const factory = @This().IFileSavePickerStaticsCache.get();
-        return try factory.CreateForUser(user);
+        const _f = @This().IFileSavePickerStaticsCache.get();
+        return try _f.CreateForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FileSavePicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -407,8 +351,8 @@ pub const FolderPicker = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFolderPicker.IID)));
     }
     pub fn CreateForUser(user: *User) core.HResult!*FolderPicker {
-        const factory = @This().IFolderPickerStaticsCache.get();
-        return try factory.CreateForUser(user);
+        const _f = @This().IFolderPickerStaticsCache.get();
+        return try _f.CreateForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Storage.Pickers.FolderPicker";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

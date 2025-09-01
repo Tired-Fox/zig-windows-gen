@@ -218,137 +218,137 @@ pub const MediaControl = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_SoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addSoundLevelChanged(handler);
+    pub fn addSoundLevelChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addSoundLevelChanged(handler);
     }
-    pub fn remove_SoundLevelChanged(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeSoundLevelChanged(cookie);
+    pub fn removeSoundLevelChanged(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeSoundLevelChanged(cookie);
     }
-    pub fn add_PlayPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addPlayPressed(handler);
+    pub fn addPlayPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addPlayPressed(handler);
     }
-    pub fn remove_PlayPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removePlayPressed(cookie);
+    pub fn removePlayPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removePlayPressed(cookie);
     }
-    pub fn add_PausePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addPausePressed(handler);
+    pub fn addPausePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addPausePressed(handler);
     }
-    pub fn remove_PausePressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removePausePressed(cookie);
+    pub fn removePausePressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removePausePressed(cookie);
     }
-    pub fn add_StopPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addStopPressed(handler);
+    pub fn addStopPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addStopPressed(handler);
     }
-    pub fn remove_StopPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeStopPressed(cookie);
+    pub fn removeStopPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeStopPressed(cookie);
     }
-    pub fn add_PlayPauseTogglePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addPlayPauseTogglePressed(handler);
+    pub fn addPlayPauseTogglePressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addPlayPauseTogglePressed(handler);
     }
-    pub fn remove_PlayPauseTogglePressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removePlayPauseTogglePressed(cookie);
+    pub fn removePlayPauseTogglePressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removePlayPauseTogglePressed(cookie);
     }
-    pub fn add_RecordPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addRecordPressed(handler);
+    pub fn addRecordPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addRecordPressed(handler);
     }
-    pub fn remove_RecordPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeRecordPressed(cookie);
+    pub fn removeRecordPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeRecordPressed(cookie);
     }
-    pub fn add_NextTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addNextTrackPressed(handler);
+    pub fn addNextTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addNextTrackPressed(handler);
     }
-    pub fn remove_NextTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeNextTrackPressed(cookie);
+    pub fn removeNextTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeNextTrackPressed(cookie);
     }
-    pub fn add_PreviousTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addPreviousTrackPressed(handler);
+    pub fn addPreviousTrackPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addPreviousTrackPressed(handler);
     }
-    pub fn remove_PreviousTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removePreviousTrackPressed(cookie);
+    pub fn removePreviousTrackPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removePreviousTrackPressed(cookie);
     }
-    pub fn add_FastForwardPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addFastForwardPressed(handler);
+    pub fn addFastForwardPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addFastForwardPressed(handler);
     }
-    pub fn remove_FastForwardPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeFastForwardPressed(cookie);
+    pub fn removeFastForwardPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeFastForwardPressed(cookie);
     }
-    pub fn add_RewindPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addRewindPressed(handler);
+    pub fn addRewindPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addRewindPressed(handler);
     }
-    pub fn remove_RewindPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeRewindPressed(cookie);
+    pub fn removeRewindPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeRewindPressed(cookie);
     }
-    pub fn add_ChannelUpPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addChannelUpPressed(handler);
+    pub fn addChannelUpPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addChannelUpPressed(handler);
     }
-    pub fn remove_ChannelUpPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeChannelUpPressed(cookie);
+    pub fn removeChannelUpPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeChannelUpPressed(cookie);
     }
-    pub fn add_ChannelDownPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.addChannelDownPressed(handler);
+    pub fn addChannelDownPressed(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.addChannelDownPressed(handler);
     }
-    pub fn remove_ChannelDownPressed(cookie: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.removeChannelDownPressed(cookie);
+    pub fn removeChannelDownPressed(cookie: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.removeChannelDownPressed(cookie);
     }
-    pub fn get_SoundLevel() core.HResult!SoundLevel {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.getSoundLevel();
+    pub fn getSoundLevel() core.HResult!SoundLevel {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.getSoundLevel();
     }
-    pub fn put_TrackName(value: HSTRING) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.putTrackName(value);
+    pub fn putTrackName(value: HSTRING) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.putTrackName(value);
     }
-    pub fn get_TrackName() core.HResult!HSTRING {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.getTrackName();
+    pub fn getTrackName() core.HResult!HSTRING {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.getTrackName();
     }
-    pub fn put_ArtistName(value: HSTRING) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.putArtistName(value);
+    pub fn putArtistName(value: HSTRING) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.putArtistName(value);
     }
-    pub fn get_ArtistName() core.HResult!HSTRING {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.getArtistName();
+    pub fn getArtistName() core.HResult!HSTRING {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.getArtistName();
     }
-    pub fn put_IsPlaying(value: bool) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.putIsPlaying(value);
+    pub fn putIsPlaying(value: bool) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.putIsPlaying(value);
     }
-    pub fn get_IsPlaying() core.HResult!bool {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.getIsPlaying();
+    pub fn getIsPlaying() core.HResult!bool {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.getIsPlaying();
     }
-    pub fn put_AlbumArt(value: *Uri) core.HResult!void {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.putAlbumArt(value);
+    pub fn putAlbumArt(value: *Uri) core.HResult!void {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.putAlbumArt(value);
     }
-    pub fn get_AlbumArt() core.HResult!*Uri {
-        const factory = @This().IMediaControlCache.get();
-        return try factory.getAlbumArt();
+    pub fn getAlbumArt() core.HResult!*Uri {
+        const _f = @This().IMediaControlCache.get();
+        return try _f.getAlbumArt();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -473,8 +473,8 @@ pub const AudioFrame = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(capacity: u32) core.HResult!*AudioFrame {
-        const factory = @This().IAudioFrameFactoryCache.get();
-        return try factory.Create(capacity);
+        const _f = @This().IAudioFrameFactoryCache.get();
+        return try _f.Create(capacity);
     }
     pub const NAME: []const u8 = "Windows.Media.AudioFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -670,48 +670,48 @@ pub const IMediaExtensionManager = extern struct {
         const _c = self.vtable.RegisterSchemeHandler(@ptrCast(self), activatableClassId, scheme);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterSchemeHandlerWithSchemeWithConfiguration(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterSchemeHandlerWithSchemeWithConfiguration(@ptrCast(self), activatableClassId, scheme, configuration);
+    pub fn RegisterSchemeHandlerWithConfiguration(self: *@This(), activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterSchemeHandlerWithConfiguration(@ptrCast(self), activatableClassId, scheme, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterByteStreamHandler(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING) core.HResult!void {
         const _c = self.vtable.RegisterByteStreamHandler(@ptrCast(self), activatableClassId, fileExtension, mimeType);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration(@ptrCast(self), activatableClassId, fileExtension, mimeType, configuration);
+    pub fn RegisterByteStreamHandlerWithConfiguration(self: *@This(), activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterByteStreamHandlerWithConfiguration(@ptrCast(self), activatableClassId, fileExtension, mimeType, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterAudioDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterAudioDecoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterAudioDecoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterAudioDecoderWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterAudioEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterAudioEncoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterAudioEncoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterAudioEncoderWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterVideoDecoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterVideoDecoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterVideoDecoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterVideoDecoderWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn RegisterVideoEncoder(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) core.HResult!void {
         const _c = self.vtable.RegisterVideoEncoder(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
-        const _c = self.vtable.RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
+    pub fn RegisterVideoEncoderWithConfiguration(self: *@This(), activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) core.HResult!void {
+        const _c = self.vtable.RegisterVideoEncoderWithConfiguration(@ptrCast(self), activatableClassId, inputSubtype, outputSubtype, configuration);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.Media.IMediaExtensionManager";
@@ -727,17 +727,17 @@ pub const IMediaExtensionManager = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RegisterSchemeHandler: *const fn(self: *anyopaque, activatableClassId: HSTRING, scheme: HSTRING) callconv(.winapi) HRESULT,
-        RegisterSchemeHandlerWithSchemeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterSchemeHandlerWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, scheme: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterByteStreamHandler: *const fn(self: *anyopaque, activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING) callconv(.winapi) HRESULT,
-        RegisterByteStreamHandlerWithFileExtensionWithMimeTypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterByteStreamHandlerWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, fileExtension: HSTRING, mimeType: HSTRING, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterAudioDecoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterAudioDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterAudioDecoderWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterAudioEncoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterAudioEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterAudioEncoderWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterVideoDecoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterVideoDecoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterVideoDecoderWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
         RegisterVideoEncoder: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid) callconv(.winapi) HRESULT,
-        RegisterVideoEncoderWithInputSubtypeWithOutputSubtypeWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
+        RegisterVideoEncoderWithConfiguration: *const fn(self: *anyopaque, activatableClassId: HSTRING, inputSubtype: *Guid, outputSubtype: *Guid, configuration: *IPropertySet) callconv(.winapi) HRESULT,
     };
 };
 pub const IMediaExtensionManager2 = extern struct {
@@ -2043,9 +2043,9 @@ pub const IVideoFrameStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(self: *@This(), format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
+    pub fn CreateAsDirect3D11SurfaceBackedWithDevice(self: *@This(), format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
         var _r: *VideoFrame = undefined;
-        const _c = self.vtable.CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice(@ptrCast(self), format, width, height, device, &_r);
+        const _c = self.vtable.CreateAsDirect3D11SurfaceBackedWithDevice(@ptrCast(self), format, width, height, device, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2074,7 +2074,7 @@ pub const IVideoFrameStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateAsDirect3D11SurfaceBacked: *const fn(self: *anyopaque, format: DirectXPixelFormat, width: i32, height: i32, _r: **VideoFrame) callconv(.winapi) HRESULT,
-        CreateAsDirect3D11SurfaceBackedWithWidthWithHeightWithDevice: *const fn(self: *anyopaque, format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice, _r: **VideoFrame) callconv(.winapi) HRESULT,
+        CreateAsDirect3D11SurfaceBackedWithDevice: *const fn(self: *anyopaque, format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice, _r: **VideoFrame) callconv(.winapi) HRESULT,
         CreateWithSoftwareBitmap: *const fn(self: *anyopaque, bitmap: *SoftwareBitmap, _r: **VideoFrame) callconv(.winapi) HRESULT,
         CreateWithDirect3D11Surface: *const fn(self: *anyopaque, surface: *IDirect3DSurface, _r: **VideoFrame) callconv(.winapi) HRESULT,
     };
@@ -2178,9 +2178,9 @@ pub const MediaMarkerTypes = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Bookmark() core.HResult!HSTRING {
-        const factory = @This().IMediaMarkerTypesStaticsCache.get();
-        return try factory.getBookmark();
+    pub fn getBookmark() core.HResult!HSTRING {
+        const _f = @This().IMediaMarkerTypesStaticsCache.get();
+        return try _f.getBookmark();
     }
     pub const NAME: []const u8 = "Windows.Media.MediaMarkerTypes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2681,8 +2681,8 @@ pub const SystemMediaTransportControls = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*SystemMediaTransportControls {
-        const factory = @This().ISystemMediaTransportControlsStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().ISystemMediaTransportControlsStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.Media.SystemMediaTransportControls";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2877,9 +2877,9 @@ pub const VideoEffects = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_VideoStabilization() core.HResult!HSTRING {
-        const factory = @This().IVideoEffectsStaticsCache.get();
-        return try factory.getVideoStabilization();
+    pub fn getVideoStabilization() core.HResult!HSTRING {
+        const _f = @This().IVideoEffectsStaticsCache.get();
+        return try _f.getVideoStabilization();
     }
     pub const NAME: []const u8 = "Windows.Media.VideoEffects";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2971,38 +2971,38 @@ pub const VideoFrame = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Close();
     }
-    pub fn CopyToAsyncWithSourceBoundsWithDestinationBounds(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
+    pub fn CopyToAsyncWithSourceBoundsAndDestinationBounds(self: *@This(), frame: *VideoFrame, sourceBounds: *IReference(BitmapBounds), destinationBounds: *IReference(BitmapBounds)) core.HResult!*IAsyncAction {
         var this: ?*IVideoFrame2 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVideoFrame2.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CopyToAsyncWithSourceBoundsWithDestinationBounds(frame, sourceBounds, destinationBounds);
+        return try this.?.CopyToAsyncWithSourceBoundsAndDestinationBounds(frame, sourceBounds, destinationBounds);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(format: BitmapPixelFormat, width: i32, height: i32) core.HResult!*VideoFrame {
-        const factory = @This().IVideoFrameFactoryCache.get();
-        return try factory.Create(format, width, height);
+        const _f = @This().IVideoFrameFactoryCache.get();
+        return try _f.Create(format, width, height);
     }
     pub fn CreateWithAlpha(format: BitmapPixelFormat, width: i32, height: i32, alpha: BitmapAlphaMode) core.HResult!*VideoFrame {
-        const factory = @This().IVideoFrameFactoryCache.get();
-        return try factory.CreateWithAlpha(format, width, height, alpha);
+        const _f = @This().IVideoFrameFactoryCache.get();
+        return try _f.CreateWithAlpha(format, width, height, alpha);
     }
     pub fn CreateAsDirect3D11SurfaceBacked(format: DirectXPixelFormat, width: i32, height: i32) core.HResult!*VideoFrame {
-        const factory = @This().IVideoFrameStaticsCache.get();
-        return try factory.CreateAsDirect3D11SurfaceBacked(format, width, height);
+        const _f = @This().IVideoFrameStaticsCache.get();
+        return try _f.CreateAsDirect3D11SurfaceBacked(format, width, height);
     }
     pub fn CreateAsDirect3D11SurfaceBackedWithDevice(format: DirectXPixelFormat, width: i32, height: i32, device: *IDirect3DDevice) core.HResult!*VideoFrame {
-        const factory = @This().IVideoFrameStaticsCache.get();
-        return try factory.CreateAsDirect3D11SurfaceBackedWithDevice(format, width, height, device);
+        const _f = @This().IVideoFrameStaticsCache.get();
+        return try _f.CreateAsDirect3D11SurfaceBackedWithDevice(format, width, height, device);
     }
     pub fn CreateWithSoftwareBitmap(bitmap: *SoftwareBitmap) core.HResult!*VideoFrame {
-        const factory = @This().IVideoFrameStaticsCache.get();
-        return try factory.CreateWithSoftwareBitmap(bitmap);
+        const _f = @This().IVideoFrameStaticsCache.get();
+        return try _f.CreateWithSoftwareBitmap(bitmap);
     }
     pub fn CreateWithDirect3D11Surface(surface: *IDirect3DSurface) core.HResult!*VideoFrame {
-        const factory = @This().IVideoFrameStaticsCache.get();
-        return try factory.CreateWithDirect3D11Surface(surface);
+        const _f = @This().IVideoFrameStaticsCache.get();
+        return try _f.CreateWithDirect3D11Surface(surface);
     }
     pub const NAME: []const u8 = "Windows.Media.VideoFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

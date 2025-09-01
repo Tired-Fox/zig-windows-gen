@@ -2116,8 +2116,8 @@ pub const InkDrawingAttributes = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IInkDrawingAttributes.IID)));
     }
     pub fn CreateForPencil() core.HResult!*InkDrawingAttributes {
-        const factory = @This().IInkDrawingAttributesStaticsCache.get();
-        return try factory.CreateForPencil();
+        const _f = @This().IInkDrawingAttributesStaticsCache.get();
+        return try _f.CreateForPencil();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkDrawingAttributes";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2251,24 +2251,6 @@ pub const InkManager = extern struct {
         const this: *IInkManager = @ptrCast(self);
         return try this.RecognizeAsync(recognitionTarget);
     }
-    pub fn SetDefaultRecognizer(self: *@This(), recognizer: *InkRecognizer) core.HResult!void {
-        var this: ?*IInkRecognizerContainer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetDefaultRecognizer(recognizer);
-    }
-    pub fn RecognizeAsyncWithRecognitionTarget(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
-        var this: ?*IInkRecognizerContainer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.RecognizeAsyncWithRecognitionTarget(strokeCollection, recognitionTarget);
-    }
-    pub fn GetRecognizers(self: *@This()) core.HResult!*IVectorView(InkRecognizer) {
-        var this: ?*IInkRecognizerContainer = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetRecognizers();
-    }
     pub fn getBoundingRect(self: *@This()) core.HResult!Rect {
         var this: ?*IInkStrokeContainer = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
@@ -2352,6 +2334,24 @@ pub const InkManager = extern struct {
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeContainer.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetRecognitionResults();
+    }
+    pub fn SetDefaultRecognizer(self: *@This(), recognizer: *InkRecognizer) core.HResult!void {
+        var this: ?*IInkRecognizerContainer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.SetDefaultRecognizer(recognizer);
+    }
+    pub fn RecognizeAsyncWithStrokeCollectionAndRecognitionTarget(self: *@This(), strokeCollection: *InkStrokeContainer, recognitionTarget: InkRecognitionTarget) core.HResult!*IAsyncOperation(IVectorView(InkRecognitionResult)) {
+        var this: ?*IInkRecognizerContainer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.RecognizeAsyncWithStrokeCollectionAndRecognitionTarget(strokeCollection, recognitionTarget);
+    }
+    pub fn GetRecognizers(self: *@This()) core.HResult!*IVectorView(InkRecognizer) {
+        var this: ?*IInkRecognizerContainer = undefined;
+        const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkRecognizerContainer.IID, @ptrCast(&this));
+        if (this == null or _c != 0) return core.hresultToError(_c).err;
+        return try this.?.GetRecognizers();
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -2444,12 +2444,12 @@ pub const InkPoint = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInkPoint(position: Point, pressure: f32) core.HResult!*InkPoint {
-        const factory = @This().IInkPointFactoryCache.get();
-        return try factory.CreateInkPoint(position, pressure);
+        const _f = @This().IInkPointFactoryCache.get();
+        return try _f.CreateInkPoint(position, pressure);
     }
     pub fn CreateInkPointWithTiltAndTimestamp(position: Point, pressure: f32, tiltX: f32, tiltY: f32, timestamp: u64) core.HResult!*InkPoint {
-        const factory = @This().IInkPointFactory2Cache.get();
-        return try factory.CreateInkPointWithTiltAndTimestamp(position, pressure, tiltX, tiltY, timestamp);
+        const _f = @This().IInkPointFactory2Cache.get();
+        return try _f.CreateInkPointWithTiltAndTimestamp(position, pressure, tiltX, tiltY, timestamp);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkPoint";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2673,8 +2673,8 @@ pub const InkPresenterProtractor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*InkPresenterProtractor {
-        const factory = @This().IInkPresenterProtractorFactoryCache.get();
-        return try factory.Create(inkPresenter);
+        const _f = @This().IInkPresenterProtractorFactoryCache.get();
+        return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkPresenterProtractor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2783,8 +2783,8 @@ pub const InkPresenterRuler = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(inkPresenter: *InkPresenter) core.HResult!*InkPresenterRuler {
-        const factory = @This().IInkPresenterRulerFactoryCache.get();
-        return try factory.Create(inkPresenter);
+        const _f = @This().IInkPresenterRulerFactoryCache.get();
+        return try _f.Create(inkPresenter);
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.InkPresenterRuler";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2985,11 +2985,11 @@ pub const InkStrokeBuilder = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.CreateStrokeFromInkPoints(inkPoints, transform);
     }
-    pub fn CreateStrokeFromInkPointsWithStrokeStartedTimeWithStrokeDuration(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2, strokeStartedTime: *IReference(DateTime), strokeDuration: *IReference(TimeSpan)) core.HResult!*InkStroke {
+    pub fn CreateStrokeFromInkPointsWithStrokeStartedTimeAndStrokeDuration(self: *@This(), inkPoints: *IIterable(InkPoint), transform: Matrix3x2, strokeStartedTime: *IReference(DateTime), strokeDuration: *IReference(TimeSpan)) core.HResult!*InkStroke {
         var this: ?*IInkStrokeBuilder3 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IInkStrokeBuilder3.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.CreateStrokeFromInkPointsWithStrokeStartedTimeWithStrokeDuration(inkPoints, transform, strokeStartedTime, strokeDuration);
+        return try this.?.CreateStrokeFromInkPointsWithStrokeStartedTimeAndStrokeDuration(inkPoints, transform, strokeStartedTime, strokeDuration);
     }
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
@@ -3325,8 +3325,8 @@ pub const PenAndInkSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*PenAndInkSettings {
-        const factory = @This().IPenAndInkSettingsStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IPenAndInkSettingsStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.UI.Input.Inking.PenAndInkSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

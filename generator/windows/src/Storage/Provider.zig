@@ -14,8 +14,8 @@ pub const CachedFileUpdater = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetUpdateInformation(file: *IStorageFile, contentId: HSTRING, readMode: ReadActivationMode, writeMode: WriteActivationMode, options: CachedFileOptions) core.HResult!void {
-        const factory = @This().ICachedFileUpdaterStaticsCache.get();
-        return try factory.SetUpdateInformation(file, contentId, readMode, writeMode, options);
+        const _f = @This().ICachedFileUpdaterStaticsCache.get();
+        return try _f.SetUpdateInformation(file, contentId, readMode, writeMode, options);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.CachedFileUpdater";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2047,8 +2047,8 @@ pub const StorageProviderFileTypeInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(fileExtension: HSTRING, iconResource: HSTRING) core.HResult!*StorageProviderFileTypeInfo {
-        const factory = @This().IStorageProviderFileTypeInfoFactoryCache.get();
-        return try factory.CreateInstance(fileExtension, iconResource);
+        const _f = @This().IStorageProviderFileTypeInfoFactoryCache.get();
+        return try _f.CreateInstance(fileExtension, iconResource);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderFileTypeInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2166,8 +2166,8 @@ pub const StorageProviderItemProperties = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetAsync(item: *IStorageItem, itemProperties: *IIterable(StorageProviderItemProperty)) core.HResult!*IAsyncAction {
-        const factory = @This().IStorageProviderItemPropertiesStaticsCache.get();
-        return try factory.SetAsync(item, itemProperties);
+        const _f = @This().IStorageProviderItemPropertiesStaticsCache.get();
+        return try _f.SetAsync(item, itemProperties);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderItemProperties";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2487,8 +2487,8 @@ pub const StorageProviderQueryResultSet = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(results: [*]IStorageProviderQueryResult) core.HResult!*StorageProviderQueryResultSet {
-        const factory = @This().IStorageProviderQueryResultSetFactoryCache.get();
-        return try factory.CreateInstance(results);
+        const _f = @This().IStorageProviderQueryResultSetFactoryCache.get();
+        return try _f.CreateInstance(results);
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderQueryResultSet";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3043,28 +3043,28 @@ pub const StorageProviderSyncRootManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Register(syncRootInformation: *StorageProviderSyncRootInfo) core.HResult!void {
-        const factory = @This().IStorageProviderSyncRootManagerStaticsCache.get();
-        return try factory.Register(syncRootInformation);
+        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        return try _f.Register(syncRootInformation);
     }
     pub fn Unregister(id: HSTRING) core.HResult!void {
-        const factory = @This().IStorageProviderSyncRootManagerStaticsCache.get();
-        return try factory.Unregister(id);
+        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        return try _f.Unregister(id);
     }
     pub fn GetSyncRootInformationForFolder(folder: *IStorageFolder) core.HResult!*StorageProviderSyncRootInfo {
-        const factory = @This().IStorageProviderSyncRootManagerStaticsCache.get();
-        return try factory.GetSyncRootInformationForFolder(folder);
+        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        return try _f.GetSyncRootInformationForFolder(folder);
     }
     pub fn GetSyncRootInformationForId(id: HSTRING) core.HResult!*StorageProviderSyncRootInfo {
-        const factory = @This().IStorageProviderSyncRootManagerStaticsCache.get();
-        return try factory.GetSyncRootInformationForId(id);
+        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        return try _f.GetSyncRootInformationForId(id);
     }
     pub fn GetCurrentSyncRoots() core.HResult!*IVectorView(StorageProviderSyncRootInfo) {
-        const factory = @This().IStorageProviderSyncRootManagerStaticsCache.get();
-        return try factory.GetCurrentSyncRoots();
+        const _f = @This().IStorageProviderSyncRootManagerStaticsCache.get();
+        return try _f.GetCurrentSyncRoots();
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IStorageProviderSyncRootManagerStatics2Cache.get();
-        return try factory.IsSupported();
+        const _f = @This().IStorageProviderSyncRootManagerStatics2Cache.get();
+        return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Storage.Provider.StorageProviderSyncRootManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -18,9 +18,9 @@ pub const INamedResource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn Resolve(self: *@This(), resourceContext: *ResourceContext) core.HResult!*ResourceCandidate {
+    pub fn ResolveWithResourceContext(self: *@This(), resourceContext: *ResourceContext) core.HResult!*ResourceCandidate {
         var _r: *ResourceCandidate = undefined;
-        const _c = self.vtable.Resolve(@ptrCast(self), resourceContext, &_r);
+        const _c = self.vtable.ResolveWithResourceContext(@ptrCast(self), resourceContext, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -30,9 +30,9 @@ pub const INamedResource = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn ResolveAll(self: *@This(), resourceContext: *ResourceContext) core.HResult!*IVectorView(ResourceCandidate) {
+    pub fn ResolveAllWithResourceContext(self: *@This(), resourceContext: *ResourceContext) core.HResult!*IVectorView(ResourceCandidate) {
         var _r: *IVectorView(ResourceCandidate) = undefined;
-        const _c = self.vtable.ResolveAll(@ptrCast(self), resourceContext, &_r);
+        const _c = self.vtable.ResolveAllWithResourceContext(@ptrCast(self), resourceContext, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -51,9 +51,9 @@ pub const INamedResource = extern struct {
         get_Uri: *const fn(self: *anyopaque, _r: **Uri) callconv(.winapi) HRESULT,
         get_Candidates: *const fn(self: *anyopaque, _r: **IVectorView(ResourceCandidate)) callconv(.winapi) HRESULT,
         Resolve: *const fn(self: *anyopaque, _r: **ResourceCandidate) callconv(.winapi) HRESULT,
-        Resolve: *const fn(self: *anyopaque, resourceContext: *ResourceContext, _r: **ResourceCandidate) callconv(.winapi) HRESULT,
+        ResolveWithResourceContext: *const fn(self: *anyopaque, resourceContext: *ResourceContext, _r: **ResourceCandidate) callconv(.winapi) HRESULT,
         ResolveAll: *const fn(self: *anyopaque, _r: **IVectorView(ResourceCandidate)) callconv(.winapi) HRESULT,
-        ResolveAll: *const fn(self: *anyopaque, resourceContext: *ResourceContext, _r: **IVectorView(ResourceCandidate)) callconv(.winapi) HRESULT,
+        ResolveAllWithResourceContext: *const fn(self: *anyopaque, resourceContext: *ResourceContext, _r: **IVectorView(ResourceCandidate)) callconv(.winapi) HRESULT,
     };
 };
 pub const IResourceCandidate = extern struct {
@@ -179,8 +179,8 @@ pub const IResourceContext = extern struct {
         const _c = self.vtable.Reset(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn Reset(self: *@This(), qualifierNames: *IIterable(HSTRING)) core.HResult!void {
-        const _c = self.vtable.Reset(@ptrCast(self), qualifierNames);
+    pub fn ResetWithQualifierNames(self: *@This(), qualifierNames: *IIterable(HSTRING)) core.HResult!void {
+        const _c = self.vtable.ResetWithQualifierNames(@ptrCast(self), qualifierNames);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn OverrideToMatch(self: *@This(), result: *IIterable(ResourceQualifier)) core.HResult!void {
@@ -217,7 +217,7 @@ pub const IResourceContext = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         get_QualifierValues: *const fn(self: *anyopaque, _r: **IObservableMap(HSTRING,HSTRING)) callconv(.winapi) HRESULT,
         Reset: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        Reset: *const fn(self: *anyopaque, qualifierNames: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
+        ResetWithQualifierNames: *const fn(self: *anyopaque, qualifierNames: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
         OverrideToMatch: *const fn(self: *anyopaque, result: *IIterable(ResourceQualifier)) callconv(.winapi) HRESULT,
         Clone: *const fn(self: *anyopaque, _r: **ResourceContext) callconv(.winapi) HRESULT,
         get_Languages: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
@@ -263,8 +263,8 @@ pub const IResourceContextStatics2 = extern struct {
         const _c = self.vtable.ResetGlobalQualifierValues(@ptrCast(self));
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn ResetGlobalQualifierValues(self: *@This(), qualifierNames: *IIterable(HSTRING)) core.HResult!void {
-        const _c = self.vtable.ResetGlobalQualifierValues(@ptrCast(self), qualifierNames);
+    pub fn ResetGlobalQualifierValuesWithQualifierNames(self: *@This(), qualifierNames: *IIterable(HSTRING)) core.HResult!void {
+        const _c = self.vtable.ResetGlobalQualifierValuesWithQualifierNames(@ptrCast(self), qualifierNames);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn GetForViewIndependentUse(self: *@This()) core.HResult!*ResourceContext {
@@ -288,7 +288,7 @@ pub const IResourceContextStatics2 = extern struct {
         GetForCurrentView: *const fn(self: *anyopaque, _r: **ResourceContext) callconv(.winapi) HRESULT,
         SetGlobalQualifierValue: *const fn(self: *anyopaque, key: HSTRING, value: HSTRING) callconv(.winapi) HRESULT,
         ResetGlobalQualifierValues: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
-        ResetGlobalQualifierValues: *const fn(self: *anyopaque, qualifierNames: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
+        ResetGlobalQualifierValuesWithQualifierNames: *const fn(self: *anyopaque, qualifierNames: *IIterable(HSTRING)) callconv(.winapi) HRESULT,
         GetForViewIndependentUse: *const fn(self: *anyopaque, _r: **ResourceContext) callconv(.winapi) HRESULT,
     };
 };
@@ -625,23 +625,11 @@ pub const ResourceCandidateKind = enum(i32) {
 };
 pub const ResourceCandidateVectorView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(ResourceCandidate) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ResourceCandidate) {
         var this: ?*IIterable(ResourceCandidate) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -691,36 +679,36 @@ pub const ResourceContext = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IResourceContext.IID)));
     }
     pub fn CreateMatchingContext(result: *IIterable(ResourceQualifier)) core.HResult!*ResourceContext {
-        const factory = @This().IResourceContextStaticsCache.get();
-        return try factory.CreateMatchingContext(result);
+        const _f = @This().IResourceContextStaticsCache.get();
+        return try _f.CreateMatchingContext(result);
     }
     pub fn GetForCurrentView() core.HResult!*ResourceContext {
-        const factory = @This().IResourceContextStatics2Cache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IResourceContextStatics2Cache.get();
+        return try _f.GetForCurrentView();
     }
     pub fn SetGlobalQualifierValue(key: HSTRING, value: HSTRING) core.HResult!void {
-        const factory = @This().IResourceContextStatics2Cache.get();
-        return try factory.SetGlobalQualifierValue(key, value);
+        const _f = @This().IResourceContextStatics2Cache.get();
+        return try _f.SetGlobalQualifierValue(key, value);
     }
     pub fn ResetGlobalQualifierValues() core.HResult!void {
-        const factory = @This().IResourceContextStatics2Cache.get();
-        return try factory.ResetGlobalQualifierValues();
+        const _f = @This().IResourceContextStatics2Cache.get();
+        return try _f.ResetGlobalQualifierValues();
     }
     pub fn ResetGlobalQualifierValuesWithQualifierNames(qualifierNames: *IIterable(HSTRING)) core.HResult!void {
-        const factory = @This().IResourceContextStatics2Cache.get();
-        return try factory.ResetGlobalQualifierValuesWithQualifierNames(qualifierNames);
+        const _f = @This().IResourceContextStatics2Cache.get();
+        return try _f.ResetGlobalQualifierValuesWithQualifierNames(qualifierNames);
     }
     pub fn GetForViewIndependentUse() core.HResult!*ResourceContext {
-        const factory = @This().IResourceContextStatics2Cache.get();
-        return try factory.GetForViewIndependentUse();
+        const _f = @This().IResourceContextStatics2Cache.get();
+        return try _f.GetForViewIndependentUse();
     }
     pub fn GetForUIContext(context: *UIContext) core.HResult!*ResourceContext {
-        const factory = @This().IResourceContextStatics4Cache.get();
-        return try factory.GetForUIContext(context);
+        const _f = @This().IResourceContextStatics4Cache.get();
+        return try _f.GetForUIContext(context);
     }
     pub fn SetGlobalQualifierValueWithPersistence(key: HSTRING, value: HSTRING, persistence: ResourceQualifierPersistence) core.HResult!void {
-        const factory = @This().IResourceContextStatics3Cache.get();
-        return try factory.SetGlobalQualifierValue(key, value, persistence);
+        const _f = @This().IResourceContextStatics3Cache.get();
+        return try _f.SetGlobalQualifierValue(key, value, persistence);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Core.ResourceContext";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -735,23 +723,11 @@ pub const ResourceContext = extern struct {
 };
 pub const ResourceContextLanguagesVectorView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(HSTRING) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(HSTRING) {
         var this: ?*IIterable(HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -807,13 +783,13 @@ pub const ResourceManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*ResourceManager {
-        const factory = @This().IResourceManagerStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*ResourceManager {
+        const _f = @This().IResourceManagerStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub fn IsResourceReference(resourceReference: HSTRING) core.HResult!bool {
-        const factory = @This().IResourceManagerStaticsCache.get();
-        return try factory.IsResourceReference(resourceReference);
+        const _f = @This().IResourceManagerStaticsCache.get();
+        return try _f.IsResourceReference(resourceReference);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Core.ResourceManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -840,31 +816,19 @@ pub const ResourceMap = extern struct {
         const this: *IResourceMap = @ptrCast(self);
         return try this.GetSubtree(reference);
     }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMapView(HSTRING,NamedResource) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMapView(HSTRING,NamedResource) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMapView(HSTRING,NamedResource) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,NamedResource), second: *IMapView(HSTRING,NamedResource)) core.HResult!void {
         var this: ?*IMapView(HSTRING,NamedResource) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapView.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,NamedResource)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,NamedResource)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -878,21 +842,13 @@ pub const ResourceMap = extern struct {
 };
 pub const ResourceMapIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
-        const this: *IIterator = @ptrCast(self);
-        return try this.getCurrent();
-    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IKeyValuePair(HSTRING,NamedResource)) = @ptrCast(self);
         return try this.getHasCurrent();
     }
     pub fn MoveNext(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IKeyValuePair(HSTRING,NamedResource)) = @ptrCast(self);
         return try this.MoveNext();
-    }
-    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IIterator = @ptrCast(self);
-        return try this.GetMany(items);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Core.ResourceMapIterator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -902,23 +858,15 @@ pub const ResourceMapIterator = extern struct {
 };
 pub const ResourceMapMapView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        const this: *IMapView = @ptrCast(self);
-        return try this.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMapView = @ptrCast(self);
+        const this: *IMapView(HSTRING,ResourceMap) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        const this: *IMapView = @ptrCast(self);
-        return try this.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
-        const this: *IMapView = @ptrCast(self);
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,ResourceMap), second: *IMapView(HSTRING,ResourceMap)) core.HResult!void {
+        const this: *IMapView(HSTRING,ResourceMap) = @ptrCast(self);
         return try this.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,ResourceMap)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,ResourceMap)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -932,21 +880,13 @@ pub const ResourceMapMapView = extern struct {
 };
 pub const ResourceMapMapViewIterator = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn getCurrent(self: *@This()) core.HResult!core.generic(T) {
-        const this: *IIterator = @ptrCast(self);
-        return try this.getCurrent();
-    }
     pub fn getHasCurrent(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IKeyValuePair(HSTRING,ResourceMap)) = @ptrCast(self);
         return try this.getHasCurrent();
     }
     pub fn MoveNext(self: *@This()) core.HResult!bool {
-        const this: *IIterator = @ptrCast(self);
+        const this: *IIterator(IKeyValuePair(HSTRING,ResourceMap)) = @ptrCast(self);
         return try this.MoveNext();
-    }
-    pub fn GetMany(self: *@This(), items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IIterator = @ptrCast(self);
-        return try this.GetMany(items);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Resources.Core.ResourceMapMapViewIterator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -984,23 +924,15 @@ pub const ResourceQualifier = extern struct {
 };
 pub const ResourceQualifierMapView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        const this: *IMapView = @ptrCast(self);
-        return try this.Lookup(key);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IMapView = @ptrCast(self);
+        const this: *IMapView(HSTRING,HSTRING) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        const this: *IMapView = @ptrCast(self);
-        return try this.HasKey(key);
-    }
-    pub fn Split(self: *@This(), first: *IMapView(K,V), second: *IMapView(K,V)) core.HResult!void {
-        const this: *IMapView = @ptrCast(self);
+    pub fn Split(self: *@This(), first: *IMapView(HSTRING,HSTRING), second: *IMapView(HSTRING,HSTRING)) core.HResult!void {
+        const this: *IMapView(HSTRING,HSTRING) = @ptrCast(self);
         return try this.Split(first, second);
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1014,19 +946,13 @@ pub const ResourceQualifierMapView = extern struct {
 };
 pub const ResourceQualifierObservableMap = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(K,V)) core.HResult!EventRegistrationToken {
-        const this: *IObservableMap = @ptrCast(self);
+    pub fn addMapChanged(self: *@This(), vhnd: *MapChangedEventHandler(HSTRING,HSTRING)) core.HResult!EventRegistrationToken {
+        const this: *IObservableMap(HSTRING,HSTRING) = @ptrCast(self);
         return try this.addMapChanged(vhnd);
     }
     pub fn removeMapChanged(self: *@This(), token: EventRegistrationToken) core.HResult!void {
-        const this: *IObservableMap = @ptrCast(self);
+        const this: *IObservableMap(HSTRING,HSTRING) = @ptrCast(self);
         return try this.removeMapChanged(token);
-    }
-    pub fn Lookup(self: *@This(), key: core.generic(K)) core.HResult!core.generic(V) {
-        var this: ?*IMap(HSTRING,HSTRING) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Lookup(key);
     }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IMap(HSTRING,HSTRING) = undefined;
@@ -1034,29 +960,11 @@ pub const ResourceQualifierObservableMap = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn HasKey(self: *@This(), key: core.generic(K)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,HSTRING) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.HasKey(key);
-    }
-    pub fn GetView(self: *@This()) core.HResult!*IMapView(K,V) {
+    pub fn GetView(self: *@This()) core.HResult!*IMapView(HSTRING,HSTRING) {
         var this: ?*IMap(HSTRING,HSTRING) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn Insert(self: *@This(), key: core.generic(K), value: core.generic(V)) core.HResult!bool {
-        var this: ?*IMap(HSTRING,HSTRING) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Insert(key, value);
-    }
-    pub fn Remove(self: *@This(), key: core.generic(K)) core.HResult!void {
-        var this: ?*IMap(HSTRING,HSTRING) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IMap.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Remove(key);
     }
     pub fn Clear(self: *@This()) core.HResult!void {
         var this: ?*IMap(HSTRING,HSTRING) = undefined;
@@ -1064,7 +972,7 @@ pub const ResourceQualifierObservableMap = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(IKeyValuePair(HSTRING,HSTRING)) {
         var this: ?*IIterable(IKeyValuePair(HSTRING,HSTRING)) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1082,23 +990,11 @@ pub const ResourceQualifierPersistence = enum(i32) {
 };
 pub const ResourceQualifierVectorView = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
+        const this: *IVectorView(ResourceQualifier) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVectorView = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ResourceQualifier) {
         var this: ?*IIterable(ResourceQualifier) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

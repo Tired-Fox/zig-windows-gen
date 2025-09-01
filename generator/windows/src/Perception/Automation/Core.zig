@@ -4,8 +4,8 @@ pub const CorePerceptionAutomation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetActivationFactoryProvider(provider: *IGetActivationFactory) core.HResult!void {
-        const factory = @This().ICorePerceptionAutomationStaticsCache.get();
-        return try factory.SetActivationFactoryProvider(provider);
+        const _f = @This().ICorePerceptionAutomationStaticsCache.get();
+        return try _f.SetActivationFactoryProvider(provider);
     }
     pub const NAME: []const u8 = "Windows.Perception.Automation.Core.CorePerceptionAutomation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

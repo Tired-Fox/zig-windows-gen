@@ -468,17 +468,17 @@ pub const SpatialSurfaceMeshOptions = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpatialSurfaceMeshOptions.IID)));
     }
-    pub fn get_SupportedVertexPositionFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
-        const factory = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
-        return try factory.getSupportedVertexPositionFormats();
+    pub fn getSupportedVertexPositionFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
+        const _f = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
+        return try _f.getSupportedVertexPositionFormats();
     }
-    pub fn get_SupportedTriangleIndexFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
-        const factory = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
-        return try factory.getSupportedTriangleIndexFormats();
+    pub fn getSupportedTriangleIndexFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
+        const _f = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
+        return try _f.getSupportedTriangleIndexFormats();
     }
-    pub fn get_SupportedVertexNormalFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
-        const factory = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
-        return try factory.getSupportedVertexNormalFormats();
+    pub fn getSupportedVertexNormalFormats() core.HResult!*IVectorView(DirectXPixelFormat) {
+        const _f = @This().ISpatialSurfaceMeshOptionsStaticsCache.get();
+        return try _f.getSupportedVertexNormalFormats();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.SpatialSurfaceMeshOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -518,12 +518,12 @@ pub const SpatialSurfaceObserver = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISpatialSurfaceObserver.IID)));
     }
     pub fn RequestAccessAsync() core.HResult!*IAsyncOperation(SpatialPerceptionAccessStatus) {
-        const factory = @This().ISpatialSurfaceObserverStaticsCache.get();
-        return try factory.RequestAccessAsync();
+        const _f = @This().ISpatialSurfaceObserverStaticsCache.get();
+        return try _f.RequestAccessAsync();
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().ISpatialSurfaceObserverStatics2Cache.get();
-        return try factory.IsSupported();
+        const _f = @This().ISpatialSurfaceObserverStatics2Cache.get();
+        return try _f.IsSupported();
     }
     pub const NAME: []const u8 = "Windows.Perception.Spatial.Surfaces.SpatialSurfaceObserver";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

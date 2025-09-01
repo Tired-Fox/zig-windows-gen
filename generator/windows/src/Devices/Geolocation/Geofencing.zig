@@ -32,20 +32,20 @@ pub const Geofence = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(id: HSTRING, geoshape: *IGeoshape) core.HResult!*Geofence {
-        const factory = @This().IGeofenceFactoryCache.get();
-        return try factory.Create(id, geoshape);
+        const _f = @This().IGeofenceFactoryCache.get();
+        return try _f.Create(id, geoshape);
     }
     pub fn CreateWithMonitorStates(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool) core.HResult!*Geofence {
-        const factory = @This().IGeofenceFactoryCache.get();
-        return try factory.CreateWithMonitorStates(id, geoshape, monitoredStates, singleUse);
+        const _f = @This().IGeofenceFactoryCache.get();
+        return try _f.CreateWithMonitorStates(id, geoshape, monitoredStates, singleUse);
     }
     pub fn CreateWithMonitorStatesAndDwellTime(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan) core.HResult!*Geofence {
-        const factory = @This().IGeofenceFactoryCache.get();
-        return try factory.CreateWithMonitorStatesAndDwellTime(id, geoshape, monitoredStates, singleUse, dwellTime);
+        const _f = @This().IGeofenceFactoryCache.get();
+        return try _f.CreateWithMonitorStatesAndDwellTime(id, geoshape, monitoredStates, singleUse, dwellTime);
     }
     pub fn CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id: HSTRING, geoshape: *IGeoshape, monitoredStates: MonitoredGeofenceStates, singleUse: bool, dwellTime: TimeSpan, startTime: DateTime, duration: TimeSpan) core.HResult!*Geofence {
-        const factory = @This().IGeofenceFactoryCache.get();
-        return try factory.CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id, geoshape, monitoredStates, singleUse, dwellTime, startTime, duration);
+        const _f = @This().IGeofenceFactoryCache.get();
+        return try _f.CreateWithMonitorStatesDwellTimeStartTimeAndDuration(id, geoshape, monitoredStates, singleUse, dwellTime, startTime, duration);
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.Geofence";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -91,9 +91,9 @@ pub const GeofenceMonitor = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*GeofenceMonitor {
-        const factory = @This().IGeofenceMonitorStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*GeofenceMonitor {
+        const _f = @This().IGeofenceMonitorStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.Devices.Geolocation.Geofencing.GeofenceMonitor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

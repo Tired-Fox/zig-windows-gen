@@ -100,17 +100,13 @@ pub const DeleteSmsMessagesOperation = extern struct {
 };
 pub const GetSmsDeviceOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
-        const this: *IAsyncOperation = @ptrCast(self);
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(SmsDevice)) core.HResult!void {
+        const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
-        const this: *IAsyncOperation = @ptrCast(self);
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(SmsDevice) {
+        const this: *IAsyncOperation(SmsDevice) = @ptrCast(self);
         return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-        const this: *IAsyncOperation = @ptrCast(self);
-        return try this.GetResults();
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
@@ -150,17 +146,13 @@ pub const GetSmsDeviceOperation = extern struct {
 };
 pub const GetSmsMessageOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
-        const this: *IAsyncOperation = @ptrCast(self);
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(ISmsMessage)) core.HResult!void {
+        const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
-        const this: *IAsyncOperation = @ptrCast(self);
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(ISmsMessage) {
+        const this: *IAsyncOperation(ISmsMessage) = @ptrCast(self);
         return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-        const this: *IAsyncOperation = @ptrCast(self);
-        return try this.GetResults();
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
@@ -200,25 +192,21 @@ pub const GetSmsMessageOperation = extern struct {
 };
 pub const GetSmsMessagesOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(TResult,TProgress)) core.HResult!void {
-        const this: *IAsyncOperationWithProgress = @ptrCast(self);
+    pub fn putProgress(self: *@This(), handler: *AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
         return try this.putProgress(handler);
     }
-    pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(TResult,TProgress) {
-        const this: *IAsyncOperationWithProgress = @ptrCast(self);
+    pub fn getProgress(self: *@This()) core.HResult!*AsyncOperationProgressHandler(IVectorView(ISmsMessage),i32) {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
         return try this.getProgress();
     }
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(TResult,TProgress)) core.HResult!void {
-        const this: *IAsyncOperationWithProgress = @ptrCast(self);
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32)) core.HResult!void {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(TResult,TProgress) {
-        const this: *IAsyncOperationWithProgress = @ptrCast(self);
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationWithProgressCompletedHandler(IVectorView(ISmsMessage),i32) {
+        const this: *IAsyncOperationWithProgress(IVectorView(ISmsMessage),i32) = @ptrCast(self);
         return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-        const this: *IAsyncOperationWithProgress = @ptrCast(self);
-        return try this.GetResults();
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;
@@ -878,20 +866,20 @@ pub const SmsDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromNetworkAccountIdAsync(networkAccountId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        const factory = @This().ISmsDeviceStatics2Cache.get();
-        return try factory.FromNetworkAccountIdAsync(networkAccountId);
+        const _f = @This().ISmsDeviceStatics2Cache.get();
+        return try _f.FromNetworkAccountIdAsync(networkAccountId);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ISmsDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ISmsDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromIdAsync(deviceId: HSTRING) core.HResult!*IAsyncOperation(SmsDevice) {
-        const factory = @This().ISmsDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId);
+        const _f = @This().ISmsDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SmsDevice) {
-        const factory = @This().ISmsDeviceStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().ISmsDeviceStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1228,12 +1216,12 @@ pub const SmsTextMessage = extern struct {
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISmsTextMessage.IID)));
     }
     pub fn FromBinaryMessage(binaryMessage: *SmsBinaryMessage) core.HResult!*SmsTextMessage {
-        const factory = @This().ISmsTextMessageStaticsCache.get();
-        return try factory.FromBinaryMessage(binaryMessage);
+        const _f = @This().ISmsTextMessageStaticsCache.get();
+        return try _f.FromBinaryMessage(binaryMessage);
     }
     pub fn FromBinaryData(format: SmsDataFormat, value: [*]u8) core.HResult!*SmsTextMessage {
-        const factory = @This().ISmsTextMessageStaticsCache.get();
-        return try factory.FromBinaryData(format, value);
+        const _f = @This().ISmsTextMessageStaticsCache.get();
+        return try _f.FromBinaryData(format, value);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsTextMessage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2642,20 +2630,20 @@ pub const SmsDevice2 = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ISmsDevice2StaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ISmsDevice2StaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn FromId(deviceId: HSTRING) core.HResult!*SmsDevice2 {
-        const factory = @This().ISmsDevice2StaticsCache.get();
-        return try factory.FromId(deviceId);
+        const _f = @This().ISmsDevice2StaticsCache.get();
+        return try _f.FromId(deviceId);
     }
     pub fn GetDefault() core.HResult!*SmsDevice2 {
-        const factory = @This().ISmsDevice2StaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ISmsDevice2StaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn FromParentId(parentDeviceId: HSTRING) core.HResult!*SmsDevice2 {
-        const factory = @This().ISmsDevice2StaticsCache.get();
-        return try factory.FromParentId(parentDeviceId);
+        const _f = @This().ISmsDevice2StaticsCache.get();
+        return try _f.FromParentId(parentDeviceId);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsDevice2";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2762,8 +2750,8 @@ pub const SmsFilterRule = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFilterRule(messageType: SmsMessageType) core.HResult!*SmsFilterRule {
-        const factory = @This().ISmsFilterRuleFactoryCache.get();
-        return try factory.CreateFilterRule(messageType);
+        const _f = @This().ISmsFilterRuleFactoryCache.get();
+        return try _f.CreateFilterRule(messageType);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsFilterRule";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2786,8 +2774,8 @@ pub const SmsFilterRules = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFilterRules(actionType: SmsFilterActionType) core.HResult!*SmsFilterRules {
-        const factory = @This().ISmsFilterRulesFactoryCache.get();
-        return try factory.CreateFilterRules(actionType);
+        const _f = @This().ISmsFilterRulesFactoryCache.get();
+        return try _f.CreateFilterRules(actionType);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsFilterRules";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2875,13 +2863,13 @@ pub const SmsMessageRegistration = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AllRegistrations() core.HResult!*IVectorView(SmsMessageRegistration) {
-        const factory = @This().ISmsMessageRegistrationStaticsCache.get();
-        return try factory.getAllRegistrations();
+    pub fn getAllRegistrations() core.HResult!*IVectorView(SmsMessageRegistration) {
+        const _f = @This().ISmsMessageRegistrationStaticsCache.get();
+        return try _f.getAllRegistrations();
     }
     pub fn Register(id: HSTRING, filterRules: *SmsFilterRules) core.HResult!*SmsMessageRegistration {
-        const factory = @This().ISmsMessageRegistrationStaticsCache.get();
-        return try factory.Register(id, filterRules);
+        const _f = @This().ISmsMessageRegistrationStaticsCache.get();
+        return try _f.Register(id, filterRules);
     }
     pub const NAME: []const u8 = "Windows.Devices.Sms.SmsMessageRegistration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

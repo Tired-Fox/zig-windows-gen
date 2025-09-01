@@ -261,9 +261,9 @@ pub const IWindowTabIconStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromFontGlyphWithFontFamilyWithFontUri(self: *@This(), glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
+    pub fn CreateFromFontGlyphWithFontUri(self: *@This(), glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
         var _r: *WindowTabIcon = undefined;
-        const _c = self.vtable.CreateFromFontGlyphWithFontFamilyWithFontUri(@ptrCast(self), glyph, fontFamily, fontUri, &_r);
+        const _c = self.vtable.CreateFromFontGlyphWithFontUri(@ptrCast(self), glyph, fontFamily, fontUri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -286,7 +286,7 @@ pub const IWindowTabIconStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromFontGlyph: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
-        CreateFromFontGlyphWithFontFamilyWithFontUri: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
+        CreateFromFontGlyphWithFontUri: *const fn(self: *anyopaque, glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
         CreateFromImage: *const fn(self: *anyopaque, image: *IRandomAccessStreamReference, _r: **WindowTabIcon) callconv(.winapi) HRESULT,
     };
 };
@@ -602,53 +602,23 @@ pub const WindowTabCollection = extern struct {
         const this: *IWindowTabCollection = @ptrCast(self);
         return try this.MoveTab(tab, index);
     }
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
         var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(WindowTab) {
         var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.GetView();
-    }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.InsertAt(index, value);
     }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
         var this: ?*IVector(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.RemoveAt(index);
-    }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.Append(value);
     }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
         var this: ?*IVector(WindowTab) = undefined;
@@ -662,19 +632,7 @@ pub const WindowTabCollection = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        var this: ?*IVector(WindowTab) = undefined;
-        const _c = IUnknown.QueryInterface(@ptrCast(self), &IVector.IID, @ptrCast(&this));
-        if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(WindowTab) {
         var this: ?*IIterable(WindowTab) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -724,16 +682,16 @@ pub const WindowTabIcon = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromFontGlyph(glyph: HSTRING, fontFamily: HSTRING) core.HResult!*WindowTabIcon {
-        const factory = @This().IWindowTabIconStaticsCache.get();
-        return try factory.CreateFromFontGlyph(glyph, fontFamily);
+        const _f = @This().IWindowTabIconStaticsCache.get();
+        return try _f.CreateFromFontGlyph(glyph, fontFamily);
     }
     pub fn CreateFromFontGlyphWithFontUri(glyph: HSTRING, fontFamily: HSTRING, fontUri: *Uri) core.HResult!*WindowTabIcon {
-        const factory = @This().IWindowTabIconStaticsCache.get();
-        return try factory.CreateFromFontGlyphWithFontUri(glyph, fontFamily, fontUri);
+        const _f = @This().IWindowTabIconStaticsCache.get();
+        return try _f.CreateFromFontGlyphWithFontUri(glyph, fontFamily, fontUri);
     }
     pub fn CreateFromImage(image: *IRandomAccessStreamReference) core.HResult!*WindowTabIcon {
-        const factory = @This().IWindowTabIconStaticsCache.get();
-        return try factory.CreateFromImage(image);
+        const _f = @This().IWindowTabIconStaticsCache.get();
+        return try _f.CreateFromImage(image);
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.WindowTabIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -788,16 +746,16 @@ pub const WindowTabManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForWindow(id: WindowId) core.HResult!*WindowTabManager {
-        const factory = @This().IWindowTabManagerStaticsCache.get();
-        return try factory.GetForWindow(id);
+        const _f = @This().IWindowTabManagerStaticsCache.get();
+        return try _f.GetForWindow(id);
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().IWindowTabManagerStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().IWindowTabManagerStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub fn IsTabTearOutSupported() core.HResult!bool {
-        const factory = @This().IWindowTabManagerStaticsCache.get();
-        return try factory.IsTabTearOutSupported();
+        const _f = @This().IWindowTabManagerStaticsCache.get();
+        return try _f.IsTabTearOutSupported();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.WindowTabManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -880,8 +838,8 @@ pub const AdaptiveCardBuilder = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAdaptiveCardFromJson(value: HSTRING) core.HResult!*IAdaptiveCard {
-        const factory = @This().IAdaptiveCardBuilderStaticsCache.get();
-        return try factory.CreateAdaptiveCardFromJson(value);
+        const _f = @This().IAdaptiveCardBuilderStaticsCache.get();
+        return try _f.CreateAdaptiveCardFromJson(value);
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.AdaptiveCardBuilder";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -937,12 +895,12 @@ pub const FocusSessionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*FocusSessionManager {
-        const factory = @This().IFocusSessionManagerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IFocusSessionManagerStaticsCache.get();
+        return try _f.GetDefault();
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().IFocusSessionManagerStaticsCache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().IFocusSessionManagerStaticsCache.get();
+        return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.FocusSessionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1045,9 +1003,9 @@ pub const IFocusSessionManager = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryStartFocusSession(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
+    pub fn TryStartFocusSessionWithEndTime(self: *@This(), endTime: DateTime) core.HResult!*FocusSession {
         var _r: *FocusSession = undefined;
-        const _c = self.vtable.TryStartFocusSession(@ptrCast(self), endTime, &_r);
+        const _c = self.vtable.TryStartFocusSessionWithEndTime(@ptrCast(self), endTime, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1080,7 +1038,7 @@ pub const IFocusSessionManager = extern struct {
         get_IsFocusActive: *const fn(self: *anyopaque, _r: *bool) callconv(.winapi) HRESULT,
         GetSession: *const fn(self: *anyopaque, id: HSTRING, _r: **FocusSession) callconv(.winapi) HRESULT,
         TryStartFocusSession: *const fn(self: *anyopaque, _r: **FocusSession) callconv(.winapi) HRESULT,
-        TryStartFocusSession: *const fn(self: *anyopaque, endTime: DateTime, _r: **FocusSession) callconv(.winapi) HRESULT,
+        TryStartFocusSessionWithEndTime: *const fn(self: *anyopaque, endTime: DateTime, _r: **FocusSession) callconv(.winapi) HRESULT,
         DeactivateFocus: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         add_IsFocusActiveChanged: *const fn(self: *anyopaque, handler: *TypedEventHandler(FocusSessionManager,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_IsFocusActiveChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
@@ -1422,8 +1380,8 @@ pub const ShareWindowCommandSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*ShareWindowCommandSource {
-        const factory = @This().IShareWindowCommandSourceStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IShareWindowCommandSourceStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.ShareWindowCommandSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1480,8 +1438,8 @@ pub const TaskbarManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*TaskbarManager {
-        const factory = @This().ITaskbarManagerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ITaskbarManagerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.UI.Shell.TaskbarManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -45,12 +45,12 @@ pub const CoreAutomationRegistrar = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RegisterAnnotationType(guid: *Guid) core.HResult!AutomationAnnotationTypeRegistration {
-        const factory = @This().ICoreAutomationRegistrarStaticsCache.get();
-        return try factory.RegisterAnnotationType(guid);
+        const _f = @This().ICoreAutomationRegistrarStaticsCache.get();
+        return try _f.RegisterAnnotationType(guid);
     }
     pub fn UnregisterAnnotationType(registration: AutomationAnnotationTypeRegistration) core.HResult!void {
-        const factory = @This().ICoreAutomationRegistrarStaticsCache.get();
-        return try factory.UnregisterAnnotationType(registration);
+        const _f = @This().ICoreAutomationRegistrarStaticsCache.get();
+        return try _f.UnregisterAnnotationType(registration);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.CoreAutomationRegistrar";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -298,8 +298,8 @@ pub const ICoreAutomationRemoteOperationContext = extern struct {
         const _c = self.vtable.SetOperand(@ptrCast(self), id, operand);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetOperandWithOperandWithOperandInterfaceId(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
-        const _c = self.vtable.SetOperandWithOperandWithOperandInterfaceId(@ptrCast(self), id, operand, operandInterfaceId);
+    pub fn SetOperandWithOperandInterfaceId(self: *@This(), id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) core.HResult!void {
+        const _c = self.vtable.SetOperandWithOperandInterfaceId(@ptrCast(self), id, operand, operandInterfaceId);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.ICoreAutomationRemoteOperationContext";
@@ -316,7 +316,7 @@ pub const ICoreAutomationRemoteOperationContext = extern struct {
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetOperand: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, _r: **IInspectable) callconv(.winapi) HRESULT,
         SetOperand: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, operand: *IInspectable) callconv(.winapi) HRESULT,
-        SetOperandWithOperandWithOperandInterfaceId: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) callconv(.winapi) HRESULT,
+        SetOperandWithOperandInterfaceId: *const fn(self: *anyopaque, id: AutomationRemoteOperationOperandId, operand: *IInspectable, operandInterfaceId: *Guid) callconv(.winapi) HRESULT,
     };
 };
 pub const ICoreAutomationRemoteOperationExtensionProvider = extern struct {
@@ -583,12 +583,12 @@ pub const RemoteAutomationClientSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(name: HSTRING) core.HResult!*RemoteAutomationClientSession {
-        const factory = @This().IRemoteAutomationClientSessionFactoryCache.get();
-        return try factory.CreateInstance(name);
+        const _f = @This().IRemoteAutomationClientSessionFactoryCache.get();
+        return try _f.CreateInstance(name);
     }
     pub fn CreateInstance2(name: HSTRING, sessionId: *Guid) core.HResult!*RemoteAutomationClientSession {
-        const factory = @This().IRemoteAutomationClientSessionFactoryCache.get();
-        return try factory.CreateInstance2(name, sessionId);
+        const _f = @This().IRemoteAutomationClientSessionFactoryCache.get();
+        return try _f.CreateInstance2(name, sessionId);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.RemoteAutomationClientSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -631,8 +631,8 @@ pub const RemoteAutomationServer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ReportSession(sessionId: *Guid) core.HResult!void {
-        const factory = @This().IRemoteAutomationServerStaticsCache.get();
-        return try factory.ReportSession(sessionId);
+        const _f = @This().IRemoteAutomationServerStaticsCache.get();
+        return try _f.ReportSession(sessionId);
     }
     pub const NAME: []const u8 = "Windows.UI.UIAutomation.Core.RemoteAutomationServer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

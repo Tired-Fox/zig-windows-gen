@@ -36,28 +36,28 @@ pub const DataProtectionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ProtectAsync(data: *IBuffer, identity: HSTRING) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
-        const factory = @This().IDataProtectionManagerStaticsCache.get();
-        return try factory.ProtectAsync(data, identity);
+        const _f = @This().IDataProtectionManagerStaticsCache.get();
+        return try _f.ProtectAsync(data, identity);
     }
     pub fn UnprotectAsync(data: *IBuffer) core.HResult!*IAsyncOperation(BufferProtectUnprotectResult) {
-        const factory = @This().IDataProtectionManagerStaticsCache.get();
-        return try factory.UnprotectAsync(data);
+        const _f = @This().IDataProtectionManagerStaticsCache.get();
+        return try _f.UnprotectAsync(data);
     }
     pub fn ProtectStreamAsync(unprotectedStream: *IInputStream, identity: HSTRING, protectedStream: *IOutputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
-        const factory = @This().IDataProtectionManagerStaticsCache.get();
-        return try factory.ProtectStreamAsync(unprotectedStream, identity, protectedStream);
+        const _f = @This().IDataProtectionManagerStaticsCache.get();
+        return try _f.ProtectStreamAsync(unprotectedStream, identity, protectedStream);
     }
     pub fn UnprotectStreamAsync(protectedStream: *IInputStream, unprotectedStream: *IOutputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
-        const factory = @This().IDataProtectionManagerStaticsCache.get();
-        return try factory.UnprotectStreamAsync(protectedStream, unprotectedStream);
+        const _f = @This().IDataProtectionManagerStaticsCache.get();
+        return try _f.UnprotectStreamAsync(protectedStream, unprotectedStream);
     }
     pub fn GetProtectionInfoAsync(protectedData: *IBuffer) core.HResult!*IAsyncOperation(DataProtectionInfo) {
-        const factory = @This().IDataProtectionManagerStaticsCache.get();
-        return try factory.GetProtectionInfoAsync(protectedData);
+        const _f = @This().IDataProtectionManagerStaticsCache.get();
+        return try _f.GetProtectionInfoAsync(protectedData);
     }
     pub fn GetStreamProtectionInfoAsync(protectedStream: *IInputStream) core.HResult!*IAsyncOperation(DataProtectionInfo) {
-        const factory = @This().IDataProtectionManagerStaticsCache.get();
-        return try factory.GetStreamProtectionInfoAsync(protectedStream);
+        const _f = @This().IDataProtectionManagerStaticsCache.get();
+        return try _f.GetStreamProtectionInfoAsync(protectedStream);
     }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.DataProtectionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -109,52 +109,52 @@ pub const FileProtectionManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsContainerAsync(file: *IStorageFile) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IFileProtectionManagerStatics2Cache.get();
-        return try factory.IsContainerAsync(file);
+        const _f = @This().IFileProtectionManagerStatics2Cache.get();
+        return try _f.IsContainerAsync(file);
     }
-    pub fn LoadFileFromContainerAsyncWithTargetWithCollisionOption(containerFile: *IStorageFile, target: *IStorageItem, collisionOption: NameCollisionOption) core.HResult!*IAsyncOperation(ProtectedContainerImportResult) {
-        const factory = @This().IFileProtectionManagerStatics2Cache.get();
-        return try factory.LoadFileFromContainerAsync(containerFile, target, collisionOption);
+    pub fn LoadFileFromContainerAsyncWithTargetAndCollisionOption(containerFile: *IStorageFile, target: *IStorageItem, collisionOption: NameCollisionOption) core.HResult!*IAsyncOperation(ProtectedContainerImportResult) {
+        const _f = @This().IFileProtectionManagerStatics2Cache.get();
+        return try _f.LoadFileFromContainerAsync(containerFile, target, collisionOption);
     }
     pub fn SaveFileAsContainerAsyncWithSharedWithIdentities(protectedFile: *IStorageFile, sharedWithIdentities: *IIterable(HSTRING)) core.HResult!*IAsyncOperation(ProtectedContainerExportResult) {
-        const factory = @This().IFileProtectionManagerStatics2Cache.get();
-        return try factory.SaveFileAsContainerAsync(protectedFile, sharedWithIdentities);
+        const _f = @This().IFileProtectionManagerStatics2Cache.get();
+        return try _f.SaveFileAsContainerAsync(protectedFile, sharedWithIdentities);
     }
     pub fn ProtectAsync(target: *IStorageItem, identity: HSTRING) core.HResult!*IAsyncOperation(FileProtectionInfo) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.ProtectAsync(target, identity);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.ProtectAsync(target, identity);
     }
     pub fn CopyProtectionAsync(source: *IStorageItem, target: *IStorageItem) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.CopyProtectionAsync(source, target);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.CopyProtectionAsync(source, target);
     }
     pub fn GetProtectionInfoAsync(source: *IStorageItem) core.HResult!*IAsyncOperation(FileProtectionInfo) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.GetProtectionInfoAsync(source);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.GetProtectionInfoAsync(source);
     }
     pub fn SaveFileAsContainerAsync(protectedFile: *IStorageFile) core.HResult!*IAsyncOperation(ProtectedContainerExportResult) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.SaveFileAsContainerAsync(protectedFile);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.SaveFileAsContainerAsync(protectedFile);
     }
     pub fn LoadFileFromContainerAsync(containerFile: *IStorageFile) core.HResult!*IAsyncOperation(ProtectedContainerImportResult) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.LoadFileFromContainerAsync(containerFile);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.LoadFileFromContainerAsync(containerFile);
     }
     pub fn LoadFileFromContainerAsyncWithTarget(containerFile: *IStorageFile, target: *IStorageItem) core.HResult!*IAsyncOperation(ProtectedContainerImportResult) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.LoadFileFromContainerAsyncWithTarget(containerFile, target);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.LoadFileFromContainerAsyncWithTarget(containerFile, target);
     }
     pub fn CreateProtectedAndOpenAsync(parentFolder: *IStorageFolder, desiredName: HSTRING, identity: HSTRING, collisionOption: CreationCollisionOption) core.HResult!*IAsyncOperation(ProtectedFileCreateResult) {
-        const factory = @This().IFileProtectionManagerStaticsCache.get();
-        return try factory.CreateProtectedAndOpenAsync(parentFolder, desiredName, identity, collisionOption);
+        const _f = @This().IFileProtectionManagerStaticsCache.get();
+        return try _f.CreateProtectedAndOpenAsync(parentFolder, desiredName, identity, collisionOption);
     }
     pub fn UnprotectAsync(target: *IStorageItem) core.HResult!*IAsyncOperation(FileProtectionInfo) {
-        const factory = @This().IFileProtectionManagerStatics3Cache.get();
-        return try factory.UnprotectAsync(target);
+        const _f = @This().IFileProtectionManagerStatics3Cache.get();
+        return try _f.UnprotectAsync(target);
     }
     pub fn UnprotectAsyncWithOptions(target: *IStorageItem, options: *FileUnprotectOptions) core.HResult!*IAsyncOperation(FileProtectionInfo) {
-        const factory = @This().IFileProtectionManagerStatics3Cache.get();
-        return try factory.UnprotectAsyncWithOptions(target, options);
+        const _f = @This().IFileProtectionManagerStatics3Cache.get();
+        return try _f.UnprotectAsyncWithOptions(target, options);
     }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.FileProtectionManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -182,20 +182,20 @@ pub const FileRevocationManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ProtectAsync(storageItem: *IStorageItem, enterpriseIdentity: HSTRING) core.HResult!*IAsyncOperation(FileProtectionStatus) {
-        const factory = @This().IFileRevocationManagerStaticsCache.get();
-        return try factory.ProtectAsync(storageItem, enterpriseIdentity);
+        const _f = @This().IFileRevocationManagerStaticsCache.get();
+        return try _f.ProtectAsync(storageItem, enterpriseIdentity);
     }
     pub fn CopyProtectionAsync(sourceStorageItem: *IStorageItem, targetStorageItem: *IStorageItem) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IFileRevocationManagerStaticsCache.get();
-        return try factory.CopyProtectionAsync(sourceStorageItem, targetStorageItem);
+        const _f = @This().IFileRevocationManagerStaticsCache.get();
+        return try _f.CopyProtectionAsync(sourceStorageItem, targetStorageItem);
     }
     pub fn Revoke(enterpriseIdentity: HSTRING) core.HResult!void {
-        const factory = @This().IFileRevocationManagerStaticsCache.get();
-        return try factory.Revoke(enterpriseIdentity);
+        const _f = @This().IFileRevocationManagerStaticsCache.get();
+        return try _f.Revoke(enterpriseIdentity);
     }
     pub fn GetStatusAsync(storageItem: *IStorageItem) core.HResult!*IAsyncOperation(FileProtectionStatus) {
-        const factory = @This().IFileRevocationManagerStaticsCache.get();
-        return try factory.GetStatusAsync(storageItem);
+        const _f = @This().IFileRevocationManagerStaticsCache.get();
+        return try _f.GetStatusAsync(storageItem);
     }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.FileRevocationManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -215,8 +215,8 @@ pub const FileUnprotectOptions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(audit: bool) core.HResult!*FileUnprotectOptions {
-        const factory = @This().IFileUnprotectOptionsFactoryCache.get();
-        return try factory.Create(audit);
+        const _f = @This().IFileUnprotectOptionsFactoryCache.get();
+        return try _f.Create(audit);
     }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.FileUnprotectOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1154,9 +1154,9 @@ pub const IProtectionPolicyManagerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessAsyncWithTargetIdentityWithAuditInfoWithMessageFromApp(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessAsyncWithMessageFromApp(self: *@This(), sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
-        const _c = self.vtable.RequestAccessAsyncWithTargetIdentityWithAuditInfoWithMessageFromApp(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo, messageFromApp, &_r);
+        const _c = self.vtable.RequestAccessAsyncWithMessageFromApp(@ptrCast(self), sourceIdentity, targetIdentity, auditInfo, messageFromApp, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1166,9 +1166,9 @@ pub const IProtectionPolicyManagerStatics3 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessForAppAsyncWithAppPackageFamilyNameWithAuditInfoWithMessageFromApp(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessForAppAsyncWithMessageFromApp(self: *@This(), sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
-        const _c = self.vtable.RequestAccessForAppAsyncWithAppPackageFamilyNameWithAuditInfoWithMessageFromApp(@ptrCast(self), sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, &_r);
+        const _c = self.vtable.RequestAccessForAppAsyncWithMessageFromApp(@ptrCast(self), sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1189,9 +1189,9 @@ pub const IProtectionPolicyManagerStatics3 = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessAsyncWithTargetIdentityWithAuditInfoWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessAsyncWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessForAppAsyncWithAppPackageFamilyNameWithAuditInfoWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessForAppAsyncWithMessageFromApp: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         LogAuditEvent: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) callconv(.winapi) HRESULT,
     };
 };
@@ -1221,9 +1221,9 @@ pub const IProtectionPolicyManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessToFilesForAppAsyncWithAuditInfoWithMessageFromAppWithBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
-        const _c = self.vtable.RequestAccessToFilesForAppAsyncWithAuditInfoWithMessageFromAppWithBehavior(@ptrCast(self), sourceItemList, appPackageFamilyName, auditInfo, messageFromApp, behavior, &_r);
+        const _c = self.vtable.RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(@ptrCast(self), sourceItemList, appPackageFamilyName, auditInfo, messageFromApp, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1233,9 +1233,9 @@ pub const IProtectionPolicyManagerStatics4 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestAccessToFilesForProcessAsyncWithAuditInfoWithMessageFromAppWithBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(self: *@This(), sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
         var _r: *IAsyncOperation(ProtectionPolicyEvaluationResult) = undefined;
-        const _c = self.vtable.RequestAccessToFilesForProcessAsyncWithAuditInfoWithMessageFromAppWithBehavior(@ptrCast(self), sourceItemList, processId, auditInfo, messageFromApp, behavior, &_r);
+        const _c = self.vtable.RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(@ptrCast(self), sourceItemList, processId, auditInfo, messageFromApp, behavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1279,9 +1279,9 @@ pub const IProtectionPolicyManagerStatics4 = extern struct {
         RequestAccessAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         RequestAccessForAppAsync: *const fn(self: *anyopaque, sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         RequestAccessToFilesForAppAsync: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessToFilesForAppAsyncWithAuditInfoWithMessageFromAppWithBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         RequestAccessToFilesForProcessAsync: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
-        RequestAccessToFilesForProcessAsyncWithAuditInfoWithMessageFromAppWithBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
+        RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior: *const fn(self: *anyopaque, sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior, _r: **IAsyncOperation(ProtectionPolicyEvaluationResult)) callconv(.winapi) HRESULT,
         IsFileProtectionRequiredAsync: *const fn(self: *anyopaque, target: *IStorageItem, identity: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         IsFileProtectionRequiredForNewFileAsync: *const fn(self: *anyopaque, parentFolder: *IStorageFolder, identity: HSTRING, desiredName: HSTRING, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         get_PrimaryManagedIdentity: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
@@ -1454,12 +1454,12 @@ pub const ProtectionPolicyAuditInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(action: ProtectionPolicyAuditAction, dataDescription: HSTRING, sourceDescription: HSTRING, targetDescription: HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
-        const factory = @This().IProtectionPolicyAuditInfoFactoryCache.get();
-        return try factory.Create(action, dataDescription, sourceDescription, targetDescription);
+        const _f = @This().IProtectionPolicyAuditInfoFactoryCache.get();
+        return try _f.Create(action, dataDescription, sourceDescription, targetDescription);
     }
     pub fn CreateWithActionAndDataDescription(action: ProtectionPolicyAuditAction, dataDescription: HSTRING) core.HResult!*ProtectionPolicyAuditInfo {
-        const factory = @This().IProtectionPolicyAuditInfoFactoryCache.get();
-        return try factory.CreateWithActionAndDataDescription(action, dataDescription);
+        const _f = @This().IProtectionPolicyAuditInfoFactoryCache.get();
+        return try _f.CreateWithActionAndDataDescription(action, dataDescription);
     }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.ProtectionPolicyAuditInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1494,164 +1494,164 @@ pub const ProtectionPolicyManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsRoamableProtectionEnabled(identity: HSTRING) core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.IsRoamableProtectionEnabled(identity);
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.IsRoamableProtectionEnabled(identity);
     }
-    pub fn RequestAccessAsyncWithAuditInfoWithMessageFromAppWithBehavior(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.RequestAccessAsync(sourceIdentity, targetIdentity, auditInfo, messageFromApp, behavior);
+    pub fn RequestAccessAsyncWithAuditInfoAndMessageFromAppAndBehavior(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.RequestAccessAsync(sourceIdentity, targetIdentity, auditInfo, messageFromApp, behavior);
     }
-    pub fn RequestAccessForAppAsyncWithAuditInfoWithMessageFromAppWithBehavior(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, behavior);
+    pub fn RequestAccessForAppAsyncWithAuditInfoAndMessageFromAppAndBehavior(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp, behavior);
     }
     pub fn RequestAccessToFilesForAppAsync(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.RequestAccessToFilesForAppAsync(sourceItemList, appPackageFamilyName, auditInfo);
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.RequestAccessToFilesForAppAsync(sourceItemList, appPackageFamilyName, auditInfo);
     }
-    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppWithBehavior(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.RequestAccessToFilesForAppAsyncWithMessageFromAppWithBehavior(sourceItemList, appPackageFamilyName, auditInfo, messageFromApp, behavior);
+    pub fn RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(sourceItemList: *IIterable(IStorageItem), appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.RequestAccessToFilesForAppAsyncWithMessageFromAppAndBehavior(sourceItemList, appPackageFamilyName, auditInfo, messageFromApp, behavior);
     }
     pub fn RequestAccessToFilesForProcessAsync(sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.RequestAccessToFilesForProcessAsync(sourceItemList, processId, auditInfo);
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.RequestAccessToFilesForProcessAsync(sourceItemList, processId, auditInfo);
     }
-    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppWithBehavior(sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.RequestAccessToFilesForProcessAsyncWithMessageFromAppWithBehavior(sourceItemList, processId, auditInfo, messageFromApp, behavior);
+    pub fn RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(sourceItemList: *IIterable(IStorageItem), processId: u32, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING, behavior: ProtectionPolicyRequestAccessBehavior) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.RequestAccessToFilesForProcessAsyncWithMessageFromAppAndBehavior(sourceItemList, processId, auditInfo, messageFromApp, behavior);
     }
     pub fn IsFileProtectionRequiredAsync(target: *IStorageItem, identity: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.IsFileProtectionRequiredAsync(target, identity);
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.IsFileProtectionRequiredAsync(target, identity);
     }
     pub fn IsFileProtectionRequiredForNewFileAsync(parentFolder: *IStorageFolder, identity: HSTRING, desiredName: HSTRING) core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.IsFileProtectionRequiredForNewFileAsync(parentFolder, identity, desiredName);
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.IsFileProtectionRequiredForNewFileAsync(parentFolder, identity, desiredName);
     }
-    pub fn get_PrimaryManagedIdentity() core.HResult!HSTRING {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.getPrimaryManagedIdentity();
+    pub fn getPrimaryManagedIdentity() core.HResult!HSTRING {
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.getPrimaryManagedIdentity();
     }
     pub fn GetPrimaryManagedIdentityForIdentity(identity: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IProtectionPolicyManagerStatics4Cache.get();
-        return try factory.GetPrimaryManagedIdentityForIdentity(identity);
+        const _f = @This().IProtectionPolicyManagerStatics4Cache.get();
+        return try _f.GetPrimaryManagedIdentityForIdentity(identity);
     }
     pub fn HasContentBeenRevokedSince(identity: HSTRING, since: DateTime) core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.HasContentBeenRevokedSince(identity, since);
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.HasContentBeenRevokedSince(identity, since);
     }
     pub fn CheckAccessForApp(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.CheckAccessForApp(sourceIdentity, appPackageFamilyName);
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.CheckAccessForApp(sourceIdentity, appPackageFamilyName);
     }
     pub fn RequestAccessForAppAsync(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName);
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName);
     }
     pub fn GetEnforcementLevel(identity: HSTRING) core.HResult!EnforcementLevel {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.GetEnforcementLevel(identity);
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.GetEnforcementLevel(identity);
     }
     pub fn IsUserDecryptionAllowed(identity: HSTRING) core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.IsUserDecryptionAllowed(identity);
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.IsUserDecryptionAllowed(identity);
     }
     pub fn IsProtectionUnderLockRequired(identity: HSTRING) core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.IsProtectionUnderLockRequired(identity);
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.IsProtectionUnderLockRequired(identity);
     }
-    pub fn add_PolicyChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.addPolicyChanged(handler);
+    pub fn addPolicyChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.addPolicyChanged(handler);
     }
-    pub fn remove_PolicyChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.removePolicyChanged(token);
+    pub fn removePolicyChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.removePolicyChanged(token);
     }
-    pub fn get_IsProtectionEnabled() core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStatics2Cache.get();
-        return try factory.getIsProtectionEnabled();
+    pub fn getIsProtectionEnabled() core.HResult!bool {
+        const _f = @This().IProtectionPolicyManagerStatics2Cache.get();
+        return try _f.getIsProtectionEnabled();
     }
     pub fn IsIdentityManaged(identity: HSTRING) core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.IsIdentityManaged(identity);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.IsIdentityManaged(identity);
     }
     pub fn TryApplyProcessUIPolicy(identity: HSTRING) core.HResult!bool {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.TryApplyProcessUIPolicy(identity);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.TryApplyProcessUIPolicy(identity);
     }
     pub fn ClearProcessUIPolicy() core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.ClearProcessUIPolicy();
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.ClearProcessUIPolicy();
     }
     pub fn CreateCurrentThreadNetworkContext(identity: HSTRING) core.HResult!*ThreadNetworkContext {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.CreateCurrentThreadNetworkContext(identity);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.CreateCurrentThreadNetworkContext(identity);
     }
     pub fn GetPrimaryManagedIdentityForNetworkEndpointAsync(endpointHost: *HostName) core.HResult!*IAsyncOperation(HSTRING) {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.GetPrimaryManagedIdentityForNetworkEndpointAsync(endpointHost);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.GetPrimaryManagedIdentityForNetworkEndpointAsync(endpointHost);
     }
     pub fn RevokeContent(identity: HSTRING) core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.RevokeContent(identity);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.RevokeContent(identity);
     }
     pub fn GetForCurrentView() core.HResult!*ProtectionPolicyManager {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
-    pub fn add_ProtectedAccessSuspending(handler: *EventHandler(ProtectedAccessSuspendingEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.addProtectedAccessSuspending(handler);
+    pub fn addProtectedAccessSuspending(handler: *EventHandler(ProtectedAccessSuspendingEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.addProtectedAccessSuspending(handler);
     }
-    pub fn remove_ProtectedAccessSuspending(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.removeProtectedAccessSuspending(token);
+    pub fn removeProtectedAccessSuspending(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.removeProtectedAccessSuspending(token);
     }
-    pub fn add_ProtectedAccessResumed(handler: *EventHandler(ProtectedAccessResumedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.addProtectedAccessResumed(handler);
+    pub fn addProtectedAccessResumed(handler: *EventHandler(ProtectedAccessResumedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.addProtectedAccessResumed(handler);
     }
-    pub fn remove_ProtectedAccessResumed(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.removeProtectedAccessResumed(token);
+    pub fn removeProtectedAccessResumed(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.removeProtectedAccessResumed(token);
     }
-    pub fn add_ProtectedContentRevoked(handler: *EventHandler(ProtectedContentRevokedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.addProtectedContentRevoked(handler);
+    pub fn addProtectedContentRevoked(handler: *EventHandler(ProtectedContentRevokedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.addProtectedContentRevoked(handler);
     }
-    pub fn remove_ProtectedContentRevoked(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.removeProtectedContentRevoked(token);
+    pub fn removeProtectedContentRevoked(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.removeProtectedContentRevoked(token);
     }
     pub fn CheckAccess(sourceIdentity: HSTRING, targetIdentity: HSTRING) core.HResult!ProtectionPolicyEvaluationResult {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.CheckAccess(sourceIdentity, targetIdentity);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.CheckAccess(sourceIdentity, targetIdentity);
     }
     pub fn RequestAccessAsync(sourceIdentity: HSTRING, targetIdentity: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStaticsCache.get();
-        return try factory.RequestAccessAsync(sourceIdentity, targetIdentity);
+        const _f = @This().IProtectionPolicyManagerStaticsCache.get();
+        return try _f.RequestAccessAsync(sourceIdentity, targetIdentity);
     }
     pub fn RequestAccessAsyncWithAuditInfo(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics3Cache.get();
-        return try factory.RequestAccessAsync(sourceIdentity, targetIdentity, auditInfo);
+        const _f = @This().IProtectionPolicyManagerStatics3Cache.get();
+        return try _f.RequestAccessAsync(sourceIdentity, targetIdentity, auditInfo);
     }
-    pub fn RequestAccessAsyncWithAuditInfoWithMessageFromApp(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics3Cache.get();
-        return try factory.RequestAccessAsyncWithMessageFromApp(sourceIdentity, targetIdentity, auditInfo, messageFromApp);
+    pub fn RequestAccessAsyncWithAuditInfoAndMessageFromApp(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+        const _f = @This().IProtectionPolicyManagerStatics3Cache.get();
+        return try _f.RequestAccessAsyncWithMessageFromApp(sourceIdentity, targetIdentity, auditInfo, messageFromApp);
     }
     pub fn RequestAccessForAppAsyncWithAuditInfo(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics3Cache.get();
-        return try factory.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName, auditInfo);
+        const _f = @This().IProtectionPolicyManagerStatics3Cache.get();
+        return try _f.RequestAccessForAppAsync(sourceIdentity, appPackageFamilyName, auditInfo);
     }
-    pub fn RequestAccessForAppAsyncWithAuditInfoWithMessageFromApp(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
-        const factory = @This().IProtectionPolicyManagerStatics3Cache.get();
-        return try factory.RequestAccessForAppAsyncWithMessageFromApp(sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp);
+    pub fn RequestAccessForAppAsyncWithAuditInfoAndMessageFromApp(sourceIdentity: HSTRING, appPackageFamilyName: HSTRING, auditInfo: *ProtectionPolicyAuditInfo, messageFromApp: HSTRING) core.HResult!*IAsyncOperation(ProtectionPolicyEvaluationResult) {
+        const _f = @This().IProtectionPolicyManagerStatics3Cache.get();
+        return try _f.RequestAccessForAppAsyncWithMessageFromApp(sourceIdentity, appPackageFamilyName, auditInfo, messageFromApp);
     }
     pub fn LogAuditEvent(sourceIdentity: HSTRING, targetIdentity: HSTRING, auditInfo: *ProtectionPolicyAuditInfo) core.HResult!void {
-        const factory = @This().IProtectionPolicyManagerStatics3Cache.get();
-        return try factory.LogAuditEvent(sourceIdentity, targetIdentity, auditInfo);
+        const _f = @This().IProtectionPolicyManagerStatics3Cache.get();
+        return try _f.LogAuditEvent(sourceIdentity, targetIdentity, auditInfo);
     }
     pub const NAME: []const u8 = "Windows.Security.EnterpriseData.ProtectionPolicyManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -157,6 +157,11 @@ pub fn winToZig(allocator: std.mem.Allocator, ctx: *metadata.Context, typeref: *
             return .ref("IInspectable", null, typeref.Type);
         }
 
+        if (std.mem.eql(u8, typeref.Name, "Type")) {
+            try ctx.requirements.add("Windows.UI.Xaml.Interop", "TypeName");
+            return .value("TypeName", null, typeref.Type);
+        }
+
         var generics: ?[]Type = null;
         if (typeref.GenericArguments) |ga| {
             generics = try allocator.alloc(Type, ga.len);

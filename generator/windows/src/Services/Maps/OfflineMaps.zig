@@ -185,16 +185,16 @@ pub const OfflineMapPackage = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindPackagesAsync(queryPoint: *Geopoint) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
-        const factory = @This().IOfflineMapPackageStaticsCache.get();
-        return try factory.FindPackagesAsync(queryPoint);
+        const _f = @This().IOfflineMapPackageStaticsCache.get();
+        return try _f.FindPackagesAsync(queryPoint);
     }
     pub fn FindPackagesInBoundingBoxAsync(queryBoundingBox: *GeoboundingBox) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
-        const factory = @This().IOfflineMapPackageStaticsCache.get();
-        return try factory.FindPackagesInBoundingBoxAsync(queryBoundingBox);
+        const _f = @This().IOfflineMapPackageStaticsCache.get();
+        return try _f.FindPackagesInBoundingBoxAsync(queryBoundingBox);
     }
     pub fn FindPackagesInGeocircleAsync(queryCircle: *Geocircle) core.HResult!*IAsyncOperation(OfflineMapPackageQueryResult) {
-        const factory = @This().IOfflineMapPackageStaticsCache.get();
-        return try factory.FindPackagesInGeocircleAsync(queryCircle);
+        const _f = @This().IOfflineMapPackageStaticsCache.get();
+        return try _f.FindPackagesInGeocircleAsync(queryCircle);
     }
     pub const NAME: []const u8 = "Windows.Services.Maps.OfflineMaps.OfflineMapPackage";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

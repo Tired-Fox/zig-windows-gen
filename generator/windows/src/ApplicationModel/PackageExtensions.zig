@@ -463,8 +463,8 @@ pub const PackageExtensionCatalog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Open(packageExtensionName: HSTRING) core.HResult!*PackageExtensionCatalog {
-        const factory = @This().IPackageExtensionCatalogStaticsCache.get();
-        return try factory.Open(packageExtensionName);
+        const _f = @This().IPackageExtensionCatalogStaticsCache.get();
+        return try _f.Open(packageExtensionName);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.PackageExtensions.PackageExtensionCatalog";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

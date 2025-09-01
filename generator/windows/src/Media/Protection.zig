@@ -4,8 +4,8 @@ pub const ComponentRenewal = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RenewSystemComponentsAsync(information: *RevocationAndRenewalInformation) core.HResult!*IAsyncOperationWithProgress(RenewalStatus,u32) {
-        const factory = @This().IComponentRenewalStaticsCache.get();
-        return try factory.RenewSystemComponentsAsync(information);
+        const _f = @This().IComponentRenewalStaticsCache.get();
+        return try _f.RenewSystemComponentsAsync(information);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.ComponentRenewal";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -644,8 +644,8 @@ pub const MediaProtectionPMPServer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreatePMPServer(pProperties: *IPropertySet) core.HResult!*MediaProtectionPMPServer {
-        const factory = @This().IMediaProtectionPMPServerFactoryCache.get();
-        return try factory.CreatePMPServer(pProperties);
+        const _f = @This().IMediaProtectionPMPServerFactoryCache.get();
+        return try _f.CreatePMPServer(pProperties);
     }
     pub const NAME: []const u8 = "Windows.Media.Protection.MediaProtectionPMPServer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -960,7 +960,7 @@ const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const IPropertySet = @import("../Foundation/Collections.zig").IPropertySet;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../root.zig").HSTRING;
 pub const PlayReady = @import("./Protection/PlayReady.zig");

@@ -276,9 +276,9 @@ pub const IUserDataTaskList = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetTaskReader(self: *@This(), options: *UserDataTaskQueryOptions) core.HResult!*UserDataTaskReader {
+    pub fn GetTaskReaderWithOptions(self: *@This(), options: *UserDataTaskQueryOptions) core.HResult!*UserDataTaskReader {
         var _r: *UserDataTaskReader = undefined;
-        const _c = self.vtable.GetTaskReader(@ptrCast(self), options, &_r);
+        const _c = self.vtable.GetTaskReaderWithOptions(@ptrCast(self), options, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -337,7 +337,7 @@ pub const IUserDataTaskList = extern struct {
         get_SyncManager: *const fn(self: *anyopaque, _r: **UserDataTaskListSyncManager) callconv(.winapi) HRESULT,
         RegisterSyncManagerAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         GetTaskReader: *const fn(self: *anyopaque, _r: **UserDataTaskReader) callconv(.winapi) HRESULT,
-        GetTaskReader: *const fn(self: *anyopaque, options: *UserDataTaskQueryOptions, _r: **UserDataTaskReader) callconv(.winapi) HRESULT,
+        GetTaskReaderWithOptions: *const fn(self: *anyopaque, options: *UserDataTaskQueryOptions, _r: **UserDataTaskReader) callconv(.winapi) HRESULT,
         GetTaskAsync: *const fn(self: *anyopaque, userDataTask: HSTRING, _r: **IAsyncOperation(UserDataTask)) callconv(.winapi) HRESULT,
         SaveTaskAsync: *const fn(self: *anyopaque, userDataTask: *UserDataTask, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         DeleteTaskAsync: *const fn(self: *anyopaque, userDataTaskId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
@@ -1141,12 +1141,12 @@ pub const UserDataTaskManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*UserDataTaskManager {
-        const factory = @This().IUserDataTaskManagerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IUserDataTaskManagerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*UserDataTaskManager {
-        const factory = @This().IUserDataTaskManagerStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IUserDataTaskManagerStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.UserDataTasks.UserDataTaskManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

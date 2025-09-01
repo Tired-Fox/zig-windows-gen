@@ -255,24 +255,24 @@ pub const PhoneCallOriginManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn RequestSetAsActiveCallOriginAppAsync() core.HResult!*IAsyncOperation(bool) {
-        const factory = @This().IPhoneCallOriginManagerStatics2Cache.get();
-        return try factory.RequestSetAsActiveCallOriginAppAsync();
+        const _f = @This().IPhoneCallOriginManagerStatics2Cache.get();
+        return try _f.RequestSetAsActiveCallOriginAppAsync();
     }
-    pub fn get_IsCurrentAppActiveCallOriginApp() core.HResult!bool {
-        const factory = @This().IPhoneCallOriginManagerStaticsCache.get();
-        return try factory.getIsCurrentAppActiveCallOriginApp();
+    pub fn getIsCurrentAppActiveCallOriginApp() core.HResult!bool {
+        const _f = @This().IPhoneCallOriginManagerStaticsCache.get();
+        return try _f.getIsCurrentAppActiveCallOriginApp();
     }
     pub fn ShowPhoneCallOriginSettingsUI() core.HResult!void {
-        const factory = @This().IPhoneCallOriginManagerStaticsCache.get();
-        return try factory.ShowPhoneCallOriginSettingsUI();
+        const _f = @This().IPhoneCallOriginManagerStaticsCache.get();
+        return try _f.ShowPhoneCallOriginSettingsUI();
     }
     pub fn SetCallOrigin(requestId: *Guid, callOrigin: *PhoneCallOrigin) core.HResult!void {
-        const factory = @This().IPhoneCallOriginManagerStaticsCache.get();
-        return try factory.SetCallOrigin(requestId, callOrigin);
+        const _f = @This().IPhoneCallOriginManagerStaticsCache.get();
+        return try _f.SetCallOrigin(requestId, callOrigin);
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().IPhoneCallOriginManagerStatics3Cache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().IPhoneCallOriginManagerStatics3Cache.get();
+        return try _f.getIsSupported();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Calls.Provider.PhoneCallOriginManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

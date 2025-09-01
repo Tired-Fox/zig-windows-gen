@@ -92,12 +92,12 @@ pub const StartupTask = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentPackageAsync() core.HResult!*IAsyncOperation(IVectorView(StartupTask)) {
-        const factory = @This().IStartupTaskStaticsCache.get();
-        return try factory.GetForCurrentPackageAsync();
+        const _f = @This().IStartupTaskStaticsCache.get();
+        return try _f.GetForCurrentPackageAsync();
     }
     pub fn GetAsync(taskId: HSTRING) core.HResult!*IAsyncOperation(StartupTask) {
-        const factory = @This().IStartupTaskStaticsCache.get();
-        return try factory.GetAsync(taskId);
+        const _f = @This().IStartupTaskStaticsCache.get();
+        return try _f.GetAsync(taskId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.StartupTask";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -182,17 +182,17 @@ pub const AppInfo = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*AppInfo {
-        const factory = @This().IAppInfoStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*AppInfo {
+        const _f = @This().IAppInfoStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub fn GetFromAppUserModelId(appUserModelId: HSTRING) core.HResult!*AppInfo {
-        const factory = @This().IAppInfoStaticsCache.get();
-        return try factory.GetFromAppUserModelId(appUserModelId);
+        const _f = @This().IAppInfoStaticsCache.get();
+        return try _f.GetFromAppUserModelId(appUserModelId);
     }
     pub fn GetFromAppUserModelIdForUser(user: *User, appUserModelId: HSTRING) core.HResult!*AppInfo {
-        const factory = @This().IAppInfoStaticsCache.get();
-        return try factory.GetFromAppUserModelIdForUser(user, appUserModelId);
+        const _f = @This().IAppInfoStaticsCache.get();
+        return try _f.GetFromAppUserModelIdForUser(user, appUserModelId);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -324,25 +324,25 @@ pub const AppInstance = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_RecommendedInstance() core.HResult!*AppInstance {
-        const factory = @This().IAppInstanceStaticsCache.get();
-        return try factory.getRecommendedInstance();
+    pub fn getRecommendedInstance() core.HResult!*AppInstance {
+        const _f = @This().IAppInstanceStaticsCache.get();
+        return try _f.getRecommendedInstance();
     }
     pub fn GetActivatedEventArgs() core.HResult!*IActivatedEventArgs {
-        const factory = @This().IAppInstanceStaticsCache.get();
-        return try factory.GetActivatedEventArgs();
+        const _f = @This().IAppInstanceStaticsCache.get();
+        return try _f.GetActivatedEventArgs();
     }
     pub fn FindOrRegisterInstanceForKey(key: HSTRING) core.HResult!*AppInstance {
-        const factory = @This().IAppInstanceStaticsCache.get();
-        return try factory.FindOrRegisterInstanceForKey(key);
+        const _f = @This().IAppInstanceStaticsCache.get();
+        return try _f.FindOrRegisterInstanceForKey(key);
     }
     pub fn Unregister() core.HResult!void {
-        const factory = @This().IAppInstanceStaticsCache.get();
-        return try factory.Unregister();
+        const _f = @This().IAppInstanceStaticsCache.get();
+        return try _f.Unregister();
     }
     pub fn GetInstances() core.HResult!*IVector(AppInstance) {
-        const factory = @This().IAppInstanceStaticsCache.get();
-        return try factory.GetInstances();
+        const _f = @This().IAppInstanceStaticsCache.get();
+        return try _f.GetInstances();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.AppInstance";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -356,13 +356,13 @@ pub const DesignMode = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_DesignModeEnabled() core.HResult!bool {
-        const factory = @This().IDesignModeStaticsCache.get();
-        return try factory.getDesignModeEnabled();
+    pub fn getDesignModeEnabled() core.HResult!bool {
+        const _f = @This().IDesignModeStaticsCache.get();
+        return try _f.getDesignModeEnabled();
     }
-    pub fn get_DesignMode2Enabled() core.HResult!bool {
-        const factory = @This().IDesignModeStatics2Cache.get();
-        return try factory.getDesignMode2Enabled();
+    pub fn getDesignMode2Enabled() core.HResult!bool {
+        const _f = @This().IDesignModeStatics2Cache.get();
+        return try _f.getDesignMode2Enabled();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.DesignMode";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -427,8 +427,8 @@ pub const FindRelatedPackagesOptions = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(Relationship: PackageRelationship) core.HResult!*FindRelatedPackagesOptions {
-        const factory = @This().IFindRelatedPackagesOptionsFactoryCache.get();
-        return try factory.CreateInstance(Relationship);
+        const _f = @This().IFindRelatedPackagesOptionsFactoryCache.get();
+        return try _f.CreateInstance(Relationship);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.FindRelatedPackagesOptions";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2668,8 +2668,8 @@ pub const LimitedAccessFeatures = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn TryUnlockFeature(featureId: HSTRING, token: HSTRING, attestation: HSTRING) core.HResult!*LimitedAccessFeatureRequestResult {
-        const factory = @This().ILimitedAccessFeaturesStaticsCache.get();
-        return try factory.TryUnlockFeature(featureId, token, attestation);
+        const _f = @This().ILimitedAccessFeaturesStaticsCache.get();
+        return try _f.TryUnlockFeature(featureId, token, attestation);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.LimitedAccessFeatures";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2930,9 +2930,9 @@ pub const Package = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*Package {
-        const factory = @This().IPackageStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*Package {
+        const _f = @This().IPackageStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.Package";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3023,16 +3023,16 @@ pub const PackageCatalog = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn OpenForCurrentPackage() core.HResult!*PackageCatalog {
-        const factory = @This().IPackageCatalogStaticsCache.get();
-        return try factory.OpenForCurrentPackage();
+        const _f = @This().IPackageCatalogStaticsCache.get();
+        return try _f.OpenForCurrentPackage();
     }
     pub fn OpenForCurrentUser() core.HResult!*PackageCatalog {
-        const factory = @This().IPackageCatalogStaticsCache.get();
-        return try factory.OpenForCurrentUser();
+        const _f = @This().IPackageCatalogStaticsCache.get();
+        return try _f.OpenForCurrentUser();
     }
     pub fn OpenForPackage(package: *Package) core.HResult!*PackageCatalog {
-        const factory = @This().IPackageCatalogStatics2Cache.get();
-        return try factory.OpenForPackage(package);
+        const _f = @This().IPackageCatalogStatics2Cache.get();
+        return try _f.OpenForPackage(package);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.PackageCatalog";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3131,9 +3131,9 @@ pub const PackageContentGroup = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_RequiredGroupName() core.HResult!HSTRING {
-        const factory = @This().IPackageContentGroupStaticsCache.get();
-        return try factory.getRequiredGroupName();
+    pub fn getRequiredGroupName() core.HResult!HSTRING {
+        const _f = @This().IPackageContentGroupStaticsCache.get();
+        return try _f.getRequiredGroupName();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.PackageContentGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3538,28 +3538,28 @@ pub const FullTrustProcessLauncher = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn LaunchFullTrustProcessForCurrentAppAsync() core.HResult!*IAsyncAction {
-        const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
-        return try factory.LaunchFullTrustProcessForCurrentAppAsync();
+        const _f = @This().IFullTrustProcessLauncherStaticsCache.get();
+        return try _f.LaunchFullTrustProcessForCurrentAppAsync();
     }
     pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
-        return try factory.LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId);
+        const _f = @This().IFullTrustProcessLauncherStaticsCache.get();
+        return try _f.LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(parameterGroupId);
     }
     pub fn LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
-        return try factory.LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId);
+        const _f = @This().IFullTrustProcessLauncherStaticsCache.get();
+        return try _f.LaunchFullTrustProcessForAppAsync(fullTrustPackageRelativeAppId);
     }
     pub fn LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
-        const factory = @This().IFullTrustProcessLauncherStaticsCache.get();
-        return try factory.LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId, parameterGroupId);
+        const _f = @This().IFullTrustProcessLauncherStaticsCache.get();
+        return try _f.LaunchFullTrustProcessForAppAsyncWithParameterGroupId(fullTrustPackageRelativeAppId, parameterGroupId);
     }
     pub fn LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
-        const factory = @This().IFullTrustProcessLauncherStatics2Cache.get();
-        return try factory.LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine);
+        const _f = @This().IFullTrustProcessLauncherStatics2Cache.get();
+        return try _f.LaunchFullTrustProcessForCurrentAppWithArgumentsAsync(commandLine);
     }
     pub fn LaunchFullTrustProcessForAppWithArgumentsAsync(fullTrustPackageRelativeAppId: HSTRING, commandLine: HSTRING) core.HResult!*IAsyncOperation(FullTrustProcessLaunchResult) {
-        const factory = @This().IFullTrustProcessLauncherStatics2Cache.get();
-        return try factory.LaunchFullTrustProcessForAppWithArgumentsAsync(fullTrustPackageRelativeAppId, commandLine);
+        const _f = @This().IFullTrustProcessLauncherStatics2Cache.get();
+        return try _f.LaunchFullTrustProcessForAppWithArgumentsAsync(fullTrustPackageRelativeAppId, commandLine);
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.FullTrustProcessLauncher";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3604,9 +3604,9 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn LaunchFullTrustProcessForCurrentAppAsync(self: *@This(), parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
+    pub fn LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(self: *@This(), parameterGroupId: HSTRING) core.HResult!*IAsyncAction {
         var _r: *IAsyncAction = undefined;
-        const _c = self.vtable.LaunchFullTrustProcessForCurrentAppAsync(@ptrCast(self), parameterGroupId, &_r);
+        const _c = self.vtable.LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId(@ptrCast(self), parameterGroupId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -3635,7 +3635,7 @@ pub const IFullTrustProcessLauncherStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         LaunchFullTrustProcessForCurrentAppAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
-        LaunchFullTrustProcessForCurrentAppAsync: *const fn(self: *anyopaque, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
+        LaunchFullTrustProcessForCurrentAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         LaunchFullTrustProcessForAppAsync: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         LaunchFullTrustProcessForAppAsyncWithParameterGroupId: *const fn(self: *anyopaque, fullTrustPackageRelativeAppId: HSTRING, parameterGroupId: HSTRING, _r: **IAsyncAction) callconv(.winapi) HRESULT,
     };
@@ -3674,7 +3674,7 @@ const IUnknown = @import("./root.zig").IUnknown;
 const Guid = @import("./root.zig").Guid;
 const RandomAccessStreamReference = @import("./Storage/Streams.zig").RandomAccessStreamReference;
 const Deferral = @import("./Foundation.zig").Deferral;
-const AppListEntry = @import("./Core.zig").AppListEntry;
+const AppListEntry = @import("./ApplicationModel/Core.zig").AppListEntry;
 const IVector = @import("./Foundation/Collections.zig").IVector;
 const Size = @import("./Foundation.zig").Size;
 const IAsyncOperationWithProgress = @import("./Foundation.zig").IAsyncOperationWithProgress;
@@ -3695,7 +3695,7 @@ const HSTRING = @import("./root.zig").HSTRING;
 const HResult = @import("./Foundation.zig").HResult;
 const IAsyncOperation = @import("./Foundation.zig").IAsyncOperation;
 const core = @import("./root.zig").core;
-const IActivatedEventArgs = @import("./Activation.zig").IActivatedEventArgs;
+const IActivatedEventArgs = @import("./ApplicationModel/Activation.zig").IActivatedEventArgs;
 const User = @import("./System.zig").User;
 const StorageFolder = @import("./Storage.zig").StorageFolder;
 pub const Activation = @import("./ApplicationModel/Activation.zig");

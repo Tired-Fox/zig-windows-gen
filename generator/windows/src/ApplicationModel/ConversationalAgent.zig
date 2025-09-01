@@ -365,9 +365,9 @@ pub const ConversationalAgentDetectorManager = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Default() core.HResult!*ConversationalAgentDetectorManager {
-        const factory = @This().IConversationalAgentDetectorManagerStaticsCache.get();
-        return try factory.getDefault();
+    pub fn getDefault() core.HResult!*ConversationalAgentDetectorManager {
+        const _f = @This().IConversationalAgentDetectorManagerStaticsCache.get();
+        return try _f.getDefault();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ConversationalAgentDetectorManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -560,12 +560,12 @@ pub const ConversationalAgentSession = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetCurrentSessionAsync() core.HResult!*IAsyncOperation(ConversationalAgentSession) {
-        const factory = @This().IConversationalAgentSessionStaticsCache.get();
-        return try factory.GetCurrentSessionAsync();
+        const _f = @This().IConversationalAgentSessionStaticsCache.get();
+        return try _f.GetCurrentSessionAsync();
     }
     pub fn GetCurrentSessionSync() core.HResult!*ConversationalAgentSession {
-        const factory = @This().IConversationalAgentSessionStaticsCache.get();
-        return try factory.GetCurrentSessionSync();
+        const _f = @This().IConversationalAgentSessionStaticsCache.get();
+        return try _f.GetCurrentSessionSync();
     }
     pub const NAME: []const u8 = "Windows.ApplicationModel.ConversationalAgent.ConversationalAgentSession";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1917,8 +1917,8 @@ const IInputStream = @import("../Storage/Streams.zig").IInputStream;
 const AudioDeviceInputNode = @import("../Media/Audio.zig").AudioDeviceInputNode;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../root.zig").HSTRING;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const TimeSpan = @import("../Foundation.zig").TimeSpan;

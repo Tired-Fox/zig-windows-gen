@@ -4,8 +4,8 @@ pub const HtmlUtilities = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn ConvertToText(html: HSTRING) core.HResult!HSTRING {
-        const factory = @This().IHtmlUtilitiesCache.get();
-        return try factory.ConvertToText(html);
+        const _f = @This().IHtmlUtilitiesCache.get();
+        return try _f.ConvertToText(html);
     }
     pub const NAME: []const u8 = "Windows.Data.Html.HtmlUtilities";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

@@ -1,3 +1,5 @@
+pub const SuspendingOperation = @import("../ApplicationModel.zig").SuspendingOperation;
+pub const SuspendingDeferral = @import("../ApplicationModel.zig").SuspendingDeferral;
 pub const WebUILockScreenCallActivatedEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getCallUI(self: *@This()) core.HResult!*LockScreenCallUI {
@@ -1256,9 +1258,9 @@ pub const IWebUIViewStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateAsync(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperation(WebUIView) {
+    pub fn CreateAsyncWithUri(self: *@This(), uri: *Uri) core.HResult!*IAsyncOperation(WebUIView) {
         var _r: *IAsyncOperation(WebUIView) = undefined;
-        const _c = self.vtable.CreateAsync(@ptrCast(self), uri, &_r);
+        const _c = self.vtable.CreateAsyncWithUri(@ptrCast(self), uri, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1275,7 +1277,7 @@ pub const IWebUIViewStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(WebUIView)) callconv(.winapi) HRESULT,
-        CreateAsync: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(WebUIView)) callconv(.winapi) HRESULT,
+        CreateAsyncWithUri: *const fn(self: *anyopaque, uri: *Uri, _r: **IAsyncOperation(WebUIView)) callconv(.winapi) HRESULT,
     };
 };
 pub const LeavingBackgroundEventArgs = extern struct {
@@ -1581,18 +1583,6 @@ pub const ResumingEventHandler = extern struct {
         .Invoke = Invoke,
     };
 };
-pub const SuspendingDeferral = extern struct {
-    vtable: *const IInspectable.VTable,
-    pub fn Complete(self: *@This()) core.HResult!void {
-        const this: *ISuspendingDeferral = @ptrCast(self);
-        return try this.Complete();
-    }
-    pub const NAME: []const u8 = "Windows.UI.WebUI.SuspendingDeferral";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISuspendingDeferral.GUID;
-    pub const IID: Guid = ISuspendingDeferral.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISuspendingDeferral.SIGNATURE);
-};
 pub const SuspendingEventArgs = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn getSuspendingOperation(self: *@This()) core.HResult!*SuspendingOperation {
@@ -1692,102 +1682,86 @@ pub const SuspendingEventHandler = extern struct {
         .Invoke = Invoke,
     };
 };
-pub const SuspendingOperation = extern struct {
-    vtable: *const IInspectable.VTable,
-    pub fn GetDeferral(self: *@This()) core.HResult!*SuspendingDeferral {
-        const this: *ISuspendingOperation = @ptrCast(self);
-        return try this.GetDeferral();
-    }
-    pub fn getDeadline(self: *@This()) core.HResult!DateTime {
-        const this: *ISuspendingOperation = @ptrCast(self);
-        return try this.getDeadline();
-    }
-    pub const NAME: []const u8 = "Windows.UI.WebUI.SuspendingOperation";
-    pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
-    pub const GUID: []const u8 = ISuspendingOperation.GUID;
-    pub const IID: Guid = ISuspendingOperation.IID;
-    pub const SIGNATURE: []const u8 = core.Signature.class(NAME, ISuspendingOperation.SIGNATURE);
-};
 pub const WebUIApplication = extern struct {
     vtable: *const IInspectable.VTable,
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn add_NewWebUIViewCreated(handler: *EventHandler(NewWebUIViewCreatedEventArgs)) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStatics4Cache.get();
-        return try factory.addNewWebUIViewCreated(handler);
+    pub fn addNewWebUIViewCreated(handler: *EventHandler(NewWebUIViewCreatedEventArgs)) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStatics4Cache.get();
+        return try _f.addNewWebUIViewCreated(handler);
     }
-    pub fn remove_NewWebUIViewCreated(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStatics4Cache.get();
-        return try factory.removeNewWebUIViewCreated(token);
+    pub fn removeNewWebUIViewCreated(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStatics4Cache.get();
+        return try _f.removeNewWebUIViewCreated(token);
     }
-    pub fn add_BackgroundActivated(handler: *BackgroundActivatedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStatics4Cache.get();
-        return try factory.addBackgroundActivated(handler);
+    pub fn addBackgroundActivated(handler: *BackgroundActivatedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStatics4Cache.get();
+        return try _f.addBackgroundActivated(handler);
     }
-    pub fn remove_BackgroundActivated(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStatics4Cache.get();
-        return try factory.removeBackgroundActivated(token);
+    pub fn removeBackgroundActivated(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStatics4Cache.get();
+        return try _f.removeBackgroundActivated(token);
     }
-    pub fn add_LeavingBackground(handler: *LeavingBackgroundEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStatics2Cache.get();
-        return try factory.addLeavingBackground(handler);
+    pub fn addLeavingBackground(handler: *LeavingBackgroundEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStatics2Cache.get();
+        return try _f.addLeavingBackground(handler);
     }
-    pub fn remove_LeavingBackground(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStatics2Cache.get();
-        return try factory.removeLeavingBackground(token);
+    pub fn removeLeavingBackground(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStatics2Cache.get();
+        return try _f.removeLeavingBackground(token);
     }
-    pub fn add_EnteredBackground(handler: *EnteredBackgroundEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStatics2Cache.get();
-        return try factory.addEnteredBackground(handler);
+    pub fn addEnteredBackground(handler: *EnteredBackgroundEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStatics2Cache.get();
+        return try _f.addEnteredBackground(handler);
     }
-    pub fn remove_EnteredBackground(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStatics2Cache.get();
-        return try factory.removeEnteredBackground(token);
+    pub fn removeEnteredBackground(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStatics2Cache.get();
+        return try _f.removeEnteredBackground(token);
     }
     pub fn EnablePrelaunch(value: bool) core.HResult!void {
-        const factory = @This().IWebUIActivationStatics2Cache.get();
-        return try factory.EnablePrelaunch(value);
+        const _f = @This().IWebUIActivationStatics2Cache.get();
+        return try _f.EnablePrelaunch(value);
     }
-    pub fn add_Activated(handler: *ActivatedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.addActivated(handler);
+    pub fn addActivated(handler: *ActivatedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.addActivated(handler);
     }
-    pub fn remove_Activated(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.removeActivated(token);
+    pub fn removeActivated(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.removeActivated(token);
     }
-    pub fn add_Suspending(handler: *SuspendingEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.addSuspending(handler);
+    pub fn addSuspending(handler: *SuspendingEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.addSuspending(handler);
     }
-    pub fn remove_Suspending(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.removeSuspending(token);
+    pub fn removeSuspending(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.removeSuspending(token);
     }
-    pub fn add_Resuming(handler: *ResumingEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.addResuming(handler);
+    pub fn addResuming(handler: *ResumingEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.addResuming(handler);
     }
-    pub fn remove_Resuming(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.removeResuming(token);
+    pub fn removeResuming(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.removeResuming(token);
     }
-    pub fn add_Navigated(handler: *NavigatedEventHandler) core.HResult!EventRegistrationToken {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.addNavigated(handler);
+    pub fn addNavigated(handler: *NavigatedEventHandler) core.HResult!EventRegistrationToken {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.addNavigated(handler);
     }
-    pub fn remove_Navigated(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IWebUIActivationStaticsCache.get();
-        return try factory.removeNavigated(token);
+    pub fn removeNavigated(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IWebUIActivationStaticsCache.get();
+        return try _f.removeNavigated(token);
     }
     pub fn RequestRestartAsync(launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
-        const factory = @This().IWebUIActivationStatics3Cache.get();
-        return try factory.RequestRestartAsync(launchArguments);
+        const _f = @This().IWebUIActivationStatics3Cache.get();
+        return try _f.RequestRestartAsync(launchArguments);
     }
     pub fn RequestRestartForUserAsync(user: *User, launchArguments: HSTRING) core.HResult!*IAsyncOperation(AppRestartFailureReason) {
-        const factory = @This().IWebUIActivationStatics3Cache.get();
-        return try factory.RequestRestartForUserAsync(user, launchArguments);
+        const _f = @This().IWebUIActivationStatics3Cache.get();
+        return try _f.RequestRestartForUserAsync(user, launchArguments);
     }
     pub const NAME: []const u8 = "Windows.UI.WebUI.WebUIApplication";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -2053,9 +2027,9 @@ pub const WebUIBackgroundTaskInstance = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Current() core.HResult!*IWebUIBackgroundTaskInstance {
-        const factory = @This().IWebUIBackgroundTaskInstanceStaticsCache.get();
-        return try factory.getCurrent();
+    pub fn getCurrent() core.HResult!*IWebUIBackgroundTaskInstance {
+        const _f = @This().IWebUIBackgroundTaskInstanceStaticsCache.get();
+        return try _f.getCurrent();
     }
     pub const NAME: []const u8 = "Windows.UI.WebUI.WebUIBackgroundTaskInstance";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -3719,12 +3693,12 @@ pub const WebUIView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateAsync() core.HResult!*IAsyncOperation(WebUIView) {
-        const factory = @This().IWebUIViewStaticsCache.get();
-        return try factory.CreateAsync();
+        const _f = @This().IWebUIViewStaticsCache.get();
+        return try _f.CreateAsync();
     }
     pub fn CreateAsyncWithUri(uri: *Uri) core.HResult!*IAsyncOperation(WebUIView) {
-        const factory = @This().IWebUIViewStaticsCache.get();
-        return try factory.CreateAsyncWithUri(uri);
+        const _f = @This().IWebUIViewStaticsCache.get();
+        return try _f.CreateAsyncWithUri(uri);
     }
     pub const NAME: []const u8 = "Windows.UI.WebUI.WebUIView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -4174,9 +4148,8 @@ const TileActivatedInfo = @import("../ApplicationModel/Activation.zig").TileActi
 const WebViewControlContentLoadingEventArgs = @import("../Web/UI.zig").WebViewControlContentLoadingEventArgs;
 const IWalletActionActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IWalletActionActivatedEventArgs;
 const BackgroundTaskCanceledEventHandler = @import("../ApplicationModel/Background.zig").BackgroundTaskCanceledEventHandler;
-const ISuspendingDeferral = @import("../ApplicationModel.zig").ISuspendingDeferral;
-const IWebViewControl = @import("../Web/UI.zig").IWebViewControl;
 const IContactPickerActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IContactPickerActivatedEventArgs;
+const IWebViewControl = @import("../Web/UI.zig").IWebViewControl;
 const IClosable = @import("../Foundation.zig").IClosable;
 const IActivatedEventArgsWithUser = @import("../ApplicationModel/Activation.zig").IActivatedEventArgsWithUser;
 const IDialReceiverActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IDialReceiverActivatedEventArgs;
@@ -4214,7 +4187,6 @@ const WebViewControlDeferredPermissionRequest = @import("../Web/UI.zig").WebView
 const IAsyncAction = @import("../Foundation.zig").IAsyncAction;
 const StorageFile = @import("../Storage.zig").StorageFile;
 const IAppointmentsProviderReplaceAppointmentActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IAppointmentsProviderReplaceAppointmentActivatedEventArgs;
-const SuspendingOperation = @import("../ApplicationModel.zig").SuspendingOperation;
 const IBarcodeScannerPreviewActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IBarcodeScannerPreviewActivatedEventArgs;
 const CommandLineActivationOperation = @import("../ApplicationModel/Activation.zig").CommandLineActivationOperation;
 const IContactPanelActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IContactPanelActivatedEventArgs;
@@ -4225,8 +4197,8 @@ const IProtocolActivatedEventArgs = @import("../ApplicationModel/Activation.zig"
 const IToastNotificationActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IToastNotificationActivatedEventArgs;
 const IReference = @import("../Foundation.zig").IReference;
 const IAppointmentsProviderRemoveAppointmentActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IAppointmentsProviderRemoveAppointmentActivatedEventArgs;
-const IStorageItem = @import("../Storage.zig").IStorageItem;
 const IFileActivatedEventArgsWithNeighboringFiles = @import("../ApplicationModel/Activation.zig").IFileActivatedEventArgsWithNeighboringFiles;
+const IStorageItem = @import("../Storage.zig").IStorageItem;
 const AppRestartFailureReason = @import("../ApplicationModel/Core.zig").AppRestartFailureReason;
 const CachedFileUpdaterUI = @import("../Storage/Provider.zig").CachedFileUpdaterUI;
 const IAppointmentsProviderShowTimeFrameActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IAppointmentsProviderShowTimeFrameActivatedEventArgs;
@@ -4236,12 +4208,10 @@ const IRestrictedLaunchActivatedEventArgs = @import("../ApplicationModel/Activat
 const IRandomAccessStream = @import("../Storage/Streams.zig").IRandomAccessStream;
 const PrintTaskConfiguration = @import("../Devices/Printers/Extensions.zig").PrintTaskConfiguration;
 const FactoryCache = @import("../core.zig").FactoryCache;
-const SuspendingDeferral = @import("../ApplicationModel.zig").SuspendingDeferral;
 const IDeviceActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IDeviceActivatedEventArgs;
 const IContactActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IContactActivatedEventArgs;
 const IContactMessageActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IContactMessageActivatedEventArgs;
 const WebViewControlNavigationStartingEventArgs = @import("../Web/UI.zig").WebViewControlNavigationStartingEventArgs;
-const ISuspendingOperation = @import("../ApplicationModel.zig").ISuspendingOperation;
 const IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs = @import("../ApplicationModel/Activation.zig").IAppointmentsProviderShowAppointmentDetailsActivatedEventArgs;
 const WebViewControlUnviewableContentIdentifiedEventArgs = @import("../Web/UI.zig").WebViewControlUnviewableContentIdentifiedEventArgs;
 const TrustLevel = @import("../root.zig").TrustLevel;

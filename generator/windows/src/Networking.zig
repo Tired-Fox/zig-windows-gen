@@ -40,8 +40,8 @@ pub const EndpointPair = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateEndpointPair(localHostName: *HostName, localServiceName: HSTRING, remoteHostName: *HostName, remoteServiceName: HSTRING) core.HResult!*EndpointPair {
-        const factory = @This().IEndpointPairFactoryCache.get();
-        return try factory.CreateEndpointPair(localHostName, localServiceName, remoteHostName, remoteServiceName);
+        const _f = @This().IEndpointPairFactoryCache.get();
+        return try _f.CreateEndpointPair(localHostName, localServiceName, remoteHostName, remoteServiceName);
     }
     pub const NAME: []const u8 = "Windows.Networking.EndpointPair";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -86,12 +86,12 @@ pub const HostName = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateHostName(hostName: HSTRING) core.HResult!*HostName {
-        const factory = @This().IHostNameFactoryCache.get();
-        return try factory.CreateHostName(hostName);
+        const _f = @This().IHostNameFactoryCache.get();
+        return try _f.CreateHostName(hostName);
     }
     pub fn Compare(value1: HSTRING, value2: HSTRING) core.HResult!i32 {
-        const factory = @This().IHostNameStaticsCache.get();
-        return try factory.Compare(value1, value2);
+        const _f = @This().IHostNameStaticsCache.get();
+        return try _f.Compare(value1, value2);
     }
     pub const NAME: []const u8 = "Windows.Networking.HostName";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -308,7 +308,7 @@ const HRESULT = @import("./root.zig").HRESULT;
 const core = @import("./root.zig").core;
 const FactoryCache = @import("./core.zig").FactoryCache;
 const IInspectable = @import("./Foundation.zig").IInspectable;
-const IPInformation = @import("./Connectivity.zig").IPInformation;
+const IPInformation = @import("./Networking/Connectivity.zig").IPInformation;
 const IStringable = @import("./Foundation.zig").IStringable;
 const TrustLevel = @import("./root.zig").TrustLevel;
 const HSTRING = @import("./root.zig").HSTRING;

@@ -32,8 +32,8 @@ pub const I2cConnectionSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(slaveAddress: i32) core.HResult!*I2cConnectionSettings {
-        const factory = @This().II2cConnectionSettingsFactoryCache.get();
-        return try factory.Create(slaveAddress);
+        const _f = @This().II2cConnectionSettingsFactoryCache.get();
+        return try _f.Create(slaveAddress);
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.I2cConnectionSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -52,12 +52,12 @@ pub const I2cController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetControllersAsync(provider: *II2cProvider) core.HResult!*IAsyncOperation(IVectorView(I2cController)) {
-        const factory = @This().II2cControllerStaticsCache.get();
-        return try factory.GetControllersAsync(provider);
+        const _f = @This().II2cControllerStaticsCache.get();
+        return try _f.GetControllersAsync(provider);
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(I2cController) {
-        const factory = @This().II2cControllerStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().II2cControllerStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.I2cController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -110,16 +110,16 @@ pub const I2cDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().II2cDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().II2cDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().II2cDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorWithFriendlyName(friendlyName);
+        const _f = @This().II2cDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn FromIdAsync(deviceId: HSTRING, settings: *I2cConnectionSettings) core.HResult!*IAsyncOperation(I2cDevice) {
-        const factory = @This().II2cDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId, settings);
+        const _f = @This().II2cDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId, settings);
     }
     pub const NAME: []const u8 = "Windows.Devices.I2c.I2cDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -345,9 +345,9 @@ pub const II2cDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), friendlyName, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithFriendlyName(@ptrCast(self), friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -370,7 +370,7 @@ pub const II2cDeviceStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, settings: *I2cConnectionSettings, _r: **IAsyncOperation(I2cDevice)) callconv(.winapi) HRESULT,
     };
 };
@@ -383,7 +383,7 @@ const FactoryCache = @import("../core.zig").FactoryCache;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
-const II2cProvider = @import("./Provider.zig").II2cProvider;
+const II2cProvider = @import("./I2c/Provider.zig").II2cProvider;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const IClosable = @import("../Foundation.zig").IClosable;
 pub const Provider = @import("./I2c/Provider.zig");

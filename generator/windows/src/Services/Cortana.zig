@@ -36,12 +36,12 @@ pub const CortanaActionableInsights = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CortanaActionableInsights {
-        const factory = @This().ICortanaActionableInsightsStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ICortanaActionableInsightsStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*CortanaActionableInsights {
-        const factory = @This().ICortanaActionableInsightsStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().ICortanaActionableInsightsStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Services.Cortana.CortanaActionableInsights";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -122,8 +122,8 @@ pub const CortanaPermissionsManager = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*CortanaPermissionsManager {
-        const factory = @This().ICortanaPermissionsManagerStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ICortanaPermissionsManagerStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Services.Cortana.CortanaPermissionsManager";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -359,12 +359,12 @@ pub const CortanaSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn IsSupported() core.HResult!bool {
-        const factory = @This().ICortanaSettingsStaticsCache.get();
-        return try factory.IsSupported();
+        const _f = @This().ICortanaSettingsStaticsCache.get();
+        return try _f.IsSupported();
     }
     pub fn GetDefault() core.HResult!*CortanaSettings {
-        const factory = @This().ICortanaSettingsStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().ICortanaSettingsStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Services.Cortana.CortanaSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

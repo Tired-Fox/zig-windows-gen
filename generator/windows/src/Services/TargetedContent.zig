@@ -780,8 +780,8 @@ pub const TargetedContentContainer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAsync(contentId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentContainer) {
-        const factory = @This().ITargetedContentContainerStaticsCache.get();
-        return try factory.GetAsync(contentId);
+        const _f = @This().ITargetedContentContainerStaticsCache.get();
+        return try _f.GetAsync(contentId);
     }
     pub const NAME: []const u8 = "Windows.Services.TargetedContent.TargetedContentContainer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -966,12 +966,12 @@ pub const TargetedContentSubscription = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetAsync(subscriptionId: HSTRING) core.HResult!*IAsyncOperation(TargetedContentSubscription) {
-        const factory = @This().ITargetedContentSubscriptionStaticsCache.get();
-        return try factory.GetAsync(subscriptionId);
+        const _f = @This().ITargetedContentSubscriptionStaticsCache.get();
+        return try _f.GetAsync(subscriptionId);
     }
     pub fn GetOptions(subscriptionId: HSTRING) core.HResult!*TargetedContentSubscriptionOptions {
-        const factory = @This().ITargetedContentSubscriptionStaticsCache.get();
-        return try factory.GetOptions(subscriptionId);
+        const _f = @This().ITargetedContentSubscriptionStaticsCache.get();
+        return try _f.GetOptions(subscriptionId);
     }
     pub const NAME: []const u8 = "Windows.Services.TargetedContent.TargetedContentSubscription";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

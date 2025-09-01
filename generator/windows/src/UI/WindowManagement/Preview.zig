@@ -41,8 +41,8 @@ pub const WindowManagementPreview = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn SetPreferredMinSize(window: *AppWindow, preferredFrameMinSize: Size) core.HResult!void {
-        const factory = @This().IWindowManagementPreviewStaticsCache.get();
-        return try factory.SetPreferredMinSize(window, preferredFrameMinSize);
+        const _f = @This().IWindowManagementPreviewStaticsCache.get();
+        return try _f.SetPreferredMinSize(window, preferredFrameMinSize);
     }
     pub const NAME: []const u8 = "Windows.UI.WindowManagement.Preview.WindowManagementPreview";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

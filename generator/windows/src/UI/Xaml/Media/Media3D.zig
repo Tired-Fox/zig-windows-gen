@@ -4,8 +4,8 @@ pub const Transform3D = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Transform3D {
-        const factory = @This().ITransform3DFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITransform3DFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Media3D.Transform3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -119,53 +119,53 @@ pub const CompositeTransform3D = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICompositeTransform3D.IID)));
     }
-    pub fn get_CenterXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getCenterXProperty();
+    pub fn getCenterXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getCenterXProperty();
     }
-    pub fn get_CenterYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getCenterYProperty();
+    pub fn getCenterYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getCenterYProperty();
     }
-    pub fn get_CenterZProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getCenterZProperty();
+    pub fn getCenterZProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getCenterZProperty();
     }
-    pub fn get_RotationXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getRotationXProperty();
+    pub fn getRotationXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getRotationXProperty();
     }
-    pub fn get_RotationYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getRotationYProperty();
+    pub fn getRotationYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getRotationYProperty();
     }
-    pub fn get_RotationZProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getRotationZProperty();
+    pub fn getRotationZProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getRotationZProperty();
     }
-    pub fn get_ScaleXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getScaleXProperty();
+    pub fn getScaleXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getScaleXProperty();
     }
-    pub fn get_ScaleYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getScaleYProperty();
+    pub fn getScaleYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getScaleYProperty();
     }
-    pub fn get_ScaleZProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getScaleZProperty();
+    pub fn getScaleZProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getScaleZProperty();
     }
-    pub fn get_TranslateXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getTranslateXProperty();
+    pub fn getTranslateXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getTranslateXProperty();
     }
-    pub fn get_TranslateYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getTranslateYProperty();
+    pub fn getTranslateYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getTranslateYProperty();
     }
-    pub fn get_TranslateZProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICompositeTransform3DStaticsCache.get();
-        return try factory.getTranslateZProperty();
+    pub fn getTranslateZProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICompositeTransform3DStaticsCache.get();
+        return try _f.getTranslateZProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Media3D.CompositeTransform3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -660,29 +660,29 @@ pub const Matrix3DHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Identity() core.HResult!Matrix3D {
-        const factory = @This().IMatrix3DHelperStaticsCache.get();
-        return try factory.getIdentity();
+    pub fn getIdentity() core.HResult!Matrix3D {
+        const _f = @This().IMatrix3DHelperStaticsCache.get();
+        return try _f.getIdentity();
     }
     pub fn Multiply(matrix1: Matrix3D, matrix2: Matrix3D) core.HResult!Matrix3D {
-        const factory = @This().IMatrix3DHelperStaticsCache.get();
-        return try factory.Multiply(matrix1, matrix2);
+        const _f = @This().IMatrix3DHelperStaticsCache.get();
+        return try _f.Multiply(matrix1, matrix2);
     }
     pub fn FromElements(m11: f64, m12: f64, m13: f64, m14: f64, m21: f64, m22: f64, m23: f64, m24: f64, m31: f64, m32: f64, m33: f64, m34: f64, offsetX: f64, offsetY: f64, offsetZ: f64, m44: f64) core.HResult!Matrix3D {
-        const factory = @This().IMatrix3DHelperStaticsCache.get();
-        return try factory.FromElements(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, offsetX, offsetY, offsetZ, m44);
+        const _f = @This().IMatrix3DHelperStaticsCache.get();
+        return try _f.FromElements(m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, offsetX, offsetY, offsetZ, m44);
     }
     pub fn GetHasInverse(target: Matrix3D) core.HResult!bool {
-        const factory = @This().IMatrix3DHelperStaticsCache.get();
-        return try factory.GetHasInverse(target);
+        const _f = @This().IMatrix3DHelperStaticsCache.get();
+        return try _f.GetHasInverse(target);
     }
     pub fn GetIsIdentity(target: Matrix3D) core.HResult!bool {
-        const factory = @This().IMatrix3DHelperStaticsCache.get();
-        return try factory.GetIsIdentity(target);
+        const _f = @This().IMatrix3DHelperStaticsCache.get();
+        return try _f.GetIsIdentity(target);
     }
     pub fn Invert(target: Matrix3D) core.HResult!Matrix3D {
-        const factory = @This().IMatrix3DHelperStaticsCache.get();
-        return try factory.Invert(target);
+        const _f = @This().IMatrix3DHelperStaticsCache.get();
+        return try _f.Invert(target);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Media3D.Matrix3DHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -724,17 +724,17 @@ pub const PerspectiveTransform3D = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPerspectiveTransform3D.IID)));
     }
-    pub fn get_DepthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPerspectiveTransform3DStaticsCache.get();
-        return try factory.getDepthProperty();
+    pub fn getDepthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPerspectiveTransform3DStaticsCache.get();
+        return try _f.getDepthProperty();
     }
-    pub fn get_OffsetXProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPerspectiveTransform3DStaticsCache.get();
-        return try factory.getOffsetXProperty();
+    pub fn getOffsetXProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPerspectiveTransform3DStaticsCache.get();
+        return try _f.getOffsetXProperty();
     }
-    pub fn get_OffsetYProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPerspectiveTransform3DStaticsCache.get();
-        return try factory.getOffsetYProperty();
+    pub fn getOffsetYProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPerspectiveTransform3DStaticsCache.get();
+        return try _f.getOffsetYProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Media3D.PerspectiveTransform3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

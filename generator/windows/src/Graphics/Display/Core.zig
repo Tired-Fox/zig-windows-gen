@@ -46,9 +46,9 @@ pub const HdmiDisplayInformation = extern struct {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
         return try this.RequestSetCurrentDisplayModeAsyncWithHdrOption(mode, hdrOption);
     }
-    pub fn RequestSetCurrentDisplayModeAsyncWithHdrOptionWithHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrOptionAndHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
-        return try this.RequestSetCurrentDisplayModeAsyncWithHdrOptionWithHdrMetadata(mode, hdrOption, hdrMetadata);
+        return try this.RequestSetCurrentDisplayModeAsyncWithHdrOptionAndHdrMetadata(mode, hdrOption, hdrMetadata);
     }
     pub fn addDisplayModesChanged(self: *@This(), value: *TypedEventHandler(HdmiDisplayInformation,IInspectable)) core.HResult!EventRegistrationToken {
         const this: *IHdmiDisplayInformation = @ptrCast(self);
@@ -62,8 +62,8 @@ pub const HdmiDisplayInformation = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*HdmiDisplayInformation {
-        const factory = @This().IHdmiDisplayInformationStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IHdmiDisplayInformationStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Display.Core.HdmiDisplayInformation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -168,9 +168,9 @@ pub const IHdmiDisplayInformation = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn RequestSetCurrentDisplayModeAsyncWithHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
+    pub fn RequestSetCurrentDisplayModeAsyncWithHdrOptionAndHdrMetadata(self: *@This(), mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.RequestSetCurrentDisplayModeAsyncWithHdrMetadata(@ptrCast(self), mode, hdrOption, hdrMetadata, &_r);
+        const _c = self.vtable.RequestSetCurrentDisplayModeAsyncWithHdrOptionAndHdrMetadata(@ptrCast(self), mode, hdrOption, hdrMetadata, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -201,7 +201,7 @@ pub const IHdmiDisplayInformation = extern struct {
         SetDefaultDisplayModeAsync: *const fn(self: *anyopaque, _r: **IAsyncAction) callconv(.winapi) HRESULT,
         RequestSetCurrentDisplayModeAsync: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         RequestSetCurrentDisplayModeAsyncWithHdrOption: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        RequestSetCurrentDisplayModeAsyncWithHdrMetadata: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        RequestSetCurrentDisplayModeAsyncWithHdrOptionAndHdrMetadata: *const fn(self: *anyopaque, mode: *HdmiDisplayMode, hdrOption: HdmiDisplayHdrOption, hdrMetadata: HdmiDisplayHdr2086Metadata, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         add_DisplayModesChanged: *const fn(self: *anyopaque, value: *TypedEventHandler(HdmiDisplayInformation,IInspectable), _r: *EventRegistrationToken) callconv(.winapi) HRESULT,
         remove_DisplayModesChanged: *const fn(self: *anyopaque, token: EventRegistrationToken) callconv(.winapi) HRESULT,
     };

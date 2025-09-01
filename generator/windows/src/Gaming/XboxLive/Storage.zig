@@ -52,9 +52,9 @@ pub const GameSaveBlobInfoQuery = extern struct {
         const this: *IGameSaveBlobInfoQuery = @ptrCast(self);
         return try this.GetBlobInfoAsync();
     }
-    pub fn GetBlobInfoAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
+    pub fn GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
         const this: *IGameSaveBlobInfoQuery = @ptrCast(self);
-        return try this.GetBlobInfoAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
+        return try this.GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         const this: *IGameSaveBlobInfoQuery = @ptrCast(self);
@@ -152,9 +152,9 @@ pub const GameSaveContainerInfoQuery = extern struct {
         const this: *IGameSaveContainerInfoQuery = @ptrCast(self);
         return try this.GetContainerInfoAsync();
     }
-    pub fn GetContainerInfoAsyncWithStartIndexWithMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
+    pub fn GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
         const this: *IGameSaveContainerInfoQuery = @ptrCast(self);
-        return try this.GetContainerInfoAsyncWithStartIndexWithMaxNumberOfItems(startIndex, maxNumberOfItems);
+        return try this.GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems(startIndex, maxNumberOfItems);
     }
     pub fn GetItemCountAsync(self: *@This()) core.HResult!*IAsyncOperation(u32) {
         const this: *IGameSaveContainerInfoQuery = @ptrCast(self);
@@ -229,12 +229,12 @@ pub const GameSaveProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForUserAsync(user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
-        const factory = @This().IGameSaveProviderStaticsCache.get();
-        return try factory.GetForUserAsync(user, serviceConfigId);
+        const _f = @This().IGameSaveProviderStaticsCache.get();
+        return try _f.GetForUserAsync(user, serviceConfigId);
     }
     pub fn GetSyncOnDemandForUserAsync(user: *User, serviceConfigId: HSTRING) core.HResult!*IAsyncOperation(GameSaveProviderGetResult) {
-        const factory = @This().IGameSaveProviderStaticsCache.get();
-        return try factory.GetSyncOnDemandForUserAsync(user, serviceConfigId);
+        const _f = @This().IGameSaveProviderStaticsCache.get();
+        return try _f.GetSyncOnDemandForUserAsync(user, serviceConfigId);
     }
     pub const NAME: []const u8 = "Windows.Gaming.XboxLive.Storage.GameSaveProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -357,9 +357,9 @@ pub const IGameSaveBlobInfoQuery = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetBlobInfoAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
+    pub fn GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveBlobInfoGetResult) {
         var _r: *IAsyncOperation(GameSaveBlobInfoGetResult) = undefined;
-        const _c = self.vtable.GetBlobInfoAsync(@ptrCast(self), startIndex, maxNumberOfItems, &_r);
+        const _c = self.vtable.GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems(@ptrCast(self), startIndex, maxNumberOfItems, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -382,7 +382,7 @@ pub const IGameSaveBlobInfoQuery = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetBlobInfoAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GameSaveBlobInfoGetResult)) callconv(.winapi) HRESULT,
-        GetBlobInfoAsync: *const fn(self: *anyopaque, startIndex: u32, maxNumberOfItems: u32, _r: **IAsyncOperation(GameSaveBlobInfoGetResult)) callconv(.winapi) HRESULT,
+        GetBlobInfoAsyncWithStartIndexAndMaxNumberOfItems: *const fn(self: *anyopaque, startIndex: u32, maxNumberOfItems: u32, _r: **IAsyncOperation(GameSaveBlobInfoGetResult)) callconv(.winapi) HRESULT,
         GetItemCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
     };
 };
@@ -540,9 +540,9 @@ pub const IGameSaveContainerInfoQuery = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetContainerInfoAsync(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
+    pub fn GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems(self: *@This(), startIndex: u32, maxNumberOfItems: u32) core.HResult!*IAsyncOperation(GameSaveContainerInfoGetResult) {
         var _r: *IAsyncOperation(GameSaveContainerInfoGetResult) = undefined;
-        const _c = self.vtable.GetContainerInfoAsync(@ptrCast(self), startIndex, maxNumberOfItems, &_r);
+        const _c = self.vtable.GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems(@ptrCast(self), startIndex, maxNumberOfItems, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -565,7 +565,7 @@ pub const IGameSaveContainerInfoQuery = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetContainerInfoAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(GameSaveContainerInfoGetResult)) callconv(.winapi) HRESULT,
-        GetContainerInfoAsync: *const fn(self: *anyopaque, startIndex: u32, maxNumberOfItems: u32, _r: **IAsyncOperation(GameSaveContainerInfoGetResult)) callconv(.winapi) HRESULT,
+        GetContainerInfoAsyncWithStartIndexAndMaxNumberOfItems: *const fn(self: *anyopaque, startIndex: u32, maxNumberOfItems: u32, _r: **IAsyncOperation(GameSaveContainerInfoGetResult)) callconv(.winapi) HRESULT,
         GetItemCountAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
     };
 };
@@ -618,9 +618,9 @@ pub const IGameSaveProvider = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateContainerInfoQuery(self: *@This(), containerNamePrefix: HSTRING) core.HResult!*GameSaveContainerInfoQuery {
+    pub fn CreateContainerInfoQueryWithContainerNamePrefix(self: *@This(), containerNamePrefix: HSTRING) core.HResult!*GameSaveContainerInfoQuery {
         var _r: *GameSaveContainerInfoQuery = undefined;
-        const _c = self.vtable.CreateContainerInfoQuery(@ptrCast(self), containerNamePrefix, &_r);
+        const _c = self.vtable.CreateContainerInfoQueryWithContainerNamePrefix(@ptrCast(self), containerNamePrefix, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -652,7 +652,7 @@ pub const IGameSaveProvider = extern struct {
         CreateContainer: *const fn(self: *anyopaque, name: HSTRING, _r: **GameSaveContainer) callconv(.winapi) HRESULT,
         DeleteContainerAsync: *const fn(self: *anyopaque, name: HSTRING, _r: **IAsyncOperation(GameSaveOperationResult)) callconv(.winapi) HRESULT,
         CreateContainerInfoQuery: *const fn(self: *anyopaque, _r: **GameSaveContainerInfoQuery) callconv(.winapi) HRESULT,
-        CreateContainerInfoQuery: *const fn(self: *anyopaque, containerNamePrefix: HSTRING, _r: **GameSaveContainerInfoQuery) callconv(.winapi) HRESULT,
+        CreateContainerInfoQueryWithContainerNamePrefix: *const fn(self: *anyopaque, containerNamePrefix: HSTRING, _r: **GameSaveContainerInfoQuery) callconv(.winapi) HRESULT,
         GetRemainingBytesInQuotaAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(i64)) callconv(.winapi) HRESULT,
         get_ContainersChangedSinceLastSync: *const fn(self: *anyopaque, _r: **IVectorView(HSTRING)) callconv(.winapi) HRESULT,
     };

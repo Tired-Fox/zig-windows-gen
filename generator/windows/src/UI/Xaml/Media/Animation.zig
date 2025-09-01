@@ -43,9 +43,9 @@ pub const EasingFunctionBase = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_EasingModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEasingFunctionBaseStaticsCache.get();
-        return try factory.getEasingModeProperty();
+    pub fn getEasingModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEasingFunctionBaseStaticsCache.get();
+        return try _f.getEasingModeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EasingFunctionBase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -72,9 +72,9 @@ pub const BackEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBackEase.IID)));
     }
-    pub fn get_AmplitudeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBackEaseStaticsCache.get();
-        return try factory.getAmplitudeProperty();
+    pub fn getAmplitudeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBackEaseStaticsCache.get();
+        return try _f.getAmplitudeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.BackEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -102,8 +102,8 @@ pub const BasicConnectedAnimationConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*BasicConnectedAnimationConfiguration {
-        const factory = @This().IBasicConnectedAnimationConfigurationFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IBasicConnectedAnimationConfigurationFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.BasicConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -129,9 +129,9 @@ pub const BeginStoryboard = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBeginStoryboard.IID)));
     }
-    pub fn get_StoryboardProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBeginStoryboardStaticsCache.get();
-        return try factory.getStoryboardProperty();
+    pub fn getStoryboardProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBeginStoryboardStaticsCache.get();
+        return try _f.getStoryboardProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.BeginStoryboard";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -166,13 +166,13 @@ pub const BounceEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IBounceEase.IID)));
     }
-    pub fn get_BouncesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBounceEaseStaticsCache.get();
-        return try factory.getBouncesProperty();
+    pub fn getBouncesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBounceEaseStaticsCache.get();
+        return try _f.getBouncesProperty();
     }
-    pub fn get_BouncinessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IBounceEaseStaticsCache.get();
-        return try factory.getBouncinessProperty();
+    pub fn getBouncinessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IBounceEaseStaticsCache.get();
+        return try _f.getBouncinessProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.BounceEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -264,41 +264,41 @@ pub const Timeline = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AllowDependentAnimations() core.HResult!bool {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getAllowDependentAnimations();
+    pub fn getAllowDependentAnimations() core.HResult!bool {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getAllowDependentAnimations();
     }
-    pub fn put_AllowDependentAnimations(value: bool) core.HResult!void {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.putAllowDependentAnimations(value);
+    pub fn putAllowDependentAnimations(value: bool) core.HResult!void {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.putAllowDependentAnimations(value);
     }
-    pub fn get_AutoReverseProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getAutoReverseProperty();
+    pub fn getAutoReverseProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getAutoReverseProperty();
     }
-    pub fn get_BeginTimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getBeginTimeProperty();
+    pub fn getBeginTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getBeginTimeProperty();
     }
-    pub fn get_DurationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getDurationProperty();
+    pub fn getDurationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getDurationProperty();
     }
-    pub fn get_SpeedRatioProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getSpeedRatioProperty();
+    pub fn getSpeedRatioProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getSpeedRatioProperty();
     }
-    pub fn get_FillBehaviorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getFillBehaviorProperty();
+    pub fn getFillBehaviorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getFillBehaviorProperty();
     }
-    pub fn get_RepeatBehaviorProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ITimelineStaticsCache.get();
-        return try factory.getRepeatBehaviorProperty();
+    pub fn getRepeatBehaviorProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ITimelineStaticsCache.get();
+        return try _f.getRepeatBehaviorProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*Timeline {
-        const factory = @This().ITimelineFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ITimelineFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.Timeline";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -357,25 +357,25 @@ pub const ColorAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IColorAnimation.IID)));
     }
-    pub fn get_FromProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorAnimationStaticsCache.get();
-        return try factory.getFromProperty();
+    pub fn getFromProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorAnimationStaticsCache.get();
+        return try _f.getFromProperty();
     }
-    pub fn get_ToProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorAnimationStaticsCache.get();
-        return try factory.getToProperty();
+    pub fn getToProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorAnimationStaticsCache.get();
+        return try _f.getToProperty();
     }
-    pub fn get_ByProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorAnimationStaticsCache.get();
-        return try factory.getByProperty();
+    pub fn getByProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorAnimationStaticsCache.get();
+        return try _f.getByProperty();
     }
-    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorAnimationStaticsCache.get();
-        return try factory.getEasingFunctionProperty();
+    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorAnimationStaticsCache.get();
+        return try _f.getEasingFunctionProperty();
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorAnimationStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorAnimationStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ColorAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -406,9 +406,9 @@ pub const ColorAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IColorAnimationUsingKeyFrames.IID)));
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorAnimationUsingKeyFramesStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorAnimationUsingKeyFramesStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ColorAnimationUsingKeyFrames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -439,17 +439,17 @@ pub const ColorKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorKeyFrameStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorKeyFrameStaticsCache.get();
+        return try _f.getValueProperty();
     }
-    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IColorKeyFrameStaticsCache.get();
-        return try factory.getKeyTimeProperty();
+    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IColorKeyFrameStaticsCache.get();
+        return try _f.getKeyTimeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ColorKeyFrame {
-        const factory = @This().IColorKeyFrameFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IColorKeyFrameFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ColorKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -461,55 +461,27 @@ pub const ColorKeyFrame = extern struct {
 };
 pub const ColorKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColorKeyFrame) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(ColorKeyFrame) {
+        const this: *IVector(ColorKeyFrame) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColorKeyFrame) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColorKeyFrame) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ColorKeyFrame) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ColorKeyFrame) {
         var this: ?*IIterable(ColorKeyFrame) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -547,8 +519,8 @@ pub const NavigationTransitionInfo = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*NavigationTransitionInfo {
-        const factory = @This().INavigationTransitionInfoFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().INavigationTransitionInfoFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.NavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -574,21 +546,21 @@ pub const CommonNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ICommonNavigationTransitionInfo.IID)));
     }
-    pub fn get_IsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommonNavigationTransitionInfoStaticsCache.get();
-        return try factory.getIsStaggeringEnabledProperty();
+    pub fn getIsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommonNavigationTransitionInfoStaticsCache.get();
+        return try _f.getIsStaggeringEnabledProperty();
     }
-    pub fn get_IsStaggerElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ICommonNavigationTransitionInfoStaticsCache.get();
-        return try factory.getIsStaggerElementProperty();
+    pub fn getIsStaggerElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ICommonNavigationTransitionInfoStaticsCache.get();
+        return try _f.getIsStaggerElementProperty();
     }
     pub fn GetIsStaggerElement(element: *UIElement) core.HResult!bool {
-        const factory = @This().ICommonNavigationTransitionInfoStaticsCache.get();
-        return try factory.GetIsStaggerElement(element);
+        const _f = @This().ICommonNavigationTransitionInfoStaticsCache.get();
+        return try _f.GetIsStaggerElement(element);
     }
     pub fn SetIsStaggerElement(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().ICommonNavigationTransitionInfoStaticsCache.get();
-        return try factory.SetIsStaggerElement(element, value);
+        const _f = @This().ICommonNavigationTransitionInfoStaticsCache.get();
+        return try _f.SetIsStaggerElement(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.CommonNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -699,8 +671,8 @@ pub const ConnectedAnimationService = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetForCurrentView() core.HResult!*ConnectedAnimationService {
-        const factory = @This().IConnectedAnimationServiceStaticsCache.get();
-        return try factory.GetForCurrentView();
+        const _f = @This().IConnectedAnimationServiceStaticsCache.get();
+        return try _f.GetForCurrentView();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ConnectedAnimationService";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -734,13 +706,13 @@ pub const ContentThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContentThemeTransition.IID)));
     }
-    pub fn get_HorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentThemeTransitionStaticsCache.get();
-        return try factory.getHorizontalOffsetProperty();
+    pub fn getHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentThemeTransitionStaticsCache.get();
+        return try _f.getHorizontalOffsetProperty();
     }
-    pub fn get_VerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContentThemeTransitionStaticsCache.get();
-        return try factory.getVerticalOffsetProperty();
+    pub fn getVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContentThemeTransitionStaticsCache.get();
+        return try _f.getVerticalOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ContentThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -767,45 +739,45 @@ pub const ContinuumNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IContinuumNavigationTransitionInfo.IID)));
     }
-    pub fn get_ExitElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.getExitElementProperty();
+    pub fn getExitElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.getExitElementProperty();
     }
-    pub fn get_IsEntranceElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.getIsEntranceElementProperty();
+    pub fn getIsEntranceElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.getIsEntranceElementProperty();
     }
     pub fn GetIsEntranceElement(element: *UIElement) core.HResult!bool {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.GetIsEntranceElement(element);
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.GetIsEntranceElement(element);
     }
     pub fn SetIsEntranceElement(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.SetIsEntranceElement(element, value);
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.SetIsEntranceElement(element, value);
     }
-    pub fn get_IsExitElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.getIsExitElementProperty();
+    pub fn getIsExitElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.getIsExitElementProperty();
     }
     pub fn GetIsExitElement(element: *UIElement) core.HResult!bool {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.GetIsExitElement(element);
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.GetIsExitElement(element);
     }
     pub fn SetIsExitElement(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.SetIsExitElement(element, value);
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.SetIsExitElement(element, value);
     }
-    pub fn get_ExitElementContainerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.getExitElementContainerProperty();
+    pub fn getExitElementContainerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.getExitElementContainerProperty();
     }
     pub fn GetExitElementContainer(element: *ListViewBase) core.HResult!bool {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.GetExitElementContainer(element);
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.GetExitElementContainer(element);
     }
     pub fn SetExitElementContainer(element: *ListViewBase, value: bool) core.HResult!void {
-        const factory = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
-        return try factory.SetExitElementContainer(element, value);
+        const _f = @This().IContinuumNavigationTransitionInfoStaticsCache.get();
+        return try _f.SetExitElementContainer(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ContinuumNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -837,8 +809,8 @@ pub const DirectConnectedAnimationConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DirectConnectedAnimationConfiguration {
-        const factory = @This().IDirectConnectedAnimationConfigurationFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IDirectConnectedAnimationConfigurationFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DirectConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -884,17 +856,17 @@ pub const DoubleKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleKeyFrameStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleKeyFrameStaticsCache.get();
+        return try _f.getValueProperty();
     }
-    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleKeyFrameStaticsCache.get();
-        return try factory.getKeyTimeProperty();
+    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleKeyFrameStaticsCache.get();
+        return try _f.getKeyTimeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*DoubleKeyFrame {
-        const factory = @This().IDoubleKeyFrameFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IDoubleKeyFrameFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DoubleKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -941,17 +913,17 @@ pub const ObjectKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IObjectKeyFrameStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IObjectKeyFrameStaticsCache.get();
+        return try _f.getValueProperty();
     }
-    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IObjectKeyFrameStaticsCache.get();
-        return try factory.getKeyTimeProperty();
+    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IObjectKeyFrameStaticsCache.get();
+        return try _f.getKeyTimeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*ObjectKeyFrame {
-        const factory = @This().IObjectKeyFrameFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IObjectKeyFrameFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ObjectKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -998,17 +970,17 @@ pub const PointKeyFrame = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_ValueProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointKeyFrameStaticsCache.get();
-        return try factory.getValueProperty();
+    pub fn getValueProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointKeyFrameStaticsCache.get();
+        return try _f.getValueProperty();
     }
-    pub fn get_KeyTimeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointKeyFrameStaticsCache.get();
-        return try factory.getKeyTimeProperty();
+    pub fn getKeyTimeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointKeyFrameStaticsCache.get();
+        return try _f.getKeyTimeProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*PointKeyFrame {
-        const factory = @This().IPointKeyFrameFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IPointKeyFrameFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PointKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1083,25 +1055,25 @@ pub const DoubleAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDoubleAnimation.IID)));
     }
-    pub fn get_FromProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleAnimationStaticsCache.get();
-        return try factory.getFromProperty();
+    pub fn getFromProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleAnimationStaticsCache.get();
+        return try _f.getFromProperty();
     }
-    pub fn get_ToProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleAnimationStaticsCache.get();
-        return try factory.getToProperty();
+    pub fn getToProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleAnimationStaticsCache.get();
+        return try _f.getToProperty();
     }
-    pub fn get_ByProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleAnimationStaticsCache.get();
-        return try factory.getByProperty();
+    pub fn getByProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleAnimationStaticsCache.get();
+        return try _f.getByProperty();
     }
-    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleAnimationStaticsCache.get();
-        return try factory.getEasingFunctionProperty();
+    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleAnimationStaticsCache.get();
+        return try _f.getEasingFunctionProperty();
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleAnimationStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleAnimationStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DoubleAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1132,9 +1104,9 @@ pub const DoubleAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDoubleAnimationUsingKeyFrames.IID)));
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDoubleAnimationUsingKeyFramesStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDoubleAnimationUsingKeyFramesStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DoubleAnimationUsingKeyFrames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1146,55 +1118,27 @@ pub const DoubleAnimationUsingKeyFrames = extern struct {
 };
 pub const DoubleKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(DoubleKeyFrame) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(DoubleKeyFrame) {
+        const this: *IVector(DoubleKeyFrame) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(DoubleKeyFrame) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(DoubleKeyFrame) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(DoubleKeyFrame) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(DoubleKeyFrame) {
         var this: ?*IIterable(DoubleKeyFrame) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -1231,9 +1175,9 @@ pub const DragItemThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDragItemThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDragItemThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDragItemThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DragItemThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1276,17 +1220,17 @@ pub const DragOverThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDragOverThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDragOverThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDragOverThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
-    pub fn get_ToOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDragOverThemeAnimationStaticsCache.get();
-        return try factory.getToOffsetProperty();
+    pub fn getToOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDragOverThemeAnimationStaticsCache.get();
+        return try _f.getToOffsetProperty();
     }
-    pub fn get_DirectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDragOverThemeAnimationStaticsCache.get();
-        return try factory.getDirectionProperty();
+    pub fn getDirectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDragOverThemeAnimationStaticsCache.get();
+        return try _f.getDirectionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DragOverThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1353,21 +1297,21 @@ pub const DrillInThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDrillInThemeAnimation.IID)));
     }
-    pub fn get_EntranceTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillInThemeAnimationStaticsCache.get();
-        return try factory.getEntranceTargetNameProperty();
+    pub fn getEntranceTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillInThemeAnimationStaticsCache.get();
+        return try _f.getEntranceTargetNameProperty();
     }
-    pub fn get_EntranceTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillInThemeAnimationStaticsCache.get();
-        return try factory.getEntranceTargetProperty();
+    pub fn getEntranceTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillInThemeAnimationStaticsCache.get();
+        return try _f.getEntranceTargetProperty();
     }
-    pub fn get_ExitTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillInThemeAnimationStaticsCache.get();
-        return try factory.getExitTargetNameProperty();
+    pub fn getExitTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillInThemeAnimationStaticsCache.get();
+        return try _f.getExitTargetNameProperty();
     }
-    pub fn get_ExitTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillInThemeAnimationStaticsCache.get();
-        return try factory.getExitTargetProperty();
+    pub fn getExitTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillInThemeAnimationStaticsCache.get();
+        return try _f.getExitTargetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DrillInThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1418,21 +1362,21 @@ pub const DrillOutThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDrillOutThemeAnimation.IID)));
     }
-    pub fn get_EntranceTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
-        return try factory.getEntranceTargetNameProperty();
+    pub fn getEntranceTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillOutThemeAnimationStaticsCache.get();
+        return try _f.getEntranceTargetNameProperty();
     }
-    pub fn get_EntranceTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
-        return try factory.getEntranceTargetProperty();
+    pub fn getEntranceTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillOutThemeAnimationStaticsCache.get();
+        return try _f.getEntranceTargetProperty();
     }
-    pub fn get_ExitTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
-        return try factory.getExitTargetNameProperty();
+    pub fn getExitTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillOutThemeAnimationStaticsCache.get();
+        return try _f.getExitTargetNameProperty();
     }
-    pub fn get_ExitTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDrillOutThemeAnimationStaticsCache.get();
-        return try factory.getExitTargetProperty();
+    pub fn getExitTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDrillOutThemeAnimationStaticsCache.get();
+        return try _f.getExitTargetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DrillOutThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1459,9 +1403,9 @@ pub const DropTargetItemThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IDropTargetItemThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IDropTargetItemThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IDropTargetItemThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.DropTargetItemThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1488,9 +1432,9 @@ pub const EasingColorKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasingColorKeyFrame.IID)));
     }
-    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEasingColorKeyFrameStaticsCache.get();
-        return try factory.getEasingFunctionProperty();
+    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEasingColorKeyFrameStaticsCache.get();
+        return try _f.getEasingFunctionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EasingColorKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1517,9 +1461,9 @@ pub const EasingDoubleKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasingDoubleKeyFrame.IID)));
     }
-    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEasingDoubleKeyFrameStaticsCache.get();
-        return try factory.getEasingFunctionProperty();
+    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEasingDoubleKeyFrameStaticsCache.get();
+        return try _f.getEasingFunctionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EasingDoubleKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1551,9 +1495,9 @@ pub const EasingPointKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEasingPointKeyFrame.IID)));
     }
-    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEasingPointKeyFrameStaticsCache.get();
-        return try factory.getEasingFunctionProperty();
+    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEasingPointKeyFrameStaticsCache.get();
+        return try _f.getEasingFunctionProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EasingPointKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1580,9 +1524,9 @@ pub const EdgeUIThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEdgeUIThemeTransition.IID)));
     }
-    pub fn get_EdgeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEdgeUIThemeTransitionStaticsCache.get();
-        return try factory.getEdgeProperty();
+    pub fn getEdgeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEdgeUIThemeTransitionStaticsCache.get();
+        return try _f.getEdgeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EdgeUIThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1617,13 +1561,13 @@ pub const ElasticEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IElasticEase.IID)));
     }
-    pub fn get_OscillationsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IElasticEaseStaticsCache.get();
-        return try factory.getOscillationsProperty();
+    pub fn getOscillationsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IElasticEaseStaticsCache.get();
+        return try _f.getOscillationsProperty();
     }
-    pub fn get_SpringinessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IElasticEaseStaticsCache.get();
-        return try factory.getSpringinessProperty();
+    pub fn getSpringinessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IElasticEaseStaticsCache.get();
+        return try _f.getSpringinessProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ElasticEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1642,17 +1586,17 @@ pub const EntranceNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEntranceNavigationTransitionInfo.IID)));
     }
-    pub fn get_IsTargetElementProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
-        return try factory.getIsTargetElementProperty();
+    pub fn getIsTargetElementProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
+        return try _f.getIsTargetElementProperty();
     }
     pub fn GetIsTargetElement(element: *UIElement) core.HResult!bool {
-        const factory = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
-        return try factory.GetIsTargetElement(element);
+        const _f = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
+        return try _f.GetIsTargetElement(element);
     }
     pub fn SetIsTargetElement(element: *UIElement, value: bool) core.HResult!void {
-        const factory = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
-        return try factory.SetIsTargetElement(element, value);
+        const _f = @This().IEntranceNavigationTransitionInfoStaticsCache.get();
+        return try _f.SetIsTargetElement(element, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EntranceNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1695,17 +1639,17 @@ pub const EntranceThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IEntranceThemeTransition.IID)));
     }
-    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEntranceThemeTransitionStaticsCache.get();
-        return try factory.getFromHorizontalOffsetProperty();
+    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEntranceThemeTransitionStaticsCache.get();
+        return try _f.getFromHorizontalOffsetProperty();
     }
-    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEntranceThemeTransitionStaticsCache.get();
-        return try factory.getFromVerticalOffsetProperty();
+    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEntranceThemeTransitionStaticsCache.get();
+        return try _f.getFromVerticalOffsetProperty();
     }
-    pub fn get_IsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IEntranceThemeTransitionStaticsCache.get();
-        return try factory.getIsStaggeringEnabledProperty();
+    pub fn getIsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IEntranceThemeTransitionStaticsCache.get();
+        return try _f.getIsStaggeringEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.EntranceThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1732,9 +1676,9 @@ pub const ExponentialEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IExponentialEase.IID)));
     }
-    pub fn get_ExponentProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IExponentialEaseStaticsCache.get();
-        return try factory.getExponentProperty();
+    pub fn getExponentProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IExponentialEaseStaticsCache.get();
+        return try _f.getExponentProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ExponentialEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1761,9 +1705,9 @@ pub const FadeInThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFadeInThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFadeInThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFadeInThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.FadeInThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1790,9 +1734,9 @@ pub const FadeOutThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IFadeOutThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IFadeOutThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IFadeOutThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.FadeOutThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1824,8 +1768,8 @@ pub const GravityConnectedAnimationConfiguration = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*GravityConnectedAnimationConfiguration {
-        const factory = @This().IGravityConnectedAnimationConfigurationFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IGravityConnectedAnimationConfigurationFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.GravityConnectedAnimationConfiguration";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7044,8 +6988,8 @@ pub const KeyTimeHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FromTimeSpan(timeSpan: TimeSpan) core.HResult!KeyTime {
-        const factory = @This().IKeyTimeHelperStaticsCache.get();
-        return try factory.FromTimeSpan(timeSpan);
+        const _f = @This().IKeyTimeHelperStaticsCache.get();
+        return try _f.FromTimeSpan(timeSpan);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.KeyTimeHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7119,9 +7063,9 @@ pub const NavigationThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&INavigationThemeTransition.IID)));
     }
-    pub fn get_DefaultNavigationTransitionInfoProperty() core.HResult!*DependencyProperty {
-        const factory = @This().INavigationThemeTransitionStaticsCache.get();
-        return try factory.getDefaultNavigationTransitionInfoProperty();
+    pub fn getDefaultNavigationTransitionInfoProperty() core.HResult!*DependencyProperty {
+        const _f = @This().INavigationThemeTransitionStaticsCache.get();
+        return try _f.getDefaultNavigationTransitionInfoProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.NavigationThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7152,9 +7096,9 @@ pub const ObjectAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IObjectAnimationUsingKeyFrames.IID)));
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IObjectAnimationUsingKeyFramesStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IObjectAnimationUsingKeyFramesStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.ObjectAnimationUsingKeyFrames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7166,55 +7110,27 @@ pub const ObjectAnimationUsingKeyFrames = extern struct {
 };
 pub const ObjectKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ObjectKeyFrame) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(ObjectKeyFrame) {
+        const this: *IVector(ObjectKeyFrame) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ObjectKeyFrame) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ObjectKeyFrame) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(ObjectKeyFrame) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(ObjectKeyFrame) {
         var this: ?*IIterable(ObjectKeyFrame) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7251,9 +7167,9 @@ pub const PaneThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPaneThemeTransition.IID)));
     }
-    pub fn get_EdgeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPaneThemeTransitionStaticsCache.get();
-        return try factory.getEdgeProperty();
+    pub fn getEdgeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPaneThemeTransitionStaticsCache.get();
+        return try _f.getEdgeProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PaneThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7312,25 +7228,25 @@ pub const PointAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointAnimation.IID)));
     }
-    pub fn get_FromProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointAnimationStaticsCache.get();
-        return try factory.getFromProperty();
+    pub fn getFromProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointAnimationStaticsCache.get();
+        return try _f.getFromProperty();
     }
-    pub fn get_ToProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointAnimationStaticsCache.get();
-        return try factory.getToProperty();
+    pub fn getToProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointAnimationStaticsCache.get();
+        return try _f.getToProperty();
     }
-    pub fn get_ByProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointAnimationStaticsCache.get();
-        return try factory.getByProperty();
+    pub fn getByProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointAnimationStaticsCache.get();
+        return try _f.getByProperty();
     }
-    pub fn get_EasingFunctionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointAnimationStaticsCache.get();
-        return try factory.getEasingFunctionProperty();
+    pub fn getEasingFunctionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointAnimationStaticsCache.get();
+        return try _f.getEasingFunctionProperty();
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointAnimationStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointAnimationStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PointAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7361,9 +7277,9 @@ pub const PointAnimationUsingKeyFrames = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointAnimationUsingKeyFrames.IID)));
     }
-    pub fn get_EnableDependentAnimationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointAnimationUsingKeyFramesStaticsCache.get();
-        return try factory.getEnableDependentAnimationProperty();
+    pub fn getEnableDependentAnimationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointAnimationUsingKeyFramesStaticsCache.get();
+        return try _f.getEnableDependentAnimationProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PointAnimationUsingKeyFrames";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7375,55 +7291,27 @@ pub const PointAnimationUsingKeyFrames = extern struct {
 };
 pub const PointKeyFrameCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(PointKeyFrame) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(PointKeyFrame) {
+        const this: *IVector(PointKeyFrame) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(PointKeyFrame) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(PointKeyFrame) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(PointKeyFrame) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(PointKeyFrame) {
         var this: ?*IIterable(PointKeyFrame) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -7460,9 +7348,9 @@ pub const PointerDownThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointerDownThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointerDownThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointerDownThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PointerDownThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7489,9 +7377,9 @@ pub const PointerUpThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPointerUpThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPointerUpThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPointerUpThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PointerUpThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7534,17 +7422,17 @@ pub const PopInThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopInThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPopInThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPopInThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
-    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPopInThemeAnimationStaticsCache.get();
-        return try factory.getFromHorizontalOffsetProperty();
+    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPopInThemeAnimationStaticsCache.get();
+        return try _f.getFromHorizontalOffsetProperty();
     }
-    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPopInThemeAnimationStaticsCache.get();
-        return try factory.getFromVerticalOffsetProperty();
+    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPopInThemeAnimationStaticsCache.get();
+        return try _f.getFromVerticalOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PopInThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7571,9 +7459,9 @@ pub const PopOutThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopOutThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPopOutThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPopOutThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PopOutThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7608,13 +7496,13 @@ pub const PopupThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPopupThemeTransition.IID)));
     }
-    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPopupThemeTransitionStaticsCache.get();
-        return try factory.getFromHorizontalOffsetProperty();
+    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPopupThemeTransitionStaticsCache.get();
+        return try _f.getFromHorizontalOffsetProperty();
     }
-    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPopupThemeTransitionStaticsCache.get();
-        return try factory.getFromVerticalOffsetProperty();
+    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPopupThemeTransitionStaticsCache.get();
+        return try _f.getFromVerticalOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PopupThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7641,9 +7529,9 @@ pub const PowerEase = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IPowerEase.IID)));
     }
-    pub fn get_PowerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IPowerEaseStaticsCache.get();
-        return try factory.getPowerProperty();
+    pub fn getPowerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IPowerEaseStaticsCache.get();
+        return try _f.getPowerProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.PowerEase";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7727,29 +7615,29 @@ pub const RepeatBehaviorHelper = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Forever() core.HResult!RepeatBehavior {
-        const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
-        return try factory.getForever();
+    pub fn getForever() core.HResult!RepeatBehavior {
+        const _f = @This().IRepeatBehaviorHelperStaticsCache.get();
+        return try _f.getForever();
     }
     pub fn FromCount(count: f64) core.HResult!RepeatBehavior {
-        const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
-        return try factory.FromCount(count);
+        const _f = @This().IRepeatBehaviorHelperStaticsCache.get();
+        return try _f.FromCount(count);
     }
     pub fn FromDuration(duration: TimeSpan) core.HResult!RepeatBehavior {
-        const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
-        return try factory.FromDuration(duration);
+        const _f = @This().IRepeatBehaviorHelperStaticsCache.get();
+        return try _f.FromDuration(duration);
     }
     pub fn GetHasCount(target: RepeatBehavior) core.HResult!bool {
-        const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
-        return try factory.GetHasCount(target);
+        const _f = @This().IRepeatBehaviorHelperStaticsCache.get();
+        return try _f.GetHasCount(target);
     }
     pub fn GetHasDuration(target: RepeatBehavior) core.HResult!bool {
-        const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
-        return try factory.GetHasDuration(target);
+        const _f = @This().IRepeatBehaviorHelperStaticsCache.get();
+        return try _f.GetHasDuration(target);
     }
     pub fn Equals(target: RepeatBehavior, value: RepeatBehavior) core.HResult!bool {
-        const factory = @This().IRepeatBehaviorHelperStaticsCache.get();
-        return try factory.Equals(target, value);
+        const _f = @This().IRepeatBehaviorHelperStaticsCache.get();
+        return try _f.Equals(target, value);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.RepeatBehaviorHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7796,17 +7684,17 @@ pub const RepositionThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRepositionThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRepositionThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRepositionThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
-    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRepositionThemeAnimationStaticsCache.get();
-        return try factory.getFromHorizontalOffsetProperty();
+    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRepositionThemeAnimationStaticsCache.get();
+        return try _f.getFromHorizontalOffsetProperty();
     }
-    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRepositionThemeAnimationStaticsCache.get();
-        return try factory.getFromVerticalOffsetProperty();
+    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRepositionThemeAnimationStaticsCache.get();
+        return try _f.getFromVerticalOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.RepositionThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7837,9 +7725,9 @@ pub const RepositionThemeTransition = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IRepositionThemeTransition.IID)));
     }
-    pub fn get_IsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IRepositionThemeTransitionStatics2Cache.get();
-        return try factory.getIsStaggeringEnabledProperty();
+    pub fn getIsStaggeringEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IRepositionThemeTransitionStatics2Cache.get();
+        return try _f.getIsStaggeringEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.RepositionThemeTransition";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7891,9 +7779,9 @@ pub const SlideNavigationTransitionInfo = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISlideNavigationTransitionInfo.IID)));
     }
-    pub fn get_EffectProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISlideNavigationTransitionInfoStatics2Cache.get();
-        return try factory.getEffectProperty();
+    pub fn getEffectProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISlideNavigationTransitionInfoStatics2Cache.get();
+        return try _f.getEffectProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SlideNavigationTransitionInfo";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7920,9 +7808,9 @@ pub const SplineColorKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplineColorKeyFrame.IID)));
     }
-    pub fn get_KeySplineProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplineColorKeyFrameStaticsCache.get();
-        return try factory.getKeySplineProperty();
+    pub fn getKeySplineProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplineColorKeyFrameStaticsCache.get();
+        return try _f.getKeySplineProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SplineColorKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7949,9 +7837,9 @@ pub const SplineDoubleKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplineDoubleKeyFrame.IID)));
     }
-    pub fn get_KeySplineProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplineDoubleKeyFrameStaticsCache.get();
-        return try factory.getKeySplineProperty();
+    pub fn getKeySplineProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplineDoubleKeyFrameStaticsCache.get();
+        return try _f.getKeySplineProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SplineDoubleKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7978,9 +7866,9 @@ pub const SplinePointKeyFrame = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplinePointKeyFrame.IID)));
     }
-    pub fn get_KeySplineProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplinePointKeyFrameStaticsCache.get();
-        return try factory.getKeySplineProperty();
+    pub fn getKeySplineProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplinePointKeyFrameStaticsCache.get();
+        return try _f.getKeySplineProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SplinePointKeyFrame";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8087,49 +7975,49 @@ pub const SplitCloseThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplitCloseThemeAnimation.IID)));
     }
-    pub fn get_OpenedTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getOpenedTargetNameProperty();
+    pub fn getOpenedTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getOpenedTargetNameProperty();
     }
-    pub fn get_OpenedTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getOpenedTargetProperty();
+    pub fn getOpenedTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getOpenedTargetProperty();
     }
-    pub fn get_ClosedTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getClosedTargetNameProperty();
+    pub fn getClosedTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getClosedTargetNameProperty();
     }
-    pub fn get_ClosedTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getClosedTargetProperty();
+    pub fn getClosedTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getClosedTargetProperty();
     }
-    pub fn get_ContentTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getContentTargetNameProperty();
+    pub fn getContentTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getContentTargetNameProperty();
     }
-    pub fn get_ContentTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getContentTargetProperty();
+    pub fn getContentTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getContentTargetProperty();
     }
-    pub fn get_OpenedLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getOpenedLengthProperty();
+    pub fn getOpenedLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getOpenedLengthProperty();
     }
-    pub fn get_ClosedLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getClosedLengthProperty();
+    pub fn getClosedLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getClosedLengthProperty();
     }
-    pub fn get_OffsetFromCenterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getOffsetFromCenterProperty();
+    pub fn getOffsetFromCenterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getOffsetFromCenterProperty();
     }
-    pub fn get_ContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getContentTranslationDirectionProperty();
+    pub fn getContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getContentTranslationDirectionProperty();
     }
-    pub fn get_ContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitCloseThemeAnimationStaticsCache.get();
-        return try factory.getContentTranslationOffsetProperty();
+    pub fn getContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitCloseThemeAnimationStaticsCache.get();
+        return try _f.getContentTranslationOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SplitCloseThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8236,49 +8124,49 @@ pub const SplitOpenThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISplitOpenThemeAnimation.IID)));
     }
-    pub fn get_OpenedTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getOpenedTargetNameProperty();
+    pub fn getOpenedTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getOpenedTargetNameProperty();
     }
-    pub fn get_OpenedTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getOpenedTargetProperty();
+    pub fn getOpenedTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getOpenedTargetProperty();
     }
-    pub fn get_ClosedTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getClosedTargetNameProperty();
+    pub fn getClosedTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getClosedTargetNameProperty();
     }
-    pub fn get_ClosedTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getClosedTargetProperty();
+    pub fn getClosedTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getClosedTargetProperty();
     }
-    pub fn get_ContentTargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getContentTargetNameProperty();
+    pub fn getContentTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getContentTargetNameProperty();
     }
-    pub fn get_ContentTargetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getContentTargetProperty();
+    pub fn getContentTargetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getContentTargetProperty();
     }
-    pub fn get_OpenedLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getOpenedLengthProperty();
+    pub fn getOpenedLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getOpenedLengthProperty();
     }
-    pub fn get_ClosedLengthProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getClosedLengthProperty();
+    pub fn getClosedLengthProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getClosedLengthProperty();
     }
-    pub fn get_OffsetFromCenterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getOffsetFromCenterProperty();
+    pub fn getOffsetFromCenterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getOffsetFromCenterProperty();
     }
-    pub fn get_ContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getContentTranslationDirectionProperty();
+    pub fn getContentTranslationDirectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getContentTranslationDirectionProperty();
     }
-    pub fn get_ContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISplitOpenThemeAnimationStaticsCache.get();
-        return try factory.getContentTranslationOffsetProperty();
+    pub fn getContentTranslationOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISplitOpenThemeAnimationStaticsCache.get();
+        return try _f.getContentTranslationOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SplitOpenThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8337,33 +8225,33 @@ pub const Storyboard = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IStoryboard.IID)));
     }
-    pub fn get_TargetPropertyProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.getTargetPropertyProperty();
+    pub fn getTargetPropertyProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.getTargetPropertyProperty();
     }
     pub fn GetTargetProperty(element: *Timeline) core.HResult!HSTRING {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.GetTargetProperty(element);
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.GetTargetProperty(element);
     }
     pub fn SetTargetProperty(element: *Timeline, path: HSTRING) core.HResult!void {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.SetTargetProperty(element, path);
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.SetTargetProperty(element, path);
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
     pub fn GetTargetName(element: *Timeline) core.HResult!HSTRING {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.GetTargetName(element);
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.GetTargetName(element);
     }
     pub fn SetTargetName(element: *Timeline, name: HSTRING) core.HResult!void {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.SetTargetName(element, name);
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.SetTargetName(element, name);
     }
     pub fn SetTarget(timeline: *Timeline, target: *DependencyObject) core.HResult!void {
-        const factory = @This().IStoryboardStaticsCache.get();
-        return try factory.SetTarget(timeline, target);
+        const _f = @This().IStoryboardStaticsCache.get();
+        return try _f.SetTarget(timeline, target);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.Storyboard";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8422,17 +8310,17 @@ pub const SwipeBackThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISwipeBackThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeBackThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeBackThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
-    pub fn get_FromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeBackThemeAnimationStaticsCache.get();
-        return try factory.getFromHorizontalOffsetProperty();
+    pub fn getFromHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeBackThemeAnimationStaticsCache.get();
+        return try _f.getFromHorizontalOffsetProperty();
     }
-    pub fn get_FromVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeBackThemeAnimationStaticsCache.get();
-        return try factory.getFromVerticalOffsetProperty();
+    pub fn getFromVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeBackThemeAnimationStaticsCache.get();
+        return try _f.getFromVerticalOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SwipeBackThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8475,17 +8363,17 @@ pub const SwipeHintThemeAnimation = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&ISwipeHintThemeAnimation.IID)));
     }
-    pub fn get_TargetNameProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeHintThemeAnimationStaticsCache.get();
-        return try factory.getTargetNameProperty();
+    pub fn getTargetNameProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeHintThemeAnimationStaticsCache.get();
+        return try _f.getTargetNameProperty();
     }
-    pub fn get_ToHorizontalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeHintThemeAnimationStaticsCache.get();
-        return try factory.getToHorizontalOffsetProperty();
+    pub fn getToHorizontalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeHintThemeAnimationStaticsCache.get();
+        return try _f.getToHorizontalOffsetProperty();
     }
-    pub fn get_ToVerticalOffsetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().ISwipeHintThemeAnimationStaticsCache.get();
-        return try factory.getToVerticalOffsetProperty();
+    pub fn getToVerticalOffsetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().ISwipeHintThemeAnimationStaticsCache.get();
+        return try _f.getToVerticalOffsetProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Media.Animation.SwipeHintThemeAnimation";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8497,55 +8385,27 @@ pub const SwipeHintThemeAnimation = extern struct {
 };
 pub const TimelineCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Timeline) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Timeline) {
+        const this: *IVector(Timeline) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Timeline) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Timeline) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Timeline) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(Timeline) {
         var this: ?*IIterable(Timeline) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
@@ -8567,55 +8427,27 @@ pub const TimelineCollection = extern struct {
 };
 pub const TransitionCollection = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn GetAt(self: *@This(), index: u32) core.HResult!core.generic(T) {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetAt(index);
-    }
     pub fn getSize(self: *@This()) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Transition) = @ptrCast(self);
         return try this.getSize();
     }
-    pub fn GetView(self: *@This()) core.HResult!*IVectorView(T) {
-        const this: *IVector = @ptrCast(self);
+    pub fn GetView(self: *@This()) core.HResult!*IVectorView(Transition) {
+        const this: *IVector(Transition) = @ptrCast(self);
         return try this.GetView();
     }
-    pub fn IndexOf(self: *@This(), value: core.generic(T), index: u32) core.HResult!bool {
-        const this: *IVector = @ptrCast(self);
-        return try this.IndexOf(value, index);
-    }
-    pub fn SetAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.SetAt(index, value);
-    }
-    pub fn InsertAt(self: *@This(), index: u32, value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.InsertAt(index, value);
-    }
     pub fn RemoveAt(self: *@This(), index: u32) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Transition) = @ptrCast(self);
         return try this.RemoveAt(index);
     }
-    pub fn Append(self: *@This(), value: core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.Append(value);
-    }
     pub fn RemoveAtEnd(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Transition) = @ptrCast(self);
         return try this.RemoveAtEnd();
     }
     pub fn Clear(self: *@This()) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
+        const this: *IVector(Transition) = @ptrCast(self);
         return try this.Clear();
     }
-    pub fn GetMany(self: *@This(), startIndex: u32, items: [*]core.generic(T)) core.HResult!u32 {
-        const this: *IVector = @ptrCast(self);
-        return try this.GetMany(startIndex, items);
-    }
-    pub fn ReplaceAll(self: *@This(), items: [*]core.generic(T)) core.HResult!void {
-        const this: *IVector = @ptrCast(self);
-        return try this.ReplaceAll(items);
-    }
-    pub fn First(self: *@This()) core.HResult!*IIterator(T) {
+    pub fn First(self: *@This()) core.HResult!*IIterator(Transition) {
         var this: ?*IIterable(Transition) = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IIterable.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;

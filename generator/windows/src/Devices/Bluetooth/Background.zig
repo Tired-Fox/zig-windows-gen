@@ -102,9 +102,9 @@ pub const GattServiceProviderConnection = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AllServices() core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
-        const factory = @This().IGattServiceProviderConnectionStaticsCache.get();
-        return try factory.getAllServices();
+    pub fn getAllServices() core.HResult!*IMapView(HSTRING,GattServiceProviderConnection) {
+        const _f = @This().IGattServiceProviderConnectionStaticsCache.get();
+        return try _f.getAllServices();
     }
     pub const NAME: []const u8 = "Windows.Devices.Bluetooth.Background.GattServiceProviderConnection";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

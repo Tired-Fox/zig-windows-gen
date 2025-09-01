@@ -11,9 +11,9 @@ pub const IOnlineIdAuthenticator = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn AuthenticateUserAsyncWithCredentialPromptType(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
+    pub fn AuthenticateUserAsyncWithRequestsAndCredentialPromptType(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
         var _r: *UserAuthenticationOperation = undefined;
-        const _c = self.vtable.AuthenticateUserAsyncWithCredentialPromptType(@ptrCast(self), requests, credentialPromptType, &_r);
+        const _c = self.vtable.AuthenticateUserAsyncWithRequestsAndCredentialPromptType(@ptrCast(self), requests, credentialPromptType, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -58,7 +58,7 @@ pub const IOnlineIdAuthenticator = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         AuthenticateUserAsync: *const fn(self: *anyopaque, request: *OnlineIdServiceTicketRequest, _r: **UserAuthenticationOperation) callconv(.winapi) HRESULT,
-        AuthenticateUserAsyncWithCredentialPromptType: *const fn(self: *anyopaque, requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType, _r: **UserAuthenticationOperation) callconv(.winapi) HRESULT,
+        AuthenticateUserAsyncWithRequestsAndCredentialPromptType: *const fn(self: *anyopaque, requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType, _r: **UserAuthenticationOperation) callconv(.winapi) HRESULT,
         SignOutUserAsync: *const fn(self: *anyopaque, _r: **SignOutUserOperation) callconv(.winapi) HRESULT,
         put_ApplicationId: *const fn(self: *anyopaque, value: *Guid) callconv(.winapi) HRESULT,
         get_ApplicationId: *const fn(self: *anyopaque, _r: **Guid) callconv(.winapi) HRESULT,
@@ -380,9 +380,9 @@ pub const OnlineIdAuthenticator = extern struct {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
         return try this.AuthenticateUserAsync(request);
     }
-    pub fn AuthenticateUserAsyncWithCredentialPromptType(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
+    pub fn AuthenticateUserAsyncWithRequestsAndCredentialPromptType(self: *@This(), requests: *IIterable(OnlineIdServiceTicketRequest), credentialPromptType: CredentialPromptType) core.HResult!*UserAuthenticationOperation {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
-        return try this.AuthenticateUserAsyncWithCredentialPromptType(requests, credentialPromptType);
+        return try this.AuthenticateUserAsyncWithRequestsAndCredentialPromptType(requests, credentialPromptType);
     }
     pub fn SignOutUserAsync(self: *@This()) core.HResult!*SignOutUserOperation {
         const this: *IOnlineIdAuthenticator = @ptrCast(self);
@@ -452,12 +452,12 @@ pub const OnlineIdServiceTicketRequest = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateOnlineIdServiceTicketRequest(service: HSTRING, policy: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
-        const factory = @This().IOnlineIdServiceTicketRequestFactoryCache.get();
-        return try factory.CreateOnlineIdServiceTicketRequest(service, policy);
+        const _f = @This().IOnlineIdServiceTicketRequestFactoryCache.get();
+        return try _f.CreateOnlineIdServiceTicketRequest(service, policy);
     }
     pub fn CreateOnlineIdServiceTicketRequestAdvanced(service: HSTRING) core.HResult!*OnlineIdServiceTicketRequest {
-        const factory = @This().IOnlineIdServiceTicketRequestFactoryCache.get();
-        return try factory.CreateOnlineIdServiceTicketRequestAdvanced(service);
+        const _f = @This().IOnlineIdServiceTicketRequestFactoryCache.get();
+        return try _f.CreateOnlineIdServiceTicketRequestAdvanced(service);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -471,13 +471,13 @@ pub const OnlineIdSystemAuthenticator = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Default() core.HResult!*OnlineIdSystemAuthenticatorForUser {
-        const factory = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
-        return try factory.getDefault();
+    pub fn getDefault() core.HResult!*OnlineIdSystemAuthenticatorForUser {
+        const _f = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
+        return try _f.getDefault();
     }
     pub fn GetForUser(user: *User) core.HResult!*OnlineIdSystemAuthenticatorForUser {
-        const factory = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
-        return try factory.GetForUser(user);
+        const _f = @This().IOnlineIdSystemAuthenticatorStaticsCache.get();
+        return try _f.GetForUser(user);
     }
     pub const NAME: []const u8 = "Windows.Security.Authentication.OnlineId.OnlineIdSystemAuthenticator";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -600,17 +600,13 @@ pub const SignOutUserOperation = extern struct {
 };
 pub const UserAuthenticationOperation = extern struct {
     vtable: *const IInspectable.VTable,
-    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(TResult)) core.HResult!void {
-        const this: *IAsyncOperation = @ptrCast(self);
+    pub fn putCompleted(self: *@This(), handler: *AsyncOperationCompletedHandler(UserIdentity)) core.HResult!void {
+        const this: *IAsyncOperation(UserIdentity) = @ptrCast(self);
         return try this.putCompleted(handler);
     }
-    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(TResult) {
-        const this: *IAsyncOperation = @ptrCast(self);
+    pub fn getCompleted(self: *@This()) core.HResult!*AsyncOperationCompletedHandler(UserIdentity) {
+        const this: *IAsyncOperation(UserIdentity) = @ptrCast(self);
         return try this.getCompleted();
-    }
-    pub fn GetResults(self: *@This()) core.HResult!core.generic(TResult) {
-        const this: *IAsyncOperation = @ptrCast(self);
-        return try this.GetResults();
     }
     pub fn getId(self: *@This()) core.HResult!u32 {
         var this: ?*IAsyncInfo = undefined;

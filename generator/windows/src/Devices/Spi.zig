@@ -252,9 +252,9 @@ pub const ISpiDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelector(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithFriendlyName(self: *@This(), friendlyName: HSTRING) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelector(@ptrCast(self), friendlyName, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithFriendlyName(@ptrCast(self), friendlyName, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -283,7 +283,7 @@ pub const ISpiDeviceStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelector: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithFriendlyName: *const fn(self: *anyopaque, friendlyName: HSTRING, _r: *HSTRING) callconv(.winapi) HRESULT,
         GetBusInfo: *const fn(self: *anyopaque, busId: HSTRING, _r: **SpiBusInfo) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, busId: HSTRING, settings: *SpiConnectionSettings, _r: **IAsyncOperation(SpiDevice)) callconv(.winapi) HRESULT,
     };
@@ -358,8 +358,8 @@ pub const SpiConnectionSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(chipSelectLine: i32) core.HResult!*SpiConnectionSettings {
-        const factory = @This().ISpiConnectionSettingsFactoryCache.get();
-        return try factory.Create(chipSelectLine);
+        const _f = @This().ISpiConnectionSettingsFactoryCache.get();
+        return try _f.Create(chipSelectLine);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.SpiConnectionSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -378,12 +378,12 @@ pub const SpiController = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefaultAsync() core.HResult!*IAsyncOperation(SpiController) {
-        const factory = @This().ISpiControllerStaticsCache.get();
-        return try factory.GetDefaultAsync();
+        const _f = @This().ISpiControllerStaticsCache.get();
+        return try _f.GetDefaultAsync();
     }
     pub fn GetControllersAsync(provider: *ISpiProvider) core.HResult!*IAsyncOperation(IVectorView(SpiController)) {
-        const factory = @This().ISpiControllerStaticsCache.get();
-        return try factory.GetControllersAsync(provider);
+        const _f = @This().ISpiControllerStaticsCache.get();
+        return try _f.GetControllersAsync(provider);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.SpiController";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -428,20 +428,20 @@ pub const SpiDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().ISpiDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().ISpiDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub fn GetDeviceSelectorWithFriendlyName(friendlyName: HSTRING) core.HResult!HSTRING {
-        const factory = @This().ISpiDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorWithFriendlyName(friendlyName);
+        const _f = @This().ISpiDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorWithFriendlyName(friendlyName);
     }
     pub fn GetBusInfo(busId: HSTRING) core.HResult!*SpiBusInfo {
-        const factory = @This().ISpiDeviceStaticsCache.get();
-        return try factory.GetBusInfo(busId);
+        const _f = @This().ISpiDeviceStaticsCache.get();
+        return try _f.GetBusInfo(busId);
     }
     pub fn FromIdAsync(busId: HSTRING, settings: *SpiConnectionSettings) core.HResult!*IAsyncOperation(SpiDevice) {
-        const factory = @This().ISpiDeviceStaticsCache.get();
-        return try factory.FromIdAsync(busId, settings);
+        const _f = @This().ISpiDeviceStaticsCache.get();
+        return try _f.FromIdAsync(busId, settings);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.SpiDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -469,7 +469,7 @@ const IVectorView = @import("../Foundation/Collections.zig").IVectorView;
 const IInspectable = @import("../Foundation.zig").IInspectable;
 const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const FactoryCache = @import("../core.zig").FactoryCache;
-const ISpiProvider = @import("./Provider.zig").ISpiProvider;
+const ISpiProvider = @import("./Spi/Provider.zig").ISpiProvider;
 const TrustLevel = @import("../root.zig").TrustLevel;
 const HSTRING = @import("../root.zig").HSTRING;
 pub const Provider = @import("./Spi/Provider.zig");

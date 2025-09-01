@@ -239,8 +239,8 @@ pub const ProviderSpiConnectionSettings = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(chipSelectLine: i32) core.HResult!*ProviderSpiConnectionSettings {
-        const factory = @This().IProviderSpiConnectionSettingsFactoryCache.get();
-        return try factory.Create(chipSelectLine);
+        const _f = @This().IProviderSpiConnectionSettingsFactoryCache.get();
+        return try _f.Create(chipSelectLine);
     }
     pub const NAME: []const u8 = "Windows.Devices.Spi.Provider.ProviderSpiConnectionSettings";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

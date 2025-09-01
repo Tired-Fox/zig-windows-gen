@@ -1484,16 +1484,16 @@ pub const MediaFrameSourceGroup = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindAllAsync() core.HResult!*IAsyncOperation(IVectorView(MediaFrameSourceGroup)) {
-        const factory = @This().IMediaFrameSourceGroupStaticsCache.get();
-        return try factory.FindAllAsync();
+        const _f = @This().IMediaFrameSourceGroupStaticsCache.get();
+        return try _f.FindAllAsync();
     }
     pub fn FromIdAsync(id: HSTRING) core.HResult!*IAsyncOperation(MediaFrameSourceGroup) {
-        const factory = @This().IMediaFrameSourceGroupStaticsCache.get();
-        return try factory.FromIdAsync(id);
+        const _f = @This().IMediaFrameSourceGroupStaticsCache.get();
+        return try _f.FromIdAsync(id);
     }
     pub fn GetDeviceSelector() core.HResult!HSTRING {
-        const factory = @This().IMediaFrameSourceGroupStaticsCache.get();
-        return try factory.GetDeviceSelector();
+        const _f = @This().IMediaFrameSourceGroupStaticsCache.get();
+        return try _f.GetDeviceSelector();
     }
     pub const NAME: []const u8 = "Windows.Media.Capture.Frames.MediaFrameSourceGroup";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

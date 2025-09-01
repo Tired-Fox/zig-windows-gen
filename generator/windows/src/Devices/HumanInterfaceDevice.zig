@@ -190,16 +190,16 @@ pub const HidDevice = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDeviceSelector(usagePage: u16, usageId: u16) core.HResult!HSTRING {
-        const factory = @This().IHidDeviceStaticsCache.get();
-        return try factory.GetDeviceSelector(usagePage, usageId);
+        const _f = @This().IHidDeviceStaticsCache.get();
+        return try _f.GetDeviceSelector(usagePage, usageId);
     }
-    pub fn GetDeviceSelectorWithVendorIdWithProductId(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
-        const factory = @This().IHidDeviceStaticsCache.get();
-        return try factory.GetDeviceSelectorWithVendorIdWithProductId(usagePage, usageId, vendorId, productId);
+    pub fn GetDeviceSelectorWithVendorIdAndProductId(usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
+        const _f = @This().IHidDeviceStaticsCache.get();
+        return try _f.GetDeviceSelectorWithVendorIdAndProductId(usagePage, usageId, vendorId, productId);
     }
     pub fn FromIdAsync(deviceId: HSTRING, accessMode: FileAccessMode) core.HResult!*IAsyncOperation(HidDevice) {
-        const factory = @This().IHidDeviceStaticsCache.get();
-        return try factory.FromIdAsync(deviceId, accessMode);
+        const _f = @This().IHidDeviceStaticsCache.get();
+        return try _f.FromIdAsync(deviceId, accessMode);
     }
     pub const NAME: []const u8 = "Windows.Devices.HumanInterfaceDevice.HidDevice";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -672,9 +672,9 @@ pub const IHidDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetInputReportAsync(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidInputReport) {
+    pub fn GetInputReportAsyncWithReportId(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidInputReport) {
         var _r: *IAsyncOperation(HidInputReport) = undefined;
-        const _c = self.vtable.GetInputReportAsync(@ptrCast(self), reportId, &_r);
+        const _c = self.vtable.GetInputReportAsyncWithReportId(@ptrCast(self), reportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -684,9 +684,9 @@ pub const IHidDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetFeatureReportAsync(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidFeatureReport) {
+    pub fn GetFeatureReportAsyncWithReportId(self: *@This(), reportId: u16) core.HResult!*IAsyncOperation(HidFeatureReport) {
         var _r: *IAsyncOperation(HidFeatureReport) = undefined;
-        const _c = self.vtable.GetFeatureReportAsync(@ptrCast(self), reportId, &_r);
+        const _c = self.vtable.GetFeatureReportAsyncWithReportId(@ptrCast(self), reportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -696,9 +696,9 @@ pub const IHidDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateOutputReport(self: *@This(), reportId: u16) core.HResult!*HidOutputReport {
+    pub fn CreateOutputReportWithReportId(self: *@This(), reportId: u16) core.HResult!*HidOutputReport {
         var _r: *HidOutputReport = undefined;
-        const _c = self.vtable.CreateOutputReport(@ptrCast(self), reportId, &_r);
+        const _c = self.vtable.CreateOutputReportWithReportId(@ptrCast(self), reportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -708,9 +708,9 @@ pub const IHidDevice = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFeatureReport(self: *@This(), reportId: u16) core.HResult!*HidFeatureReport {
+    pub fn CreateFeatureReportWithReportId(self: *@This(), reportId: u16) core.HResult!*HidFeatureReport {
         var _r: *HidFeatureReport = undefined;
-        const _c = self.vtable.CreateFeatureReport(@ptrCast(self), reportId, &_r);
+        const _c = self.vtable.CreateFeatureReportWithReportId(@ptrCast(self), reportId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -766,13 +766,13 @@ pub const IHidDevice = extern struct {
         get_UsagePage: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
         get_UsageId: *const fn(self: *anyopaque, _r: *u16) callconv(.winapi) HRESULT,
         GetInputReportAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HidInputReport)) callconv(.winapi) HRESULT,
-        GetInputReportAsync: *const fn(self: *anyopaque, reportId: u16, _r: **IAsyncOperation(HidInputReport)) callconv(.winapi) HRESULT,
+        GetInputReportAsyncWithReportId: *const fn(self: *anyopaque, reportId: u16, _r: **IAsyncOperation(HidInputReport)) callconv(.winapi) HRESULT,
         GetFeatureReportAsync: *const fn(self: *anyopaque, _r: **IAsyncOperation(HidFeatureReport)) callconv(.winapi) HRESULT,
-        GetFeatureReportAsync: *const fn(self: *anyopaque, reportId: u16, _r: **IAsyncOperation(HidFeatureReport)) callconv(.winapi) HRESULT,
+        GetFeatureReportAsyncWithReportId: *const fn(self: *anyopaque, reportId: u16, _r: **IAsyncOperation(HidFeatureReport)) callconv(.winapi) HRESULT,
         CreateOutputReport: *const fn(self: *anyopaque, _r: **HidOutputReport) callconv(.winapi) HRESULT,
-        CreateOutputReport: *const fn(self: *anyopaque, reportId: u16, _r: **HidOutputReport) callconv(.winapi) HRESULT,
+        CreateOutputReportWithReportId: *const fn(self: *anyopaque, reportId: u16, _r: **HidOutputReport) callconv(.winapi) HRESULT,
         CreateFeatureReport: *const fn(self: *anyopaque, _r: **HidFeatureReport) callconv(.winapi) HRESULT,
-        CreateFeatureReport: *const fn(self: *anyopaque, reportId: u16, _r: **HidFeatureReport) callconv(.winapi) HRESULT,
+        CreateFeatureReportWithReportId: *const fn(self: *anyopaque, reportId: u16, _r: **HidFeatureReport) callconv(.winapi) HRESULT,
         SendOutputReportAsync: *const fn(self: *anyopaque, outputReport: *HidOutputReport, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         SendFeatureReportAsync: *const fn(self: *anyopaque, featureReport: *HidFeatureReport, _r: **IAsyncOperation(u32)) callconv(.winapi) HRESULT,
         GetBooleanControlDescriptions: *const fn(self: *anyopaque, reportType: HidReportType, usagePage: u16, usageId: u16, _r: **IVectorView(HidBooleanControlDescription)) callconv(.winapi) HRESULT,
@@ -789,9 +789,9 @@ pub const IHidDeviceStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn GetDeviceSelectorWithVendorIdWithProductId(self: *@This(), usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
+    pub fn GetDeviceSelectorWithVendorIdAndProductId(self: *@This(), usagePage: u16, usageId: u16, vendorId: u16, productId: u16) core.HResult!HSTRING {
         var _r: HSTRING = undefined;
-        const _c = self.vtable.GetDeviceSelectorWithVendorIdWithProductId(@ptrCast(self), usagePage, usageId, vendorId, productId, &_r);
+        const _c = self.vtable.GetDeviceSelectorWithVendorIdAndProductId(@ptrCast(self), usagePage, usageId, vendorId, productId, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -814,7 +814,7 @@ pub const IHidDeviceStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         GetDeviceSelector: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
-        GetDeviceSelectorWithVendorIdWithProductId: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, vendorId: u16, productId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
+        GetDeviceSelectorWithVendorIdAndProductId: *const fn(self: *anyopaque, usagePage: u16, usageId: u16, vendorId: u16, productId: u16, _r: *HSTRING) callconv(.winapi) HRESULT,
         FromIdAsync: *const fn(self: *anyopaque, deviceId: HSTRING, accessMode: FileAccessMode, _r: **IAsyncOperation(HidDevice)) callconv(.winapi) HRESULT,
     };
 };
@@ -1254,6 +1254,6 @@ const IAsyncOperation = @import("../Foundation.zig").IAsyncOperation;
 const FactoryCache = @import("../core.zig").FactoryCache;
 const EventRegistrationToken = @import("../Foundation.zig").EventRegistrationToken;
 const TrustLevel = @import("../root.zig").TrustLevel;
-const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const IClosable = @import("../Foundation.zig").IClosable;
+const TypedEventHandler = @import("../Foundation.zig").TypedEventHandler;
 const HSTRING = @import("../root.zig").HSTRING;

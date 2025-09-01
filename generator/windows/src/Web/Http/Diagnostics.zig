@@ -36,8 +36,8 @@ pub const HttpDiagnosticProvider = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromProcessDiagnosticInfo(processDiagnosticInfo: *ProcessDiagnosticInfo) core.HResult!*HttpDiagnosticProvider {
-        const factory = @This().IHttpDiagnosticProviderStaticsCache.get();
-        return try factory.CreateFromProcessDiagnosticInfo(processDiagnosticInfo);
+        const _f = @This().IHttpDiagnosticProviderStaticsCache.get();
+        return try _f.CreateFromProcessDiagnosticInfo(processDiagnosticInfo);
     }
     pub const NAME: []const u8 = "Windows.Web.Http.Diagnostics.HttpDiagnosticProvider";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

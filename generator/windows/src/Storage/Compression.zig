@@ -38,12 +38,12 @@ pub const Compressor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateCompressor(underlyingStream: *IOutputStream) core.HResult!*Compressor {
-        const factory = @This().ICompressorFactoryCache.get();
-        return try factory.CreateCompressor(underlyingStream);
+        const _f = @This().ICompressorFactoryCache.get();
+        return try _f.CreateCompressor(underlyingStream);
     }
     pub fn CreateCompressorEx(underlyingStream: *IOutputStream, algorithm: CompressAlgorithm, blockSize: u32) core.HResult!*Compressor {
-        const factory = @This().ICompressorFactoryCache.get();
-        return try factory.CreateCompressorEx(underlyingStream, algorithm, blockSize);
+        const _f = @This().ICompressorFactoryCache.get();
+        return try _f.CreateCompressorEx(underlyingStream, algorithm, blockSize);
     }
     pub const NAME: []const u8 = "Windows.Storage.Compression.Compressor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -74,8 +74,8 @@ pub const Decompressor = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateDecompressor(underlyingStream: *IInputStream) core.HResult!*Decompressor {
-        const factory = @This().IDecompressorFactoryCache.get();
-        return try factory.CreateDecompressor(underlyingStream);
+        const _f = @This().IDecompressorFactoryCache.get();
+        return try _f.CreateDecompressor(underlyingStream);
     }
     pub const NAME: []const u8 = "Windows.Storage.Compression.Decompressor";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

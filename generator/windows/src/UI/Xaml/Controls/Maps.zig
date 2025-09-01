@@ -578,12 +578,12 @@ pub const MapControlDataHelper = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(map: *MapControl) core.HResult!*MapControlDataHelper {
-        const factory = @This().IMapControlDataHelperFactoryCache.get();
-        return try factory.CreateInstance(map);
+        const _f = @This().IMapControlDataHelperFactoryCache.get();
+        return try _f.CreateInstance(map);
     }
     pub fn CreateMapControl(rasterRenderMode: bool) core.HResult!*MapControl {
-        const factory = @This().IMapControlDataHelperStaticsCache.get();
-        return try factory.CreateMapControl(rasterRenderMode);
+        const _f = @This().IMapControlDataHelperStaticsCache.get();
+        return try _f.CreateMapControl(rasterRenderMode);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControlDataHelper";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -711,8 +711,8 @@ pub const MapTileDataSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileDataSource {
-        const factory = @This().IMapTileDataSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMapTileDataSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -735,8 +735,8 @@ pub const CustomMapTileDataSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*CustomMapTileDataSource {
-        const factory = @This().ICustomMapTileDataSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ICustomMapTileDataSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.CustomMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -779,12 +779,12 @@ pub const HttpMapTileDataSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
-        const factory = @This().IHttpMapTileDataSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IHttpMapTileDataSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithUriFormatString(uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*HttpMapTileDataSource {
-        const factory = @This().IHttpMapTileDataSourceFactoryCache.get();
-        return try factory.CreateInstanceWithUriFormatString(uriFormatString, baseInterface, innerInterface);
+        const _f = @This().IHttpMapTileDataSourceFactoryCache.get();
+        return try _f.CreateInstanceWithUriFormatString(uriFormatString, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.HttpMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1679,15 +1679,15 @@ pub const IMapControl = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetViewAsyncWithDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TrySetViewAsyncWithDesiredPitch(@ptrCast(self), center, zoomLevel, heading, desiredPitch, &_r);
+        const _c = self.vtable.TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch(@ptrCast(self), center, zoomLevel, heading, desiredPitch, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TrySetViewAsyncWithAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         var _r: *IAsyncOperation(bool) = undefined;
-        const _c = self.vtable.TrySetViewAsyncWithAnimation(@ptrCast(self), center, zoomLevel, heading, desiredPitch, animation, &_r);
+        const _c = self.vtable.TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation(@ptrCast(self), center, zoomLevel, heading, desiredPitch, animation, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1760,8 +1760,8 @@ pub const IMapControl = extern struct {
         TrySetViewBoundsAsync: *const fn(self: *anyopaque, bounds: *GeoboundingBox, margin: *IReference(Thickness), animation: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TrySetViewAsync: *const fn(self: *anyopaque, center: *Geopoint, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
         TrySetViewAsyncWithZoomLevel: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySetViewAsyncWithDesiredPitch: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
-        TrySetViewAsyncWithAnimation: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
+        TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation: *const fn(self: *anyopaque, center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind, _r: **IAsyncOperation(bool)) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControl2 = extern struct {
@@ -2274,9 +2274,9 @@ pub const IMapControl6 = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
+    pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var _r: bool = undefined;
-        const _c = self.vtable.TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation(@ptrCast(self), offset, desiredReferenceSystem, location, &_r);
+        const _c = self.vtable.TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(@ptrCast(self), offset, desiredReferenceSystem, location, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -2295,7 +2295,7 @@ pub const IMapControl6 = extern struct {
         get_Layers: *const fn(self: *anyopaque, _r: **IVector(MapLayer)) callconv(.winapi) HRESULT,
         put_Layers: *const fn(self: *anyopaque, value: *IVector(MapLayer)) callconv(.winapi) HRESULT,
         TryGetLocationFromOffset: *const fn(self: *anyopaque, offset: Point, location: *Geopoint, _r: *bool) callconv(.winapi) HRESULT,
-        TryGetLocationFromOffsetWithDesiredReferenceSystemWithLocation: *const fn(self: *anyopaque, offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint, _r: *bool) callconv(.winapi) HRESULT,
+        TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation: *const fn(self: *anyopaque, offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint, _r: *bool) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapControl7 = extern struct {
@@ -4442,9 +4442,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromBoundingBoxWithPitchInDegrees(self: *@This(), bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees(self: *@This(), bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromBoundingBoxWithPitchInDegrees(@ptrCast(self), bounds, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), bounds, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4460,9 +4460,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromLocationWithPitchInDegrees(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationWithHeadingInDegreesAndPitchInDegrees(self: *@This(), location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromLocationWithPitchInDegrees(@ptrCast(self), location, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromLocationWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), location, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4472,9 +4472,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(self: *@This(), location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees(self: *@This(), location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(@ptrCast(self), location, radiusInMeters, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), location, radiusInMeters, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4484,9 +4484,9 @@ pub const IMapSceneStatics = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn CreateFromLocationsWithPitchInDegrees(self: *@This(), locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+    pub fn CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees(self: *@This(), locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
         var _r: *MapScene = undefined;
-        const _c = self.vtable.CreateFromLocationsWithPitchInDegrees(@ptrCast(self), locations, headingInDegrees, pitchInDegrees, &_r);
+        const _c = self.vtable.CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees(@ptrCast(self), locations, headingInDegrees, pitchInDegrees, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -4503,14 +4503,14 @@ pub const IMapSceneStatics = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         CreateFromBoundingBox: *const fn(self: *anyopaque, bounds: *GeoboundingBox, _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromBoundingBoxWithPitchInDegrees: *const fn(self: *anyopaque, bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees: *const fn(self: *anyopaque, bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromCamera: *const fn(self: *anyopaque, camera: *MapCamera, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromLocation: *const fn(self: *anyopaque, location: *Geopoint, _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromLocationWithPitchInDegrees: *const fn(self: *anyopaque, location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromLocationWithHeadingInDegreesAndPitchInDegrees: *const fn(self: *anyopaque, location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromLocationAndRadius: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees: *const fn(self: *anyopaque, location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
         CreateFromLocations: *const fn(self: *anyopaque, locations: *IIterable(Geopoint), _r: **MapScene) callconv(.winapi) HRESULT,
-        CreateFromLocationsWithPitchInDegrees: *const fn(self: *anyopaque, locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
+        CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees: *const fn(self: *anyopaque, locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64, _r: **MapScene) callconv(.winapi) HRESULT,
     };
 };
 pub const IMapStyleSheet = extern struct {
@@ -6043,12 +6043,12 @@ pub const LocalMapTileDataSource = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
-        const factory = @This().ILocalMapTileDataSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().ILocalMapTileDataSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithUriFormatString(uriFormatString: HSTRING, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*LocalMapTileDataSource {
-        const factory = @This().ILocalMapTileDataSourceFactoryCache.get();
-        return try factory.CreateInstanceWithUriFormatString(uriFormatString, baseInterface, innerInterface);
+        const _f = @This().ILocalMapTileDataSourceFactoryCache.get();
+        return try _f.CreateInstanceWithUriFormatString(uriFormatString, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.LocalMapTileDataSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6196,37 +6196,37 @@ pub const MapElement = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MapStyleSheetEntryProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStatics3Cache.get();
-        return try factory.getMapStyleSheetEntryProperty();
+    pub fn getMapStyleSheetEntryProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStatics3Cache.get();
+        return try _f.getMapStyleSheetEntryProperty();
     }
-    pub fn get_MapStyleSheetEntryStateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStatics3Cache.get();
-        return try factory.getMapStyleSheetEntryStateProperty();
+    pub fn getMapStyleSheetEntryStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStatics3Cache.get();
+        return try _f.getMapStyleSheetEntryStateProperty();
     }
-    pub fn get_TagProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStatics3Cache.get();
-        return try factory.getTagProperty();
+    pub fn getTagProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStatics3Cache.get();
+        return try _f.getTagProperty();
     }
-    pub fn get_MapTabIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStatics2Cache.get();
-        return try factory.getMapTabIndexProperty();
+    pub fn getMapTabIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStatics2Cache.get();
+        return try _f.getMapTabIndexProperty();
     }
-    pub fn get_IsEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStatics4Cache.get();
-        return try factory.getIsEnabledProperty();
+    pub fn getIsEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStatics4Cache.get();
+        return try _f.getIsEnabledProperty();
     }
-    pub fn get_ZIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStaticsCache.get();
-        return try factory.getZIndexProperty();
+    pub fn getZIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStaticsCache.get();
+        return try _f.getZIndexProperty();
     }
-    pub fn get_VisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementStaticsCache.get();
-        return try factory.getVisibleProperty();
+    pub fn getVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementStaticsCache.get();
+        return try _f.getVisibleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapElement {
-        const factory = @This().IMapElementFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMapElementFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapElement";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6281,20 +6281,20 @@ pub const MapBillboard = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceFromCamera(camera: *MapCamera) core.HResult!*MapBillboard {
-        const factory = @This().IMapBillboardFactoryCache.get();
-        return try factory.CreateInstanceFromCamera(camera);
+        const _f = @This().IMapBillboardFactoryCache.get();
+        return try _f.CreateInstanceFromCamera(camera);
     }
-    pub fn get_LocationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapBillboardStaticsCache.get();
-        return try factory.getLocationProperty();
+    pub fn getLocationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapBillboardStaticsCache.get();
+        return try _f.getLocationProperty();
     }
-    pub fn get_NormalizedAnchorPointProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapBillboardStaticsCache.get();
-        return try factory.getNormalizedAnchorPointProperty();
+    pub fn getNormalizedAnchorPointProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapBillboardStaticsCache.get();
+        return try _f.getNormalizedAnchorPointProperty();
     }
-    pub fn get_CollisionBehaviorDesiredProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapBillboardStaticsCache.get();
-        return try factory.getCollisionBehaviorDesiredProperty();
+    pub fn getCollisionBehaviorDesiredProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapBillboardStaticsCache.get();
+        return try _f.getCollisionBehaviorDesiredProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapBillboard";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6350,20 +6350,20 @@ pub const MapCamera = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithLocation(location: *Geopoint) core.HResult!*MapCamera {
-        const factory = @This().IMapCameraFactoryCache.get();
-        return try factory.CreateInstanceWithLocation(location);
+        const _f = @This().IMapCameraFactoryCache.get();
+        return try _f.CreateInstanceWithLocation(location);
     }
     pub fn CreateInstanceWithLocationAndHeading(location: *Geopoint, headingInDegrees: f64) core.HResult!*MapCamera {
-        const factory = @This().IMapCameraFactoryCache.get();
-        return try factory.CreateInstanceWithLocationAndHeading(location, headingInDegrees);
+        const _f = @This().IMapCameraFactoryCache.get();
+        return try _f.CreateInstanceWithLocationAndHeading(location, headingInDegrees);
     }
     pub fn CreateInstanceWithLocationHeadingAndPitch(location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapCamera {
-        const factory = @This().IMapCameraFactoryCache.get();
-        return try factory.CreateInstanceWithLocationHeadingAndPitch(location, headingInDegrees, pitchInDegrees);
+        const _f = @This().IMapCameraFactoryCache.get();
+        return try _f.CreateInstanceWithLocationHeadingAndPitch(location, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateInstanceWithLocationHeadingPitchRollAndFieldOfView(location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64, rollInDegrees: f64, fieldOfViewInDegrees: f64) core.HResult!*MapCamera {
-        const factory = @This().IMapCameraFactoryCache.get();
-        return try factory.CreateInstanceWithLocationHeadingPitchRollAndFieldOfView(location, headingInDegrees, pitchInDegrees, rollInDegrees, fieldOfViewInDegrees);
+        const _f = @This().IMapCameraFactoryCache.get();
+        return try _f.CreateInstanceWithLocationHeadingPitchRollAndFieldOfView(location, headingInDegrees, pitchInDegrees, rollInDegrees, fieldOfViewInDegrees);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapCamera";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -6639,13 +6639,13 @@ pub const MapControl = extern struct {
         const this: *IMapControl = @ptrCast(self);
         return try this.TrySetViewAsyncWithZoomLevel(center, zoomLevel);
     }
-    pub fn TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64)) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitch(center, zoomLevel, heading, desiredPitch);
+        return try this.TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitch(center, zoomLevel, heading, desiredPitch);
     }
-    pub fn TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitchWithAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
+    pub fn TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation(self: *@This(), center: *Geopoint, zoomLevel: *IReference(f64), heading: *IReference(f64), desiredPitch: *IReference(f64), animation: MapAnimationKind) core.HResult!*IAsyncOperation(bool) {
         const this: *IMapControl = @ptrCast(self);
-        return try this.TrySetViewAsyncWithZoomLevelWithHeadingWithDesiredPitchWithAnimation(center, zoomLevel, heading, desiredPitch, animation);
+        return try this.TrySetViewAsyncWithZoomLevelAndHeadingAndDesiredPitchAndAnimation(center, zoomLevel, heading, desiredPitch, animation);
     }
     pub fn getBusinessLandmarksVisible(self: *@This()) core.HResult!bool {
         var this: ?*IMapControl2 = undefined;
@@ -7037,11 +7037,11 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.FindMapElementsAtOffsetWithRadius(offset, radius);
     }
-    pub fn GetLocationFromOffsetWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
+    pub fn GetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl5.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.GetLocationFromOffsetWithLocation(offset, desiredReferenceSystem, location);
+        return try this.?.GetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
     pub fn StartContinuousPan(self: *@This(), horizontalPixelsPerSecond: f64, verticalPixelsPerSecond: f64) core.HResult!void {
         var this: ?*IMapControl5 = undefined;
@@ -7085,11 +7085,11 @@ pub const MapControl = extern struct {
         if (this == null or _c != 0) return core.hresultToError(_c).err;
         return try this.?.TryGetLocationFromOffset(offset, location);
     }
-    pub fn TryGetLocationFromOffsetWithLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
+    pub fn TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(self: *@This(), offset: Point, desiredReferenceSystem: AltitudeReferenceSystem, location: *Geopoint) core.HResult!bool {
         var this: ?*IMapControl6 = undefined;
         const _c = IUnknown.QueryInterface(@ptrCast(self), &IMapControl6.IID, @ptrCast(&this));
         if (this == null or _c != 0) return core.hresultToError(_c).err;
-        return try this.?.TryGetLocationFromOffsetWithLocation(offset, desiredReferenceSystem, location);
+        return try this.?.TryGetLocationFromOffsetWithDesiredReferenceSystemAndLocation(offset, desiredReferenceSystem, location);
     }
     pub fn getRegion(self: *@This()) core.HResult!HSTRING {
         var this: ?*IMapControl7 = undefined;
@@ -7134,181 +7134,181 @@ pub const MapControl = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapControl.IID)));
     }
-    pub fn get_LayersProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics6Cache.get();
-        return try factory.getLayersProperty();
+    pub fn getLayersProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics6Cache.get();
+        return try _f.getLayersProperty();
     }
-    pub fn get_CanTiltDownProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics8Cache.get();
-        return try factory.getCanTiltDownProperty();
+    pub fn getCanTiltDownProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics8Cache.get();
+        return try _f.getCanTiltDownProperty();
     }
-    pub fn get_CanTiltUpProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics8Cache.get();
-        return try factory.getCanTiltUpProperty();
+    pub fn getCanTiltUpProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics8Cache.get();
+        return try _f.getCanTiltUpProperty();
     }
-    pub fn get_CanZoomInProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics8Cache.get();
-        return try factory.getCanZoomInProperty();
+    pub fn getCanZoomInProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics8Cache.get();
+        return try _f.getCanZoomInProperty();
     }
-    pub fn get_CanZoomOutProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics8Cache.get();
-        return try factory.getCanZoomOutProperty();
+    pub fn getCanZoomOutProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics8Cache.get();
+        return try _f.getCanZoomOutProperty();
     }
-    pub fn get_CenterProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getCenterProperty();
+    pub fn getCenterProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getCenterProperty();
     }
-    pub fn get_ChildrenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getChildrenProperty();
+    pub fn getChildrenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getChildrenProperty();
     }
-    pub fn get_ColorSchemeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getColorSchemeProperty();
+    pub fn getColorSchemeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getColorSchemeProperty();
     }
-    pub fn get_DesiredPitchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getDesiredPitchProperty();
+    pub fn getDesiredPitchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getDesiredPitchProperty();
     }
-    pub fn get_HeadingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getHeadingProperty();
+    pub fn getHeadingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getHeadingProperty();
     }
-    pub fn get_LandmarksVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getLandmarksVisibleProperty();
+    pub fn getLandmarksVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getLandmarksVisibleProperty();
     }
-    pub fn get_LoadingStatusProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getLoadingStatusProperty();
+    pub fn getLoadingStatusProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getLoadingStatusProperty();
     }
-    pub fn get_MapServiceTokenProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getMapServiceTokenProperty();
+    pub fn getMapServiceTokenProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getMapServiceTokenProperty();
     }
-    pub fn get_PedestrianFeaturesVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getPedestrianFeaturesVisibleProperty();
+    pub fn getPedestrianFeaturesVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getPedestrianFeaturesVisibleProperty();
     }
-    pub fn get_PitchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getPitchProperty();
+    pub fn getPitchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getPitchProperty();
     }
-    pub fn get_StyleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getStyleProperty();
+    pub fn getStyleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getStyleProperty();
     }
-    pub fn get_TrafficFlowVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getTrafficFlowVisibleProperty();
+    pub fn getTrafficFlowVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getTrafficFlowVisibleProperty();
     }
-    pub fn get_TransformOriginProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getTransformOriginProperty();
+    pub fn getTransformOriginProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getTransformOriginProperty();
     }
-    pub fn get_WatermarkModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getWatermarkModeProperty();
+    pub fn getWatermarkModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getWatermarkModeProperty();
     }
-    pub fn get_ZoomLevelProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getZoomLevelProperty();
+    pub fn getZoomLevelProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getZoomLevelProperty();
     }
-    pub fn get_MapElementsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getMapElementsProperty();
+    pub fn getMapElementsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getMapElementsProperty();
     }
-    pub fn get_RoutesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getRoutesProperty();
+    pub fn getRoutesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getRoutesProperty();
     }
-    pub fn get_TileSourcesProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getTileSourcesProperty();
+    pub fn getTileSourcesProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getTileSourcesProperty();
     }
-    pub fn get_LocationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getLocationProperty();
+    pub fn getLocationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getLocationProperty();
     }
     pub fn GetLocation(element: *DependencyObject) core.HResult!*Geopoint {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.GetLocation(element);
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.GetLocation(element);
     }
     pub fn SetLocation(element: *DependencyObject, value: *Geopoint) core.HResult!void {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.SetLocation(element, value);
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.SetLocation(element, value);
     }
-    pub fn get_NormalizedAnchorPointProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.getNormalizedAnchorPointProperty();
+    pub fn getNormalizedAnchorPointProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.getNormalizedAnchorPointProperty();
     }
     pub fn GetNormalizedAnchorPoint(element: *DependencyObject) core.HResult!Point {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.GetNormalizedAnchorPoint(element);
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.GetNormalizedAnchorPoint(element);
     }
     pub fn SetNormalizedAnchorPoint(element: *DependencyObject, value: Point) core.HResult!void {
-        const factory = @This().IMapControlStaticsCache.get();
-        return try factory.SetNormalizedAnchorPoint(element, value);
+        const _f = @This().IMapControlStaticsCache.get();
+        return try _f.SetNormalizedAnchorPoint(element, value);
     }
-    pub fn get_MapProjectionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics5Cache.get();
-        return try factory.getMapProjectionProperty();
+    pub fn getMapProjectionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics5Cache.get();
+        return try _f.getMapProjectionProperty();
     }
-    pub fn get_StyleSheetProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics5Cache.get();
-        return try factory.getStyleSheetProperty();
+    pub fn getStyleSheetProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics5Cache.get();
+        return try _f.getStyleSheetProperty();
     }
-    pub fn get_ViewPaddingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics5Cache.get();
-        return try factory.getViewPaddingProperty();
+    pub fn getViewPaddingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics5Cache.get();
+        return try _f.getViewPaddingProperty();
     }
-    pub fn get_RegionProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics7Cache.get();
-        return try factory.getRegionProperty();
+    pub fn getRegionProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics7Cache.get();
+        return try _f.getRegionProperty();
     }
-    pub fn get_BusinessLandmarksVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getBusinessLandmarksVisibleProperty();
+    pub fn getBusinessLandmarksVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getBusinessLandmarksVisibleProperty();
     }
-    pub fn get_TransitFeaturesVisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getTransitFeaturesVisibleProperty();
+    pub fn getTransitFeaturesVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getTransitFeaturesVisibleProperty();
     }
-    pub fn get_PanInteractionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getPanInteractionModeProperty();
+    pub fn getPanInteractionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getPanInteractionModeProperty();
     }
-    pub fn get_RotateInteractionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getRotateInteractionModeProperty();
+    pub fn getRotateInteractionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getRotateInteractionModeProperty();
     }
-    pub fn get_TiltInteractionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getTiltInteractionModeProperty();
+    pub fn getTiltInteractionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getTiltInteractionModeProperty();
     }
-    pub fn get_ZoomInteractionModeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getZoomInteractionModeProperty();
+    pub fn getZoomInteractionModeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getZoomInteractionModeProperty();
     }
-    pub fn get_Is3DSupportedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getIs3DSupportedProperty();
+    pub fn getIs3DSupportedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getIs3DSupportedProperty();
     }
-    pub fn get_IsStreetsideSupportedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getIsStreetsideSupportedProperty();
+    pub fn getIsStreetsideSupportedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getIsStreetsideSupportedProperty();
     }
-    pub fn get_SceneProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics2Cache.get();
-        return try factory.getSceneProperty();
+    pub fn getSceneProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics2Cache.get();
+        return try _f.getSceneProperty();
     }
-    pub fn get_BusinessLandmarksEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics4Cache.get();
-        return try factory.getBusinessLandmarksEnabledProperty();
+    pub fn getBusinessLandmarksEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics4Cache.get();
+        return try _f.getBusinessLandmarksEnabledProperty();
     }
-    pub fn get_TransitFeaturesEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapControlStatics4Cache.get();
-        return try factory.getTransitFeaturesEnabledProperty();
+    pub fn getTransitFeaturesEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapControlStatics4Cache.get();
+        return try _f.getTransitFeaturesEnabledProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7330,8 +7330,8 @@ pub const MapCustomExperience = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapCustomExperience {
-        const factory = @This().IMapCustomExperienceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMapCustomExperienceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapCustomExperience";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7413,25 +7413,25 @@ pub const MapElement3D = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapElement3D.IID)));
     }
-    pub fn get_LocationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElement3DStaticsCache.get();
-        return try factory.getLocationProperty();
+    pub fn getLocationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElement3DStaticsCache.get();
+        return try _f.getLocationProperty();
     }
-    pub fn get_HeadingProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElement3DStaticsCache.get();
-        return try factory.getHeadingProperty();
+    pub fn getHeadingProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElement3DStaticsCache.get();
+        return try _f.getHeadingProperty();
     }
-    pub fn get_PitchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElement3DStaticsCache.get();
-        return try factory.getPitchProperty();
+    pub fn getPitchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElement3DStaticsCache.get();
+        return try _f.getPitchProperty();
     }
-    pub fn get_RollProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElement3DStaticsCache.get();
-        return try factory.getRollProperty();
+    pub fn getRollProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElement3DStaticsCache.get();
+        return try _f.getRollProperty();
     }
-    pub fn get_ScaleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElement3DStaticsCache.get();
-        return try factory.getScaleProperty();
+    pub fn getScaleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElement3DStaticsCache.get();
+        return try _f.getScaleProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapElement3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7558,21 +7558,21 @@ pub const MapLayer = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_MapTabIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapLayerStaticsCache.get();
-        return try factory.getMapTabIndexProperty();
+    pub fn getMapTabIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapLayerStaticsCache.get();
+        return try _f.getMapTabIndexProperty();
     }
-    pub fn get_VisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapLayerStaticsCache.get();
-        return try factory.getVisibleProperty();
+    pub fn getVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapLayerStaticsCache.get();
+        return try _f.getVisibleProperty();
     }
-    pub fn get_ZIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapLayerStaticsCache.get();
-        return try factory.getZIndexProperty();
+    pub fn getZIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapLayerStaticsCache.get();
+        return try _f.getZIndexProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapLayer {
-        const factory = @This().IMapLayerFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMapLayerFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapLayer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7631,9 +7631,9 @@ pub const MapElementsLayer = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapElementsLayer.IID)));
     }
-    pub fn get_MapElementsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapElementsLayerStaticsCache.get();
-        return try factory.getMapElementsProperty();
+    pub fn getMapElementsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapElementsLayerStaticsCache.get();
+        return try _f.getMapElementsProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapElementsLayer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7808,21 +7808,21 @@ pub const MapIcon = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapIcon.IID)));
     }
-    pub fn get_LocationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapIconStaticsCache.get();
-        return try factory.getLocationProperty();
+    pub fn getLocationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapIconStaticsCache.get();
+        return try _f.getLocationProperty();
     }
-    pub fn get_TitleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapIconStaticsCache.get();
-        return try factory.getTitleProperty();
+    pub fn getTitleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapIconStaticsCache.get();
+        return try _f.getTitleProperty();
     }
-    pub fn get_NormalizedAnchorPointProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapIconStaticsCache.get();
-        return try factory.getNormalizedAnchorPointProperty();
+    pub fn getNormalizedAnchorPointProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapIconStaticsCache.get();
+        return try _f.getNormalizedAnchorPointProperty();
     }
-    pub fn get_CollisionBehaviorDesiredProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapIconStatics2Cache.get();
-        return try factory.getCollisionBehaviorDesiredProperty();
+    pub fn getCollisionBehaviorDesiredProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapIconStatics2Cache.get();
+        return try _f.getCollisionBehaviorDesiredProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapIcon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7896,17 +7896,17 @@ pub const MapItemsControl = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapItemsControl.IID)));
     }
-    pub fn get_ItemsSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapItemsControlStaticsCache.get();
-        return try factory.getItemsSourceProperty();
+    pub fn getItemsSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapItemsControlStaticsCache.get();
+        return try _f.getItemsSourceProperty();
     }
-    pub fn get_ItemsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapItemsControlStaticsCache.get();
-        return try factory.getItemsProperty();
+    pub fn getItemsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapItemsControlStaticsCache.get();
+        return try _f.getItemsProperty();
     }
-    pub fn get_ItemTemplateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapItemsControlStaticsCache.get();
-        return try factory.getItemTemplateProperty();
+    pub fn getItemTemplateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapItemsControlStaticsCache.get();
+        return try _f.getItemTemplateProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapItemsControl";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -7928,16 +7928,16 @@ pub const MapModel3D = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFrom3MFAsync(source: *IRandomAccessStreamReference) core.HResult!*IAsyncOperation(MapModel3D) {
-        const factory = @This().IMapModel3DStaticsCache.get();
-        return try factory.CreateFrom3MFAsync(source);
+        const _f = @This().IMapModel3DStaticsCache.get();
+        return try _f.CreateFrom3MFAsync(source);
     }
     pub fn CreateFrom3MFAsyncWithShadingOption(source: *IRandomAccessStreamReference, shadingOption: MapModel3DShadingOption) core.HResult!*IAsyncOperation(MapModel3D) {
-        const factory = @This().IMapModel3DStaticsCache.get();
-        return try factory.CreateFrom3MFAsyncWithShadingOption(source, shadingOption);
+        const _f = @This().IMapModel3DStaticsCache.get();
+        return try _f.CreateFrom3MFAsyncWithShadingOption(source, shadingOption);
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapModel3D {
-        const factory = @This().IMapModel3DFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMapModel3DFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapModel3D";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8011,17 +8011,17 @@ pub const MapPolygon = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapPolygon.IID)));
     }
-    pub fn get_PathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapPolygonStaticsCache.get();
-        return try factory.getPathProperty();
+    pub fn getPathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapPolygonStaticsCache.get();
+        return try _f.getPathProperty();
     }
-    pub fn get_StrokeThicknessProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapPolygonStaticsCache.get();
-        return try factory.getStrokeThicknessProperty();
+    pub fn getStrokeThicknessProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapPolygonStaticsCache.get();
+        return try _f.getStrokeThicknessProperty();
     }
-    pub fn get_StrokeDashedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapPolygonStaticsCache.get();
-        return try factory.getStrokeDashedProperty();
+    pub fn getStrokeDashedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapPolygonStaticsCache.get();
+        return try _f.getStrokeDashedProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapPolygon";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8072,13 +8072,13 @@ pub const MapPolyline = extern struct {
         const _f = try @This()._IActivationFactoryCache.get();
         return @ptrCast(@alignCast(try _f.ActivateInstance(&IMapPolyline.IID)));
     }
-    pub fn get_PathProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapPolylineStaticsCache.get();
-        return try factory.getPathProperty();
+    pub fn getPathProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapPolylineStaticsCache.get();
+        return try _f.getPathProperty();
     }
-    pub fn get_StrokeDashedProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapPolylineStaticsCache.get();
-        return try factory.getStrokeDashedProperty();
+    pub fn getStrokeDashedProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapPolylineStaticsCache.get();
+        return try _f.getStrokeDashedProperty();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapPolyline";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8142,8 +8142,8 @@ pub const MapRouteView = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithMapRoute(route: *MapRoute, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapRouteView {
-        const factory = @This().IMapRouteViewFactoryCache.get();
-        return try factory.CreateInstanceWithMapRoute(route, baseInterface, innerInterface);
+        const _f = @This().IMapRouteViewFactoryCache.get();
+        return try _f.CreateInstanceWithMapRoute(route, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapRouteView";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8170,40 +8170,40 @@ pub const MapScene = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateFromBoundingBox(bounds: *GeoboundingBox) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromBoundingBox(bounds);
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromBoundingBox(bounds);
     }
-    pub fn CreateFromBoundingBoxWithHeadingInDegreesWithPitchInDegrees(bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromBoundingBoxWithHeadingInDegreesWithPitchInDegrees(bounds, headingInDegrees, pitchInDegrees);
+    pub fn CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees(bounds: *GeoboundingBox, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromBoundingBoxWithHeadingInDegreesAndPitchInDegrees(bounds, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateFromCamera(camera: *MapCamera) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromCamera(camera);
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromCamera(camera);
     }
     pub fn CreateFromLocation(location: *Geopoint) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocation(location);
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromLocation(location);
     }
-    pub fn CreateFromLocationWithHeadingInDegreesWithPitchInDegrees(location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocationWithHeadingInDegreesWithPitchInDegrees(location, headingInDegrees, pitchInDegrees);
+    pub fn CreateFromLocationWithHeadingInDegreesAndPitchInDegrees(location: *Geopoint, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromLocationWithHeadingInDegreesAndPitchInDegrees(location, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateFromLocationAndRadius(location: *Geopoint, radiusInMeters: f64) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocationAndRadius(location, radiusInMeters);
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromLocationAndRadius(location, radiusInMeters);
     }
-    pub fn CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocationAndRadiusWithHeadingInDegreesWithPitchInDegrees(location, radiusInMeters, headingInDegrees, pitchInDegrees);
+    pub fn CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees(location: *Geopoint, radiusInMeters: f64, headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromLocationAndRadiusWithHeadingInDegreesAndPitchInDegrees(location, radiusInMeters, headingInDegrees, pitchInDegrees);
     }
     pub fn CreateFromLocations(locations: *IIterable(Geopoint)) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocations(locations);
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromLocations(locations);
     }
-    pub fn CreateFromLocationsWithHeadingInDegreesWithPitchInDegrees(locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
-        const factory = @This().IMapSceneStaticsCache.get();
-        return try factory.CreateFromLocationsWithHeadingInDegreesWithPitchInDegrees(locations, headingInDegrees, pitchInDegrees);
+    pub fn CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees(locations: *IIterable(Geopoint), headingInDegrees: f64, pitchInDegrees: f64) core.HResult!*MapScene {
+        const _f = @This().IMapSceneStaticsCache.get();
+        return try _f.CreateFromLocationsWithHeadingInDegreesAndPitchInDegrees(locations, headingInDegrees, pitchInDegrees);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapScene";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8228,40 +8228,40 @@ pub const MapStyleSheet = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Aerial() core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.Aerial();
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.Aerial();
     }
     pub fn AerialWithOverlay() core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.AerialWithOverlay();
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.AerialWithOverlay();
     }
     pub fn RoadLight() core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.RoadLight();
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.RoadLight();
     }
     pub fn RoadDark() core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.RoadDark();
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.RoadDark();
     }
     pub fn RoadHighContrastLight() core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.RoadHighContrastLight();
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.RoadHighContrastLight();
     }
     pub fn RoadHighContrastDark() core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.RoadHighContrastDark();
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.RoadHighContrastDark();
     }
     pub fn Combine(styleSheets: *IIterable(MapStyleSheet)) core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.Combine(styleSheets);
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.Combine(styleSheets);
     }
     pub fn ParseFromJson(styleAsJson: HSTRING) core.HResult!*MapStyleSheet {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.ParseFromJson(styleAsJson);
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.ParseFromJson(styleAsJson);
     }
     pub fn TryParseFromJson(styleAsJson: HSTRING, styleSheet: *MapStyleSheet) core.HResult!bool {
-        const factory = @This().IMapStyleSheetStaticsCache.get();
-        return try factory.TryParseFromJson(styleAsJson, styleSheet);
+        const _f = @This().IMapStyleSheetStaticsCache.get();
+        return try _f.TryParseFromJson(styleAsJson, styleSheet);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapStyleSheet";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8275,261 +8275,261 @@ pub const MapStyleSheetEntries = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Area() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getArea();
+    pub fn getArea() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getArea();
     }
-    pub fn get_Airport() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getAirport();
+    pub fn getAirport() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getAirport();
     }
-    pub fn get_Cemetery() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getCemetery();
+    pub fn getCemetery() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getCemetery();
     }
-    pub fn get_Continent() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getContinent();
+    pub fn getContinent() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getContinent();
     }
-    pub fn get_Education() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getEducation();
+    pub fn getEducation() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getEducation();
     }
-    pub fn get_IndigenousPeoplesReserve() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getIndigenousPeoplesReserve();
+    pub fn getIndigenousPeoplesReserve() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getIndigenousPeoplesReserve();
     }
-    pub fn get_Island() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getIsland();
+    pub fn getIsland() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getIsland();
     }
-    pub fn get_Medical() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getMedical();
+    pub fn getMedical() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getMedical();
     }
-    pub fn get_Military() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getMilitary();
+    pub fn getMilitary() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getMilitary();
     }
-    pub fn get_Nautical() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getNautical();
+    pub fn getNautical() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getNautical();
     }
-    pub fn get_Neighborhood() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getNeighborhood();
+    pub fn getNeighborhood() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getNeighborhood();
     }
-    pub fn get_Runway() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRunway();
+    pub fn getRunway() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRunway();
     }
-    pub fn get_Sand() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getSand();
+    pub fn getSand() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getSand();
     }
-    pub fn get_ShoppingCenter() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getShoppingCenter();
+    pub fn getShoppingCenter() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getShoppingCenter();
     }
-    pub fn get_Stadium() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getStadium();
+    pub fn getStadium() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getStadium();
     }
-    pub fn get_Vegetation() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getVegetation();
+    pub fn getVegetation() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getVegetation();
     }
-    pub fn get_Forest() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getForest();
+    pub fn getForest() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getForest();
     }
-    pub fn get_GolfCourse() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getGolfCourse();
+    pub fn getGolfCourse() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getGolfCourse();
     }
-    pub fn get_Park() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPark();
+    pub fn getPark() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPark();
     }
-    pub fn get_PlayingField() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPlayingField();
+    pub fn getPlayingField() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPlayingField();
     }
-    pub fn get_Reserve() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getReserve();
+    pub fn getReserve() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getReserve();
     }
-    pub fn get_Point() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPoint();
+    pub fn getPoint() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPoint();
     }
-    pub fn get_NaturalPoint() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getNaturalPoint();
+    pub fn getNaturalPoint() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getNaturalPoint();
     }
-    pub fn get_Peak() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPeak();
+    pub fn getPeak() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPeak();
     }
-    pub fn get_VolcanicPeak() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getVolcanicPeak();
+    pub fn getVolcanicPeak() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getVolcanicPeak();
     }
-    pub fn get_WaterPoint() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getWaterPoint();
+    pub fn getWaterPoint() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getWaterPoint();
     }
-    pub fn get_PointOfInterest() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPointOfInterest();
+    pub fn getPointOfInterest() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPointOfInterest();
     }
-    pub fn get_Business() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getBusiness();
+    pub fn getBusiness() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getBusiness();
     }
-    pub fn get_FoodPoint() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getFoodPoint();
+    pub fn getFoodPoint() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getFoodPoint();
     }
-    pub fn get_PopulatedPlace() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPopulatedPlace();
+    pub fn getPopulatedPlace() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPopulatedPlace();
     }
-    pub fn get_Capital() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getCapital();
+    pub fn getCapital() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getCapital();
     }
-    pub fn get_AdminDistrictCapital() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getAdminDistrictCapital();
+    pub fn getAdminDistrictCapital() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getAdminDistrictCapital();
     }
-    pub fn get_CountryRegionCapital() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getCountryRegionCapital();
+    pub fn getCountryRegionCapital() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getCountryRegionCapital();
     }
-    pub fn get_RoadShield() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRoadShield();
+    pub fn getRoadShield() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRoadShield();
     }
-    pub fn get_RoadExit() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRoadExit();
+    pub fn getRoadExit() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRoadExit();
     }
-    pub fn get_Transit() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getTransit();
+    pub fn getTransit() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getTransit();
     }
-    pub fn get_Political() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getPolitical();
+    pub fn getPolitical() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getPolitical();
     }
-    pub fn get_CountryRegion() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getCountryRegion();
+    pub fn getCountryRegion() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getCountryRegion();
     }
-    pub fn get_AdminDistrict() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getAdminDistrict();
+    pub fn getAdminDistrict() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getAdminDistrict();
     }
-    pub fn get_District() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getDistrict();
+    pub fn getDistrict() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getDistrict();
     }
-    pub fn get_Structure() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getStructure();
+    pub fn getStructure() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getStructure();
     }
-    pub fn get_Building() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getBuilding();
+    pub fn getBuilding() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getBuilding();
     }
-    pub fn get_EducationBuilding() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getEducationBuilding();
+    pub fn getEducationBuilding() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getEducationBuilding();
     }
-    pub fn get_MedicalBuilding() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getMedicalBuilding();
+    pub fn getMedicalBuilding() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getMedicalBuilding();
     }
-    pub fn get_TransitBuilding() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getTransitBuilding();
+    pub fn getTransitBuilding() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getTransitBuilding();
     }
-    pub fn get_Transportation() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getTransportation();
+    pub fn getTransportation() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getTransportation();
     }
-    pub fn get_Road() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRoad();
+    pub fn getRoad() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRoad();
     }
-    pub fn get_ControlledAccessHighway() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getControlledAccessHighway();
+    pub fn getControlledAccessHighway() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getControlledAccessHighway();
     }
-    pub fn get_HighSpeedRamp() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getHighSpeedRamp();
+    pub fn getHighSpeedRamp() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getHighSpeedRamp();
     }
-    pub fn get_Highway() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getHighway();
+    pub fn getHighway() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getHighway();
     }
-    pub fn get_MajorRoad() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getMajorRoad();
+    pub fn getMajorRoad() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getMajorRoad();
     }
-    pub fn get_ArterialRoad() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getArterialRoad();
+    pub fn getArterialRoad() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getArterialRoad();
     }
-    pub fn get_Street() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getStreet();
+    pub fn getStreet() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getStreet();
     }
-    pub fn get_Ramp() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRamp();
+    pub fn getRamp() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRamp();
     }
-    pub fn get_UnpavedStreet() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getUnpavedStreet();
+    pub fn getUnpavedStreet() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getUnpavedStreet();
     }
-    pub fn get_TollRoad() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getTollRoad();
+    pub fn getTollRoad() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getTollRoad();
     }
-    pub fn get_Railway() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRailway();
+    pub fn getRailway() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRailway();
     }
-    pub fn get_Trail() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getTrail();
+    pub fn getTrail() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getTrail();
     }
-    pub fn get_WaterRoute() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getWaterRoute();
+    pub fn getWaterRoute() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getWaterRoute();
     }
-    pub fn get_Water() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getWater();
+    pub fn getWater() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getWater();
     }
-    pub fn get_River() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRiver();
+    pub fn getRiver() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRiver();
     }
-    pub fn get_RouteLine() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getRouteLine();
+    pub fn getRouteLine() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getRouteLine();
     }
-    pub fn get_WalkingRoute() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getWalkingRoute();
+    pub fn getWalkingRoute() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getWalkingRoute();
     }
-    pub fn get_DrivingRoute() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntriesStaticsCache.get();
-        return try factory.getDrivingRoute();
+    pub fn getDrivingRoute() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntriesStaticsCache.get();
+        return try _f.getDrivingRoute();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapStyleSheetEntries";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8540,17 +8540,17 @@ pub const MapStyleSheetEntryStates = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_Disabled() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntryStatesStaticsCache.get();
-        return try factory.getDisabled();
+    pub fn getDisabled() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntryStatesStaticsCache.get();
+        return try _f.getDisabled();
     }
-    pub fn get_Hover() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntryStatesStaticsCache.get();
-        return try factory.getHover();
+    pub fn getHover() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntryStatesStaticsCache.get();
+        return try _f.getHover();
     }
-    pub fn get_Selected() core.HResult!HSTRING {
-        const factory = @This().IMapStyleSheetEntryStatesStaticsCache.get();
-        return try factory.getSelected();
+    pub fn getSelected() core.HResult!HSTRING {
+        const _f = @This().IMapStyleSheetEntryStatesStaticsCache.get();
+        return try _f.getSelected();
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapStyleSheetEntryStates";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -8833,85 +8833,85 @@ pub const MapTileSource = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_AnimationStateProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStatics2Cache.get();
-        return try factory.getAnimationStateProperty();
+    pub fn getAnimationStateProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStatics2Cache.get();
+        return try _f.getAnimationStateProperty();
     }
-    pub fn get_AutoPlayProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStatics2Cache.get();
-        return try factory.getAutoPlayProperty();
+    pub fn getAutoPlayProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStatics2Cache.get();
+        return try _f.getAutoPlayProperty();
     }
-    pub fn get_FrameCountProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStatics2Cache.get();
-        return try factory.getFrameCountProperty();
+    pub fn getFrameCountProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStatics2Cache.get();
+        return try _f.getFrameCountProperty();
     }
-    pub fn get_FrameDurationProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStatics2Cache.get();
-        return try factory.getFrameDurationProperty();
+    pub fn getFrameDurationProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStatics2Cache.get();
+        return try _f.getFrameDurationProperty();
     }
-    pub fn get_DataSourceProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getDataSourceProperty();
+    pub fn getDataSourceProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getDataSourceProperty();
     }
-    pub fn get_LayerProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getLayerProperty();
+    pub fn getLayerProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getLayerProperty();
     }
-    pub fn get_ZoomLevelRangeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getZoomLevelRangeProperty();
+    pub fn getZoomLevelRangeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getZoomLevelRangeProperty();
     }
-    pub fn get_BoundsProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getBoundsProperty();
+    pub fn getBoundsProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getBoundsProperty();
     }
-    pub fn get_AllowOverstretchProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getAllowOverstretchProperty();
+    pub fn getAllowOverstretchProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getAllowOverstretchProperty();
     }
-    pub fn get_IsFadingEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getIsFadingEnabledProperty();
+    pub fn getIsFadingEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getIsFadingEnabledProperty();
     }
-    pub fn get_IsTransparencyEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getIsTransparencyEnabledProperty();
+    pub fn getIsTransparencyEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getIsTransparencyEnabledProperty();
     }
-    pub fn get_IsRetryEnabledProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getIsRetryEnabledProperty();
+    pub fn getIsRetryEnabledProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getIsRetryEnabledProperty();
     }
-    pub fn get_ZIndexProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getZIndexProperty();
+    pub fn getZIndexProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getZIndexProperty();
     }
-    pub fn get_TilePixelSizeProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getTilePixelSizeProperty();
+    pub fn getTilePixelSizeProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getTilePixelSizeProperty();
     }
-    pub fn get_VisibleProperty() core.HResult!*DependencyProperty {
-        const factory = @This().IMapTileSourceStaticsCache.get();
-        return try factory.getVisibleProperty();
+    pub fn getVisibleProperty() core.HResult!*DependencyProperty {
+        const _f = @This().IMapTileSourceStaticsCache.get();
+        return try _f.getVisibleProperty();
     }
     pub fn CreateInstance(baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
-        const factory = @This().IMapTileSourceFactoryCache.get();
-        return try factory.CreateInstance(baseInterface, innerInterface);
+        const _f = @This().IMapTileSourceFactoryCache.get();
+        return try _f.CreateInstance(baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithDataSource(dataSource: *MapTileDataSource, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
-        const factory = @This().IMapTileSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDataSource(dataSource, baseInterface, innerInterface);
+        const _f = @This().IMapTileSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDataSource(dataSource, baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithDataSourceAndZoomRange(dataSource: *MapTileDataSource, zoomLevelRange: MapZoomLevelRange, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
-        const factory = @This().IMapTileSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDataSourceAndZoomRange(dataSource, zoomLevelRange, baseInterface, innerInterface);
+        const _f = @This().IMapTileSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDataSourceAndZoomRange(dataSource, zoomLevelRange, baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithDataSourceZoomRangeAndBounds(dataSource: *MapTileDataSource, zoomLevelRange: MapZoomLevelRange, bounds: *GeoboundingBox, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
-        const factory = @This().IMapTileSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDataSourceZoomRangeAndBounds(dataSource, zoomLevelRange, bounds, baseInterface, innerInterface);
+        const _f = @This().IMapTileSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDataSourceZoomRangeAndBounds(dataSource, zoomLevelRange, bounds, baseInterface, innerInterface);
     }
     pub fn CreateInstanceWithDataSourceZoomRangeBoundsAndTileSize(dataSource: *MapTileDataSource, zoomLevelRange: MapZoomLevelRange, bounds: *GeoboundingBox, tileSizeInPixels: i32, baseInterface: *IInspectable, innerInterface: *IInspectable) core.HResult!*MapTileSource {
-        const factory = @This().IMapTileSourceFactoryCache.get();
-        return try factory.CreateInstanceWithDataSourceZoomRangeBoundsAndTileSize(dataSource, zoomLevelRange, bounds, tileSizeInPixels, baseInterface, innerInterface);
+        const _f = @This().IMapTileSourceFactoryCache.get();
+        return try _f.CreateInstanceWithDataSourceZoomRangeBoundsAndTileSize(dataSource, zoomLevelRange, bounds, tileSizeInPixels, baseInterface, innerInterface);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.MapTileSource";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9074,12 +9074,12 @@ pub const StreetsideExperience = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn CreateInstanceWithPanorama(panorama: *StreetsidePanorama) core.HResult!*StreetsideExperience {
-        const factory = @This().IStreetsideExperienceFactoryCache.get();
-        return try factory.CreateInstanceWithPanorama(panorama);
+        const _f = @This().IStreetsideExperienceFactoryCache.get();
+        return try _f.CreateInstanceWithPanorama(panorama);
     }
     pub fn CreateInstanceWithPanoramaHeadingPitchAndFieldOfView(panorama: *StreetsidePanorama, headingInDegrees: f64, pitchInDegrees: f64, fieldOfViewInDegrees: f64) core.HResult!*StreetsideExperience {
-        const factory = @This().IStreetsideExperienceFactoryCache.get();
-        return try factory.CreateInstanceWithPanoramaHeadingPitchAndFieldOfView(panorama, headingInDegrees, pitchInDegrees, fieldOfViewInDegrees);
+        const _f = @This().IStreetsideExperienceFactoryCache.get();
+        return try _f.CreateInstanceWithPanoramaHeadingPitchAndFieldOfView(panorama, headingInDegrees, pitchInDegrees, fieldOfViewInDegrees);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.StreetsideExperience";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -9098,12 +9098,12 @@ pub const StreetsidePanorama = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn FindNearbyAsync(location: *Geopoint) core.HResult!*IAsyncOperation(StreetsidePanorama) {
-        const factory = @This().IStreetsidePanoramaStaticsCache.get();
-        return try factory.FindNearbyAsync(location);
+        const _f = @This().IStreetsidePanoramaStaticsCache.get();
+        return try _f.FindNearbyAsync(location);
     }
     pub fn FindNearbyAsyncWithRadiusInMeters(location: *Geopoint, radiusInMeters: f64) core.HResult!*IAsyncOperation(StreetsidePanorama) {
-        const factory = @This().IStreetsidePanoramaStaticsCache.get();
-        return try factory.FindNearbyAsyncWithRadiusInMeters(location, radiusInMeters);
+        const _f = @This().IStreetsidePanoramaStaticsCache.get();
+        return try _f.FindNearbyAsyncWithRadiusInMeters(location, radiusInMeters);
     }
     pub const NAME: []const u8 = "Windows.UI.Xaml.Controls.Maps.StreetsidePanorama";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);

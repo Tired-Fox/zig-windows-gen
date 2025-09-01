@@ -178,9 +178,9 @@ pub const HolographicCameraRenderingParameters = extern struct {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
         return try this.SetFocusPointWithNormal(coordinateSystem, position, normal);
     }
-    pub fn SetFocusPointWithNormalWithLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
+    pub fn SetFocusPointWithNormalAndLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
-        return try this.SetFocusPointWithNormalWithLinearVelocity(coordinateSystem, position, normal, linearVelocity);
+        return try this.SetFocusPointWithNormalAndLinearVelocity(coordinateSystem, position, normal, linearVelocity);
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
         const this: *IHolographicCameraRenderingParameters = @ptrCast(self);
@@ -300,8 +300,8 @@ pub const HolographicDisplay = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn GetDefault() core.HResult!*HolographicDisplay {
-        const factory = @This().IHolographicDisplayStaticsCache.get();
-        return try factory.GetDefault();
+        const _f = @This().IHolographicDisplayStaticsCache.get();
+        return try _f.GetDefault();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicDisplay";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -533,12 +533,12 @@ pub const HolographicQuadLayer = extern struct {
         _ = IUnknown.Release(@ptrCast(self));
     }
     pub fn Create(size: Size) core.HResult!*HolographicQuadLayer {
-        const factory = @This().IHolographicQuadLayerFactoryCache.get();
-        return try factory.Create(size);
+        const _f = @This().IHolographicQuadLayerFactoryCache.get();
+        return try _f.Create(size);
     }
     pub fn CreateWithPixelFormat(size: Size, pixelFormat: DirectXPixelFormat) core.HResult!*HolographicQuadLayer {
-        const factory = @This().IHolographicQuadLayerFactoryCache.get();
-        return try factory.CreateWithPixelFormat(size, pixelFormat);
+        const _f = @This().IHolographicQuadLayerFactoryCache.get();
+        return try _f.CreateWithPixelFormat(size, pixelFormat);
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicQuadLayer";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -671,29 +671,29 @@ pub const HolographicSpace = extern struct {
     pub fn deinit(self: *@This()) void {
         _ = IUnknown.Release(@ptrCast(self));
     }
-    pub fn get_IsSupported() core.HResult!bool {
-        const factory = @This().IHolographicSpaceStatics2Cache.get();
-        return try factory.getIsSupported();
+    pub fn getIsSupported() core.HResult!bool {
+        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        return try _f.getIsSupported();
     }
-    pub fn get_IsAvailable() core.HResult!bool {
-        const factory = @This().IHolographicSpaceStatics2Cache.get();
-        return try factory.getIsAvailable();
+    pub fn getIsAvailable() core.HResult!bool {
+        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        return try _f.getIsAvailable();
     }
-    pub fn add_IsAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
-        const factory = @This().IHolographicSpaceStatics2Cache.get();
-        return try factory.addIsAvailableChanged(handler);
+    pub fn addIsAvailableChanged(handler: *EventHandler(IInspectable)) core.HResult!EventRegistrationToken {
+        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        return try _f.addIsAvailableChanged(handler);
     }
-    pub fn remove_IsAvailableChanged(token: EventRegistrationToken) core.HResult!void {
-        const factory = @This().IHolographicSpaceStatics2Cache.get();
-        return try factory.removeIsAvailableChanged(token);
+    pub fn removeIsAvailableChanged(token: EventRegistrationToken) core.HResult!void {
+        const _f = @This().IHolographicSpaceStatics2Cache.get();
+        return try _f.removeIsAvailableChanged(token);
     }
     pub fn CreateForCoreWindow(window: *CoreWindow) core.HResult!*HolographicSpace {
-        const factory = @This().IHolographicSpaceStaticsCache.get();
-        return try factory.CreateForCoreWindow(window);
+        const _f = @This().IHolographicSpaceStaticsCache.get();
+        return try _f.CreateForCoreWindow(window);
     }
-    pub fn get_IsConfigured() core.HResult!bool {
-        const factory = @This().IHolographicSpaceStatics3Cache.get();
-        return try factory.getIsConfigured();
+    pub fn getIsConfigured() core.HResult!bool {
+        const _f = @This().IHolographicSpaceStatics3Cache.get();
+        return try _f.getIsConfigured();
     }
     pub const NAME: []const u8 = "Windows.Graphics.Holographic.HolographicSpace";
     pub const RUNTIME_NAME: [:0]const u16 = @import("std").unicode.utf8ToUtf16LeStringLiteral(NAME);
@@ -1135,12 +1135,12 @@ pub const IHolographicCameraRenderingParameters = extern struct {
         const _c = self.vtable.SetFocusPoint(@ptrCast(self), coordinateSystem, position);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetFocusPointWithPositionWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
-        const _c = self.vtable.SetFocusPointWithPositionWithNormal(@ptrCast(self), coordinateSystem, position, normal);
+    pub fn SetFocusPointWithNormal(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) core.HResult!void {
+        const _c = self.vtable.SetFocusPointWithNormal(@ptrCast(self), coordinateSystem, position, normal);
         if (_c != 0) return core.hresultToError(_c).err;
     }
-    pub fn SetFocusPointWithNormalWithLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
-        const _c = self.vtable.SetFocusPointWithNormalWithLinearVelocity(@ptrCast(self), coordinateSystem, position, normal, linearVelocity);
+    pub fn SetFocusPointWithNormalAndLinearVelocity(self: *@This(), coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) core.HResult!void {
+        const _c = self.vtable.SetFocusPointWithNormalAndLinearVelocity(@ptrCast(self), coordinateSystem, position, normal, linearVelocity);
         if (_c != 0) return core.hresultToError(_c).err;
     }
     pub fn getDirect3D11Device(self: *@This()) core.HResult!*IDirect3DDevice {
@@ -1168,8 +1168,8 @@ pub const IHolographicCameraRenderingParameters = extern struct {
         GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
         SetFocusPoint: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3) callconv(.winapi) HRESULT,
-        SetFocusPointWithPositionWithNormal: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) callconv(.winapi) HRESULT,
-        SetFocusPointWithNormalWithLinearVelocity: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) callconv(.winapi) HRESULT,
+        SetFocusPointWithNormal: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3) callconv(.winapi) HRESULT,
+        SetFocusPointWithNormalAndLinearVelocity: *const fn(self: *anyopaque, coordinateSystem: *SpatialCoordinateSystem, position: Vector3, normal: Vector3, linearVelocity: Vector3) callconv(.winapi) HRESULT,
         get_Direct3D11Device: *const fn(self: *anyopaque, _r: **IDirect3DDevice) callconv(.winapi) HRESULT,
         get_Direct3D11BackBuffer: *const fn(self: *anyopaque, _r: **IDirect3DSurface) callconv(.winapi) HRESULT,
     };
@@ -1462,9 +1462,9 @@ pub const IHolographicFrame = extern struct {
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
-    pub fn PresentUsingCurrentPrediction(self: *@This(), waitBehavior: HolographicFramePresentWaitBehavior) core.HResult!HolographicFramePresentResult {
+    pub fn PresentUsingCurrentPredictionWithWaitBehavior(self: *@This(), waitBehavior: HolographicFramePresentWaitBehavior) core.HResult!HolographicFramePresentResult {
         var _r: HolographicFramePresentResult = undefined;
-        const _c = self.vtable.PresentUsingCurrentPrediction(@ptrCast(self), waitBehavior, &_r);
+        const _c = self.vtable.PresentUsingCurrentPredictionWithWaitBehavior(@ptrCast(self), waitBehavior, &_r);
         if (_c != 0) return core.hresultToError(_c).err;
         return _r;
     }
@@ -1491,7 +1491,7 @@ pub const IHolographicFrame = extern struct {
         get_CurrentPrediction: *const fn(self: *anyopaque, _r: **HolographicFramePrediction) callconv(.winapi) HRESULT,
         UpdateCurrentPrediction: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
         PresentUsingCurrentPrediction: *const fn(self: *anyopaque, _r: *HolographicFramePresentResult) callconv(.winapi) HRESULT,
-        PresentUsingCurrentPrediction: *const fn(self: *anyopaque, waitBehavior: HolographicFramePresentWaitBehavior, _r: *HolographicFramePresentResult) callconv(.winapi) HRESULT,
+        PresentUsingCurrentPredictionWithWaitBehavior: *const fn(self: *anyopaque, waitBehavior: HolographicFramePresentWaitBehavior, _r: *HolographicFramePresentResult) callconv(.winapi) HRESULT,
         WaitForFrameToFinish: *const fn(self: *anyopaque) callconv(.winapi) HRESULT,
     };
 };
