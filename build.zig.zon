@@ -1,21 +1,14 @@
 .{
-    .name = .winrt,
+    .name = .generator,
     .version = "0.0.0",
-    .fingerprint = 0xc3d63b30e686f14b, // Changing this has security and trust implications.
+    .fingerprint = 0xcaae7b7008c0e5db, // Changing this has security and trust implications.
     .minimum_zig_version = "0.15.1",
-    .dependencies = .{
-        .zigwin32 = .{
-            .url = "git+https://github.com/marlersoft/zigwin32#9d399c0895de4746c1fcab366841e2ab031b0429",
-            .hash = "zigwin32-25.0.28-preview-AAAAANd_5APbcon3QqoYfLKnJ13fiBGJSGq9YrVZsfI-",
-        },
-    },
-
+    .dependencies = .{},
     .paths = .{
         "build.zig",
         "build.zig.zon",
         "src",
-        // For example...
-        //"LICENSE",
-        //"README.md",
+        "LICENSE",
+        "README.md",
     },
 }

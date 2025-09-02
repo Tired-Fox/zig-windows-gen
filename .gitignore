@@ -1,7 +1,4 @@
-**/.zig-cache/
 **/zig-out/
-**/obj/
-**/bin/
-**/output/
-generator/metadata/
-generator/meta.zig.zon/
+**/.zig-cache/
+metadata/
+meta.zig.zon
