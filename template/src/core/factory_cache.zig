@@ -13,9 +13,6 @@ const IAgileObject = windows.IAgileObject;
 pub const CO_E_NOTINITIALIZED: u32 = 0x800401F0;
 pub const REGDB_E_CLASSNOTREG: u32 = 0x80040154;
 
-const WindowsCreateString = windows.WindowsCreateString;
-const WindowsDeleteString = windows.WindowsDeleteString;
-
 const CoIncrementMTAUsage = win32.system.com.CoIncrementMTAUsage;
 const RoGetActivationFactory = win32.system.win_rt.RoGetActivationFactory;
 
@@ -166,4 +163,16 @@ fn delayLoad(T: type, library: [*:0]const u16, function: [*:0]const u8) ?T {
 
     _ = win32.system.library_loader.FreeLibrary(lib);
     return null;
+}
+
+fn WindowsCreateString(string: [:0]const u16) !?HSTRING {
+    var result: ?HSTRING = undefined;
+    if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != 0) {
+        return error.E_OUTOFMEMORY;
+    }
+    return result;
+}
+
+fn WindowsDeleteString(string: ?HSTRING) void {
+    _ = win32.system.win_rt.WindowsDeleteString(string);
 }
