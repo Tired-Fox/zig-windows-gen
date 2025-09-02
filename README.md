@@ -1,15 +1,14 @@
-# README
+# WinRT Zig Binding Generator
 
-This is currently available for Zig `v0.14`. The library is compatable with Zig `v0.15` with the change of converting `callconv(.C)` to `callconv(.c)`. Currently waiting for `zigwin32` before upgrading to `v0.15`.
+This generator works with zig `v0.15.1+`. Look at the repos tags to find a matching version to the version of zig you want to use.
 
-**Reference**
+If you just want to use the bindings look at [`windows-zig`](https://github.com/Tired-Fox/windows-zig).
 
-- https://docs.rs/crate/windows-core/latest/source/
-    - https://docs.rs/crate/windows-core/latest/source/src/imp/factory_cache.rs
-    - https://docs.rs/crate/windows/latest/source/src/Windows/UI/ViewManagement/mod.rs
-    - https://docs.rs/crate/windows-collections/latest/source/src/bindings.rs
+> The metadata is generated with [`winrt-json`](https://github.com/Tired-Fox/winrt-json)
 
-+ Notifications
-    + https://github.com/iKineticate/win-toast-notify
-    + https://learn.microsoft.com/en-us/uwp/schemas/tiles/toastschema/schema-root
-    + https://learn.microsoft.com/en-us/previous-versions/windows/apps/hh761494(v=win.10)
+**How it works**
+
+1. Download latest `Metadata.zip` from `Tired-Fox/winrt-json` and extract the JSON files to `metadata/`
+2. Iterate the JSON, `namespace`, files and generate zig code, files, and folder that represent the structure and metadata.
+3. Export common helpers in `<module>.core`
+4. Re-Export `zigwin32` as `<module>.win32`

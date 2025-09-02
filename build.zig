@@ -1,77 +1,47 @@
 const std = @import("std");
 
-const NAME: []const u8 = "winrt";
-
-const ModuleMap = std.meta.Tuple(&[_]type{ []const u8, *std.Build.Module });
-const Example = struct {
-    name: []const u8,
-    path: []const u8,
-};
-
-const examples = [_]Example {
-    .{ .name = "reactive_theme", .path = "examples/reactive_theme.zig",  },
-    .{ .name = "notification", .path = "examples/notification.zig",  },
-    .{ .name = "uisettings", .path = "examples/uisettings.zig",  },
-};
+const NAME: []const u8 = "zwin-gen";
 
 pub fn build(b: *std.Build) void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
 
-    const zigwin32 = b.dependency("zigwin32", .{});
-
-    const module = b.addModule(NAME, .{
+    const lib_mod = b.createModule(.{
         .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
     });
 
-    module.addImport("win32", zigwin32.module("win32"));
+    const exe_mod = b.createModule(.{
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    exe_mod.addImport(NAME, lib_mod);
+
+    const exe = b.addExecutable(.{
+        .name = NAME,
+        .root_module = exe_mod,
+    });
+    b.installArtifact(exe);
+
+    const run_cmd = b.addRunArtifact(exe);
+    run_cmd.step.dependOn(b.getInstallStep());
+    if (b.args) |args| {
+        run_cmd.addArgs(args);
+    }
+    const run_step = b.step("run", "Run the app");
+    run_step.dependOn(&run_cmd.step);
 
     const lib_unit_tests = b.addTest(.{
-        .root_module = module,
+        .root_module = lib_mod,
     });
     const run_lib_unit_tests = b.addRunArtifact(lib_unit_tests);
-
+    const exe_unit_tests = b.addTest(.{
+        .root_module = exe_mod,
+    });
+    const run_exe_unit_tests = b.addRunArtifact(exe_unit_tests);
     const test_step = b.step("test", "Run unit tests");
     test_step.dependOn(&run_lib_unit_tests.step);
-
-    inline for (examples) |example| {
-        addExample(b, target, optimize, example, &[_]ModuleMap{
-            .{ NAME, module },
-            .{ "win32", zigwin32.module("win32") }
-        });
-    }
-}
-
-pub fn addExample(
-    b: *std.Build,
-    target: std.Build.ResolvedTarget,
-    optimize: std.builtin.OptimizeMode,
-    comptime example: Example,
-    modules: []const ModuleMap,
-) void {
-    const exe = b.addExecutable(.{
-        .name = example.name,
-        .root_module = b.createModule(.{
-            .root_source_file = b.path(example.path),
-            .target = target,
-            .optimize = optimize,
-        })
-    });
-
-    exe.linkLibC();
-
-    for (modules) |module| {
-        exe.root_module.addImport(module[0], module[1]);
-    }
-
-    const ecmd = b.addRunArtifact(exe);
-    ecmd.step.dependOn(b.getInstallStep());
-    if (b.args) |args| {
-        ecmd.addArgs(args);
-    }
-
-    const estep = b.step("example-" ++ example.name, "Run example-" ++ example.name);
-    estep.dependOn(&ecmd.step);
+    test_step.dependOn(&run_exe_unit_tests.step);
 }

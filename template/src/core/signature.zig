@@ -1,28 +1,51 @@
-const std = @import("std");
+// ----- This code is written and maintained by hand -----
 
-const Guid = @import("win32").zig.Guid;
+const std = @import("std");
+const windows = @import("../root.zig");
+
+const Guid = windows.Guid;
 
 pub const Signature = struct {
+    pub fn get(T: type) []const u8 {
+        if (@hasDecl(T, "SIGNATURE")) return @field(T, "SIGNATURE");
+        if (T == Guid) return "guid";
+        if (T == windows.HSTRING) return "string";
+        if (T == windows.IInspectable) return "cinterface(IInspectable)";
+        if (T == bool) return "b1";
+
+        switch (@typeInfo(T)) {
+            .int => |info| {
+                const bytes = @min(@ceil(@as(f32, @floatFromInt(info.bits)) / 8.0), 8.0);
+                if (info.signedness == .unsigned)
+                    return std.fmt.comptimePrint("u{d}", .{@as(u32, @intFromFloat(bytes))})
+                else
+                    return std.fmt.comptimePrint("i{d}", .{@as(u32, @intFromFloat(bytes))});
+            },
+            .float => return if (T == f64) "f8" else "f4",
+            else => @compileError("unsupported type '" ++ @typeName(T) ++ "' does not have a WinRT signature"),
+        }
+    }
+
     pub fn class(comptime runtime_name: []const u8, comptime default_interface_signature: []const u8) []const u8 {
         return std.fmt.comptimePrint("rc({s};{s})", .{ runtime_name, default_interface_signature });
     }
 
     pub fn interface(comptime iid: []const u8) []const u8 {
-        return std.fmt.comptimePrint("{{{s}}}", .{ iid });
+        return std.fmt.comptimePrint("{{{s}}}", .{iid});
     }
 
     pub fn cinterface(T: type) []const u8 {
         if (@hasDecl(T, "SIGNATURE")) {
-           return @field(T, "SIGNATURE");
+            return @field(T, "SIGNATURE");
         } else {
             const idx = std.mem.lastIndexOf(u8, @typeName(T), ".");
-            return std.fmt.comptimePrint("cinterface({s})", .{ if (idx) |i| @typeName(T)[i+|1..] else @typeName(T) });
+            return std.fmt.comptimePrint("cinterface({s})", .{if (idx) |i| @typeName(T)[i +| 1..] else @typeName(T)});
         }
     }
 
     pub fn pinterface(comptime iid: []const u8, comptime signatures: []const []const u8) []const u8 {
         var sigs: []const u8 = signatures[0];
-        inline for(signatures[1..]) |sig| {
+        inline for (signatures[1..]) |sig| {
             sigs = sigs ++ ";" ++ sig;
         }
         return std.fmt.comptimePrint("pinterface({{{s}}};{s})", .{ iid, sigs });
@@ -60,15 +83,6 @@ pub const Signature = struct {
     }
 
     pub fn guid_string(comptime iid: Guid) []const u8 {
-        const bytes = iid.Bytes;
-        return std.fmt.comptimePrint(
-            "{x:0>2}{x:0>2}{x:0>2}{x:0>2}-{x:0>2}{x:0>2}-{x:0>2}{x:0>2}-{x:0>2}{x:0>2}-{x:0>2}{x:0>2}{x:0>2}{x:0>2}{x:0>2}{x:0>2}",
-            .{
-                bytes[0],  bytes[1],  bytes[2],  bytes[3],
-                bytes[4],  bytes[5],  bytes[6],  bytes[7],
-                bytes[8],  bytes[9],  bytes[10], bytes[11],
-                bytes[12], bytes[13], bytes[14], bytes[15],
-            },
-        );
+        return &@import("../core.zig").guidToString(&iid);
     }
 };

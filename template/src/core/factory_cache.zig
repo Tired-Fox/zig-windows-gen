@@ -1,67 +1,59 @@
+// ----- This code is written and maintained by hand -----
 const std = @import("std");
-const winrt = @import("../../root.zig");
+const core = @import("../core.zig");
+const windows = @import("../root.zig");
 const win32 = @import("win32");
 
-const Guid = win32.zig.Guid;
-const HRESULT = win32.foundation.HRESULT;
-const HSTRING = winrt.HSTRING;
-const IUnknown = win32.system.com.IUnknown;
+const Guid = windows.Guid;
+const HRESULT = windows.HRESULT;
+const HSTRING = windows.HSTRING;
+const IUnknown = windows.IUnknown;
+const IAgileObject = windows.IAgileObject;
 
-const CO_E_NOTINITIALIZED = winrt.CO_E_NOTINITIALIZED;
-const E_ACCESSDENIED = winrt.E_ACCESSDENIED;
-const E_OUTOFMEMORY = winrt.E_OUTOFMEMORY;
-const IID_IAgileObject = win32.system.com.IID_IAgileObject;
-const REGDB_E_CLASSNOTREG = winrt.REGDB_E_CLASSNOTREG;
-const S_OK = winrt.S_OK;
+pub const CO_E_NOTINITIALIZED: u32 = 0x800401F0;
+pub const REGDB_E_CLASSNOTREG: u32 = 0x80040154;
 
-const WindowsCreateString = winrt.WindowsCreateString;
-const WindowsDeleteString = winrt.WindowsDeleteString;
+const WindowsCreateString = windows.WindowsCreateString;
+const WindowsDeleteString = windows.WindowsDeleteString;
 
 const CoIncrementMTAUsage = win32.system.com.CoIncrementMTAUsage;
 const RoGetActivationFactory = win32.system.win_rt.RoGetActivationFactory;
 
-pub const FactoryError = error{
-    /// No interface found for the given action, or the given class does not implement IInspectable
-    NoInterface,
-    /// The thread has not been initialized in the Windows Runtime by calling RoInitialize
-    NotInitialized,
-    /// The TrustLevel for the class requires a full-trust process
-    AccessDenied,
-    OutOfMemory,
-};
+/// Creates a cached factory that is of a certain Factory type
+/// and is meant to only instantiate the class provided by the Runtime Name (RN)
+/// parameter.
+pub fn FactoryCache(F: type, comptime RN: [:0]const u16) type {
+    return struct {
+        shared: std.atomic.Value(?*anyopaque) = .init(null),
 
-pub const FactoryCache = struct {
-    shared: std.atomic.Value(?*anyopaque) = .init(null),
+        pub fn get(self: *@This()) core.HResult!*F {
+            while (true) {
+                // Attempt to load a previously cached factory pointer.
+                if (self.shared.load(.acquire)) |ptr| {
+                    // If a pointer is found, the cache is primed and we're good to go.
+                    return @ptrCast(@alignCast(ptr));
+                }
 
-    pub fn call(self: *@This(), I: type, runtime_name: [:0]const u16) !*I {
-        while (true) {
-            // Attempt to load a previously cached factory pointer.
-            if (self.shared.load(.acquire)) |ptr| {
-                // If a pointer is found, the cache is primed and we're good to go.
-                return @ptrCast(@alignCast(ptr));
-            }
+                // Otherwise, we load the factory the usual way.
+                const factory = try loadFactory(&F.IID, RN);
 
-            // Otherwise, we load the factory the usual way.
-            const factory = try loadFactory(I, runtime_name);
+                // If the factory is agile, we can safely cache it.
+                const unknown: *IUnknown = @ptrCast(@alignCast(factory));
 
-            // If the factory is agile, we can safely cache it.
-            const unknown: *IUnknown = @ptrCast(@alignCast(factory));
-
-            var temp: *anyopaque = undefined;
-            if (@as(u32, @bitCast(unknown.QueryInterface(IID_IAgileObject, &temp))) == S_OK) {
-                _ = self.shared.cmpxchgStrong(null, factory, .acq_rel, .acquire);
-            } else {
-                // Otherwise, for non-agile factories we simply use the factory
-                // and discard after use as it is not safe to cache.
-                return @ptrCast(@alignCast(factory));
+                var temp: ?*anyopaque = undefined;
+                if (unknown.QueryInterface(&IAgileObject.IID, &temp) == 0) {
+                    _ = self.shared.cmpxchgStrong(null, factory, .acq_rel, .acquire);
+                } else {
+                    // Otherwise, for non-agile factories we simply use the factory
+                    // and discard after use as it is not safe to cache.
+                    return @ptrCast(@alignCast(factory));
+                }
             }
         }
-    }
-};
+    };
+}
 
-fn loadFactory(I: type, runtime_name: [:0]const u16) FactoryError!*anyopaque {
-    const interface_iid: *const Guid = &I.IID;
-
+fn loadFactory(factory_iid: *const Guid, runtime_name: [:0]const u16) core.HResult!*anyopaque {
     var factory: *anyopaque = undefined;
 
     const name: ?HSTRING = try WindowsCreateString(runtime_name);
@@ -70,7 +62,7 @@ fn loadFactory(I: type, runtime_name: [:0]const u16) FactoryError!*anyopaque {
     const code = code_block: {
         var result: u32 = @bitCast(RoGetActivationFactory(
             name,
-            interface_iid,
+            factory_iid,
             &factory,
         ));
 
@@ -85,7 +77,7 @@ fn loadFactory(I: type, runtime_name: [:0]const u16) FactoryError!*anyopaque {
             // Now try a second time to get the activation factory via the OS.
             result = @bitCast(RoGetActivationFactory(
                 name,
-                interface_iid,
+                factory_iid,
                 &factory,
             ));
         }
@@ -111,7 +103,7 @@ fn loadFactory(I: type, runtime_name: [:0]const u16) FactoryError!*anyopaque {
         }
     }
 
-    return error.NoInterface;
+    return error.E_NOINTERFACE;
 }
 
 const suffix: []const u16 = std.unicode.utf8ToUtf16LeStringLiteral(".dll");
@@ -122,13 +114,13 @@ const suffix: []const u16 = std.unicode.utf8ToUtf16LeStringLiteral(".dll");
 /// "A.B.TypeName" then the attempted load order will be:
 ///   1. A.B.dll
 ///   2. A.dll
-fn searchPath(runtime_path: [:0]const u16, name: *const ?HSTRING) FactoryError!?*anyopaque {
+fn searchPath(runtime_path: [:0]const u16, name: *const ?HSTRING) core.HResult!?*anyopaque {
     var path: []const u16 = runtime_path[0..];
 
     while (std.mem.lastIndexOf(u16, path, &[_]u16{'.'})) |pos| {
         path = path[0..pos];
 
-        var library: [:0]u16 = std.heap.smp_allocator.allocSentinel(u16, path.len + suffix.len, 0) catch return error.OutOfMemory;
+        var library: [:0]u16 = std.heap.smp_allocator.allocSentinel(u16, path.len + suffix.len, 0) catch return error.E_OUTOFMEMORY;
         defer std.heap.smp_allocator.free(library);
 
         @memcpy(library[0..path.len], path);
@@ -151,7 +143,7 @@ fn getActivationFactory(
     const function = delayLoad(DllGetActivationFactory, library, DllGetActivationFactoryName.ptr) orelse return null;
     var abi: *anyopaque = undefined;
     const result = function(@ptrCast(@alignCast(name)), &abi);
-    if (result == S_OK) {
+    if (result == 0) {
         return @ptrCast(@alignCast(abi));
     }
     return null;
