@@ -312,7 +312,7 @@ fn serializeFactoryMethods(
                 try writer.writeAll(") core.HResult!void {\n");
             }
 
-            try writer.print("        const _f = @This().{s}Cache.get();\n", .{factory.Name});
+            try writer.print("        const _f = try @This()._{s}Cache.get();\n", .{factory.Name});
             try writer.print("        return try _f.{s}(", .{mname});
             if (method.Parameters) |parameters| {
                 try writer.print("{s}", .{noreserved(parameters[0].Name)});

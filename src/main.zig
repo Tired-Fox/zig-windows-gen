@@ -320,6 +320,8 @@ pub fn main() !void {
         const namespace = try metadata.parse(allocator, &metadata_dir, entry.name);
         defer namespace.deinit();
 
+        try namespaces.append(allocator, try allocator.dupe(u8, namespace.namespace));
+
         print("   🧩 {s}\n", .{namespace.namespace});
 
         var ctx = metadata.Context{
@@ -371,24 +373,25 @@ pub fn main() !void {
                         print("{s}\n", .{namespace.namespace});
                         print("{f}\n", .{ty});
                         return e;
-                    }
+                    },
                 },
                 .Delegate => metadata.delegate.serialize(allocator, &ctx, ty, writer) catch |e| {
                     print("{s}\n", .{namespace.namespace});
                     return e;
                 },
-                else => print("     \x1b[33m…\x1b[39m Skipping Unknown TypeDef: {s}\n", .{ @tagName(ty.Kind) }),
+                else => print("     \x1b[33m…\x1b[39m Skipping Unknown TypeDef: {s}\n", .{@tagName(ty.Kind)}),
             }
             total += 1;
         }
 
-        print("      \x1b[36m#\x1b[39m {d} types\n", .{ total });
+        print("      \x1b[36m#\x1b[39m {d} types\n", .{total});
 
         var it = ctx.requirements.items.iterator();
         while (it.next()) |requirement| {
             if (std.mem.eql(u8, namespace.namespace, "Windows.UI.WebUI") and
                 (std.mem.eql(u8, requirement.key_ptr.*, "SuspendingOperation") or
-                 std.mem.eql(u8, requirement.key_ptr.*, "SuspendingDeferral"))) {
+                    std.mem.eql(u8, requirement.key_ptr.*, "SuspendingDeferral")))
+            {
                 continue;
             }
 
@@ -403,7 +406,6 @@ pub fn main() !void {
         }
 
         writer.flush() catch unreachable;
-        try namespaces.append(allocator, try allocator.dupe(u8, namespace.namespace));
     }
 
     try addNamespaceImports(allocator, namespaces.items, module_src);
@@ -419,8 +421,17 @@ fn contains(list: []const []const u8, target: []const u8) bool {
 }
 
 fn addNamespaceImports(allocator: std.mem.Allocator, namespaces: []const []const u8, base: std.fs.Dir) !void {
+    var visited: std.StringHashMapUnmanaged(bool) = .empty;
+    defer {
+        var it = visited.keyIterator();
+        while (it.next()) |i| allocator.free(i.*);
+        visited.deinit(allocator);
+    }
+
     for (namespaces) |namespace| {
         const rest = namespace[8..];
+        if (visited.contains(rest)) continue;
+        try visited.put(allocator, try allocator.dupe(u8, rest), true);
 
         var idx = std.mem.lastIndexOf(u8, rest, ".");
 
@@ -441,45 +452,105 @@ fn addNamespaceImports(allocator: std.mem.Allocator, namespaces: []const []const
             } else {
                 file = rest[0..i];
             }
+
+            // Walk the parent namespaces and make
+            // sure they are also imported in their parent
+            var remaining = rest[0..i];
+            while (true) {
+                if (std.mem.lastIndexOf(u8, remaining, ".")) |p| {
+                    defer remaining = remaining[0..p];
+                    if (visited.contains(remaining)) {
+                        continue;
+                    }
+                    try visited.put(allocator, try allocator.dupe(u8, remaining), true);
+
+                    const parent = remaining[0..p];
+                    if (std.mem.lastIndexOf(u8, parent, ".")) |pidx| {
+                        try visited.put(allocator, try allocator.dupe(u8, remaining), true);
+                        try writeModuleImport(
+                            allocator,
+                            parent[pidx + 1 ..],
+                            remaining[p + 1 ..],
+                            parent[0..pidx],
+                            base,
+                        );
+                    } else {
+                        try writeModuleImport(
+                            allocator,
+                            parent,
+                            remaining[p + 1 ..],
+                            null,
+                            base,
+                        );
+                    }
+                } else {
+                    if (visited.contains(remaining)) break;
+                    try visited.put(allocator, try allocator.dupe(u8, remaining), true);
+                    try writeModuleImport(
+                        allocator,
+                        "root",
+                        remaining,
+                        null,
+                        base,
+                    );
+                    break;
+                }
+            }
         } else {
             target = rest;
             file = "root";
         }
 
-        var location = blk: {
-            if (dir) |d| {
-                const path = try replaceAll(allocator, d, ".", "/");
-                defer allocator.free(path);
-                break :blk base.openDir(path, .{}) catch |err| {
-                    print("[Error] Failed to open path: {s}\n", .{path});
-                    print("  [-] FROM: {s}\n", .{namespace});
-                    return err;
-                };
-            } else {
-                break :blk try base.openDir(".", .{});
-            }
-        };
-        defer location.close();
-
-        var ns_file = blk: {
-            const target_file = try std.fmt.allocPrint(allocator, "{s}.zig", .{file});
-            defer allocator.free(target_file);
-            break :blk try location.createFile(target_file, .{ .truncate = false });
-        };
-        defer ns_file.close();
-
-        var buffer: [1024]u8 = undefined;
-        var writer = ns_file.writer(&buffer);
-        try writer.seekTo(try ns_file.getEndPos());
-
-        if (std.mem.eql(u8, file, "root")) {
-            try writer.interface.print("pub const {s} = @import(\"./{s}.zig\");\n", .{ target, target });
-        } else {
-            try writer.interface.print("pub const {s} = @import(\"./{s}/{s}.zig\");\n", .{ target, file, target });
-        }
-
-        try writer.interface.flush();
+        try writeModuleImport(allocator, file, target, dir, base);
     }
+}
+
+fn writeModuleImport(
+    allocator: std.mem.Allocator,
+    file: []const u8,
+    target: []const u8,
+    dir: ?[]const u8,
+    base: std.fs.Dir,
+) !void {
+    var location = blk: {
+        if (dir) |d| {
+            const path = try replaceAll(allocator, d, ".", "/");
+            defer allocator.free(path);
+            break :blk try base.openDir(path, .{});
+        } else {
+            break :blk try base.openDir(".", .{});
+        }
+    };
+    defer location.close();
+
+    var ns_file = blk: {
+        const target_file = try std.fmt.allocPrint(
+            allocator,
+            "{s}.zig",
+            .{file},
+        );
+        defer allocator.free(target_file);
+        break :blk try location.createFile(target_file, .{ .truncate = false });
+    };
+    defer ns_file.close();
+
+    var buffer: [1024]u8 = undefined;
+    var writer = ns_file.writer(&buffer);
+    try writer.seekTo(try ns_file.getEndPos());
+
+    if (std.mem.eql(u8, file, "root")) {
+        try writer.interface.print(
+            "pub const {s} = @import(\"./{s}.zig\");\n",
+            .{ target, target },
+        );
+    } else {
+        try writer.interface.print(
+            "pub const {s} = @import(\"./{s}/{s}.zig\");\n",
+            .{ target, file, target },
+        );
+    }
+
+    try writer.interface.flush();
 }
 
 fn openNamespaceFile(allocator: std.mem.Allocator, namespace: []const u8, base: std.fs.Dir) !std.fs.File {
