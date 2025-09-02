@@ -4,6 +4,8 @@ This generator works with zig `v0.15.1+`. Look at the repos tags to find a match
 
 If you just want to use the bindings look at [`windows-zig`](https://github.com/Tired-Fox/windows-zig).
 
+> The metadata is generated with [`winrt-json`](https://github.com/Tired-Fox/winrt-json)
+
 **How it works**
 
 1. Download latest `Metadata.zip` from `Tired-Fox/winrt-json` and extract the JSON files to `metadata/`
