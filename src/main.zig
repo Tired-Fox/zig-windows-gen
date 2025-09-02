@@ -124,10 +124,8 @@ const UnzipOptions = struct {
 fn unzip(source: []const u8, options: UnzipOptions) !void {
     var outdir = std.fs.cwd();
     if (options.out) |out| {
-        if (options.clean) {
-            outdir.deleteTree(out) catch {};
-            try outdir.makePath(out);
-        }
+        if (options.clean) outdir.deleteTree(out) catch {};
+        try outdir.makePath(out);
         outdir = try outdir.openDir(out, .{ .iterate = true });
     }
 
@@ -141,7 +139,7 @@ fn unzip(source: []const u8, options: UnzipOptions) !void {
 }
 
 fn downloadMetadata(allocator: std.mem.Allocator) !void {
-    print("🗃️  Downloading latest metadata from Tired-Fox/winrt-json\n", .{});
+    print("🗃️  Checking for metadata updates from Tired-Fox/winrt-json\n", .{});
     var config = try Config.parse(allocator, "meta.zig.zon");
     defer config.deinit(allocator);
 
@@ -172,29 +170,29 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
         const name = asset.name;
         if (name.len >= 8 and std.mem.eql(u8, name[0..8], "Metadata")) {
             if (std.mem.eql(u8, latest.name, config.current) and std.mem.eql(u8, asset.digest, config.digest)) {
-                print("  🎉 Metadata is up to date\n", .{});
+                print("   🎉 Metadata is up to date\n", .{});
                 return;
             }
-            print("  Downloading Release {s}\n", .{release.value.name});
+            print("   Downloading Release {s}\n", .{release.value.name});
 
             try download(&client, asset.browser_download_url, "Metadata.zip");
             config.current = latest.name;
             config.digest = asset.digest;
             try config.write("meta.zig.zon");
-            print("    \x1b[36m⤓\x1b[39m Downloaded winrt-zig {s} to Metadata.zip\n", .{asset.name});
+            print("     \x1b[36m⤓\x1b[39m Downloaded winrt-zig {s} to Metadata.zip\n", .{asset.name});
 
             try unzip("Metadata.zip", .{ .out = "metadata", .clean = true });
-            print("    \x1b[33m↦\x1b[39m Unziped Metadata.zip to metadata/\n", .{});
+            print("     \x1b[33m↦\x1b[39m Unziped Metadata.zip to metadata/\n", .{});
 
             try std.fs.cwd().deleteTree("Metadata.zip");
-            print("    \x1b[31m⌫\x1b[39m Deleted Metadata.zip\n", .{});
+            print("     \x1b[31m⌫\x1b[39m Deleted Metadata.zip\n", .{});
 
-            print("  🎉 Metadata updated\n", .{});
+            print("   🎉 Metadata updated\n", .{});
 
             break;
         }
     } else {
-        print("  \x1b[31m🗙\x1b[39m No release archive found for {s}\n", .{latest.name});
+        print("   \x1b[31m🗙\x1b[39m No release archive found for {s}\n", .{latest.name});
         return error.NoArchive;
     }
 }
@@ -322,7 +320,7 @@ pub fn main() !void {
         const namespace = try metadata.parse(allocator, &metadata_dir, entry.name);
         defer namespace.deinit();
 
-        print("  🧩 {s}\n", .{namespace.namespace});
+        print("   🧩 {s}\n", .{namespace.namespace});
 
         var ctx = metadata.Context{
             .requirements = metadata.Requirements.init(allocator),
@@ -379,12 +377,12 @@ pub fn main() !void {
                     print("{s}\n", .{namespace.namespace});
                     return e;
                 },
-                else => print("    \x1b[33m…\x1b[39m Skipping Unknown TypeDef: {s}\n", .{ @tagName(ty.Kind) }),
+                else => print("     \x1b[33m…\x1b[39m Skipping Unknown TypeDef: {s}\n", .{ @tagName(ty.Kind) }),
             }
             total += 1;
         }
 
-        print("    \x1b[36m#\x1b[39m {d} types\n", .{ total });
+        print("      \x1b[36m#\x1b[39m {d} types\n", .{ total });
 
         var it = ctx.requirements.items.iterator();
         while (it.next()) |requirement| {
