@@ -26,14 +26,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
     try writer.print("{s}vtable: *const VTable,\n", .{ offset });
     try writer.print("{s}_refs: @import(\"std\").atomic.Value(u32),\n", .{ offset });
-    try writer.print("{s}_cb: *const fn (context: ?*anyopaque", .{ offset });
-    if (typedef.GenericParameters) |gp| {
-        var name: [1024]u8 = undefined;
-        for (gp) |g| {
-            try writer.print(", {s}: core.generic({s})", .{ std.ascii.lowerString(&name, g), g });
-        }
-    }
-    try writer.writeAll(") callconv(.winapi) void,\n");
+    try writer.print("{s}_cb: *anyopaque,\n", .{ offset });
     try writer.print("{s}_context: ?*anyopaque = null,\n", .{ offset });
 
     var invoke: *const metadata.Method = undefined;
@@ -57,11 +50,11 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             }
         }
     }
-    try writer.print(") callconv(.winapi) void,\n{s}) !*@This() {{\n", .{ offset });
+    try writer.print(") void,\n{s}) !*@This() {{\n", .{ offset });
     try writer.print("{s}    const _r = try @import(\"std\").heap.c_allocator.create(@This());\n", .{ offset });
     try writer.print("{s}    _r.* = .{{\n", .{ offset });
     try writer.print("{s}        .vtable = &VTABLE,\n", .{ offset });
-    try writer.print("{s}        ._cb = cb,\n", .{ offset });
+    try writer.print("{s}        ._cb = @ptrCast(@constCast(cb)),\n", .{ offset });
     try writer.print("{s}        ._refs = .init(1),\n", .{ offset });
     try writer.print("{s}    }};\n", .{ offset });
     try writer.print("{s}    return _r;\n", .{ offset });
@@ -78,11 +71,11 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             }
         }
     }
-    try writer.print(") callconv(.winapi) void,\n{s}    context: anytype,\n{s}) !*@This() {{\n", .{ offset, offset });
+    try writer.print(") void,\n{s}    context: anytype,\n{s}) !*@This() {{\n", .{ offset, offset });
     try writer.print("{s}    const _r = try @import(\"std\").heap.c_allocator.create(@This());\n", .{ offset });
     try writer.print("{s}    _r.* = .{{\n", .{ offset });
     try writer.print("{s}        .vtable = &VTABLE,\n", .{ offset });
-    try writer.print("{s}        ._cb = cb,\n", .{ offset });
+    try writer.print("{s}        ._cb = @ptrCast(@constCast(cb)),\n", .{ offset });
     try writer.print("{s}        ._refs = .init(1),\n", .{ offset });
     try writer.print("{s}        ._context = @ptrCast(context),\n", .{ offset });
     try writer.print("{s}    }};\n", .{ offset });
@@ -138,7 +131,17 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.writeAll(") callconv(.winapi) HRESULT {\n");
 
     try writer.print("{s}    const this: *@This() = @ptrCast(@alignCast(self));\n", .{ offset });
-    try writer.print("{s}    this._cb(this._context", .{ offset });
+    try writer.print("{s}    const _callback: *const fn(?*anyopaque", .{ offset });
+    if (invoke.Parameters) |parameters| {
+        for (parameters) |param| {
+            if (try ty.winToZig(allocator, ctx, &param.Type)) |t| {
+                defer t.deinit(allocator);
+                try writer.print(", {s}: {f}", .{ noreserved(param.Name), t.asParam() });
+            }
+        }
+    }
+    try writer.writeAll(") void = @ptrCast(@alignCast(this._cb));\n");
+    try writer.print("{s}    _callback(this._context", .{ offset });
     if (invoke.Parameters) |parameters| {
         for (parameters) |param| {
             try writer.print(", {s}", .{ noreserved(param.Name) });
