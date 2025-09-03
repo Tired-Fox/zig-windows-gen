@@ -7,6 +7,7 @@ pub const Type = struct {
         ref: []const u8,
         generic: []const u8,
     },
+    optional: bool = false,
     kind: ?metadata.Type,
     generics: ?[]const Type = null,
 
@@ -17,23 +18,25 @@ pub const Type = struct {
         }
     }
 
-    pub fn native(name: []const u8, kind: ?metadata.Type) @This() {
-        return .{ .base = .{ .value = name }, .kind = kind };
+    pub fn native(name: []const u8, kind: ?metadata.Type, optional: bool) @This() {
+        return .{ .base = .{ .value = name }, .kind = kind, .optional = optional };
     }
 
-    pub fn generic(name: []const u8, kind: ?metadata.Type) @This() {
-        return .{ .base = .{ .generic = name }, .kind = kind };
+    pub fn generic(name: []const u8, kind: ?metadata.Type, optional: bool) @This() {
+        return .{ .base = .{ .generic = name }, .kind = kind, .optional = optional };
     }
 
-    pub fn value(name: []const u8, generics: ?[]const Type, kind: ?metadata.Type) @This() {
-        return .{ .base = .{ .value = name }, .generics = generics, .kind = kind };
+    pub fn value(name: []const u8, generics: ?[]const Type, kind: ?metadata.Type, optional: bool) @This() {
+        return .{ .base = .{ .value = name }, .generics = generics, .kind = kind, .optional = optional };
     }
 
-    pub fn ref(name: []const u8, generics: ?[]const Type, kind: ?metadata.Type) @This() {
-        return .{ .base = .{ .ref = name }, .generics = generics, .kind = kind };
+    pub fn ref(name: []const u8, generics: ?[]const Type, kind: ?metadata.Type, optional: bool) @This() {
+        return .{ .base = .{ .ref = name }, .generics = generics, .kind = kind, .optional = optional };
     }
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
+        if(self.optional) try writer.writeByte('?'); 
+
         if (self.kind == .Array) {
             try writer.writeAll("[*]");
         } else if (self.base == .ref) {
@@ -55,6 +58,8 @@ pub const Type = struct {
     }
 
     pub fn formatParam(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
+        if(self.optional) try writer.writeByte('?'); 
+
         if (self.kind == .Array) {
             try writer.writeAll("[*]");
         } else if (self.base == .ref) {
@@ -81,6 +86,8 @@ pub const Type = struct {
     }
 
     pub fn formatValue(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
+        if(self.optional) try writer.writeByte('?'); 
+
         if (self.kind == .Array) {
             try writer.writeAll("[*]");
         }
@@ -114,52 +121,52 @@ pub fn winToZig(allocator: std.mem.Allocator, ctx: *metadata.Context, typeref: *
         if (std.mem.eql(u8, typeref.Name, "Void")) {
             return null;
         } else if (std.mem.eql(u8, typeref.Name, "Boolean")) {
-            return .native("bool", typeref.Type);
+            return .native("bool", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Char")) {
-            return .native("u16", typeref.Type);
+            return .native("u16", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "SByte")) {
-            return .native("i8", typeref.Type);
+            return .native("i8", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Byte")) {
-            return .native("u8", typeref.Type);
+            return .native("u8", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Int16")) {
-            return .native("i16", typeref.Type);
+            return .native("i16", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "UInt16")) {
-            return .native("u16", typeref.Type);
+            return .native("u16", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Int32")) {
-            return .native("i32", typeref.Type);
+            return .native("i32", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "UInt32")) {
-            return .native("u32", typeref.Type);
+            return .native("u32", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Int64")) {
-            return .native("i64", typeref.Type);
+            return .native("i64", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "UInt64")) {
-            return .native("u64", typeref.Type);
+            return .native("u64", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Single")) {
-            return .native("f32", typeref.Type);
+            return .native("f32", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Double")) {
-            return .native("f64", typeref.Type);
+            return .native("f64", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "String")) {
             try ctx.requirements.addHSTRING();
-            return .native("HSTRING", typeref.Type);
+            return .native("HSTRING", typeref.Type, true);
         } else if (std.mem.eql(u8, typeref.Name, "TypedReference")) {
-            return .native("*anyopaque", typeref.Type);
+            return .native("*anyopaque", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "IntPtr")) {
-            return .native("isize", typeref.Type);
+            return .native("isize", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "UIntPtr")) {
-            return .native("usize", typeref.Type);
+            return .native("usize", typeref.Type, false);
         } else if (std.mem.eql(u8, typeref.Name, "Object")) {
             try ctx.requirements.addIInspectable();
-            return .ref("IInspectable", null, typeref.Type);
+            return .ref("IInspectable", null, typeref.Type, false);
         }
         return error.UnknownNativeType;
     } else if (typeref.Kind == null) {
         if (std.mem.eql(u8, typeref.Name, "Object")) {
             try ctx.requirements.addIInspectable();
-            return .ref("IInspectable", null, typeref.Type);
+            return .ref("IInspectable", null, typeref.Type, false);
         }
 
         if (std.mem.eql(u8, typeref.Name, "Type")) {
             try ctx.requirements.add("Windows.UI.Xaml.Interop", "TypeName");
-            return .value("TypeName", null, typeref.Type);
+            return .value("TypeName", null, typeref.Type, false);
         }
 
         var generics: ?[]Type = null;
@@ -175,14 +182,14 @@ pub fn winToZig(allocator: std.mem.Allocator, ctx: *metadata.Context, typeref: *
             try ctx.requirements.add(ns, typeref.Name);
             if (ctx.definitions.getKind(ns, typeref.Name)) |kind| {
                 if (kind != .Interface and kind != .Class and kind != .Delegate) {
-                    return .value(typeref.Name, generics, typeref.Type);
+                    return .value(typeref.Name, generics, typeref.Type, false);
                 }
             }
         }
 
-        return .ref(typeref.Name, generics, typeref.Type);
+        return .ref(typeref.Name, generics, typeref.Type, false);
     } else if (typeref.Kind == .Generic) {
-        return .generic(typeref.Name, typeref.Type);
+        return .generic(typeref.Name, typeref.Type, false);
     }
 
     std.debug.print("{f}\n", .{ typeref });

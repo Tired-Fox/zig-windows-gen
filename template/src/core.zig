@@ -1,8 +1,10 @@
 // ----- This code is written and maintained by hand -----
 const std = @import("std");
 const builtin = @import("builtin");
+const win32 = @import("win32");
 
-const Guid = @import("win32").zig.Guid;
+const Guid = win32.zig.Guid;
+const HSTRING = win32.system.win_rt.HSTRING;
 
 pub const FactoryCache = @import("core/factory_cache.zig").FactoryCache;
 pub const Signature = @import("core/signature.zig").Signature;
@@ -101,5 +103,7 @@ pub fn wiredGuidEql(external: *const Guid, internal: *const Guid) bool {
 
 /// Determine if a type should be pass by ref
 pub fn passByRef(T: type) bool {
+    if (T == ?HSTRING) return false;
+    if (@typeInfo(T) == .pointer) return false;
     return @typeInfo(T) == .@"struct" and @hasField(T, "vtable");
 }
