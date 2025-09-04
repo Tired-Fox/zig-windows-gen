@@ -19,53 +19,28 @@ pub fn guidToString(g: *const Guid) [36]u8 {
     var buffer: [36]u8 = undefined;
     const bytes = g.Bytes;
 
-    if (builtin.target.cpu.arch.endian() == .big) {
-        buffer[0] = HEX[(bytes[3] >> 4) & 0x0F];
-        buffer[1] = HEX[bytes[3] & 0x0F];
-        buffer[2] = HEX[(bytes[2] >> 4) & 0x0F];
-        buffer[3] = HEX[bytes[2] & 0x0F];
-        buffer[4] = HEX[(bytes[1] >> 4) & 0x0F];
-        buffer[5] = HEX[bytes[1] & 0x0F];
-        buffer[6] = HEX[(bytes[0] >> 4) & 0x0F];
-        buffer[7] = HEX[bytes[0] & 0x0F];
+    buffer[0] = HEX[(bytes[3] >> 4) & 0x0F];
+    buffer[1] = HEX[bytes[3] & 0x0F];
+    buffer[2] = HEX[(bytes[2] >> 4) & 0x0F];
+    buffer[3] = HEX[bytes[2] & 0x0F];
+    buffer[4] = HEX[(bytes[1] >> 4) & 0x0F];
+    buffer[5] = HEX[bytes[1] & 0x0F];
+    buffer[6] = HEX[(bytes[0] >> 4) & 0x0F];
+    buffer[7] = HEX[bytes[0] & 0x0F];
 
-        buffer[8] = '-';
+    buffer[8] = '-';
 
-        buffer[9] = HEX[(bytes[5] >> 4) & 0x0F];
-        buffer[10] = HEX[bytes[5] & 0x0F];
-        buffer[11] = HEX[(bytes[4] >> 4) & 0x0F];
-        buffer[12] = HEX[bytes[4] & 0x0F];
+    buffer[9] = HEX[(bytes[5] >> 4) & 0x0F];
+    buffer[10] = HEX[bytes[5] & 0x0F];
+    buffer[11] = HEX[(bytes[4] >> 4) & 0x0F];
+    buffer[12] = HEX[bytes[4] & 0x0F];
 
-        buffer[13] = '-';
+    buffer[13] = '-';
 
-        buffer[14] = HEX[(bytes[7] >> 4) & 0x0F];
-        buffer[15] = HEX[bytes[7] & 0x0F];
-        buffer[16] = HEX[(bytes[6] >> 4) & 0x0F];
-        buffer[17] = HEX[bytes[6] & 0x0F];
-    } else {
-        buffer[0] = HEX[(bytes[0] >> 4) & 0x0F];
-        buffer[1] = HEX[bytes[0] & 0x0F];
-        buffer[2] = HEX[(bytes[1] >> 4) & 0x0F];
-        buffer[3] = HEX[bytes[1] & 0x0F];
-        buffer[4] = HEX[(bytes[2] >> 4) & 0x0F];
-        buffer[5] = HEX[bytes[2] & 0x0F];
-        buffer[6] = HEX[(bytes[3] >> 4) & 0x0F];
-        buffer[7] = HEX[bytes[3] & 0x0F];
-
-        buffer[8] = '-';
-
-        buffer[9] = HEX[(bytes[4] >> 4) & 0x0F];
-        buffer[10] = HEX[bytes[4] & 0x0F];
-        buffer[11] = HEX[(bytes[5] >> 4) & 0x0F];
-        buffer[12] = HEX[bytes[5] & 0x0F];
-
-        buffer[13] = '-';
-
-        buffer[14] = HEX[(bytes[6] >> 4) & 0x0F];
-        buffer[15] = HEX[bytes[6] & 0x0F];
-        buffer[16] = HEX[(bytes[7] >> 4) & 0x0F];
-        buffer[17] = HEX[bytes[7] & 0x0F];
-    }
+    buffer[14] = HEX[(bytes[7] >> 4) & 0x0F];
+    buffer[15] = HEX[bytes[7] & 0x0F];
+    buffer[16] = HEX[(bytes[6] >> 4) & 0x0F];
+    buffer[17] = HEX[bytes[6] & 0x0F];
 
     buffer[18] = '-';
 
