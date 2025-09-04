@@ -108,8 +108,8 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}    QueryInterface: *const fn(self: *anyopaque, riid: *const Guid, ppvObject: *?*anyopaque) callconv(.winapi) HRESULT,\n", .{ offset });
     try writer.print("{s}    AddRef: *const fn(self: *anyopaque) callconv(.winapi) u32,\n", .{ offset });
     try writer.print("{s}    Release: *const fn(self: *anyopaque,) callconv(.winapi) u32,\n", .{ offset });
-    try writer.print("{s}    GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,\n", .{ offset });
-    try writer.print("{s}    GetRuntimeClassName: *const fn(self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,\n", .{ offset });
+    try writer.print("{s}    GetIids: *const fn(self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,\n", .{ offset });
+    try writer.print("{s}    GetRuntimeClassName: *const fn(self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,\n", .{ offset });
     try writer.print("{s}    GetTrustLevel: *const fn(self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,\n", .{ offset });
 
     if (typedef.Methods) |methods| {

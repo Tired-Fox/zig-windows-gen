@@ -6,7 +6,7 @@ pub const IInspectable = extern struct {
         return self.vtable.GetIids(@ptrCast(self), count, iids);
     }
 
-    pub fn GetRuntimeClassName(self: *@This(), class_name: *HSTRING) HRESULT {
+    pub fn GetRuntimeClassName(self: *@This(), class_name: *?HSTRING) HRESULT {
         return self.vtable.GetRuntimeClassName(@ptrCast(self), class_name);
     }
 
@@ -24,8 +24,8 @@ pub const IInspectable = extern struct {
         Release: *const fn (
             self: *anyopaque,
         ) callconv(.winapi) u32,
-        GetIids: *const fn (self: *anyopaque, iidCount: *u32, iids: *[*]Guid) callconv(.winapi) HRESULT,
-        GetRuntimeClassName: *const fn (self: *anyopaque, className: *HSTRING) callconv(.winapi) HRESULT,
+        GetIids: *const fn (self: *anyopaque, iidCount: *u32, iids: *[*]const Guid) callconv(.winapi) HRESULT,
+        GetRuntimeClassName: *const fn (self: *anyopaque, className: *?HSTRING) callconv(.winapi) HRESULT,
         GetTrustLevel: *const fn (self: *anyopaque, trustLevel: *TrustLevel) callconv(.winapi) HRESULT,
     };
 };
