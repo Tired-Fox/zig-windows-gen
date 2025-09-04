@@ -91,11 +91,12 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("{s}}}\n", .{ offset });
 
     try writer.print("{s}fn QueryInterface(self: *anyopaque, riid: *const Guid, out: *?*anyopaque) callconv(.c) HRESULT {{\n", .{ offset });
+    try writer.print("{s}    const std = @import(\"std\");\n", .{ offset });
     try writer.print("{s}    const me: *@This() = @ptrCast(@alignCast(self));\n", .{ offset });
     try writer.print("{s}    // TODO: Handle IMarshal\n", .{ offset });
-    try writer.print("{s}    if (core.wiredGuidEql(riid, &IID) or\n", .{ offset });
-    try writer.print("{s}        core.wiredGuidEql(riid, &IUnknown.IID) or\n", .{ offset });
-    try writer.print("{s}        core.wiredGuidEql(riid, &IAgileObject.IID))\n", .{ offset });
+    try writer.print("{s}    if (std.mem.eql(u8, &riid.Bytes, &IID.Bytes) or\n", .{ offset });
+    try writer.print("{s}        std.mem.eql(u8, &riid.Bytes, &IUnknown.IID.Bytes) or\n", .{ offset });
+    try writer.print("{s}        std.mem.eql(u8, &riid.Bytes, &IAgileObject.IID.Bytes))\n", .{ offset });
     try writer.print("{s}    {{\n", .{ offset });
     try writer.print("{s}        out.* = @as(?*anyopaque, @ptrCast(me));\n", .{ offset });
     try writer.print("{s}        _ = AddRef(self);\n", .{ offset });
