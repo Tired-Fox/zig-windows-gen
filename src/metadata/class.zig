@@ -156,7 +156,23 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                             try writer.writeAll(")");
                         }
                         try writer.writeAll(" = undefined;\n");
-                        try writer.print("        const _c = IUnknown.QueryInterface(@ptrCast(self), &{s}.IID, @ptrCast(&this));\n", .{interface.Name});
+                        try writer.print("        const _c = IUnknown.QueryInterface(@ptrCast(self), &{s}", .{interface.Name});
+                        if (interface.GenericArguments) |ga| {
+                            try writer.writeAll("(");
+                            if (try ty.winToZig(allocator, ctx, &ga[0])) |t| {
+                                defer t.deinit(allocator);
+                                try writer.print("{f}", .{t.asValue()});
+                            }
+                            for (1..ga.len) |i| {
+                                if (try ty.winToZig(allocator, ctx, &ga[i])) |t| {
+                                    defer t.deinit(allocator);
+                                    try writer.print(",{f}", .{t.asValue()});
+                                }
+                            }
+
+                            try writer.writeAll(")");
+                        }
+                        try writer.writeAll(".IID, @ptrCast(&this));\n");
                         try writer.writeAll("        if (this == null or _c != 0) return core.hresultToError(_c).err;\n");
                         try writer.print("        return try this.?.{s}(", .{mname});
                     }
