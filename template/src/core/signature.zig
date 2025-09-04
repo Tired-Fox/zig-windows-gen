@@ -7,11 +7,11 @@ const Guid = windows.Guid;
 
 pub const Signature = struct {
     pub fn get(T: type) []const u8 {
-        if (@hasDecl(T, "SIGNATURE")) return @field(T, "SIGNATURE");
         if (T == Guid) return "guid";
-        if (T == windows.HSTRING) return "string";
-        if (T == windows.IInspectable) return "cinterface(IInspectable)";
+        if (T == ?windows.HSTRING) return "string";
+        if (T == windows.Foundation.IInspectable) return "cinterface(IInspectable)";
         if (T == bool) return "b1";
+        if (@hasDecl(T, "SIGNATURE")) return @field(T, "SIGNATURE");
 
         switch (@typeInfo(T)) {
             .int => |info| {
