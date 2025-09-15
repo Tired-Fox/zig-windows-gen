@@ -313,6 +313,9 @@ pub fn main() !void {
         namespaces.deinit(allocator);
     }
 
+    var snippets = try metadata.Snippets.init(allocator);
+    defer snippets.deinit(allocator);
+
     var ns_iter = metadata_dir.iterate();
     while (try ns_iter.next()) |entry| {
         if (entry.kind != .file) continue;
@@ -327,6 +330,7 @@ pub fn main() !void {
         var ctx = metadata.Context{
             .requirements = metadata.Requirements.init(allocator),
             .definitions = &definitions,
+            .snippets = &snippets,
         };
         defer ctx.requirements.deinit();
 

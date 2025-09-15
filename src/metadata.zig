@@ -343,6 +343,30 @@ pub const Definitions = struct {
 pub const Context = struct {
     requirements: Requirements,
     definitions: *const Definitions,
+    snippets: *const Snippets,
+};
+
+pub const Snippets = struct {
+    interface: std.StringHashMapUnmanaged([]const MethodSnippet),
+
+    const MethodSnippet = *const fn (*std.io.Writer, ?[]const[]const u8, prefix: []const u8) anyerror!void;
+
+    pub fn init(allocator: std.mem.Allocator) !@This() {
+        var interface_method_snippets = std.StringHashMapUnmanaged([]const MethodSnippet).empty;
+        errdefer interface_method_snippets.deinit(allocator);
+
+        try interface_method_snippets.put(allocator, "IAsyncOperation", &.{
+            @import("./snippets/IAsyncOperation.zig").wait,
+        });
+
+        return .{
+            .interface = interface_method_snippets
+        };
+    }
+
+    pub fn deinit(self: *@This(), allocator: std.mem.Allocator) void {
+        self.interface.deinit(allocator);
+    }
 };
 
 pub fn noreserved(name: []const u8) []const u8 {

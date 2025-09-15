@@ -156,6 +156,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                             try writer.writeAll(")");
                         }
                         try writer.writeAll(" = undefined;\n");
+                        try writer.writeAll("        defer _ = IUnknown.Release(@ptrCast(this));\n");
                         try writer.print("        const _c = IUnknown.QueryInterface(@ptrCast(self), &{s}", .{interface.Name});
                         if (interface.GenericArguments) |ga| {
                             try writer.writeAll("(");
@@ -184,23 +185,6 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                     }
                     try writer.writeAll(");\n    }\n");
                 }
-
-                //  else {
-                //     if (return_type) |rt| {
-                //         try writer.print("        var _r: {f} = undefined;\n", .{rt.asParam()});
-                //     }
-                //     try writer.print("        const _c = self.vtable.{s}(@ptrCast(self)", .{nameMap[idx]});
-                //     if (method.Parameters) |parameters| {
-                //         for (parameters) |param| {
-                //             try writer.print(", {s}", .{noreserved(param.Name)});
-                //         }
-                //         if (return_type != null) try writer.writeAll(", &_r");
-                //     }
-                //     try writer.writeAll(");\n");
-                //     try writer.writeAll("        if (_c != 0) return core.hresultToError(_c).err;\n");
-                //     if (return_type != null) try writer.writeAll("        return _r;\n");
-                //     try writer.writeAll("    }\n");
-                // }
             }
         }
     }

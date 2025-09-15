@@ -66,7 +66,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             }
 
             if (return_type) |rt| {
-                try writer.print("        var _r: {f} = undefined;\n", .{ rt.asParam() });
+                try writer.print("{s}    var _r: {f} = undefined;\n", .{ offset, rt.asParam() });
             }
 
             try writer.print("{s}    const _c = self.vtable.{s}(@ptrCast(self)", .{ offset, nameMap.?[m] });
@@ -77,10 +77,16 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
             }
             if (return_type != null) try writer.writeAll(", &_r");
             try writer.writeAll(");\n");
-            try writer.writeAll("        if (_c != 0) return core.hresultToError(_c).err;\n");
-            if (return_type != null) try writer.writeAll("        return _r;\n");
+            try writer.print("{s}    if (_c != 0) return core.hresultToError(_c).err;\n", .{ offset });
+            if (return_type != null) try writer.print("{s}    return _r;\n", .{ offset });
 
             try writer.print("{s}}}\n", .{ offset });
+        }
+    }
+
+    if (ctx.snippets.interface.get(typedef.Name)) |snippets| {
+        for (snippets) |snippet| {
+            try snippet(writer, typedef.GenericParameters, offset);
         }
     }
 
