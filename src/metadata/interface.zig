@@ -27,6 +27,8 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
 
     try writer.print("{s}vtable: *const VTable,\n", .{ offset });
 
+    try metadata.Snippets.IUnknownMixin(writer, "    ");
+
     var nameMap: ?[]const []const u8 = null;
     defer {
         if (nameMap) |m| {

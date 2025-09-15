@@ -265,6 +265,7 @@ pub const Requirements = struct {
         try self.add("Windows", "HSTRING");
         try self.add("Windows", "TrustLevel");
         try self.add("Windows", "HRESULT");
+        try self.add("Windows", "IUnknown");
         try self.add("Windows.Foundation", "IInspectable");
     }
 
@@ -366,6 +367,15 @@ pub const Snippets = struct {
 
     pub fn deinit(self: *@This(), allocator: std.mem.Allocator) void {
         self.interface.deinit(allocator);
+    }
+
+    pub fn IUnknownMixin(writer: *std.io.Writer, prefix: []const u8) !void {
+        try writer.print("{s}pub fn Release(self: *@This()) u32 {{\n", .{ prefix });
+        try writer.print("{s}    return IUnknown.Release(@ptrCast(self));\n", .{ prefix });
+        try writer.print("{s}}}\n", .{ prefix });
+        try writer.print("{s}pub fn deinit(self: *@This()) void {{\n", .{ prefix });
+        try writer.print("{s}    _ = IUnknown.Release(@ptrCast(self));\n", .{ prefix });
+        try writer.print("{s}}}\n", .{ prefix });
     }
 };
 

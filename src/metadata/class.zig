@@ -28,14 +28,18 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     try writer.print("pub const {s} = extern struct {{\n", .{typedef.Name});
     try writer.writeAll("    vtable: *const IInspectable.VTable,\n");
 
+
+    try writer.writeAll("    pub fn cast(self: *@This(), T: type) !*T {\n");
+    try writer.writeAll("        var _r: ?*T = undefined;\n");
+    try writer.writeAll("        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));\n");
+    try writer.writeAll("        if (_c != 0 or _r == null) return error.NoInterface;\n");
+    try writer.writeAll("        return _r.?;\n");
+    try writer.writeAll("    }\n");
+
     var method_to_interface: std.AutoHashMapUnmanaged(u64, *const metadata.Interface) = .empty;
     defer method_to_interface.deinit(allocator);
 
     if (typedef.Interfaces) |interfaces| {
-        if (interfaces.len > 1) {
-            try ctx.requirements.add("Windows", "IUnknown");
-        }
-
         for (interfaces) |*interface| {
             try ctx.requirements.add(interface.Namespace, interface.Name);
             if (ctx.definitions.getMethods(interface.Namespace, interface.Name)) |methods| {
@@ -87,6 +91,8 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
         for (nameMap) |n| allocator.free(n);
         allocator.free(nameMap);
     }
+
+    try metadata.Snippets.IUnknownMixin(writer, "    ");
 
     var idx: usize = 0;
     if (typedef.DefaultInterface != null) {
@@ -190,11 +196,6 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
     }
 
     if (typedef.Factory) |info| {
-        try ctx.requirements.add("Windows", "IUnknown");
-        try writer.writeAll("    pub fn deinit(self: *@This()) void {\n");
-        try writer.writeAll("        _ = IUnknown.Release(@ptrCast(self));\n");
-        try writer.writeAll("    }\n");
-
         if (info.HasDefault) {
             if (typedef.DefaultInterface) |di| {
                 try writer.writeAll("    pub fn init() core.HResult!*@This() {\n");
