@@ -21,18 +21,17 @@ pub fn hashMethod(key: *const metadata.Method) u64 {
 }
 
 pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: *const TypeDef, writer: *std.io.Writer) !void {
-    // At this piont the kind should have already been determined;
+    // At this point the kind should have already been determined;
     std.debug.assert(typedef.Kind == .Class);
     try ctx.requirements.addObjectDependencies();
 
     try writer.print("pub const {s} = extern struct {{\n", .{typedef.Name});
     try writer.writeAll("    vtable: *const IInspectable.VTable,\n");
 
-
-    try writer.writeAll("    pub fn cast(self: *@This(), T: type) !*T {\n");
-    try writer.writeAll("        var _r: ?*T = undefined;\n");
-    try writer.writeAll("        const _c = IUnknown.QueryInterface(@ptrCast(self), &T.IID, @ptrCast(&_r));\n");
-    try writer.writeAll("        if (_c != 0 or _r == null) return error.NoInterface;\n");
+    try writer.writeAll("    /// Must call `deinit` or `IUnknown.Release` on returned pointer\n");
+    try writer.writeAll("    pub fn cast(self: *@This(), AS: type) !*AS {\n");
+    try writer.writeAll("        var _r: ?*AS = undefined;\n");
+    try writer.writeAll("        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));\n");
     try writer.writeAll("        return _r.?;\n");
     try writer.writeAll("    }\n");
 
@@ -163,7 +162,7 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                         }
                         try writer.writeAll(" = undefined;\n");
                         try writer.writeAll("        defer _ = IUnknown.Release(@ptrCast(this));\n");
-                        try writer.print("        const _c = IUnknown.QueryInterface(@ptrCast(self), &{s}", .{interface.Name});
+                        try writer.print("        try IUnknown.QueryInterface(@ptrCast(self), &{s}", .{interface.Name});
                         if (interface.GenericArguments) |ga| {
                             try writer.writeAll("(");
                             if (try ty.winToZig(allocator, ctx, &ga[0])) |t| {
@@ -180,7 +179,6 @@ pub fn serialize(allocator: std.mem.Allocator, ctx: *metadata.Context, typedef: 
                             try writer.writeAll(")");
                         }
                         try writer.writeAll(".IID, @ptrCast(&this));\n");
-                        try writer.writeAll("        if (this == null or _c != 0) return core.hresultToError(_c).err;\n");
                         try writer.print("        return try this.?.{s}(", .{mname});
                     }
                     if (method.Parameters) |parameters| {

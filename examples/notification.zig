@@ -2,30 +2,28 @@ const std = @import("std");
 const win32 = @import("win32");
 const winrt = @import("winrt");
 
-const XmlDocument = winrt.data.xml.dom.XmlDocument;
-const XmlElement = winrt.data.xml.dom.XmlElement;
-const IXmlNode = winrt.data.xml.dom.IXmlNode;
+const XmlDocument = winrt.Data.Xml.Dom.XmlDocument;
+const XmlElement = winrt.Data.Xml.Dom.XmlElement;
+const IXmlNode = winrt.Data.Xml.Dom.IXmlNode;
 const IInspectable = winrt.IInspectable;
-const ToastNotificationManager = winrt.ui.notifications.ToastNotificationManager;
-const ToastNotification = winrt.ui.notifications.ToastNotification;
+const ToastNotificationManager = winrt.UI.Notifications.ToastNotificationManager;
+const ToastNotification = winrt.UI.Notifications.ToastNotification;
 
-const ToastDismissedEventArgs = winrt.ui.notifications.ToastDismissedEventArgs;
-const ToastActivatedEventArgs = winrt.ui.notifications.ToastActivatedEventArgs;
-const ToastFailedEventArgs = winrt.ui.notifications.ToastFailedEventArgs;
+const ToastDismissedEventArgs = winrt.UI.Notifications.ToastDismissedEventArgs;
+const ToastActivatedEventArgs = winrt.UI.Notifications.ToastActivatedEventArgs;
+const ToastFailedEventArgs = winrt.UI.Notifications.ToastFailedEventArgs;
+
+const TypedEventHandler = winrt.Foundation.TypedEventHandler;
 
 const L = std.unicode.utf8ToUtf16LeStringLiteral;
 
-// TODO: Add ability to register ativator and com server
-// so that clicking on the notification can activate the
-// app even if it isn't running.
-
-fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) callconv(.C) void {
+fn dismissNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastDismissedEventArgs) void {
     _ = sender;
-    std.debug.print("{any}\n", .{ args.reason() });
+    std.debug.print("{any}\n", .{args.reason()});
     wait.store(false, .release);
 }
 
-fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) callconv(.C) void {
+fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IInspectable) void {
     _ = sender;
 
     const event_args: *ToastActivatedEventArgs = @ptrCast(@alignCast(args));
@@ -33,13 +31,13 @@ fn activatedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *IIns
     const arguments = std.unicode.utf16LeToUtf8Alloc(std.heap.smp_allocator, event_args.arguments()) catch return;
     defer std.heap.smp_allocator.free(arguments);
 
-    std.debug.print("Activated: {s}\n", .{ arguments });
+    std.debug.print("Activated: {s}\n", .{arguments});
     wait.store(false, .release);
 }
 
-fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) callconv(.C) void {
+fn failedNotification(_: ?*anyopaque, sender: *ToastNotification, args: *ToastFailedEventArgs) void {
     _ = sender;
-    std.debug.print("[0x{X}] Toast Failure", .{ args.error_code() });
+    std.debug.print("[0x{X}] Toast Failure", .{args.error_code()});
     wait.store(false, .release);
 }
 
@@ -47,7 +45,7 @@ fn relative_file_uri(allocator: std.mem.Allocator, path: []const u8) ![:0]const 
     const file_path = try std.fs.cwd().realpathAlloc(allocator, path);
     defer allocator.free(file_path);
 
-    const uriUtf8 = try std.fmt.allocPrint(allocator, "file:///{s}", .{ file_path });
+    const uriUtf8 = try std.fmt.allocPrint(allocator, "file:///{s}", .{file_path});
     defer allocator.free(uriUtf8);
 
     return try std.unicode.utf8ToUtf16LeAllocZ(allocator, uriUtf8);
@@ -62,77 +60,77 @@ pub fn main() !void {
     const xml_document = try XmlDocument.init();
     defer xml_document.deinit();
 
-    const toastElement = try xml_document.createElement(L("toast"));
-    defer _ = toastElement.release();
-    _ = try xml_document.appendChild(@ptrCast(toastElement));
+    const toastElement = try xml_document.CreateElement(L("toast"));
+    defer toastElement.deinit();
+    _ = try xml_document.AppendChild(@ptrCast(toastElement));
 
-    const visualElement = try xml_document.createElement(L("visual"));
-    defer _ = visualElement.release();
-    _ = try toastElement.appendChild(@ptrCast(visualElement));
+    const visualElement = try xml_document.CreateElement(L("visual"));
+    defer visualElement.deinit();
+    _ = try toastElement.AppendChild(@ptrCast(visualElement));
 
-    const bindingElement = try xml_document.createElement(L("binding"));
-    defer _ = bindingElement.release();
-    _ = try visualElement.appendChild(@ptrCast(bindingElement));
+    const bindingElement = try xml_document.CreateElement(L("binding"));
+    defer bindingElement.deinit();
+    _ = try visualElement.AppendChild(@ptrCast(bindingElement));
 
-    try bindingElement.setAttribute(L("template"), L("ToastGeneric"));
+    try bindingElement.SetAttribute(L("template"), L("ToastGeneric"));
 
-    const logoElement = try xml_document.createElement(L("image"));
-    defer _ = logoElement.release();
-    _ = try bindingElement.appendChild(@ptrCast(logoElement));
+    const logoElement = try xml_document.CreateElement(L("image"));
+    defer logoElement.deinit();
+    _ = try bindingElement.AppendChild(@ptrCast(logoElement));
 
     const hero_uri = try relative_file_uri(std.heap.smp_allocator, "examples\\images\\hero.png");
     defer std.heap.smp_allocator.free(hero_uri);
 
-    try logoElement.setAttribute(L("id"), L("0"));
-    try logoElement.setAttribute(L("src"), hero_uri);
-    try logoElement.setAttribute(L("alt"), L("Banner"));
-    try logoElement.setAttribute(L("placement"), L("hero"));
+    try logoElement.SetAttribute(L("id"), L("0"));
+    try logoElement.SetAttribute(L("src"), hero_uri);
+    try logoElement.SetAttribute(L("alt"), L("Banner"));
+    try logoElement.SetAttribute(L("placement"), L("hero"));
 
-    const titleElement = try xml_document.createElement(L("text"));
-    defer _ = titleElement.release();
-    _ = try bindingElement.appendChild(@ptrCast(titleElement));
+    const titleElement = try xml_document.CreateElement(L("text"));
+    defer _ = titleElement.Release();
+    _ = try bindingElement.AppendChild(@ptrCast(titleElement));
 
-    try titleElement.setAttribute(L("id"), L("1"));
-    try titleElement.setAttribute(L("hint-style"), L("title"));
+    try titleElement.SetAttribute(L("id"), L("1"));
+    try titleElement.SetAttribute(L("hint-style"), L("title"));
 
-    const titleText = try xml_document.createTextNode(L("Zig Windows Runtime"));
-    defer _ = titleText.release();
-    _ = try titleElement.appendChild(@ptrCast(titleText));
+    const titleText = try xml_document.CreateTextNode(L("Zig Windows Runtime"));
+    defer titleText.deinit();
+    _ = try titleElement.AppendChild(@ptrCast(titleText));
 
-    const bodyElement = try xml_document.createElement(L("text"));
-    defer _ = bodyElement.release();
-    _ = try bindingElement.appendChild(@ptrCast(bodyElement));
+    const bodyElement = try xml_document.CreateElement(L("text"));
+    defer _ = bodyElement.Release();
+    _ = try bindingElement.AppendChild(@ptrCast(bodyElement));
 
-    try bodyElement.setAttribute(L("id"), L("2"));
+    try bodyElement.SetAttribute(L("id"), L("2"));
 
-    const bodyText = try xml_document.createTextNode(L("No Powershell needed!"));
-    defer _ = bodyText.release();
-    _ = try bodyElement.appendChild(@ptrCast(bodyText));
+    const bodyText = try xml_document.CreateTextNode(L("No Powershell needed!"));
+    defer bodyText.deinit();
+    _ = try bodyElement.AppendChild(@ptrCast(bodyText));
 
-    const heroElement = try xml_document.createElement(L("image"));
-    defer _ = heroElement.release();
-    _ = try bindingElement.appendChild(@ptrCast(heroElement));
+    const heroElement = try xml_document.CreateElement(L("image"));
+    defer heroElement.deinit();
+    _ = try bindingElement.AppendChild(@ptrCast(heroElement));
 
     const logo_uri = try relative_file_uri(std.heap.smp_allocator, "examples\\images\\logo.png");
     defer std.heap.smp_allocator.free(logo_uri);
 
-    try heroElement.setAttribute(L("id"), L("3"));
-    try heroElement.setAttribute(L("src"), logo_uri);
-    try heroElement.setAttribute(L("alt"), L("Logo"));
-    try heroElement.setAttribute(L("placement"), L("appLogoOverride"));
-    try heroElement.setAttribute(L("hint-crop"), L("circle"));
+    try heroElement.SetAttribute(L("id"), L("3"));
+    try heroElement.SetAttribute(L("src"), logo_uri);
+    try heroElement.SetAttribute(L("alt"), L("Logo"));
+    try heroElement.SetAttribute(L("placement"), L("appLogoOverride"));
+    try heroElement.SetAttribute(L("hint-crop"), L("circle"));
 
-    const actionsElement = try xml_document.createElement(L("actions"));
-    defer _ = actionsElement.release();
+    const actionsElement = try xml_document.CreateElement(L("actions"));
+    defer actionsElement.deinit();
     _ = try toastElement.appendChild(@ptrCast(actionsElement));
 
-    const buttonElement = try xml_document.createElement(L("action"));
-    defer _ = buttonElement.release();
-    _ = try actionsElement.appendChild(@ptrCast(buttonElement));
+    const buttonElement = try xml_document.CreateElement(L("action"));
+    defer buttonElement.deinit();
+    _ = try actionsElement.AppendChild(@ptrCast(buttonElement));
 
-    try buttonElement.setAttribute(L("content"), L("Click Me"));
-    try buttonElement.setAttribute(L("arguments"), L("click:click-me"));
-    try buttonElement.setAttribute(L("activationType"), L("background"));
+    try buttonElement.SetAttribute(L("content"), L("Click Me"));
+    try buttonElement.SetAttribute(L("arguments"), L("click:click-me"));
+    try buttonElement.SetAttribute(L("activationType"), L("background"));
 
     // Above is the same as just parsing the xml
     //
@@ -167,29 +165,29 @@ pub fn main() !void {
         std.debug.print("[XML]\n{s}\n", .{built_xml});
     }
 
-    const notification = try ToastNotification.createToastNotification(xml_document);
-    defer _ = notification.release();
+    const notification = try ToastNotification.CreateToastNotification(xml_document);
+    defer notification.deinit();
 
-    var dhandler = ToastNotification.DismissedTypedEventHandler.init(dismissNotification);
-    const dhandle = try notification.onDismissed(&dhandler);
+    const dhandler = try TypedEventHandler(ToastNotification, ToastDismissedEventArgs).initWithState(dismissNotification, notification);
+    const dhandle = try notification.addDismissed(dhandler);
 
-    var ahandler = ToastNotification.ActivatedTypedEventHandler.init(activatedNotification);
-    const ahandle = try notification.onActivated(&ahandler);
+    const ahandler = try TypedEventHandler(ToastNotification, IInspectable).initWithState(activatedNotification, notification);
+    const ahandle = try notification.addActivated(ahandler);
 
-    var fhandler = ToastNotification.FailedTypedEventHandler.init(failedNotification);
-    const fhandle = try notification.onFailed(&fhandler);
+    const fhandler = try TypedEventHandler(ToastNotification, ToastFailedEventArgs).initWithState(failedNotification, notification);
+    const fhandle = try notification.addFailed(fhandler);
 
-    var notifier = try ToastNotificationManager.createToastNotifierWithId(POWERSHELL);
-    defer _ = notifier.release();
+    var notifier = try ToastNotificationManager.CreateToastNotifierWithApplicationId(POWERSHELL);
+    defer notifier.deinit();
 
-    try notifier.show(notification);
+    try notifier.Show(notification);
 
     while (wait.load(.acquire)) {
         std.time.sleep(std.time.ns_per_s * 1);
     }
 
     std.debug.print("END\n", .{});
-    _ = notification.removeOnDismissed(dhandle);
-    _ = notification.removeOnActivated(ahandle);
-    _ = notification.removeOnFailed(fhandle);
+    _ = notification.removeDismissed(dhandle);
+    _ = notification.removeActivated(ahandle);
+    _ = notification.removeFailed(fhandle);
 }

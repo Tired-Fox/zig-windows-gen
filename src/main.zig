@@ -139,7 +139,7 @@ fn unzip(source: []const u8, options: UnzipOptions) !void {
 }
 
 fn downloadMetadata(allocator: std.mem.Allocator) !void {
-    print("🗃️  Checking for metadata updates from Tired-Fox/winrt-json\n", .{});
+    print("= Checking for metadata updates from Tired-Fox/winrt-json\n", .{});
     var config = try Config.parse(allocator, "meta.zig.zon");
     defer config.deinit(allocator);
 
@@ -150,7 +150,7 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
     defer tags.deinit();
 
     if (tags.value.len == 0) {
-        print("  \x1b[31m🗙\x1b[39m No winrt-json release found", .{});
+        print("  \x1b[31mx\x1b[39m No winrt-json release found", .{});
         return error.NoTags;
     }
 
@@ -170,7 +170,7 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
         const name = asset.name;
         if (name.len >= 8 and std.mem.eql(u8, name[0..8], "Metadata")) {
             if (std.mem.eql(u8, latest.name, config.current) and std.mem.eql(u8, asset.digest, config.digest)) {
-                print("   🎉 Metadata is up to date\n", .{});
+                print("   + Metadata is up to date\n", .{});
                 return;
             }
             print("   Downloading Release {s}\n", .{release.value.name});
@@ -179,48 +179,35 @@ fn downloadMetadata(allocator: std.mem.Allocator) !void {
             config.current = latest.name;
             config.digest = asset.digest;
             try config.write("meta.zig.zon");
-            print("     \x1b[36m⤓\x1b[39m Downloaded winrt-zig {s} to Metadata.zip\n", .{asset.name});
+            print("     \x1b[36mv\x1b[39m Downloaded winrt-zig {s} to Metadata.zip\n", .{asset.name});
 
             try unzip("Metadata.zip", .{ .out = "metadata", .clean = true });
-            print("     \x1b[33m↦\x1b[39m Unziped Metadata.zip to metadata/\n", .{});
+            print("     \x1b[33m>\x1b[39m Unziped Metadata.zip to metadata/\n", .{});
 
             try std.fs.cwd().deleteTree("Metadata.zip");
-            print("     \x1b[31m⌫\x1b[39m Deleted Metadata.zip\n", .{});
+            print("     \x1b[31m<\x1b[39m Deleted Metadata.zip\n", .{});
 
-            print("   🎉 Metadata updated\n", .{});
+            print("   + Metadata updated\n", .{});
 
             break;
         }
     } else {
-        print("   \x1b[31m🗙\x1b[39m No release archive found for {s}\n", .{latest.name});
+        print("   \x1b[31mx\x1b[39m No release archive found for {s}\n", .{latest.name});
         return error.NoArchive;
     }
 }
 
 fn print(comptime fmt: []const u8, args: anytype) void {
-    if (@import("builtin").os.tag == .windows) {
-        const out = std.fmt.allocPrint(std.heap.smp_allocator, fmt, args) catch unreachable;
-        defer std.heap.smp_allocator.free(out);
-
-        const utf16Out = std.unicode.utf8ToUtf16LeAlloc(std.heap.smp_allocator, out) catch unreachable;
-        defer std.heap.smp_allocator.free(utf16Out);
-
-        const h = std.os.windows.GetStdHandle(std.os.windows.STD_OUTPUT_HANDLE) catch unreachable;
-
-        var written: u32 = 0;
-        _ = std.os.windows.kernel32.WriteConsoleW(h, utf16Out.ptr, @intCast(utf16Out.len), &written, null);
-    } else {
-        var buffer: [1024]u8 = undefined;
-        var stdout = std.fs.File.stdout();
-        var stdout_writer = stdout.writer(&buffer);
-        stdout_writer.interface.print(fmt, args) catch unreachable;
-        stdout_writer.interface.flush() catch unreachable;
-    }
+    var buffer: [1024]u8 = undefined;
+    var stdout = std.fs.File.stdout();
+    var stdout_writer = stdout.writer(&buffer);
+    stdout_writer.interface.print(fmt, args) catch unreachable;
+    stdout_writer.interface.flush() catch unreachable;
 }
 
 fn generateHresultEnum(allocator: std.mem.Allocator) !void {
     // TODO: Convert the parsing of the winerror.h file to zig
-    print("🐞 Generating HResult enum type\n", .{});
+    print("= Generating HResult enum type\n", .{});
     if (true) {
         const data = try std.fs.cwd().readFileAlloc(allocator, "hresult.json", std.math.maxInt(usize));
         defer allocator.free(data);
@@ -240,21 +227,22 @@ fn generateHresultEnum(allocator: std.mem.Allocator) !void {
         try writer.interface.writeAll("// ----- This code is automatically generated -----\n");
 
         try writer.interface.writeAll("pub const HResult = error {\n");
-        try writer.interface.writeAll("    NOERROR,\n");
+        try writer.interface.writeAll("    UNKNOWN,\n");
         for (result.value) |hresult| {
             try writer.interface.print("    {s},\n", .{hresult[0]});
         }
         try writer.interface.writeAll("};\n");
 
-        try writer.interface.writeAll("pub fn hresultToError(hresult: i32) struct { err: HResult } {\n");
-        try writer.interface.writeAll("    return .{ .err = switch(@as(u32, @bitCast(hresult))) {\n");
+        try writer.interface.writeAll("/// If hresult isn't S_OK (0) then return anyerror representation of the hresult\n");
+        try writer.interface.writeAll("pub fn hresultToError(hresult: i32) HResult!void {\n");
+        try writer.interface.writeAll("    if (hresult >= 0) return;\n");
+        try writer.interface.writeAll("    return switch(@as(u32, @intCast(hresult))){\n");
         for (result.value) |hresult| {
             try writer.interface.print("        {s} => HResult.{s},\n", .{ hresult[1], hresult[0] });
         }
-        try writer.interface.writeAll("        else => error.NOERROR\n");
-        try writer.interface.writeAll("    }};\n");
+        try writer.interface.writeAll("        else => HResult.UNKNOWN,\n");
+        try writer.interface.writeAll("    };\n");
         try writer.interface.writeAll("}");
-
         try writer.interface.flush();
     }
 }
@@ -273,7 +261,7 @@ pub fn main() !void {
     try downloadMetadata(allocator);
     try generateHresultEnum(allocator);
 
-    print("📟 Generating API\n", .{});
+    print("= Generating API\n", .{});
     var module = try std.fs.cwd().openDir(location, .{});
     defer module.close();
 
@@ -325,7 +313,7 @@ pub fn main() !void {
 
         try namespaces.append(allocator, try allocator.dupe(u8, namespace.namespace));
 
-        print("   🧩 {s}\n", .{namespace.namespace});
+        print("   * {s}\n", .{namespace.namespace});
 
         var ctx = metadata.Context{
             .requirements = metadata.Requirements.init(allocator),
@@ -388,7 +376,7 @@ pub fn main() !void {
             total += 1;
         }
 
-        print("      \x1b[36m#\x1b[39m {d} types\n", .{total});
+        print("      # {d} types\n", .{total});
 
         var it = ctx.requirements.items.iterator();
         while (it.next()) |requirement| {

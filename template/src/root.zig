@@ -2,8 +2,21 @@
 pub const IUnknown = extern struct {
     vtable: *const VTable,
 
-    pub fn QueryInterface(self: *@This(), iid: *const Guid, interface: *?*anyopaque) HRESULT {
-        return self.vtable.QueryInterface(@ptrCast(self), iid, interface);
+    /// Must call `deinit` or `IUnknown.Release` on returned pointer
+    pub fn cast(self: *@This(), AS: type) !*AS {
+        var _r: ?*AS = undefined;
+        try IUnknown.QueryInterface(@ptrCast(self), &AS.IID, @ptrCast(&_r));
+        return _r.?;
+    }
+
+    pub fn deinit(self: *@This()) void {
+        _ = IUnknown.Release(@ptrCast(self));
+    }
+
+    pub fn QueryInterface(self: *@This(), iid: *const Guid, interface: *?*anyopaque) core.HResult!void {
+        const _r = self.vtable.QueryInterface(@ptrCast(self), iid, interface);
+        if (interface.* == null) return core.HResult.E_POINTER;
+        try core.hresultToError(_r);
     }
 
     pub fn AddRef(self: *@This()) u32 {

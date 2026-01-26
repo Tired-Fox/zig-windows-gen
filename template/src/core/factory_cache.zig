@@ -38,9 +38,9 @@ pub fn FactoryCache(F: type, comptime RN: [:0]const u16) type {
                 const unknown: *IUnknown = @ptrCast(@alignCast(factory));
 
                 var temp: ?*anyopaque = undefined;
-                if (unknown.QueryInterface(&IAgileObject.IID, &temp) == 0) {
+                if (unknown.QueryInterface(&IAgileObject.IID, &temp)) {
                     _ = self.shared.cmpxchgStrong(null, factory, .acq_rel, .acquire);
-                } else {
+                } else |_| {
                     // Otherwise, for non-agile factories we simply use the factory
                     // and discard after use as it is not safe to cache.
                     return @ptrCast(@alignCast(factory));
@@ -53,8 +53,8 @@ pub fn FactoryCache(F: type, comptime RN: [:0]const u16) type {
 fn loadFactory(factory_iid: *const Guid, runtime_name: [:0]const u16) core.HResult!*anyopaque {
     var factory: *anyopaque = undefined;
 
-    const name: ?HSTRING = try WindowsCreateString(runtime_name);
-    defer WindowsDeleteString(name);
+    const name: ?HSTRING = try core.WindowsCreateString(runtime_name);
+    defer core.WindowsDeleteString(name);
 
     const code = code_block: {
         var result: u32 = @bitCast(RoGetActivationFactory(
@@ -86,10 +86,6 @@ fn loadFactory(factory_iid: *const Guid, runtime_name: [:0]const u16) core.HResu
     if (code == 0) {
         return factory;
     }
-
-    // If not, first capture the error information from the failure above so that we
-    // can ultimately return this error information if all else fails.
-    // let original: crate::Error = code.into();
 
     // Reg-free activation should only be attempted if the class is not registered.
     // It should not be attempted if the class is registered but fails to activate.
@@ -163,16 +159,4 @@ fn delayLoad(T: type, library: [*:0]const u16, function: [*:0]const u8) ?T {
 
     _ = win32.system.library_loader.FreeLibrary(lib);
     return null;
-}
-
-fn WindowsCreateString(string: [:0]const u16) !?HSTRING {
-    var result: ?HSTRING = undefined;
-    if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != 0) {
-        return error.E_OUTOFMEMORY;
-    }
-    return result;
-}
-
-fn WindowsDeleteString(string: ?HSTRING) void {
-    _ = win32.system.win_rt.WindowsDeleteString(string);
 }

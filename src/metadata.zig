@@ -350,7 +350,7 @@ pub const Context = struct {
 pub const Snippets = struct {
     interface: std.StringHashMapUnmanaged([]const MethodSnippet),
 
-    const MethodSnippet = *const fn (*std.io.Writer, ?[]const[]const u8, prefix: []const u8) anyerror!void;
+    const MethodSnippet = *const fn (*std.io.Writer, ?[]const []const u8, prefix: []const u8) anyerror!void;
 
     pub fn init(allocator: std.mem.Allocator) !@This() {
         var interface_method_snippets = std.StringHashMapUnmanaged([]const MethodSnippet).empty;
@@ -360,9 +360,7 @@ pub const Snippets = struct {
             @import("./snippets/IAsyncOperation.zig").wait,
         });
 
-        return .{
-            .interface = interface_method_snippets
-        };
+        return .{ .interface = interface_method_snippets };
     }
 
     pub fn deinit(self: *@This(), allocator: std.mem.Allocator) void {
@@ -370,12 +368,12 @@ pub const Snippets = struct {
     }
 
     pub fn IUnknownMixin(writer: *std.io.Writer, prefix: []const u8) !void {
-        try writer.print("{s}pub fn Release(self: *@This()) u32 {{\n", .{ prefix });
-        try writer.print("{s}    return IUnknown.Release(@ptrCast(self));\n", .{ prefix });
-        try writer.print("{s}}}\n", .{ prefix });
-        try writer.print("{s}pub fn deinit(self: *@This()) void {{\n", .{ prefix });
-        try writer.print("{s}    _ = IUnknown.Release(@ptrCast(self));\n", .{ prefix });
-        try writer.print("{s}}}\n", .{ prefix });
+        // try writer.print("{s}pub fn Release(self: *@This()) u32 {{\n", .{ prefix });
+        // try writer.print("{s}    return IUnknown.Release(@ptrCast(self));\n", .{ prefix });
+        // try writer.print("{s}}}\n", .{ prefix });
+        try writer.print("{s}pub fn deinit(self: *@This()) void {{\n", .{prefix});
+        try writer.print("{s}    _ = IUnknown.Release(@ptrCast(self));\n", .{prefix});
+        try writer.print("{s}}}\n", .{prefix});
     }
 };
 

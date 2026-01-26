@@ -8,7 +8,7 @@ const HSTRING = win32.system.win_rt.HSTRING;
 
 pub const FactoryCache = @import("core/factory_cache.zig").FactoryCache;
 pub const Signature = @import("core/signature.zig").Signature;
-pub const generic = @import("core/generic.zig").generic;
+pub const genericArg = @import("core/generic.zig").genericArg;
 pub const HResult = @import("core/hresult.zig").HResult;
 pub const hresultToError = @import("core/hresult.zig").hresultToError;
 
@@ -81,4 +81,25 @@ pub fn passByRef(T: type) bool {
     if (T == ?HSTRING) return false;
     if (@typeInfo(T) == .pointer) return false;
     return @typeInfo(T) == .@"struct" and @hasField(T, "vtable");
+}
+
+pub fn WindowsCreateString(string: [:0]const u16) HResult!?HSTRING {
+    var result: ?HSTRING = undefined;
+    if (win32.system.win_rt.WindowsCreateString(string.ptr, @intCast(string.len), &result) != 0) {
+        return HResult.E_OUTOFMEMORY;
+    }
+    return result;
+}
+
+pub fn WindowsDeleteString(string: ?HSTRING) void {
+    _ = win32.system.win_rt.WindowsDeleteString(string);
+}
+
+pub fn WindowsGetString(string: ?HSTRING) ?[]const u16 {
+    var len: u32 = 0;
+    const buffer = win32.system.win_rt.WindowsGetStringRawBuffer(string, &len);
+    if (buffer) |buf| {
+        return buf[0..@as(usize, @intCast(len))];
+    }
+    return null;
 }

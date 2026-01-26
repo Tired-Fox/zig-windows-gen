@@ -35,7 +35,7 @@ pub const Type = struct {
     }
 
     pub fn format(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        if(self.optional) try writer.writeByte('?'); 
+        if (self.optional) try writer.writeByte('?');
 
         if (self.kind == .Array) {
             try writer.writeAll("[*]");
@@ -49,16 +49,16 @@ pub const Type = struct {
 
         if (self.generics) |generics| {
             try writer.writeAll("(");
-            try writer.print("{f}", .{ generics[0].asValue() });
+            try writer.print("{f}", .{generics[0].asValue()});
             for (1..generics.len) |i| {
-                try writer.print(",{f}", .{ generics[i].asValue() });
+                try writer.print(",{f}", .{generics[i].asValue()});
             }
             try writer.writeAll(")");
         }
     }
 
     pub fn formatParam(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        if(self.optional) try writer.writeByte('?'); 
+        if (self.optional) try writer.writeByte('?');
 
         if (self.kind == .Array) {
             try writer.writeAll("[*]");
@@ -68,14 +68,14 @@ pub const Type = struct {
 
         switch (self.base) {
             .value, .ref => |v| try writer.writeAll(v),
-            .generic => |v| try writer.print("core.generic({s})", .{ v }),
+            .generic => |v| try writer.print("core.genericArg({s})", .{v}),
         }
 
         if (self.generics) |generics| {
             try writer.writeAll("(");
-            try writer.print("{f}", .{ generics[0].asValue() });
+            try writer.print("{f}", .{generics[0].asValue()});
             for (1..generics.len) |i| {
-                try writer.print(",{f}", .{ generics[i].asValue() });
+                try writer.print(",{f}", .{generics[i].asValue()});
             }
             try writer.writeAll(")");
         }
@@ -86,7 +86,7 @@ pub const Type = struct {
     }
 
     pub fn formatValue(self: @This(), writer: *std.io.Writer) std.io.Writer.Error!void {
-        if(self.optional) try writer.writeByte('?'); 
+        if (self.optional) try writer.writeByte('?');
 
         if (self.kind == .Array) {
             try writer.writeAll("[*]");
@@ -98,9 +98,9 @@ pub const Type = struct {
 
         if (self.generics) |generics| {
             try writer.writeAll("(");
-            try writer.print("{f}", .{ generics[0].asValue() });
+            try writer.print("{f}", .{generics[0].asValue()});
             for (1..generics.len) |i| {
-                try writer.print(",{f}", .{ generics[i].asValue() });
+                try writer.print(",{f}", .{generics[i].asValue()});
             }
             try writer.writeAll(")");
         }
@@ -192,6 +192,6 @@ pub fn winToZig(allocator: std.mem.Allocator, ctx: *metadata.Context, typeref: *
         return .generic(typeref.Name, typeref.Type, false);
     }
 
-    std.debug.print("{f}\n", .{ typeref });
+    std.debug.print("{f}\n", .{typeref});
     return error.UnknownWindowsType;
 }

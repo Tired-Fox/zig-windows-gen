@@ -1,6 +1,6 @@
 // ----- This code is automatically generated -----
 pub const HResult = error {
-    NOERROR,
+    UNKNOWN,
     E_UNEXPECTED,
     E_NOTIMPL,
     E_OUTOFMEMORY,
@@ -3428,8 +3428,10 @@ pub const HResult = error {
     IORING_E_CORRUPT,
     IORING_E_COMPLETION_QUEUE_TOO_FULL,
 };
-pub fn hresultToError(hresult: i32) struct { err: HResult } {
-    return .{ .err = switch(@as(u32, @bitCast(hresult))) {
+/// If hresult isn't S_OK (0) then return anyerror representation of the hresult
+pub fn hresultToError(hresult: i32) HResult!void {
+    if (hresult > 0) return;
+    return switch(@as(u32, @intCast(hresult))){
         0x8000FFFF => HResult.E_UNEXPECTED,
         0x80004001 => HResult.E_NOTIMPL,
         0x8007000E => HResult.E_OUTOFMEMORY,
@@ -6856,6 +6858,6 @@ pub fn hresultToError(hresult: i32) struct { err: HResult } {
         0x80460006 => HResult.IORING_E_SUBMIT_IN_PROGRESS,
         0x80460007 => HResult.IORING_E_CORRUPT,
         0x80460008 => HResult.IORING_E_COMPLETION_QUEUE_TOO_FULL,
-        else => error.NOERROR
-    }};
+        else => HResult.UNKNOWN,
+    };
 }

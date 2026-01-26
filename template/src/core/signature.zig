@@ -79,15 +79,15 @@ pub const Signature = struct {
         bytes[6] = (bytes[6] & 0x0F) | 0x50; // version = 5
         bytes[8] = (bytes[8] & 0x3F) | 0x80; // variant = RFC-4122
 
-        return Guid{ .Bytes = [16]u8 {
-            bytes[3], bytes[2], bytes[1], bytes[0],
-            bytes[5], bytes[4],
-            bytes[7], bytes[6],
-            bytes[8], bytes[9], bytes[10], bytes[11], bytes[12], bytes[13], bytes[14], bytes[15],
-        }};
+        return Guid{ .Bytes = [16]u8{
+            bytes[3],  bytes[2],  bytes[1],  bytes[0],
+            bytes[5],  bytes[4],  bytes[7],  bytes[6],
+            bytes[8],  bytes[9],  bytes[10], bytes[11],
+            bytes[12], bytes[13], bytes[14], bytes[15],
+        } };
     }
 
-    pub fn guid_string(comptime iid: Guid) []const u8 {
+    pub fn guidString(comptime iid: Guid) []const u8 {
         return &@import("../core.zig").guidToString(&iid);
     }
 };

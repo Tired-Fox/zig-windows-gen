@@ -4,6 +4,6 @@
 /// used with T [IN] and *T [OUT]
 ///
 /// based on rules of pass by value and pass by ref/pointer
-pub fn generic(T: type) type {
+pub fn genericArg(T: type) type {
     return if (@import("../core.zig").passByRef(T)) *T else T;
 }
