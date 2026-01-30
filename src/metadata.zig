@@ -59,6 +59,7 @@ pub const TypeDef = struct {
     Name: []const u8,
     Guid: ?[]const u8 = null,
     Agile: bool,
+    Flags: bool,
     BaseType: ?TypeReference = null,
     GenericParameters: ?[]const []const u8 = null,
     Factory: ?FactoryInfo = null,
