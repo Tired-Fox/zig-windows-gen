@@ -3431,7 +3431,7 @@ pub const HResult = error {
 /// If hresult isn't S_OK (0) then return anyerror representation of the hresult
 pub fn hresultToError(hresult: i32) HResult!void {
     if (hresult >= 0) return;
-    return switch(@as(u32, @intCast(hresult))){
+    return switch(@as(u32, @bitCast(hresult))){
         0x8000FFFF => HResult.E_UNEXPECTED,
         0x80004001 => HResult.E_NOTIMPL,
         0x8007000E => HResult.E_OUTOFMEMORY,

@@ -236,7 +236,7 @@ fn generateHresultEnum(allocator: std.mem.Allocator) !void {
         try writer.interface.writeAll("/// If hresult isn't S_OK (0) then return anyerror representation of the hresult\n");
         try writer.interface.writeAll("pub fn hresultToError(hresult: i32) HResult!void {\n");
         try writer.interface.writeAll("    if (hresult >= 0) return;\n");
-        try writer.interface.writeAll("    return switch(@as(u32, @intCast(hresult))){\n");
+        try writer.interface.writeAll("    return switch(@as(u32, @bitCast(hresult))){\n");
         for (result.value) |hresult| {
             try writer.interface.print("        {s} => HResult.{s},\n", .{ hresult[1], hresult[0] });
         }
